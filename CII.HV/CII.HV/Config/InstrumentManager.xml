@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<InstrumentManager>
+    <instrumentTypes>
+        <instrumentType>
+            <id>HV</id>
+            <name>HV</name>
+            <directLink>True</directLink>
+        </instrumentType>
+    </instrumentTypes>
+    <instruments>
+        <instrument>
+            <id>HV</id>
+            <name>HV</name>
+            <address>0x21</address>
+            <type>HV</type>
+        </instrument>
+    </instruments>
+</InstrumentManager>

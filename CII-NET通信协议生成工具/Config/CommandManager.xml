@@ -1,0 +1,6733 @@
+<?xml version="1.0" encoding="utf-8"?>
+<commandManager>
+	<timeOut>3000</timeOut>
+	<tryTimes>2</tryTimes>
+	<commandDescs>
+		<commandDesc>
+			<id>Gas_BaseInfo</id>
+			<name>气体控制板基本信息</name>
+			<destInstrument>Gas</destInstrument>
+			<commandCode>48</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Version</id>
+							<name>版本号</name>
+							<type>string</type>
+							<length>32</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>ID</id>
+							<name>序列号</name>
+							<type>string</type>
+							<length>16</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Time</id>
+							<name>时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Main_BaseInfo</id>
+			<name>主控制板基本信息</name>
+			<destInstrument>Main</destInstrument>
+			<commandCode>49</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Version</id>
+							<name>版本号</name>
+							<type>string</type>
+							<length>32</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>ID</id>
+							<name>序列号</name>
+							<type>string</type>
+							<length>16</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Time</id>
+							<name>时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Sensor_BaseInfo</id>
+			<name>传感器控制板基本信息</name>
+			<destInstrument>Sensor</destInstrument>
+			<commandCode>50</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Version</id>
+							<name>版本号</name>
+							<type>string</type>
+							<length>32</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>ID</id>
+							<name>序列号</name>
+							<type>string</type>
+							<length>16</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Time</id>
+							<name>时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Com_BaseInfo</id>
+			<name>通讯控制板基本信息</name>
+			<destInstrument>Com</destInstrument>
+			<commandCode>51</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Version</id>
+							<name>版本号</name>
+							<type>string</type>
+							<length>32</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>ID</id>
+							<name>软件序列号</name>
+							<type>string</type>
+							<length>16</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Time</id>
+							<name>时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>IDIns</id>
+							<name>整机序列号</name>
+							<type>string</type>
+							<length>16</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Gas_MonitorData</id>
+			<name>气体控制板状态和实时数据</name>
+			<destInstrument>Gas</destInstrument>
+			<commandCode>64</commandCode>
+			<timeOut>500</timeOut>
+			<tryTimes>1</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xaa</id>
+					<name>ReadResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>FlowState</id>
+							<name>字节流程</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>O2State</id>
+							<name>O2状态</name>
+							<type>byte</type>
+							<length>4</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>CO2State</id>
+							<name>CO2状态</name>
+							<type>byte</type>
+							<length>4</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Pressure1State</id>
+							<name>压力1状态</name>
+							<type>byte</type>
+							<length>4</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Pressure2State</id>
+							<name>压力2状态</name>
+							<type>byte</type>
+							<length>4</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>HumidityState</id>
+							<name>湿度状态</name>
+							<type>byte</type>
+							<length>4</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Obligate1</id>
+							<name>预留1</name>
+							<type>byte</type>
+							<length>24</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>SwitchState</id>
+							<name>开关状态</name>
+							<type>byte</type>
+							<length>4</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>PCBState</id>
+							<name>电路板状态</name>
+							<type>byte</type>
+							<length>2</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>O2Conc</id>
+							<name>O2浓度</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>O2IncDutyCycle</id>
+							<name>O2增占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>O2DecDutyCycle</id>
+							<name>O2减占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>CO2Conc</id>
+							<name>CO2浓度</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>CO2IncDutyCycle</id>
+							<name>CO2增占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>CO2DecDutyCycle</id>
+							<name>CO2减占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Pressure1</id>
+							<name>压力1</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Pressure1IncDutyCycle</id>
+							<name>压力1增占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Pressure1DecDutyCycle</id>
+							<name>压力1减占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Pressure2</id>
+							<name>压力2</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Pressure2IncDutyCycle</id>
+							<name>压力2增占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Pressure2DecDutyCycle</id>
+							<name>压力2减占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Tmp1</id>
+							<name>温度1</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Tmp2</id>
+							<name>温度2</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Humidity</id>
+							<name>湿度</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>HumidityIncDutyCycle</id>
+							<name>湿度增占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>HumidityDecDutyCycle</id>
+							<name>湿度减占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Obligate2</id>
+							<name>预留2</name>
+							<type>byte</type>
+							<length>90</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Main_MonitorData</id>
+			<name>主控制板状态和实时数据</name>
+			<destInstrument>Main</destInstrument>
+			<commandCode>65</commandCode>
+			<timeOut>500</timeOut>
+			<tryTimes>1</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xaa</id>
+					<name>ReadResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>FlowState</id>
+							<name>流程状态</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T1State</id>
+							<name>温度1状态</name>
+							<type>byte</type>
+							<length>4</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T2State</id>
+							<name>温度2状态</name>
+							<type>byte</type>
+							<length>4</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T3State</id>
+							<name>温度3状态</name>
+							<type>byte</type>
+							<length>4</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T4State</id>
+							<name>温度4状态</name>
+							<type>byte</type>
+							<length>4</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T5State</id>
+							<name>温度5状态</name>
+							<type>byte</type>
+							<length>4</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T6State</id>
+							<name>温度6状态</name>
+							<type>byte</type>
+							<length>4</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T7State</id>
+							<name>温度7状态</name>
+							<type>byte</type>
+							<length>4</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>SwitchState</id>
+							<name>开关状态</name>
+							<type>byte</type>
+							<length>4</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Obligate1</id>
+							<name>预留1</name>
+							<type>byte</type>
+							<length>15</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>PCBState</id>
+							<name>电路板状态</name>
+							<type>byte</type>
+							<length>2</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T1</id>
+							<name>温度1</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T2</id>
+							<name>温度2</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T3</id>
+							<name>温度3</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T4</id>
+							<name>温度4</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T5</id>
+							<name>温度5</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T6</id>
+							<name>温度6</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T7</id>
+							<name>温度7</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>AC1</id>
+							<name>电压1</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>AC2</id>
+							<name>电压2</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>AC3</id>
+							<name>电压3</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>AC4</id>
+							<name>电压4</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>AC5</id>
+							<name>电压5</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>AirFan</id>
+							<name>气流风机</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Obligate2</id>
+							<name>预留2</name>
+							<type>byte</type>
+							<length>42</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T1IncDutyCycle</id>
+							<name>温度1增占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T1DecDutyCycle</id>
+							<name>温度1减占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T2IncDutyCycle</id>
+							<name>温度2增占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T2DecDutyCycle</id>
+							<name>温度2减占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T3IncDutyCycle</id>
+							<name>温度3增占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T3DecDutyCycle</id>
+							<name>温度3减占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T4IncDutyCycle</id>
+							<name>温度4增占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T4DecDutyCycle</id>
+							<name>温度4减占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T5IncDutyCycle</id>
+							<name>温度5增占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T5DecDutyCycle</id>
+							<name>温度5减占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T6IncDutyCycle</id>
+							<name>温度6增占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T6DecDutyCycle</id>
+							<name>温度6减占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T7IncDutyCycle</id>
+							<name>温度7增占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>T7DecDutyCycle</id>
+							<name>温度7减占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Sensor_MonitorData</id>
+			<name>传感器控制板状态和实时数据</name>
+			<destInstrument>Sensor</destInstrument>
+			<commandCode>66</commandCode>
+			<timeOut>500</timeOut>
+			<tryTimes>1</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xaa</id>
+					<name>ReadResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>FlowState</id>
+							<name>流程状态</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>CLO2State</id>
+							<name>CLO2状态</name>
+							<type>byte</type>
+							<length>4</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>PMState</id>
+							<name>颗粒物状态</name>
+							<type>byte</type>
+							<length>4</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>DifferentialPressureState</id>
+							<name>差压表状态</name>
+							<type>byte</type>
+							<length>4</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Obligate1</id>
+							<name>预留1</name>
+							<type>byte</type>
+							<length>35</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>PCBState</id>
+							<name>电路板状态</name>
+							<type>byte</type>
+							<length>2</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>CLO2</id>
+							<name>CLO2</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>PMConc</id>
+							<name>颗粒物浓度</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Obligate2</id>
+							<name>预留2</name>
+							<type>byte</type>
+							<length>168</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>DifferentialPressureConc</id>
+							<name>差压表浓度</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Com_MonitorData</id>
+			<name>通讯控制板状态和实时数据</name>
+			<destInstrument>Com</destInstrument>
+			<commandCode>67</commandCode>
+			<timeOut>500</timeOut>
+			<tryTimes>1</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xaa</id>
+					<name>ReadResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>FlowState</id>
+							<name>流程状态</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Obligate1</id>
+							<name>预留1</name>
+							<type>byte</type>
+							<length>44</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>PCBState</id>
+							<name>电路板状态</name>
+							<type>byte</type>
+							<length>2</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Obligate2</id>
+							<name>预留2</name>
+							<type>byte</type>
+							<length>150</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>GasOnlineState</id>
+							<name>气体控制板在线状态</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>MainState</id>
+							<name>主控制板状态</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>SensorState</id>
+							<name>传感板状态</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Gas_AlarmSet</id>
+			<name>气体控制板报警线设置</name>
+			<destInstrument>Gas</destInstrument>
+			<commandCode>80</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>设置内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Value</id>
+							<name>相应的值</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>AlarmSwitch</id>
+							<name>报警开关</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Main_AlarmSet</id>
+			<name>主控制板报警线设置</name>
+			<destInstrument>Main</destInstrument>
+			<commandCode>81</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Value</id>
+							<name>相应的值</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>AlarmSwitch</id>
+							<name>报警开关</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Sensor_AlarmSet</id>
+			<name>传感器控制板报警线设置</name>
+			<destInstrument>Sensor</destInstrument>
+			<commandCode>82</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Value</id>
+							<name>相应的值</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>AlarmSwitch</id>
+							<name>报警开关</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<minValue></minValue>
+								<maxValue></maxValue>
+								<maxLength>0</maxLength>
+								<items></items>
+								<values></values>
+								<defaultValue></defaultValue>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+									<value></value>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Com_AlarmSet</id>
+			<name>通讯控制板报警线设置</name>
+			<destInstrument>Com</destInstrument>
+			<commandCode>83</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+		</commandDesc>
+
+		<commandDesc>
+			<id>Gas_PID</id>
+			<name>气体控制板PID参数</name>
+			<destInstrument>Gas</destInstrument>
+			<commandCode>84</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>P</id>
+							<name>P参数</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>I</id>
+							<name>I参数</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>D</id>
+							<name>D参数</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Main_PID</id>
+			<name>主控制板PID参数</name>
+			<destInstrument>Main</destInstrument>
+			<commandCode>85</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>P</id>
+							<name>P参数</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>I</id>
+							<name>I参数</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>D</id>
+							<name>D参数</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Sensor_PID</id>
+			<name>传感器控制板PID参数</name>
+			<destInstrument>Sensor</destInstrument>
+			<commandCode>86</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+		</commandDesc>
+
+		<commandDesc>
+			<id>Com_PID</id>
+			<name>通讯控制板PID参数</name>
+			<destInstrument>Com</destInstrument>
+			<commandCode>87</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+		</commandDesc>
+
+		<commandDesc>
+			<id>Gas_Board</id>
+			<name>气体控制板</name>
+			<destInstrument>Gas</destInstrument>
+			<commandCode>96</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>控制项选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>控制项选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>ControlMode</id>
+							<name>控制模式</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Goal</id>
+							<name>目标度</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Precision</id>
+							<name>精度</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Main_Board</id>
+			<name>主控制板</name>
+			<destInstrument>Main</destInstrument>
+			<commandCode>97</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>控制项选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>控制项选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>ControlMode</id>
+							<name>控制模式</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Goal</id>
+							<name>目标度</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Precision</id>
+							<name>精度</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Sensor_Board</id>
+			<name>传感器控制板</name>
+			<destInstrument>Sensor</destInstrument>
+			<commandCode>98</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>控制项选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>控制项选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>ControlMode</id>
+							<name>控制模式</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Goal</id>
+							<name>目标度</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Com_Board</id>
+			<name>通讯控制板</name>
+			<destInstrument>Com</destInstrument>
+			<commandCode>99</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+		</commandDesc>
+
+		<commandDesc>
+			<id>Gas_Config</id>
+			<name>气体控制板配置</name>
+			<destInstrument>Gas</destInstrument>
+			<commandCode>100</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>控制项选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>控制项选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Value</id>
+							<name>对应的配置</name>
+							<type>byte</type>
+							<length>500</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Main_Config</id>
+			<name>主控制板配置</name>
+			<destInstrument>Main</destInstrument>
+			<commandCode>101</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>控制项选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>控制项选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Value</id>
+							<name>对应的配置</name>
+							<type>byte</type>
+							<length>500</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Sensor_Config</id>
+			<name>传感器控制板配置</name>
+			<destInstrument>Sensor</destInstrument>
+			<commandCode>102</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>控制项选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>控制项选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Value</id>
+							<name>对应的配置</name>
+							<type>byte</type>
+							<length>500</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Com_Config</id>
+			<name>通讯控制板配置</name>
+			<destInstrument>Com</destInstrument>
+			<commandCode>103</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>控制项选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>控制项选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Value</id>
+							<name>对应的配置</name>
+							<type>byte</type>
+							<length>500</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Gas_AlarmHistory</id>
+			<name>气体控制板历史故障</name>
+			<destInstrument>Gas</destInstrument>
+			<commandCode>112</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Index</id>
+							<name>读取第几条故障</name>
+							<type>byte</type>
+							<length>2</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Num</id>
+							<name>故障编号</name>
+							<type>uint</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Code</id>
+							<name>故障码</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Value</id>
+							<name>故障值</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>StartTime</id>
+							<name>故障开始时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>EndTime</id>
+							<name>故障结束时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Main_AlarmHistory</id>
+			<name>主控制板历史故障</name>
+			<destInstrument>Main</destInstrument>
+			<commandCode>113</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Index</id>
+							<name>读取第几条故障</name>
+							<type>byte</type>
+							<length>2</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Num</id>
+							<name>故障编号</name>
+							<type>uint</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Code</id>
+							<name>故障码</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Value</id>
+							<name>故障值</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>StartTime</id>
+							<name>故障开始时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>EndTime</id>
+							<name>故障结束时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Sensor_AlarmHistory</id>
+			<name>传感器控制板历史故障</name>
+			<destInstrument>Sensor</destInstrument>
+			<commandCode>114</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Index</id>
+							<name>读取第几条故障</name>
+							<type>byte</type>
+							<length>2</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Num</id>
+							<name>故障编号</name>
+							<type>uint</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Code</id>
+							<name>故障码</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Value</id>
+							<name>故障值</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>StartTime</id>
+							<name>故障开始时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>EndTime</id>
+							<name>故障结束时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Com_AlarmHistory</id>
+			<name>通讯控制板历史故障</name>
+			<destInstrument>Com</destInstrument>
+			<commandCode>115</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Index</id>
+							<name>读取故障</name>
+							<type>byte</type>
+							<length>2</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Num</id>
+							<name>故障编号</name>
+							<type>uint</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Code</id>
+							<name>故障码</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Value</id>
+							<name>故障值</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>StartTime</id>
+							<name>故障开始时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>EndTime</id>
+							<name>故障结束时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Gas_Correct</id>
+			<name>气体控制板矫正历史信息</name>
+			<destInstrument>Gas</destInstrument>
+			<commandCode>116</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Index</id>
+							<name>读取信息标号</name>
+							<type>byte</type>
+							<length>2</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Num</id>
+							<name>信息编号</name>
+							<type>uint</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Type</id>
+							<name>矫正类型</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Result</id>
+							<name>矫正结果</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Time</id>
+							<name>时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Sensor_Correct</id>
+			<name>传感器控制板矫正历史信息</name>
+			<destInstrument>Sensor</destInstrument>
+			<commandCode>117</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Index</id>
+							<name>读取信息标号</name>
+							<type>byte</type>
+							<length>2</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Num</id>
+							<name>信息编号</name>
+							<type>uint</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Type</id>
+							<name>矫正类型</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Result</id>
+							<name>矫正结果</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Time</id>
+							<name>时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Main_Correct</id>
+			<name>主控制板矫正历史信息</name>
+			<destInstrument>Main</destInstrument>
+			<commandCode>118</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Index</id>
+							<name>读取信息标号</name>
+							<type>byte</type>
+							<length>2</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Num</id>
+							<name>信息编号</name>
+							<type>uint</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Type</id>
+							<name>矫正类型</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Result</id>
+							<name>矫正结果</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Time</id>
+							<name>时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Com_Correct</id>
+			<name>通讯控制板矫正历史信息</name>
+			<destInstrument>Com</destInstrument>
+			<commandCode>119</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+		</commandDesc>
+
+		<commandDesc>
+			<id>Gas_OriginalData</id>
+			<name>气体控制板原始值的读取</name>
+			<destInstrument>Gas</destInstrument>
+			<commandCode>128</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xaa</id>
+					<name>ReadResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Value</id>
+							<name>相应的值</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Main_OriginalData</id>
+			<name>主控制板原始值的读取</name>
+			<destInstrument>Main</destInstrument>
+			<commandCode>129</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xaa</id>
+					<name>ReadResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Value</id>
+							<name>相应的值</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Sensor_OriginalData</id>
+			<name>传感器控制板原始值的读取</name>
+			<destInstrument>Sensor</destInstrument>
+			<commandCode>130</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xaa</id>
+					<name>ReadResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Value</id>
+							<name>相应的值</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Com_OriginalData</id>
+			<name>通讯控制板原始值的读取</name>
+			<destInstrument>Com</destInstrument>
+			<commandCode>131</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xaa</id>
+					<name>ReadResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取内容选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Value</id>
+							<name>相应的值</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Gas_Control</id>
+			<name>气体控制板控制命令</name>
+			<destInstrument>Gas</destInstrument>
+			<commandCode>144</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>控制项选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>控制项选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>ControlMode</id>
+							<name>控制模式</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Cycle</id>
+							<name>周期</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>DutyCycle</id>
+							<name>占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Main_Control</id>
+			<name>主控制板控制命令</name>
+			<destInstrument>Main</destInstrument>
+			<commandCode>145</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取项选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Type</id>
+							<name>读取项选择</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>ControlMode</id>
+							<name>控制模式</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Cycle</id>
+							<name>周期</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>DutyCycle</id>
+							<name>占空比</name>
+							<type>float</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Gas_BackupRecover</id>
+			<name>气体控制板备份恢复命令</name>
+			<destInstrument>Gas</destInstrument>
+			<commandCode>160</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Time</id>
+							<name>时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Type</id>
+							<name>执行内容</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Main_BackupRecover</id>
+			<name>主控制板备份恢复命令</name>
+			<destInstrument>Main</destInstrument>
+			<commandCode>161</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Time</id>
+							<name>时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Type</id>
+							<name>执行内容</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Sensor_BackupRecover</id>
+			<name>传感器控制板备份恢复命令</name>
+			<destInstrument>Sensor</destInstrument>
+			<commandCode>162</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Time</id>
+							<name>时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Type</id>
+							<name>执行内容</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+		<commandDesc>
+			<id>Com_BackupRecover</id>
+			<name>通讯控制板备份恢复命令</name>
+			<destInstrument>Com</destInstrument>
+			<commandCode>163</commandCode>
+			<timeOut>2000</timeOut>
+			<tryTimes>2</tryTimes>
+			<commandExtends>
+				<commandExtend>
+					<id>0x55</id>
+					<name>Read</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0xff</id>
+					<name>ReadWrite</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<parameters>
+						<param>
+							<id>Time</id>
+							<name>时间</name>
+							<type>byte</type>
+							<length>6</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+						<param>
+							<id>Type</id>
+							<name>执行内容</name>
+							<type>byte</type>
+							<length>1</length>
+							<visible>True</visible>
+							<display>
+								<maxLength>0</maxLength>
+								<decimalDigits>0</decimalDigits>
+								<supportCHN>False</supportCHN>
+								<toBase>0</toBase>
+							</display>
+							<propertys>
+								<property>
+									<id>remark</id>
+									<name>remark</name>
+								</property>
+
+							</propertys>
+
+						</param>
+
+					</parameters>
+
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+				<commandExtend>
+					<id>0x99</id>
+					<name>WriteResponse</name>
+					<timeOut>0</timeOut>
+					<tryTimes>0</tryTimes>
+					<convertToZero>False</convertToZero>
+				</commandExtend>
+
+			</commandExtends>
+
+		</commandDesc>
+
+	</commandDescs>
+
+</commandManager>

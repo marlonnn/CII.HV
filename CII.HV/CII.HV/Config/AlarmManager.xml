@@ -1,0 +1,1008 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CII.Library.Alarm.AlarmManager>
+	<saveAlarmImpl>CII.Ins.Business.Alarm.HistoryAlarm</saveAlarmImpl>
+	<alarmSources>
+		<CII.Library.Alarm.AlarmSource>
+			<id>HV</id>
+			<name>HV</name>
+		</CII.Library.Alarm.AlarmSource>
+
+	</alarmSources>
+
+	<alarmGrades>
+		<alarmGrade>
+			<id>Info</id>
+			<name>提示</name>
+			<level>0</level>
+		</alarmGrade>
+
+		<alarmGrade>
+			<id>Warning</id>
+			<name>报警</name>
+			<level>1</level>
+		</alarmGrade>
+
+		<alarmGrade>
+			<id>Error</id>
+			<name>故障</name>
+			<level>2</level>
+		</alarmGrade>
+
+	</alarmGrades>
+
+	<alarmCodes>
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xff</id>
+			<name>以太网通信故障</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>请检查网络连接线与网络通信配置是否正常</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x01</id>
+			<name>CAN1通信故障</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>CAN1通信故障</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x02</id>
+			<name>CAN2通信故障</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>CAN2通信故障</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x03</id>
+			<name>DEBUG（UART8）</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>DEBUG(UART8)</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x04</id>
+			<name>485外设故障（UART3）</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>485外设故障（UART3）</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x05</id>
+			<name>IPORT（UART2）</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>IPORT（UART2）</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x26</id>
+			<name>FRAM故障</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>FRAM故障</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x27</id>
+			<name>FLASH故障</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>FLASH故障</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x28</id>
+			<name>3.3V故障</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>3.3V故障</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x29</id>
+			<name>5V故障</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>5V故障</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x2a</id>
+			<name>CPU温度异常</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>CPU温度异常</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x2b</id>
+			<name>2983故障/1867故障</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>2983故障/1867故障</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x40</id>
+			<name>温度1超上限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x41</id>
+			<name>温度1超高高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x42</id>
+			<name>温度1超高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x43</id>
+			<name>温度1超底限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x44</id>
+			<name>温度1超低低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x45</id>
+			<name>温度1超下限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x46</id>
+			<name>温度2超上限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x47</id>
+			<name>温度2超高高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x48</id>
+			<name>温度2超高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x49</id>
+			<name>温度2超低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x4a</id>
+			<name>温度2超低低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x4b</id>
+			<name>温度2超下限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x50</id>
+			<name>温度3超上限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x51</id>
+			<name>温度3超高高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x52</id>
+			<name>温度3超高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x53</id>
+			<name>温度3超低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x54</id>
+			<name>温度3超低低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x55</id>
+			<name>温度3超下限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x56</id>
+			<name>温度4超上限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x57</id>
+			<name>温度4超高高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x58</id>
+			<name>温度4超高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x59</id>
+			<name>温度4超低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x5a</id>
+			<name>温度4超低低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x5b</id>
+			<name>温度4超下限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x60</id>
+			<name>温度5超上限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x61</id>
+			<name>温度5超高高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x62</id>
+			<name>温度5超高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x63</id>
+			<name>温度5超低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x64</id>
+			<name>温度5超低低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x65</id>
+			<name>温度5超下限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x66</id>
+			<name>温度6超上限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x67</id>
+			<name>温度6超高高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x68</id>
+			<name>温度6超高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x69</id>
+			<name>温度6超低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x6a</id>
+			<name>温度6超低低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x6b</id>
+			<name>温度6超下限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x70</id>
+			<name>温度7超上限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x71</id>
+			<name>温度7超高高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x72</id>
+			<name>温度7超高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x73</id>
+			<name>温度7超低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x74</id>
+			<name>温度7超低低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x75</id>
+			<name>温度7超下限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x76</id>
+			<name>温度8超上限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x77</id>
+			<name>温度8超高高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x78</id>
+			<name>温度8超高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x79</id>
+			<name>温度8超低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x7a</id>
+			<name>温度8超低低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x7b</id>
+			<name>温度8超下限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x80</id>
+			<name>温度9超上限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x81</id>
+			<name>温度9超高高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x82</id>
+			<name>温度9超高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x83</id>
+			<name>温度9超低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x84</id>
+			<name>温度9超低低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x85</id>
+			<name>温度9超下限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x86</id>
+			<name>温度10超上限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x87</id>
+			<name>温度10超高高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x88</id>
+			<name>温度10超高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x89</id>
+			<name>温度10超低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x8a</id>
+			<name>温度10超低低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测温度控制的准确性
+2.如果长时间不能够满足要求可能是温度传感器老化或者加热丝老化</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x8b</id>
+			<name>温度10超下限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查温度传感器是否正常
+2.检查加热丝是否损坏</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x90</id>
+			<name>O2超上限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查气体传感器是否正常
+2.检查气体是否充足 
+3.检查气管或阀门是否接错</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x91</id>
+			<name>O2超高高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x92</id>
+			<name>O2超高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x93</id>
+			<name>O2超低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x94</id>
+			<name>O2超低低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x95</id>
+			<name>O2超下限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查气体传感器是否正常
+2.检查气体是否充足 
+3.检查气管或阀门是否接错</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x96</id>
+			<name>CO2超上限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查气体传感器是否正常
+2.检查气体是否充足 
+3.检查气管或阀门是否接错</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x97</id>
+			<name>CO2超高高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x98</id>
+			<name>CO2超高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x99</id>
+			<name>CO2超低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x9a</id>
+			<name>CO2超低低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0x9b</id>
+			<name>CO2超下限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查气体传感器是否正常
+2.检查气体是否充足 
+3.检查气管或阀门是否接错</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xa0</id>
+			<name>压力超上限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查气体传感器是否正常
+2.检查气体是否充足 
+3.检查气管或阀门是否接错</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xa1</id>
+			<name>压力超高高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xa2</id>
+			<name>压力超高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xa3</id>
+			<name>压力超低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xa4</id>
+			<name>压力超低低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xa5</id>
+			<name>压力超下限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查气体传感器是否正常
+2.检查气体是否充足 
+3.检查气管或阀门是否接错</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xa6</id>
+			<name>流量1超上限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查气体传感器是否正常
+2.检查气体是否充足 
+3.检查气管或阀门是否接错</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xa7</id>
+			<name>流量1超高高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xa8</id>
+			<name>流量1超高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xa9</id>
+			<name>流量1超低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xaa</id>
+			<name>流量1超低低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xab</id>
+			<name>流量1超下限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查气体传感器是否正常
+2.检查气体是否充足 
+3.检查气管或阀门是否接错</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xb0</id>
+			<name>流量2超上限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查气体传感器是否正常
+2.检查气体是否充足 
+3.检查气管或阀门是否接错</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xb1</id>
+			<name>流量2超高高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xb2</id>
+			<name>流量2超高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xb3</id>
+			<name>流量2超低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xb4</id>
+			<name>流量2超低低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xb5</id>
+			<name>流量2超下限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.检查气体传感器是否正常
+2.检查气体是否充足 
+3.检查气管或阀门是否接错</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xb6</id>
+			<name>泵速超上限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查气体传感器是否正常
+2.检查气体是否充足 
+3.检查气管或阀门是否接错</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xb7</id>
+			<name>泵速超高高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xb8</id>
+			<name>泵速超高限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xb9</id>
+			<name>泵速超低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xba</id>
+			<name>泵速超低低限</name>
+			<alarmGradeId>Warning</alarmGradeId>
+			<description>1.此警告主要是监测气体控制的准确性
+2.如果长时间不能够满足要求可能是气体传感器老化或者气体不足引起</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+		<CII.Library.Alarm.AlarmCode>
+			<id>0xbb</id>
+			<name>泵速超下限</name>
+			<alarmGradeId>Error</alarmGradeId>
+			<description>1.检查气体传感器是否正常
+2.检查气体是否充足 
+3.检查气管或阀门是否接错</description>
+			<repeatInterval>360000</repeatInterval>
+		</CII.Library.Alarm.AlarmCode>
+
+	</alarmCodes>
+
+</CII.Library.Alarm.AlarmManager>

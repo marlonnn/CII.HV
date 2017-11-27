@@ -33,11 +33,11 @@ namespace CII.HV
                 frm.SetLoadingName("Welcome");
                 frm.ShowDialog();
 
-                //MonitorData data = new MonitorData();
-                //SendCommand sendCmd = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Read);
-                //RecvCommand recvCmd = (RecvCommand)PortManager.GetInstance().Send("HV", sendCmd);
-                //var v = recvCmd.GetBytes();
-                //var v1 = recvCmd.GetByte(ParamId.SystemMonitor_ReadResponse_FlowStatus);
+                MonitorData data = new MonitorData();
+                SendCommand sendCmd = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Read);
+                RecvCommand recvCmd = (RecvCommand)PortManager.GetInstance().Send("HV", sendCmd);
+                var v = recvCmd.GetBytes();
+                var v1 = recvCmd.GetByte(ParamId.SystemMonitor_ReadResponse_FlowStatus);
             }
             catch (Exception ex)
             {

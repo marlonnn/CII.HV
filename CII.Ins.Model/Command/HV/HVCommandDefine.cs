@@ -24,7 +24,14 @@ namespace CII.Ins.Model.Command.HV
         /// </summary>
         public const string SystemMonitor = "SystemMonitor";
 
+        /// <summary>
+        /// 系统参数
+        /// </summary>
+        public const string SystemParameter = "SystemParameter";
+
+
     }
+
 
     /// <summary>
     /// 通讯参数编号(ID)
@@ -110,6 +117,27 @@ namespace CII.Ins.Model.Command.HV
         /// 电机驱动2限流电阻2电压
         /// </summary>
         public const int SystemMonitor_ReadResponse_Motor2AC2 = 0xAA0F;
+
+        /// <summary>
+        /// 读取内容选择
+        /// </summary>
+        public const int SystemParameter_Read_Type = 0x15500;
+
+        /// <summary>
+        /// 读取内容选择
+        /// </summary>
+        public const int SystemParameter_ReadWrite_Type = 0x1FF00;
+
+        /// <summary>
+        /// 电机驱动频率
+        /// </summary>
+        public const int SystemParameter_ReadWrite_MotorDriveFrequency = 0x1FF01;
+
+        /// <summary>
+        /// 最大脉冲
+        /// </summary>
+        public const int SystemParameter_ReadWrite_MaximumPulse = 0x1FF02;
+
 
     }
 }

@@ -33,11 +33,22 @@ namespace CII.HV
                 frm.SetLoadingName("Welcome");
                 frm.ShowDialog();
 
-                MonitorData data = new MonitorData();
-                SendCommand sendCmd = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Read);
+                //MonitorData data = new MonitorData();
+                //SendCommand sendCmd = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Read);
+                //RecvCommand recvCmd = (RecvCommand)PortManager.GetInstance().Send("HV", sendCmd);
+                //var v = recvCmd.GetBytes();
+                //var v1 = recvCmd.GetByte(ParamId.SystemMonitor_ReadResponse_FlowStatus);
+
+                SendCommand sendCmd = new SendCommand(CommandId.SystemParameter, CommandExtendId.Write);
+                sendCmd.SetParamValid(ParamId.SystemParameter_Read_Type, true);
+                sendCmd.SetValue(ParamId.SystemParameter_ReadWrite_Type, 0xA0);
+                sendCmd.SetValue(ParamId.SystemParameter_ReadWrite_MotorDriveFrequency, 100);
+                sendCmd.SetValue(ParamId.SystemParameter_ReadWrite_MaximumPulse, 200);
                 RecvCommand recvCmd = (RecvCommand)PortManager.GetInstance().Send("HV", sendCmd);
                 var v = recvCmd.GetBytes();
-                var v1 = recvCmd.GetByte(ParamId.SystemMonitor_ReadResponse_FlowStatus);
+                //var v1 = recvCmd.GetByte(ParamId.SystemParameter_Read_Type);
+                //var v2 = recvCmd.GetSingle(ParamId.SystemParameter_ReadWrite_MotorDriveFrequency);
+                //var v3 = recvCmd.GetSingle(ParamId.SystemParameter_ReadWrite_MaximumPulse);
             }
             catch (Exception ex)
             {

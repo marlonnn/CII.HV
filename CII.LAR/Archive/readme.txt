@@ -1,0 +1,1 @@
+﻿Store images and videos

@@ -42,6 +42,7 @@ namespace CII.LAR.Protocol
         public LaserProtocol LaserProtocol
         {
             get { return this.laserProtocol; }
+            private set { this.laserProtocol = value; }
         }
 
         private Dictionary<byte, BaseResponse> decoders;
@@ -56,6 +57,7 @@ namespace CII.LAR.Protocol
             RxQueue = new RxQueue();
             RxMsgQueue = new RxMsgQueue();
             TxMsgQueue = new TxMsgQueue();
+            LaserProtocol = new LaserProtocol();
         }
 
         private void InitializeDecoders()

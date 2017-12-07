@@ -79,6 +79,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="IController.cs" />
+    <Compile Include="IView.cs" />
     <Compile Include="LogHelper.cs" />
     <Compile Include="ComTestForm.cs">
       <SubType>Form</SubType>

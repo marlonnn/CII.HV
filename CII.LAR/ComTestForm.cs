@@ -8,6 +8,7 @@ using System.Text;
 using System.IO.Ports;
 using System.Windows;
 using System.Windows.Forms;
+using CII.LAR.Protocol;
 
 namespace CII.LAR
 {
@@ -16,6 +17,7 @@ namespace CII.LAR
         private IController controller;
         private int sendBytesCount = 0;
         private int receiveBytesCount = 0;
+        private LaserProtocolFactory laserProtocolFactory;
 
         public ComTestForm()
         {
@@ -26,6 +28,26 @@ namespace CII.LAR
             this.toolStripStatusRx.Text = "Received: 0";
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            InitializeLaserProtocolFactory();
+            this.Load += ComTestForm_Load;
+            this.FormClosing += ComTestForm_FormClosing;
+        }
+
+        private void ComTestForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            laserProtocolFactory.DestroyDecodeThread();
+            laserProtocolFactory.DestroyEncodeThread();
+        }
+
+        private void ComTestForm_Load(object sender, EventArgs e)
+        {
+            laserProtocolFactory.StartDecodeThread();
+            laserProtocolFactory.StartEncodeThread();
+        }
+
+        private void InitializeLaserProtocolFactory()
+        {
+            laserProtocolFactory = LaserProtocolFactory.GetInstance();
         }
 
         /// <summary>
@@ -197,10 +219,11 @@ namespace CII.LAR
                 }
                 return;
             }
-
+            var receivedBytes = e.receivedBytes;
+            laserProtocolFactory.RxQueue.Push(new OriginalBytes(DateTime.Now, receivedBytes));
             if (recStrRadiobtn.Checked) //display as string
             {
-                receivetbx.AppendText(Encoding.Default.GetString(e.receivedBytes));
+                receivetbx.AppendText(Encoding.Default.GetString(receivedBytes));
             }
             else //display as hex
             {

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CII.LAR.Protocol
@@ -53,6 +54,7 @@ namespace CII.LAR.Protocol
         }
         public LaserProtocolFactory ()
         {
+            InitializeDecoders();
             TxQueue = new TxQueue();
             RxQueue = new RxQueue();
             RxMsgQueue = new RxMsgQueue();
@@ -87,53 +89,169 @@ namespace CII.LAR.Protocol
             return laserProtocolFactory;
         }
 
+        private Thread decodeThread;
+
+        private Thread encodeThread;
+
+        private bool runDecodeThread = true;
+        public bool RunDecodeThread
+        {
+            get { return this.runDecodeThread; }
+            private set { this.runDecodeThread = value; }
+        }
+
+        private bool decode = false;
+        public bool Decode
+        {
+            get { return this.decode; }
+            private set { this.decode = value; }
+        }
+
+        private bool runEncodeThread = true;
+        public bool RunEncodeThread
+        {
+            get { return this.runEncodeThread; }
+            private set { this.runEncodeThread = value; }
+        }
+
+        private bool encode = false;
+        public bool Encode
+        {
+            get { return this.encode; }
+            private set { this.encode = value; }
+        }
+
+        public void StartDecodeThread()
+        {
+            Decode = true;
+            RunDecodeThread = true;
+            decodeThread = new Thread(new ThreadStart(DecodeInternal))
+            {
+                IsBackground = true,
+                Priority = ThreadPriority.Normal,
+                Name = "DecodeThread"
+            };
+            decodeThread.Start();
+        }
+
+        public void StopDecodeThread()
+        {
+            Decode = false;
+        }
+
+        public void RestartDecodeThread()
+        {
+            if (decodeThread != null)
+            {
+                Decode = true;
+                RunDecodeThread = true;
+            }
+        }
+        public void DestroyDecodeThread()
+        {
+            Decode = false;
+            RunDecodeThread = false;
+            if (decodeThread != null)
+            {
+                decodeThread.Abort();
+            }
+        }
+
+        public void StartEncodeThread()
+        {
+            encodeThread = new Thread(new ThreadStart(EncodeInternal))
+            {
+                IsBackground = true,
+                Priority = ThreadPriority.Normal,
+                Name = "DecodeThread"
+            };
+            encodeThread.Start();
+        }
+
+        public void StopEncodeThread()
+        {
+            encode = false;
+        }
+
+        public void RestartEncodeThread()
+        {
+            if (encodeThread != null)
+            {
+                Encode = true;
+                RunEncodeThread = true;
+            }
+        }
+        public void DestroyEncodeThread()
+        {
+            Encode = true;
+            RunEncodeThread = true;
+            if (encodeThread != null)
+            {
+                encodeThread.Abort();
+            }
+        }
+
         public void DecodeInternal()
         {
-            List<Original> list = RxQueue.PopAll();
-            if (list != null && list.Count > 0)
+            while (RunDecodeThread)
             {
-                foreach (var o in list)
+                if (Decode)
                 {
-                    OriginalBytes obytes = o as OriginalBytes;
-                    if (o != null)
+                    List<Original> list = RxQueue.PopAll();
+                    if (list != null && list.Count > 0)
                     {
-                        LaserProtocol lp = laserProtocol.DePackage(obytes.Data);
-                        byte[] data = lp.Body;
-                        BasePackage bp = new BasePackage();
-                        bp.Type = data[0];
-                        bp.AppData = new byte[data.Length - 1];
-                        Array.Copy(data, 0, bp.AppData, 0, data.Length - 1);
-                        if (Decoders.ContainsKey(bp.Type))
+                        foreach (var o in list)
                         {
-                            List<BaseResponse> responseList = Decoders[bp.Type].Decode(bp, obytes);
-                            if (responseList != null && responseList.Count > 0)
+                            OriginalBytes obytes = o as OriginalBytes;
+                            if (o != null)
                             {
-                                RxMsgQueue.Push(responseList);
+                                LaserProtocol lp = laserProtocol.DePackage(obytes.Data);
+                                byte[] data = lp.Body;
+                                BasePackage bp = new BasePackage();
+                                bp.Type = data[0];
+                                bp.AppData = new byte[data.Length - 1];
+                                Array.Copy(data, 0, bp.AppData, 0, data.Length - 1);
+                                if (Decoders.ContainsKey(bp.Type))
+                                {
+                                    List<BaseResponse> responseList = Decoders[bp.Type].Decode(bp, obytes);
+                                    if (responseList != null && responseList.Count > 0)
+                                    {
+                                        RxMsgQueue.Push(responseList);
+                                    }
+                                }
+                                else
+                                {
+                                    LogHelper.GetLogger<LaserProtocolFactory>().Error(string.Format("没有解码器可以解码：{0}",
+                                            ByteHelper.Byte2ReadalbeXstring(obytes.Data)));
+                                }
                             }
-                        }
-                        else
-                        {
-                            LogHelper.GetLogger<LaserProtocolFactory>().Error(string.Format("没有解码器可以解码：{0}",
-                                    ByteHelper.Byte2ReadalbeXstring(obytes.Data)));
                         }
                     }
                 }
-            }
+                Thread.Sleep(10);
+            }   
         }
 
         public void EncodeInternal()
         {
-            List<BaseRequest> list = txMsgQueue.PopAll();
-            if (list != null && list.Count > 0)
+            while (RunEncodeThread)
             {
-                foreach (var br in list)
+                if (Encode)
                 {
-                    BasePackage bp = br.Encode();
-                    byte[] data = bp.AppData;
-                    OriginalBytes ob = new OriginalBytes();
-                    ob.Data = laserProtocol.EnPackage(data);
-                    txQueue.Push(ob);
+                    List<BaseRequest> list = txMsgQueue.PopAll();
+                    if (list != null && list.Count > 0)
+                    {
+                        foreach (var br in list)
+                        {
+                            BasePackage bp = br.Encode();
+                            byte[] data = bp.AppData;
+                            OriginalBytes ob = new OriginalBytes();
+                            ob.Data = laserProtocol.EnPackage(data);
+                            txQueue.Push(ob);
+                        }
+                    }
                 }
+                Thread.Sleep(10);
             }
         }
     }

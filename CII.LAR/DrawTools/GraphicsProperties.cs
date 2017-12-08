@@ -163,7 +163,7 @@ namespace CII.LAR.DrawTools
         }
         public GraphicsProperties(string name)
         {
-            color = Color.Black;
+            color = Color.Red;
             penWidth = 1;
             graphicsName = name;
             InitializeColorSets();

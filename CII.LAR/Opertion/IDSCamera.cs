@@ -1,8 +1,11 @@
-﻿using System;
+﻿using CII.LAR.UI;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CII.LAR.Opertion
 {
@@ -19,6 +22,8 @@ namespace CII.LAR.Opertion
             private set { this.camera = value; }
         }
 
+        private ZWPictureBox picturebox;
+
         private IntPtr displayHandle;
 
         private CameraSizeControl cameraSizeControl;
@@ -31,6 +36,14 @@ namespace CII.LAR.Opertion
         public IDSCamera(IntPtr displayHandle)
         {
             this.displayHandle = displayHandle;
+            this.uEyeCamera = new uEye.Camera();
+            CameraSizeControl = new CameraSizeControl(uEyeCamera);
+        }
+
+        public IDSCamera(ZWPictureBox picturebox)
+        {
+            this.picturebox = picturebox;
+            this.displayHandle = picturebox.Handle;
             this.uEyeCamera = new uEye.Camera();
             CameraSizeControl = new CameraSizeControl(uEyeCamera);
         }
@@ -55,17 +68,28 @@ namespace CII.LAR.Opertion
                 SetError("Allocate Memory failed");
                 return false;
             }
-            // start capture
-            status = camera.Acquisition.Capture();
-            if (status != uEye.Defines.Status.SUCCESS)
-            {
-                SetError("Starting live video failed");
-                return false;
-            }
+            camera.EventFrame += Camera_EventFrame;
             // cleanup on any camera error
             if (status != uEye.Defines.Status.SUCCESS && camera.IsOpened)
             {
                 camera.Exit();
+            }
+            return true;
+        }
+
+        public bool DisplayLive()
+        {
+            if (camera == null)
+            {
+                SetError("Please initialize camera first");
+                return false;
+            }
+            // start capture
+            var status = camera.Acquisition.Capture();
+            if (status != uEye.Defines.Status.SUCCESS)
+            {
+                SetError("Starting live video failed");
+                return false;
             }
             return true;
         }
@@ -95,8 +119,35 @@ namespace CII.LAR.Opertion
                 Int32 s32MemID;
                 camera.Memory.GetActive(out s32MemID);
                 camera.Memory.Lock(s32MemID);
-                camera.Display.Render(s32MemID, displayHandle, uEye.Defines.DisplayRenderMode.FitToWindow);
+                Bitmap bitmap;
+                camera.Memory.ToBitmap(s32MemID, out bitmap);
+
+                if (bitmap != null && bitmap.PixelFormat != System.Drawing.Imaging.PixelFormat.Format8bppIndexed)
+                {
+                    Graphics graphics = Graphics.FromImage(bitmap);
+                    DoDrawing(ref graphics, s32MemID);
+
+                    if (picturebox.GraphicsList != null)
+                    {
+                        picturebox.GraphicsList.Draw(graphics, picturebox);
+                    }
+                    graphics.Dispose();
+                    bitmap.Dispose();
+                }
+
+                camera.Memory.Unlock(s32MemID);
+                camera.Display.Render(s32MemID, uEye.Defines.DisplayRenderMode.FitToWindow);
             }
+        }
+
+        private void DoDrawing(ref Graphics graphics, Int32 s32MemID)
+        {
+            // get image size
+            System.Drawing.Rectangle rect;
+            camera.Size.AOI.Get(out rect);
+
+            graphics.DrawLine(new Pen(Color.Green, 3), rect.Width / 2, 0, rect.Width / 2, rect.Height);
+            graphics.DrawLine(new Pen(Color.Red, 3), 0, rect.Height / 2, rect.Width, rect.Height / 2);
         }
 
         public bool FreezeLive()
@@ -229,6 +280,16 @@ namespace CII.LAR.Opertion
         private void SetError(string message)
         {
             LogHelper.GetLogger<IDSCamera>().Error(message);
+        }
+
+        public bool IsOpened()
+        {
+            return camera != null && camera.IsOpened;
+        }
+
+        public void SetSize(out Rectangle rect)
+        {
+            this.camera.Size.AOI.Get(out rect);
         }
     }
 }

@@ -71,7 +71,7 @@ namespace CII.LAR.DrawTools
         {
             this.GraphicsProperties = GraphicsPropertiesManager.GetPropertiesByName("Line");
             this.GraphicsProperties.DrawObject = this;
-            this.GraphicsProperties.Color = Color.DarkBlue;
+            this.GraphicsProperties.Color = Color.Yellow;
             this.GraphicsProperties.Alpha = (this.GraphicsProperties.Alpha == 0xFF || this.GraphicsProperties.Alpha == 0) ? 0xFF
                 : this.GraphicsProperties.Alpha;
         }

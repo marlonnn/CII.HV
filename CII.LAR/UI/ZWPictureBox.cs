@@ -37,6 +37,46 @@ namespace CII.LAR.UI
 
     public partial class ZWPictureBox : PictureBox
     {
+        //current offset of image
+        private int offsetX;
+        public int OffsetX
+        {
+            get
+            {
+                return offsetX;
+            }
+            set
+            {
+                offsetX = value;
+            }
+        }
+
+        private int offsetY;
+        public int OffsetY
+        {
+            get
+            {
+                return offsetY;
+            }
+            set
+            {
+                offsetY = value;
+            }
+        }
+
+        private float zoom = 1;
+        public float Zoom
+        {
+            get
+            {
+                return zoom;
+            }
+            set
+            {
+                zoom = value;
+            }
+        }
+
         #region Draw tool
         private GraphicsList drawObjects;
         [BrowsableAttribute(false)]
@@ -139,11 +179,72 @@ namespace CII.LAR.UI
         }
         #endregion
 
+        private Point mousePos = Point.Empty;
+
+        private ToolLine toolLine;
+
         public ZWPictureBox()
         {
             this.SetStyle(ControlStyles.UserPaint |
               ControlStyles.AllPaintingInWmPaint |
               ControlStyles.OptimizedDoubleBuffer, true);
+            this.MouseDown += ZWPictureBox_MouseDown;
+            this.MouseMove += ZWPictureBox_MouseMove;
+            this.MouseUp += ZWPictureBox_MouseUp;
+            this.GraphicsList = new GraphicsList();
+            toolLine = new ToolLine();
+        }
+
+        private void ZWPictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                toolLine.OnMouseUp(this, e);
+            }
+        }
+
+        private void ZWPictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left || e.Button == MouseButtons.None)
+            {
+                toolLine.OnMouseMove(this, e);
+            }
+        }
+
+        private void ZWPictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                toolLine.OnMouseDown(this, e);
+            }
+        }
+
+        private void ZoomOnMouseCenter(MouseEventArgs e, float oldzoom)
+        {
+            mousePos = e.Location;
+            Point mousePosNow = e.Location;
+
+            // Where location of the mouse in the pictureframe
+            int x = mousePosNow.X - this.Location.X;
+            int y = mousePosNow.Y - this.Location.Y;
+
+            // Where in the IMAGE is it now
+            int oldImageX = (int)(x / oldzoom);
+            int oldImageY = (int)(y / oldzoom);
+
+            // Where in the IMAGE will it be when the new zoom i made
+            int newImageX = (int)(x / zoom);
+            int newImageY = (int)(y / zoom);
+
+            // Where to move image to keep focus on one point
+            offsetX = newImageX - oldImageX + offsetX;
+            offsetY = newImageY - oldImageY + offsetY;
+        }
+
+        public void OnLoad()
+        {
+            var height = this.Height;
+            var width = this.Width;
         }
 
         public delegate void EscapeFullScreen();

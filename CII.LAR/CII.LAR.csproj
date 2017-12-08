@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Soft\HV\Release\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -120,7 +120,6 @@
     <Compile Include="MsgQueue\TxQueue.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Opertion\Camera.cs" />
-    <Compile Include="Opertion\CameraManager.cs" />
     <Compile Include="Opertion\CameraSizeControl.cs" />
     <Compile Include="Opertion\IDSCamera.cs" />
     <Compile Include="Program.cs" />
@@ -151,11 +150,6 @@
     <Compile Include="UI\ZWPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ZWPicture.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ZWPicture.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="ComTestForm.resx">
       <DependentUpon>ComTestForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,9 +173,10 @@
     <EmbeddedResource Include="UI\CameraChooseForm.resx">
       <DependentUpon>CameraChooseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ZWPicture.resx">
+    <EmbeddedResource Include="UI\ZWPictureBox.resx">
+      <DependentUpon>ZWPictureBox.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ZWPicture.Designer.cs</LastGenOutput>
+      <LastGenOutput>ZWPictureBox.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

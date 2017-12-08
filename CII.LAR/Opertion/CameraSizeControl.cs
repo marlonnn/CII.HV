@@ -9,6 +9,8 @@ namespace CII.LAR.Opertion
 {
     public class CameraSizeControl
     {
+        public event EventHandler<EventArgs> AOIChanged;
+
         protected uEye.Camera camera;
 
         private int width;
@@ -79,6 +81,17 @@ namespace CII.LAR.Opertion
             statusRet = camera.Memory.Allocate();
         }
 
+        public void SetAoiBounds(int sWidth, int sHeight, int left, int top)
+        {
+            SetAoiWidthHeight(sWidth, sHeight);
+            SetAoiLeftTop(left, top);
+            // inform our main form
+            if (AOIChanged != null)
+            {
+                AOIChanged(this, EventArgs.Empty);
+            }
+        }
+
         public void SetAoiWidthHeight(int sWidth, int sHeight)
         {
             uEye.Defines.Status statusRet;
@@ -94,6 +107,7 @@ namespace CII.LAR.Opertion
             {
                 --sHeight;
             }
+
             statusRet = camera.Size.AOI.Get(out rect);
             rect.Width = sWidth;
             rect.Height = sHeight;
@@ -104,6 +118,79 @@ namespace CII.LAR.Opertion
             statusRet = camera.Memory.GetList(out memList);
             statusRet = camera.Memory.Free(memList);
             statusRet = camera.Memory.Allocate();
+        }
+
+        private void SetAoiLeftTop(int left, int top)
+        {
+            uEye.Defines.Status statusRet;
+            System.Drawing.Rectangle rect;
+
+            uEye.Types.Range<Int32> rangePosX, rangePosY;
+            statusRet = camera.Size.AOI.GetPosRange(out rangePosX, out rangePosY);
+
+            while ((left % rangePosX.Increment) != 0)
+            {
+                --left;
+            }
+            while ((top % rangePosY.Increment) != 0)
+            {
+                --top;
+            }
+            statusRet = camera.Size.AOI.Get(out rect);
+            rect.X = left;
+            rect.Y = top;
+            statusRet = camera.Size.AOI.Set(rect);
+
+            // update aoi width
+            uEye.Types.Range<Int32> rangeWidth, rangeHeight;
+            statusRet = camera.Size.AOI.GetSizeRange(out rangeWidth, out rangeHeight);
+        }
+
+
+        private void SetAoiLeft(Int32 s32Value)
+        {
+            uEye.Defines.Status statusRet;
+            System.Drawing.Rectangle rect;
+
+            uEye.Types.Range<Int32> rangePosX, rangePosY;
+            statusRet = camera.Size.AOI.GetPosRange(out rangePosX, out rangePosY);
+
+            while ((s32Value % rangePosX.Increment) != 0)
+            {
+                --s32Value;
+            }
+
+            statusRet = camera.Size.AOI.Get(out rect);
+            rect.X = s32Value;
+
+            statusRet = camera.Size.AOI.Set(rect);
+
+            // update aoi width
+            uEye.Types.Range<Int32> rangeWidth, rangeHeight;
+            statusRet = camera.Size.AOI.GetSizeRange(out rangeWidth, out rangeHeight);
+        }
+
+        private void SetAoiTop(Int32 s32Value)
+        {
+            uEye.Defines.Status statusRet;
+            System.Drawing.Rectangle rect;
+
+            uEye.Types.Range<Int32> rangePosX, rangePosY;
+            statusRet = camera.Size.AOI.GetPosRange(out rangePosX, out rangePosY);
+
+            while ((s32Value % rangePosY.Increment) != 0)
+            {
+                --s32Value;
+            }
+
+            statusRet = camera.Size.AOI.Get(out rect);
+            rect.Y = s32Value;
+
+            statusRet = camera.Size.AOI.Set(rect);
+
+            // update aoi height
+            uEye.Types.Range<Int32> rangeWidth, rangeHeight;
+            statusRet = camera.Size.AOI.GetSizeRange(out rangeWidth, out rangeHeight);
         }
     }
 }

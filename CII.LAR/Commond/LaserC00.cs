@@ -12,12 +12,17 @@ namespace CII.LAR.Commond
     /// </summary>
     public class LaserC00Request : BaseRequest
     {
-        public override BasePackage Encode()
+        public LaserC00Request()
         {
-            BasePackage bp = base.Encode();
-            bp.Type = 0x00;
-            bp.AppData = new byte[] { 0x00, 0x00};
-            return bp;
+            this.Type = 0x00;
+        }
+
+        public override List<BasePackage> Encode()
+        {
+            List<BasePackage> bps = base.Encode();
+            BasePackage bp = new BasePackage(0x8F, 0x00, new byte[] { 0x00, 0x00 });
+            bps.Add(bp);
+            return bps;
         }
     }
 
@@ -55,6 +60,11 @@ namespace CII.LAR.Commond
         {
             get { return this.second; }
             private set { this.second = value; }
+        }
+
+        public LaserC00Response()
+        {
+            this.Type = 0x00;
         }
 
         public override List<BaseResponse> Decode(BasePackage bp, OriginalBytes obytes)

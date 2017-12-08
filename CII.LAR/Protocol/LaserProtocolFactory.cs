@@ -52,6 +52,36 @@ namespace CII.LAR.Protocol
             get { return this.decoders; }
             private set { this.decoders = value; }
         }
+
+        private BaseResponse decoder;
+        public BaseResponse Decoder
+        {
+            get { return this.decoder; }
+            set { this.decoder = value; }
+        }
+
+        /// <summary>
+        /// 发送消息之前必须先设置解码器
+        /// </summary>
+        /// <param name="type"></param>
+        private void SetDecoder(byte type)
+        {
+            if (Decoders.ContainsKey(type))
+            {
+                Decoder = Decoders[type];
+            }
+        }
+
+        private byte GetMsgType()
+        {
+            byte type = 0x00;
+            if (Decoders.ContainsValue(Decoder))
+            {
+                type = Decoders.FirstOrDefault(d =>d.Value.Type == Decoder.Type).Key;
+            }
+            return type;
+        }
+
         public LaserProtocolFactory ()
         {
             InitializeDecoders();
@@ -60,6 +90,12 @@ namespace CII.LAR.Protocol
             RxMsgQueue = new RxMsgQueue();
             TxMsgQueue = new TxMsgQueue();
             LaserProtocol = new LaserProtocol();
+        }
+
+        public void SendMessage(BaseRequest baseRequest)
+        {
+            SetDecoder(baseRequest.Type);
+            TxMsgQueue.Push(baseRequest);
         }
 
         private void InitializeDecoders()
@@ -77,6 +113,12 @@ namespace CII.LAR.Protocol
             Decoders[0x0B] = new LaserC0BResponse();
             Decoders[0x0C] = new LaserC0CResponse();
             Decoders[0x71] = new LaserC71Response();
+            Decoders[0x72] = new LaserC72Response();
+            Decoders[0x73] = new LaserC73Response();
+            Decoders[0x74] = new LaserC74Response();
+            Decoders[0x75] = new LaserC75Response();
+            //initialize default decoder
+            Decoder = Decoders[0x00];
         }
 
         public static LaserProtocolFactory laserProtocolFactory;
@@ -207,23 +249,18 @@ namespace CII.LAR.Protocol
                             {
                                 LaserProtocol lp = laserProtocol.DePackage(obytes.Data);
                                 byte[] data = lp.Body;
-                                BasePackage bp = new BasePackage();
-                                bp.Type = data[0];
-                                bp.AppData = new byte[data.Length - 1];
-                                Array.Copy(data, 0, bp.AppData, 0, data.Length - 1);
-                                if (Decoders.ContainsKey(bp.Type))
+                                byte markHead = data[0];
+                                byte type = GetMsgType();
+                                byte[] appData = new byte[data.Length - 2];
+                                Array.Copy(data, 1, appData, 0, data.Length - 2);
+                                BasePackage bp = new BasePackage(markHead, type, appData);
+                                List<BaseResponse> responseList = Decoder.Decode(bp, obytes);
+                                if (responseList != null && responseList.Count > 0)
                                 {
-                                    List<BaseResponse> responseList = Decoders[bp.Type].Decode(bp, obytes);
-                                    if (responseList != null && responseList.Count > 0)
-                                    {
-                                        RxMsgQueue.Push(responseList);
-                                    }
+                                    RxMsgQueue.Push(responseList);
                                 }
-                                else
-                                {
-                                    LogHelper.GetLogger<LaserProtocolFactory>().Error(string.Format("没有解码器可以解码：{0}",
-                                            ByteHelper.Byte2ReadalbeXstring(obytes.Data)));
-                                }
+                                LogHelper.GetLogger<LaserProtocolFactory>().Error(string.Format("接受到的原始数据为： {0}",
+                                        ByteHelper.Byte2ReadalbeXstring(obytes.Data)));
                             }
                         }
                     }
@@ -243,11 +280,13 @@ namespace CII.LAR.Protocol
                     {
                         foreach (var br in list)
                         {
-                            BasePackage bp = br.Encode();
-                            byte[] data = bp.AppData;
-                            OriginalBytes ob = new OriginalBytes();
-                            ob.Data = laserProtocol.EnPackage(data);
-                            txQueue.Push(ob);
+                            List<BasePackage> bps = br.Encode();
+                            foreach (BasePackage bp in bps)
+                            {
+                                OriginalBytes ob = new OriginalBytes();
+                                ob.Data = laserProtocol.EnPackage(bp);
+                                txQueue.Push(ob);
+                            }
                         }
                     }
                 }

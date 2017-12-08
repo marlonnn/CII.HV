@@ -8,10 +8,28 @@ namespace CII.LAR.Protocol
 {
     public class BaseRequest
     {
-        public virtual BasePackage Encode()
+        private byte type;
+        public byte Type
         {
-            BasePackage bp = new BasePackage();
-            return bp;
+            get { return this.type; }
+            set { this.type = value; }
+        }
+
+        public BaseRequest()
+        {
+
+        }
+
+        public virtual List<BasePackage> Encode()
+        {
+            return CreateOneList();
+        }
+
+
+        protected List<BasePackage> CreateOneList()
+        {
+            List<BasePackage> list = new List<BasePackage>();
+            return list;
         }
     }
 }

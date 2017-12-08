@@ -8,6 +8,12 @@ namespace CII.LAR.Protocol
 {
     public class BaseResponse
     {
+        private byte type;
+        public byte Type
+        {
+            get { return this.type; }
+            set { this.type = value; }
+        }
         /// <summary>
         /// 消息收到的时间
         /// </summary>

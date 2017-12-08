@@ -12,12 +12,17 @@ namespace CII.LAR.Commond
     /// </summary>
     public class LaserC06Request : BaseRequest
     {
-        public override BasePackage Encode()
+        public LaserC06Request()
         {
-            BasePackage bp = base.Encode();
-            bp.Type = 0x06;
-            bp.AppData = new byte[] { 0x06, 0x00 };
-            return bp;
+            this.Type = 0x06;
+        }
+
+        public override List<BasePackage> Encode()
+        {
+            List<BasePackage> bps = base.Encode();
+            BasePackage bp = new BasePackage(0x8F, 0x06, new byte[] { 0x06, 0x00 });
+            bps.Add(bp);
+            return bps;
         }
     }
 
@@ -44,6 +49,11 @@ namespace CII.LAR.Commond
         {
             get { return this.maxmumPulseWidth; }
             private set { this.maxmumPulseWidth = value; }
+        }
+
+        public LaserC06Response()
+        {
+            this.Type = 0x06;
         }
 
         public override List<BaseResponse> Decode(BasePackage bp, OriginalBytes obytes)

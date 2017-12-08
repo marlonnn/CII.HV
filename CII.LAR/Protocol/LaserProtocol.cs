@@ -44,16 +44,16 @@ namespace CII.LAR.Protocol
             return lp;
         }
 
-        public byte[] EnPackage(byte[] data)
+        public byte[] EnPackage(BasePackage bp)
         {
-            if (data == null)
+            if (bp.AppData == null)
             {
                 LogHelper.GetLogger<LaserProtocol>().Error("通信层待编码数据为空，丢弃。");
                 return null;
             }
-            byte[] enData = new byte[data.Length + 2];
-            enData[0] = enMarkHead;
-            Array.Copy(data, 0, enData, 1, data.Length);
+            byte[] enData = new byte[bp.AppData.Length + 2];
+            enData[0] = bp.MarkHead;
+            Array.Copy(bp.AppData, 0, enData, 1, bp.AppData.Length);
             byte oddCheck = 0x00;
             for (int i=1; i<enData.Length - 2; i ++)
             {

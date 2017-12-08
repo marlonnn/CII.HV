@@ -1,5 +1,6 @@
 ﻿using CII.LAR.Opertion;
 using CII.LAR.SysClass;
+using CII.LAR.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace CII.LAR
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
-            camera = new IDSCamera();
+            camera = new IDSCamera(this.zwPictureBox.Handle);
             this.SizeChanged += EntryForm_SizeChanged;
         }
 
@@ -32,6 +33,16 @@ namespace CII.LAR
             fullScreen = new FullScreen(this);
             this.zwPictureBox.EscapeFullScreenHandler += EscapeFullScreenHandler;
             fullScreen.ShowFullScreen();
+        }
+
+        private void CheckCameraAndSetSize()
+        {
+            //if (camera.InitCamera())
+            {
+                //seccuss
+                //Set camera capture size
+
+            }
         }
 
         private void EscapeFullScreenHandler()
@@ -60,6 +71,18 @@ namespace CII.LAR
             else if (e.KeyCode == Keys.F)
             {
                 fullScreen.ShowFullScreen();
+            }
+        }
+
+        private void openCameraLiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CameraChooseForm chooseForm = new CameraChooseForm();
+            if (chooseForm.ShowDialog() == DialogResult.OK)
+            {
+                if (camera.InitCamera(chooseForm.DeviceID | (Int32)uEye.Defines.DeviceEnumeration.UseDeviceID))
+                {
+
+                }
             }
         }
     }

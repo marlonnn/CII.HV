@@ -302,6 +302,7 @@
             // 
             this.openCameraLiveToolStripMenuItem.Name = "openCameraLiveToolStripMenuItem";
             resources.ApplyResources(this.openCameraLiveToolStripMenuItem, "openCameraLiveToolStripMenuItem");
+            this.openCameraLiveToolStripMenuItem.Click += new System.EventHandler(this.openCameraLiveToolStripMenuItem_Click);
             // 
             // openCameraAndStopToolStripMenuItem
             // 
@@ -351,15 +352,17 @@
             // zwPictureBox
             // 
             resources.ApplyResources(this.zwPictureBox, "zwPictureBox");
+            this.zwPictureBox.BackColor = System.Drawing.Color.Gray;
             this.zwPictureBox.Name = "zwPictureBox";
             this.zwPictureBox.TabStop = false;
+            this.zwPictureBox.UnitOfMeasure = CII.LAR.DrawTools.enUniMis.mm;
             // 
             // EntryForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.zwPictureBox);
             this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.zwPictureBox);
             this.Name = "EntryForm";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

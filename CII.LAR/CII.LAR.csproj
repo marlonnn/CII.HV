@@ -136,6 +136,12 @@
     <Compile Include="SysClass\FullScreen.cs" />
     <Compile Include="SysClass\HandleTaskBar.cs" />
     <Compile Include="UI\ArrayChangedEventArgs.cs" />
+    <Compile Include="UI\CameraChooseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CameraChooseForm.Designer.cs">
+      <DependentUpon>CameraChooseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ProblemReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +176,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.zh-CN.resx" />
+    <EmbeddedResource Include="UI\CameraChooseForm.resx">
+      <DependentUpon>CameraChooseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ZWPicture.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ZWPicture.Designer.cs</LastGenOutput>

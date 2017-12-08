@@ -8,7 +8,7 @@ namespace CII.LAR.Opertion
 {
     public interface Camera
     {
-        bool InitCamera();
+        bool InitCamera(int s32Cam);
 
         bool ExitCamera();
 

@@ -28,8 +28,9 @@ namespace CII.LAR.Opertion
             private set { this.cameraSizeControl = value; }
         }
 
-        public IDSCamera()
+        public IDSCamera(IntPtr displayHandle)
         {
+            this.displayHandle = displayHandle;
             this.uEyeCamera = new uEye.Camera();
             CameraSizeControl = new CameraSizeControl(uEyeCamera);
         }
@@ -38,10 +39,10 @@ namespace CII.LAR.Opertion
         /// initialize camera
         /// </summary>
         /// <returns></returns>
-        public bool InitCamera()
+        public bool InitCamera(int s32Cam)
         {
             // Open Camera
-            uEye.Defines.Status status = camera.Init();
+            uEye.Defines.Status status = camera.Init(s32Cam, displayHandle);
             if (status != uEye.Defines.Status.SUCCESS)
             {
                 SetError("Camera initializing failed");

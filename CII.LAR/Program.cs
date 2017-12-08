@@ -18,11 +18,13 @@ namespace CII.LAR
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                ComTestForm view = new ComTestForm();
-                view.StartPosition = FormStartPosition.CenterScreen;
-                IController controller = new IController(view);
+                //ComTestForm view = new ComTestForm();
+                //view.StartPosition = FormStartPosition.CenterScreen;
+                //IController controller = new IController(view);
 
-                Application.Run(view);
+                //Application.Run(view);
+
+                Application.Run(new EntryForm());
             }
             catch (Exception ex)
             {

@@ -21,13 +21,25 @@ namespace CII.LAR.Opertion
 
         private IntPtr displayHandle;
 
+        private CameraSizeControl cameraSizeControl;
+        public CameraSizeControl CameraSizeControl
+        {
+            get { return this.cameraSizeControl; }
+            private set { this.cameraSizeControl = value; }
+        }
+
+        public IDSCamera()
+        {
+            this.uEyeCamera = new uEye.Camera();
+            CameraSizeControl = new CameraSizeControl(uEyeCamera);
+        }
+
         /// <summary>
         /// initialize camera
         /// </summary>
         /// <returns></returns>
         public bool InitCamera()
         {
-            camera = new uEye.Camera();
             // Open Camera
             uEye.Defines.Status status = camera.Init();
             if (status != uEye.Defines.Status.SUCCESS)
@@ -77,10 +89,11 @@ namespace CII.LAR.Opertion
         private void Camera_EventFrame(object sender, EventArgs e)
         {
             uEye.Camera camera = sender as uEye.Camera;
-            if (camera != null)
+            if (camera != null && camera.IsOpened)
             {
                 Int32 s32MemID;
                 camera.Memory.GetActive(out s32MemID);
+                camera.Memory.Lock(s32MemID);
                 camera.Display.Render(s32MemID, displayHandle, uEye.Defines.DisplayRenderMode.FitToWindow);
             }
         }

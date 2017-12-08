@@ -209,7 +209,7 @@
     <value>Polygon</value>
   </data>
   <data name="btnUm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>113, 22</value>
   </data>
   <data name="btnUm.Text" xml:space="preserve">
     <value>um</value>
@@ -218,7 +218,7 @@
     <value>um</value>
   </data>
   <data name="btnDmm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>113, 22</value>
   </data>
   <data name="btnDmm.Text" xml:space="preserve">
     <value>mm/10</value>
@@ -227,7 +227,7 @@
     <value>mm/10</value>
   </data>
   <data name="btnMm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>113, 22</value>
   </data>
   <data name="btnMm.Text" xml:space="preserve">
     <value>mm</value>
@@ -236,7 +236,7 @@
     <value>mm</value>
   </data>
   <data name="btnCm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>113, 22</value>
   </data>
   <data name="btnCm.Text" xml:space="preserve">
     <value>cm</value>
@@ -245,7 +245,7 @@
     <value>cm</value>
   </data>
   <data name="btnInches.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>113, 22</value>
   </data>
   <data name="btnInches.Text" xml:space="preserve">
     <value>inches</value>
@@ -254,7 +254,7 @@
     <value>inches</value>
   </data>
   <data name="btnMeters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>113, 22</value>
   </data>
   <data name="btnMeters.Text" xml:space="preserve">
     <value>meters</value>
@@ -366,7 +366,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="openCameraLive.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 22</value>
@@ -382,6 +382,31 @@
   </data>
   <data name="snapshot.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 22</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="zwPictureBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="zwPictureBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="zwPictureBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>662, 551</value>
+  </data>
+  <data name="zwPictureBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;zwPictureBox.Name" xml:space="preserve">
+    <value>zwPictureBox</value>
+  </data>
+  <data name="&gt;&gt;zwPictureBox.Type" xml:space="preserve">
+    <value>CII.LAR.UI.ZWPictureBox, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;zwPictureBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;zwPictureBox.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

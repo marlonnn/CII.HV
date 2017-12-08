@@ -69,7 +69,9 @@
             this.closeCameraTool = new System.Windows.Forms.ToolStripMenuItem();
             this.freeRun = new System.Windows.Forms.ToolStripMenuItem();
             this.snapshot = new System.Windows.Forms.ToolStripMenuItem();
+            this.zwPictureBox = new CII.LAR.UI.ZWPictureBox();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.zwPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -346,14 +348,22 @@
             this.snapshot.Name = "snapshot";
             resources.ApplyResources(this.snapshot, "snapshot");
             // 
+            // zwPictureBox
+            // 
+            resources.ApplyResources(this.zwPictureBox, "zwPictureBox");
+            this.zwPictureBox.Name = "zwPictureBox";
+            this.zwPictureBox.TabStop = false;
+            // 
             // EntryForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.zwPictureBox);
             this.Controls.Add(this.toolStrip1);
             this.Name = "EntryForm";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.zwPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -401,5 +411,6 @@
         private System.Windows.Forms.ToolStripMenuItem closeCameraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem freeRunToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem snapshotToolStripMenuItem;
+        private UI.ZWPictureBox zwPictureBox;
     }
 }

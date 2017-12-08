@@ -76,6 +76,20 @@
     <Compile Include="Commond\LaserC73.cs" />
     <Compile Include="Commond\LaserC72.cs" />
     <Compile Include="Commond\LaserC71.cs" />
+    <Compile Include="DrawTools\DrawCircle.cs" />
+    <Compile Include="DrawTools\DrawLine.cs" />
+    <Compile Include="DrawTools\DrawObject.cs" />
+    <Compile Include="DrawTools\DrawPolygon.cs" />
+    <Compile Include="DrawTools\DrawPolyLine.cs" />
+    <Compile Include="DrawTools\GraphicsList.cs" />
+    <Compile Include="DrawTools\GraphicsProperties.cs" />
+    <Compile Include="DrawTools\GraphicsPropertiesManager.cs" />
+    <Compile Include="DrawTools\MeasureSystem.cs" />
+    <Compile Include="DrawTools\Statistics.cs" />
+    <Compile Include="DrawTools\Tool.cs" />
+    <Compile Include="DrawTools\ToolLine.cs" />
+    <Compile Include="DrawTools\ToolObject.cs" />
+    <Compile Include="DrawTools\ToolPointer.cs" />
     <Compile Include="EntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,11 +133,22 @@
     <Compile Include="Protocol\MotorProtocol.cs" />
     <Compile Include="Protocol\Original.cs" />
     <Compile Include="Protocol\OriginalBytes.cs" />
+    <Compile Include="SysClass\FullScreen.cs" />
+    <Compile Include="SysClass\HandleTaskBar.cs" />
+    <Compile Include="UI\ArrayChangedEventArgs.cs" />
     <Compile Include="UI\ProblemReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\ProblemReportForm.Designer.cs">
       <DependentUpon>ProblemReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ZWPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ZWPicture.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ZWPicture.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ComTestForm.resx">
       <DependentUpon>ComTestForm.cs</DependentUpon>
@@ -145,6 +170,10 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.zh-CN.resx" />
+    <EmbeddedResource Include="ZWPicture.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ZWPicture.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -162,6 +191,12 @@
     <Content Include="Archive\readme.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="DrawTools\Cross.cur" />
+    <Content Include="DrawTools\Ellipse.cur" />
+    <Content Include="DrawTools\Line.cur" />
+    <Content Include="DrawTools\Pencil.cur" />
+    <Content Include="DrawTools\PolyHandle.cur" />
+    <Content Include="DrawTools\Rectangle.cur" />
     <Content Include="Reference\log4net.dll" />
     <Content Include="Reference\Newtonsoft.Json.dll" />
     <Content Include="Reference\uEyeDotNet.dll" />
@@ -219,6 +254,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Config\" />
+    <Folder Include="ExpClass\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

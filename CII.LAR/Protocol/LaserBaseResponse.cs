@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CII.LAR.Protocol
 {
-    public class BaseResponse
+    public class LaserBaseResponse
     {
         private byte type;
         public byte Type
@@ -31,11 +31,11 @@ namespace CII.LAR.Protocol
             private set { this.oddCheck = value; }
         }
 
-        public virtual List<BaseResponse> Decode(BasePackage bp, OriginalBytes obytes)
+        public virtual List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
         {
             if (obytes.Data.Length != 6)
             {
-                LogHelper.GetLogger<BaseResponse>().Error(string.Format("消息类型为 : {0} 长度不足！", obytes.Data[1]));
+                LogHelper.GetLogger<LaserBaseResponse>().Error(string.Format("消息类型为 : {0} 长度不足！", obytes.Data[1]));
                 return null;
             }
 
@@ -46,7 +46,7 @@ namespace CII.LAR.Protocol
             }
             if (oddCheck != obytes.Data[obytes.Data.Length - 2])
             {
-                LogHelper.GetLogger<BaseResponse>().Error(string.Format("消息类型为 : {0} 的奇偶校验位错误！", obytes.Data[1]));
+                LogHelper.GetLogger<LaserBaseResponse>().Error(string.Format("消息类型为 : {0} 的奇偶校验位错误！", obytes.Data[1]));
                 return null;
             }
             else
@@ -55,9 +55,9 @@ namespace CII.LAR.Protocol
             }
         }
 
-        protected List<BaseResponse> CreateOneList(BaseResponse br)
+        protected List<LaserBaseResponse> CreateOneList(LaserBaseResponse br)
         {
-            List<BaseResponse> list = new List<BaseResponse>();
+            List<LaserBaseResponse> list = new List<LaserBaseResponse>();
             list.Add(br);
             return list;
         }

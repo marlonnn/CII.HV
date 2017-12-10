@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CII.LAR.Protocol
 {
-    public class BasePackage
+    public class LaserBasePackage
     {
         /// <summary>
         /// 发送数据包头
@@ -39,9 +39,9 @@ namespace CII.LAR.Protocol
             private set { this.appData = value; }
         }
 
-        public BasePackage() { }
+        public LaserBasePackage() { }
 
-        public BasePackage(byte markHead, byte type, byte[] appData)
+        public LaserBasePackage(byte markHead, byte type, byte[] appData)
         {
             this.markHead = markHead;
             this.type = type;

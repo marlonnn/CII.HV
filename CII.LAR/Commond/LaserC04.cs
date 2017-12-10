@@ -11,23 +11,23 @@ namespace CII.LAR.Commond
     /// <summary>
     /// 查询红光激光器电流
     /// </summary>
-    public class LaserC04Request : BaseRequest
+    public class LaserC04Request : LaserBaseRequest
     {
         public LaserC04Request()
         {
             this.Type = 0x04;
         }
 
-        public override List<BasePackage> Encode()
+        public override List<LaserBasePackage> Encode()
         {
-            List<BasePackage> bps = base.Encode();
-            BasePackage bp = new BasePackage(0x8F, 0x04, new byte[] { 0x04, 0x00 });
+            List<LaserBasePackage> bps = base.Encode();
+            LaserBasePackage bp = new LaserBasePackage(0x8F, 0x04, new byte[] { 0x04, 0x00 });
             bps.Add(bp);
             return bps;
         }
     }
 
-    public class LaserC04Response : BaseResponse
+    public class LaserC04Response : LaserBaseResponse
     {
         /// <summary>
         /// 红光激光器电流数字量
@@ -44,7 +44,7 @@ namespace CII.LAR.Commond
             this.Type = 0x04;
         }
 
-        public override List<BaseResponse> Decode(BasePackage bp, OriginalBytes obytes)
+        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
         {
             base.Decode(bp, obytes);
 

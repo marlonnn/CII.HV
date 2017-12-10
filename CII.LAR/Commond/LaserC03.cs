@@ -11,23 +11,23 @@ namespace CII.LAR.Commond
     /// <summary>
     /// 查询1480激光温度
     /// </summary>
-    public class LaserC03Request : BaseRequest
+    public class LaserC03Request : LaserBaseRequest
     {
         public LaserC03Request()
         {
             this.Type = 0x03;
         }
 
-        public override List<BasePackage> Encode()
+        public override List<LaserBasePackage> Encode()
         {
-            List<BasePackage> bps = base.Encode();
-            BasePackage bp = new BasePackage(0x8F, 0x03, new byte[] { 0x03, 0x00 });
+            List<LaserBasePackage> bps = base.Encode();
+            LaserBasePackage bp = new LaserBasePackage(0x8F, 0x03, new byte[] { 0x03, 0x00 });
             bps.Add(bp);
             return bps;
         }
     }
 
-    public class LaserC03Response : BaseResponse
+    public class LaserC03Response : LaserBaseResponse
     {
         /// <summary>
         /// 温度数字量
@@ -44,7 +44,7 @@ namespace CII.LAR.Commond
             this.Type = 0x03;
         }
 
-        public override List<BaseResponse> Decode(BasePackage bp, OriginalBytes obytes)
+        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
         {
             base.Decode(bp, obytes);
 

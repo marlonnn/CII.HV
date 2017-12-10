@@ -10,22 +10,22 @@ namespace CII.LAR.Commond
     /// <summary>
     /// 查询模块状态信息和温度
     /// </summary>
-    public class LaserC01Request : BaseRequest
+    public class LaserC01Request : LaserBaseRequest
     {
         public LaserC01Request()
         {
             this.Type = 0x01;
         }
-        public override List<BasePackage> Encode()
+        public override List<LaserBasePackage> Encode()
         {
-            List<BasePackage> bps = base.Encode();
-            BasePackage bp = new BasePackage(0x8F, 0x01, new byte[] { 0x01, 0x00 });
+            List<LaserBasePackage> bps = base.Encode();
+            LaserBasePackage bp = new LaserBasePackage(0x8F, 0x01, new byte[] { 0x01, 0x00 });
             bps.Add(bp);
             return bps;
         }
     }
 
-    public class LaserC01Response : BaseResponse
+    public class LaserC01Response : LaserBaseResponse
     {
         /// <summary>
         /// 状态标志位
@@ -52,7 +52,7 @@ namespace CII.LAR.Commond
             this.Type = 0x01;
         }
 
-        public override List<BaseResponse> Decode(BasePackage bp, OriginalBytes obytes)
+        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
         {
             base.Decode(bp, obytes);
 

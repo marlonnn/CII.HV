@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace CII.LAR.MsgQueue
 {
-    public class RxQueue : ConcurrentQueue<Original>
+    public class LaserTxMsgQueue : ConcurrentQueue<LaserBaseRequest>
     {
-
     }
 }

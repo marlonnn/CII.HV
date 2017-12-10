@@ -44,7 +44,7 @@ namespace CII.LAR.Protocol
             return lp;
         }
 
-        public byte[] EnPackage(BasePackage bp)
+        public byte[] EnPackage(LaserBasePackage bp)
         {
             if (bp.AppData == null)
             {

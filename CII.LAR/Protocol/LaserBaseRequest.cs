@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CII.LAR.Protocol
 {
-    public class BaseRequest
+    public class LaserBaseRequest
     {
         private byte type;
         public byte Type
@@ -15,20 +15,20 @@ namespace CII.LAR.Protocol
             set { this.type = value; }
         }
 
-        public BaseRequest()
+        public LaserBaseRequest()
         {
 
         }
 
-        public virtual List<BasePackage> Encode()
+        public virtual List<LaserBasePackage> Encode()
         {
             return CreateOneList();
         }
 
 
-        protected List<BasePackage> CreateOneList()
+        protected List<LaserBasePackage> CreateOneList()
         {
-            List<BasePackage> list = new List<BasePackage>();
+            List<LaserBasePackage> list = new List<LaserBasePackage>();
             return list;
         }
     }

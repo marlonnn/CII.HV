@@ -9,6 +9,7 @@ using System.IO.Ports;
 using System.Windows;
 using System.Windows.Forms;
 using CII.LAR.Protocol;
+using CII.LAR.Commond;
 
 namespace CII.LAR
 {
@@ -220,6 +221,7 @@ namespace CII.LAR
                 return;
             }
             var receivedBytes = e.receivedBytes;
+            LogHelper.GetLogger<ComTestForm>().Debug(string.Format("接受的消息为： {0}", ByteHelper.Byte2ReadalbeXstring(receivedBytes)));
             laserProtocolFactory.RxQueue.Push(new OriginalBytes(DateTime.Now, receivedBytes));
             if (recStrRadiobtn.Checked) //display as string
             {
@@ -523,7 +525,20 @@ namespace CII.LAR
 
         private void autoSendtimer_Tick(object sender, EventArgs e)
         {
-            sendbtn_Click(sender, e);
+            if (laserProtocolFactory.TxQueue != null && laserProtocolFactory.TxQueue.Count > 0)
+            {
+                var list = laserProtocolFactory.TxQueue.PopAll();
+                foreach (var o in list)
+                {
+                    var originalByte = o as OriginalBytes;
+                    if (originalByte != null)
+                    {
+                        controller.SendDataToCom(originalByte.Data);
+                        LogHelper.GetLogger<ComTestForm>().Debug(string.Format("发送的消息为： {0}", ByteHelper.Byte2ReadalbeXstring(originalByte.Data)));
+                    }   
+                }
+            }
+            //sendbtn_Click(sender, e);
         }
 
         /// <summary>
@@ -663,6 +678,84 @@ namespace CII.LAR
             //}
         }
 
+        private void btn00_Click(object sender, EventArgs e)
+        {
+            laserProtocolFactory.SendMessage(new LaserC00Request());
+        }
 
+        private void btn01_Click(object sender, EventArgs e)
+        {
+            laserProtocolFactory.SendMessage(new LaserC01Request());
+        }
+
+        private void btn03_Click(object sender, EventArgs e)
+        {
+            laserProtocolFactory.SendMessage(new LaserC03Request());
+        }
+
+        private void btn04_Click(object sender, EventArgs e)
+        {
+            laserProtocolFactory.SendMessage(new LaserC04Request());
+        }
+
+        private void btn05_Click(object sender, EventArgs e)
+        {
+            laserProtocolFactory.SendMessage(new LaserC05Request());
+        }
+
+        private void btn06_Click(object sender, EventArgs e)
+        {
+            laserProtocolFactory.SendMessage(new LaserC06Request());
+        }
+
+        private void btn07_Click(object sender, EventArgs e)
+        {
+            laserProtocolFactory.SendMessage(new LaserC07Request());
+        }
+
+        private void btn08_Click(object sender, EventArgs e)
+        {
+            laserProtocolFactory.SendMessage(new LaserC08Request());
+        }
+
+        private void btn0B_Click(object sender, EventArgs e)
+        {
+            laserProtocolFactory.SendMessage(new LaserC0BRequest());
+        }
+
+        private void btn75_Click(object sender, EventArgs e)
+        {
+            laserProtocolFactory.SendMessage(new LaserC75Request(10));
+        }
+
+        private void btn09_Click(object sender, EventArgs e)
+        {
+            laserProtocolFactory.SendMessage(new LaserC09Request());
+        }
+
+        private void btn74_Click(object sender, EventArgs e)
+        {
+            laserProtocolFactory.SendMessage(new LaserC74Request(0x01));
+        }
+
+        private void btn0C_Click(object sender, EventArgs e)
+        {
+            laserProtocolFactory.SendMessage(new LaserC0CRequest());
+        }
+
+        private void btn71_Click(object sender, EventArgs e)
+        {
+            laserProtocolFactory.SendMessage(new LaserC71Request());
+        }
+
+        private void btn73_Click(object sender, EventArgs e)
+        {
+            laserProtocolFactory.SendMessage(new LaserC73Request(100));
+        }
+
+        private void btn72_Click(object sender, EventArgs e)
+        {
+            laserProtocolFactory.SendMessage(new LaserC72Request(20));
+        }
     }
 }

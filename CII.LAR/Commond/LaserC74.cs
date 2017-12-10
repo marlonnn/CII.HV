@@ -10,7 +10,7 @@ namespace CII.LAR.Commond
     /// <summary>
     /// 设置红光激光使能
     /// </summary>
-    public class LaserC74Request : BaseRequest
+    public class LaserC74Request : LaserBaseRequest
     {
         /// <summary>
         /// 红光激光使能
@@ -28,13 +28,13 @@ namespace CII.LAR.Commond
             this.Type = 0x74;
         }
 
-        public override List<BasePackage> Encode()
+        public override List<LaserBasePackage> Encode()
         {
-            List<BasePackage> bps = base.Encode();
-            BasePackage bp1 = new BasePackage(0x8F, 0x74, new byte[] { 0x74, 0x00 });
+            List<LaserBasePackage> bps = base.Encode();
+            LaserBasePackage bp1 = new LaserBasePackage(0x8F, 0x74, new byte[] { 0x74, 0x00 });
             bps.Add(bp1);
 
-            BasePackage bp2 = new BasePackage(0x80, 0x74, new byte[] { 0x00, RedLight, 0x00, 0x00, 0x00, 0x00 });
+            LaserBasePackage bp2 = new LaserBasePackage(0x80, 0x74, new byte[] { 0x00, RedLight, 0x00, 0x00, 0x00, 0x00 });
             bps.Add(bp2);
             return bps;
         }
@@ -43,14 +43,14 @@ namespace CII.LAR.Commond
     /// <summary>
     /// 80 FF 00 00 00 FF
     /// </summary>
-    public class LaserC74Response : BaseResponse
+    public class LaserC74Response : LaserBaseResponse
     {
         public LaserC74Response()
         {
             this.Type = 0x74;
         }
 
-        public override List<BaseResponse> Decode(BasePackage bp, OriginalBytes obytes)
+        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
         {
             base.Decode(bp, obytes);
             if (CheckResponse(obytes.Data))

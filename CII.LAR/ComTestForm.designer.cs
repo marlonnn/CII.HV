@@ -79,6 +79,22 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.handshakingcbx = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.btn00 = new System.Windows.Forms.Button();
+            this.btn01 = new System.Windows.Forms.Button();
+            this.btn03 = new System.Windows.Forms.Button();
+            this.btn04 = new System.Windows.Forms.Button();
+            this.btn05 = new System.Windows.Forms.Button();
+            this.btn06 = new System.Windows.Forms.Button();
+            this.btn07 = new System.Windows.Forms.Button();
+            this.btn08 = new System.Windows.Forms.Button();
+            this.btn0B = new System.Windows.Forms.Button();
+            this.btn75 = new System.Windows.Forms.Button();
+            this.btn09 = new System.Windows.Forms.Button();
+            this.btn74 = new System.Windows.Forms.Button();
+            this.btn0C = new System.Windows.Forms.Button();
+            this.btn71 = new System.Windows.Forms.Button();
+            this.btn72 = new System.Windows.Forms.Button();
+            this.btn73 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -454,7 +470,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(488, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(633, 28);
             this.menuStrip1.TabIndex = 20;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -484,7 +500,7 @@
             this.statusTimeLabel});
             this.statusStrip1.Location = new System.Drawing.Point(0, 393);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(488, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(633, 22);
             this.statusStrip1.TabIndex = 21;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -493,7 +509,7 @@
             this.statuslabel.ActiveLinkColor = System.Drawing.SystemColors.ButtonHighlight;
             this.statuslabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statuslabel.Name = "statuslabel";
-            this.statuslabel.Size = new System.Drawing.Size(157, 17);
+            this.statuslabel.Size = new System.Drawing.Size(206, 17);
             this.statuslabel.Spring = true;
             this.statuslabel.Text = "Not Connected";
             this.statuslabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -507,7 +523,7 @@
             // 
             this.toolStripStatusRx.ActiveLinkColor = System.Drawing.SystemColors.Info;
             this.toolStripStatusRx.Name = "toolStripStatusRx";
-            this.toolStripStatusRx.Size = new System.Drawing.Size(157, 17);
+            this.toolStripStatusRx.Size = new System.Drawing.Size(206, 17);
             this.toolStripStatusRx.Spring = true;
             this.toolStripStatusRx.Text = "Received:";
             this.toolStripStatusRx.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -515,7 +531,7 @@
             // toolStripStatusTx
             // 
             this.toolStripStatusTx.Name = "toolStripStatusTx";
-            this.toolStripStatusTx.Size = new System.Drawing.Size(157, 17);
+            this.toolStripStatusTx.Size = new System.Drawing.Size(206, 17);
             this.toolStripStatusTx.Spring = true;
             this.toolStripStatusTx.Text = "Sent:";
             this.toolStripStatusTx.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -533,7 +549,7 @@
             // 
             // autoSendtimer
             // 
-            this.autoSendtimer.Interval = 1000;
+            this.autoSendtimer.Interval = 200;
             this.autoSendtimer.Tick += new System.EventHandler(this.autoSendtimer_Tick);
             // 
             // refreshbtn
@@ -586,11 +602,187 @@
             this.label9.TabIndex = 23;
             this.label9.Text = "HandShaking:";
             // 
-            // MainForm
+            // btn00
+            // 
+            this.btn00.Location = new System.Drawing.Point(528, 28);
+            this.btn00.Name = "btn00";
+            this.btn00.Size = new System.Drawing.Size(75, 23);
+            this.btn00.TabIndex = 25;
+            this.btn00.Text = "00";
+            this.btn00.UseVisualStyleBackColor = true;
+            this.btn00.Click += new System.EventHandler(this.btn00_Click);
+            // 
+            // btn01
+            // 
+            this.btn01.Location = new System.Drawing.Point(528, 51);
+            this.btn01.Name = "btn01";
+            this.btn01.Size = new System.Drawing.Size(75, 23);
+            this.btn01.TabIndex = 26;
+            this.btn01.Text = "01";
+            this.btn01.UseVisualStyleBackColor = true;
+            this.btn01.Click += new System.EventHandler(this.btn01_Click);
+            // 
+            // btn03
+            // 
+            this.btn03.Location = new System.Drawing.Point(528, 74);
+            this.btn03.Name = "btn03";
+            this.btn03.Size = new System.Drawing.Size(75, 23);
+            this.btn03.TabIndex = 27;
+            this.btn03.Text = "03";
+            this.btn03.UseVisualStyleBackColor = true;
+            this.btn03.Click += new System.EventHandler(this.btn03_Click);
+            // 
+            // btn04
+            // 
+            this.btn04.Location = new System.Drawing.Point(528, 98);
+            this.btn04.Name = "btn04";
+            this.btn04.Size = new System.Drawing.Size(75, 23);
+            this.btn04.TabIndex = 28;
+            this.btn04.Text = "04";
+            this.btn04.UseVisualStyleBackColor = true;
+            this.btn04.Click += new System.EventHandler(this.btn04_Click);
+            // 
+            // btn05
+            // 
+            this.btn05.Location = new System.Drawing.Point(528, 121);
+            this.btn05.Name = "btn05";
+            this.btn05.Size = new System.Drawing.Size(75, 23);
+            this.btn05.TabIndex = 29;
+            this.btn05.Text = "05";
+            this.btn05.UseVisualStyleBackColor = true;
+            this.btn05.Click += new System.EventHandler(this.btn05_Click);
+            // 
+            // btn06
+            // 
+            this.btn06.Location = new System.Drawing.Point(528, 144);
+            this.btn06.Name = "btn06";
+            this.btn06.Size = new System.Drawing.Size(75, 23);
+            this.btn06.TabIndex = 30;
+            this.btn06.Text = "06";
+            this.btn06.UseVisualStyleBackColor = true;
+            this.btn06.Click += new System.EventHandler(this.btn06_Click);
+            // 
+            // btn07
+            // 
+            this.btn07.Location = new System.Drawing.Point(528, 167);
+            this.btn07.Name = "btn07";
+            this.btn07.Size = new System.Drawing.Size(75, 23);
+            this.btn07.TabIndex = 31;
+            this.btn07.Text = "07";
+            this.btn07.UseVisualStyleBackColor = true;
+            this.btn07.Click += new System.EventHandler(this.btn07_Click);
+            // 
+            // btn08
+            // 
+            this.btn08.Location = new System.Drawing.Point(528, 189);
+            this.btn08.Name = "btn08";
+            this.btn08.Size = new System.Drawing.Size(75, 23);
+            this.btn08.TabIndex = 32;
+            this.btn08.Text = "08";
+            this.btn08.UseVisualStyleBackColor = true;
+            this.btn08.Click += new System.EventHandler(this.btn08_Click);
+            // 
+            // btn0B
+            // 
+            this.btn0B.Location = new System.Drawing.Point(528, 237);
+            this.btn0B.Name = "btn0B";
+            this.btn0B.Size = new System.Drawing.Size(75, 23);
+            this.btn0B.TabIndex = 33;
+            this.btn0B.Text = "0B";
+            this.btn0B.UseVisualStyleBackColor = true;
+            this.btn0B.Click += new System.EventHandler(this.btn0B_Click);
+            // 
+            // btn75
+            // 
+            this.btn75.Location = new System.Drawing.Point(528, 376);
+            this.btn75.Name = "btn75";
+            this.btn75.Size = new System.Drawing.Size(75, 23);
+            this.btn75.TabIndex = 34;
+            this.btn75.Text = "75";
+            this.btn75.UseVisualStyleBackColor = true;
+            this.btn75.Click += new System.EventHandler(this.btn75_Click);
+            // 
+            // btn09
+            // 
+            this.btn09.Location = new System.Drawing.Point(528, 213);
+            this.btn09.Name = "btn09";
+            this.btn09.Size = new System.Drawing.Size(75, 23);
+            this.btn09.TabIndex = 35;
+            this.btn09.Text = "09";
+            this.btn09.UseVisualStyleBackColor = true;
+            this.btn09.Click += new System.EventHandler(this.btn09_Click);
+            // 
+            // btn74
+            // 
+            this.btn74.Location = new System.Drawing.Point(528, 353);
+            this.btn74.Name = "btn74";
+            this.btn74.Size = new System.Drawing.Size(75, 23);
+            this.btn74.TabIndex = 36;
+            this.btn74.Text = "74";
+            this.btn74.UseVisualStyleBackColor = true;
+            this.btn74.Click += new System.EventHandler(this.btn74_Click);
+            // 
+            // btn0C
+            // 
+            this.btn0C.Location = new System.Drawing.Point(528, 260);
+            this.btn0C.Name = "btn0C";
+            this.btn0C.Size = new System.Drawing.Size(75, 23);
+            this.btn0C.TabIndex = 37;
+            this.btn0C.Text = "0C";
+            this.btn0C.UseVisualStyleBackColor = true;
+            this.btn0C.Click += new System.EventHandler(this.btn0C_Click);
+            // 
+            // btn71
+            // 
+            this.btn71.Location = new System.Drawing.Point(528, 283);
+            this.btn71.Name = "btn71";
+            this.btn71.Size = new System.Drawing.Size(75, 23);
+            this.btn71.TabIndex = 38;
+            this.btn71.Text = "71";
+            this.btn71.UseVisualStyleBackColor = true;
+            this.btn71.Click += new System.EventHandler(this.btn71_Click);
+            // 
+            // btn72
+            // 
+            this.btn72.Location = new System.Drawing.Point(528, 306);
+            this.btn72.Name = "btn72";
+            this.btn72.Size = new System.Drawing.Size(75, 23);
+            this.btn72.TabIndex = 39;
+            this.btn72.Text = "72";
+            this.btn72.UseVisualStyleBackColor = true;
+            this.btn72.Click += new System.EventHandler(this.btn72_Click);
+            // 
+            // btn73
+            // 
+            this.btn73.Location = new System.Drawing.Point(528, 329);
+            this.btn73.Name = "btn73";
+            this.btn73.Size = new System.Drawing.Size(75, 23);
+            this.btn73.TabIndex = 40;
+            this.btn73.Text = "73";
+            this.btn73.UseVisualStyleBackColor = true;
+            this.btn73.Click += new System.EventHandler(this.btn73_Click);
+            // 
+            // ComTestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 415);
+            this.ClientSize = new System.Drawing.Size(633, 415);
+            this.Controls.Add(this.btn73);
+            this.Controls.Add(this.btn72);
+            this.Controls.Add(this.btn71);
+            this.Controls.Add(this.btn0C);
+            this.Controls.Add(this.btn74);
+            this.Controls.Add(this.btn09);
+            this.Controls.Add(this.btn75);
+            this.Controls.Add(this.btn0B);
+            this.Controls.Add(this.btn08);
+            this.Controls.Add(this.btn07);
+            this.Controls.Add(this.btn06);
+            this.Controls.Add(this.btn05);
+            this.Controls.Add(this.btn04);
+            this.Controls.Add(this.btn03);
+            this.Controls.Add(this.btn01);
+            this.Controls.Add(this.btn00);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox1);
@@ -598,7 +790,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "MainForm";
+            this.Name = "ComTestForm";
             this.Text = "COMDBG v1.1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -666,6 +858,22 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox addCRCcbx;
         private System.Windows.Forms.CheckBox autoReplyCbx;
+        private System.Windows.Forms.Button btn00;
+        private System.Windows.Forms.Button btn01;
+        private System.Windows.Forms.Button btn03;
+        private System.Windows.Forms.Button btn04;
+        private System.Windows.Forms.Button btn05;
+        private System.Windows.Forms.Button btn06;
+        private System.Windows.Forms.Button btn07;
+        private System.Windows.Forms.Button btn08;
+        private System.Windows.Forms.Button btn0B;
+        private System.Windows.Forms.Button btn75;
+        private System.Windows.Forms.Button btn09;
+        private System.Windows.Forms.Button btn74;
+        private System.Windows.Forms.Button btn0C;
+        private System.Windows.Forms.Button btn71;
+        private System.Windows.Forms.Button btn72;
+        private System.Windows.Forms.Button btn73;
     }
 }
 

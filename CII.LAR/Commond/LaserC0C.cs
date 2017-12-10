@@ -10,17 +10,17 @@ namespace CII.LAR.Commond
     /// <summary>
     /// 查询模块序列号
     /// </summary>
-    public class LaserC0CRequest : BaseRequest
+    public class LaserC0CRequest : LaserBaseRequest
     {
         public LaserC0CRequest()
         {
             this.Type = 0x0C;
         }
 
-        public override List<BasePackage> Encode()
+        public override List<LaserBasePackage> Encode()
         {
-            List<BasePackage> bps = base.Encode();
-            BasePackage bp = new BasePackage(0x8F, 0x0C, new byte[] { 0x0C, 0x00 });
+            List<LaserBasePackage> bps = base.Encode();
+            LaserBasePackage bp = new LaserBasePackage(0x8F, 0x0C, new byte[] { 0x0C, 0x00 });
             bps.Add(bp);
             return bps;
         }
@@ -29,7 +29,7 @@ namespace CII.LAR.Commond
     /// <summary>
     /// 返回查询模块序列号
     /// </summary>
-    public class LaserC0CResponse : BaseResponse
+    public class LaserC0CResponse : LaserBaseResponse
     {
         private byte sn0;
         public byte SN0
@@ -71,7 +71,7 @@ namespace CII.LAR.Commond
             this.Type = 0x0C;
         }
 
-        public override List<BaseResponse> Decode(BasePackage bp, OriginalBytes obytes)
+        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
         {
             base.Decode(bp, obytes);
 

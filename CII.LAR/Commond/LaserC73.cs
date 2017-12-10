@@ -10,7 +10,7 @@ namespace CII.LAR.Commond
     /// <summary>
     /// 设置频率输入量数字量
     /// </summary>
-    public class LaserC73Request : BaseRequest
+    public class LaserC73Request : LaserBaseRequest
     {
         /// <summary>
         /// 频率的最小间隔为10HZ
@@ -33,16 +33,16 @@ namespace CII.LAR.Commond
             this.Type = 0x73;
         }
 
-        public override List<BasePackage> Encode()
+        public override List<LaserBasePackage> Encode()
         {
-            List<BasePackage> bps = base.Encode();
-            BasePackage bp1 = new BasePackage(0x8F, 0x73, new byte[] { 0x73, 0x00 });
+            List<LaserBasePackage> bps = base.Encode();
+            LaserBasePackage bp1 = new LaserBasePackage(0x8F, 0x73, new byte[] { 0x73, 0x00 });
             bps.Add(bp1);
 
             int digitalValue = Frequency / interval;
             byte aa = (byte)(digitalValue / 128);
             byte bb = (byte)(digitalValue % 128);
-            BasePackage bp2 = new BasePackage(0x80, 0x73, new byte[] { aa, bb, 0x00, 0x00, 0x00, 0x00 });
+            LaserBasePackage bp2 = new LaserBasePackage(0x80, 0x73, new byte[] { aa, bb, 0x00, 0x00, 0x00, 0x00 });
             bps.Add(bp2);
             return bps;
         }
@@ -51,14 +51,14 @@ namespace CII.LAR.Commond
     /// <summary>
     /// 80 FF 00 00 00 FF
     /// </summary>
-    public class LaserC73Response : BaseResponse
+    public class LaserC73Response : LaserBaseResponse
     {
         public LaserC73Response()
         {
             this.Type = 0x73;
         }
 
-        public override List<BaseResponse> Decode(BasePackage bp, OriginalBytes obytes)
+        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
         {
             base.Decode(bp, obytes);
             if (CheckResponse(obytes.Data))

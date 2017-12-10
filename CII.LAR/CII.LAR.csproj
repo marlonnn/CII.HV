@@ -114,19 +114,19 @@
     <Compile Include="MessageBoxManager.cs" />
     <Compile Include="MiniDump.cs" />
     <Compile Include="MsgQueue\ConcurrentQueue.cs" />
-    <Compile Include="MsgQueue\RxMsgQueue.cs" />
-    <Compile Include="MsgQueue\RxQueue.cs" />
-    <Compile Include="MsgQueue\TxMsgQueue.cs" />
-    <Compile Include="MsgQueue\TxQueue.cs" />
+    <Compile Include="MsgQueue\LaserRxMsgQueue.cs" />
+    <Compile Include="MsgQueue\LaserRxQueue.cs" />
+    <Compile Include="MsgQueue\LaserTxMsgQueue.cs" />
+    <Compile Include="MsgQueue\LaserTxQueue.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Opertion\Camera.cs" />
     <Compile Include="Opertion\CameraSizeControl.cs" />
     <Compile Include="Opertion\IDSCamera.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Protocol\BasePackage.cs" />
-    <Compile Include="Protocol\BaseRequest.cs" />
-    <Compile Include="Protocol\BaseResponse.cs" />
+    <Compile Include="Protocol\LaserBasePackage.cs" />
+    <Compile Include="Protocol\LaserBaseRequest.cs" />
+    <Compile Include="Protocol\LaserBaseResponse.cs" />
     <Compile Include="Protocol\LaserProtocol.cs" />
     <Compile Include="Protocol\LaserProtocolFactory.cs" />
     <Compile Include="Protocol\MotorProtocol.cs" />
@@ -195,6 +195,9 @@
     <Content Include="Archive\readme.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Config\log4net.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="DrawTools\Cross.cur" />
     <Content Include="DrawTools\Ellipse.cur" />
     <Content Include="DrawTools\Line.cur" />
@@ -257,7 +260,6 @@
     <Content Include="Resources\zoomFit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Config\" />
     <Folder Include="ExpClass\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

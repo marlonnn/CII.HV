@@ -11,29 +11,29 @@ namespace CII.LAR.Protocol
 {
     public class LaserProtocolFactory
     {
-        private TxQueue txQueue;
-        public TxQueue TxQueue
+        private LaserTxQueue txQueue;
+        public LaserTxQueue TxQueue
         {
             get { return this.txQueue; }
             private set { this.txQueue = value; }
         }
 
-        private TxMsgQueue txMsgQueue;
-        public TxMsgQueue TxMsgQueue
+        private LaserTxMsgQueue txMsgQueue;
+        public LaserTxMsgQueue TxMsgQueue
         {
             get { return this.txMsgQueue; }
             private set { this.txMsgQueue = value; }
         }
 
-        private RxQueue rxQueue;
-        public RxQueue RxQueue
+        private LaserRxQueue rxQueue;
+        public LaserRxQueue RxQueue
         {
             get { return this.rxQueue; }
             private set { this.rxQueue = value; }
         }
 
-        private RxMsgQueue rxMsgQueue;
-        public RxMsgQueue RxMsgQueue
+        private LaserRxMsgQueue rxMsgQueue;
+        public LaserRxMsgQueue RxMsgQueue
         {
             get { return this.rxMsgQueue; }
             private set { this.rxMsgQueue = value; }
@@ -46,15 +46,15 @@ namespace CII.LAR.Protocol
             private set { this.laserProtocol = value; }
         }
 
-        private Dictionary<byte, BaseResponse> decoders;
-        public Dictionary<byte, BaseResponse> Decoders
+        private Dictionary<byte, LaserBaseResponse> decoders;
+        public Dictionary<byte, LaserBaseResponse> Decoders
         {
             get { return this.decoders; }
             private set { this.decoders = value; }
         }
 
-        private BaseResponse decoder;
-        public BaseResponse Decoder
+        private LaserBaseResponse decoder;
+        public LaserBaseResponse Decoder
         {
             get { return this.decoder; }
             set { this.decoder = value; }
@@ -85,14 +85,14 @@ namespace CII.LAR.Protocol
         public LaserProtocolFactory ()
         {
             InitializeDecoders();
-            TxQueue = new TxQueue();
-            RxQueue = new RxQueue();
-            RxMsgQueue = new RxMsgQueue();
-            TxMsgQueue = new TxMsgQueue();
+            TxQueue = new LaserTxQueue();
+            RxQueue = new LaserRxQueue();
+            RxMsgQueue = new LaserRxMsgQueue();
+            TxMsgQueue = new LaserTxMsgQueue();
             LaserProtocol = new LaserProtocol();
         }
 
-        public void SendMessage(BaseRequest baseRequest)
+        public void SendMessage(LaserBaseRequest baseRequest)
         {
             SetDecoder(baseRequest.Type);
             TxMsgQueue.Push(baseRequest);
@@ -100,7 +100,7 @@ namespace CII.LAR.Protocol
 
         private void InitializeDecoders()
         {
-            Decoders = new Dictionary<byte, BaseResponse>();
+            Decoders = new Dictionary<byte, LaserBaseResponse>();
             Decoders[0x00] = new LaserC00Response();
             Decoders[0x01] = new LaserC01Response();
             Decoders[0x03] = new LaserC03Response();
@@ -207,6 +207,7 @@ namespace CII.LAR.Protocol
                 Priority = ThreadPriority.Normal,
                 Name = "DecodeThread"
             };
+            Encode = true;
             encodeThread.Start();
         }
 
@@ -253,8 +254,8 @@ namespace CII.LAR.Protocol
                                 byte type = GetMsgType();
                                 byte[] appData = new byte[data.Length - 2];
                                 Array.Copy(data, 1, appData, 0, data.Length - 2);
-                                BasePackage bp = new BasePackage(markHead, type, appData);
-                                List<BaseResponse> responseList = Decoder.Decode(bp, obytes);
+                                LaserBasePackage bp = new LaserBasePackage(markHead, type, appData);
+                                List<LaserBaseResponse> responseList = Decoder.Decode(bp, obytes);
                                 if (responseList != null && responseList.Count > 0)
                                 {
                                     RxMsgQueue.Push(responseList);
@@ -275,13 +276,13 @@ namespace CII.LAR.Protocol
             {
                 if (Encode)
                 {
-                    List<BaseRequest> list = txMsgQueue.PopAll();
+                    List<LaserBaseRequest> list = txMsgQueue.PopAll();
                     if (list != null && list.Count > 0)
                     {
                         foreach (var br in list)
                         {
-                            List<BasePackage> bps = br.Encode();
-                            foreach (BasePackage bp in bps)
+                            List<LaserBasePackage> bps = br.Encode();
+                            foreach (LaserBasePackage bp in bps)
                             {
                                 OriginalBytes ob = new OriginalBytes();
                                 ob.Data = laserProtocol.EnPackage(bp);

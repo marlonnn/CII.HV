@@ -11,17 +11,17 @@ namespace CII.LAR.Commond
     /// <summary>
     /// 查询红光激光器电流设定系数
     /// </summary>
-    public class LaserC0BRequest : BaseRequest
+    public class LaserC0BRequest : LaserBaseRequest
     {
         public LaserC0BRequest()
         {
             this.Type = 0x0B;
         }
 
-        public override List<BasePackage> Encode()
+        public override List<LaserBasePackage> Encode()
         {
-            List<BasePackage> bps = base.Encode();
-            BasePackage bp = new BasePackage(0x8F, 0x0B, new byte[] { 0x0B, 0x00 });
+            List<LaserBasePackage> bps = base.Encode();
+            LaserBasePackage bp = new LaserBasePackage(0x8F, 0x0B, new byte[] { 0x0B, 0x00 });
             bps.Add(bp);
             return bps;
         }
@@ -30,7 +30,7 @@ namespace CII.LAR.Commond
     /// <summary>
     /// 返回红光激光器电流设定系数
     /// </summary>
-    public class LaserC0BResponse : BaseResponse
+    public class LaserC0BResponse : LaserBaseResponse
     {
         /// <summary>
         /// LD对应电流设定系数
@@ -47,7 +47,7 @@ namespace CII.LAR.Commond
             this.Type = 0x0B;
         }
 
-        public override List<BaseResponse> Decode(BasePackage bp, OriginalBytes obytes)
+        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
         {
             base.Decode(bp, obytes);
 

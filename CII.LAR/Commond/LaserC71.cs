@@ -10,17 +10,17 @@ namespace CII.LAR.Commond
     /// <summary>
     /// 强制开关指令 
     /// </summary>
-    public class LaserC71Request : BaseRequest
+    public class LaserC71Request : LaserBaseRequest
     {
         public LaserC71Request()
         {
             this.Type = 0x71;
         }
 
-        public override List<BasePackage> Encode()
+        public override List<LaserBasePackage> Encode()
         {
-            List<BasePackage> bps = base.Encode();
-            BasePackage bp = new BasePackage(0x8F, 0x71, new byte[] { 0x71, 0x00 });
+            List<LaserBasePackage> bps = base.Encode();
+            LaserBasePackage bp = new LaserBasePackage(0x8F, 0x71, new byte[] { 0x71, 0x00 });
             bps.Add(bp);
             return bps;
         }
@@ -30,14 +30,14 @@ namespace CII.LAR.Commond
     /// 强制开启或关闭激光器
     /// 80 FF 00 00 00 FF
     /// </summary>
-    public class LaserC71Response : BaseResponse
+    public class LaserC71Response : LaserBaseResponse
     {
         public LaserC71Response()
         {
             this.Type = 0x71;
         }
 
-        public override List<BaseResponse> Decode(BasePackage bp, OriginalBytes obytes)
+        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
         {
             base.Decode(bp, obytes);
             if (CheckResponse(obytes.Data))

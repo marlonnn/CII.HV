@@ -8,21 +8,28 @@ namespace CII.LAR.Protocol
 {
     public class MotorBaseRequest
     {
+        protected CIICodeArea codeArea;
+        public CIICodeArea CodeArea
+        {
+            get { return this.codeArea; }
+            set { this.codeArea = value; }
+        }
+
+
         public MotorBaseRequest()
         {
-
+            CodeArea = new CIICodeArea();
         }
 
-        public virtual List<CIIBasePackage> Encode()
+        public virtual CIIBasePackage Encode()
         {
-            return CreateOneList();
+            return null;
         }
 
-
-        protected List<CIIBasePackage> CreateOneList()
+        protected void CopyDataLenght()
         {
-            List<CIIBasePackage> list = new List<CIIBasePackage>();
-            return list;
+            byte[] length = ByteHelper.IntToBytes2(this.CodeArea.Data.Length, 2);
+            Array.Copy(length, 0, this.CodeArea.DataLength, 0, 2);
         }
     }
 }

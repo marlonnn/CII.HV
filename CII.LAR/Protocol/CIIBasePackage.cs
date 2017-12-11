@@ -75,7 +75,7 @@ namespace CII.LAR.Protocol
         }
 
         /// <summary>
-        /// 出去帧头和帧尾数据 
+        /// 编码区数据（除了CRC16校验码）
         /// </summary>
         private byte[] appData;
 
@@ -95,17 +95,20 @@ namespace CII.LAR.Protocol
             set { this.markTail = value; }
         }
 
-        public CIIBasePackage(byte[] appData)
+        public CIIBasePackage(CIICodeArea codeArea, bool request = true)
         {
             this.markHead = new byte[] { 0x5D, 0x5B };
             this.DestLength = 0x01;
-            this.DestRegion = 0x21;
+            this.DestRegion = (byte)(request == true ? 0x21 : 0xFE);
 
             this.SourceLength = 0x01;
-            this.SourceRegion = 0xFE;
+            this.SourceRegion = (byte)(request == true ? 0xFE : 0x21);
 
-            this.appData = appData;
-
+            this.appData = new byte[1 + 1 + 2 + codeArea.Length];
+            this.appData[0] = codeArea.CommandCode;
+            this.appData[1] = codeArea.AdditionCode;
+            Array.Copy(codeArea.DataLength, 0, this.appData, 2, 2);
+            Array.Copy(codeArea.Data, 0, this.appData, 4, codeArea.Length);
             this.markTail = new byte[] { 0x5D, 0x5D };
         }
     }

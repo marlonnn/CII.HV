@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CII.LAR.MsgQueue
 {
-    public class MotorRxMsgQueue : ConcurrentQueue<MotorBaseRequest>
+    public class MotorRxMsgQueue : ConcurrentQueue<MotorBaseResponse>
     {
     }
 }

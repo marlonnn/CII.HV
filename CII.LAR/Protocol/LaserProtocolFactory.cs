@@ -171,7 +171,7 @@ namespace CII.LAR.Protocol
             {
                 IsBackground = true,
                 Priority = ThreadPriority.Normal,
-                Name = "DecodeThread"
+                Name = "Laser Decode Thread"
             };
             decodeThread.Start();
         }
@@ -205,7 +205,7 @@ namespace CII.LAR.Protocol
             {
                 IsBackground = true,
                 Priority = ThreadPriority.Normal,
-                Name = "DecodeThread"
+                Name = "Laser Encode Thread"
             };
             Encode = true;
             encodeThread.Start();

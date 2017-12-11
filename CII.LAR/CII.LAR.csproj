@@ -130,6 +130,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protocol\CIIBasePackage.cs" />
+    <Compile Include="Protocol\CRC16.cs" />
     <Compile Include="Protocol\LaserBasePackage.cs" />
     <Compile Include="Protocol\LaserBaseRequest.cs" />
     <Compile Include="Protocol\LaserBaseResponse.cs" />
@@ -137,7 +138,9 @@
     <Compile Include="Protocol\LaserProtocolFactory.cs" />
     <Compile Include="Protocol\MotorBaseRequest.cs" />
     <Compile Include="Protocol\MotorBaseResponse.cs" />
+    <Compile Include="Protocol\CIICodeArea.cs" />
     <Compile Include="Protocol\MotorProtocol.cs" />
+    <Compile Include="Protocol\MotorProtocolFactory.cs" />
     <Compile Include="Protocol\Original.cs" />
     <Compile Include="Protocol\OriginalBytes.cs" />
     <Compile Include="SysClass\FullScreen.cs" />

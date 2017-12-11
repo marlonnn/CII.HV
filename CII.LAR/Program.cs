@@ -18,8 +18,8 @@ namespace CII.LAR
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                byte[] temp = new byte[] { 0x01, 0x21, 0x01, 0xFE, 0x60, 0x66, 0x00, 0x07, 0x61, 0x01, 0x00, 0x00, 0x00, 0x00, 0x32};
-                //var v = BitConverter.GetBytes(Protocol.CRC16.Compute(temp));
+                //byte[] temp = new byte[] { 0x01, 0x21, 0x01, 0xFE, 0x60, 0x66, 0x00, 0x07, 0x61, 0x01, 0x00, 0x00, 0x00, 0x00, 0x32};
+                ////var v = BitConverter.GetBytes(Protocol.CRC16.Compute(temp));
                 ComTestForm view = new ComTestForm();
                 view.StartPosition = FormStartPosition.CenterScreen;
                 IController controller = new IController(view);

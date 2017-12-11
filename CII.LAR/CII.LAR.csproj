@@ -137,6 +137,7 @@
     <Compile Include="Protocol\MotorProtocolFactory.cs" />
     <Compile Include="Protocol\Original.cs" />
     <Compile Include="Protocol\OriginalBytes.cs" />
+    <Compile Include="SerialPortModel.cs" />
     <Compile Include="SysClass\FullScreen.cs" />
     <Compile Include="SysClass\HandleTaskBar.cs" />
     <Compile Include="UI\ArrayChangedEventArgs.cs" />

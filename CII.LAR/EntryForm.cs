@@ -15,6 +15,7 @@ namespace CII.LAR
 {
     public partial class EntryForm : Form
     {
+        private IController controller;
         private IDSCamera camera;
         private FullScreen fullScreen;
         private FormWindowState tempWindowState;
@@ -131,6 +132,11 @@ namespace CII.LAR
             System.Drawing.Rectangle rect;
             camera.SetSize(out rect);
             this.zwPictureBox.Bounds = rect;
+        }
+
+        private void autoSendTimer_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EntryForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonCapture = new System.Windows.Forms.ToolStripButton();
@@ -70,6 +71,7 @@
             this.freeRun = new System.Windows.Forms.ToolStripMenuItem();
             this.snapshot = new System.Windows.Forms.ToolStripMenuItem();
             this.zwPictureBox = new CII.LAR.UI.ZWPictureBox();
+            this.autoSendTimer = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zwPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -354,8 +356,16 @@
             resources.ApplyResources(this.zwPictureBox, "zwPictureBox");
             this.zwPictureBox.BackColor = System.Drawing.Color.Gray;
             this.zwPictureBox.Name = "zwPictureBox";
+            this.zwPictureBox.OffsetX = 0;
+            this.zwPictureBox.OffsetY = 0;
             this.zwPictureBox.TabStop = false;
             this.zwPictureBox.UnitOfMeasure = CII.LAR.DrawTools.enUniMis.mm;
+            this.zwPictureBox.Zoom = 1F;
+            // 
+            // autoSendTimer
+            // 
+            this.autoSendTimer.Interval = 200;
+            this.autoSendTimer.Tick += new System.EventHandler(this.autoSendTimer_Tick);
             // 
             // EntryForm
             // 
@@ -415,5 +425,6 @@
         private System.Windows.Forms.ToolStripMenuItem freeRunToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem snapshotToolStripMenuItem;
         private UI.ZWPictureBox zwPictureBox;
+        private System.Windows.Forms.Timer autoSendTimer;
     }
 }

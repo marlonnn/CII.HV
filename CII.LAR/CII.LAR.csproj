@@ -97,12 +97,6 @@
     <Compile Include="EntryForm.Designer.cs">
       <DependentUpon>EntryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="IController.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="LogHelper.cs" />
@@ -152,6 +146,12 @@
     <Compile Include="UI\CameraChooseForm.Designer.cs">
       <DependentUpon>CameraChooseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SerialPortForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SerialPortForm.Designer.cs">
+      <DependentUpon>SerialPortForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ProblemReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +183,9 @@
     <EmbeddedResource Include="Properties\Resources.zh-CN.resx" />
     <EmbeddedResource Include="UI\CameraChooseForm.resx">
       <DependentUpon>CameraChooseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SerialPortForm.resx">
+      <DependentUpon>SerialPortForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ZWPictureBox.resx">
       <DependentUpon>ZWPictureBox.cs</DependentUpon>
@@ -246,6 +249,7 @@
     <Content Include="Resources\Rulers.RulerOriginSnap.png" />
     <Content Include="Resources\scale.png" />
     <Content Include="Resources\screenshort.png" />
+    <Content Include="Resources\serial.png" />
     <Content Include="Resources\setting.png" />
     <Content Include="Resources\Simulator\egg.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

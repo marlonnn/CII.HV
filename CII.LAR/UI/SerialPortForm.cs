@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CII.LAR
+namespace CII.LAR.UI
 {
-    public partial class Form1 : Form
+    public partial class SerialPortForm : Form
     {
-        public Form1()
+        public SerialPortForm()
         {
             InitializeComponent();
         }

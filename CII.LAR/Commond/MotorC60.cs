@@ -207,6 +207,7 @@ namespace CII.LAR.Commond
                         Array.Copy(ByteHelper.IntToBytes2(TotalSteps61), 0, this.CodeArea.Data, 3, 4);
                         break;
                     case 0x62:
+
                         this.CodeArea.Data = new byte[7];
                         this.CodeArea.Data[0] = ControlSelection;
                         this.CodeArea.Data[1] = ControlMode62;

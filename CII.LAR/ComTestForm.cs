@@ -791,5 +791,64 @@ namespace CII.LAR
             request.TotalSteps61 = 50;
             motorProtocolFactory.SendMessage(request);
         }
+
+        private void btn6062_Click(object sender, EventArgs e)
+        {
+            var request = new MotorC60Request(0x60, 0x66);
+            request.ControlSelection = 0x62;
+            request.ControlMode62 = 0x01;
+            request.Direction62 = 0x00;
+            request.TotalSteps62 = 100;
+            motorProtocolFactory.SendMessage(request);
+        }
+
+        private void btn6060_Click(object sender, EventArgs e)
+        {
+            var request = new MotorC60Request(0x60, 0x66);
+            request.ControlSelection = 0x60;
+            request.ControlMode61 = 0x01;
+            request.Direction61 = 0x00;
+            request.TotalSteps61 = 50;
+
+            request.ControlMode62 = 0x01;
+            request.Direction62 = 0x00;
+            request.TotalSteps62 = 100;
+            motorProtocolFactory.SendMessage(request);
+        }
+
+        private void btn6055_Click(object sender, EventArgs e)
+        {
+            var request = new MotorC60Request(0x60, 0x55);
+            request.ControlSelection = 0x60;
+            motorProtocolFactory.SendMessage(request);
+        }
+
+        private void btn6055A0_Click(object sender, EventArgs e)
+        {
+            var request = new MotorC60Request(0x60, 0x55);
+            request.ControlSelection = 0xA0;
+            motorProtocolFactory.SendMessage(request);
+        }
+
+        private void btn605500_Click(object sender, EventArgs e)
+        {
+            var request = new MotorC60Request(0x60, 0x55);
+            request.ControlSelection = 0x00;
+            motorProtocolFactory.SendMessage(request);
+        }
+
+        private void btn605562_Click(object sender, EventArgs e)
+        {
+            var request = new MotorC60Request(0x60, 0x55);
+            request.ControlSelection = 0x62;
+            motorProtocolFactory.SendMessage(request);
+        }
+
+        private void btn605561_Click(object sender, EventArgs e)
+        {
+            var request = new MotorC60Request(0x60, 0x55);
+            request.ControlSelection = 0x61;
+            motorProtocolFactory.SendMessage(request);
+        }
     }
 }

@@ -102,10 +102,6 @@
       <Project>{8a2151d8-14e9-4173-afbb-1d325f33abf5}</Project>
       <Name>CII.Ins.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CII.Ins.Model\CII.Ins.Model.csproj">
-      <Project>{da67960d-cca8-41bf-9fcb-85f4c9d88705}</Project>
-      <Name>CII.Ins.Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\AlarmManager.xml">

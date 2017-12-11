@@ -96,6 +96,13 @@
             this.btn72 = new System.Windows.Forms.Button();
             this.btn73 = new System.Windows.Forms.Button();
             this.btnC60 = new System.Windows.Forms.Button();
+            this.btn6062 = new System.Windows.Forms.Button();
+            this.btn6060 = new System.Windows.Forms.Button();
+            this.btn6055 = new System.Windows.Forms.Button();
+            this.btn6055A0 = new System.Windows.Forms.Button();
+            this.btn605500 = new System.Windows.Forms.Button();
+            this.btn605561 = new System.Windows.Forms.Button();
+            this.btn605562 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -765,19 +772,96 @@
             // 
             // btnC60
             // 
-            this.btnC60.Location = new System.Drawing.Point(628, 31);
+            this.btnC60.Location = new System.Drawing.Point(627, 50);
             this.btnC60.Name = "btnC60";
             this.btnC60.Size = new System.Drawing.Size(75, 23);
             this.btnC60.TabIndex = 41;
-            this.btnC60.Text = "60";
+            this.btnC60.Text = "60 61";
             this.btnC60.UseVisualStyleBackColor = true;
             this.btnC60.Click += new System.EventHandler(this.btnC60_Click);
+            // 
+            // btn6062
+            // 
+            this.btn6062.Location = new System.Drawing.Point(627, 73);
+            this.btn6062.Name = "btn6062";
+            this.btn6062.Size = new System.Drawing.Size(75, 23);
+            this.btn6062.TabIndex = 42;
+            this.btn6062.Text = "60 62";
+            this.btn6062.UseVisualStyleBackColor = true;
+            this.btn6062.Click += new System.EventHandler(this.btn6062_Click);
+            // 
+            // btn6060
+            // 
+            this.btn6060.Location = new System.Drawing.Point(627, 28);
+            this.btn6060.Name = "btn6060";
+            this.btn6060.Size = new System.Drawing.Size(75, 23);
+            this.btn6060.TabIndex = 43;
+            this.btn6060.Text = "60 60";
+            this.btn6060.UseVisualStyleBackColor = true;
+            this.btn6060.Click += new System.EventHandler(this.btn6060_Click);
+            // 
+            // btn6055
+            // 
+            this.btn6055.Location = new System.Drawing.Point(627, 98);
+            this.btn6055.Name = "btn6055";
+            this.btn6055.Size = new System.Drawing.Size(75, 23);
+            this.btn6055.TabIndex = 44;
+            this.btn6055.Text = "60 55 60";
+            this.btn6055.UseVisualStyleBackColor = true;
+            this.btn6055.Click += new System.EventHandler(this.btn6055_Click);
+            // 
+            // btn6055A0
+            // 
+            this.btn6055A0.Location = new System.Drawing.Point(627, 121);
+            this.btn6055A0.Name = "btn6055A0";
+            this.btn6055A0.Size = new System.Drawing.Size(75, 23);
+            this.btn6055A0.TabIndex = 45;
+            this.btn6055A0.Text = "60 55 A0";
+            this.btn6055A0.UseVisualStyleBackColor = true;
+            this.btn6055A0.Click += new System.EventHandler(this.btn6055A0_Click);
+            // 
+            // btn605500
+            // 
+            this.btn605500.Location = new System.Drawing.Point(627, 145);
+            this.btn605500.Name = "btn605500";
+            this.btn605500.Size = new System.Drawing.Size(75, 23);
+            this.btn605500.TabIndex = 46;
+            this.btn605500.Text = "60 55 00";
+            this.btn605500.UseVisualStyleBackColor = true;
+            this.btn605500.Click += new System.EventHandler(this.btn605500_Click);
+            // 
+            // btn605561
+            // 
+            this.btn605561.Location = new System.Drawing.Point(627, 168);
+            this.btn605561.Name = "btn605561";
+            this.btn605561.Size = new System.Drawing.Size(75, 23);
+            this.btn605561.TabIndex = 47;
+            this.btn605561.Text = "60 55 61";
+            this.btn605561.UseVisualStyleBackColor = true;
+            this.btn605561.Click += new System.EventHandler(this.btn605561_Click);
+            // 
+            // btn605562
+            // 
+            this.btn605562.Location = new System.Drawing.Point(627, 191);
+            this.btn605562.Name = "btn605562";
+            this.btn605562.Size = new System.Drawing.Size(75, 23);
+            this.btn605562.TabIndex = 48;
+            this.btn605562.Text = "60 55 62";
+            this.btn605562.UseVisualStyleBackColor = true;
+            this.btn605562.Click += new System.EventHandler(this.btn605562_Click);
             // 
             // ComTestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(833, 439);
+            this.Controls.Add(this.btn605562);
+            this.Controls.Add(this.btn605561);
+            this.Controls.Add(this.btn605500);
+            this.Controls.Add(this.btn6055A0);
+            this.Controls.Add(this.btn6055);
+            this.Controls.Add(this.btn6060);
+            this.Controls.Add(this.btn6062);
             this.Controls.Add(this.btnC60);
             this.Controls.Add(this.btn73);
             this.Controls.Add(this.btn72);
@@ -887,6 +971,13 @@
         private System.Windows.Forms.Button btn72;
         private System.Windows.Forms.Button btn73;
         private System.Windows.Forms.Button btnC60;
+        private System.Windows.Forms.Button btn6062;
+        private System.Windows.Forms.Button btn6060;
+        private System.Windows.Forms.Button btn6055;
+        private System.Windows.Forms.Button btn6055A0;
+        private System.Windows.Forms.Button btn605500;
+        private System.Windows.Forms.Button btn605561;
+        private System.Windows.Forms.Button btn605562;
     }
 }
 

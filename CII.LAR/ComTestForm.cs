@@ -20,6 +20,8 @@ namespace CII.LAR
         private int receiveBytesCount = 0;
         private LaserProtocolFactory laserProtocolFactory;
 
+        private MotorProtocolFactory motorProtocolFactory;
+
         public ComTestForm()
         {
             InitializeComponent();
@@ -36,19 +38,27 @@ namespace CII.LAR
 
         private void ComTestForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            laserProtocolFactory.DestroyDecodeThread();
-            laserProtocolFactory.DestroyEncodeThread();
+            //laserProtocolFactory.DestroyDecodeThread();
+            //laserProtocolFactory.DestroyEncodeThread();
+
+            motorProtocolFactory.DestroyDecodeThread();
+            motorProtocolFactory.DestroyEncodeThread();
         }
 
         private void ComTestForm_Load(object sender, EventArgs e)
         {
-            laserProtocolFactory.StartDecodeThread();
-            laserProtocolFactory.StartEncodeThread();
+            //laserProtocolFactory.StartDecodeThread();
+            //laserProtocolFactory.StartEncodeThread();
+
+            motorProtocolFactory.StartDecodeThread();
+            motorProtocolFactory.StartEncodeThread();
         }
 
         private void InitializeLaserProtocolFactory()
         {
             laserProtocolFactory = LaserProtocolFactory.GetInstance();
+
+            motorProtocolFactory = MotorProtocolFactory.GetInstance();
         }
 
         /// <summary>
@@ -525,9 +535,23 @@ namespace CII.LAR
 
         private void autoSendtimer_Tick(object sender, EventArgs e)
         {
-            if (laserProtocolFactory.TxQueue != null && laserProtocolFactory.TxQueue.Count > 0)
+            //if (laserProtocolFactory.TxQueue != null && laserProtocolFactory.TxQueue.Count > 0)
+            //{
+            //    var list = laserProtocolFactory.TxQueue.PopAll();
+            //    foreach (var o in list)
+            //    {
+            //        var originalByte = o as OriginalBytes;
+            //        if (originalByte != null)
+            //        {
+            //            controller.SendDataToCom(originalByte.Data);
+            //            LogHelper.GetLogger<ComTestForm>().Debug(string.Format("发送的消息为： {0}", ByteHelper.Byte2ReadalbeXstring(originalByte.Data)));
+            //        }   
+            //    }
+            //}
+
+            if (motorProtocolFactory.TxQueue != null && motorProtocolFactory.TxQueue.Count > 0)
             {
-                var list = laserProtocolFactory.TxQueue.PopAll();
+                var list = motorProtocolFactory.TxQueue.PopAll();
                 foreach (var o in list)
                 {
                     var originalByte = o as OriginalBytes;
@@ -535,7 +559,7 @@ namespace CII.LAR
                     {
                         controller.SendDataToCom(originalByte.Data);
                         LogHelper.GetLogger<ComTestForm>().Debug(string.Format("发送的消息为： {0}", ByteHelper.Byte2ReadalbeXstring(originalByte.Data)));
-                    }   
+                    }
                 }
             }
             //sendbtn_Click(sender, e);
@@ -756,6 +780,16 @@ namespace CII.LAR
         private void btn72_Click(object sender, EventArgs e)
         {
             laserProtocolFactory.SendMessage(new LaserC72Request(20));
+        }
+
+        private void btnC60_Click(object sender, EventArgs e)
+        {
+            var request = new MotorC60Request(0x60, 0x66);
+            request.ControlSelection = 0x61;
+            request.ControlMode61 = 0x01;
+            request.Direction61 = 0x00;
+            request.TotalSteps61 = 50;
+            motorProtocolFactory.SendMessage(request);
         }
     }
 }

@@ -33,7 +33,7 @@ namespace CII.LAR.Protocol
 
         public int Length
         {
-            get { return this.dataLength.Length; }
+            get { return this.Data.Length; }
         }
 
         /// <summary>

@@ -279,6 +279,7 @@
             this.toolStripButtonSetting.Image = global::CII.LAR.Properties.Resources.setting;
             this.toolStripButtonSetting.Name = "toolStripButtonSetting";
             resources.ApplyResources(this.toolStripButtonSetting, "toolStripButtonSetting");
+            this.toolStripButtonSetting.Click += new System.EventHandler(this.toolStripButtonSetting_Click);
             // 
             // toolStripButtonOpen
             // 

@@ -33,6 +33,46 @@ namespace CII.LAR
             }
         }
 
+        #region BaseCtrl
+        private BaseCtrl baseCtrl;
+        [BrowsableAttribute(false)]
+        [System.ComponentModel.Localizable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public BaseCtrl BaseCtrl
+        {
+            get
+            {
+                return this.baseCtrl;
+            }
+        }
+        private List<BaseCtrl> controls;
+        public List<BaseCtrl> BaseCtrls
+        {
+            get { return this.controls; }
+            private set { this.controls = value; }
+        }
+
+        private SettingCtrl settingCtrl;
+        #endregion
+
+        #region dragging base control
+        /// <summary>
+        /// indicating mouse dragging mode of Statistics control
+        /// </summary>
+        private bool isDraggingBaseCtrl = false;
+
+        /// <summary>
+        /// last Statistics mouse position of mouse dragging
+        /// </summary>
+        private Point lastBaseCtrlMousePos;
+
+        /// <summary>
+        /// the new area where the Statistics control to be dragged
+        /// </summary>
+        private Rectangle draggingBaseCtrlRectangle; 
+        #endregion
+
         public EntryForm()
         {
             InitializeComponent();
@@ -41,6 +81,96 @@ namespace CII.LAR
             camera.CameraSizeControl.AOIChanged += OnDisplayChanged;
             this.SizeChanged += EntryForm_SizeChanged;
             this.MouseWheel += EntryForm_MouseWheel;
+            this.Load += EntryForm_Load;
+            InitializeControls();
+        }
+
+        private void EntryForm_Load(object sender, EventArgs e)
+        {
+            InitializeBaseCtrls();
+        }
+
+        private void InitializeControls()
+        {
+            CtrlFactory.InitializeCtrlFactory(this.zwPictureBox);
+            BaseCtrls = new List<BaseCtrl>();
+
+            settingCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SettingCtrl>(CtrlType.SettingCtrl);
+            settingCtrl.UpdateSimulatorImageHandler += UpdateSimulatorImageHandler;
+            BaseCtrls.Add(settingCtrl);
+            //controls.Add(CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment));
+            //controls.Add(CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserHoleSize>(CtrlType.LaserHoleSize));
+        }
+
+        private void InitializeBaseCtrls()
+        {
+            foreach (var ctrl in this.BaseCtrls)
+            {
+                if (ctrl.Name == "LaserAlignment")
+                {
+                    ctrl.Location = new Point(this.Width - ctrl.Width - 5, this.Height - ctrl.Height - 20);
+                }
+                else
+                {
+                    ctrl.Location = new Point(this.Width - ctrl.Width - 5, 30);
+                }
+                //ctrl.Location = new Point(this.Width - ctrl.Width - 5, 30);
+                //ctrl.ClickDelegateHandler += new BaseCtrl.ClickDelegate(this.ClickDelegateHandler);
+                ctrl.MouseDown += BaseCtrl_MouseDown;
+                ctrl.MouseMove += BaseCtrl_MouseMove;
+                ctrl.MouseUp += BaseCtrl_MouseUp;
+                ctrl.Visible = false;
+                ctrl.Enabled = false;
+                this.Controls.Add(ctrl);
+            }
+        }
+
+        private void UpdateSimulatorImageHandler(int selectIndex)
+        {
+            string fileName = "";
+            switch (selectIndex)
+            {
+                case 0:
+                    fileName = string.Format("{0}\\Resources\\Simulator\\Embryo.bmp", System.Environment.CurrentDirectory);
+                    break;
+                case 1:
+                    fileName = string.Format("{0}\\Resources\\Simulator\\Sperm.bmp", System.Environment.CurrentDirectory);
+                    break;
+                case 2:
+                    fileName = string.Format("{0}\\Resources\\Simulator\\Embryo 8 Cell.bmp", System.Environment.CurrentDirectory);
+                    break;
+                case 3:
+                    fileName = string.Format("{0}\\Resources\\Simulator\\egg.bmp", System.Environment.CurrentDirectory);
+                    break;
+                default:
+                    fileName = string.Format("{0}\\Resources\\Simulator\\egg.bmp", System.Environment.CurrentDirectory);
+                    break;
+            }
+            this.zwPictureBox.LoadImage(fileName);
+        }
+
+        /// <summary>
+        /// show laser control
+        /// </summary>
+        /// <param name="show"></param>
+        public void ShowBaseCtrl(bool show, int index)
+        {
+            for (int i = 0; i < this.controls.Count; i++)
+            {
+                if (this.controls[i].ShowIndex == index)
+                {
+                    this.baseCtrl = controls[index];
+                    this.Controls.SetChildIndex(this.baseCtrl, 0);
+                    this.baseCtrl.Visible = show;
+                    this.baseCtrl.Enabled = show;
+                    //EnableAppearanceButton();
+                }
+                else
+                {
+                    this.controls[i].Visible = !show;
+                    this.controls[i].Enabled = !show;
+                }
+            }
         }
 
         private void EntryForm_MouseWheel(object sender, MouseEventArgs e)
@@ -137,6 +267,80 @@ namespace CII.LAR
         private void autoSendTimer_Tick(object sender, EventArgs e)
         {
 
+        }
+
+        /// <summary>
+        /// Draw a reversible rectangle
+        /// </summary>
+        /// <param name="rect">rectangle to be drawn</param>
+        private void DrawReversibleRect(Rectangle rect)
+        {
+            // Convert the location of rectangle to screen coordinates.
+            rect.Location = PointToScreen(rect.Location);
+
+            // Draw the reversible frame.
+            ControlPaint.DrawReversibleFrame(rect, Color.Navy, FrameStyle.Thick);
+        }
+
+        private void BaseCtrl_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (isDraggingBaseCtrl)
+            {
+                isDraggingBaseCtrl = false;
+
+                // erase dragging rectangle
+                DrawReversibleRect(draggingBaseCtrlRectangle);
+
+                // move the Statistics control to the new position
+                this.baseCtrl.Location = draggingBaseCtrlRectangle.Location;
+            }
+        }
+
+        private void BaseCtrl_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (isDraggingBaseCtrl)
+            {
+                // caculating next candidate dragging rectangle
+                Point newPos = new Point(draggingBaseCtrlRectangle.Location.X + e.X - lastBaseCtrlMousePos.X,
+                                         draggingBaseCtrlRectangle.Location.Y + e.Y - lastBaseCtrlMousePos.Y);
+                Rectangle newPictureTrackerArea = draggingBaseCtrlRectangle;
+                newPictureTrackerArea.Location = newPos;
+
+                // saving current mouse position to be used for next dragging
+                this.lastBaseCtrlMousePos = new Point(e.X, e.Y);
+
+                // dragging Statistics ctrl only when the candidate dragging rectangle
+                // is within this ScalablePictureBox control
+                if (this.ClientRectangle.Contains(newPictureTrackerArea))
+                {
+                    // removing previous rubber-band frame
+                    DrawReversibleRect(draggingBaseCtrlRectangle);
+
+                    // updating dragging rectangle
+                    draggingBaseCtrlRectangle = newPictureTrackerArea;
+
+                    // drawing new rubber-band frame
+                    DrawReversibleRect(draggingBaseCtrlRectangle);
+                }
+            }
+        }
+
+        private void BaseCtrl_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            isDraggingBaseCtrl = true;    // Make a note that we are dragging Statistics control
+
+            // Store the last mouse poit for this rubber-band rectangle.
+            lastBaseCtrlMousePos.X = e.X;
+            lastBaseCtrlMousePos.Y = e.Y;
+
+            // draw initial dragging rectangle
+            draggingBaseCtrlRectangle = this.baseCtrl.Bounds;
+            DrawReversibleRect(draggingBaseCtrlRectangle);
+        }
+
+        private void toolStripButtonSetting_Click(object sender, EventArgs e)
+        {
+            ShowBaseCtrl(true, 0);
         }
     }
 }

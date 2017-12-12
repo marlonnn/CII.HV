@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="StrLaserAppearanceTitle" xml:space="preserve">
-    <value>Laser Appearance</value>
-  </data>
   <data name="labelItem1Str" xml:space="preserve">
     <value>Ready</value>
   </data>
@@ -148,14 +145,14 @@
   <data name="setting" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\setting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Zoom in" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Zoom in.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="laser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\laser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="StrLaserAlignmentTitle" xml:space="preserve">
     <value>Laser Target Alignment</value>
   </data>
-  <data name="laser" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\laser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="StrLaserAppearanceTitle" xml:space="preserve">
+    <value>Laser Appearance</value>
   </data>
   <data name="StrStatisticsTitle" xml:space="preserve">
     <value>Statistics Information</value>
@@ -175,6 +172,9 @@
   <data name="ruler" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ruler.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="idscamera1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\idscamera.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="StrRulerAppearanceTitle" xml:space="preserve">
     <value>Ruler Appearance</value>
   </data>
@@ -192,6 +192,9 @@
   </data>
   <data name="StrOK" xml:space="preserve">
     <value>OK</value>
+  </data>
+  <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="idscamera" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\idscamera.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -217,7 +220,13 @@
   <data name="open" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\open.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="idscamera1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\idscamera.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Zoom in" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Zoom in.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

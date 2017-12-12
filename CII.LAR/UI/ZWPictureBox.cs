@@ -181,8 +181,6 @@ namespace CII.LAR.UI
 
         private Point mousePos = Point.Empty;
 
-        private ToolLine toolLine;
-
         public ZWPictureBox()
         {
             this.SetStyle(ControlStyles.UserPaint |
@@ -192,14 +190,23 @@ namespace CII.LAR.UI
             this.MouseMove += ZWPictureBox_MouseMove;
             this.MouseUp += ZWPictureBox_MouseUp;
             this.GraphicsList = new GraphicsList();
-            toolLine = new ToolLine();
+            InitializeTools();
+        }
+
+        private void InitializeTools()
+        {
+            Tools = new Tool[(int)DrawToolType.NumberOfDrawTools];
+            Tools[(int)DrawToolType.None] = new Tool();
+            Tools[(int)DrawToolType.Pointer] = new ToolPointer();
+            Tools[(int)DrawToolType.Line] = new ToolLine();
+            Tools[(int)DrawToolType.Move] = new ToolMove();
         }
 
         private void ZWPictureBox_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                toolLine.OnMouseUp(this, e);
+                Tools[(int)ActiveTool].OnMouseUp(this, e);
             }
         }
 
@@ -207,7 +214,7 @@ namespace CII.LAR.UI
         {
             if (e.Button == MouseButtons.Left || e.Button == MouseButtons.None)
             {
-                toolLine.OnMouseMove(this, e);
+                Tools[(int)ActiveTool].OnMouseMove(this, e);
             }
         }
 
@@ -215,7 +222,7 @@ namespace CII.LAR.UI
         {
             if (e.Button == MouseButtons.Left)
             {
-                toolLine.OnMouseDown(this, e);
+                Tools[(int)ActiveTool].OnMouseDown(this, e);
             }
         }
 
@@ -245,6 +252,20 @@ namespace CII.LAR.UI
         {
             var height = this.Height;
             var width = this.Width;
+        }
+
+        public int StartOffsetX = 0;
+
+        public void LoadImage(string imageFile)
+        {
+            this.Image = Image.FromFile(imageFile);
+            StartOffsetX = (this.Width - this.Image.Width) / 2;
+            this.OffsetX = StartOffsetX;
+            this.OffsetY = (this.Height - this.Image.Height) / 2 + 25;
+            //imageTracker.Picture = this.Image;
+            this.zoom = 1;
+            //this.imageTracker.ScalePercent = zoom * 100;
+            this.Invalidate();
         }
 
         public delegate void EscapeFullScreen();

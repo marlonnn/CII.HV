@@ -33,6 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar.Design, Version=11.1.0.4, Culture=neutral, PublicKeyToken=90f470f34c89ccaf, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\DotNetBar for Windows Forms\DevComponents.DotNetBar.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\DotNetBar for Windows Forms\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Reference\log4net.dll</HintPath>
@@ -82,6 +90,7 @@
     <Compile Include="DrawTools\DrawObject.cs" />
     <Compile Include="DrawTools\DrawPolygon.cs" />
     <Compile Include="DrawTools\DrawPolyLine.cs" />
+    <Compile Include="DrawTools\DrawRectangle.cs" />
     <Compile Include="DrawTools\GraphicsList.cs" />
     <Compile Include="DrawTools\GraphicsProperties.cs" />
     <Compile Include="DrawTools\GraphicsPropertiesManager.cs" />
@@ -89,8 +98,10 @@
     <Compile Include="DrawTools\Statistics.cs" />
     <Compile Include="DrawTools\Tool.cs" />
     <Compile Include="DrawTools\ToolLine.cs" />
+    <Compile Include="DrawTools\ToolMove.cs" />
     <Compile Include="DrawTools\ToolObject.cs" />
     <Compile Include="DrawTools\ToolPointer.cs" />
+    <Compile Include="DrawTools\ToolRectangle.cs" />
     <Compile Include="EntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,12 +151,30 @@
     <Compile Include="SerialPortModel.cs" />
     <Compile Include="SysClass\FullScreen.cs" />
     <Compile Include="SysClass\HandleTaskBar.cs" />
+    <Compile Include="SysClass\HolePulsePoint.cs" />
+    <Compile Include="SysClass\JsonFile.cs" />
+    <Compile Include="SysClass\LaserConfig.cs" />
+    <Compile Include="SysClass\Lense.cs" />
+    <Compile Include="SysClass\SysConfig.cs" />
     <Compile Include="UI\ArrayChangedEventArgs.cs" />
+    <Compile Include="UI\BaseCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\BaseCtrl.Designer.cs">
+      <DependentUpon>BaseCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\CameraChooseForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\CameraChooseForm.Designer.cs">
       <DependentUpon>CameraChooseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CtrlFactory.cs" />
+    <Compile Include="UI\HoleSizeCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\HoleSizeCtrl.designer.cs">
+      <DependentUpon>HoleSizeCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\SerialPortForm.cs">
       <SubType>Form</SubType>
@@ -158,6 +187,24 @@
     </Compile>
     <Compile Include="UI\ProblemReportForm.Designer.cs">
       <DependentUpon>ProblemReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SettingCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SettingCtrl.designer.cs">
+      <DependentUpon>SettingCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SystemInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SystemInfoForm.designer.cs">
+      <DependentUpon>SystemInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TransparentButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\TransparentButton.designer.cs">
+      <DependentUpon>TransparentButton.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ZWPictureBox.cs">
       <SubType>Component</SubType>
@@ -182,17 +229,38 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.zh-CN.resx" />
+    <EmbeddedResource Include="UI\BaseCtrl.resx">
+      <DependentUpon>BaseCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\CameraChooseForm.resx">
       <DependentUpon>CameraChooseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\HoleSizeCtrl.resx">
+      <DependentUpon>HoleSizeCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\SerialPortForm.resx">
       <DependentUpon>SerialPortForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SettingCtrl.resx">
+      <DependentUpon>SettingCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SettingCtrl.zh-CN.resx">
+      <DependentUpon>SettingCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SystemInfoForm.resx">
+      <DependentUpon>SystemInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\TransparentButton.resx">
+      <DependentUpon>TransparentButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ZWPictureBox.resx">
       <DependentUpon>ZWPictureBox.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ZWPictureBox.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Config\config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

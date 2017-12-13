@@ -86,6 +86,7 @@
     <Compile Include="Commond\LaserC71.cs" />
     <Compile Include="Commond\MotorC60.cs" />
     <Compile Include="DrawTools\DrawCircle.cs" />
+    <Compile Include="DrawTools\DrawEllipse.cs" />
     <Compile Include="DrawTools\DrawLine.cs" />
     <Compile Include="DrawTools\DrawObject.cs" />
     <Compile Include="DrawTools\DrawPolygon.cs" />
@@ -97,10 +98,13 @@
     <Compile Include="DrawTools\MeasureSystem.cs" />
     <Compile Include="DrawTools\Statistics.cs" />
     <Compile Include="DrawTools\Tool.cs" />
+    <Compile Include="DrawTools\ToolEllipse.cs" />
     <Compile Include="DrawTools\ToolLine.cs" />
     <Compile Include="DrawTools\ToolMove.cs" />
     <Compile Include="DrawTools\ToolObject.cs" />
     <Compile Include="DrawTools\ToolPointer.cs" />
+    <Compile Include="DrawTools\ToolPolygon.cs" />
+    <Compile Include="DrawTools\ToolPolyLine.cs" />
     <Compile Include="DrawTools\ToolRectangle.cs" />
     <Compile Include="EntryForm.cs">
       <SubType>Form</SubType>

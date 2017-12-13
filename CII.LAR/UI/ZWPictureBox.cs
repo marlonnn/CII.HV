@@ -205,7 +205,9 @@ namespace CII.LAR.UI
             Tools[(int)DrawToolType.Pointer] = new ToolPointer();
             Tools[(int)DrawToolType.Line] = new ToolLine();
             Tools[(int)DrawToolType.Move] = new ToolMove();
+            Tools[(int)DrawToolType.Ellipse] = new ToolEllipse();
             Tools[(int)DrawToolType.Rectangle] = new ToolRectangle();
+            Tools[(int)DrawToolType.PolyLine] = new ToolPolyLine();
         }
 
         private void ZWPictureBox_MouseUp(object sender, MouseEventArgs e)
@@ -230,6 +232,11 @@ namespace CII.LAR.UI
             {
                 Tools[(int)ActiveTool].OnMouseDown(this, e);
             }
+        }
+
+        protected override void OnMouseDoubleClick(MouseEventArgs e)
+        {
+            tools[(int)ActiveTool].OnDoubleClick(this, e);
         }
 
         public void ZoomOnMouseCenter(MouseEventArgs e, float oldzoom)

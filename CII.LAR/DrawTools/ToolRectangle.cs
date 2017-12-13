@@ -26,7 +26,7 @@ namespace CII.LAR.DrawTools
             clickCount++;
             if (clickCount % 2 == 1)
             {
-                startPoint = new Point(e.X, e.Y);
+                base.OnMouseDown(pictureBox, e);
                 drawObject = new DrawRectangle(pictureBox, startPoint.X, startPoint.Y, 1, 1);
                 AddNewObject(pictureBox, drawObject);
             }
@@ -40,9 +40,18 @@ namespace CII.LAR.DrawTools
             {
                 if (clickCount % 2 == 1)
                 {
-                    Point point = new Point(e.X, e.Y);
-                    pictureBox.GraphicsList[0].MoveHandleTo(pictureBox, point, 5);
-                    //pictureBox.Refresh();
+                    Point point = Point.Empty;
+                    if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
+                    {
+                        point = new Point(e.X, e.Y);
+                        pictureBox.GraphicsList[0].MoveHandleTo(pictureBox, point, 5);
+                    }
+                    else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                    {
+                        point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
+                        pictureBox.GraphicsList[0].MoveHandleTo(pictureBox, point, 5);
+                        pictureBox.Refresh();
+                    }
                 }
             }
         }
@@ -51,7 +60,7 @@ namespace CII.LAR.DrawTools
         {
             if (clickCount % 2 == 0)
             {
-                endPoint = new Point(e.X, e.Y);
+                base.OnMouseUp(pictureBox, e);
                 Rectangle rectangle = new Rectangle(new Point(startPoint.X - 1, startPoint.Y - 1), new Size(2, 2));
                 if (rectangle.Contains(endPoint))
                 {

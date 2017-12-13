@@ -481,7 +481,7 @@ namespace CII.LAR
 
         private void toolStripButtonPolygon_Click(object sender, EventArgs e)
         {
-            this.zwPictureBox.ActiveTool = DrawToolType.Polygon;
+            this.zwPictureBox.ActiveTool = DrawToolType.PolyLine;
         }
     }
 }

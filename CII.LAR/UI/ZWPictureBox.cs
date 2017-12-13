@@ -308,6 +308,11 @@ namespace CII.LAR.UI
             }
         }
 
+        public void GraphicsPropertiesChangedHandler(DrawObject drawObject, GraphicsProperties graphicsProperties)
+        {
+            this.Invalidate();
+        }
+
         public delegate void EscapeFullScreen();
         public EscapeFullScreen EscapeFullScreenHandler;
         protected override void OnKeyDown(KeyEventArgs e)

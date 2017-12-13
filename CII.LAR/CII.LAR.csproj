@@ -175,11 +175,23 @@
     <Compile Include="UI\HoleSizeCtrl.designer.cs">
       <DependentUpon>HoleSizeCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\LaserAppearanceCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LaserAppearanceCtrl.designer.cs">
+      <DependentUpon>LaserAppearanceCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ListViewEx.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\ListViewItemArray.cs" />
     <Compile Include="UI\ListViewItemEx.cs" />
+    <Compile Include="UI\RulerAppearanceCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\RulerAppearanceCtrl.designer.cs">
+      <DependentUpon>RulerAppearanceCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SerialPortCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -244,6 +256,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\HoleSizeCtrl.resx">
       <DependentUpon>HoleSizeCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LaserAppearanceCtrl.resx">
+      <DependentUpon>LaserAppearanceCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LaserAppearanceCtrl.zh-CN.resx">
+      <DependentUpon>LaserAppearanceCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RulerAppearanceCtrl.resx">
+      <DependentUpon>RulerAppearanceCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RulerAppearanceCtrl.zh-CN.resx">
+      <DependentUpon>RulerAppearanceCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SerialPortCtrl.resx">
       <DependentUpon>SerialPortCtrl.cs</DependentUpon>

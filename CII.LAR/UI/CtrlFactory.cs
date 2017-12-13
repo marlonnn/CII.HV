@@ -25,6 +25,8 @@ namespace CII.LAR.UI
         private SettingCtrl settingCtrl;
         private SerialPortCtrl serialPortCtrl;
         private StatisticsCtrl statisticsCtrl;
+        private LaserAppearanceCtrl laserAppearanceCtrl;
+        private RulerAppearanceCtrl rulerAppearanceCtrl;
 
         public static void InitializeCtrlFactory(ZWPictureBox pictureBox)
         {
@@ -36,6 +38,8 @@ namespace CII.LAR.UI
             settingCtrl = new SettingCtrl(pictureBox);
             serialPortCtrl = new SerialPortCtrl();
             statisticsCtrl = new StatisticsCtrl();
+            laserAppearanceCtrl = new LaserAppearanceCtrl();
+            rulerAppearanceCtrl = new RulerAppearanceCtrl();
         }
 
         public static CtrlFactory GetCtrlFactory()
@@ -80,6 +84,12 @@ namespace CII.LAR.UI
                         break;
                 case CtrlType.StatisticsCtrl:
                     ctrl = this.statisticsCtrl as T;
+                    break;
+                case CtrlType.LaserAppreance:
+                    ctrl = laserAppearanceCtrl as T;
+                    break;
+                case CtrlType.RulerAppearanceCtrl:
+                    ctrl = rulerAppearanceCtrl as T;
                     break;
             }
             return ctrl;

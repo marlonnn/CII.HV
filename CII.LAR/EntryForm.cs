@@ -85,6 +85,8 @@ namespace CII.LAR
         private SettingCtrl settingCtrl;
         private SerialPortCtrl serialPortCtrl;
         private StatisticsCtrl statisticsCtrl;
+        private LaserAppearanceCtrl laserAppearanceCtrl;
+        private RulerAppearanceCtrl rulerAppearanceCtrl;
         #endregion
 
         #region dragging base control
@@ -161,6 +163,12 @@ namespace CII.LAR
 
             statisticsCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<StatisticsCtrl>(CtrlType.StatisticsCtrl);
             BaseCtrls.Add(statisticsCtrl);
+
+            laserAppearanceCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAppearanceCtrl>(CtrlType.LaserAppreance);
+            BaseCtrls.Add(laserAppearanceCtrl);
+
+            rulerAppearanceCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<RulerAppearanceCtrl>(CtrlType.RulerAppearanceCtrl);
+            BaseCtrls.Add(rulerAppearanceCtrl);
         }
 
         private void InitializeBaseCtrls()
@@ -176,13 +184,50 @@ namespace CII.LAR
                     ctrl.Location = new Point(this.Width - ctrl.Width - 5, 30);
                 }
                 //ctrl.Location = new Point(this.Width - ctrl.Width - 5, 30);
-                //ctrl.ClickDelegateHandler += new BaseCtrl.ClickDelegate(this.ClickDelegateHandler);
+                ctrl.ClickDelegateHandler += new BaseCtrl.ClickDelegate(this.ClickDelegateHandler);
                 ctrl.MouseDown += BaseCtrl_MouseDown;
                 ctrl.MouseMove += BaseCtrl_MouseMove;
                 ctrl.MouseUp += BaseCtrl_MouseUp;
                 ctrl.Visible = false;
                 ctrl.Enabled = false;
                 this.Controls.Add(ctrl);
+            }
+        }
+
+        /// <summary>
+        /// switch to different base control
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="name"></param>
+        private void ClickDelegateHandler(object sender, string name)
+        {
+            switch (name)
+            {
+                case "Setting control":
+                    ShowBaseCtrl(true, this.BaseCtrls[0]);
+                    break;
+                case "Serial Port Config":
+                    ShowBaseCtrl(true, this.BaseCtrls[1]);
+                    break;
+                case "Statistics control":
+                    ShowBaseCtrl(true, this.BaseCtrls[2]);
+                    break;
+                case "Laser Appearance":
+                    ShowBaseCtrl(true, this.BaseCtrls[3]);
+                    break;
+                case "Ruler Appearance":
+                    ShowBaseCtrl(true, this.BaseCtrls[4]);
+                    break;
+                //case "Laser Control":
+                //    ShowBaseCtrl(true, this.BaseCtrls[0]);
+                //    break;
+
+                    //case "Laser Alignment":
+                    //    ShowBaseCtrl(true, this.BaseCtrls[5]);
+                    //    break;
+                    //case "Laser Hole Size":
+                    //    ShowBaseCtrl(true, this.BaseCtrls[6]);
+                    //    break;
             }
         }
 
@@ -232,6 +277,23 @@ namespace CII.LAR
                     this.controls[i].Enabled = !show;
                 }
             }
+        }
+
+        /// <summary>
+        /// switch to the base control
+        /// </summary>
+        /// <param name="show"></param>
+        /// <param name="baseCtrl"></param>
+        public void ShowBaseCtrl(bool show, BaseCtrl baseCtrl)
+        {
+            this.baseCtrl.Visible = false;
+            this.baseCtrl.Enabled = false;
+
+            this.baseCtrl = baseCtrl;
+            this.Controls.SetChildIndex(this.baseCtrl, 0);
+
+            this.baseCtrl.Visible = show;
+            this.baseCtrl.Enabled = show;
         }
 
         private void EntryForm_MouseWheel(object sender, MouseEventArgs e)

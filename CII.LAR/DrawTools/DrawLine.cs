@@ -64,7 +64,7 @@ namespace CII.LAR.DrawTools
             this.pictureBox = pictureBox;
             startDataPoint = new Point(x1, y1);
             endDataPoint = new Point(x2, y2);
-            //this.GraphicsProperties.GraphicsPropertiesChangedHandler += pictureBox.GraphicsPropertiesChangedHandler;
+            this.GraphicsProperties.GraphicsPropertiesChangedHandler += pictureBox.GraphicsPropertiesChangedHandler;
         }
 
         private void InitializeGraphicsProperties()

@@ -8,6 +8,16 @@ namespace CII.LAR
 {
     static class Program
     {
+        private static ExpManager expManager;
+
+        /// <summary>
+        /// The exp document manager
+        /// </summary>
+        public static ExpManager ExpManager
+        {
+            get { return expManager; }
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -25,6 +35,8 @@ namespace CII.LAR
                 //IController controller = new IController(view);
 
                 //Application.Run(view);
+
+                expManager = new ExpManager();
 
                 Application.Run(new EntryForm());
             }

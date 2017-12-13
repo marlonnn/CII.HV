@@ -108,6 +108,7 @@
     <Compile Include="EntryForm.Designer.cs">
       <DependentUpon>EntryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExpManager.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="LogHelper.cs" />
@@ -335,9 +336,7 @@
     <Content Include="Resources\zoom.png" />
     <Content Include="Resources\zoomFit.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ExpClass\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -222,8 +222,8 @@ namespace CII.LAR.UI
 
         private void btnSimulator_Click(object sender, EventArgs e)
         {
+            Program.ExpManager.MachineStatus = MachineStatus.Simulate;
             pictureBox.LoadImage(string.Format("{0}\\Resources\\Simulator\\Embryo.bmp", System.Environment.CurrentDirectory));
-            //this.cmbImage.SelectedIndex = 0;
         }
     }
 }

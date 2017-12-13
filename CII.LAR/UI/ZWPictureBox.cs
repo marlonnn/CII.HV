@@ -74,7 +74,10 @@ namespace CII.LAR.UI
             }
             set
             {
-                zoom = value;
+                if (value != zoom)
+                {
+                    this.zoom = value;
+                }
             }
         }
 
@@ -227,7 +230,7 @@ namespace CII.LAR.UI
             }
         }
 
-        private void ZoomOnMouseCenter(MouseEventArgs e, float oldzoom)
+        public void ZoomOnMouseCenter(MouseEventArgs e, float oldzoom)
         {
             mousePos = e.Location;
             Point mousePosNow = e.Location;
@@ -263,9 +266,12 @@ namespace CII.LAR.UI
             StartOffsetX = (this.Width - this.Image.Width) / 2;
             this.OffsetX = StartOffsetX;
             this.OffsetY = (this.Height - this.Image.Height) / 2;
-            //imageTracker.Picture = this.Image;
-            this.zoom = 1;
-            //this.imageTracker.ScalePercent = zoom * 100;
+            ////imageTracker.Picture = this.Image;
+            //this.zoom = 1;
+            ////this.imageTracker.ScalePercent = zoom * 100;
+            //int width = (int)(1392 * zoom);
+            //int height = (int)(1080 * zoom);
+            //this.Bounds = new Rectangle((1920 - width) / 2, (1080 - height) / 2, width, height);
             this.Invalidate();
         }
 

@@ -51,7 +51,13 @@ namespace CII.LAR
             }
             set
             {
-                zoom = value;
+                if (value != this.zoom)
+                {
+                    this.zoom = value;
+                }
+                //if zoom == 1,enable draw tools and show graphics
+                //else disable draw tools and hide graphics
+                EnableDrawTools(this.zoom == 1);
             }
         }
 
@@ -222,23 +228,47 @@ namespace CII.LAR
 
         private void EntryForm_MouseWheel(object sender, MouseEventArgs e)
         {
-            var value = e.Delta;
-            float oldzoom = zoom;
-            if (e.Delta > 0)
+            if (Program.ExpManager.MachineStatus == MachineStatus.Unknown)
             {
-                zoom += 0.5F;
+                return;
             }
-            else if (e.Delta < 0)
+            else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
             {
-                if (Zoom > 1)
+                float oldzoom = this.zwPictureBox.Zoom;
+                if (e.Delta > 0)
                 {
-                    zoom = Math.Max(zoom - 0.5F, 0.01F);
+                    this.zwPictureBox.Zoom += 0.5F;
+                    this.zwPictureBox.ZoomOnMouseCenter(e, oldzoom);
                 }
+                else if (e.Delta < 0)
+                {
+                    if (this.zwPictureBox.Zoom > 1)
+                    {
+                        this.zwPictureBox.Zoom = Math.Max(this.zwPictureBox.Zoom - 0.5F, 0.01F);
+                        this.zwPictureBox.ZoomOnMouseCenter(e, oldzoom);
+                    }
+                }
+                this.zwPictureBox.Invalidate();
             }
-            int width = (int)(1392 * zoom);
-            int height = (int)(1080 * zoom);
-            this.zwPictureBox.Bounds = new Rectangle((1920 - width) / 2, (1080 - height) / 2, width, height);
-            this.zwPictureBox.Invalidate();
+            else if (Program.ExpManager.MachineStatus == MachineStatus.Success)
+            {
+                float oldzoom = Zoom;
+                if (e.Delta > 0)
+                {
+                    Zoom += 0.5F;
+                }
+                else if (e.Delta < 0)
+                {
+                    if (Zoom > 1)
+                    {
+                        Zoom = Math.Max(Zoom - 0.5F, 0.01F);
+                    }
+                }
+                int width = (int)(1392 * Zoom);
+                int height = (int)(1080 * Zoom);
+                this.zwPictureBox.Bounds = new Rectangle((1920 - width) / 2, (1080 - height) / 2, width, height);
+                //this.zwPictureBox.Invalidate();
+            }
         }
 
         protected override void OnLoad(EventArgs e)
@@ -345,6 +375,24 @@ namespace CII.LAR
             }
         }
 
+        private void toolStripButtonSetting_Click(object sender, EventArgs e)
+        {
+            ShowBaseCtrl(true, 0);
+        }
+
+        private void toolStripButtonPort_Click(object sender, EventArgs e)
+        {
+            ShowBaseCtrl(true, 1);
+        }
+
+        private void EnableDrawTools(bool Enabled)
+        {
+            this.toolStripButtonLine.Enabled = Enabled;
+            this.toolStripButtonRectangle.Enabled = Enabled;
+            this.toolStripButtonPolygon.Enabled = Enabled;
+            this.toolStripButtonElliptical.Enabled = Enabled;
+        }
+
         #region 鼠标点击拖动BaseCtrl
         /// <summary>
         /// Draw a reversible rectangle
@@ -413,17 +461,7 @@ namespace CII.LAR
             // draw initial dragging rectangle
             draggingBaseCtrlRectangle = this.baseCtrl.Bounds;
             DrawReversibleRect(draggingBaseCtrlRectangle);
-        } 
+        }
         #endregion
-
-        private void toolStripButtonSetting_Click(object sender, EventArgs e)
-        {
-            ShowBaseCtrl(true, 0);
-        }
-
-        private void toolStripButtonPort_Click(object sender, EventArgs e)
-        {
-            ShowBaseCtrl(true, 1);
-        }
     }
 }

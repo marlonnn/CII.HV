@@ -126,6 +126,7 @@
             resources.ApplyResources(this.laserOpenCloseSpbtn, "laserOpenCloseSpbtn");
             this.laserOpenCloseSpbtn.Name = "laserOpenCloseSpbtn";
             this.laserOpenCloseSpbtn.UseVisualStyleBackColor = true;
+            this.laserOpenCloseSpbtn.Click += new System.EventHandler(this.laserOpenCloseSpbtn_Click);
             // 
             // laserBaudRateCbx
             // 
@@ -224,6 +225,7 @@
             resources.ApplyResources(this.motorOpenCloseSpbtn, "motorOpenCloseSpbtn");
             this.motorOpenCloseSpbtn.Name = "motorOpenCloseSpbtn";
             this.motorOpenCloseSpbtn.UseVisualStyleBackColor = true;
+            this.motorOpenCloseSpbtn.Click += new System.EventHandler(this.motorOpenCloseSpbtn_Click);
             // 
             // motorBaudRateCbx
             // 

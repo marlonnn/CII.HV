@@ -1,4 +1,5 @@
 ﻿using CII.LAR.Opertion;
+using CII.LAR.Protocol;
 using CII.LAR.SysClass;
 using CII.LAR.UI;
 using System;
@@ -15,7 +16,28 @@ namespace CII.LAR
 {
     public partial class EntryForm : Form
     {
+        #region 串口相关
+        private LaserProtocolFactory laserProtocolFactory;
+        public LaserProtocolFactory LaserProtocolFactory
+        {
+            get { return this.laserProtocolFactory; }
+            private set { this.laserProtocolFactory = value; }
+        }
+
+        private MotorProtocolFactory motorProtocolFactory;
+        public MotorProtocolFactory MotorProtocolFactory
+        {
+            get { return this.motorProtocolFactory; }
+            private set { this.motorProtocolFactory = value; }
+        }
+
         private IController controller;
+        public IController SerialController
+        {
+            get { return this.controller; }
+        } 
+        #endregion
+
         private IDSCamera camera;
         private FullScreen fullScreen;
         private FormWindowState tempWindowState;
@@ -83,12 +105,34 @@ namespace CII.LAR
             this.SizeChanged += EntryForm_SizeChanged;
             this.MouseWheel += EntryForm_MouseWheel;
             this.Load += EntryForm_Load;
+            this.FormClosing += EntryForm_FormClosing;
             InitializeControls();
+        }
+
+        private void EntryForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            LaserProtocolFactory.DestroyDecodeThread();
+            LaserProtocolFactory.DestroyEncodeThread();
+
+            MotorProtocolFactory.DestroyDecodeThread();
+            MotorProtocolFactory.DestroyEncodeThread();
+            this.autoSendTimer.Enabled = false;
         }
 
         private void EntryForm_Load(object sender, EventArgs e)
         {
             InitializeBaseCtrls();
+
+            MotorProtocolFactory = MotorProtocolFactory.GetInstance();
+            LaserProtocolFactory = LaserProtocolFactory.GetInstance();
+
+            LaserProtocolFactory.StartDecodeThread();
+            LaserProtocolFactory.StartEncodeThread();
+
+            MotorProtocolFactory.StartDecodeThread();
+            MotorProtocolFactory.StartEncodeThread();
+
+            this.autoSendTimer.Enabled = true;
         }
 
         private void InitializeControls()
@@ -101,6 +145,7 @@ namespace CII.LAR
             BaseCtrls.Add(settingCtrl);
 
             serialPortCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SerialPortCtrl>(CtrlType.SerialPort);
+            controller = new IController(serialPortCtrl);
             BaseCtrls.Add(serialPortCtrl);
         }
 
@@ -269,11 +314,38 @@ namespace CII.LAR
             this.zwPictureBox.Bounds = rect;
         }
 
+        /// <summary>
+        /// 通过串口发送给激光器或者电机
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void autoSendTimer_Tick(object sender, EventArgs e)
         {
-
+            if (LaserProtocolFactory.GetInstance().TxQueue != null)
+            {
+                var laserOriginalBytes = LaserProtocolFactory.GetInstance().TxQueue.PopAll();
+                if (laserOriginalBytes != null  && laserOriginalBytes.Count > 0)
+                {
+                    foreach (OriginalBytes ob in laserOriginalBytes)
+                    {
+                        this.SerialController.SendDataToLaserCom(ob.Data);
+                    }
+                }
+            }
+            if (MotorProtocolFactory.GetInstance().TxQueue != null)
+            {
+                var motorOriginalBytes = MotorProtocolFactory.GetInstance().TxQueue.PopAll();
+                if (motorOriginalBytes != null && motorOriginalBytes.Count > 0)
+                {
+                    foreach (OriginalBytes ob in motorOriginalBytes)
+                    {
+                        this.SerialController.SendDataToMotorCom(ob.Data);
+                    }
+                }
+            }
         }
 
+        #region 鼠标点击拖动BaseCtrl
         /// <summary>
         /// Draw a reversible rectangle
         /// </summary>
@@ -341,7 +413,8 @@ namespace CII.LAR
             // draw initial dragging rectangle
             draggingBaseCtrlRectangle = this.baseCtrl.Bounds;
             DrawReversibleRect(draggingBaseCtrlRectangle);
-        }
+        } 
+        #endregion
 
         private void toolStripButtonSetting_Click(object sender, EventArgs e)
         {

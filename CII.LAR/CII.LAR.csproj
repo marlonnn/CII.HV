@@ -111,12 +111,6 @@
     <Compile Include="IController.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="LogHelper.cs" />
-    <Compile Include="ComTestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ComTestForm.designer.cs">
-      <DependentUpon>ComTestForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="MessageBoxManager.cs" />
     <Compile Include="MiniDump.cs" />
     <Compile Include="MsgQueue\ConcurrentQueue.cs" />
@@ -209,9 +203,6 @@
     <Compile Include="UI\ZWPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="ComTestForm.resx">
-      <DependentUpon>ComTestForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="EntryForm.resx">
       <DependentUpon>EntryForm.cs</DependentUpon>
     </EmbeddedResource>

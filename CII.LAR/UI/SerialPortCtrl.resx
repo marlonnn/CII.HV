@@ -675,198 +675,6 @@
   <data name="&gt;&gt;laserStopBitsCbx.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="&gt;&gt;motorStatus.Name" xml:space="preserve">
-    <value>motorStatus</value>
-  </data>
-  <data name="&gt;&gt;motorStatus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;motorStatus.Parent" xml:space="preserve">
-    <value>groupBoxMotor</value>
-  </data>
-  <data name="&gt;&gt;motorStatus.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;motorHandshakingcbx.Name" xml:space="preserve">
-    <value>motorHandshakingcbx</value>
-  </data>
-  <data name="&gt;&gt;motorHandshakingcbx.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;motorHandshakingcbx.Parent" xml:space="preserve">
-    <value>groupBoxMotor</value>
-  </data>
-  <data name="&gt;&gt;motorHandshakingcbx.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>groupBoxMotor</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;motorDataBitsCbx.Name" xml:space="preserve">
-    <value>motorDataBitsCbx</value>
-  </data>
-  <data name="&gt;&gt;motorDataBitsCbx.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;motorDataBitsCbx.Parent" xml:space="preserve">
-    <value>groupBoxMotor</value>
-  </data>
-  <data name="&gt;&gt;motorDataBitsCbx.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;motorComListCbx.Name" xml:space="preserve">
-    <value>motorComListCbx</value>
-  </data>
-  <data name="&gt;&gt;motorComListCbx.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;motorComListCbx.Parent" xml:space="preserve">
-    <value>groupBoxMotor</value>
-  </data>
-  <data name="&gt;&gt;motorComListCbx.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>groupBoxMotor</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;motorOpenCloseSpbtn.Name" xml:space="preserve">
-    <value>motorOpenCloseSpbtn</value>
-  </data>
-  <data name="&gt;&gt;motorOpenCloseSpbtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;motorOpenCloseSpbtn.Parent" xml:space="preserve">
-    <value>groupBoxMotor</value>
-  </data>
-  <data name="&gt;&gt;motorOpenCloseSpbtn.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;motorBaudRateCbx.Name" xml:space="preserve">
-    <value>motorBaudRateCbx</value>
-  </data>
-  <data name="&gt;&gt;motorBaudRateCbx.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;motorBaudRateCbx.Parent" xml:space="preserve">
-    <value>groupBoxMotor</value>
-  </data>
-  <data name="&gt;&gt;motorBaudRateCbx.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>groupBoxMotor</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;label10.Name" xml:space="preserve">
-    <value>label10</value>
-  </data>
-  <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>groupBoxMotor</value>
-  </data>
-  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;motorParityCbx.Name" xml:space="preserve">
-    <value>motorParityCbx</value>
-  </data>
-  <data name="&gt;&gt;motorParityCbx.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;motorParityCbx.Parent" xml:space="preserve">
-    <value>groupBoxMotor</value>
-  </data>
-  <data name="&gt;&gt;motorParityCbx.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
-  </data>
-  <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>groupBoxMotor</value>
-  </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
-    <value>groupBoxMotor</value>
-  </data>
-  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;motorStopBitsCbx.Name" xml:space="preserve">
-    <value>motorStopBitsCbx</value>
-  </data>
-  <data name="&gt;&gt;motorStopBitsCbx.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;motorStopBitsCbx.Parent" xml:space="preserve">
-    <value>groupBoxMotor</value>
-  </data>
-  <data name="&gt;&gt;motorStopBitsCbx.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="groupBoxMotor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>190, 27</value>
-  </data>
-  <data name="groupBoxMotor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 355</value>
-  </data>
-  <data name="groupBoxMotor.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="groupBoxMotor.Text" xml:space="preserve">
-    <value>Motor Serial Port</value>
-  </data>
-  <data name="&gt;&gt;groupBoxMotor.Name" xml:space="preserve">
-    <value>groupBoxMotor</value>
-  </data>
-  <data name="&gt;&gt;groupBoxMotor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxMotor.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;groupBoxMotor.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="motorStatus.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1238,6 +1046,30 @@
   </data>
   <data name="&gt;&gt;motorStopBitsCbx.ZOrder" xml:space="preserve">
     <value>13</value>
+  </data>
+  <data name="groupBoxMotor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>190, 27</value>
+  </data>
+  <data name="groupBoxMotor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 355</value>
+  </data>
+  <data name="groupBoxMotor.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="groupBoxMotor.Text" xml:space="preserve">
+    <value>Motor Serial Port</value>
+  </data>
+  <data name="&gt;&gt;groupBoxMotor.Name" xml:space="preserve">
+    <value>groupBoxMotor</value>
+  </data>
+  <data name="&gt;&gt;groupBoxMotor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxMotor.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;groupBoxMotor.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

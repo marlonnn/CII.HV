@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CII.LAR.Protocol;
+using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
@@ -35,6 +36,8 @@ namespace CII.LAR
                 try
                 {
                     laserSerialPort.Read(data, 0, len);
+                    LaserProtocolFactory.GetInstance().RxQueue.Push(new OriginalBytes(DateTime.Now, data));
+                    LogHelper.GetLogger<SerialPortModel>().Error(string.Format("激光器接受到的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(data)));
                 }
                 catch (System.Exception ex)
                 {
@@ -58,6 +61,8 @@ namespace CII.LAR
                 try
                 {
                     motorSerialPort.Read(data, 0, len);
+                    MotorProtocolFactory.GetInstance().RxQueue.Push(new OriginalBytes(DateTime.Now, data));
+                    LogHelper.GetLogger<SerialPortModel>().Error(string.Format("电机接受到的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(data)));
                 }
                 catch (System.Exception ex)
                 {
@@ -81,6 +86,7 @@ namespace CII.LAR
             try
             {
                 laserSerialPort.Write(bytes, 0, bytes.Length);
+                LogHelper.GetLogger<SerialPortModel>().Error(string.Format("激光器发送的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(bytes)));
             }
             catch (System.Exception ex)
             {
@@ -100,6 +106,7 @@ namespace CII.LAR
             try
             {
                 motorSerialPort.Write(bytes, 0, bytes.Length);
+                LogHelper.GetLogger<SerialPortModel>().Error(string.Format("电机发送的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(bytes)));
             }
             catch (System.Exception ex)
             {

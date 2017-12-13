@@ -8,16 +8,18 @@ namespace CII.LAR
 {
     public class IController
     {
-        ComModel comModel = new ComModel();
-        IView view;
-
+        private SerialPortModel model;
+        private IView view;
         public IController(IView view)
         {
+            model = new SerialPortModel();
             this.view = view;
             view.SetController(this);
-            comModel.comCloseEvent += new SerialPortEventHandler(view.CloseComEvent);
-            comModel.comOpenEvent += new SerialPortEventHandler(view.OpenComEvent);
-            comModel.comReceiveDataEvent += new SerialPortEventHandler(view.ComReceiveDataEvent);
+            model.laserComCloseEvent += new SerialPortEventHandler(view.LaserCloseComEvent);
+            model.laserComOpenEvent += new SerialPortEventHandler(view.LaserOpenComEvent);
+
+            model.motorComCloseEvent += new SerialPortEventHandler(view.MotorCloseComEvent);
+            model.motorComOpenEvent += new SerialPortEventHandler(view.MotorOpenComEvent);
         }
 
         /// <summary>
@@ -91,50 +93,47 @@ namespace CII.LAR
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public bool SendDataToCom(Byte[] data)
+        public bool SendDataToLaserCom(Byte[] data)
         {
-            return comModel.Send(data);
+            return model.LaserSendData(data);
         }
 
         /// <summary>
-        /// Send string to serial port
+        /// send bytes to serial port
         /// </summary>
-        /// <param name="str"></param>
+        /// <param name="data"></param>
         /// <returns></returns>
-        public bool SendDataToCom(String str)
+        public bool SendDataToMotorCom(Byte[] data)
         {
-            if (str != null && str != "")
-            {
-                return comModel.Send(Encoding.Default.GetBytes(str));
-            }
-            return true;
+            return model.MotorSendData(data);
         }
 
-        /// <summary>
-        /// Open serial port in comModel
-        /// </summary>
-        /// <param name="portName"></param>
-        /// <param name="baudRate"></param>
-        /// <param name="dataBits"></param>
-        /// <param name="stopBits"></param>
-        /// <param name="parity"></param>
-        /// <param name="handshake"></param>
-        public void OpenSerialPort(string portName, String baudRate,
+        public void OpenLaserSerialPort(string portName, String baudRate,
             string dataBits, string stopBits, string parity, string handshake)
         {
             if (portName != null && portName != "")
             {
-                comModel.Open(portName, baudRate, dataBits, stopBits, parity, handshake);
+                model.LaserSerialPortOpen(portName, baudRate, dataBits, stopBits, parity, handshake);
             }
         }
 
-        /// <summary>
-        /// Close serial port in comModel
-        /// </summary>
-        public void CloseSerialPort()
+        public void OpenMotorSerialPort(string portName, String baudRate,
+            string dataBits, string stopBits, string parity, string handshake)
         {
-            comModel.Close();
+            if (portName != null && portName != "")
+            {
+                model.MotorSerialPortOpen(portName, baudRate, dataBits, stopBits, parity, handshake);
+            }
         }
 
+        public void CloseLaserSerialPort()
+        {
+            model.CloseLaserSerialThread();
+        }
+
+        public void CloseMotorSerialPort()
+        {
+            model.CloseMotorSerialThread();
+        }
     }
 }

@@ -420,6 +420,7 @@ namespace CII.LAR
                 {
                     SetCameraSize();
                     camera.DisplayLive();
+                    Program.ExpManager.MachineStatus = MachineStatus.LiveVideo;
                 }
             }
         }

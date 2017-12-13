@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CII.LAR.DrawTools;
 using System.Drawing.Drawing2D;
+using System.IO;
+using System.Resources;
 
 namespace CII.LAR.UI
 {
@@ -38,6 +40,8 @@ namespace CII.LAR.UI
 
     public partial class ZWPictureBox : PictureBox
     {
+        private static Cursor s_cursor = new Cursor(new MemoryStream((byte[])new ResourceManager(typeof(ZWPictureBox)).GetObject("Cross")));
+        private bool mousePressed;
         //current offset of image
         private int offsetX;
         public int OffsetX
@@ -191,6 +195,27 @@ namespace CII.LAR.UI
 
         private Point mousePos = Point.Empty;
 
+        private bool laserFunction;
+        public bool LaserFunction
+        {
+            get { return laserFunction; }
+            set
+            {
+                if (value != laserFunction)
+                {
+                    laserFunction = value;
+                    if (value)
+                    {
+                        this.Cursor = s_cursor;
+                    }
+                    else
+                    {
+                        this.Cursor = Cursors.Default;
+                    }
+                }
+            }
+        }
+
         public ZWPictureBox()
         {
             this.SetStyle(ControlStyles.UserPaint |
@@ -214,22 +239,62 @@ namespace CII.LAR.UI
             Tools[(int)DrawToolType.Ellipse] = new ToolEllipse();
             Tools[(int)DrawToolType.Rectangle] = new ToolRectangle();
             Tools[(int)DrawToolType.PolyLine] = new ToolPolyLine();
+            Tools[(int)DrawToolType.Circle] = new ToolCircle();
+            Tools[(int)DrawToolType.MultipleCircle] = new ToolMultipleCircle();
+            Tools[(int)DrawToolType.Move] = new ToolMove();
         }
 
         #region Mouse down move and up
         private void ZWPictureBox_MouseUp(object sender, MouseEventArgs e)
         {
+            mousePressed = false;
             if (e.Button == MouseButtons.Left)
             {
-                Tools[(int)ActiveTool].OnMouseUp(this, e);
+                if (LaserFunction)
+                {
+                    if (Program.EntryForm.Laser != null)
+                    {
+                        Program.EntryForm.Laser.OnMouseUp(this, e);
+                    }
+                }
+                else
+                {
+                    if (activeTool != DrawToolType.Move)
+                    {
+                        Tools[(int)activeTool].OnMouseUp(this, e);
+                    }
+                }
             }
         }
 
         private void ZWPictureBox_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left || e.Button == MouseButtons.None)
+            if (LaserFunction)
             {
-                Tools[(int)ActiveTool].OnMouseMove(this, e);
+                if (Program.EntryForm.Laser != null)
+                {
+                    Program.EntryForm.Laser.OnMouseMove(this, e);
+                }
+            }
+            else
+            {
+                if ((e.Button == MouseButtons.Left || e.Button == MouseButtons.None) && ActiveTool != DrawToolType.Move)
+                {
+
+                    tools[(int)activeTool].OnMouseMove(this, e);
+                }
+                else if (e.Button == MouseButtons.Left && ActiveTool == DrawToolType.Move)
+                {
+                    //Point mousePosNow = e.Location;
+
+                    //int deltaX = mousePosNow.X - mouseDownPoint.X;
+                    //int deltaY = mousePosNow.Y - mouseDownPoint.Y;
+
+                    //OffsetX = (int)(startX + deltaX / zoom);
+                    //OffsetY = (int)(startY + deltaY / zoom);
+
+                    //this.Invalidate();
+                }
             }
         }
 
@@ -237,7 +302,27 @@ namespace CII.LAR.UI
         {
             if (e.Button == MouseButtons.Left)
             {
-                Tools[(int)ActiveTool].OnMouseDown(this, e);
+                if (!mousePressed)
+                {
+                    if (LaserFunction)
+                    {
+                        if (Program.EntryForm.Laser != null)
+                        {
+                            Program.EntryForm.Laser.OnMouseDown(this, e);
+                        }
+                    }
+                    else
+                    {
+                        if (activeTool == DrawToolType.Move)
+                        {
+
+                        }
+                        else
+                        {
+                            Tools[(int)ActiveTool].OnMouseDown(this, e);
+                        }
+                    }
+                }
             }
         }
 
@@ -267,6 +352,38 @@ namespace CII.LAR.UI
             // Where to move image to keep focus on one point
             offsetX = newImageX - oldImageX + offsetX;
             offsetY = newImageY - oldImageY + offsetY;
+        }
+
+        public void ZoomHandler(MouseEventArgs e, bool zoomIn)
+        {
+            if (zoomIn)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    float oldzoom = zoom;
+                    zoom += 1F;
+                    ZoomOnMouseCenter(e, oldzoom);
+                    //this.imageTracker.ScalePercent = oldzoom * 100;
+                    this.Invalidate();
+                }
+            }
+            else
+            {
+                ZoomFit();
+            }
+        }
+
+        public void ZoomFit()
+        {
+            if (this.Image != null)
+            {
+                this.OffsetX = (this.Width - this.Image.Width) / 2;
+                //this.OffsetY = 0;
+                this.OffsetY = (this.Height - this.Image.Height) / 2;
+            }
+            this.zoom = 1;
+            //this.imageTracker.ScalePercent = zoom * 100;
+            this.Invalidate();
         }
 
         public void OnLoad()
@@ -305,6 +422,13 @@ namespace CII.LAR.UI
             if (GraphicsList != null)
             {
                 GraphicsList.Draw(e.Graphics, this);
+            }
+            if (LaserFunction)
+            {
+                if (Program.EntryForm.Laser != null)
+                {
+                    Program.EntryForm.Laser.OnPaint(e);
+                }
             }
         }
 

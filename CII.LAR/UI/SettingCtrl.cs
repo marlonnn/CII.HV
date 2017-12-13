@@ -208,16 +208,16 @@ namespace CII.LAR.UI
 
         private void cmbLaser_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //switch (cmbLaser.SelectedIndex)
-            //{
-            //    case 0:
-            //        Program.ExpManager.LaserType = ExpClass.LaserType.SaturnFixed;
-            //        break;
-            //    case 1:
-            //        Program.ExpManager.LaserType = ExpClass.LaserType.SaturnActive;
-            //        break;
-            //}
-            //this.pictureBox.HolesNumberSlider(Program.ExpManager.LaserType == ExpClass.LaserType.SaturnActive);
+            switch (cmbLaser.SelectedIndex)
+            {
+                case 0:
+                    Program.ExpManager.LaserType = LaserType.SaturnFixed;
+                    break;
+                case 1:
+                    Program.ExpManager.LaserType = LaserType.SaturnActive;
+                    break;
+            }
+            Program.EntryForm.HolesNumberSlider(Program.ExpManager.LaserType == LaserType.SaturnActive);
         }
 
         private void btnSimulator_Click(object sender, EventArgs e)

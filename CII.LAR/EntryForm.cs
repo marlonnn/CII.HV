@@ -1,4 +1,5 @@
 ﻿using CII.LAR.DrawTools;
+using CII.LAR.Laser;
 using CII.LAR.Opertion;
 using CII.LAR.Protocol;
 using CII.LAR.SysClass;
@@ -17,6 +18,10 @@ namespace CII.LAR
 {
     public partial class EntryForm : Form
     {
+        public ZWPictureBox PictureBox
+        {
+            get { return this.zwPictureBox; }
+        }
         #region 串口相关
         private LaserProtocolFactory laserProtocolFactory;
         public LaserProtocolFactory LaserProtocolFactory
@@ -87,6 +92,9 @@ namespace CII.LAR
         private StatisticsCtrl statisticsCtrl;
         private LaserAppearanceCtrl laserAppearanceCtrl;
         private RulerAppearanceCtrl rulerAppearanceCtrl;
+        private LaserCtrl laserCtrl;
+        private LaserAlignment laserAlignment;
+
         #endregion
 
         #region dragging base control
@@ -107,6 +115,14 @@ namespace CII.LAR
         #endregion
 
         private ListViewItemArray listViewItemArray;
+
+        private BaseLaser laser;
+        public BaseLaser Laser
+        {
+            get { return this.laser; }
+            set { this.laser = value; }
+        }
+
 
         public EntryForm()
         {
@@ -169,6 +185,12 @@ namespace CII.LAR
 
             rulerAppearanceCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<RulerAppearanceCtrl>(CtrlType.RulerAppearanceCtrl);
             BaseCtrls.Add(rulerAppearanceCtrl);
+
+            laserCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserCtrl>(CtrlType.LaserCtrl);
+            BaseCtrls.Add(laserCtrl);
+
+            laserAlignment = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment);
+            BaseCtrls.Add(laserAlignment);
         }
 
         private void InitializeBaseCtrls()
@@ -638,6 +660,48 @@ namespace CII.LAR
         }
         #endregion
 
+        public void ButtonStateHandler(bool isEnable)
+        {
+            LaserAlignment laserAlignment = controls[5] as LaserAlignment;
+            if (laserAlignment != null)
+            {
+                laserAlignment.ButtonNext(isEnable);
+            }
+        }
+
+        public void HolesInfoChangeHandler(HolesInfo holesInfo)
+        {
+            if (holesInfo != null)
+            {
+                LaserCtrl laserCtrl = controls[5] as LaserCtrl;
+                if (laserCtrl != null)
+                {
+                    laserCtrl.UpdateHolesInfo(holesInfo);
+                }
+            }
+        }
+
+        public void HolesNumberSlider(bool isShow)
+        {
+            if (controls != null && controls.Count > 0)
+            {
+                LaserCtrl laserCtrl = controls[5] as LaserCtrl;
+                if (laserCtrl != null)
+                {
+                    laserCtrl.HolesNumberSlider(isShow);
+                }
+            }
+        }
+
+        public void UpdateHoleNumber(int value)
+        {
+            ActiveLaser activeLaser = Laser as ActiveLaser;
+            if (activeLaser != null)
+            {
+                activeLaser.UpdateHoleNumber(value);
+            }
+        }
+
         private void toolStripButtonSetting_Click(object sender, EventArgs e)
         {
             ShowBaseCtrl(true, 0);
@@ -672,6 +736,22 @@ namespace CII.LAR
         {
             this.zwPictureBox.ActiveTool = toolType;
             ShowBaseCtrl(true, 2);
+        }
+
+        private void toolStripButtonLaser_Click(object sender, EventArgs e)
+        {
+            this.PictureBox.LaserFunction = true;
+            if (Program.ExpManager.LaserType == LaserType.SaturnFixed)
+            {
+                this.PictureBox.ActiveTool = DrawToolType.Circle;
+            }
+            else if (Program.ExpManager.LaserType == LaserType.SaturnActive)
+            {
+                this.PictureBox.ActiveTool = DrawToolType.MultipleCircle;
+            }
+            ShowBaseCtrl(true, 5);
+            this.PictureBox.GraphicsList.DeleteAll();
+            this.PictureBox.Invalidate();
         }
     }
 }

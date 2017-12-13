@@ -278,6 +278,7 @@
             this.toolStripButtonLaser.Image = global::CII.LAR.Properties.Resources.laser;
             this.toolStripButtonLaser.Name = "toolStripButtonLaser";
             resources.ApplyResources(this.toolStripButtonLaser, "toolStripButtonLaser");
+            this.toolStripButtonLaser.Click += new System.EventHandler(this.toolStripButtonLaser_Click);
             // 
             // toolStripButtonSetting
             // 
@@ -370,6 +371,7 @@
             // 
             resources.ApplyResources(this.zwPictureBox, "zwPictureBox");
             this.zwPictureBox.BackColor = System.Drawing.Color.Gray;
+            this.zwPictureBox.DrawObject = null;
             this.zwPictureBox.Name = "zwPictureBox";
             this.zwPictureBox.OffsetX = 0;
             this.zwPictureBox.OffsetY = 0;

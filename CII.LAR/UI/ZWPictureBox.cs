@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CII.LAR.DrawTools;
+using System.Drawing.Drawing2D;
 
 namespace CII.LAR.UI
 {
@@ -261,11 +262,22 @@ namespace CII.LAR.UI
             this.Image = Image.FromFile(imageFile);
             StartOffsetX = (this.Width - this.Image.Width) / 2;
             this.OffsetX = StartOffsetX;
-            this.OffsetY = (this.Height - this.Image.Height) / 2 + 25;
+            this.OffsetY = (this.Height - this.Image.Height) / 2;
             //imageTracker.Picture = this.Image;
             this.zoom = 1;
             //this.imageTracker.ScalePercent = zoom * 100;
             this.Invalidate();
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (this.Image != null)
+            {
+                e.Graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                e.Graphics.ScaleTransform(zoom, zoom);
+                e.Graphics.TranslateTransform(OffsetX, OffsetY);
+                e.Graphics.DrawImage(this.Image, 0, 0);
+            }
         }
 
         public delegate void EscapeFullScreen();

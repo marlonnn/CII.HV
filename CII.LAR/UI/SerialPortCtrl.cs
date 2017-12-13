@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace CII.LAR.UI
 {
-    public partial class SerialPortForm : Form
+    public partial class SerialPortCtrl : BaseCtrl
     {
-        public SerialPortForm()
+        public SerialPortCtrl()
         {
             InitializeComponent();
+            this.ShowIndex = 1;
         }
     }
 }

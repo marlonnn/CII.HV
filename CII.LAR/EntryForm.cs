@@ -54,6 +54,7 @@ namespace CII.LAR
         }
 
         private SettingCtrl settingCtrl;
+        private SerialPortCtrl serialPortCtrl;
         #endregion
 
         #region dragging base control
@@ -98,8 +99,9 @@ namespace CII.LAR
             settingCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SettingCtrl>(CtrlType.SettingCtrl);
             settingCtrl.UpdateSimulatorImageHandler += UpdateSimulatorImageHandler;
             BaseCtrls.Add(settingCtrl);
-            //controls.Add(CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment));
-            //controls.Add(CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserHoleSize>(CtrlType.LaserHoleSize));
+
+            serialPortCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SerialPortCtrl>(CtrlType.SerialPort);
+            BaseCtrls.Add(serialPortCtrl);
         }
 
         private void InitializeBaseCtrls()
@@ -179,11 +181,14 @@ namespace CII.LAR
             float oldzoom = zoom;
             if (e.Delta > 0)
             {
-                zoom += 1F;
+                zoom += 0.5F;
             }
             else if (e.Delta < 0)
             {
-                zoom = Math.Max(zoom - 1F, 0.01F);
+                if (Zoom > 1)
+                {
+                    zoom = Math.Max(zoom - 0.5F, 0.01F);
+                }
             }
             int width = (int)(1392 * zoom);
             int height = (int)(1080 * zoom);
@@ -341,6 +346,11 @@ namespace CII.LAR
         private void toolStripButtonSetting_Click(object sender, EventArgs e)
         {
             ShowBaseCtrl(true, 0);
+        }
+
+        private void toolStripButtonPort_Click(object sender, EventArgs e)
+        {
+            ShowBaseCtrl(true, 1);
         }
     }
 }

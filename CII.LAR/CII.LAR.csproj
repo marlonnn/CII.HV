@@ -176,11 +176,11 @@
     <Compile Include="UI\HoleSizeCtrl.designer.cs">
       <DependentUpon>HoleSizeCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\SerialPortForm.cs">
-      <SubType>Form</SubType>
+    <Compile Include="UI\SerialPortCtrl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\SerialPortForm.Designer.cs">
-      <DependentUpon>SerialPortForm.cs</DependentUpon>
+    <Compile Include="UI\SerialPortCtrl.Designer.cs">
+      <DependentUpon>SerialPortCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ProblemReportForm.cs">
       <SubType>Form</SubType>
@@ -238,8 +238,8 @@
     <EmbeddedResource Include="UI\HoleSizeCtrl.resx">
       <DependentUpon>HoleSizeCtrl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\SerialPortForm.resx">
-      <DependentUpon>SerialPortForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\SerialPortCtrl.resx">
+      <DependentUpon>SerialPortCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SettingCtrl.resx">
       <DependentUpon>SettingCtrl.cs</DependentUpon>
@@ -310,6 +310,7 @@
     <Content Include="Resources\measure.png" />
     <Content Include="Resources\open.png" />
     <Content Include="Resources\polygon.png" />
+    <Content Include="Resources\port.png" />
     <Content Include="Resources\print preview.png" />
     <Content Include="Resources\print.png" />
     <Content Include="Resources\rectangular.png" />

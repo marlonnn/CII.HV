@@ -8,13 +8,14 @@ namespace CII.LAR.UI
 {
     public enum CtrlType
     {
+        SettingCtrl,
+        SerialPort,
         LaserAlignment,
         LaserAppreance,
         LaserCtrl,
         LaserHoleSize,
         StatisticsCtrl,
-        RulerAppearanceCtrl,
-        SettingCtrl
+        RulerAppearanceCtrl
     }
 
     public class CtrlFactory
@@ -22,6 +23,7 @@ namespace CII.LAR.UI
         private static CtrlFactory ctrlFactory;
 
         private SettingCtrl settingCtrl;
+        private SerialPortCtrl serialPortCtrl;
 
         public static void InitializeCtrlFactory(ZWPictureBox pictureBox)
         {
@@ -31,6 +33,7 @@ namespace CII.LAR.UI
         public CtrlFactory(ZWPictureBox pictureBox)
         {
             settingCtrl = new SettingCtrl(pictureBox);
+            serialPortCtrl = new SerialPortCtrl();
         }
 
         public static CtrlFactory GetCtrlFactory()
@@ -70,6 +73,9 @@ namespace CII.LAR.UI
                 case CtrlType.SettingCtrl:
                     ctrl = this.settingCtrl as T;
                     break;
+                case CtrlType.SerialPort:
+                    ctrl = this.serialPortCtrl as T;
+                        break;
             }
             return ctrl;
         }

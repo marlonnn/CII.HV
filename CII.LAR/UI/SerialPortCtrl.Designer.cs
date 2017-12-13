@@ -1,6 +1,6 @@
 ﻿namespace CII.LAR.UI
 {
-    partial class SerialPortForm
+    partial class SerialPortCtrl
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SerialPortForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SerialPortCtrl));
             this.groupBoxLaser = new System.Windows.Forms.GroupBox();
             this.laserStatus = new System.Windows.Forms.Label();
             this.laserHandshakingcbx = new System.Windows.Forms.ComboBox();
@@ -44,8 +44,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.laserStopBitsCbx = new System.Windows.Forms.ComboBox();
-            this.btnConfirm = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.groupBoxMotor = new System.Windows.Forms.GroupBox();
             this.motorStatus = new System.Windows.Forms.Label();
             this.motorHandshakingcbx = new System.Windows.Forms.ComboBox();
@@ -64,6 +62,10 @@
             this.groupBoxLaser.SuspendLayout();
             this.groupBoxMotor.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // closeButton
+            // 
+            resources.ApplyResources(this.closeButton, "closeButton");
             // 
             // groupBoxLaser
             // 
@@ -163,18 +165,6 @@
             resources.ApplyResources(this.laserStopBitsCbx, "laserStopBitsCbx");
             this.laserStopBitsCbx.Name = "laserStopBitsCbx";
             // 
-            // btnConfirm
-            // 
-            resources.ApplyResources(this.btnConfirm, "btnConfirm");
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.UseVisualStyleBackColor = true;
-            // 
-            // btnCancel
-            // 
-            resources.ApplyResources(this.btnCancel, "btnCancel");
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
             // groupBoxMotor
             // 
             this.groupBoxMotor.Controls.Add(this.motorStatus);
@@ -273,15 +263,17 @@
             resources.ApplyResources(this.motorStopBitsCbx, "motorStopBitsCbx");
             this.motorStopBitsCbx.Name = "motorStopBitsCbx";
             // 
-            // SerialPortForm
+            // SerialPortCtrl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBoxMotor);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.groupBoxLaser);
-            this.Name = "SerialPortForm";
+            this.Name = "SerialPortCtrl";
+            this.Title = "Serial port config";
+            this.Controls.SetChildIndex(this.groupBoxLaser, 0);
+            this.Controls.SetChildIndex(this.groupBoxMotor, 0);
+            this.Controls.SetChildIndex(this.closeButton, 0);
             this.groupBoxLaser.ResumeLayout(false);
             this.groupBoxLaser.PerformLayout();
             this.groupBoxMotor.ResumeLayout(false);
@@ -306,8 +298,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox laserStopBitsCbx;
-        private System.Windows.Forms.Button btnConfirm;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox groupBoxMotor;
         private System.Windows.Forms.ComboBox motorHandshakingcbx;
         private System.Windows.Forms.Label label1;

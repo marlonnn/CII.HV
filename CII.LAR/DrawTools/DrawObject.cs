@@ -85,7 +85,7 @@ namespace CII.LAR.DrawTools
 
         protected void RegisterUpdateStatisticsHandler()
         {
-            //this.UpdateStatisticInfoHandler += Program.ExpManager.ZWPictureBox.UpdateStatisticInfoHandler;
+            this.UpdateStatisticInfoHandler += Program.EntryForm.UpdateStatisticInfoHandler;
         }
 
         public void UpdateStatisticsInformation()

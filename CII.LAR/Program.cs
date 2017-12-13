@@ -18,6 +18,16 @@ namespace CII.LAR
             get { return expManager; }
         }
 
+        private static EntryForm entryForm;
+
+        /// <summary>
+        /// The reference of program main form
+        /// </summary>
+        public static EntryForm EntryForm
+        {
+            get { return entryForm; }
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -38,7 +48,9 @@ namespace CII.LAR
 
                 expManager = new ExpManager();
 
-                Application.Run(new EntryForm());
+                entryForm = new EntryForm();
+
+                Application.Run(entryForm);
             }
             catch (Exception ex)
             {

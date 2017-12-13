@@ -175,6 +175,11 @@
     <Compile Include="UI\HoleSizeCtrl.designer.cs">
       <DependentUpon>HoleSizeCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ListViewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\ListViewItemArray.cs" />
+    <Compile Include="UI\ListViewItemEx.cs" />
     <Compile Include="UI\SerialPortCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -192,6 +197,12 @@
     </Compile>
     <Compile Include="UI\SettingCtrl.designer.cs">
       <DependentUpon>SettingCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\StatisticsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\StatisticsCtrl.designer.cs">
+      <DependentUpon>StatisticsCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\SystemInfoForm.cs">
       <SubType>Form</SubType>
@@ -242,6 +253,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SettingCtrl.zh-CN.resx">
       <DependentUpon>SettingCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\StatisticsCtrl.resx">
+      <DependentUpon>StatisticsCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\StatisticsCtrl.zh-CN.resx">
+      <DependentUpon>StatisticsCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SystemInfoForm.resx">
       <DependentUpon>SystemInfoForm.cs</DependentUpon>
@@ -340,7 +357,12 @@
     <Content Include="Resources\zoom.png" />
     <Content Include="Resources\zoomFit.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ImageListView\ImageListView.csproj">
+      <Project>{0c295fb8-c6c6-4a40-9f19-05a43f353a04}</Project>
+      <Name>ImageListView</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -80,6 +80,12 @@ namespace CII.LAR.UI
                 }
             }
         }
+        private DrawObject drawObject;
+        public DrawObject DrawObject
+        {
+            get { return this.drawObject; }
+            set { this.drawObject = value; }
+        }
 
         #region Draw tool
         private GraphicsList drawObjects;
@@ -210,6 +216,7 @@ namespace CII.LAR.UI
             Tools[(int)DrawToolType.PolyLine] = new ToolPolyLine();
         }
 
+        #region Mouse down move and up
         private void ZWPictureBox_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -237,7 +244,8 @@ namespace CII.LAR.UI
         protected override void OnMouseDoubleClick(MouseEventArgs e)
         {
             tools[(int)ActiveTool].OnDoubleClick(this, e);
-        }
+        } 
+        #endregion
 
         public void ZoomOnMouseCenter(MouseEventArgs e, float oldzoom)
         {

@@ -1,4 +1,5 @@
-﻿using CII.LAR.Opertion;
+﻿using CII.LAR.DrawTools;
+using CII.LAR.Opertion;
 using CII.LAR.Protocol;
 using CII.LAR.SysClass;
 using CII.LAR.UI;
@@ -83,6 +84,7 @@ namespace CII.LAR
 
         private SettingCtrl settingCtrl;
         private SerialPortCtrl serialPortCtrl;
+        private StatisticsCtrl statisticsCtrl;
         #endregion
 
         #region dragging base control
@@ -99,13 +101,16 @@ namespace CII.LAR
         /// <summary>
         /// the new area where the Statistics control to be dragged
         /// </summary>
-        private Rectangle draggingBaseCtrlRectangle; 
+        private Rectangle draggingBaseCtrlRectangle;
         #endregion
+
+        private ListViewItemArray listViewItemArray;
 
         public EntryForm()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
+            listViewItemArray = new ListViewItemArray();
             camera = new IDSCamera(this.zwPictureBox);
             camera.CameraSizeControl.AOIChanged += OnDisplayChanged;
             this.SizeChanged += EntryForm_SizeChanged;
@@ -153,6 +158,9 @@ namespace CII.LAR
             serialPortCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SerialPortCtrl>(CtrlType.SerialPort);
             controller = new IController(serialPortCtrl);
             BaseCtrls.Add(serialPortCtrl);
+
+            statisticsCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<StatisticsCtrl>(CtrlType.StatisticsCtrl);
+            BaseCtrls.Add(statisticsCtrl);
         }
 
         private void InitializeBaseCtrls()
@@ -216,7 +224,7 @@ namespace CII.LAR
                     this.Controls.SetChildIndex(this.baseCtrl, 0);
                     this.baseCtrl.Visible = show;
                     this.baseCtrl.Enabled = show;
-                    //EnableAppearanceButton();
+                    EnableAppearanceButton();
                 }
                 else
                 {
@@ -345,6 +353,115 @@ namespace CII.LAR
         }
 
         /// <summary>
+        /// Update statistics information in listviewEx control
+        /// </summary>
+        /// <param name="statistics"></param>
+        public void UpdateStatisticInfoHandler(DrawObject drawObject, Statistics statistics)
+        {
+            AppendItems(drawObject, statistics);
+        }
+
+        /// <summary>
+        /// Append new list view item to StatisticsListView items
+        /// </summary>
+        /// <param name="drawObject"></param>
+        /// <param name="statistics"></param>
+        private void AppendItems(DrawObject drawObject, Statistics statistics)
+        {
+            if (this.zwPictureBox.DrawObject == null || drawObject.Name != this.zwPictureBox.DrawObject.Name)
+            {
+                try
+                {
+                    this.zwPictureBox.DrawObject = drawObject;
+                    ListViewItem lvi = new ListViewItem();
+                    lvi.Text = drawObject.Name;
+                    lvi.SubItems.Add(statistics.Circumference.ToString());
+                    lvi.SubItems.Add(statistics.Area.ToString());
+                    this.statisticsCtrl.StatisticsListView.Items.Add(lvi);
+                    ListViewItemEx listViewItemEx = new ListViewItemEx(lvi, drawObject);
+                    AddEmbeddedControlToListView(listViewItemEx);
+                    EnableAppearanceButton();
+                }
+                catch (Exception ee)
+                {
+                    LogHelper.GetLogger<ZWPictureBox>().Error(ee.Message);
+                    LogHelper.GetLogger<ZWPictureBox>().Error(ee.StackTrace);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Add embedded delete button control to list view
+        /// </summary>
+        /// <param name="listViewItemEx"></param>
+        private void AddEmbeddedControlToListView(ListViewItemEx listViewItemEx)
+        {
+            TransparentButton deleteButton = new TransparentButton();
+            deleteButton.BackColor = System.Drawing.Color.Transparent;
+            deleteButton.BackgroundImage = global::CII.LAR.Properties.Resources.delete;
+            deleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            deleteButton.Name = "removeButton";
+            deleteButton.Size = new System.Drawing.Size(16, 16);
+            deleteButton.Tag = listViewItemEx;
+            listViewItemArray.AddItem(listViewItemEx.ListViewItem);
+            this.statisticsCtrl.StatisticsListView.AddEmbeddedControl(deleteButton, 3, listViewItemArray.Count - 1);
+            deleteButton.Click += DeleteButton_Click;
+        }
+
+        /// <summary>
+        /// Delete button click event
+        /// delete listviewitem and draw object graphic
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            TransparentButton deleteButton = sender as TransparentButton;
+            if (deleteButton != null)
+            {
+                deleteButton.Click -= DeleteButton_Click;
+                ListViewItemEx listViewItemEx = (ListViewItemEx)deleteButton.Tag;
+                listViewItemArray.DeleteItem(listViewItemEx.ListViewItem);
+                this.statisticsCtrl.StatisticsListView.Items.Remove(listViewItemEx.ListViewItem);
+                this.statisticsCtrl.StatisticsListView.Invalidate();
+                DeleteDrawObject(listViewItemEx.DrawObject);
+            }
+        }
+
+        /// <summary>
+        /// delete draw objcect graphic
+        /// </summary>
+        /// <param name="drawObject"></param>
+        private void DeleteDrawObject(DrawObject drawObject)
+        {
+            if (drawObject != null)
+            {
+                this.zwPictureBox.GraphicsList.DeleteDrawObject(drawObject);
+                this.zwPictureBox.Invalidate();
+                EnableAppearanceButton();
+            }
+        }
+
+        /// <summary>
+        /// enable or disable ruler appearance button
+        /// </summary>
+        private void EnableAppearanceButton()
+        {
+            var baseCtrl = this.controls[2] as StatisticsCtrl;
+            if (baseCtrl != null)
+            {
+                if (this.zwPictureBox.GraphicsList != null && this.zwPictureBox.GraphicsList.Count > 0)
+                {
+                    baseCtrl.BtnAppearance.Enabled = true;
+                }
+                else
+                {
+                    baseCtrl.BtnAppearance.Enabled = false;
+                }
+            }
+        }
+
+        /// <summary>
         /// 通过串口发送给激光器或者电机
         /// </summary>
         /// <param name="sender"></param>
@@ -466,22 +583,28 @@ namespace CII.LAR
 
         private void toolStripButtonLine_Click(object sender, EventArgs e)
         {
-            this.zwPictureBox.ActiveTool = DrawToolType.Line;
+            SetActiveTool(DrawToolType.Line);
         }
 
         private void toolStripButtonRectangle_Click(object sender, EventArgs e)
         {
-            this.zwPictureBox.ActiveTool = DrawToolType.Rectangle;
+            SetActiveTool(DrawToolType.Rectangle);
         }
 
         private void toolStripButtonElliptical_Click(object sender, EventArgs e)
         {
-            this.zwPictureBox.ActiveTool = DrawToolType.Ellipse;
+            SetActiveTool(DrawToolType.Ellipse);
         }
 
         private void toolStripButtonPolygon_Click(object sender, EventArgs e)
         {
-            this.zwPictureBox.ActiveTool = DrawToolType.PolyLine;
+            SetActiveTool(DrawToolType.PolyLine);
+        }
+
+        private void SetActiveTool(DrawToolType toolType)
+        {
+            this.zwPictureBox.ActiveTool = toolType;
+            ShowBaseCtrl(true, 2);
         }
     }
 }

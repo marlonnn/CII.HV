@@ -29,7 +29,7 @@ namespace CII.LAR.DrawTools
             clickCount++;
             if (clickCount % 2 == 1)
             {
-                startPoint = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
+                base.OnMouseDown(pictureBox, e);
 
                 drawObject = new DrawEllipse(pictureBox, startPoint.X, startPoint.Y, startPoint.X, startPoint.Y, 0.6);
 
@@ -43,9 +43,18 @@ namespace CII.LAR.DrawTools
 
             if (clickCount % 2 == 1)
             {
-                Point point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
+                Point point = Point.Empty;
+                if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
+                {
+                    point = new Point(e.X, e.Y);
+                }
+                else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                {
+                    point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
+                }
                 pictureBox.GraphicsList[0].MoveHandleTo(pictureBox, point, 5);
-                pictureBox.Refresh();
+                if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                    pictureBox.Refresh();
             }
         }
 
@@ -53,12 +62,20 @@ namespace CII.LAR.DrawTools
         {
             if (clickCount % 2 == 0)
             {
-                endPoint = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
+                if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
+                {
+                    endPoint = new Point(e.X, e.Y);
+                }
+                else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                {
+                    endPoint = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
+                }
                 Rectangle rectangle = new Rectangle(new Point(startPoint.X - 1, startPoint.Y - 1), new Size(2, 2));
                 if (rectangle.Contains(endPoint))
                 {
                     pictureBox.GraphicsList.DeleteDrawObject(drawObject);
-                    pictureBox.Invalidate();
+                    if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                        pictureBox.Invalidate();
                 }
                 else
                 {

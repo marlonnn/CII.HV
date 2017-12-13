@@ -313,7 +313,11 @@ namespace CII.LAR
 
         protected override void OnKeyDown(KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
+            if (e.KeyCode == Keys.Escape && this.zwPictureBox.ActiveTool != UI.DrawToolType.Pointer)
+            {
+                this.zwPictureBox.ActiveTool = DrawToolType.Pointer;
+            }
+            else if (e.KeyCode == Keys.Escape)
             {
                 fullScreen.ResetFullScreen();
             }
@@ -377,6 +381,7 @@ namespace CII.LAR
                     lvi.Text = drawObject.Name;
                     lvi.SubItems.Add(statistics.Circumference.ToString());
                     lvi.SubItems.Add(statistics.Area.ToString());
+                    Console.WriteLine(statistics.Circumference.ToString());
                     this.statisticsCtrl.StatisticsListView.Items.Add(lvi);
                     ListViewItemEx listViewItemEx = new ListViewItemEx(lvi, drawObject);
                     AddEmbeddedControlToListView(listViewItemEx);

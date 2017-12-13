@@ -57,7 +57,14 @@ namespace CII.LAR.DrawTools
         {
             if (clickCount % 2 == 0)
             {
-                base.OnMouseUp(pictureBox, e);
+                if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
+                {
+                    endPoint = new Point(e.X, e.Y);
+                }
+                else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                {
+                    endPoint = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
+                }
                 Rectangle rectangle = new Rectangle(new Point(startPoint.X - 1, startPoint.Y - 1), new Size(2, 2));
                 if (rectangle.Contains(endPoint))
                 {

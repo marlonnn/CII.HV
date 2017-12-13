@@ -164,7 +164,7 @@ namespace CII.LAR.DrawTools
                 endDataPoint = point;
             }
             this.Statistics.Circumference = GetCircumference(startDataPoint, endDataPoint);
-            Console.WriteLine(this.Statistics.Circumference);
+            //Console.WriteLine(this.Statistics.Circumference);
         }
 
         private string GetCircumference(PointF startPoint, PointF endPoint)

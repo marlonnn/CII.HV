@@ -15,10 +15,6 @@ namespace CII.LAR.DrawTools
     /// </summary>
     public abstract class ToolObject : Tool
     {
-        protected Point startPoint;
-
-        protected Point endPoint;
-
         protected int clickCount;
 
         protected DrawObject drawObject;

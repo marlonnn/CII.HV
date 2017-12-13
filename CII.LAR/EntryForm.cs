@@ -250,7 +250,7 @@ namespace CII.LAR
                 }
                 this.zwPictureBox.Invalidate();
             }
-            else if (Program.ExpManager.MachineStatus == MachineStatus.Success)
+            else if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
             {
                 float oldzoom = Zoom;
                 if (e.Delta > 0)
@@ -375,16 +375,6 @@ namespace CII.LAR
             }
         }
 
-        private void toolStripButtonSetting_Click(object sender, EventArgs e)
-        {
-            ShowBaseCtrl(true, 0);
-        }
-
-        private void toolStripButtonPort_Click(object sender, EventArgs e)
-        {
-            ShowBaseCtrl(true, 1);
-        }
-
         private void EnableDrawTools(bool Enabled)
         {
             this.toolStripButtonLine.Enabled = Enabled;
@@ -463,5 +453,35 @@ namespace CII.LAR
             DrawReversibleRect(draggingBaseCtrlRectangle);
         }
         #endregion
+
+        private void toolStripButtonSetting_Click(object sender, EventArgs e)
+        {
+            ShowBaseCtrl(true, 0);
+        }
+
+        private void toolStripButtonPort_Click(object sender, EventArgs e)
+        {
+            ShowBaseCtrl(true, 1);
+        }
+
+        private void toolStripButtonLine_Click(object sender, EventArgs e)
+        {
+            this.zwPictureBox.ActiveTool = DrawToolType.Line;
+        }
+
+        private void toolStripButtonRectangle_Click(object sender, EventArgs e)
+        {
+            this.zwPictureBox.ActiveTool = DrawToolType.Rectangle;
+        }
+
+        private void toolStripButtonElliptical_Click(object sender, EventArgs e)
+        {
+            this.zwPictureBox.ActiveTool = DrawToolType.Ellipse;
+        }
+
+        private void toolStripButtonPolygon_Click(object sender, EventArgs e)
+        {
+            this.zwPictureBox.ActiveTool = DrawToolType.Polygon;
+        }
     }
 }

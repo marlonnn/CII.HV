@@ -195,6 +195,7 @@
             this.toolStripButtonLine.Image = global::CII.LAR.Properties.Resources.line;
             this.toolStripButtonLine.Name = "toolStripButtonLine";
             resources.ApplyResources(this.toolStripButtonLine, "toolStripButtonLine");
+            this.toolStripButtonLine.Click += new System.EventHandler(this.toolStripButtonLine_Click);
             // 
             // toolStripButtonRectangle
             // 
@@ -202,6 +203,7 @@
             this.toolStripButtonRectangle.Image = global::CII.LAR.Properties.Resources.rectangular;
             this.toolStripButtonRectangle.Name = "toolStripButtonRectangle";
             resources.ApplyResources(this.toolStripButtonRectangle, "toolStripButtonRectangle");
+            this.toolStripButtonRectangle.Click += new System.EventHandler(this.toolStripButtonRectangle_Click);
             // 
             // toolStripButtonElliptical
             // 
@@ -209,6 +211,7 @@
             this.toolStripButtonElliptical.Image = global::CII.LAR.Properties.Resources.elliptical;
             this.toolStripButtonElliptical.Name = "toolStripButtonElliptical";
             resources.ApplyResources(this.toolStripButtonElliptical, "toolStripButtonElliptical");
+            this.toolStripButtonElliptical.Click += new System.EventHandler(this.toolStripButtonElliptical_Click);
             // 
             // toolStripButtonPolygon
             // 
@@ -216,6 +219,7 @@
             this.toolStripButtonPolygon.Image = global::CII.LAR.Properties.Resources.polygon;
             this.toolStripButtonPolygon.Name = "toolStripButtonPolygon";
             resources.ApplyResources(this.toolStripButtonPolygon, "toolStripButtonPolygon");
+            this.toolStripButtonPolygon.Click += new System.EventHandler(this.toolStripButtonPolygon_Click);
             // 
             // toolStripDropDownButtonUnit
             // 
@@ -367,6 +371,8 @@
             resources.ApplyResources(this.zwPictureBox, "zwPictureBox");
             this.zwPictureBox.BackColor = System.Drawing.Color.Gray;
             this.zwPictureBox.Name = "zwPictureBox";
+            this.zwPictureBox.OffsetX = 0;
+            this.zwPictureBox.OffsetY = 0;
             this.zwPictureBox.TabStop = false;
             this.zwPictureBox.UnitOfMeasure = CII.LAR.DrawTools.enUniMis.mm;
             this.zwPictureBox.Zoom = 1F;

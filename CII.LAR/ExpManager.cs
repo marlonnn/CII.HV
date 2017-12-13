@@ -8,7 +8,7 @@ namespace CII.LAR
 {
     public enum MachineStatus
     {
-        Success,
+        LiveVideo,
         Simulate,
         Unknown
     }

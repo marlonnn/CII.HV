@@ -1,6 +1,7 @@
 ﻿using CII.LAR.UI;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,10 @@ namespace CII.LAR.DrawTools
     /// </summary>
     public class Tool
     {
+        protected Point startPoint;
+
+        protected Point endPoint;
+
         /// <summary>
         /// Left nous button is pressed
         /// </summary>
@@ -21,6 +26,14 @@ namespace CII.LAR.DrawTools
         /// <param name="e"></param>
         public virtual void OnMouseDown(ZWPictureBox pictureBox, MouseEventArgs e)
         {
+            if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
+            {
+                startPoint = new Point(e.X, e.Y);
+            }
+            else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+            {
+                startPoint = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
+            }
         }
 
 
@@ -43,6 +56,14 @@ namespace CII.LAR.DrawTools
         /// <param name="e"></param>
         public virtual void OnMouseUp(ZWPictureBox pictureBox, MouseEventArgs e)
         {
+            if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
+            {
+                endPoint = new Point(e.X, e.Y);
+            }
+            else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+            {
+                endPoint = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
+            }
         }
         public virtual void OnMouseUpZoom(ZWPictureBox pictureBox, MouseEventArgs e)
         {

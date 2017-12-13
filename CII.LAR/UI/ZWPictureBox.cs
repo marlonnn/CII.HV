@@ -199,11 +199,13 @@ namespace CII.LAR.UI
 
         private void InitializeTools()
         {
+            ActiveTool = DrawToolType.Pointer;
             Tools = new Tool[(int)DrawToolType.NumberOfDrawTools];
             Tools[(int)DrawToolType.None] = new Tool();
             Tools[(int)DrawToolType.Pointer] = new ToolPointer();
             Tools[(int)DrawToolType.Line] = new ToolLine();
             Tools[(int)DrawToolType.Move] = new ToolMove();
+            Tools[(int)DrawToolType.Rectangle] = new ToolRectangle();
         }
 
         private void ZWPictureBox_MouseUp(object sender, MouseEventArgs e)
@@ -262,6 +264,7 @@ namespace CII.LAR.UI
 
         public void LoadImage(string imageFile)
         {
+            Program.ExpManager.MachineStatus = MachineStatus.Simulate;
             this.Image = Image.FromFile(imageFile);
             StartOffsetX = (this.Width - this.Image.Width) / 2;
             this.OffsetX = StartOffsetX;
@@ -283,6 +286,10 @@ namespace CII.LAR.UI
                 e.Graphics.ScaleTransform(zoom, zoom);
                 e.Graphics.TranslateTransform(OffsetX, OffsetY);
                 e.Graphics.DrawImage(this.Image, 0, 0);
+            }
+            if (GraphicsList != null)
+            {
+                GraphicsList.Draw(e.Graphics, this);
             }
         }
 

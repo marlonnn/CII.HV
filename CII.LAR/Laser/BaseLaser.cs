@@ -117,5 +117,10 @@ namespace CII.LAR.Laser
         {
 
         }
+
+        public virtual void OnPaint(Graphics graphics)
+        {
+
+        }
     }
 }

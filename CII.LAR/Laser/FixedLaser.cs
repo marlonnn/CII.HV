@@ -71,7 +71,15 @@ namespace CII.LAR.Laser
 
         public override void OnMouseDown(ZWPictureBox pictureBox, MouseEventArgs e)
         {
-            Point point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
+            Point point = Point.Empty;
+            if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
+            {
+                point = new Point(e.X, e.Y);
+            }
+            else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+            {
+                point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
+            }
             CenterPoint = new PointF(point.X, point.Y);
             this.pictureBox.Invalidate();
         }
@@ -99,6 +107,36 @@ namespace CII.LAR.Laser
                 return;
             }
             Graphics g = e.Graphics;
+            OutterCircle = new Circle(CenterPoint, OutterCircleSize);
+            InnerCircle = new Circle(CenterPoint, InnerCircleSize);
+            //path for the outer and inner circles
+            g.CompositingQuality = CompositingQuality.HighQuality;
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            using (GraphicsPath path = new GraphicsPath())
+            {
+                brush = new SolidBrush(this.GraphicsProperties.Color);
+                if (Flashing)
+                {
+                    FlickerColor(this._flickCount);
+                }
+
+                path.AddEllipse(OutterCircle.Rectangle.X, OutterCircle.Rectangle.Y,
+                    OutterCircle.Rectangle.Width, OutterCircle.Rectangle.Height);
+                path.AddEllipse(InnerCircle.Rectangle.X, InnerCircle.Rectangle.Y,
+                    InnerCircle.Rectangle.Width, InnerCircle.Rectangle.Height);
+                g.FillPath(brush, path);
+            }
+            DrawCross(g);
+            brush.Dispose();
+        }
+
+        public override void OnPaint(Graphics g)
+        {
+            base.OnPaint(g);
+            if (CenterPoint.IsEmpty)
+            {
+                return;
+            }
             OutterCircle = new Circle(CenterPoint, OutterCircleSize);
             InnerCircle = new Circle(CenterPoint, InnerCircleSize);
             //path for the outer and inner circles

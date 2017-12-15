@@ -123,6 +123,46 @@ namespace CII.LAR
             set { this.laser = value; }
         }
 
+        private LaserFactory laserFactory;
+        public LaserFactory LaserFactory
+        {
+            get { return this.laserFactory; }
+            set { this.laserFactory = value; }
+        }
+
+        private LaserType laserType;
+
+        public LaserType LaserType
+        {
+            get { return this.laserType; }
+            set
+            {
+                if (value != this.laserType)
+                {
+                    laserType = value;
+                    SetLaserByType(value);
+                }
+            }
+        }
+
+        public void SetLaserByType(LaserType type)
+        {
+            switch (type)
+            {
+                case LaserType.SaturnFixed:
+                    this.Laser = LaserFactory.FixedLaser;
+                    break;
+                case LaserType.SaturnActive:
+                    this.Laser = LaserFactory.ActiveLaser;
+                    break;
+                case LaserType.Alignment:
+                    this.Laser = LaserFactory.AlignLaser;
+                    break;
+                default:
+                    this.Laser = LaserFactory.FixedLaser;
+                    break;
+            }
+        }
 
         public EntryForm()
         {
@@ -162,6 +202,8 @@ namespace CII.LAR
             MotorProtocolFactory.StartEncodeThread();
 
             this.autoSendTimer.Enabled = true;
+            this.LaserFactory = LaserFactory.GetInstance(this.zwPictureBox);
+            LaserType = LaserType.SaturnFixed;
         }
 
         private void InitializeControls()
@@ -735,6 +777,7 @@ namespace CII.LAR
 
         private void SetActiveTool(DrawToolType toolType)
         {
+            this.PictureBox.LaserFunction = false;
             this.zwPictureBox.ActiveTool = toolType;
             ShowBaseCtrl(true, 2);
         }
@@ -742,17 +785,36 @@ namespace CII.LAR
         private void toolStripButtonLaser_Click(object sender, EventArgs e)
         {
             this.PictureBox.LaserFunction = true;
-            if (Program.ExpManager.LaserType == LaserType.SaturnFixed)
+            if (LaserType == LaserType.SaturnFixed)
             {
                 this.PictureBox.ActiveTool = DrawToolType.Circle;
             }
-            else if (Program.ExpManager.LaserType == LaserType.SaturnActive)
+            else if (LaserType == LaserType.SaturnActive)
             {
                 this.PictureBox.ActiveTool = DrawToolType.MultipleCircle;
             }
             ShowBaseCtrl(true, 5);
             this.PictureBox.GraphicsList.DeleteAll();
             this.PictureBox.Invalidate();
+            SetLaserByType(LaserType);
+        }
+
+        private void toolStripButtonZoomIn_Click(object sender, EventArgs e)
+        {
+            this.zwPictureBox.LaserFunction = false;
+            this.zwPictureBox.ZoomIn();
+        }
+
+        private void toolStripButtonZoomOut_Click(object sender, EventArgs e)
+        {
+            this.zwPictureBox.LaserFunction = false;
+            this.zwPictureBox.ZoonOut();
+        }
+
+        private void toolStripButtonFit_Click(object sender, EventArgs e)
+        {
+            this.zwPictureBox.LaserFunction = false;
+            this.zwPictureBox.ZoomFit();
         }
     }
 }

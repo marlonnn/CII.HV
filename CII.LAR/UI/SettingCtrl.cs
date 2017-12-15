@@ -211,13 +211,13 @@ namespace CII.LAR.UI
             switch (cmbLaser.SelectedIndex)
             {
                 case 0:
-                    Program.ExpManager.LaserType = LaserType.SaturnFixed;
+                    Program.EntryForm.LaserType = LaserType.SaturnFixed;
                     break;
                 case 1:
-                    Program.ExpManager.LaserType = LaserType.SaturnActive;
+                    Program.EntryForm.LaserType = LaserType.SaturnActive;
                     break;
             }
-            Program.EntryForm.HolesNumberSlider(Program.ExpManager.LaserType == LaserType.SaturnActive);
+            Program.EntryForm.HolesNumberSlider(Program.EntryForm.LaserType == LaserType.SaturnActive);
         }
 
         private void btnSimulator_Click(object sender, EventArgs e)

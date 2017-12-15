@@ -329,8 +329,49 @@ namespace CII.LAR.UI
         protected override void OnMouseDoubleClick(MouseEventArgs e)
         {
             tools[(int)ActiveTool].OnDoubleClick(this, e);
-        } 
+        }
         #endregion
+
+        public void ZoomIn()
+        {
+            float oldzoom = zoom;
+            if (mousePos == Point.Empty)
+            {
+                mousePos = new Point(this.Width / 2, this.Height / 2);
+            }
+            MouseEventArgs args = new MouseEventArgs(new MouseButtons(), 1, mousePos.X, mousePos.Y, 0);
+            zoom += 0.2F;
+            ZoomOnMouseCenter(args, oldzoom);
+            this.Invalidate();
+        }
+
+        public void ZoonOut()
+        {
+            if (zoom > 1)
+            {
+                float oldzoom = zoom;
+                if (mousePos == Point.Empty)
+                {
+                    mousePos = new Point(this.Width / 2, this.Height / 2);
+                }
+                MouseEventArgs args = new MouseEventArgs(new MouseButtons(), 1, mousePos.X, mousePos.Y, 0);
+                zoom = Math.Max(zoom - 0.2F, 0.01F);
+                ZoomOnMouseCenter(args, oldzoom);
+                this.Invalidate();
+            }
+        }
+
+        public void ZoomFit()
+        {
+            if (this.Image != null)
+            {
+                this.OffsetX = (this.Width - this.Image.Width) / 2;
+                //this.OffsetY = 0;
+                this.OffsetY = (this.Height - this.Image.Height) / 2;
+            }
+            this.zoom = 1;
+            this.Invalidate();
+        }
 
         public void ZoomOnMouseCenter(MouseEventArgs e, float oldzoom)
         {
@@ -371,19 +412,6 @@ namespace CII.LAR.UI
             {
                 ZoomFit();
             }
-        }
-
-        public void ZoomFit()
-        {
-            if (this.Image != null)
-            {
-                this.OffsetX = (this.Width - this.Image.Width) / 2;
-                //this.OffsetY = 0;
-                this.OffsetY = (this.Height - this.Image.Height) / 2;
-            }
-            this.zoom = 1;
-            //this.imageTracker.ScalePercent = zoom * 100;
-            this.Invalidate();
         }
 
         public void OnLoad()

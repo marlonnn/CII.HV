@@ -65,7 +65,7 @@ namespace CII.LAR.UI
         private void LaserAlignment_Load(object sender, System.EventArgs e)
         {
             this.lblInfo.Text = Res.LaserAlignment.StrPreSet0;
-            Program.ExpManager.LaserType = LaserType.Alignment;
+            Program.EntryForm.LaserType = LaserType.Alignment;
             this.pictureBox.Invalidate();
         }
 
@@ -204,11 +204,11 @@ namespace CII.LAR.UI
                 }
                 ButtonBack(true);
                 ButtonNext(true);
-                Program.ExpManager.LaserType = LaserType.Alignment;
+                Program.EntryForm.LaserType = LaserType.Alignment;
             }
             else
             {
-                Program.ExpManager.LaserType = LaserType.SaturnFixed;
+                Program.EntryForm.LaserType = LaserType.SaturnFixed;
             }
         }
     }

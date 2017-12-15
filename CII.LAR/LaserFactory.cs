@@ -19,13 +19,13 @@ namespace CII.LAR
         private ActiveLaser activeLaser;
         public ActiveLaser ActiveLaser
         {
-            get { return this.ActiveLaser; }
+            get { return this.activeLaser; }
         }
 
         private AlignLaser alignLaser;
         public AlignLaser AlignLaser
         {
-            get { return this.AlignLaser; }
+            get { return this.alignLaser; }
         }
 
         private ZWPictureBox picturebox;
@@ -48,25 +48,6 @@ namespace CII.LAR
                 factory = new LaserFactory(picturebox);
             }
             return factory;
-        }
-
-        public void SetLaserByType(LaserType type)
-        {
-            switch (type)
-            {
-                case LaserType.SaturnFixed:
-                    Program.EntryForm.Laser = fixedLaser;
-                    break;
-                case LaserType.SaturnActive:
-                    Program.EntryForm.Laser = activeLaser;
-                    break;
-                case LaserType.Alignment:
-                    Program.EntryForm.Laser = alignLaser;
-                    break;
-                default:
-                    Program.EntryForm.Laser = fixedLaser;
-                    break;
-            }
         }
     }
 }

@@ -150,6 +150,7 @@
             this.toolStripButtonZoomOut.Image = global::CII.LAR.Properties.Resources.Zoom_out;
             this.toolStripButtonZoomOut.Name = "toolStripButtonZoomOut";
             resources.ApplyResources(this.toolStripButtonZoomOut, "toolStripButtonZoomOut");
+            this.toolStripButtonZoomOut.Click += new System.EventHandler(this.toolStripButtonZoomOut_Click);
             // 
             // toolStripButtonZoomIn
             // 
@@ -157,6 +158,7 @@
             this.toolStripButtonZoomIn.Image = global::CII.LAR.Properties.Resources.Zoom_in;
             this.toolStripButtonZoomIn.Name = "toolStripButtonZoomIn";
             resources.ApplyResources(this.toolStripButtonZoomIn, "toolStripButtonZoomIn");
+            this.toolStripButtonZoomIn.Click += new System.EventHandler(this.toolStripButtonZoomIn_Click);
             // 
             // toolStripButtonFit
             // 
@@ -164,6 +166,7 @@
             this.toolStripButtonFit.Image = global::CII.LAR.Properties.Resources.zoomFit;
             this.toolStripButtonFit.Name = "toolStripButtonFit";
             resources.ApplyResources(this.toolStripButtonFit, "toolStripButtonFit");
+            this.toolStripButtonFit.Click += new System.EventHandler(this.toolStripButtonFit_Click);
             // 
             // toolStripSeparator3
             // 
@@ -372,6 +375,7 @@
             resources.ApplyResources(this.zwPictureBox, "zwPictureBox");
             this.zwPictureBox.BackColor = System.Drawing.Color.Gray;
             this.zwPictureBox.DrawObject = null;
+            this.zwPictureBox.LaserFunction = false;
             this.zwPictureBox.Name = "zwPictureBox";
             this.zwPictureBox.OffsetX = 0;
             this.zwPictureBox.OffsetY = 0;

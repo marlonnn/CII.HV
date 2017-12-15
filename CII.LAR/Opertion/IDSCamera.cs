@@ -131,6 +131,13 @@ namespace CII.LAR.Opertion
                     {
                         picturebox.GraphicsList.Draw(graphics, picturebox);
                     }
+                    if (Program.EntryForm.PictureBox.LaserFunction)
+                    {
+                        if (Program.EntryForm.Laser != null)
+                        {
+                            Program.EntryForm.Laser.OnPaint(graphics);
+                        }
+                    }
                     graphics.Dispose();
                     bitmap.Dispose();
                 }

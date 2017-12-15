@@ -43,9 +43,15 @@ namespace CII.LAR.Laser
         public override void OnMouseDown(ZWPictureBox pictureBox, MouseEventArgs e)
         {
             mouseDownPoint = e.Location;
-
-            Point point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), 
-                (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
+            Point point = Point.Empty;
+            if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
+            {
+                point = new Point(e.X, e.Y);
+            }
+            else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+            {
+                point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
+            }
 
             activeCircle.OnMouseDown(point);
             this.pictureBox.Invalidate();
@@ -53,8 +59,15 @@ namespace CII.LAR.Laser
 
         public override void OnMouseMove(ZWPictureBox pictureBox, MouseEventArgs e)
         {
-            Point point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX),
-                (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
+            Point point = Point.Empty;
+            if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
+            {
+                point = new Point(e.X, e.Y);
+            }
+            else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+            {
+                point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
+            }
 
             Point mousePosNow = e.Location;
 
@@ -82,6 +95,12 @@ namespace CII.LAR.Laser
             g.SmoothingMode = SmoothingMode.AntiAlias;
 
             activeCircle.OnPaint(g);
+        }
+
+        public override void OnPaint(Graphics graphics)
+        {
+            base.OnPaint(graphics);
+            activeCircle.OnPaint(graphics);
         }
 
         public void FlickerColor(int cycle)

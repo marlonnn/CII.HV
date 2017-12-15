@@ -22,22 +22,6 @@ namespace CII.LAR
 
     public class ExpManager
     {
-        private LaserType laserType;
-
-        public LaserType LaserType
-        {
-            get { return this.laserType; }
-            set
-            {
-                if (value != this.laserType)
-                {
-                    laserType = value;
-                    //CreateLaser(value);
-                    LaserFactory.GetInstance(Program.EntryForm.PictureBox).SetLaserByType(value);
-                }
-            }
-        }
-
         private MachineStatus machineStatus;
         public MachineStatus MachineStatus
         {
@@ -48,7 +32,6 @@ namespace CII.LAR
         public ExpManager()
         {
             this.machineStatus = MachineStatus.Unknown;
-            LaserType = LaserType.SaturnFixed;
         }
 
     }

@@ -113,6 +113,7 @@ namespace CII.LAR.Protocol
         private void InitializeDecoders()
         {
             Decoders = new Dictionary<byte, MotorBaseResponse>();
+            Decoders[0x40] = new MotorC40Response();
             Decoders[0x60] = new MotorC60Response();
         }
 

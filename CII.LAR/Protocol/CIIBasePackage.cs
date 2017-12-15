@@ -108,7 +108,8 @@ namespace CII.LAR.Protocol
             this.appData[0] = codeArea.CommandCode;
             this.appData[1] = codeArea.AdditionCode;
             Array.Copy(codeArea.DataLength, 0, this.appData, 2, 2);
-            Array.Copy(codeArea.Data, 0, this.appData, 4, codeArea.Length);
+            if (codeArea.Length > 0 )
+                Array.Copy(codeArea.Data, 0, this.appData, 4, codeArea.Length);
             this.markTail = new byte[] { 0x5D, 0x5D };
         }
     }

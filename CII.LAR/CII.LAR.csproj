@@ -85,6 +85,7 @@
     <Compile Include="Commond\LaserC73.cs" />
     <Compile Include="Commond\LaserC72.cs" />
     <Compile Include="Commond\LaserC71.cs" />
+    <Compile Include="Commond\MotorC40.cs" />
     <Compile Include="Commond\MotorC60.cs" />
     <Compile Include="DrawTools\Circle.cs" />
     <Compile Include="DrawTools\DrawCircle.cs" />

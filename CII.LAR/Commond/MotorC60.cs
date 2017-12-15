@@ -408,68 +408,69 @@ namespace CII.LAR.Commond
             if (m60r.AdditionCode == 0xAA)
             {
                 //读回应
-                m60r.ControlSelection = obytes.Data[6];
+                m60r.CommandCode = obytes.Data[6];
                 m60r.AdditionCode = obytes.Data[7];
                 Array.Copy(obytes.Data, 8, m60r.CodeArea.DataLength, 0, 2);
                 m60r.CodeArea.Data = new byte[m60r.CodeArea.Length];
                 Array.Copy(obytes.Data, 10, m60r.CodeArea.Data, 0, m60r.CodeArea.Length);
                 Array.Copy(obytes.Data, 10 + m60r.CodeArea.Length, m60r.CodeArea.CRC16Code, 0, 2);
-                switch (controlSelection)
+                m60r.ControlSelection = m60r.CodeArea.Data[0];
+                switch (m60r.controlSelection)
                 {
                     case 0x00:
-                        m60r.ControlMode61 = m60r.CodeArea.Data[0];
-                        m60r.Direction61 = m60r.CodeArea.Data[1];
-                        m60r.TotalSteps61 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 2);
+                        m60r.ControlMode61 = m60r.CodeArea.Data[1];
+                        m60r.Direction61 = m60r.CodeArea.Data[2];
+                        m60r.TotalSteps61 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 3);
 
-                        m60r.ControlMode62 = m60r.CodeArea.Data[6];
-                        m60r.Direction62 = m60r.CodeArea.Data[7];
-                        m60r.TotalSteps62 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 8);
+                        m60r.ControlMode62 = m60r.CodeArea.Data[7];
+                        m60r.Direction62 = m60r.CodeArea.Data[8];
+                        m60r.TotalSteps62 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 9);
 
-                        m60r.ControlModeA1 = m60r.CodeArea.Data[12];
-                        m60r.DirectionA1 = m60r.CodeArea.Data[13];
-                        m60r.TotalStepsA1 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 14);
+                        m60r.ControlModeA1 = m60r.CodeArea.Data[13];
+                        m60r.DirectionA1 = m60r.CodeArea.Data[14];
+                        m60r.TotalStepsA1 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 15);
 
-                        m60r.ControlModeA2 = m60r.CodeArea.Data[18];
-                        m60r.DirectionA2 = m60r.CodeArea.Data[19];
-                        m60r.TotalStepsA2 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 20);
+                        m60r.ControlModeA2 = m60r.CodeArea.Data[19];
+                        m60r.DirectionA2 = m60r.CodeArea.Data[20];
+                        m60r.TotalStepsA2 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 21);
                         break;
                     case 0x60:
-                        m60r.ControlMode61 = m60r.CodeArea.Data[0];
-                        m60r.Direction61 = m60r.CodeArea.Data[1];
-                        m60r.TotalSteps61 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 2);
+                        m60r.ControlMode61 = m60r.CodeArea.Data[1];
+                        m60r.Direction61 = m60r.CodeArea.Data[2];
+                        m60r.TotalSteps61 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 3);
 
-                        m60r.ControlMode62 = m60r.CodeArea.Data[6];
-                        m60r.Direction62 = m60r.CodeArea.Data[7];
-                        m60r.TotalSteps62 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 8);
+                        m60r.ControlMode62 = m60r.CodeArea.Data[7];
+                        m60r.Direction62 = m60r.CodeArea.Data[8];
+                        m60r.TotalSteps62 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 9);
                         break;
                     case 0x61:
-                        m60r.ControlMode61 = m60r.CodeArea.Data[0];
-                        m60r.Direction61 = m60r.CodeArea.Data[1];
-                        m60r.TotalSteps61 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 2);
+                        m60r.ControlMode61 = m60r.CodeArea.Data[1];
+                        m60r.Direction61 = m60r.CodeArea.Data[2];
+                        m60r.TotalSteps61 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 3);
                         break;
                     case 0x62:
-                        m60r.ControlMode62 = m60r.CodeArea.Data[6];
-                        m60r.Direction62 = m60r.CodeArea.Data[7];
-                        m60r.TotalSteps62 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 8);
+                        m60r.ControlMode62 = m60r.CodeArea.Data[7];
+                        m60r.Direction62 = m60r.CodeArea.Data[8];
+                        m60r.TotalSteps62 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 9);
                         break;
                     case 0xA0:
-                        m60r.ControlModeA1 = m60r.CodeArea.Data[12];
-                        m60r.DirectionA1 = m60r.CodeArea.Data[13];
-                        m60r.TotalStepsA1 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 14);
+                        m60r.ControlModeA1 = m60r.CodeArea.Data[13];
+                        m60r.DirectionA1 = m60r.CodeArea.Data[14];
+                        m60r.TotalStepsA1 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 15);
 
-                        m60r.ControlModeA2 = m60r.CodeArea.Data[18];
-                        m60r.DirectionA2 = m60r.CodeArea.Data[19];
-                        m60r.TotalStepsA2 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 20);
+                        m60r.ControlModeA2 = m60r.CodeArea.Data[19];
+                        m60r.DirectionA2 = m60r.CodeArea.Data[20];
+                        m60r.TotalStepsA2 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 21);
                         break;
                     case 0xA1:
-                        m60r.ControlModeA1 = m60r.CodeArea.Data[12];
-                        m60r.DirectionA1 = m60r.CodeArea.Data[13];
-                        m60r.TotalStepsA1 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 14);
+                        m60r.ControlModeA1 = m60r.CodeArea.Data[13];
+                        m60r.DirectionA1 = m60r.CodeArea.Data[14];
+                        m60r.TotalStepsA1 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 15);
                         break;
                     case 0xA2:
-                        m60r.ControlModeA2 = m60r.CodeArea.Data[18];
-                        m60r.DirectionA2 = m60r.CodeArea.Data[19];
-                        m60r.TotalStepsA2 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 20);
+                        m60r.ControlModeA2 = m60r.CodeArea.Data[19];
+                        m60r.DirectionA2 = m60r.CodeArea.Data[20];
+                        m60r.TotalStepsA2 = ByteHelper.BytesToInt2(m60r.CodeArea.Data, 21);
                         break;
 
                 }

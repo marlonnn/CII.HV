@@ -68,7 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ByteHelper.cs" />
-    <Compile Include="ComModel.cs" />
     <Compile Include="Commond\LaserC0C.cs" />
     <Compile Include="Commond\LaserC00.cs" />
     <Compile Include="Commond\LaserC0B.cs" />
@@ -178,11 +177,11 @@
     <Compile Include="UI\BaseCtrl.Designer.cs">
       <DependentUpon>BaseCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\CameraChooseForm.cs">
-      <SubType>Form</SubType>
+    <Compile Include="UI\CameraChooseCtrl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\CameraChooseForm.Designer.cs">
-      <DependentUpon>CameraChooseForm.cs</DependentUpon>
+    <Compile Include="UI\CameraChooseCtrl.Designer.cs">
+      <DependentUpon>CameraChooseCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\CtrlFactory.cs" />
     <Compile Include="UI\HoleSizeCtrl.cs">
@@ -237,6 +236,12 @@
     </Compile>
     <Compile Include="UI\ProblemReportForm.Designer.cs">
       <DependentUpon>ProblemReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SerialPortDebugForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SerialPortDebugForm.Designer.cs">
+      <DependentUpon>SerialPortDebugForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\SettingCtrl.cs">
       <SubType>UserControl</SubType>
@@ -295,8 +300,11 @@
     <EmbeddedResource Include="UI\BaseCtrl.resx">
       <DependentUpon>BaseCtrl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\CameraChooseForm.resx">
-      <DependentUpon>CameraChooseForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\CameraChooseCtrl.resx">
+      <DependentUpon>CameraChooseCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CameraChooseCtrl.zh-CN.resx">
+      <DependentUpon>CameraChooseCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\HoleSizeCtrl.resx">
       <DependentUpon>HoleSizeCtrl.cs</DependentUpon>
@@ -333,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SerialPortCtrl.resx">
       <DependentUpon>SerialPortCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SerialPortDebugForm.resx">
+      <DependentUpon>SerialPortDebugForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SettingCtrl.resx">
       <DependentUpon>SettingCtrl.cs</DependentUpon>
@@ -372,6 +383,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\LogView.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -405,10 +419,16 @@
     <Content Include="Resources\hand.png" />
     <Content Include="Resources\idscamera.png" />
     <Content Include="Resources\image.png" />
+    <Content Include="Resources\Key.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\laser.png" />
     <Content Include="Resources\lens.png" />
     <Content Include="Resources\line.png" />
     <Content Include="Resources\logo.ico" />
+    <Content Include="Resources\LogView.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\measure.png" />
     <Content Include="Resources\open.png" />
     <Content Include="Resources\polygon.png" />

@@ -14,6 +14,7 @@ namespace CII.LAR.UI
         LaserAlignment,
         LaserAppreance,
         LaserCtrl,
+        CameraChooseCtrl,
         LaserHoleSize,
         RulerAppearanceCtrl
     }
@@ -29,6 +30,7 @@ namespace CII.LAR.UI
         private RulerAppearanceCtrl rulerAppearanceCtrl;
         private LaserCtrl laserCtrl;
         private LaserAlignment laserAlignment;
+        private CameraChooseCtrl cameraChooseCtrl;
 
         public static void InitializeCtrlFactory(ZWPictureBox pictureBox)
         {
@@ -44,6 +46,7 @@ namespace CII.LAR.UI
             rulerAppearanceCtrl = new RulerAppearanceCtrl();
             laserCtrl = new LaserCtrl(pictureBox);
             this.laserAlignment = new LaserAlignment(pictureBox);
+            cameraChooseCtrl = new CameraChooseCtrl();
         }
 
         public static CtrlFactory GetCtrlFactory()
@@ -88,6 +91,9 @@ namespace CII.LAR.UI
                     break;
                 case CtrlType.LaserAlignment:
                     ctrl = this.laserAlignment as T;
+                    break;
+                case CtrlType.CameraChooseCtrl:
+                    ctrl = this.cameraChooseCtrl as T;
                     break;
             }
             return ctrl;

@@ -27,19 +27,25 @@ namespace CII.LAR.Laser
                 if (value != isAlign)
                 {
                     isAlign = value;
-                    this.CurrentCircle = null;
-                    if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-                        this.pictureBox.Invalidate();
+                    this.AlignCircle = null;
+                    this.pictureBox.Invalidate();
                 }
             }
         }
         private List<Circle> circles;
 
-        private Circle currentCircle;
-        public Circle CurrentCircle
+        private Circle alignCircle;
+        public Circle AlignCircle
         {
-            get { return this.currentCircle; }
-            set { this.currentCircle = value; }
+            get { return this.alignCircle; }
+            set { this.alignCircle = value; }
+        }
+
+        private Point clickPoint;
+        public Point ClickPoint
+        {
+            get { return this.clickPoint; }
+            private set { this.clickPoint = value; }
         }
 
         private int index;
@@ -51,12 +57,11 @@ namespace CII.LAR.Laser
                 if (value > -1 && value < 7)
                 {
                     this.index = value;
-                    this.CurrentCircle = circles[value];
+                    this.AlignCircle = circles[value];
                     this.IsShowCross = false;
                     ButtonStateHandler?.Invoke(false);
                     this.pictureBox.ZoomFit();
-                    if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-                        this.pictureBox.Invalidate();
+                    this.pictureBox.Invalidate();
                 }
             }
         }
@@ -70,8 +75,7 @@ namespace CII.LAR.Laser
                 if (value != this.isShowCross)
                 {
                     this.isShowCross = value;
-                    if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-                        this.pictureBox.Invalidate();
+                    this.pictureBox.Invalidate();
                 }
             }
         }
@@ -112,6 +116,7 @@ namespace CII.LAR.Laser
                 else if (count == 2)
                 {
                     IsShowCross = true;
+                    ClickPoint = e.Location;
                     Count = 0;
                     ButtonStateHandler?.Invoke(true);
                 }
@@ -120,9 +125,9 @@ namespace CII.LAR.Laser
 
         private bool IsClickLaser(Point point)
         {
-            if (currentCircle != null)
+            if (alignCircle != null)
             {
-                RectangleF r = new RectangleF(currentCircle.CenterPoint.X - currentCircle.Rectangle.Width / 2, currentCircle.CenterPoint.Y - currentCircle.Rectangle.Height / 2, currentCircle.Rectangle.Width, currentCircle.Rectangle.Height);
+                RectangleF r = new RectangleF(alignCircle.CenterPoint.X - alignCircle.Rectangle.Width / 2, alignCircle.CenterPoint.Y - alignCircle.Rectangle.Height / 2, alignCircle.Rectangle.Width, alignCircle.Rectangle.Height);
                 if (r.Contains(point))
                 {
                     return true;
@@ -153,7 +158,7 @@ namespace CII.LAR.Laser
 
         public override void OnPaint(PaintEventArgs e)
         {
-            if (CurrentCircle == null || CurrentCircle.Rectangle.IsEmpty)
+            if (AlignCircle == null || AlignCircle.Rectangle.IsEmpty)
             {
                 return;
             }
@@ -162,10 +167,10 @@ namespace CII.LAR.Laser
                 Graphics g = e.Graphics;
                 g.CompositingQuality = CompositingQuality.HighQuality;
                 g.SmoothingMode = SmoothingMode.AntiAlias;
-                g.DrawEllipse(new Pen(Color.Orange, 2f), CurrentCircle.Rectangle);
-                Circle circle2 = new Circle(CurrentCircle.CenterPoint, 
-                    new Size((int)(1.4 * CurrentCircle.Rectangle.Width), (int)(1.4 * CurrentCircle.Rectangle.Width)));
-                Circle circle3 = new Circle(CurrentCircle.CenterPoint, 
+                g.DrawEllipse(new Pen(Color.Orange, 2f), AlignCircle.Rectangle);
+                Circle circle2 = new Circle(AlignCircle.CenterPoint, 
+                    new Size((int)(1.4 * AlignCircle.Rectangle.Width), (int)(1.4 * AlignCircle.Rectangle.Width)));
+                Circle circle3 = new Circle(AlignCircle.CenterPoint, 
                     new Size((int)(1.4 * circle2.Rectangle.Width), (int)(1.4 * circle2.Rectangle.Width)));
                 g.DrawEllipse(new Pen(Color.Orange, 2f), circle2.Rectangle);
                 g.DrawEllipse(new Pen(Color.Orange, 2f), circle3.Rectangle);
@@ -174,20 +179,26 @@ namespace CII.LAR.Laser
             }
         }
 
+        public void PaintAlignment(Graphics g)
+        {
+
+        }
+
         private void DrawCross(Graphics g)
         {
-            if (CurrentCircle.Rectangle.IsEmpty)
+            if (AlignCircle.Rectangle.IsEmpty)
             {
                 return;
             }
+            //var vx = ClickPoint.X / pictureBox.Zoom - pictureBox.OffsetX;
+            //var vy = ClickPoint.Y / pictureBox.Zoom - pictureBox.OffsetY;
+            g.DrawLine(new Pen(Color.Red, 1f),
+                ClickPoint.X / pictureBox.Zoom - pictureBox.OffsetX, ClickPoint.Y / pictureBox.Zoom - pictureBox.OffsetY - AlignCircle.Rectangle.Width,
+                ClickPoint.X / pictureBox.Zoom - pictureBox.OffsetX, ClickPoint.Y / pictureBox.Zoom - pictureBox.OffsetY + AlignCircle.Rectangle.Width );
 
             g.DrawLine(new Pen(Color.Red, 1f),
-                CurrentCircle.CenterPoint.X, CurrentCircle.CenterPoint.Y - CurrentCircle.Rectangle.Width,
-                CurrentCircle.CenterPoint.X, CurrentCircle.CenterPoint.Y + CurrentCircle.Rectangle.Width );
-
-            g.DrawLine(new Pen(Color.Red, 1f),
-                CurrentCircle.CenterPoint.X - CurrentCircle.Rectangle.Width, CurrentCircle.CenterPoint.Y,
-                CurrentCircle.CenterPoint.X + CurrentCircle.Rectangle.Width, CurrentCircle.CenterPoint.Y);
+                ClickPoint.X / pictureBox.Zoom - pictureBox.OffsetX - AlignCircle.Rectangle.Width, ClickPoint.Y / pictureBox.Zoom - pictureBox.OffsetY,
+                ClickPoint.X / pictureBox.Zoom - pictureBox.OffsetX + AlignCircle.Rectangle.Width, ClickPoint.Y / pictureBox.Zoom - pictureBox.OffsetY);
         }
     }
 }

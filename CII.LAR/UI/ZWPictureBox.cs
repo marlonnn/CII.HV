@@ -487,7 +487,6 @@ namespace CII.LAR.UI
             {
                 EscapeFullScreenHandler?.Invoke();
             }
-
         }
     }
 }

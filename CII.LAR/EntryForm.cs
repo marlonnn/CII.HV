@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -94,6 +95,7 @@ namespace CII.LAR
         private RulerAppearanceCtrl rulerAppearanceCtrl;
         private LaserCtrl laserCtrl;
         private LaserAlignment laserAlignment;
+        private CameraChooseCtrl cameraChooseCtrl;
 
         #endregion
 
@@ -233,6 +235,10 @@ namespace CII.LAR
 
             laserAlignment = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment);
             BaseCtrls.Add(laserAlignment);
+
+            cameraChooseCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<CameraChooseCtrl>(CtrlType.CameraChooseCtrl);
+            cameraChooseCtrl.OpenDeviceHandler += OpenDeviceHandler;
+            BaseCtrls.Add(cameraChooseCtrl);
         }
 
         private void InitializeBaseCtrls()
@@ -241,7 +247,7 @@ namespace CII.LAR
             {
                 if (ctrl.Name == "LaserAlignment")
                 {
-                    ctrl.Location = new Point(this.Width - ctrl.Width - 5, this.Height - ctrl.Height - 20);
+                    ctrl.Location = new Point(this.Width - ctrl.Width - 5, this.Height - ctrl.Height - 50);
                 }
                 else
                 {
@@ -282,13 +288,13 @@ namespace CII.LAR
                 case "Ruler Appearance":
                     ShowBaseCtrl(true, this.BaseCtrls[4]);
                     break;
-                //case "Laser Control":
-                //    ShowBaseCtrl(true, this.BaseCtrls[0]);
-                //    break;
+                case "Laser Control":
+                    ShowBaseCtrl(true, this.BaseCtrls[5]);
+                    break;
 
-                    //case "Laser Alignment":
-                    //    ShowBaseCtrl(true, this.BaseCtrls[5]);
-                    //    break;
+                case "Laser Alignment":
+                    ShowBaseCtrl(true, this.BaseCtrls[6]);
+                    break;
                     //case "Laser Hole Size":
                     //    ShowBaseCtrl(true, this.BaseCtrls[6]);
                     //    break;
@@ -451,19 +457,25 @@ namespace CII.LAR
             {
                 fullScreen.ShowFullScreen();
             }
+            else if (e.Control == true && e.KeyCode == Keys.F7)
+            {
+                viewLog(new string[] { "SerialPort.log"});
+            }
         }
 
         private void openCameraLiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CameraChooseForm chooseForm = new CameraChooseForm();
-            if (chooseForm.ShowDialog() == DialogResult.OK)
+            this.cameraChooseCtrl.ShowCameraList();
+            ShowBaseCtrl(true, 7);
+        }
+
+        private void OpenDeviceHandler()
+        {
+            if (camera.InitCamera(cameraChooseCtrl.DeviceID | (Int32)uEye.Defines.DeviceEnumeration.UseDeviceID))
             {
-                if (camera.InitCamera(chooseForm.DeviceID | (Int32)uEye.Defines.DeviceEnumeration.UseDeviceID))
-                {
-                    SetCameraSize();
-                    camera.DisplayLive();
-                    Program.ExpManager.MachineStatus = MachineStatus.LiveVideo;
-                }
+                SetCameraSize();
+                camera.DisplayLive();
+                Program.ExpManager.MachineStatus = MachineStatus.LiveVideo;
             }
         }
 
@@ -815,6 +827,25 @@ namespace CII.LAR
         {
             this.zwPictureBox.LaserFunction = false;
             this.zwPictureBox.ZoomFit();
+        }
+
+        private void viewLog(string[] logname)
+        {
+            string logView = string.Format("{0}\\Resources\\LogView.exe", System.Environment.CurrentDirectory);
+            string logFile = "";
+            foreach (var log in logname)
+            {
+                logFile += string.Format("\"{0}\\log\\{1}\" ", System.Environment.CurrentDirectory, log);
+            }
+            try
+            {
+                System.Diagnostics.Process.Start("\"" + logView + "\"", logFile);
+            }
+            catch (Exception e)
+            {
+                LogHelper.GetLogger<EntryForm>().Error(
+                    string.Format("打开日志异常，异常消息Message： {0}, StackTrace: {1}", e.Message, e.StackTrace));
+            }
         }
     }
 }

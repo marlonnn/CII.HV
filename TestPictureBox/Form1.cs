@@ -28,6 +28,12 @@ namespace TestPictureBox
             this.MouseWheel += Form_MouseWheel;
             lines = new List<DrawLine>();
             this.pictureBox.Paint += PictureBox_Paint;
+            this.MouseDown += Form1_MouseDown;
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            Console.WriteLine("form location X : {0},  Y : {1}",  e.Location.X, e.Location.Y);
         }
 
         private void PictureBox_Paint(object sender, PaintEventArgs e)
@@ -74,6 +80,9 @@ namespace TestPictureBox
 
         private void PictureBox_MouseDown(object sender, MouseEventArgs e)
         {
+            Console.WriteLine("picture box location X : {0},  Y : {1}", e.Location.X, e.Location.Y);
+            var pointToScreen = this.pictureBox.PointToScreen(e.Location);
+            Console.WriteLine("point to screen X : {0},  Y : {1}", pointToScreen.X, pointToScreen.Y);
             clickCount++;
             if (clickCount % 2 == 1)
             {

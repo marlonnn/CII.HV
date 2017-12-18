@@ -237,6 +237,12 @@
     <Compile Include="UI\ProblemReportForm.Designer.cs">
       <DependentUpon>ProblemReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SerialPortDebugForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SerialPortDebugForm.Designer.cs">
+      <DependentUpon>SerialPortDebugForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SettingCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -336,6 +342,9 @@
     <EmbeddedResource Include="UI\SerialPortCtrl.resx">
       <DependentUpon>SerialPortCtrl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\SerialPortDebugForm.resx">
+      <DependentUpon>SerialPortDebugForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\SettingCtrl.resx">
       <DependentUpon>SettingCtrl.cs</DependentUpon>
     </EmbeddedResource>
@@ -374,6 +383,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\LogView.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -407,10 +419,16 @@
     <Content Include="Resources\hand.png" />
     <Content Include="Resources\idscamera.png" />
     <Content Include="Resources\image.png" />
+    <Content Include="Resources\Key.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\laser.png" />
     <Content Include="Resources\lens.png" />
     <Content Include="Resources\line.png" />
     <Content Include="Resources\logo.ico" />
+    <Content Include="Resources\LogView.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\measure.png" />
     <Content Include="Resources\open.png" />
     <Content Include="Resources\polygon.png" />

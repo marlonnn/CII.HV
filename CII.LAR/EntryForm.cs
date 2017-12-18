@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -456,6 +457,10 @@ namespace CII.LAR
             {
                 fullScreen.ShowFullScreen();
             }
+            else if (e.Control == true && e.KeyCode == Keys.F7)
+            {
+                viewLog(new string[] { "SerialPort.log"});
+            }
         }
 
         private void openCameraLiveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -822,6 +827,25 @@ namespace CII.LAR
         {
             this.zwPictureBox.LaserFunction = false;
             this.zwPictureBox.ZoomFit();
+        }
+
+        private void viewLog(string[] logname)
+        {
+            string logView = string.Format("{0}\\Resources\\LogView.exe", System.Environment.CurrentDirectory);
+            string logFile = "";
+            foreach (var log in logname)
+            {
+                logFile += string.Format("\"{0}\\log\\{1}\" ", System.Environment.CurrentDirectory, log);
+            }
+            try
+            {
+                System.Diagnostics.Process.Start("\"" + logView + "\"", logFile);
+            }
+            catch (Exception e)
+            {
+                LogHelper.GetLogger<EntryForm>().Error(
+                    string.Format("打开日志异常，异常消息Message： {0}, StackTrace: {1}", e.Message, e.StackTrace));
+            }
         }
     }
 }

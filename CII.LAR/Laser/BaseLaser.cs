@@ -41,7 +41,8 @@ namespace CII.LAR.Laser
                     this.FlashTimer.Enabled = value;
                     this.FlashTimer.Stop();
                 }
-                this.pictureBox.Invalidate();
+                if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                    this.pictureBox.Invalidate();
             }
         }
         protected ZWPictureBox pictureBox;
@@ -79,7 +80,8 @@ namespace CII.LAR.Laser
         protected virtual void FlashTimer_Tick(object sender, EventArgs e)
         {
             _flickCount++;
-            this.pictureBox.Invalidate();
+            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                this.pictureBox.Invalidate();
             if (_flickCount == 6)
             {
                 Flashing = false;

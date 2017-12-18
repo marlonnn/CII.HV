@@ -37,7 +37,8 @@ namespace CII.LAR.Laser
                 activeCircle.InnerCircles[i] = new Circle(activeCircle.InnerCircles[i].CenterPoint, activeCircle.InnerCircleSize);
                 activeCircle.OutterCircle[i] = new Circle(activeCircle.OutterCircle[i].CenterPoint, activeCircle.OutterCircleSize);
             }
-            this.pictureBox.Invalidate();
+            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                this.pictureBox.Invalidate();
         }
 
         public override void OnMouseDown(ZWPictureBox pictureBox, MouseEventArgs e)
@@ -54,7 +55,8 @@ namespace CII.LAR.Laser
             }
 
             activeCircle.OnMouseDown(point);
-            this.pictureBox.Invalidate();
+            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                this.pictureBox.Invalidate();
         }
 
         public override void OnMouseMove(ZWPictureBox pictureBox, MouseEventArgs e)
@@ -77,7 +79,8 @@ namespace CII.LAR.Laser
             int dy = mousePosNow.Y - mouseDownPoint.Y;
             var length = Math.Sqrt(dx * dx + dy * dy);
             activeCircle.OnMouseMove(e, point, dx, dy);
-            this.pictureBox.Invalidate();
+            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                this.pictureBox.Invalidate();
         }
 
         public override void OnMouseUp(ZWPictureBox pictureBox, MouseEventArgs e)
@@ -112,7 +115,8 @@ namespace CII.LAR.Laser
         protected override void FlashTimer_Tick(object sender, EventArgs e)
         {
             _flickCount++;
-            this.pictureBox.Invalidate();
+            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                this.pictureBox.Invalidate();
             if (_flickCount == this.activeCircle.InnerCircles.Count)
             {
                 Flashing = false;
@@ -122,7 +126,8 @@ namespace CII.LAR.Laser
         public void UpdateHoleNumber(int value)
         {
             activeCircle.UpdateHoleNum(value);
-            this.pictureBox.Invalidate();
+            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                this.pictureBox.Invalidate();
         }
     }
 }

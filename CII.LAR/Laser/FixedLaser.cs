@@ -66,7 +66,8 @@ namespace CII.LAR.Laser
             InnerCircleSize = new SizeF(pulseSize, pulseSize);
             OutterCircle = new Circle(CenterPoint, OutterCircleSize);
             InnerCircle = new Circle(CenterPoint, InnerCircleSize);
-            this.pictureBox.Invalidate();
+            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                this.pictureBox.Invalidate();
         }
 
         public override void OnMouseDown(ZWPictureBox pictureBox, MouseEventArgs e)
@@ -81,7 +82,8 @@ namespace CII.LAR.Laser
                 point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
             }
             CenterPoint = new PointF(point.X, point.Y);
-            this.pictureBox.Invalidate();
+            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                this.pictureBox.Invalidate();
         }
 
         public override void OnMouseMove(ZWPictureBox pictureBox, MouseEventArgs e)

@@ -28,7 +28,8 @@ namespace CII.LAR.Laser
                 {
                     isAlign = value;
                     this.CurrentCircle = null;
-                    this.pictureBox.Invalidate();
+                    if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                        this.pictureBox.Invalidate();
                 }
             }
         }
@@ -54,7 +55,8 @@ namespace CII.LAR.Laser
                     this.IsShowCross = false;
                     ButtonStateHandler?.Invoke(false);
                     this.pictureBox.ZoomFit();
-                    this.pictureBox.Invalidate();
+                    if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                        this.pictureBox.Invalidate();
                 }
             }
         }
@@ -68,7 +70,8 @@ namespace CII.LAR.Laser
                 if (value != this.isShowCross)
                 {
                     this.isShowCross = value;
-                    this.pictureBox.Invalidate();
+                    if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                        this.pictureBox.Invalidate();
                 }
             }
         }

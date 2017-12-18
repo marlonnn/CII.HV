@@ -342,7 +342,8 @@ namespace CII.LAR.UI
             MouseEventArgs args = new MouseEventArgs(new MouseButtons(), 1, mousePos.X, mousePos.Y, 0);
             zoom += 0.2F;
             ZoomOnMouseCenter(args, oldzoom);
-            this.Invalidate();
+            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                this.Invalidate();
         }
 
         public void ZoonOut()
@@ -357,7 +358,8 @@ namespace CII.LAR.UI
                 MouseEventArgs args = new MouseEventArgs(new MouseButtons(), 1, mousePos.X, mousePos.Y, 0);
                 zoom = Math.Max(zoom - 0.2F, 0.01F);
                 ZoomOnMouseCenter(args, oldzoom);
-                this.Invalidate();
+                if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                    this.Invalidate();
             }
         }
 
@@ -370,7 +372,8 @@ namespace CII.LAR.UI
                 this.OffsetY = (this.Height - this.Image.Height) / 2;
             }
             this.zoom = 1;
-            this.Invalidate();
+            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                this.Invalidate();
         }
 
         public void ZoomOnMouseCenter(MouseEventArgs e, float oldzoom)
@@ -405,7 +408,8 @@ namespace CII.LAR.UI
                     zoom += 1F;
                     ZoomOnMouseCenter(e, oldzoom);
                     //this.imageTracker.ScalePercent = oldzoom * 100;
-                    this.Invalidate();
+                    if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                        this.Invalidate();
                 }
             }
             else
@@ -435,7 +439,8 @@ namespace CII.LAR.UI
             //int width = (int)(1392 * zoom);
             //int height = (int)(1080 * zoom);
             //this.Bounds = new Rectangle((1920 - width) / 2, (1080 - height) / 2, width, height);
-            this.Invalidate();
+            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                this.Invalidate();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -462,7 +467,8 @@ namespace CII.LAR.UI
 
         public void GraphicsPropertiesChangedHandler(DrawObject drawObject, GraphicsProperties graphicsProperties)
         {
-            this.Invalidate();
+            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                this.Invalidate();
         }
 
         public delegate void EscapeFullScreen();

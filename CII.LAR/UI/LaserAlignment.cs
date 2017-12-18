@@ -66,7 +66,8 @@ namespace CII.LAR.UI
         {
             this.lblInfo.Text = Res.LaserAlignment.StrPreSet0;
             Program.EntryForm.LaserType = LaserType.Alignment;
-            this.pictureBox.Invalidate();
+            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+                this.pictureBox.Invalidate();
         }
 
         private void btnNext_Click(object sender, EventArgs e)

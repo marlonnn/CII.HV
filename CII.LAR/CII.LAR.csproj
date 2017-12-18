@@ -68,7 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ByteHelper.cs" />
-    <Compile Include="ComModel.cs" />
     <Compile Include="Commond\LaserC0C.cs" />
     <Compile Include="Commond\LaserC00.cs" />
     <Compile Include="Commond\LaserC0B.cs" />
@@ -178,11 +177,11 @@
     <Compile Include="UI\BaseCtrl.Designer.cs">
       <DependentUpon>BaseCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\CameraChooseForm.cs">
-      <SubType>Form</SubType>
+    <Compile Include="UI\CameraChooseCtrl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\CameraChooseForm.Designer.cs">
-      <DependentUpon>CameraChooseForm.cs</DependentUpon>
+    <Compile Include="UI\CameraChooseCtrl.Designer.cs">
+      <DependentUpon>CameraChooseCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\CtrlFactory.cs" />
     <Compile Include="UI\HoleSizeCtrl.cs">
@@ -295,8 +294,11 @@
     <EmbeddedResource Include="UI\BaseCtrl.resx">
       <DependentUpon>BaseCtrl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\CameraChooseForm.resx">
-      <DependentUpon>CameraChooseForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\CameraChooseCtrl.resx">
+      <DependentUpon>CameraChooseCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CameraChooseCtrl.zh-CN.resx">
+      <DependentUpon>CameraChooseCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\HoleSizeCtrl.resx">
       <DependentUpon>HoleSizeCtrl.cs</DependentUpon>

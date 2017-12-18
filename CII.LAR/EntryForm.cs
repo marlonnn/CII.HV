@@ -94,6 +94,7 @@ namespace CII.LAR
         private RulerAppearanceCtrl rulerAppearanceCtrl;
         private LaserCtrl laserCtrl;
         private LaserAlignment laserAlignment;
+        private CameraChooseCtrl cameraChooseCtrl;
 
         #endregion
 
@@ -233,6 +234,10 @@ namespace CII.LAR
 
             laserAlignment = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment);
             BaseCtrls.Add(laserAlignment);
+
+            cameraChooseCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<CameraChooseCtrl>(CtrlType.CameraChooseCtrl);
+            cameraChooseCtrl.OpenDeviceHandler += OpenDeviceHandler;
+            BaseCtrls.Add(cameraChooseCtrl);
         }
 
         private void InitializeBaseCtrls()
@@ -241,7 +246,7 @@ namespace CII.LAR
             {
                 if (ctrl.Name == "LaserAlignment")
                 {
-                    ctrl.Location = new Point(this.Width - ctrl.Width - 5, this.Height - ctrl.Height - 20);
+                    ctrl.Location = new Point(this.Width - ctrl.Width - 5, this.Height - ctrl.Height - 50);
                 }
                 else
                 {
@@ -282,13 +287,13 @@ namespace CII.LAR
                 case "Ruler Appearance":
                     ShowBaseCtrl(true, this.BaseCtrls[4]);
                     break;
-                //case "Laser Control":
-                //    ShowBaseCtrl(true, this.BaseCtrls[0]);
-                //    break;
+                case "Laser Control":
+                    ShowBaseCtrl(true, this.BaseCtrls[5]);
+                    break;
 
-                    //case "Laser Alignment":
-                    //    ShowBaseCtrl(true, this.BaseCtrls[5]);
-                    //    break;
+                case "Laser Alignment":
+                    ShowBaseCtrl(true, this.BaseCtrls[6]);
+                    break;
                     //case "Laser Hole Size":
                     //    ShowBaseCtrl(true, this.BaseCtrls[6]);
                     //    break;
@@ -455,15 +460,17 @@ namespace CII.LAR
 
         private void openCameraLiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CameraChooseForm chooseForm = new CameraChooseForm();
-            if (chooseForm.ShowDialog() == DialogResult.OK)
+            this.cameraChooseCtrl.ShowCameraList();
+            ShowBaseCtrl(true, 7);
+        }
+
+        private void OpenDeviceHandler()
+        {
+            if (camera.InitCamera(cameraChooseCtrl.DeviceID | (Int32)uEye.Defines.DeviceEnumeration.UseDeviceID))
             {
-                if (camera.InitCamera(chooseForm.DeviceID | (Int32)uEye.Defines.DeviceEnumeration.UseDeviceID))
-                {
-                    SetCameraSize();
-                    camera.DisplayLive();
-                    Program.ExpManager.MachineStatus = MachineStatus.LiveVideo;
-                }
+                SetCameraSize();
+                camera.DisplayLive();
+                Program.ExpManager.MachineStatus = MachineStatus.LiveVideo;
             }
         }
 

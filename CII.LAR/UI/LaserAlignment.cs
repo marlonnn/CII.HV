@@ -53,7 +53,7 @@ namespace CII.LAR.UI
         public LaserAlignment(ZWPictureBox pictureBox) :base()
         {
             resources = new ComponentResourceManager(typeof(LaserAlignment));
-            this.ShowIndex = 5;
+            this.ShowIndex = 6;
             this.pictureBox = pictureBox;
             InitializeComponent();
             helper = new AlignInfoHelper(this);

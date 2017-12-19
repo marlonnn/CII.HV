@@ -114,7 +114,9 @@ namespace CII.LAR.Protocol
         {
             Decoders = new Dictionary<byte, MotorBaseResponse>();
             Decoders[0x40] = new MotorC40Response();
+            Decoders[0x50] = new MotorC50Response();
             Decoders[0x60] = new MotorC60Response();
+            Decoders[0x64] = new MotorC64Response();
         }
 
         public void StartDecodeThread()

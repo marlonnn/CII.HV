@@ -85,6 +85,7 @@ namespace CII.LAR.Protocol
         public MotorBaseResponse()
         {
             CodeArea = new CIICodeArea();
+            CodeArea.CRC16Code = new byte[2];
         }
 
         public virtual MotorBaseResponse Decode(OriginalBytes obytes)

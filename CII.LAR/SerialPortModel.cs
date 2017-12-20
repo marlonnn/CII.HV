@@ -80,7 +80,7 @@ namespace CII.LAR
         {
             if (!laserSerialPort.IsOpen)
             {
-                LogHelper.GetLogger<SerialPortModel>().Error("激光器串口未打开， 发送数据失败");
+                //LogHelper.GetLogger<SerialPortModel>().Error("激光器串口未打开， 发送数据失败");
                 return false;
             }
 
@@ -101,7 +101,7 @@ namespace CII.LAR
         {
             if (!motorSerialPort.IsOpen)
             {
-                LogHelper.GetLogger<SerialPortModel>().Error("电机串口未打开， 发送数据失败");
+                //LogHelper.GetLogger<SerialPortModel>().Error("电机串口未打开， 发送数据失败");
                 return false;
             }
 

@@ -205,15 +205,23 @@ namespace CII.LAR.Protocol
                                 OriginalBytes obytes = o as OriginalBytes;
                                 if (o != null)
                                 {
-                                    MotorProtocol mp = motorProtocol.DePackage(obytes.Data);
-                                    byte[] data = mp.CodeRegion;
-                                    byte commandCode = data[0];
-                                    byte additionCode = data[1];
-                                    MotorBaseResponse mr= Decoders[commandCode].Decode(obytes);
-                                    if (mr != null)
+                                    if (obytes.Data[0] == 0x5D && obytes.Data[0] == 0x5B)
                                     {
-                                        RxMsgQueue.Push(mr);
-                                        LogHelper.GetLogger<LaserProtocolFactory>().Error(string.Format("接受到的原始数据为： {0}",
+                                        MotorProtocol mp = motorProtocol.DePackage(obytes.Data);
+                                        byte[] data = mp.CodeRegion;
+                                        byte commandCode = data[0];
+                                        byte additionCode = data[1];
+                                        MotorBaseResponse mr = Decoders[commandCode].Decode(obytes);
+                                        if (mr != null)
+                                        {
+                                            RxMsgQueue.Push(mr);
+                                            LogHelper.GetLogger<LaserProtocolFactory>().Error(string.Format("接受到的原始数据为： {0}",
+                                                ByteHelper.Byte2ReadalbeXstring(obytes.Data)));
+                                        }
+                                    }
+                                    else
+                                    {
+                                        LogHelper.GetLogger<LaserProtocolFactory>().Error(string.Format("接受到的原始数据非法： {0}",
                                             ByteHelper.Byte2ReadalbeXstring(obytes.Data)));
                                     }
                                 }

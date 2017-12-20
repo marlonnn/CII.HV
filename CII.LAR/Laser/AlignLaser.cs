@@ -1,4 +1,5 @@
-﻿using CII.LAR.DrawTools;
+﻿using CII.LAR.Algorithm;
+using CII.LAR.DrawTools;
 using CII.LAR.SysClass;
 using CII.LAR.UI;
 using System;
@@ -92,7 +93,8 @@ namespace CII.LAR.Laser
                 }
             }
         }
-        public AlignLaser(ZWPictureBox pictureBox) :base()
+
+        public AlignLaser(ZWPictureBox pictureBox) : base()
         {
             this.pictureBox = pictureBox;
             circles = new List<Circle>();
@@ -119,6 +121,7 @@ namespace CII.LAR.Laser
                     ClickPoint = e.Location;
                     Count = 0;
                     ButtonStateHandler?.Invoke(true);
+                    Coordinate.GetCoordinate().AddPoint(Index, e.Location);
                 }
             }
         }

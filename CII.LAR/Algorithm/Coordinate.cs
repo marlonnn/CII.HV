@@ -8,12 +8,30 @@ using System.Threading.Tasks;
 
 namespace CII.LAR.Algorithm
 {
+    /// <summary>
+    /// 电机坐标系和屏幕坐标系转换算法
+    /// 钟文 2017/12/20
+    /// </summary>
     public class Coordinate
     {
+        private Dictionary<int, Point> clickPointsDic;
+
         private MatrixBuilder<double> mb = Matrix<double>.Build;
 
+        private Dictionary<int, Matrix<double>> transformMatrix;
+
+        private Dictionary<int, Point> motorPoints;
         public static Coordinate coordinate;
-        public Coordinate() { }
+        public Coordinate()
+        {
+            clickPointsDic = new Dictionary<int, Point>();
+            transformMatrix = new Dictionary<int, Matrix<double>>();
+
+            motorPoints = new Dictionary<int, Point>();
+            motorPoints.Add(0, new Point(1500, 1500));
+            motorPoints.Add(1, new Point(1600, 1500));
+            motorPoints.Add(2, new Point(1500, 1600));
+        }
 
         public static Coordinate GetCoordinate()
         {
@@ -22,6 +40,105 @@ namespace CII.LAR.Algorithm
                 coordinate = new Coordinate();
             }
             return coordinate;
+        }
+
+        /// <summary>
+        /// 添加电机坐标系的点到集合中
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="point"></param>
+        public void AddMotorPoint(int index, Point point)
+        {
+            if (motorPoints.ContainsKey(index))
+            {
+                //update
+                motorPoints[index] = point;
+            }
+            else
+            {
+                //add new point
+                motorPoints.Add(index, point);
+            }
+        }
+
+        /// <summary>
+        /// 添加屏幕校准的点到集合中
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="point"></param>
+        public void AddPoint(int index, Point point)
+        {
+            if (clickPointsDic.ContainsKey(index))
+            {
+                //update
+                clickPointsDic[index] = point;
+            }
+            else
+            {
+                //add new point
+                clickPointsDic.Add(index, point);
+            }
+        }
+
+        /// <summary>
+        /// 根据前面三点计算第一个转换矩阵
+        /// </summary>
+        public void CalculateFirstMatrix()
+        {
+            List<Point> sps = new List<Point>();
+            if (clickPointsDic.Count > 2)
+            {
+                foreach (var value in clickPointsDic.Values)
+                {
+                    sps.Add(value);
+                }
+            }
+            List<Point> firstThreeMotorPoints = new List<Point>();
+            if (motorPoints.Count > 2)
+            {
+                foreach (var value in motorPoints.Values)
+                {
+                    firstThreeMotorPoints.Add(value);
+                }
+            }
+
+            Matrix<double> firstMatrix = CalculateTransformMatrix(firstThreeMotorPoints, sps);
+            AddMatrix(0, firstMatrix);
+        }
+
+        /// <summary>
+        /// 将转换矩阵添加到转换矩阵集合中
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="matrix"></param>
+        public void AddMatrix(int index, Matrix<double> matrix)
+        {
+            if (transformMatrix.ContainsKey(index))
+            {
+                transformMatrix[index] = matrix;
+            }
+            else
+            {
+                transformMatrix.Add(index, matrix);
+            }
+        }
+
+        /// <summary>
+        /// 由屏幕上三点和电机坐标系上的三点计算出转换矩阵
+        /// </summary>
+        /// <param name="motorPoints">电机坐标系上的点</param>
+        /// <param name="screenPoints">屏幕上的点</param>
+        /// <returns></returns>
+        public Matrix<double> CalculateTransformMatrix(List<Point> motorPoints ,List<Point> screenPoints)
+        {
+            double[,] mps = { { motorPoints[0].X, motorPoints[1].X, motorPoints[2].X }, { motorPoints[0].Y, motorPoints[1].Y, motorPoints[2].Y }, { 1, 1, 1 } };
+            var motorArray = mb.DenseOfArray(mps);
+
+            double[,] sps = { { screenPoints[0].X, screenPoints[1].X, screenPoints[2].X }, { screenPoints[0].Y, screenPoints[1].Y, screenPoints[2].Y }, { 1, 1, 1 } };
+            var screenArray = mb.DenseOfArray(sps);
+            var Determinant = screenArray.Determinant();
+            var Inverse = screenArray.Inverse();
+            return motorArray * Inverse;
         }
 
         public Matrix<double> TestMatrix(List<Point> points)

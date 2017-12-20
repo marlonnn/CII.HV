@@ -35,6 +35,7 @@
             // 
             // pictureBox
             // 
+            this.pictureBox.Image = global::TestPictureBox.Properties.Resources.Sperm;
             this.pictureBox.Location = new System.Drawing.Point(3, 3);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(147, 147);
@@ -44,9 +45,11 @@
             // topPanel
             // 
             this.topPanel.BackColor = System.Drawing.Color.Transparent;
-            this.topPanel.Location = new System.Drawing.Point(3, 3);
+            this.topPanel.BackgroundImage = global::TestPictureBox.Properties.Resources.Transparent;
+            this.topPanel.ForeColor = System.Drawing.Color.Transparent;
+            this.topPanel.Location = new System.Drawing.Point(18, 3);
             this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(147, 147);
+            this.topPanel.Size = new System.Drawing.Size(132, 147);
             this.topPanel.TabIndex = 1;
             // 
             // RichPictureBox

@@ -117,6 +117,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Transparent.png" />
     <None Include="Resources\Sperm.bmp" />
     <Content Include="Sperm.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

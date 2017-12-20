@@ -71,8 +71,10 @@
             this.closeCameraTool = new System.Windows.Forms.ToolStripMenuItem();
             this.freeRun = new System.Windows.Forms.ToolStripMenuItem();
             this.snapshot = new System.Windows.Forms.ToolStripMenuItem();
-            this.zwPictureBox = new CII.LAR.UI.ZWPictureBox();
             this.autoSendTimer = new System.Windows.Forms.Timer(this.components);
+            this.systemMonitorTimer = new System.Windows.Forms.Timer(this.components);
+            this.zwPictureBox = new CII.LAR.UI.ZWPictureBox();
+            this.autoReceiverTimer = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.zwPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -370,6 +372,16 @@
             this.snapshot.Name = "snapshot";
             resources.ApplyResources(this.snapshot, "snapshot");
             // 
+            // autoSendTimer
+            // 
+            this.autoSendTimer.Interval = 200;
+            this.autoSendTimer.Tick += new System.EventHandler(this.autoSendTimer_Tick);
+            // 
+            // systemMonitorTimer
+            // 
+            this.systemMonitorTimer.Interval = 1000;
+            this.systemMonitorTimer.Tick += new System.EventHandler(this.systemMonitorTimer_Tick);
+            // 
             // zwPictureBox
             // 
             resources.ApplyResources(this.zwPictureBox, "zwPictureBox");
@@ -383,10 +395,10 @@
             this.zwPictureBox.UnitOfMeasure = CII.LAR.DrawTools.enUniMis.mm;
             this.zwPictureBox.Zoom = 1F;
             // 
-            // autoSendTimer
+            // autoReceiverTimer
             // 
-            this.autoSendTimer.Interval = 200;
-            this.autoSendTimer.Tick += new System.EventHandler(this.autoSendTimer_Tick);
+            this.autoReceiverTimer.Interval = 200;
+            this.autoReceiverTimer.Tick += new System.EventHandler(this.autoReceiverTimer_Tick);
             // 
             // EntryForm
             // 
@@ -448,5 +460,7 @@
         private UI.ZWPictureBox zwPictureBox;
         private System.Windows.Forms.Timer autoSendTimer;
         private System.Windows.Forms.ToolStripButton toolStripButtonPort;
+        private System.Windows.Forms.Timer systemMonitorTimer;
+        private System.Windows.Forms.Timer autoReceiverTimer;
     }
 }

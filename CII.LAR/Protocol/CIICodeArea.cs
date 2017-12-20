@@ -33,7 +33,18 @@ namespace CII.LAR.Protocol
 
         public int Length
         {
-            get { return this.Data.Length; }
+            get { return BytesToInt2(DataLength, 0); }
+        }
+
+        /**  
+       * byte数组中取int数值，本方法适用于(低位在后，高位在前)的顺序。和intToBytes2（）配套使用 
+       */
+        public static int BytesToInt2(byte[] src, int offset)
+        {
+            int value;
+            value = (int)(((src[offset] & 0xFF) << 8)
+                    | (src[offset + 1] & 0xFF));
+            return value;
         }
 
         /// <summary>

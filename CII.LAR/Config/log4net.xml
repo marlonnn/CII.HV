@@ -39,7 +39,7 @@
     </layout>
   </appender>
 
-  <logger name="CII.LAR.ComTestForm">
+  <logger name="CII.LAR.SerialPortModel">
     <level value="DEBUG" />
     <appender-ref ref="SerialPortLogFileAppender" />
   </logger>

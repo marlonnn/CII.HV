@@ -45,6 +45,21 @@ namespace TestPictureBox
                     line.Draw(e.Graphics, this.pictureBox);
                 }
             }
+            DrawCross(e.Graphics);
+        }
+
+        private int width = 50;
+        private void DrawCross(Graphics g)
+        {
+            //var vx = ClickPoint.X / pictureBox.Zoom - pictureBox.OffsetX;
+            //var vy = ClickPoint.Y / pictureBox.Zoom - pictureBox.OffsetY;
+            g.DrawLine(new Pen(Color.Red, 1f), 
+                800, 800 - width,
+                800, 800 + width);
+
+            g.DrawLine(new Pen(Color.Red, 1f),
+                800 - width, 800,
+                800 + width, 800);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -80,9 +95,13 @@ namespace TestPictureBox
 
         private void PictureBox_MouseDown(object sender, MouseEventArgs e)
         {
+            var s = this.pictureBox.Size;
             Console.WriteLine("picture box location X : {0},  Y : {1}", e.Location.X, e.Location.Y);
             var pointToScreen = this.pictureBox.PointToScreen(e.Location);
             Console.WriteLine("point to screen X : {0},  Y : {1}", pointToScreen.X, pointToScreen.Y);
+
+            var v = this.pictureBox.PointToClient(new Point(1500, 1500));
+            Console.WriteLine("point to client X : {0},  Y : {1}", v.X, v.Y);
             clickCount++;
             if (clickCount % 2 == 1)
             {
@@ -91,6 +110,42 @@ namespace TestPictureBox
                 lines.Add(drawObject);
                 pictureBox.Invalidate();
             }
+        }
+
+        /// <summary>
+        /// 屏幕上点转换为PictureBox上的点
+        /// </summary>
+        /// <param name="screenPoint">屏幕上点</param>
+        /// <returns></returns>
+        private Point PointToPictureBox(Point screenPoint)
+        {
+            return this.pictureBox.PointToClient(screenPoint);
+        }
+
+        /// <summary>
+        /// PictureBox上的点转换为屏幕上的点
+        /// </summary>
+        /// <param name="pictureBoxPoint">PictureBox上的点</param>
+        /// <returns></returns>
+        private Point PictureBoxPointToScreen(Point pictureBoxPoint)
+        {
+            return this.pictureBox.PointToScreen(pictureBoxPoint);
+        }
+
+        /// <summary>
+        /// 以左上点为坐标原点的屏幕上的点的原点坐标转换为屏幕左下角
+        /// </summary>
+        /// <param name="screenPoint"></param>
+        /// <param name="screenHeight"></param>
+        /// <returns></returns>
+        private Point ChangeToOriginalPoint(Point screenPoint, int screenHeight)
+        {
+            return new Point(screenPoint.X, screenHeight - screenPoint.Y);
+        }
+
+        private Point ChangeToScreenPoint(Point originalPoint, int screenHeight)
+        {
+            return new Point(originalPoint.X, screenHeight - originalPoint.Y);
         }
 
         private void PictureBox_MouseMove(object sender, MouseEventArgs e)

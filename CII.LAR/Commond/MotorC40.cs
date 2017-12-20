@@ -12,10 +12,17 @@ namespace CII.LAR.Commond
     /// </summary>
     public class MotorC40Request : MotorBaseRequest
     {
+        public MotorC40Request() : base() { }
+
+        public MotorC40Request(byte commandCode, byte additionalCode) : base()
+        {
+            this.CodeArea.CommandCode = commandCode;
+            this.CodeArea.AdditionCode = additionalCode;
+        }
+
         public override CIIBasePackage Encode()
         {
             this.CodeArea.DataLength = new byte[] { 0x00, 0x00 };
-            CopyDataLenght();
             return new CIIBasePackage(this.CodeArea);
         }
     }

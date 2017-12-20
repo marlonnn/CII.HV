@@ -1,4 +1,5 @@
-﻿using CII.LAR.DrawTools;
+﻿using CII.LAR.Commond;
+using CII.LAR.DrawTools;
 using CII.LAR.Laser;
 using CII.LAR.Opertion;
 using CII.LAR.Protocol;
@@ -188,6 +189,7 @@ namespace CII.LAR
             MotorProtocolFactory.DestroyDecodeThread();
             MotorProtocolFactory.DestroyEncodeThread();
             this.autoSendTimer.Enabled = false;
+            this.systemMonitorTimer.Enabled = false;
         }
 
         private void EntryForm_Load(object sender, EventArgs e)
@@ -204,6 +206,7 @@ namespace CII.LAR
             MotorProtocolFactory.StartEncodeThread();
 
             this.autoSendTimer.Enabled = true;
+            this.systemMonitorTimer.Enabled = true;
             this.LaserFactory = LaserFactory.GetInstance(this.zwPictureBox);
             LaserType = LaserType.SaturnFixed;
         }
@@ -850,6 +853,52 @@ namespace CII.LAR
             {
                 LogHelper.GetLogger<EntryForm>().Error(
                     string.Format("打开日志异常，异常消息Message： {0}, StackTrace: {1}", e.Message, e.StackTrace));
+            }
+        }
+
+        /// <summary>
+        /// 系统监控命令0x40
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void systemMonitorTimer_Tick(object sender, EventArgs e)
+        {
+            if (MotorProtocolFactory.GetInstance() != null)
+            {
+                var request = new MotorC40Request(0x40, 0x55);
+                MotorProtocolFactory.GetInstance().SendMessage(request);
+            }
+        }
+
+        private void autoReceiverTimer_Tick(object sender, EventArgs e)
+        {
+            if (LaserProtocolFactory.GetInstance().RxMsgQueue != null)
+            {
+                List<LaserBaseResponse> baseResponses = LaserProtocolFactory.GetInstance().RxMsgQueue.PopAll();
+                if (baseResponses != null && baseResponses.Count > 0)
+                {
+
+                }
+            }
+
+            if (MotorProtocolFactory.GetInstance().RxMsgQueue != null)
+            {
+                List<MotorBaseResponse> baseResponses = MotorProtocolFactory.GetInstance().RxMsgQueue.PopAll();
+                if (baseResponses != null && baseResponses.Count > 0)
+                {
+                    foreach (var bs in baseResponses)
+                    {
+                        MotorC40Response m40r = bs as MotorC40Response;
+                        if (m40r != null)
+                        {
+                            if (m40r.Motor1Status == 0x08 && m40r.Motor1completeSteps == 0 &&
+                                m40r.Motor2Status == 0x08 && m40r.Motor2completeSteps == 0)
+                            {
+                                //XY电机运动到指定位置
+                            }
+                        }
+                    }
+                }
             }
         }
     }

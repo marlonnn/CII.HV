@@ -36,6 +36,11 @@ namespace CII.LAR
         {
             try
             {
+                CII.LAR.Algorithm.Coordinate.GetCoordinate().TestMatrix(new List<System.Drawing.Point>() {
+                new System.Drawing.Point(1500, 1500),
+                new System.Drawing.Point(1600, 1500),
+                new System.Drawing.Point(1500, 1600)});
+
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 //byte[] temp = new byte[] { 0x01, 0x21, 0x01, 0xFE, 0x60, 0x66, 0x00, 0x07, 0x61, 0x01, 0x00, 0x00, 0x00, 0x00, 0x32};

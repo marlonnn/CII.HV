@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CII.LAR.Laser;
+using CII.LAR.Protocol;
+using CII.LAR.Commond;
 
 namespace CII.LAR.UI
 {
@@ -70,6 +72,8 @@ namespace CII.LAR.UI
                 this.pictureBox.Invalidate();
         }
 
+        private List<Point> threePoints = new List<Point>() { new Point(1500, 1500), new Point(1500, 1600), new Point(1600, 1500) };
+
         private void btnNext_Click(object sender, EventArgs e)
         {
             if (Index != 7)
@@ -104,6 +108,20 @@ namespace CII.LAR.UI
                 this.Enabled = false;
                 this.pictureBox.ZoomFit();
             }
+        }
+
+        private void FirstThreeAlignment(int index)
+        {
+            MotorProtocolFactory motorProtocolFactory = MotorProtocolFactory.GetInstance();
+            var request = new MotorC60Request(0x60, 0x66);
+            request.ControlSelection = 0x60;
+            request.ControlMode61 = 0x01;
+            request.Direction61 = 0x01;
+            request.TotalSteps61 = threePoints[index].X;
+            request.ControlMode62 = 0x01;
+            request.Direction62 = 0x01;
+            request.TotalSteps62 = threePoints[index].Y;
+            motorProtocolFactory.SendMessage(request);
         }
 
         protected override void RefreshUI()

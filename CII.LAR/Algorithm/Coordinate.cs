@@ -21,6 +21,8 @@ namespace CII.LAR.Algorithm
         private Dictionary<int, Matrix<double>> transformMatrix;
 
         private Dictionary<int, Point> motorPoints;
+
+        private List<Point> boundPoints;
         public static Coordinate coordinate;
         public Coordinate()
         {
@@ -31,6 +33,28 @@ namespace CII.LAR.Algorithm
             motorPoints.Add(0, new Point(1500, 1500));
             motorPoints.Add(1, new Point(1600, 1500));
             motorPoints.Add(2, new Point(1500, 1600));
+
+            boundPoints = new List<Point>() { new Point(0, 0), new Point(0, 3000), new Point(3000, 3000), new Point(3000, 0)};
+
+        }
+
+        /// <summary>
+        /// 根据电机坐标边界和转换矩阵的逆矩阵，求解映射到屏幕上的点
+        /// </summary>
+        /// <returns></returns>
+        private List<Point> CalculateScreenBoundPoints()
+        {
+            List<Point> points = new List<Point>();
+            foreach (var p in boundPoints)
+            {
+                var motorArray = mb.DenseOfArray(new double[,] { { p.X }, { p.Y }, { 1 } } );
+                if (transformMatrix.Count > 0)
+                {
+                    var temp = transformMatrix[0].Determinant() * motorArray;
+                    points.Add(new Point((int)temp[0, 0], (int)temp[1, 0]));
+                }
+            }
+            return points;
         }
 
         public static Coordinate GetCoordinate()

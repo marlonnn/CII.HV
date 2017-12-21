@@ -467,6 +467,7 @@ namespace CII.LAR
             else if (e.Control == true && e.KeyCode == Keys.D)
             {
                 SerialPortDebugForm debugForm = new SerialPortDebugForm();
+                debugForm.Controller = this.controller;
                 debugForm.ShowDialog();
             }
         }

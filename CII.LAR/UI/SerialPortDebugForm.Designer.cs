@@ -147,7 +147,7 @@
             // autoSendcbx
             // 
             this.autoSendcbx.AutoSize = true;
-            this.autoSendcbx.Enabled = false;
+            this.autoSendcbx.Enabled = true;
             this.autoSendcbx.Location = new System.Drawing.Point(14, 313);
             this.autoSendcbx.Name = "autoSendcbx";
             this.autoSendcbx.Size = new System.Drawing.Size(79, 19);

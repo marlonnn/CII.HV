@@ -22,7 +22,7 @@ namespace CII.LAR.UI
         public IController Controller
         {
             get { return this.controller; }
-            private set { this.controller = value; }
+            set { this.controller = value; }
         }
 
         private LaserProtocolFactory laserProtocolFactory;
@@ -353,6 +353,8 @@ namespace CII.LAR.UI
                 if (controller != null)
                 {
                     controller.OpenMotorSerialPort(motorComListCbx.Text, motorBaudRateCbx.Text, motorDataBitsCbx.Text, motorStopBitsCbx.Text, motorParityCbx.Text, motorHandshakingcbx.Text);
+                    motorOpenCloseSpbtn.Text = "Close";
+                    this.motorStatus.Text = "Conected";
                 }
             }
             else
@@ -360,6 +362,8 @@ namespace CII.LAR.UI
                 if (controller != null)
                 {
                     controller.CloseMotorSerialPort();
+                    motorOpenCloseSpbtn.Text = "Open";
+                    this.motorStatus.Text = "Not Conected";
                 }
             }
         }
@@ -518,6 +522,26 @@ namespace CII.LAR.UI
             if (LaserProtocolFactory.GetInstance().RxQueue != null)
             {
                 List<Original> bytes = LaserProtocolFactory.GetInstance().RxQueue.PopAll();
+                if (bytes != null && bytes.Count > 0)
+                {
+                    foreach (var o in bytes)
+                    {
+                        OriginalBytes originalBytes = o as OriginalBytes;
+                        if (originalBytes != null)
+                        {
+                            if (receivetbx.Text.Length > 0)
+                            {
+                                receivetbx.AppendText("-");
+                            }
+                            receivetbx.AppendText(IController.Bytes2Hex(originalBytes.Data));
+                        }
+                    }
+                }
+            }
+
+            if (MotorProtocolFactory.GetInstance().RxQueue != null)
+            {
+                List<Original> bytes = MotorProtocolFactory.GetInstance().RxQueue.PopAll();
                 if (bytes != null && bytes.Count > 0)
                 {
                     foreach (var o in bytes)

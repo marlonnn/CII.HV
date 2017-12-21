@@ -24,6 +24,14 @@ namespace CII.LAR.Algorithm
 
         private List<Point> boundPoints;
         public static Coordinate coordinate;
+
+        private Matrix<double> finalMatrix;
+        public Matrix<double> FinalMatrix
+        {
+            get { return this.finalMatrix; }
+            private set { this.finalMatrix = value; }
+        }
+
         public Coordinate()
         {
             clickPointsDic = new Dictionary<int, Point>();
@@ -36,6 +44,20 @@ namespace CII.LAR.Algorithm
 
             boundPoints = new List<Point>() { new Point(0, 0), new Point(0, 3000), new Point(3000, 3000), new Point(3000, 0)};
 
+            finalMatrix = mb.Dense(3, 3);
+        }
+
+        /// <summary>
+        /// 求最终转换矩阵，算平均值
+        /// </summary>
+        /// <returns></returns>
+        public Matrix<double> GetFinalMatrix()
+        {
+            foreach (var values in transformMatrix.Values)
+            {
+                FinalMatrix += values;
+            }
+            return FinalMatrix.Divide(transformMatrix.Values.Count);
         }
 
         /// <summary>
@@ -55,6 +77,20 @@ namespace CII.LAR.Algorithm
                 }
             }
             return points;
+        }
+
+        private bool CheckPointInScreenRegion(Point motorPoint)
+        {
+            Point screenPoint = Point.Empty;
+            var motorArray = mb.DenseOfArray(new double[,] { { motorPoint.X }, { motorPoint.Y }, { 1 } });
+            if (transformMatrix.Count > 0)
+            {
+                var temp = transformMatrix[0].Determinant() * motorArray;
+                screenPoint = new Point((int)temp[0, 0], (int)temp[1, 0]);
+            }
+
+
+            return true;
         }
 
         public static Coordinate GetCoordinate()
@@ -170,6 +206,7 @@ namespace CII.LAR.Algorithm
             double[,] p =  { { points[0].X, points[1].X, points[2].X }, { points[0].Y, points[1].Y, points[2].Y }, { 1, 1, 1} };
             var fromArray = mb.DenseOfArray(p);
             Console.WriteLine("fromArray: " + fromArray.ToString());
+            Console.WriteLine("fromArray divide: " + fromArray.Divide(3).ToString());
             var Determinant = fromArray.Determinant();
             Console.WriteLine("Determinant: " + Determinant.ToString());
             var Inverse = fromArray.Inverse();

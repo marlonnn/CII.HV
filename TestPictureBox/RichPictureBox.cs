@@ -122,6 +122,7 @@ namespace TestPictureBox
             {
                 Point point = new Point(e.X, e.Y);
                 lines[lines.Count - 1].MoveHandleTo(point, 2);
+                //this.Refresh();
                 this.topPanel.Invalidate();
             }
         }

@@ -14,11 +14,11 @@ namespace TestPictureBox
     {
         public TransparentPanel()
         {
-            this.DoubleBuffered = true;
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint |
-            ControlStyles.UserPaint |
-            ControlStyles.OptimizedDoubleBuffer, true);
-            this.UpdateStyles();
+            //this.DoubleBuffered = true;
+            //this.SetStyle(ControlStyles.AllPaintingInWmPaint |
+            //ControlStyles.UserPaint |
+            //ControlStyles.OptimizedDoubleBuffer, true);
+            //this.UpdateStyles();
             //this.SetStyle(
             //    ControlStyles.AllPaintingInWmPaint |
             //    ControlStyles.UserPaint |
@@ -32,20 +32,19 @@ namespace TestPictureBox
             //this.DoubleBuffered = true;
         }
 
-        //protected override CreateParams CreateParams
-        //{
-        //    get
-        //    {
-        //        CreateParams cp = base.CreateParams;
-        //        cp.ExStyle |= 0x00000020;
-        //        return cp;
-        //    }
-        //}
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x00000020;
+                return cp;
+            }
+        }
 
-        //protected override void OnPaintBackground(PaintEventArgs pevent)
-        //{
+        protected override void OnPaintBackground(PaintEventArgs pevent)
+        {
 
-        //}
-
+        }
     }
 }

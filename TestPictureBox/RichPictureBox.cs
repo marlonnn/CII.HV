@@ -86,6 +86,10 @@ namespace TestPictureBox
                     line.Draw(graphics, this.pictureBox);
                 }
             }
+            using (Pen p = new Pen(Color.Yellow, 1.5f))
+            {
+                graphics.DrawLine(p, 0, this.topPanel.Height / 2, topPanel.Width, this.topPanel.Height / 2);
+            }
         }
 
         private void TopPanel_MouseWheel(object sender, MouseEventArgs e)
@@ -122,8 +126,8 @@ namespace TestPictureBox
             {
                 Point point = new Point(e.X, e.Y);
                 lines[lines.Count - 1].MoveHandleTo(point, 2);
-                //this.Refresh();
-                this.topPanel.Invalidate();
+                this.Refresh();
+                //this.topPanel.Invalidate();
             }
         }
 

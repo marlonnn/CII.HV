@@ -14,12 +14,14 @@ namespace CII.LAR.Algorithm
     /// </summary>
     public class Coordinate
     {
+        //屏幕坐标系坐标
         private Dictionary<int, Point> clickPointsDic;
 
         private MatrixBuilder<double> mb = Matrix<double>.Build;
 
         private Dictionary<int, Matrix<double>> transformMatrix;
 
+        //电机坐标系坐标
         private Dictionary<int, Point> motorPoints;
 
         private List<Point> boundPoints;
@@ -36,7 +38,6 @@ namespace CII.LAR.Algorithm
         {
             clickPointsDic = new Dictionary<int, Point>();
             transformMatrix = new Dictionary<int, Matrix<double>>();
-
             motorPoints = new Dictionary<int, Point>();
             motorPoints.Add(0, new Point(1500, 1500));
             motorPoints.Add(1, new Point(1600, 1500));
@@ -45,6 +46,65 @@ namespace CII.LAR.Algorithm
             boundPoints = new List<Point>() { new Point(0, 0), new Point(0, 3000), new Point(3000, 3000), new Point(3000, 0)};
 
             finalMatrix = mb.Dense(3, 3);
+        }
+
+        /// <summary>
+        /// 添加电机坐标
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="pictureBoxSize"></param>
+        private void CreatePresetMotorPoint(int index, Size pictureBoxSize)
+        {
+            //屏幕坐标
+            Point psp = CreatePresetScreenPoint(index, pictureBoxSize);
+            //转换矩阵变化为电机坐标
+            Point pmp = ChangeScreenPointToMotorPoint(psp);
+            AddMotorPoint(index, pmp);
+        }
+
+        /// <summary>
+        /// 创建预设屏幕4点坐标
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="pictureBoxSize"></param>
+        /// <returns></returns>
+        private Point CreatePresetScreenPoint(int index, Size pictureBoxSize)
+        {
+            Point psp = Point.Empty;
+            switch (index)
+            {
+                case 3:
+                    psp = new Point(pictureBoxSize.Width - 100, pictureBoxSize.Height / 2);
+                    break;
+                case 4:
+                    psp = new Point(pictureBoxSize.Width / 2, pictureBoxSize.Height);
+                    break;
+                case 5:
+                    psp = new Point(100, pictureBoxSize.Height / 2);
+                    break;
+                case 6:
+                    psp = new Point(pictureBoxSize.Width / 2, 100);
+                    break;
+            }
+            //check point in legal region
+            return psp;
+        }
+
+        /// <summary>
+        /// 屏幕预设坐标转换为电机坐标系坐标
+        /// </summary>
+        /// <param name="psp"></param>
+        /// <returns></returns>
+        private Point ChangeScreenPointToMotorPoint(Point psp)
+        {
+            Point p = Point.Empty;
+            var screenArray = mb.DenseOfArray(new double[,] { { psp.X }, { psp.Y }, { 1 } });
+            if (transformMatrix.Count > 0)
+            {
+                var temp = transformMatrix[0] * screenArray;
+                p = new Point((int)temp[0, 0], (int)temp[1, 0]);
+            }
+            return p;
         }
 
         /// <summary>
@@ -164,6 +224,37 @@ namespace CII.LAR.Algorithm
 
             Matrix<double> firstMatrix = CalculateTransformMatrix(firstThreeMotorPoints, sps);
             AddMatrix(0, firstMatrix);
+        }
+
+        /// <summary>
+        /// 创建其他精度转换矩阵
+        /// </summary>
+        /// <param name="indexs"></param>
+        /// <param name="index"></param>
+        public void CalculateOtherMatix(List<int> indexs, int index)
+        {
+            List<Point> sps = new List<Point>();
+            List<Point> mps = new List<Point>();
+            foreach (int i in indexs)
+            {
+                sps.Add(clickPointsDic[i]);
+                mps.Add(motorPoints[i]);
+            }
+            Matrix<double> m = CalculateTransformMatrix(mps, sps);
+            AddMatrix(index, m);
+        }
+
+        /// <summary>
+        /// 创建其他三个转换矩阵
+        /// </summary>
+        public void CalculateOtherMatix()
+        {
+            List<int> indexs = new List<int>() { 3, 4, 5 };
+            CalculateOtherMatix(indexs, 1);
+            indexs = new List<int>() { 3, 4, 6 };
+            CalculateOtherMatix(indexs, 2);
+            indexs = new List<int>() { 4, 5, 6 };
+            CalculateOtherMatix(indexs, 3);
         }
 
         /// <summary>

@@ -64,14 +64,22 @@ namespace CII.LAR.Protocol
 
         protected bool CheckResponse(byte[] data)
         {
-            if (data[0] == 0x80 && data[1] == 0xFF && data[2] == 0x00 && data[3] == 0x00 && data[4] == 0x00 && data[5] == 0xFF)
-            {
-                return true;
-            }
-            else
+            if (data.Length < 6)
             {
                 return false;
             }
+            else
+            {
+                return true;
+            }
+            //if (data[0] == 0x80 && data[1] == 0xFF && data[2] == 0x00 && data[3] == 0x00 && data[4] == 0x00 && data[5] == 0xFF)
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
         }
     }
 }

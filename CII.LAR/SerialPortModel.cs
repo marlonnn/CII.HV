@@ -29,7 +29,7 @@ namespace CII.LAR
                 return;
             }
 
-            lock (thisLock)
+            //lock (thisLock)
             {
                 int len = laserSerialPort.BytesToRead;
                 Byte[] data = new Byte[len];
@@ -54,8 +54,9 @@ namespace CII.LAR
                 return;
             }
 
-            lock (thisLock)
+            //lock (thisLock)
             {
+                var breakstatus = motorSerialPort.BreakState;
                 int len = motorSerialPort.BytesToRead;
                 Byte[] data = new Byte[len];
                 try
@@ -223,6 +224,7 @@ namespace CII.LAR
                 motorSerialPort.Parity = (Parity)Enum.Parse(typeof(Parity), parity);
                 motorSerialPort.Handshake = (Handshake)Enum.Parse(typeof(Handshake), handshake);
                 motorSerialPort.WriteTimeout = 1000; /*Write time out*/
+                motorSerialPort.ReadTimeout = 1000;
                 motorSerialPort.Open();
                 motorSerialPort.DataReceived += new SerialDataReceivedEventHandler(MotorDataReceived);
                 args.isOpend = true;

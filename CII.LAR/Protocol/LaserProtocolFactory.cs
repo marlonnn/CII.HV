@@ -112,11 +112,13 @@ namespace CII.LAR.Protocol
             Decoders[0x09] = new LaserC09Response();
             Decoders[0x0B] = new LaserC0BResponse();
             Decoders[0x0C] = new LaserC0CResponse();
+            Decoders[0x70] = new LaserC70Response();
             Decoders[0x71] = new LaserC71Response();
             Decoders[0x72] = new LaserC72Response();
             Decoders[0x73] = new LaserC73Response();
             Decoders[0x74] = new LaserC74Response();
             Decoders[0x75] = new LaserC75Response();
+            Decoders[0x76] = new LaserC76Response();
             //initialize default decoder
             Decoder = Decoders[0x00];
         }

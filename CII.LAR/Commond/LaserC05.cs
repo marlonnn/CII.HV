@@ -32,7 +32,7 @@ namespace CII.LAR.Commond
     public class LaserC05Response : LaserBaseResponse
     {
         /// <summary>
-        /// 最小脉冲宽度
+        /// 脉冲宽度
         /// </summary>
         private double pulseWidth;
         public double PulseWidth
@@ -41,15 +41,15 @@ namespace CII.LAR.Commond
             private set { this.pulseWidth = value; }
         }
 
-        /// <summary>
-        /// 最大脉冲宽度
-        /// </summary>
-        private double repeatFrequency;
-        public double RepeatFrequency
-        {
-            get { return this.repeatFrequency; }
-            private set { this.repeatFrequency = value; }
-        }
+        ///// <summary>
+        ///// 最大脉冲宽度
+        ///// </summary>
+        //private double repeatFrequency;
+        //public double RepeatFrequency
+        //{
+        //    get { return this.repeatFrequency; }
+        //    private set { this.repeatFrequency = value; }
+        //}
 
         public LaserC05Response()
         {
@@ -66,7 +66,7 @@ namespace CII.LAR.Commond
             //aa*128 + bb 脉冲宽度 T = data * 10 (单位ns)
             c05Response.PulseWidth = (obytes.Data[1] * 128 + obytes.Data[2]) * 10;
             //cc*128 + dd 重复频率 T = data * 0.1 (单位KHZ)
-            c05Response.RepeatFrequency = (obytes.Data[3] * 128 + obytes.Data[4]) * 0.1;
+            //c05Response.RepeatFrequency = (obytes.Data[3] * 128 + obytes.Data[4]) * 0.1;
             return CreateOneList(c05Response);
         }
     }

@@ -60,13 +60,19 @@ namespace CII.LAR.Commond
         public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
         {
             base.Decode(bp, obytes);
-
-            LaserC09Response c09Response = new LaserC09Response();
-            c09Response.DtTime = DateTime.Now;
-            c09Response.OriginalBytes = obytes;
-            //cc*128 + dd = T 红光激光器电流设定值数字量 (data) T = (data / 4096) * 2500 (MA)
-            c09Response.Current = (obytes.Data[3] * 128 + obytes.Data[4]) * 100 / COF;
-            return CreateOneList(c09Response);
+            if (CheckResponse(obytes.Data))
+            {
+                LaserC09Response c09Response = new LaserC09Response();
+                c09Response.DtTime = DateTime.Now;
+                c09Response.OriginalBytes = obytes;
+                //cc*128 + dd = T 红光激光器电流设定值数字量 (data) T = (data / 4096) * 2500 (MA)
+                c09Response.Current = (obytes.Data[3] * 128 + obytes.Data[4]) * 100 / COF;
+                return CreateOneList(c09Response);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

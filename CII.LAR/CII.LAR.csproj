@@ -84,11 +84,13 @@
     <Compile Include="Commond\LaserC04.cs" />
     <Compile Include="Commond\LaserC03.cs" />
     <Compile Include="Commond\LaserC01.cs" />
+    <Compile Include="Commond\LaserC70.cs" />
     <Compile Include="Commond\LaserC75.cs" />
     <Compile Include="Commond\LaserC74.cs" />
     <Compile Include="Commond\LaserC73.cs" />
     <Compile Include="Commond\LaserC72.cs" />
     <Compile Include="Commond\LaserC71.cs" />
+    <Compile Include="Commond\LaserC76.cs" />
     <Compile Include="Commond\MotorC40.cs" />
     <Compile Include="Commond\MotorC50.cs" />
     <Compile Include="Commond\MotorC60.cs" />

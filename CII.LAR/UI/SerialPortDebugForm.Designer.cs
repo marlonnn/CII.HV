@@ -96,6 +96,7 @@
             this.btn605561 = new System.Windows.Forms.Button();
             this.btn605562 = new System.Windows.Forms.Button();
             this.autoReceiverTimer = new System.Windows.Forms.Timer(this.components);
+            this.btn70 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxMotor.SuspendLayout();
             this.groupBoxLaser.SuspendLayout();
@@ -147,7 +148,6 @@
             // autoSendcbx
             // 
             this.autoSendcbx.AutoSize = true;
-            this.autoSendcbx.Enabled = true;
             this.autoSendcbx.Location = new System.Drawing.Point(14, 313);
             this.autoSendcbx.Name = "autoSendcbx";
             this.autoSendcbx.Size = new System.Drawing.Size(79, 19);
@@ -165,6 +165,7 @@
             this.clearReceivebtn.TabIndex = 11;
             this.clearReceivebtn.Text = "Clear";
             this.clearReceivebtn.UseVisualStyleBackColor = true;
+            this.clearReceivebtn.Click += new System.EventHandler(this.clearReceivebtn_Click);
             // 
             // clearSendbtn
             // 
@@ -635,7 +636,7 @@
             // 
             // btn75
             // 
-            this.btn75.Location = new System.Drawing.Point(528, 376);
+            this.btn75.Location = new System.Drawing.Point(752, 370);
             this.btn75.Name = "btn75";
             this.btn75.Size = new System.Drawing.Size(75, 23);
             this.btn75.TabIndex = 34;
@@ -787,11 +788,22 @@
             // 
             this.autoReceiverTimer.Tick += new System.EventHandler(this.autoReceiverTimer_Tick);
             // 
+            // btn70
+            // 
+            this.btn70.Location = new System.Drawing.Point(833, 276);
+            this.btn70.Name = "btn70";
+            this.btn70.Size = new System.Drawing.Size(75, 23);
+            this.btn70.TabIndex = 49;
+            this.btn70.Text = "70";
+            this.btn70.UseVisualStyleBackColor = true;
+            this.btn70.Click += new System.EventHandler(this.btn70_Click);
+            // 
             // SerialPortDebugForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 373);
+            this.ClientSize = new System.Drawing.Size(968, 405);
+            this.Controls.Add(this.btn70);
             this.Controls.Add(this.btn605562);
             this.Controls.Add(this.btn605561);
             this.Controls.Add(this.btn605500);
@@ -901,5 +913,6 @@
         private System.Windows.Forms.Button btn605561;
         private System.Windows.Forms.Button btn605562;
         private System.Windows.Forms.Timer autoReceiverTimer;
+        private System.Windows.Forms.Button btn70;
     }
 }

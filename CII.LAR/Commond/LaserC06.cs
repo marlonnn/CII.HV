@@ -59,15 +59,22 @@ namespace CII.LAR.Commond
         public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
         {
             base.Decode(bp, obytes);
+            if (CheckResponse(obytes.Data))
+            {
+                LaserC06Response c06Response = new LaserC06Response();
+                c06Response.DtTime = DateTime.Now;
+                c06Response.OriginalBytes = obytes;
+                //aa*128 + bb 最小脉冲宽度 T = data * 10 (单位ns)
+                c06Response.MinimumPulseWidth = (obytes.Data[1] * 128 + obytes.Data[2]) * 10;
+                //cc*128 + dd 最大脉冲宽度 T = data * 10 (单位ns)
+                c06Response.MaxmumPulseWidth = (obytes.Data[3] * 128 + obytes.Data[4]) * 10;
+                return CreateOneList(c06Response);
+            }
+            else
+            {
+                return null;
+            }
 
-            LaserC06Response c06Response = new LaserC06Response();
-            c06Response.DtTime = DateTime.Now;
-            c06Response.OriginalBytes = obytes;
-            //aa*128 + bb 最小脉冲宽度 T = data * 10 (单位ns)
-            c06Response.MinimumPulseWidth = (obytes.Data[1] * 128 + obytes.Data[2]) * 10;
-            //cc*128 + dd 最大脉冲宽度 T = data * 10 (单位ns)
-            c06Response.MaxmumPulseWidth = (obytes.Data[3] * 128 + obytes.Data[4]) * 10;
-            return CreateOneList(c06Response);
         }
     }
 }

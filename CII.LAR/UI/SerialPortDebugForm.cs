@@ -415,7 +415,7 @@ namespace CII.LAR.UI
 
         private void btn75_Click(object sender, EventArgs e)
         {
-            LaserProtocolFactory.SendMessage(new LaserC75Request(10));
+            LaserProtocolFactory.SendMessage(new LaserC75Request(17));
         }
 
         private void btn09_Click(object sender, EventArgs e)
@@ -558,6 +558,16 @@ namespace CII.LAR.UI
                     }
                 }
             }
+        }
+
+        private void clearReceivebtn_Click(object sender, EventArgs e)
+        {
+            receivetbx.Clear();
+        }
+
+        private void btn70_Click(object sender, EventArgs e)
+        {
+            LaserProtocolFactory.SendMessage(new LaserC70Request());
         }
     }
 }

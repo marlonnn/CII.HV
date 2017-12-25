@@ -46,7 +46,6 @@ namespace CII.LAR
             }
         }
 
-
         private void MotorDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             if (motorSerialPort.BytesToRead <= 0)
@@ -62,8 +61,12 @@ namespace CII.LAR
                 try
                 {
                     motorSerialPort.Read(data, 0, len);
-                    MotorProtocolFactory.GetInstance().RxQueue.Push(new OriginalBytes(DateTime.Now, data));
-                    LogHelper.GetLogger<SerialPortModel>().Error(string.Format("电机接受到的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(data)));
+                    var destData = CheckCIIData(data, len);
+                    if (destData != null)
+                    {
+                        MotorProtocolFactory.GetInstance().RxQueue.Push(new OriginalBytes(DateTime.Now, destData));
+                        LogHelper.GetLogger<SerialPortModel>().Error(string.Format("电机接受到的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(destData)));
+                    }
                 }
                 catch (System.Exception ex)
                 {
@@ -72,6 +75,45 @@ namespace CII.LAR
             }
         }
 
+        private byte[] motorBuffer;
+
+        /// <summary>
+        /// 数据完整性检查
+        /// </summary>
+        /// <param name="srcBytes"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        private byte[] CheckCIIData(byte[] srcBytes, int length)
+        {
+            if (srcBytes != null && length > 4)
+            {
+                if (srcBytes[0] == 0x5D && srcBytes[1] == 0x5B && srcBytes[length - 1] == 0x5D && srcBytes[length - 2] == 0x5D)
+                {
+                    return srcBytes;
+                }
+                else if ((srcBytes[0] == 0x5D && srcBytes[1] == 0x5B) && (srcBytes[length - 1] != 0x5D && srcBytes[length - 2] != 0x5D))
+                {
+                    motorBuffer = new byte[length];
+                    Array.Copy(srcBytes, 0, motorBuffer, 0, length);
+                    return null;
+                }
+                else if ((srcBytes[0] != 0x5D && srcBytes[1] != 0x5B) && (srcBytes[length - 1] == 0x5D && srcBytes[length - 2] == 0x5D))
+                {
+                    byte[] newBytes = new byte[motorBuffer.Length + length];
+                    Array.Copy(motorBuffer, 0, newBytes, 0, motorBuffer.Length);
+                    Array.Copy(srcBytes, 0, newBytes, motorBuffer.Length, length);
+                    return newBytes;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
         /// <summary>
         /// LaserSendData bytes to device
         /// </summary>
@@ -233,7 +275,7 @@ namespace CII.LAR
             {
                 args.isOpend = false;
             }
-            if (laserComOpenEvent != null)
+            if (motorComOpenEvent != null)
             {
                 motorComOpenEvent.Invoke(this, args);
             }

@@ -20,6 +20,7 @@ namespace TestPictureBox
         public VideoForm()
         {
             InitializeComponent();
+            EnumerateVideoDevices();
             this.videoSourcePlayer.Paint += VideoSourcePlayer_Paint;
             this.videoSourcePlayer.NewFrame += VideoSourcePlayer_NewFrame;
         }
@@ -71,14 +72,14 @@ namespace TestPictureBox
             {
                 if (!this.comboBoxModes.Items.Contains(capability.FrameSize))
                 {
-                    this.comboBoxModes.Items.Contains(capability.FrameSize);
+                    this.comboBoxModes.Items.Add(capability.FrameSize);
                 }
             }
             if (videoCapabilities.Length == 0)
             {
                 this.comboBoxModes.Items.Add("Not supported");
             }
-            this.comboBoxModes.SelectedIndex = 0;
+            //this.comboBoxModes.SelectedIndex = 0;
         }
 
         private void comboBoxSources_SelectedIndexChanged(object sender, EventArgs e)

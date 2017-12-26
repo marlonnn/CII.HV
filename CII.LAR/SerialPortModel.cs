@@ -36,8 +36,12 @@ namespace CII.LAR
                 try
                 {
                     laserSerialPort.Read(data, 0, len);
-                    LaserProtocolFactory.GetInstance().RxQueue.Push(new OriginalBytes(DateTime.Now, data));
-                    LogHelper.GetLogger<SerialPortModel>().Error(string.Format("激光器接受到的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(data)));
+                    var destData = CheckLarData(data, len);
+                    if (destData != null)
+                    {
+                        LaserProtocolFactory.GetInstance().RxQueue.Push(new OriginalBytes(DateTime.Now, destData));
+                        LogHelper.GetLogger<SerialPortModel>().Error(string.Format("激光器接受到的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(destData)));
+                    }
                 }
                 catch (System.Exception ex)
                 {
@@ -74,6 +78,47 @@ namespace CII.LAR
                 }
             }
         }
+
+        private byte[] laserBuffer;
+
+        /// <summary>
+        /// 激光器数据有效性检查
+        /// </summary>
+        /// <param name="srcBytes"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        private byte[] CheckLarData(byte[] srcBytes, int length)
+        {
+            if (srcBytes != null)
+            {
+                if (srcBytes[0] == 0x80 && srcBytes[length - 1] == 0xFF)
+                {
+                    return srcBytes;
+                }
+                else if (srcBytes[0] == 0x80 && srcBytes[length - 1] != 0xFF)
+                {
+                    laserBuffer = new byte[length];
+                    Array.Copy(srcBytes, 0, laserBuffer, 0, length);
+                    return null;
+                }
+                else if (srcBytes[0] != 0x80 && srcBytes[length - 1] == 0xFF)
+                {
+                    byte[] newBytes = new byte[laserBuffer.Length + length];
+                    Array.Copy(laserBuffer, 0, newBytes, 0, laserBuffer.Length);
+                    Array.Copy(srcBytes, 0, newBytes, laserBuffer.Length, length);
+                    return newBytes;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
 
         private byte[] motorBuffer;
 

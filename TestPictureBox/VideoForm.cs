@@ -95,7 +95,7 @@ namespace TestPictureBox
                 if (videoCapabilities != null && videoCapabilities.Length != 0)
                 {
                     var size = (Size)this.comboBoxModes.SelectedItem;
-                    videoDevice.DesiredFrameSize = size;
+                    videoDevice.VideoResolution = videoCapabilities.FirstOrDefault(c => { return c.FrameSize == size; });
                 }
                 this.videoSourcePlayer.VideoSource = videoDevice;
                 this.videoSourcePlayer.Start();

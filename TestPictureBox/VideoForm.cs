@@ -69,26 +69,17 @@ namespace TestPictureBox
 
         private void TopPanel_MouseDown(object sender, MouseEventArgs e)
         {
-            //Console.WriteLine("picture box location X : {0},  Y : {1}", e.Location.X, e.Location.Y);
-            //var pointToScreen = this.pictureBox.PointToScreen(e.Location);
-            //Console.WriteLine("point to screen X : {0},  Y : {1}", pointToScreen.X, pointToScreen.Y);
             clickCount++;
             if (clickCount % 2 == 1)
             {
                 startPoint = new Point(e.X, e.Y);
                 DrawLine drawObject = new DrawLine(null, startPoint.X, startPoint.Y, startPoint.X + 1, startPoint.Y + 1);
                 lines.Add(drawObject);
-                //this.videoSourcePlayer.Invalidate();
             }
         }
 
         private void VideoSourcePlayer_NewFrame(object sender, ref Bitmap image)
         {
-            //using (Graphics g = Graphics.FromImage(image))
-            //{
-            //    g.DrawString("Augmented reality?", new Font("Arial", 16), Brushes.Black, new Rectangle(10, 10, 200, 50));
-            //    g.Dispose();
-            //}
         }
 
         private void VideoSourcePlayer_Paint(object sender, PaintEventArgs e)

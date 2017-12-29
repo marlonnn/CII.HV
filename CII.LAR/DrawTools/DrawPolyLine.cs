@@ -34,12 +34,12 @@ namespace CII.LAR.DrawTools
             this.ObjectType = ObjectType.Polygon;
         }
 
-        public DrawPolyLine(ZWPictureBox pictureBox, int x1, int y1, int x2, int y2)
-            : base(pictureBox, x1, y1, x2, y2)
+        public DrawPolyLine(VideoControl videoControl, int x1, int y1, int x2, int y2)
+            : base(videoControl, x1, y1, x2, y2)
         {
             InitializeGraphicsProperties();
             this.RegisterUpdateStatisticsHandler();
-            //this.GraphicsProperties.GraphicsPropertiesChangedHandler += pictureBox.GraphicsPropertiesChangedHandler;
+            this.GraphicsProperties.GraphicsPropertiesChangedHandler += videoControl.GraphicsPropertiesChangedHandler;
 
         }
 

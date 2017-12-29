@@ -210,6 +210,12 @@
     <Compile Include="UI\BaseCtrl.Designer.cs">
       <DependentUpon>BaseCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\VideoChooseCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\VideoChooseCtrl.Designer.cs">
+      <DependentUpon>VideoChooseCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\CameraChooseCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -218,6 +224,7 @@
     </Compile>
     <Compile Include="UI\CoordinateHelper.cs" />
     <Compile Include="UI\CtrlFactory.cs" />
+    <Compile Include="UI\EnumClass.cs" />
     <Compile Include="UI\HoleSizeCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -310,9 +317,6 @@
     <Compile Include="UI\VideoControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UI\ZWPictureBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <EmbeddedResource Include="EntryForm.resx">
       <DependentUpon>EntryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -336,6 +340,12 @@
     <EmbeddedResource Include="Res\LaserCtrl.zh-CN.resx" />
     <EmbeddedResource Include="UI\BaseCtrl.resx">
       <DependentUpon>BaseCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\VideoChooseCtrl.resx">
+      <DependentUpon>VideoChooseCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\VideoChooseCtrl.zh-CN.resx">
+      <DependentUpon>VideoChooseCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\CameraChooseCtrl.resx">
       <DependentUpon>CameraChooseCtrl.cs</DependentUpon>
@@ -402,11 +412,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\TransparentButton.resx">
       <DependentUpon>TransparentButton.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\ZWPictureBox.resx">
-      <DependentUpon>ZWPictureBox.cs</DependentUpon>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ZWPictureBox.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Config\config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

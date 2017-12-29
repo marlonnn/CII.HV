@@ -132,5 +132,10 @@ namespace CII.LAR.UI
 
             e.Graphics.DrawString(Title, font, Brushes.Navy, 3, 3);
         }
+
+        public virtual void InitializeLocation(Size size)
+        {
+            this.Location = new Point(10, 30);
+        }
     }
 }

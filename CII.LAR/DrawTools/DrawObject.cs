@@ -26,13 +26,13 @@ namespace CII.LAR.DrawTools
     {
         public ObjectType ObjectType;
 
-        protected ZWPictureBox pictureBox;
+        protected VideoControl videoControl;
 
         protected double UnitOfMeasureFactor
         {
             get
             {
-                return MeasureSystem.CustomUnitToMicron(1, pictureBox.UnitOfMeasure);
+                return MeasureSystem.CustomUnitToMicron(1, videoControl.UnitOfMeasure);
             }
         }
 
@@ -287,13 +287,13 @@ namespace CII.LAR.DrawTools
 
         public abstract bool HitTest(int nIndex, PointF dataPoint);
 
-        public HitTestResult HitTest(ZWPictureBox pictureBox, Point point, bool forSelection, bool hitTestHandle = true)
+        public HitTestResult HitTest(VideoControl videoControl, Point point, bool forSelection, bool hitTestHandle = true)
         {
             if (Selected && hitTestHandle)
             {
                 for (int i = 1; i <= HandleCount; i++)
                 {
-                    if (CheckHandleRegion(pictureBox, i, point))
+                    if (CheckHandleRegion(videoControl, i, point))
                     {
                         return new HitTestResult(ElementType.Handle, i);
                     }
@@ -302,11 +302,11 @@ namespace CII.LAR.DrawTools
             UpdateHitTestRegions();
             if (forSelection)
             {
-                return HitTestForSelection(pictureBox, point);
+                return HitTestForSelection(videoControl, point);
             }
             else
             {
-                for (int i = 0; i < pictureBox.GraphicsList.Count; i++)
+                for (int i = 0; i < videoControl.GraphicsList.Count; i++)
                 {
                     PointF dataPoint = point;
                     if (HitTest(i, dataPoint))
@@ -318,9 +318,9 @@ namespace CII.LAR.DrawTools
             }
         }
 
-        protected virtual bool CheckHandleRegion(ZWPictureBox pictureBox, int handleNumber, Point point)
+        protected virtual bool CheckHandleRegion(VideoControl videoControl, int handleNumber, Point point)
         {
-            return (GetHandleRectangle(pictureBox, handleNumber).Contains(point));
+            return (GetHandleRectangle(videoControl, handleNumber).Contains(point));
         }
 
         /// <summary>
@@ -328,14 +328,14 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="drawArea"></param>
         /// <param name="point"></param>
-        public abstract HitTestResult HitTestForSelection(ZWPictureBox pictureBox, Point point);
+        public abstract HitTestResult HitTestForSelection(VideoControl videoControl, Point point);
 
         /// <summary>
         /// Get handle point by 1-based number
         /// </summary>
         /// <param name="handleNumber"></param>
         /// <returns></returns>
-        public virtual Point GetHandle(ZWPictureBox pictureBox, int handleNumber)
+        public virtual Point GetHandle(VideoControl videoControl, int handleNumber)
         {
             return new Point(0, 0);
         }
@@ -345,9 +345,9 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="handleNumber"></param>
         /// <returns></returns>
-        public virtual Rectangle GetHandleRectangle(ZWPictureBox pictureBox, int handleNumber)
+        public virtual Rectangle GetHandleRectangle(VideoControl videoControl, int handleNumber)
         {
-            Point point = GetHandle(pictureBox, handleNumber);
+            Point point = GetHandle(videoControl, handleNumber);
 
             return new Rectangle(point.X - 3, point.Y - 3, 6, 6);
         }
@@ -357,7 +357,7 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="deltaX"></param>
         /// <param name="deltaY"></param>
-        public virtual void Move(ZWPictureBox pictureBox, int deltaX, int deltaY)
+        public virtual void Move(VideoControl videoControl, int deltaX, int deltaY)
         {
         }
 
@@ -366,7 +366,7 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="point"></param>
         /// <param name="handleNumber"></param>
-        public virtual void MoveHandleTo(ZWPictureBox pictureBox, Point point, int handleNumber)
+        public virtual void MoveHandleTo(VideoControl videoControl, Point point, int handleNumber)
         {
         }
 
@@ -374,11 +374,11 @@ namespace CII.LAR.DrawTools
         /// Draw object
         /// </summary>
         /// <param name="g"></param>
-        public virtual void Draw(Graphics g, ZWPictureBox pictureBox)
+        public virtual void Draw(Graphics g, VideoControl videoControl)
         {
         }
 
-        public virtual void DrawTest(Graphics g, ZWPictureBox pictureBox)
+        public virtual void DrawTest(Graphics g, VideoControl videoControl)
         {
             SolidBrush brush = new SolidBrush(GraphicsPropertiesManager.GetPropertiesByName("Text").Color);
             RectangleF r = GetTextF(this.Name, g, this.ID);
@@ -392,7 +392,7 @@ namespace CII.LAR.DrawTools
             return new RectangleF();
         }
 
-        public virtual void DrawTracker(Graphics g, ZWPictureBox pictureBox)
+        public virtual void DrawTracker(Graphics g, VideoControl videoControl)
         {
             if (Selected)
             {
@@ -405,7 +405,7 @@ namespace CII.LAR.DrawTools
                     if (!IsHandleVisible(i))
                         continue;
 
-                    Rectangle r = GetHandleRectangle(pictureBox, i);
+                    Rectangle r = GetHandleRectangle(videoControl, i);
                     r.Offset(MovingOffset);
                     try
                     {

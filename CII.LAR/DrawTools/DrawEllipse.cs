@@ -17,7 +17,7 @@ namespace CII.LAR.DrawTools
     public class DrawEllipse : DrawObject
     {
         [NonSerialized]
-        protected static System.Resources.ResourceManager resourceManager = new System.Resources.ResourceManager(typeof(ZWPictureBox));
+        protected static System.Resources.ResourceManager resourceManager = new System.Resources.ResourceManager(typeof(EntryForm));
         [NonSerialized]
         protected static Cursor handleCursor = new Cursor(new System.IO.MemoryStream((byte[])resourceManager.GetObject("PolyHandle")));
 
@@ -95,22 +95,22 @@ namespace CII.LAR.DrawTools
                 : this.GraphicsProperties.Alpha;
         }
 
-        public DrawEllipse(ZWPictureBox pictureBox, int x1, int y1, int x2, int y2, double c) : this()
+        public DrawEllipse(VideoControl videoControl, int x1, int y1, int x2, int y2, double c) : this()
         {
-            this.pictureBox = pictureBox;
+            this.videoControl = videoControl;
             this.ObjectType = ObjectType.Ellipse;
 
             startPoint = new PointF(x1, y1);
             endPoint = new PointF(x2, y2);
             coeffcient = c;
 
-            drawAreaSize = pictureBox.Size;
+            drawAreaSize = videoControl.Size;
             if (drawAreaSize != DefaultDrawAreaSize)
             {
                 TransformLinear(DefaultDrawAreaSize.Width * 1.0 / drawAreaSize.Width, DefaultDrawAreaSize.Height * 1.0 / drawAreaSize.Height, 0, 0);
                 drawAreaSize = DefaultDrawAreaSize;
             }
-            //this.GraphicsProperties.GraphicsPropertiesChangedHandler += pictureBox.GraphicsPropertiesChangedHandler;
+            //this.GraphicsProperties.GraphicsPropertiesChangedHandler += videoControl.GraphicsPropertiesChangedHandler;
 
         }
 
@@ -137,8 +137,8 @@ namespace CII.LAR.DrawTools
         /// draw ellipse graphic
         /// </summary>
         /// <param name="g"></param>
-        /// <param name="pictureBox"></param>
-        public override void Draw(Graphics g, ZWPictureBox pictureBox)
+        /// <param name="videoControl"></param>
+        public override void Draw(Graphics g, VideoControl videoControl)
         {
             if (ellipseForDraw == null)
             {
@@ -174,7 +174,7 @@ namespace CII.LAR.DrawTools
                 sizeF.Width, sizeF.Height);
         }
 
-        public override void Move(ZWPictureBox pictureBox, int deltaX, int deltaY)
+        public override void Move(VideoControl videoControl, int deltaX, int deltaY)
         {
             PointF ps = ellipseForDraw.StartPoint;
             PointF pe = ellipseForDraw.EndPoint;
@@ -186,10 +186,10 @@ namespace CII.LAR.DrawTools
         /// <summary>
         /// Mouse move to new point
         /// </summary>
-        /// <param name="pictureBox"></param>
+        /// <param name="videoControl"></param>
         /// <param name="point"></param>
         /// <param name="handleNumber"></param>
-        public override void MoveHandleTo(ZWPictureBox pictureBox, Point point, int handleNumber)
+        public override void MoveHandleTo(VideoControl videoControl, Point point, int handleNumber)
         {
             if (ellipseForDraw == null)
             {
@@ -237,7 +237,7 @@ namespace CII.LAR.DrawTools
         {
             var length = (2 * Math.PI * (ellipseForDraw.Rectangle.Height / 2) + 
                 4 * (ellipseForDraw.Rectangle.Width / 2 - ellipseForDraw.Rectangle.Height / 2)) / UnitOfMeasureFactor;
-            return string.Format("{0:F2} {1}", length, pictureBox.UnitOfMeasure.ToString());
+            return string.Format("{0:F2} {1}", length, videoControl.UnitOfMeasure.ToString());
         }
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace CII.LAR.DrawTools
         private string GetArea()
         {
             var area = Math.PI * (ellipseForDraw.Rectangle.Width / (2 * UnitOfMeasureFactor)) * (ellipseForDraw.Rectangle.Height / (2 * UnitOfMeasureFactor));
-            return string.Format("{0:F2} {1}²", area, pictureBox.UnitOfMeasure.ToString());
+            return string.Format("{0:F2} {1}²", area, videoControl.UnitOfMeasure.ToString());
         }
 
         /// <summary>
@@ -256,7 +256,7 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="handleNumber"></param>
         /// <returns></returns>
-        public override Point GetHandle(ZWPictureBox pictureBox, int handleNumber)
+        public override Point GetHandle(VideoControl videoControl, int handleNumber)
         {
             float x = 0, y = 0, xCenter, yCenter;
 
@@ -357,10 +357,10 @@ namespace CII.LAR.DrawTools
             return areaRegion.IsVisible(dataPoint);
         }
 
-        public override HitTestResult HitTestForSelection(ZWPictureBox pictureBox, Point point0)
+        public override HitTestResult HitTestForSelection(VideoControl videoControl, Point point0)
         {
             //transfer point according to const draw area size for hit test
-            Point point = new Point(point0.X * drawAreaSize.Width / pictureBox.Width, point0.Y * drawAreaSize.Height / pictureBox.Height);
+            Point point = new Point(point0.X * drawAreaSize.Width / videoControl.Width, point0.Y * drawAreaSize.Height / videoControl.Height);
 
             GraphicsPath pathOut = areaPath.Clone() as GraphicsPath;
             Pen pen = new Pen(Color.Black, SelectionHitTestWidth * 2);

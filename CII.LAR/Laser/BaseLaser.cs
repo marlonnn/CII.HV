@@ -41,11 +41,10 @@ namespace CII.LAR.Laser
                     this.FlashTimer.Enabled = value;
                     this.FlashTimer.Stop();
                 }
-                if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-                    this.pictureBox.Invalidate();
+                this.videoControl.Invalidate();
             }
         }
-        protected ZWPictureBox pictureBox;
+        protected VideoControl videoControl;
 
         protected SolidBrush brush;
         public SolidBrush Brush
@@ -80,8 +79,7 @@ namespace CII.LAR.Laser
         protected virtual void FlashTimer_Tick(object sender, EventArgs e)
         {
             _flickCount++;
-            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-                this.pictureBox.Invalidate();
+            this.videoControl.Invalidate();
             if (_flickCount == 6)
             {
                 Flashing = false;
@@ -91,18 +89,18 @@ namespace CII.LAR.Laser
         /// <summary>
         /// Left nous button is pressed
         /// </summary>
-        /// <param name="pictureBox"></param>
+        /// <param name="videoControl"></param>
         /// <param name="e"></param>
-        public virtual void OnMouseDown(ZWPictureBox pictureBox, MouseEventArgs e)
+        public virtual void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
         {
         }
 
         /// <summary>
         /// Mouse is moved, left mouse button is pressed or none button is pressed
         /// </summary>
-        /// <param name="pictureBox"></param>
+        /// <param name="videoControl"></param>
         /// <param name="e"></param>
-        public virtual void OnMouseMove(ZWPictureBox pictureBox, MouseEventArgs e)
+        public virtual void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
         {
         }
 
@@ -111,16 +109,11 @@ namespace CII.LAR.Laser
         /// </summary>
         /// <param name="drawArea"></param>
         /// <param name="e"></param>
-        public virtual void OnMouseUp(ZWPictureBox pictureBox, MouseEventArgs e)
+        public virtual void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
         {
         }
 
         public virtual void OnPaint(PaintEventArgs e)
-        {
-
-        }
-
-        public virtual void OnPaint(Graphics graphics)
         {
 
         }

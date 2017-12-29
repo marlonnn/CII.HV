@@ -26,13 +26,10 @@ namespace CII.LAR.UI
 
         private GraphicsProperties graphicsProperties;
 
-        private ZWPictureBox pictureBox;
-
-        public LaserCtrl(ZWPictureBox pictureBox) : base()
+        public LaserCtrl() : base()
         {
             resources = new ComponentResourceManager(typeof(LaserCtrl));
             holePulsePoints = SysConfig.GetSysConfig().LaserConfig.HolePulsePoints;
-            this.pictureBox = pictureBox;
             this.ShowIndex = 5;
             graphicsProperties = graphicsPropertiesManager.GetPropertiesByName("Circle");
             InitializeComponent();

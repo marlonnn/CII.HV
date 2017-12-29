@@ -13,7 +13,7 @@ namespace CII.LAR.UI
 {
     public partial class SettingCtrl : BaseCtrl
     {
-        private ZWPictureBox pictureBox;
+        private VideoControl videoControl;
 
         private SystemInfoForm systemInfoForm;
 
@@ -25,9 +25,9 @@ namespace CII.LAR.UI
 
         public delegate void UpdateSimulatorImage(int selectIndex);
         public UpdateSimulatorImage UpdateSimulatorImageHandler;
-        public SettingCtrl(ZWPictureBox pictureBox) : base()
+        public SettingCtrl(VideoControl videoControl) : base()
         {
-            this.pictureBox = pictureBox;
+            this.videoControl = videoControl;
             this.ShowIndex = 0;
             InitializeComponent();
             resources = new ComponentResourceManager(typeof(SettingCtrl));
@@ -222,7 +222,7 @@ namespace CII.LAR.UI
 
         private void btnSimulator_Click(object sender, EventArgs e)
         {
-            pictureBox.LoadImage(string.Format("{0}\\Resources\\Simulator\\Embryo.bmp", System.Environment.CurrentDirectory));
+            videoControl.LoadImage(string.Format("{0}\\Resources\\Simulator\\Embryo.bmp", System.Environment.CurrentDirectory));
         }
     }
 }

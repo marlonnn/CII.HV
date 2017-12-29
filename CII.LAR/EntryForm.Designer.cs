@@ -73,10 +73,9 @@
             this.snapshot = new System.Windows.Forms.ToolStripMenuItem();
             this.autoSendTimer = new System.Windows.Forms.Timer(this.components);
             this.systemMonitorTimer = new System.Windows.Forms.Timer(this.components);
-            this.zwPictureBox = new CII.LAR.UI.ZWPictureBox();
             this.autoReceiverTimer = new System.Windows.Forms.Timer(this.components);
+            this.videoControl = new CII.LAR.UI.VideoControl();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.zwPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -116,6 +115,7 @@
             this.toolStripButtonCapture.Image = global::CII.LAR.Properties.Resources.camera;
             this.toolStripButtonCapture.Name = "toolStripButtonCapture";
             resources.ApplyResources(this.toolStripButtonCapture, "toolStripButtonCapture");
+            this.toolStripButtonCapture.Click += new System.EventHandler(this.toolStripButtonCapture_Click);
             // 
             // toolStripButtonVideo
             // 
@@ -123,6 +123,7 @@
             this.toolStripButtonVideo.Image = global::CII.LAR.Properties.Resources.video;
             this.toolStripButtonVideo.Name = "toolStripButtonVideo";
             resources.ApplyResources(this.toolStripButtonVideo, "toolStripButtonVideo");
+            this.toolStripButtonVideo.Click += new System.EventHandler(this.toolStripButtonVideo_Click);
             // 
             // toolStripFiles
             // 
@@ -130,6 +131,7 @@
             this.toolStripFiles.Image = global::CII.LAR.Properties.Resources.files;
             this.toolStripFiles.Name = "toolStripFiles";
             resources.ApplyResources(this.toolStripFiles, "toolStripFiles");
+            this.toolStripFiles.Click += new System.EventHandler(this.toolStripFiles_Click);
             // 
             // toolStripSeparator1
             // 
@@ -181,6 +183,7 @@
             this.toolStripButtonScale.Image = global::CII.LAR.Properties.Resources.ruler;
             this.toolStripButtonScale.Name = "toolStripButtonScale";
             resources.ApplyResources(this.toolStripButtonScale, "toolStripButtonScale");
+            this.toolStripButtonScale.Click += new System.EventHandler(this.toolStripButtonScale_Click);
             // 
             // toolStripSeparator4
             // 
@@ -193,6 +196,7 @@
             this.toolStripButtonMove.Image = global::CII.LAR.Properties.Resources.hand;
             this.toolStripButtonMove.Name = "toolStripButtonMove";
             resources.ApplyResources(this.toolStripButtonMove, "toolStripButtonMove");
+            this.toolStripButtonMove.Click += new System.EventHandler(this.toolStripButtonMove_Click);
             // 
             // toolStripButtonLine
             // 
@@ -328,6 +332,7 @@
             // 
             this.closeCameraToolStripMenuItem.Name = "closeCameraToolStripMenuItem";
             resources.ApplyResources(this.closeCameraToolStripMenuItem, "closeCameraToolStripMenuItem");
+            this.closeCameraToolStripMenuItem.Click += new System.EventHandler(this.closeCameraToolStripMenuItem_Click);
             // 
             // freeRunToolStripMenuItem
             // 
@@ -382,34 +387,29 @@
             this.systemMonitorTimer.Interval = 1000;
             this.systemMonitorTimer.Tick += new System.EventHandler(this.systemMonitorTimer_Tick);
             // 
-            // zwPictureBox
-            // 
-            resources.ApplyResources(this.zwPictureBox, "zwPictureBox");
-            this.zwPictureBox.BackColor = System.Drawing.Color.Gray;
-            this.zwPictureBox.DrawObject = null;
-            this.zwPictureBox.LaserFunction = false;
-            this.zwPictureBox.Name = "zwPictureBox";
-            this.zwPictureBox.OffsetX = 0;
-            this.zwPictureBox.OffsetY = 0;
-            this.zwPictureBox.TabStop = false;
-            this.zwPictureBox.UnitOfMeasure = CII.LAR.DrawTools.enUniMis.mm;
-            this.zwPictureBox.Zoom = 1F;
-            // 
             // autoReceiverTimer
             // 
             this.autoReceiverTimer.Interval = 200;
             this.autoReceiverTimer.Tick += new System.EventHandler(this.autoReceiverTimer_Tick);
+            // 
+            // videoControl
+            // 
+            this.videoControl.DrawObject = null;
+            this.videoControl.LaserFunction = false;
+            resources.ApplyResources(this.videoControl, "videoControl");
+            this.videoControl.Name = "videoControl";
+            this.videoControl.UnitOfMeasure = CII.LAR.DrawTools.enUniMis.mm;
+            this.videoControl.VideoSource = null;
             // 
             // EntryForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.zwPictureBox);
+            this.Controls.Add(this.videoControl);
             this.Name = "EntryForm";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.zwPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -457,10 +457,10 @@
         private System.Windows.Forms.ToolStripMenuItem closeCameraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem freeRunToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem snapshotToolStripMenuItem;
-        private UI.ZWPictureBox zwPictureBox;
         private System.Windows.Forms.Timer autoSendTimer;
         private System.Windows.Forms.ToolStripButton toolStripButtonPort;
         private System.Windows.Forms.Timer systemMonitorTimer;
         private System.Windows.Forms.Timer autoReceiverTimer;
+        private UI.VideoControl videoControl;
     }
 }

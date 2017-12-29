@@ -161,7 +161,7 @@ namespace CII.LAR.Laser
         public SizeF InnerCircleSize { get; set; }
         public SizeF OutterCircleSize { get; set; }
 
-        private ZWPictureBox pictureBox;
+        private VideoControl videoControl;
 
         private int clickCount;
 
@@ -214,7 +214,7 @@ namespace CII.LAR.Laser
 
         private Size crossSize;
         private ActiveLaser laser;
-        public ActiveCircle(ZWPictureBox pictureBox, ActiveLaser laser)
+        public ActiveCircle(VideoControl videoControl, ActiveLaser laser)
         {
             HoleType = InHoleType.CenterHole;
             this.laser = laser;
@@ -223,7 +223,7 @@ namespace CII.LAR.Laser
             HolesInfo.HolesInfoChangeHandler += Program.EntryForm.HolesInfoChangeHandler;
             IsMouseUp = false;
             InTheHole = false;
-            this.pictureBox = pictureBox;
+            this.videoControl = videoControl;
 
             circleData = new CircleData();
             InitializeGraphicsProperties();

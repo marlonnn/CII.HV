@@ -27,14 +27,14 @@ namespace CII.LAR.DrawTools
             this.RegisterUpdateStatisticsHandler();
         }
 
-        public DrawRectangle(ZWPictureBox pictureBox, int x, int y, int width, int height) : this()
+        public DrawRectangle(VideoControl videoControl, int x, int y, int width, int height) : this()
         {
-            this.pictureBox = pictureBox;
+            this.videoControl = videoControl;
             InitializeGraphicsProperties();
             this.ObjectType = ObjectType.Rectangle;
             rectangle = new Rectangle(x, y, width, height);
             SetRectangle(rectangle);
-            //this.GraphicsProperties.GraphicsPropertiesChangedHandler += pictureBox.GraphicsPropertiesChangedHandler;
+            //this.GraphicsProperties.GraphicsPropertiesChangedHandler += videoControl.GraphicsPropertiesChangedHandler;
         }
 
         private void InitializeGraphicsProperties()
@@ -58,8 +58,8 @@ namespace CII.LAR.DrawTools
         /// draw graphic object
         /// </summary>
         /// <param name="g"></param>
-        /// <param name="pictureBox"></param>
-        public override void Draw(Graphics g, ZWPictureBox pictureBox)
+        /// <param name="videoControl"></param>
+        public override void Draw(Graphics g, VideoControl videoControl)
         {
             g.SmoothingMode = SmoothingMode.AntiAlias;
 
@@ -121,7 +121,7 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="handleNumber"></param>
         /// <returns></returns>
-        public override Point GetHandle(ZWPictureBox pictureBox, int handleNumber)
+        public override Point GetHandle(VideoControl videoControl, int handleNumber)
         {
             int x, y, xCenter, yCenter;
             Rectangle rectangle = GetRectangle();
@@ -171,7 +171,7 @@ namespace CII.LAR.DrawTools
 
         }
 
-        public override void Move(ZWPictureBox pictureBox, int deltaX, int deltaY)
+        public override void Move(VideoControl videoControl, int deltaX, int deltaY)
         {
             Rectangle rect = GetRectangle();
             SetRectangle(new Rectangle(rect.X + deltaX, rect.Y + deltaY, rect.Width, rect.Height));
@@ -180,10 +180,10 @@ namespace CII.LAR.DrawTools
         /// <summary>
         /// Mouse move to new point
         /// </summary>
-        /// <param name="pictureBox"></param>
+        /// <param name="videoControl"></param>
         /// <param name="point"></param>
         /// <param name="handleNumber"></param>
-        public override void MoveHandleTo(ZWPictureBox pictureBox, Point point, int handleNumber)
+        public override void MoveHandleTo(VideoControl videoControl, Point point, int handleNumber)
         {
             int left = rectangle.Left;
             int top = rectangle.Top;
@@ -232,13 +232,13 @@ namespace CII.LAR.DrawTools
         private string GetCircumference()
         {
             var length = 2 * Math.Abs(rectangle.Width + rectangle.Height) / UnitOfMeasureFactor;
-            return string.Format("{0:F2} {1}", length, pictureBox.UnitOfMeasure.ToString());
+            return string.Format("{0:F2} {1}", length, videoControl.UnitOfMeasure.ToString());
         }
 
         private string GetArea()
         {
             var area = (rectangle.Width / UnitOfMeasureFactor) * (rectangle.Height / UnitOfMeasureFactor);
-            return string.Format("{0:F2} {1}²", Math.Abs(area), pictureBox.UnitOfMeasure.ToString());
+            return string.Format("{0:F2} {1}²", Math.Abs(area), videoControl.UnitOfMeasure.ToString());
         }
 
         private void SetRectangle(Rectangle r)
@@ -300,7 +300,7 @@ namespace CII.LAR.DrawTools
                && dataPoint.Y >= dataBottom && dataPoint.Y <= dataTop;
         }
 
-        public override HitTestResult HitTestForSelection(ZWPictureBox pictureBox, Point point)
+        public override HitTestResult HitTestForSelection(VideoControl videoControl, Point point)
         {
             Rectangle rectGate = GetRectangle();
             Rectangle rectLarge = rectGate, rectSamll = rectGate;

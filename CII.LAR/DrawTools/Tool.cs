@@ -15,37 +15,30 @@ namespace CII.LAR.DrawTools
     /// </summary>
     public class Tool
     {
-        protected Point startPoint;
-
-        protected Point endPoint;
+        protected Point endPoint = new Point(0, 0);
+        protected Point lastPoint = new Point(0, 0);
+        protected Point startPoint = new Point(0, 0);
 
         /// <summary>
         /// Left nous button is pressed
         /// </summary>
-        /// <param name="pictureBox"></param>
+        /// <param name="videoControl"></param>
         /// <param name="e"></param>
-        public virtual void OnMouseDown(ZWPictureBox pictureBox, MouseEventArgs e)
+        public virtual void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
         {
-            if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
-            {
-                startPoint = new Point(e.X, e.Y);
-            }
-            else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-            {
-                startPoint = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
-            }
+            startPoint = new Point(e.X, e.Y);
         }
 
 
         /// <summary>
         /// Mouse is moved, left mouse button is pressed or none button is pressed
         /// </summary>
-        /// <param name="pictureBox"></param>
+        /// <param name="videoControl"></param>
         /// <param name="e"></param>
-        public virtual void OnMouseMove(ZWPictureBox pictureBox, MouseEventArgs e)
+        public virtual void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
         {
         }
-        public virtual void OnMouseMoveZoom(ZWPictureBox pictureBox, MouseEventArgs e)
+        public virtual void OnMouseMoveZoom(VideoControl videoControl, MouseEventArgs e)
         {
         }
 
@@ -54,18 +47,11 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="drawArea"></param>
         /// <param name="e"></param>
-        public virtual void OnMouseUp(ZWPictureBox pictureBox, MouseEventArgs e)
+        public virtual void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
         {
-            if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
-            {
-                endPoint = new Point(e.X, e.Y);
-            }
-            else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-            {
-                endPoint = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
-            }
+            endPoint = new Point(e.X, e.Y);
         }
-        public virtual void OnMouseUpZoom(ZWPictureBox pictureBox, MouseEventArgs e)
+        public virtual void OnMouseUpZoom(VideoControl videoControl, MouseEventArgs e)
         {
         }
 
@@ -74,7 +60,7 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="drawArea"></param>
         /// <param name="e"></param>
-        public virtual void OnMouseLeave(ZWPictureBox pictureBox, EventArgs e)
+        public virtual void OnMouseLeave(VideoControl videoControl, EventArgs e)
         {
 
         }
@@ -84,23 +70,23 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="drawArea"></param>
         /// <param name="e"></param>
-        public virtual void OnDoubleClick(ZWPictureBox pictureBox, MouseEventArgs e)
+        public virtual void OnDoubleClick(VideoControl videoControl, MouseEventArgs e)
         {
         }
 
         /// <summary>
         /// call when press "Escape" key
         /// </summary>
-        public virtual void OnCancel(ZWPictureBox pictureBox, bool cancelSelection)
+        public virtual void OnCancel(VideoControl videoControl, bool cancelSelection)
         {
         }
 
-        public virtual void OnKeyMove(ZWPictureBox pictureBox, Keys keyData, bool isPressCtrl)
+        public virtual void OnKeyMove(VideoControl videoControl, Keys keyData, bool isPressCtrl)
         {
 
         }
 
-        public virtual void OnKeyUp(ZWPictureBox pictureBox, Keys keyData, bool isPressCtrl)
+        public virtual void OnKeyUp(VideoControl videoControl, Keys keyData, bool isPressCtrl)
         {
 
         }

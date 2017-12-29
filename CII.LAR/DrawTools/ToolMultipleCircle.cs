@@ -18,36 +18,35 @@ namespace CII.LAR.DrawTools
     public class ToolMultipleCircle : ToolObject
     {
         private static Cursor s_cursor = new Cursor(
-            new MemoryStream((byte[])new ResourceManager(typeof(ZWPictureBox)).GetObject("Cross")));
+            new MemoryStream((byte[])new ResourceManager(typeof(EntryForm)).GetObject("Cross")));
 
         public ToolMultipleCircle()
         {
             Cursor = s_cursor;
         }
 
-        public override void OnMouseDown(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
         {
-            Point point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
-            AddNewObject(pictureBox, new DrawMultipleCircle(pictureBox, new PointF(point.X, point.Y)));
+            Point point = e.Location;
+            AddNewObject(videoControl, new DrawMultipleCircle(videoControl, new PointF(point.X, point.Y)));
         }
 
-        public override void OnMouseMove(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
         {
-            if (pictureBox.CreatingDrawObject)
+            if (videoControl.CreatingDrawObject)
             {
                 if (e.Button == MouseButtons.Left)
                 {
-                    Point point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX),
-                        (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
-                    pictureBox.GraphicsList[0].MoveHandleTo(pictureBox, point, 2);
-                    pictureBox.Refresh();
+                    Point point = e.Location;
+                    videoControl.GraphicsList[0].MoveHandleTo(videoControl, point, 2);
+                    videoControl.Refresh();
                 }
             }
         }
 
-        public override void OnMouseUp(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
         {
-            //base.OnMouseUp(pictureBox, e);
+            //base.OnMouseUp(videoControl, e);
         }
     }
 }

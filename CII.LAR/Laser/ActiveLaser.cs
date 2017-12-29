@@ -18,10 +18,10 @@ namespace CII.LAR.Laser
         private Point endPoint;
 
         private ActiveCircle activeCircle;
-        public ActiveLaser(ZWPictureBox pictureBox) : base()
+        public ActiveLaser(VideoControl videoControl) : base()
         {
-            this.pictureBox = pictureBox;
-            activeCircle = new ActiveCircle(pictureBox, this);
+            this.videoControl = videoControl;
+            activeCircle = new ActiveCircle(videoControl, this);
             this.GraphicsProperties.GraphicsPropertiesChangedHandler += GraphicsPropertiesChangedHandler;
         }
 
@@ -37,39 +37,21 @@ namespace CII.LAR.Laser
                 activeCircle.InnerCircles[i] = new Circle(activeCircle.InnerCircles[i].CenterPoint, activeCircle.InnerCircleSize);
                 activeCircle.OutterCircle[i] = new Circle(activeCircle.OutterCircle[i].CenterPoint, activeCircle.OutterCircleSize);
             }
-            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-                this.pictureBox.Invalidate();
+            this.videoControl.Invalidate();
         }
 
-        public override void OnMouseDown(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
         {
             mouseDownPoint = e.Location;
-            Point point = Point.Empty;
-            if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
-            {
-                point = new Point(e.X, e.Y);
-            }
-            else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-            {
-                point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
-            }
+            Point point = e.Location;
 
             activeCircle.OnMouseDown(point);
-            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-                this.pictureBox.Invalidate();
+            this.videoControl.Invalidate();
         }
 
-        public override void OnMouseMove(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
         {
-            Point point = Point.Empty;
-            if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
-            {
-                point = new Point(e.X, e.Y);
-            }
-            else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-            {
-                point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
-            }
+            Point point = e.Location;
 
             Point mousePosNow = e.Location;
 
@@ -79,15 +61,14 @@ namespace CII.LAR.Laser
             int dy = mousePosNow.Y - mouseDownPoint.Y;
             var length = Math.Sqrt(dx * dx + dy * dy);
             activeCircle.OnMouseMove(e, point, dx, dy);
-            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-                this.pictureBox.Invalidate();
+            this.videoControl.Invalidate();
         }
 
-        public override void OnMouseUp(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
         {
-            base.OnMouseUp(pictureBox, e);
+            base.OnMouseUp(videoControl, e);
             activeCircle.OnMouseUp();
-            //this.pictureBox.Invalidate();
+            this.videoControl.Invalidate();
         }
 
         public override void OnPaint(PaintEventArgs e)
@@ -100,12 +81,6 @@ namespace CII.LAR.Laser
             activeCircle.OnPaint(g);
         }
 
-        public override void OnPaint(Graphics graphics)
-        {
-            base.OnPaint(graphics);
-            activeCircle.OnPaint(graphics);
-        }
-
         public void FlickerColor(int cycle)
         {
             //this.brush = new SolidBrush(cycle % 2 == 0 ? this.GraphicsProperties.Color : Color.Red);
@@ -115,8 +90,7 @@ namespace CII.LAR.Laser
         protected override void FlashTimer_Tick(object sender, EventArgs e)
         {
             _flickCount++;
-            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-                this.pictureBox.Invalidate();
+            this.videoControl.Invalidate();
             if (_flickCount == this.activeCircle.InnerCircles.Count)
             {
                 Flashing = false;
@@ -126,8 +100,7 @@ namespace CII.LAR.Laser
         public void UpdateHoleNumber(int value)
         {
             activeCircle.UpdateHoleNum(value);
-            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-                this.pictureBox.Invalidate();
+            this.videoControl.Invalidate();
         }
     }
 }

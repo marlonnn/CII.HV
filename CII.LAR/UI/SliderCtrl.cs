@@ -67,7 +67,7 @@ namespace CII.LAR.UI
         }
 
         private bool update = true;
-        public bool Update
+        public new  bool Update
         {
             get { return this.update; }
             set

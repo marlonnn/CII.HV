@@ -35,15 +35,12 @@ namespace CII.LAR.DrawTools
         private DrawObject resizedObject;
         private int resizedObjectHandle;
 
-        // Keep state about last and current point (used to move and resize objects)
-        private Point lastPoint = new Point(0, 0);
-        private Point startPoint = new Point(0, 0);
         public ToolPointer()
         {
 
         }
 
-        public override void OnMouseDown(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
         {
             wasMove = false;
             Point point = new Point(e.X, e.Y);
@@ -51,13 +48,13 @@ namespace CII.LAR.DrawTools
             dragBoxFromMouseDown = Rectangle.Empty;
 
             // Test for moving or resizing (only if control is selected, cursor is on the handle)
-            foreach (DrawObject o in pictureBox.GraphicsList)
+            foreach (DrawObject o in videoControl.GraphicsList)
             {
                 if (o is DrawCircle)
                 {
                     continue;
                 }
-                DrawObject.HitTestResult htr = o.HitTest(pictureBox, point, false);
+                DrawObject.HitTestResult htr = o.HitTest(videoControl, point, false);
                 if (!o.Selected)    // test for drag and drop
                 {
                     if (htr.ElementType == DrawObject.ElementType.Gate)
@@ -88,14 +85,14 @@ namespace CII.LAR.DrawTools
                             (resizedObject as DrawPolyLine).SetProportion = true;
                         }
 
-                        pictureBox.GraphicsList.UnselectAll();
+                        videoControl.GraphicsList.UnselectAll();
                         o.Selected = true;
                     }
                 }
                 else if (htr.ElementType == DrawObject.ElementType.Gate)
                 {
                     selectMode = SelectionMode.Move;
-                    pictureBox.Cursor = Cursors.SizeAll;
+                    videoControl.Cursor = Cursors.SizeAll;
                     break;
                 }
             }
@@ -105,16 +102,16 @@ namespace CII.LAR.DrawTools
             {
                 DrawObject o = null;
                 int gateIndex = 0;
-                for (int i = 0; i < pictureBox.GraphicsList.Count; i++)
+                for (int i = 0; i < videoControl.GraphicsList.Count; i++)
                 {
-                    if (pictureBox.GraphicsList[i] is DrawCircle)
+                    if (videoControl.GraphicsList[i] is DrawCircle)
                     {
                         continue;
                     }
-                    DrawObject.HitTestResult htr = pictureBox.GraphicsList[i].HitTest(pictureBox, point, true);
+                    DrawObject.HitTestResult htr = videoControl.GraphicsList[i].HitTest(videoControl, point, true);
                     if (htr.ElementType == DrawObject.ElementType.Gate)
                     {
-                        o = pictureBox.GraphicsList[i];
+                        o = videoControl.GraphicsList[i];
                         gateIndex = htr.Index;
                         selectMode = o.Selected ? SelectionMode.Move : SelectionMode.Select;
                         break;
@@ -124,7 +121,7 @@ namespace CII.LAR.DrawTools
                 {
                     if ((Control.ModifierKeys & Keys.Control) == 0 && !o.Selected)
                     {
-                        pictureBox.GraphicsList.UnselectAll();
+                        videoControl.GraphicsList.UnselectAll();
                     }
                     o.Selected = true;
                 }
@@ -136,7 +133,7 @@ namespace CII.LAR.DrawTools
                 // click on background
                 if ((Control.ModifierKeys & Keys.Control) == 0)
                 {
-                    pictureBox.GraphicsList.UnselectAll();
+                    videoControl.GraphicsList.UnselectAll();
                 }
             }
 
@@ -150,11 +147,11 @@ namespace CII.LAR.DrawTools
             startPoint.X = e.X;
             startPoint.Y = e.Y;
 
-            pictureBox.Capture = true;
-            pictureBox.Refresh();
+            videoControl.Capture = true;
+            videoControl.Refresh();
         }
 
-        public override void OnMouseMove(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
         {
             Point point = new Point(e.X, e.Y);
             Point oldPoint = lastPoint;
@@ -164,19 +161,19 @@ namespace CII.LAR.DrawTools
             {
                 Cursor cursor = null;
 
-                for (int i = 0; i < pictureBox.GraphicsList.Count; i++)
+                for (int i = 0; i < videoControl.GraphicsList.Count; i++)
                 {
-                    if (!pictureBox.GraphicsList[i].Selected || (pictureBox.GraphicsList[i] is DrawCircle)) continue;
+                    if (!videoControl.GraphicsList[i].Selected || (videoControl.GraphicsList[i] is DrawCircle)) continue;
 
-                    DrawTools.DrawObject.HitTestResult result = pictureBox.GraphicsList[i].HitTest(pictureBox, point, false);
+                    DrawTools.DrawObject.HitTestResult result = videoControl.GraphicsList[i].HitTest(videoControl, point, false);
 
                     if (result.ElementType == DrawTools.DrawObject.ElementType.Handle && result.Index > 0)
                     {
-                        cursor = pictureBox.GraphicsList[i].GetHandleCursor(result.Index);
+                        cursor = videoControl.GraphicsList[i].GetHandleCursor(result.Index);
                         break;
                     }
                     else if (result.ElementType == DrawTools.DrawObject.ElementType.Label &&
-                                pictureBox.GraphicsList[i].Selected)
+                                videoControl.GraphicsList[i].Selected)
                     {
                         cursor = Cursors.SizeAll;
                     }
@@ -185,7 +182,7 @@ namespace CII.LAR.DrawTools
                 if (cursor == null)
                     cursor = Cursors.Default;
 
-                pictureBox.Cursor = cursor;
+                videoControl.Cursor = cursor;
                 return;
             }
 
@@ -211,48 +208,48 @@ namespace CII.LAR.DrawTools
             {
                 if (resizedObject != null)
                 {
-                    resizedObject.MoveHandleTo(pictureBox, point, resizedObjectHandle);
-                    pictureBox.Refresh();
+                    resizedObject.MoveHandleTo(videoControl, point, resizedObjectHandle);
+                    videoControl.Refresh();
                 }
             }
 
             // move
             if (selectMode == SelectionMode.Move)
             {
-                foreach (DrawObject o in pictureBox.GraphicsList.Selection)
+                foreach (DrawObject o in videoControl.GraphicsList.Selection)
                 {
                     o.MovingOffset = new Point(o.MovingOffset.X + dx, o.MovingOffset.Y + dy);
                     // start drag and drop
-                    if (!pictureBox.ClientRectangle.Contains(e.Location))
+                    if (!videoControl.ClientRectangle.Contains(e.Location))
                     {
                         o.MovingOffset = Point.Empty;
-                        pictureBox.Refresh();
-                        pictureBox.DoDragDrop(o, DragDropEffects.Copy | DragDropEffects.Link);
+                        videoControl.Refresh();
+                        videoControl.DoDragDrop(o, DragDropEffects.Copy | DragDropEffects.Link);
                     }
                 }
 
-                pictureBox.Cursor = Cursors.SizeAll;
-                pictureBox.Refresh();
+                videoControl.Cursor = Cursors.SizeAll;
+                videoControl.Refresh();
             }
 
             //if (selectMode == SelectionMode.NetSelection)
             //{
-            //    pictureBox.RectNetSelection = new Rectangle(startPoint.X, startPoint.Y, point.X - startPoint.X, point.Y - startPoint.Y);
-            //    pictureBox.Refresh();
+            //    videoControl.RectNetSelection = new Rectangle(startPoint.X, startPoint.Y, point.X - startPoint.X, point.Y - startPoint.Y);
+            //    videoControl.Refresh();
             //    return;
             //}
         }
 
-        public override void OnMouseUp(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
         {
             if (selectMode == SelectionMode.NetSelection)
             {
-                //pictureBox.RectNetSelection = Rectangle.Empty;
+                //videoControl.RectNetSelection = Rectangle.Empty;
 
                 //if (Math.Abs(startPoint.X - lastPoint.X) > 3 || Math.Abs(startPoint.Y - lastPoint.Y) > 3)
                 //{
                 //    // Make group selection
-                //    pictureBox.GraphicsList.SelectInRectangle(pictureBox,
+                //    videoControl.GraphicsList.SelectInRectangle(videoControl,
                 //        DrawRectangle.GetNormalizedRectangle(startPoint, lastPoint));
                 //}
                 selectMode = SelectionMode.None;
@@ -260,24 +257,24 @@ namespace CII.LAR.DrawTools
 
             if (selectMode == SelectionMode.Move && wasMove)
             {
-                foreach (DrawObject o in pictureBox.GraphicsList.Selection)
+                foreach (DrawObject o in videoControl.GraphicsList.Selection)
                 {
-                    o.Move(pictureBox, o.MovingOffset.X, o.MovingOffset.Y);
+                    o.Move(videoControl, o.MovingOffset.X, o.MovingOffset.Y);
                     o.MovingOffset = Point.Empty;
                 }
 
                 // gate could be moved, but lost selection
-                foreach (DrawObject o in pictureBox.GraphicsList)
+                foreach (DrawObject o in videoControl.GraphicsList)
                 {
                     o.MovingOffset = Point.Empty;
                 }
                 selectMode = SelectionMode.None;
-                pictureBox.Refresh();
+                videoControl.Refresh();
             }
             wasMove = false;
         }
 
-        public override void OnCancel(ZWPictureBox pictureBox, bool cancelSelection)
+        public override void OnCancel(VideoControl videoControl, bool cancelSelection)
         {
 
         }

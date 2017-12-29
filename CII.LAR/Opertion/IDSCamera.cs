@@ -22,7 +22,7 @@ namespace CII.LAR.Opertion
             private set { this.camera = value; }
         }
 
-        private ZWPictureBox picturebox;
+        private VideoControl videoControl;
 
         private IntPtr displayHandle;
 
@@ -40,10 +40,10 @@ namespace CII.LAR.Opertion
             CameraSizeControl = new CameraSizeControl(uEyeCamera);
         }
 
-        public IDSCamera(ZWPictureBox picturebox)
+        public IDSCamera(VideoControl videoControl)
         {
-            this.picturebox = picturebox;
-            this.displayHandle = picturebox.Handle;
+            this.videoControl = videoControl;
+            this.displayHandle = videoControl.Handle;
             this.uEyeCamera = new uEye.Camera();
             CameraSizeControl = new CameraSizeControl(uEyeCamera);
         }
@@ -127,17 +127,17 @@ namespace CII.LAR.Opertion
                     Graphics graphics = Graphics.FromImage(bitmap);
                     DoDrawing(ref graphics, s32MemID);
 
-                    if (picturebox.GraphicsList != null)
+                    if (videoControl.GraphicsList != null)
                     {
-                        picturebox.GraphicsList.Draw(graphics, picturebox);
+                        videoControl.GraphicsList.Draw(graphics, videoControl);
                     }
-                    if (Program.EntryForm.PictureBox.LaserFunction)
-                    {
-                        if (Program.EntryForm.Laser != null)
-                        {
-                            Program.EntryForm.Laser.OnPaint(graphics);
-                        }
-                    }
+                    //if (Program.EntryForm.PictureBox.LaserFunction)
+                    //{
+                    //    if (Program.EntryForm.Laser != null)
+                    //    {
+                    //        Program.EntryForm.Laser.OnPaint(graphics);
+                    //    }
+                    //}
                     graphics.Dispose();
                     bitmap.Dispose();
                 }

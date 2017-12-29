@@ -29,7 +29,7 @@ namespace CII.LAR.Laser
                 {
                     isAlign = value;
                     this.AlignCircle = null;
-                    this.pictureBox.Invalidate();
+                    this.videoControl.Invalidate();
                 }
             }
         }
@@ -61,8 +61,8 @@ namespace CII.LAR.Laser
                     this.AlignCircle = circles[value];
                     this.IsShowCross = false;
                     ButtonStateHandler?.Invoke(false);
-                    this.pictureBox.ZoomFit();
-                    this.pictureBox.Invalidate();
+                    //this.videoControl.ZoomFit();
+                    this.videoControl.Invalidate();
                 }
             }
         }
@@ -76,7 +76,7 @@ namespace CII.LAR.Laser
                 if (value != this.isShowCross)
                 {
                     this.isShowCross = value;
-                    this.pictureBox.Invalidate();
+                    this.videoControl.Invalidate();
                 }
             }
         }
@@ -94,9 +94,9 @@ namespace CII.LAR.Laser
             }
         }
 
-        public AlignLaser(ZWPictureBox pictureBox) : base()
+        public AlignLaser(VideoControl videoControl) : base()
         {
-            this.pictureBox = pictureBox;
+            this.videoControl = videoControl;
             circles = new List<Circle>();
             string jsonConfig = JsonFile.ReadJsonConfigString();
             circles = JsonFile.GetConfigFromJsonText<List<Circle>>(jsonConfig);
@@ -104,7 +104,7 @@ namespace CII.LAR.Laser
 
         public delegate void ButtonState(bool enable);
         public  ButtonState ButtonStateHandler;
-        public override void OnMouseDown(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
         {
             LaserAlignment laserAlignment = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment);
             if (e.Button == MouseButtons.Left /*&& IsClickLaser(e.Location)*/ && laserAlignment.Index > -1)
@@ -149,14 +149,14 @@ namespace CII.LAR.Laser
         public delegate void Zoom(MouseEventArgs e, bool zoom);
         public Zoom ZoomHandler;
 
-        public override void OnMouseMove(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
         {
-            base.OnMouseMove(pictureBox, e);
+            base.OnMouseMove(videoControl, e);
         }
 
-        public override void OnMouseUp(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
         {
-            base.OnMouseUp(pictureBox, e);
+            base.OnMouseUp(videoControl, e);
         }
 
         public override void OnPaint(PaintEventArgs e)
@@ -210,15 +210,15 @@ namespace CII.LAR.Laser
             {
                 return;
             }
-            //var vx = ClickPoint.X / pictureBox.Zoom - pictureBox.OffsetX;
-            //var vy = ClickPoint.Y / pictureBox.Zoom - pictureBox.OffsetY;
+            var vx = ClickPoint.X;
+            var vy = ClickPoint.Y ;
             g.DrawLine(new Pen(Color.Red, 1f),
-                ClickPoint.X / pictureBox.Zoom - pictureBox.OffsetX, ClickPoint.Y / pictureBox.Zoom - pictureBox.OffsetY - AlignCircle.Rectangle.Width,
-                ClickPoint.X / pictureBox.Zoom - pictureBox.OffsetX, ClickPoint.Y / pictureBox.Zoom - pictureBox.OffsetY + AlignCircle.Rectangle.Width );
+                ClickPoint.X, ClickPoint.Y  - AlignCircle.Rectangle.Width,
+                ClickPoint.X, ClickPoint.Y + AlignCircle.Rectangle.Width);
 
             g.DrawLine(new Pen(Color.Red, 1f),
-                ClickPoint.X / pictureBox.Zoom - pictureBox.OffsetX - AlignCircle.Rectangle.Width, ClickPoint.Y / pictureBox.Zoom - pictureBox.OffsetY,
-                ClickPoint.X / pictureBox.Zoom - pictureBox.OffsetX + AlignCircle.Rectangle.Width, ClickPoint.Y / pictureBox.Zoom - pictureBox.OffsetY);
+                ClickPoint.X - AlignCircle.Rectangle.Width, ClickPoint.Y,
+                ClickPoint.X + AlignCircle.Rectangle.Width, ClickPoint.Y);
         }
     }
 }

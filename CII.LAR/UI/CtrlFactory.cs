@@ -14,7 +14,7 @@ namespace CII.LAR.UI
         LaserAlignment,
         LaserAppreance,
         LaserCtrl,
-        CameraChooseCtrl,
+        VideoChooseCtrl,
         LaserHoleSize,
         RulerAppearanceCtrl
     }
@@ -30,23 +30,23 @@ namespace CII.LAR.UI
         private RulerAppearanceCtrl rulerAppearanceCtrl;
         private LaserCtrl laserCtrl;
         private LaserAlignment laserAlignment;
-        private CameraChooseCtrl cameraChooseCtrl;
+        private VideoChooseCtrl videoChooseCtrl;
 
-        public static void InitializeCtrlFactory(ZWPictureBox pictureBox)
+        public static void InitializeCtrlFactory(VideoControl videoControl)
         {
-            ctrlFactory = new CtrlFactory(pictureBox);
+            ctrlFactory = new CtrlFactory(videoControl);
         }
 
-        public CtrlFactory(ZWPictureBox pictureBox)
+        public CtrlFactory(VideoControl videoControl)
         {
-            settingCtrl = new SettingCtrl(pictureBox);
+            settingCtrl = new SettingCtrl(videoControl);
             serialPortCtrl = new SerialPortCtrl();
             statisticsCtrl = new StatisticsCtrl();
             laserAppearanceCtrl = new LaserAppearanceCtrl();
             rulerAppearanceCtrl = new RulerAppearanceCtrl();
-            laserCtrl = new LaserCtrl(pictureBox);
-            this.laserAlignment = new LaserAlignment(pictureBox);
-            cameraChooseCtrl = new CameraChooseCtrl();
+            laserCtrl = new LaserCtrl();
+            this.laserAlignment = new LaserAlignment();
+            videoChooseCtrl = new VideoChooseCtrl();
         }
 
         public static CtrlFactory GetCtrlFactory()
@@ -92,8 +92,8 @@ namespace CII.LAR.UI
                 case CtrlType.LaserAlignment:
                     ctrl = this.laserAlignment as T;
                     break;
-                case CtrlType.CameraChooseCtrl:
-                    ctrl = this.cameraChooseCtrl as T;
+                case CtrlType.VideoChooseCtrl:
+                    ctrl = this.videoChooseCtrl as T;
                     break;
             }
             return ctrl;

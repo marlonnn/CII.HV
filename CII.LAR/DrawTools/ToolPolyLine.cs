@@ -16,7 +16,7 @@ namespace CII.LAR.DrawTools
         private DrawPolyLine newPolyLine;
 
         private static Cursor s_cursor = new Cursor(
-            new MemoryStream((byte[])new ResourceManager(typeof(ZWPictureBox)).GetObject("Pencil")));
+            new MemoryStream((byte[])new ResourceManager(typeof(EntryForm)).GetObject("Pencil")));
 
         /// <summary>
         /// used for double click to end drawing polygon gate when in Continuous mode
@@ -27,12 +27,12 @@ namespace CII.LAR.DrawTools
             Cursor = s_cursor;
         }
 
-        public override void OnMouseDown(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
         {
             // operations are done in OnMouseUp
         }
 
-        public override void OnMouseUp(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
         {
             if (cancelNewFlag)
             {
@@ -41,24 +41,16 @@ namespace CII.LAR.DrawTools
             }
 
             // if new object creation is canceled
-            if (!pictureBox.CreatingDrawObject && newPolyLine != null)
+            if (!videoControl.CreatingDrawObject && newPolyLine != null)
             {
                 return;
             }
 
             if (newPolyLine == null)
             {
-                Point point = Point.Empty;
-                if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
-                {
-                    point = e.Location;
-                }
-                else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-                {
-                    point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
-                }
-                newPolyLine = new DrawPolyLine(pictureBox, point.X, point.Y, point.X + 1, point.Y + 1);
-                AddNewObject(pictureBox, newPolyLine);
+                Point point = e.Location;
+                newPolyLine = new DrawPolyLine(videoControl, point.X, point.Y, point.X + 1, point.Y + 1);
+                AddNewObject(videoControl, newPolyLine);
             }
             else
             {
@@ -66,54 +58,40 @@ namespace CII.LAR.DrawTools
                 if (newPolyLine.CloseToFirstPoint(e.Location) && newPolyLine.PointCount > 3)
                 {
                     newPolyLine.RemovePointAt(newPolyLine.PointCount - 1); // remove the last added point, it is closed to first
-                    EndCreating(pictureBox);
+                    EndCreating(videoControl);
                     return;
                 }
                 // Drawing is in process, so simply add a new point
-                Point point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
-                newPolyLine.AddPoint(pictureBox, point, true);
+                Point point = e.Location;
+                newPolyLine.AddPoint(videoControl, point, true);
             }
-            pictureBox.Capture = false;
-            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-            {
-                pictureBox.Refresh();
-            }
+            videoControl.Capture = false;
+            videoControl.Invalidate();
         }
 
-        public override void OnMouseMove(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
         {
-            pictureBox.Cursor = Cursor;
+            videoControl.Cursor = Cursor;
             // if new object creation is canceled
-            if (!pictureBox.CreatingDrawObject) return;
+            if (!videoControl.CreatingDrawObject) return;
 
             if (newPolyLine == null)
                 return; // precaution
 
-            Point point = Point.Empty;
-            if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
-            {
-                point = e.Location;
-            }
-            else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-            {
-                point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
-            }
+            Point point = e.Location;
 
             // move last point
-            newPolyLine.MoveLastHandleTo(pictureBox, point);
-            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-            {
-                pictureBox.Refresh();
-            }
+            newPolyLine.MoveLastHandleTo(videoControl, point);
+            videoControl.Invalidate();
         }
 
-        public override void OnMouseLeave(ZWPictureBox pictureBox, System.EventArgs e)
+        public override void OnMouseLeave(VideoControl videoControl, System.EventArgs e)
         {
         }
 
-        public override void OnCancel(ZWPictureBox pictureBox, bool cancelSelection)
+        public override void OnCancel(VideoControl videoControl, bool cancelSelection)
         {
-            base.OnCancel(pictureBox, cancelSelection);
+            base.OnCancel(videoControl, cancelSelection);
 
             newPolyLine = null;
         }
@@ -124,7 +102,7 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="drawArea"></param>
         /// <param name="e"></param>
-        public override void OnDoubleClick(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnDoubleClick(VideoControl videoControl, MouseEventArgs e)
         {
             if (newPolyLine == null)
                 return;
@@ -134,16 +112,16 @@ namespace CII.LAR.DrawTools
             if (newPolyLine.PointCount < 3)
                 return;
 
-            EndCreating(pictureBox);
+            EndCreating(videoControl);
 
             // there is a mouse up event after double click event when in Continuous mode
             cancelNewFlag = true;
 
-            pictureBox.GraphicsList[0].UpdateStatisticsInformation();
-            pictureBox.ActiveTool = DrawToolType.PolyLine;
+            videoControl.GraphicsList[0].UpdateStatisticsInformation();
+            videoControl.ActiveTool = DrawToolType.PolyLine;
         }
 
-        private void EndCreating(ZWPictureBox pictureBox)
+        private void EndCreating(VideoControl videoControl)
         {
             newPolyLine.Creating = false;
             newPolyLine = null;

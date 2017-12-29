@@ -86,8 +86,8 @@ namespace CII.LAR.DrawTools
                     this.timer.Enabled = value;
                     this.timer.Stop();
                 }
-                if (this.pictureBox != null)
-                    this.pictureBox.Invalidate();
+                if (this.videoControl != null)
+                    this.videoControl.Invalidate();
             } 
         }
 
@@ -109,9 +109,9 @@ namespace CII.LAR.DrawTools
             Flashing = true;
         }
 
-        public DrawCircle(ZWPictureBox pictureBox, PointF centerPoint) : this()
+        public DrawCircle(VideoControl videoControl, PointF centerPoint) : this()
         {
-            this.pictureBox = pictureBox;
+            this.videoControl = videoControl;
             CenterPoint = centerPoint;
             this.GraphicsProperties.GraphicsPropertiesChangedHandler += GraphicsPropertiesChangedHandler;
         }
@@ -123,7 +123,7 @@ namespace CII.LAR.DrawTools
             InnerCircleSize = new Size(38 * this.GraphicsProperties.TargetSize, 38 * this.GraphicsProperties.TargetSize);
             OutterCircle = new Circle(CenterPoint, OutterCircleSize);
             InnerCircle = new Circle(CenterPoint, InnerCircleSize);
-            pictureBox.GraphicsPropertiesChangedHandler(drawObject, graphicsProperties);
+            videoControl.GraphicsPropertiesChangedHandler(drawObject, graphicsProperties);
         }
 
         private void InitializeGraphicsProperties()
@@ -136,9 +136,9 @@ namespace CII.LAR.DrawTools
         {
 
             flickCount++;
-            if (this.pictureBox != null)
+            if (this.videoControl != null)
             {
-                this.pictureBox.Invalidate();
+                this.videoControl.Invalidate();
             }
             //if (flickCount == 6)
             //{
@@ -146,7 +146,7 @@ namespace CII.LAR.DrawTools
             //}
         }
 
-        public override void Draw(Graphics g, ZWPictureBox pictureBox)
+        public override void Draw(Graphics g, VideoControl videoControl)
         {
             if (OutterCircle == null)
             {
@@ -194,10 +194,10 @@ namespace CII.LAR.DrawTools
         /// <summary>
         /// Mouse move to new point
         /// </summary>
-        /// <param name="pictureBox"></param>
+        /// <param name="videoControl"></param>
         /// <param name="point"></param>
         /// <param name="handleNumber"></param>
-        public override void MoveHandleTo(ZWPictureBox pictureBox, Point point, int handleNumber)
+        public override void MoveHandleTo(VideoControl videoControl, Point point, int handleNumber)
         {
         }
 
@@ -207,7 +207,7 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="handleNumber"></param>
         /// <returns></returns>
-        public override Point GetHandle(ZWPictureBox pictureBox, int handleNumber)
+        public override Point GetHandle(VideoControl videoControl, int handleNumber)
         {
             float x = 0, y = 0, xCenter, yCenter;
 
@@ -246,7 +246,7 @@ namespace CII.LAR.DrawTools
             throw new NotImplementedException();
         }
 
-        public override HitTestResult HitTestForSelection(ZWPictureBox pictureBox, Point point)
+        public override HitTestResult HitTestForSelection(VideoControl videoControl, Point point)
         {
             throw new NotImplementedException();
         }

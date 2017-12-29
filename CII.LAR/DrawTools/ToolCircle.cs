@@ -18,28 +18,28 @@ namespace CII.LAR.DrawTools
     public class ToolCircle : ToolObject
     {
         private static Cursor s_cursor = new Cursor(
-            new MemoryStream((byte[])new ResourceManager(typeof(ZWPictureBox)).GetObject("Cross")));
+            new MemoryStream((byte[])new ResourceManager(typeof(EntryForm)).GetObject("Cross")));
 
         public ToolCircle()
         {
             Cursor = s_cursor;
         }
 
-        public override void OnMouseDown(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
         {
-            Point point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
-            AddNewObject(pictureBox, new DrawCircle(pictureBox, new PointF(point.X, point.Y)));
+            Point point = e.Location;
+            AddNewObject(videoControl, new DrawCircle(videoControl, new PointF(point.X, point.Y)));
         }
 
-        public override void OnMouseMove(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
         {
-            //pictureBox.Cursor = Cursor;
+            //videoControl.Cursor = Cursor;
 
             //if (e.Button == MouseButtons.Left)
             //{
             //    Point point = new Point(e.X, e.Y);
-            //    pictureBox.GraphicsList[0].MoveHandleTo(pictureBox, point, 5);
-            //    pictureBox.Refresh();
+            //    videoControl.GraphicsList[0].MoveHandleTo(videoControl, point, 5);
+            //    videoControl.Refresh();
             //}
         }
     }

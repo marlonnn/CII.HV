@@ -35,7 +35,7 @@ namespace CII.LAR.UI
         }
 
         private AlignInfoHelper helper;
-        private ZWPictureBox pictureBox;
+        private VideoControl videoControl;
 
         public Label LabelInfo
         {
@@ -52,11 +52,10 @@ namespace CII.LAR.UI
             this.btnNext.Enabled = isEnable;
         }
 
-        public LaserAlignment(ZWPictureBox pictureBox) :base()
+        public LaserAlignment() :base()
         {
             resources = new ComponentResourceManager(typeof(LaserAlignment));
             this.ShowIndex = 6;
-            this.pictureBox = pictureBox;
             InitializeComponent();
             helper = new AlignInfoHelper(this);
             this.Load += LaserAlignment_Load;
@@ -68,8 +67,8 @@ namespace CII.LAR.UI
         {
             this.lblInfo.Text = Res.LaserAlignment.StrPreSet0;
             Program.EntryForm.LaserType = LaserType.Alignment;
-            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-                this.pictureBox.Invalidate();
+            //if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
+            //    this.pictureBox.Invalidate();
         }
 
         private List<Point> threePoints = new List<Point>() { new Point(1500, 1500), new Point(1500, 1600), new Point(1600, 1500) };
@@ -99,14 +98,14 @@ namespace CII.LAR.UI
                     {
                         laser.Index = Index;
                     }
-                    this.pictureBox.ZoomFit();
+                    //this.pictureBox.ZoomFit();
                 }
             }
             else
             {
                 this.Visible = false;
                 this.Enabled = false;
-                this.pictureBox.ZoomFit();
+                //this.pictureBox.ZoomFit();
             }
         }
 
@@ -229,6 +228,11 @@ namespace CII.LAR.UI
             {
                 Program.EntryForm.LaserType = LaserType.SaturnFixed;
             }
+        }
+
+        public override void InitializeLocation(Size size)
+        {
+            this.Location = new Point(size.Width - this.Width - 5, size.Height - this.Height);
         }
     }
 }

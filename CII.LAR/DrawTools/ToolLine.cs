@@ -13,7 +13,7 @@ namespace CII.LAR.DrawTools
 {
     public class ToolLine: ToolObject
     {
-        private static Cursor s_cursor = new Cursor(new MemoryStream((byte[])new ResourceManager(typeof(ZWPictureBox)).GetObject("Line")));
+        private static Cursor s_cursor = new Cursor(new MemoryStream((byte[])new ResourceManager(typeof(EntryForm)).GetObject("Line")));
 
         public ToolLine()
         {
@@ -21,61 +21,45 @@ namespace CII.LAR.DrawTools
             clickCount = 0;
         }
 
-        public override void OnMouseDown(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
         {
             clickCount++;
             if (clickCount % 2 == 1)
             {
-                base.OnMouseDown(pictureBox, e);
-                drawObject = new DrawLine(pictureBox, startPoint.X, startPoint.Y, startPoint.X + 1, startPoint.Y + 1);
-                AddNewObject(pictureBox, drawObject);
+                base.OnMouseDown(videoControl, e);
+                drawObject = new DrawLine(videoControl, startPoint.X, startPoint.Y, startPoint.X + 1, startPoint.Y + 1);
+                AddNewObject(videoControl, drawObject);
             }
         }
 
-        public override void OnMouseMove(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
         {
-            pictureBox.Cursor = Cursor;
+            videoControl.Cursor = Cursor;
 
             if (clickCount % 2 == 1)
             {
                 Point point = Point.Empty;
-                if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
-                {
-                    point = new Point(e.X, e.Y);
-                    pictureBox.GraphicsList[0].MoveHandleTo(pictureBox, point, 2);
-                }
-                else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-                {
-                    point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
-                    pictureBox.GraphicsList[0].MoveHandleTo(pictureBox, point, 2);
-                    pictureBox.Refresh();
-                }
+                point = new Point(e.X, e.Y);
+                videoControl.GraphicsList[0].MoveHandleTo(videoControl, point, 2);
+                videoControl.Invalidate();
             }
         }
 
-        public override void OnMouseUp(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
         {
             if (clickCount % 2 == 0)
             {
-                if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
-                {
-                    endPoint = new Point(e.X, e.Y);
-                }
-                else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-                {
-                    endPoint = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
-                }
+                endPoint = new Point(e.X, e.Y);
                 Rectangle rectangle = new Rectangle(new Point(startPoint.X - 1, startPoint.Y - 1), new Size(2, 2));
                 if (rectangle.Contains(endPoint))
                 {
-                    pictureBox.GraphicsList.DeleteDrawObject(drawObject);
-                    if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-                        pictureBox.Invalidate();
+                    videoControl.GraphicsList.DeleteDrawObject(drawObject);
+                    videoControl.Invalidate();
                 }
                 else
                 {
-                    pictureBox.GraphicsList[0].UpdateStatisticsInformation();
-                    pictureBox.ActiveTool = DrawToolType.Line;
+                    videoControl.GraphicsList[0].UpdateStatisticsInformation();
+                    videoControl.ActiveTool = DrawToolType.Line;
                 }
             }
         }

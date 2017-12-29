@@ -13,25 +13,11 @@ namespace CII.LAR
         Alignment
     }
 
-    public enum MachineStatus
-    {
-        LiveVideo,
-        Simulate,
-        Unknown
-    }
-
     public class ExpManager
     {
-        private MachineStatus machineStatus;
-        public MachineStatus MachineStatus
-        {
-            get { return this.machineStatus; }
-            set { this.machineStatus = value; }
-        }
 
         public ExpManager()
         {
-            this.machineStatus = MachineStatus.Unknown;
         }
 
     }

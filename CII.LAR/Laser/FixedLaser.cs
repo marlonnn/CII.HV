@@ -49,9 +49,9 @@ namespace CII.LAR.Laser
 
         public SizeF InnerCircleSize { get; set; }
 
-        public FixedLaser(ZWPictureBox pictureBox) : base()
+        public FixedLaser(VideoControl videoControl) : base()
         {
-            this.pictureBox = pictureBox;
+            this.videoControl = videoControl;
             float pulseSize = SysConfig.GetSysConfig().LaserConfig.PulseSize;
             OutterCircleSize = new SizeF(pulseSize + SysConfig.GetSysConfig().LaserConfig.GraphicsProperties.ExclusionSize, 
                 pulseSize + SysConfig.GetSysConfig().LaserConfig.GraphicsProperties.ExclusionSize);
@@ -66,34 +66,24 @@ namespace CII.LAR.Laser
             InnerCircleSize = new SizeF(pulseSize, pulseSize);
             OutterCircle = new Circle(CenterPoint, OutterCircleSize);
             InnerCircle = new Circle(CenterPoint, InnerCircleSize);
-            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-                this.pictureBox.Invalidate();
+            this.videoControl.Invalidate();
         }
 
-        public override void OnMouseDown(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
         {
-            Point point = Point.Empty;
-            if (Program.ExpManager.MachineStatus == MachineStatus.LiveVideo)
-            {
-                point = new Point(e.X, e.Y);
-            }
-            else if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-            {
-                point = new Point((int)(e.X / pictureBox.Zoom - pictureBox.OffsetX), (int)(e.Y / pictureBox.Zoom - pictureBox.OffsetY));
-            }
+            Point point = e.Location;
             CenterPoint = new PointF(point.X, point.Y);
-            if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-                this.pictureBox.Invalidate();
+            this.videoControl.Invalidate();
         }
 
-        public override void OnMouseMove(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
         {
-            base.OnMouseMove(pictureBox, e);
+            base.OnMouseMove(videoControl, e);
         }
 
-        public override void OnMouseUp(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
         {
-            base.OnMouseUp(pictureBox, e);
+            base.OnMouseUp(videoControl, e);
         }
 
         private void FlickerColor(int cycle)
@@ -109,36 +99,6 @@ namespace CII.LAR.Laser
                 return;
             }
             Graphics g = e.Graphics;
-            OutterCircle = new Circle(CenterPoint, OutterCircleSize);
-            InnerCircle = new Circle(CenterPoint, InnerCircleSize);
-            //path for the outer and inner circles
-            g.CompositingQuality = CompositingQuality.HighQuality;
-            g.SmoothingMode = SmoothingMode.AntiAlias;
-            using (GraphicsPath path = new GraphicsPath())
-            {
-                brush = new SolidBrush(this.GraphicsProperties.Color);
-                if (Flashing)
-                {
-                    FlickerColor(this._flickCount);
-                }
-
-                path.AddEllipse(OutterCircle.Rectangle.X, OutterCircle.Rectangle.Y,
-                    OutterCircle.Rectangle.Width, OutterCircle.Rectangle.Height);
-                path.AddEllipse(InnerCircle.Rectangle.X, InnerCircle.Rectangle.Y,
-                    InnerCircle.Rectangle.Width, InnerCircle.Rectangle.Height);
-                g.FillPath(brush, path);
-            }
-            DrawCross(g);
-            brush.Dispose();
-        }
-
-        public override void OnPaint(Graphics g)
-        {
-            base.OnPaint(g);
-            if (CenterPoint.IsEmpty)
-            {
-                return;
-            }
             OutterCircle = new Circle(CenterPoint, OutterCircleSize);
             InnerCircle = new Circle(CenterPoint, InnerCircleSize);
             //path for the outer and inner circles

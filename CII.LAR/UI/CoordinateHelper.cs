@@ -9,10 +9,10 @@ namespace CII.LAR.UI
 {
     public class CoordinateHelper
     {
-        private ZWPictureBox pictureBox;
-        public CoordinateHelper(ZWPictureBox pictureBox)
+        private VideoControl videoControl;
+        public CoordinateHelper(VideoControl videoControl)
         {
-            this.pictureBox = pictureBox;
+            this.videoControl = videoControl;
         }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace CII.LAR.UI
         /// <returns></returns>
         private Point PointToPictureBox(Point screenPoint)
         {
-            return this.pictureBox.PointToClient(screenPoint);
+            return this.videoControl.PointToClient(screenPoint);
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace CII.LAR.UI
         /// <returns></returns>
         private Point PictureBoxPointToScreen(Point pictureBoxPoint)
         {
-            return this.pictureBox.PointToScreen(pictureBoxPoint);
+            return this.videoControl.PointToScreen(pictureBoxPoint);
         }
 
         /// <summary>

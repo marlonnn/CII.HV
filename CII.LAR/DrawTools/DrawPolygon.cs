@@ -19,7 +19,7 @@ namespace CII.LAR.DrawTools
     /// </summary>
     public class DrawPolygon : DrawLine
     {
-        protected static System.Resources.ResourceManager resourceManager = new System.Resources.ResourceManager(typeof(ZWPictureBox));
+        protected static System.Resources.ResourceManager resourceManager = new System.Resources.ResourceManager(typeof(EntryForm));
 
         protected static Cursor handleCursor = new Cursor(new System.IO.MemoryStream((byte[])resourceManager.GetObject("PolyHandle")));
         protected PointFList pointArray;
@@ -43,24 +43,24 @@ namespace CII.LAR.DrawTools
             drawAreaSize = DefaultDrawAreaSize;
         }
 
-        public DrawPolygon(ZWPictureBox pictureBox, List<PointF> dataPoints) : this()
+        public DrawPolygon(VideoControl videoControl, List<PointF> dataPoints) : this()
         {
             pointArray = new PointFList(dataPoints);
             pointArrayProportion = new PointFList();
 
         }
 
-        public DrawPolygon(ZWPictureBox pictureBox, int x1, int y1, int x2, int y2) : this()
+        public DrawPolygon(VideoControl videoControl, int x1, int y1, int x2, int y2) : this()
         {
-            this.pictureBox = pictureBox;
+            this.videoControl = videoControl;
             pointArray = new PointFList();
             pointArrayProportion = new PointFList();
 
-            AddPoint(pictureBox, new Point(x1, y1), false);
-            AddPoint(pictureBox, new Point(x2, y2), false);
+            AddPoint(videoControl, new Point(x1, y1), false);
+            AddPoint(videoControl, new Point(x2, y2), false);
         }
 
-        public override void Move(ZWPictureBox pictureBox, int deltaX, int deltaY)
+        public override void Move(VideoControl videoControl, int deltaX, int deltaY)
         {
             int n = pointArray.Count;
             Point point;
@@ -78,8 +78,8 @@ namespace CII.LAR.DrawTools
         /// draw object
         /// </summary>
         /// <param name="g"></param>
-        /// <param name="pictureBox"></param>
-        public override void Draw(Graphics g, ZWPictureBox pictureBox)
+        /// <param name="videoControl"></param>
+        public override void Draw(Graphics g, VideoControl videoControl)
         {
             Point p1 = Point.Empty; // previous point
             Point p2 = Point.Empty; // current point
@@ -111,7 +111,7 @@ namespace CII.LAR.DrawTools
             }
         }
 
-        public void AddPoint(ZWPictureBox pictureBox, Point point, bool checkClose)
+        public void AddPoint(VideoControl videoControl, Point point, bool checkClose)
         {
             bool addPoint = true;
             if (checkClose)
@@ -136,7 +136,7 @@ namespace CII.LAR.DrawTools
             return Math.Abs(src.X - des.X) <= 3 && Math.Abs(src.Y - des.Y) <= 3;
         }
 
-        public override void DrawTracker(Graphics g, ZWPictureBox pictureBox)
+        public override void DrawTracker(Graphics g, VideoControl videoControl)
         {
             if (!Selected)
             {
@@ -149,7 +149,7 @@ namespace CII.LAR.DrawTools
 
             for (int i = 1; i <= HandleCount; i++)
             {
-                Rectangle r = GetHandleRectangle(pictureBox, i);
+                Rectangle r = GetHandleRectangle(videoControl, i);
                 if (i <= PointCount)
                 {
                     r.Offset(MovingOffset);
@@ -261,10 +261,10 @@ namespace CII.LAR.DrawTools
             return false;
         }
 
-        public override HitTestResult HitTestForSelection(ZWPictureBox pictureBox, Point point0)
+        public override HitTestResult HitTestForSelection(VideoControl videoControl, Point point0)
         {
             //transfer point according to const draw area size for hit test
-            Point point = new Point(point0.X * pictureBox.Width, point0.Y * pictureBox.Height);
+            Point point = new Point(point0.X * videoControl.Width, point0.Y * videoControl.Height);
             GraphicsPath pathOut = AreaPath.Clone() as GraphicsPath;
             Pen pen = new Pen(Color.Black, SelectionHitTestWidth * 2);
             pathOut.Widen(pen);
@@ -285,11 +285,11 @@ namespace CII.LAR.DrawTools
             return result ? new HitTestResult(ElementType.Gate, 0) : new HitTestResult(ElementType.Nothing, -1);
         }
 
-        public void MoveLastHandleTo(ZWPictureBox pictureBox, Point point)
+        public void MoveLastHandleTo(VideoControl videoControl, Point point)
         {
             if (PointCount == 0) return;
 
-            if (PointCount > 3 && CloseToFirstPoint(pictureBox, point))
+            if (PointCount > 3 && CloseToFirstPoint(videoControl, point))
             {
                 pointArray[PointCount - 1] = pointArray[0];
             }
@@ -328,7 +328,7 @@ namespace CII.LAR.DrawTools
                 p2 = Point.Ceiling(enumerator.Current);
                 p2.Offset(MovingOffset);
             }
-            return string.Format("{0:F2} {1}", sum, pictureBox.UnitOfMeasure.ToString());
+            return string.Format("{0:F2} {1}", sum, videoControl.UnitOfMeasure.ToString());
         }
 
         private double GetArea()
@@ -336,7 +336,7 @@ namespace CII.LAR.DrawTools
             return 0;
         }
 
-        public bool CloseToFirstPoint(ZWPictureBox pictureBox, Point point)
+        public bool CloseToFirstPoint(VideoControl videoControl, Point point)
         {
             if (PointCount <= 0) return false;
 
@@ -350,9 +350,9 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="handleNumber"></param>
         /// <returns></returns>
-        public override Rectangle GetHandleRectangle(ZWPictureBox pictureBox, int handleNumber)
+        public override Rectangle GetHandleRectangle(VideoControl videoControl, int handleNumber)
         {
-            Point point = GetHandle(pictureBox, handleNumber);
+            Point point = GetHandle(videoControl, handleNumber);
 
             return new Rectangle(point.X - 3, point.Y - 3, 6, 6);
         }
@@ -395,7 +395,7 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="handleNumber"></param>
         /// <returns></returns>
-        public override Point GetHandle(ZWPictureBox pictureBox, int handleNumber)
+        public override Point GetHandle(VideoControl videoControl, int handleNumber)
         {
             if (handleNumber < 1)
             {

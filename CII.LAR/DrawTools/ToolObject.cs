@@ -44,15 +44,15 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="drawArea"></param>
         /// <param name="e"></param>
-        public override void OnMouseUp(ZWPictureBox pictureBox, MouseEventArgs e)
+        public override void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
         {
 
-            if (pictureBox.CreatingDrawObject)
+            if (videoControl.CreatingDrawObject)
             {
                 if (e.Button == MouseButtons.Left)
                 {
-                    pictureBox.GraphicsList[0].UpdateStatisticsInformation();
-                    pictureBox.ActiveTool = DrawToolType.Pointer;
+                    videoControl.GraphicsList[0].UpdateStatisticsInformation();
+                    videoControl.ActiveTool = DrawToolType.Pointer;
                 }
             }
         }
@@ -60,11 +60,11 @@ namespace CII.LAR.DrawTools
         /// <summary>
         /// left mouse is leave
         /// </summary>
-        /// <param name="pictureBox"></param>
+        /// <param name="videoControl"></param>
         /// <param name="e"></param>
-        public override void OnMouseLeave(ZWPictureBox pictureBox, EventArgs e)
+        public override void OnMouseLeave(VideoControl videoControl, EventArgs e)
         {
-            OnMouseUp(pictureBox, new MouseEventArgs(MouseButtons.Left, 0, 0, 0, 0));
+            OnMouseUp(videoControl, new MouseEventArgs(MouseButtons.Left, 0, 0, 0, 0));
         }
 
         /// <summary>
@@ -72,28 +72,28 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="drawArea"></param>
         /// <param name="cancelSelection"></param>
-        public override void OnCancel(ZWPictureBox pictureBox, bool cancelSelection)
+        public override void OnCancel(VideoControl videoControl, bool cancelSelection)
         {
             // cancel adding 
-            if (pictureBox.GraphicsList.Count > 0 && pictureBox.GraphicsList[0].Creating)
+            if (videoControl.GraphicsList.Count > 0 && videoControl.GraphicsList[0].Creating)
             {
-                pictureBox.GraphicsList.DeleteLastAddedObject();
+                videoControl.GraphicsList.DeleteLastAddedObject();
             }
         }
 
         /// <summary>
         /// add new object to picturebox
         /// </summary>
-        /// <param name="pictureBox"></param>
+        /// <param name="videoControl"></param>
         /// <param name="o"></param>
-        protected void AddNewObject(ZWPictureBox pictureBox, DrawObject o)
+        protected void AddNewObject(VideoControl videoControl, DrawObject o)
         {
-            pictureBox.GraphicsList.UnselectAll();
+            videoControl.GraphicsList.UnselectAll();
 
             o.Selected = true;
             o.Creating = true;
 
-            pictureBox.GraphicsList.Add(o);
+            videoControl.GraphicsList.Add(o);
         }
     }
 }

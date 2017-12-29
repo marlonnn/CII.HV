@@ -18,6 +18,13 @@ namespace CII.LAR.UI
     {
         private static Cursor s_cursor = new Cursor(new MemoryStream((byte[])new ResourceManager(typeof(EntryForm)).GetObject("Cross")));
         private bool mousePressed;
+        private Point lastBaseCtrlMousePos;//记录鼠标指针的坐标
+
+        /// <summary>
+        /// the new area where the Statistics control to be dragged
+        /// </summary>
+        private Rectangle draggingBaseCtrlRectangle;
+
         public delegate void VideoKeyDown(KeyEventArgs e);
         public VideoKeyDown VideoKeyDownHandler;
 
@@ -153,6 +160,7 @@ namespace CII.LAR.UI
 
         public VideoControl()
         {
+            this.DoubleBuffered = true;
             this.GraphicsList = new GraphicsList();
             InitializeTools();
             this.KeyDown += VideoControl_KeyDown;
@@ -180,7 +188,6 @@ namespace CII.LAR.UI
 
         private void VideoControl_MouseUp(object sender, MouseEventArgs e)
         {
-            mousePressed = false;
             if (activeTool != DrawToolType.Move)
             {
                 if (LaserFunction)
@@ -196,6 +203,15 @@ namespace CII.LAR.UI
                     {
                         Tools[(int)activeTool].OnMouseUp(this, e);
                     }
+                }
+            }
+            else
+            {
+                if (mousePressed)
+                {
+                    mousePressed = false;
+                    // move the Statistics control to the new position
+                    this.Location = draggingBaseCtrlRectangle.Location;
                 }
             }
         }
@@ -218,15 +234,23 @@ namespace CII.LAR.UI
                 }
                 else if (e.Button == MouseButtons.Left && ActiveTool == DrawToolType.Move)
                 {
-                    //Point mousePosNow = e.Location;
+                    if (mousePressed)
+                    {
+                        Point newPos = new Point(
+                            draggingBaseCtrlRectangle.Location.X + e.X - lastBaseCtrlMousePos.X,
+                            draggingBaseCtrlRectangle.Location.Y + e.Y - lastBaseCtrlMousePos.Y);
+                        Rectangle newPictureTrackerArea = draggingBaseCtrlRectangle;
+                        newPictureTrackerArea.Location = newPos;
 
-                    //int deltaX = mousePosNow.X - mouseDownPoint.X;
-                    //int deltaY = mousePosNow.Y - mouseDownPoint.Y;
-
-                    //OffsetX = (int)(startX + deltaX / zoom);
-                    //OffsetY = (int)(startY + deltaY / zoom);
-
-                    //this.Invalidate();
+                        this.lastBaseCtrlMousePos = e.Location;
+                        // dragging Statistics ctrl only when the candidate dragging rectangle
+                        // is within this ScalablePictureBox control
+                        if (this.ClientRectangle.Contains(newPictureTrackerArea))
+                        {
+                            // updating dragging rectangle
+                            draggingBaseCtrlRectangle = newPictureTrackerArea;
+                        }
+                    }
                 }
             }
         }
@@ -248,7 +272,12 @@ namespace CII.LAR.UI
                     {
                         if (activeTool == DrawToolType.Move)
                         {
+                            mousePressed = true;
 
+                            lastBaseCtrlMousePos.X = e.X;
+                            lastBaseCtrlMousePos.Y = e.Y;
+                            // draw initial dragging rectangle
+                            draggingBaseCtrlRectangle = this.Bounds;
                         }
                         else
                         {

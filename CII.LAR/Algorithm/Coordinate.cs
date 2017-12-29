@@ -21,6 +21,11 @@ namespace CII.LAR.Algorithm
 
         private Dictionary<int, Matrix<double>> transformMatrix;
 
+        public Matrix<double> FistMatrix
+        {
+            get { return this.transformMatrix[0]; }
+        }
+
         //电机坐标系坐标
         private Dictionary<int, Point> motorPoints;
 

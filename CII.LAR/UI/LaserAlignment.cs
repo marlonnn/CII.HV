@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CII.LAR.Laser;
 using CII.LAR.Protocol;
 using CII.LAR.Commond;
+using CII.LAR.Algorithm;
 
 namespace CII.LAR.UI
 {
@@ -86,6 +87,7 @@ namespace CII.LAR.UI
                 else if (Index == 7)
                 {
                     this.btnNext.Text = Res.LaserAlignment.StrSave;
+                    //计算平均转换矩阵
                 }
                 else
                 {
@@ -93,10 +95,17 @@ namespace CII.LAR.UI
                 }
                 if (Index > -1 && Index < 7)
                 {
+                    FirstThreeAlignment(Index);
                     AlignLaser laser = Program.EntryForm.Laser as AlignLaser;
                     if (laser != null)
                     {
                         laser.Index = Index;
+                    }
+                    if (Index == 3)
+                    {
+                        Coordinate.GetCoordinate().CalculateFirstMatrix();
+                        var v = Coordinate.GetCoordinate().FistMatrix;
+                        Console.WriteLine(" first matrix: " + v.ToString());
                     }
                     //this.pictureBox.ZoomFit();
                 }
@@ -111,16 +120,19 @@ namespace CII.LAR.UI
 
         private void FirstThreeAlignment(int index)
         {
-            MotorProtocolFactory motorProtocolFactory = MotorProtocolFactory.GetInstance();
-            var request = new MotorC60Request(0x60, 0x66);
-            request.ControlSelection = 0x60;
-            request.ControlMode61 = 0x01;
-            request.Direction61 = 0x01;
-            request.TotalSteps61 = threePoints[index].X;
-            request.ControlMode62 = 0x01;
-            request.Direction62 = 0x01;
-            request.TotalSteps62 = threePoints[index].Y;
-            motorProtocolFactory.SendMessage(request);
+            if (index > -1 && index < 3)
+            {
+                MotorProtocolFactory motorProtocolFactory = MotorProtocolFactory.GetInstance();
+                var request = new MotorC60Request(0x60, 0x66);
+                request.ControlSelection = 0x60;
+                request.ControlMode61 = 0x01;
+                request.Direction61 = 0x01;
+                request.TotalSteps61 = threePoints[index].X;
+                request.ControlMode62 = 0x01;
+                request.Direction62 = 0x01;
+                request.TotalSteps62 = threePoints[index].Y;
+                motorProtocolFactory.SendMessage(request);
+            }
         }
 
         protected override void RefreshUI()

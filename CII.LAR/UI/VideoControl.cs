@@ -15,7 +15,6 @@ namespace CII.LAR.UI
     {
         public VideoControl()
         {
-            InitializeComponent();
         }
     }
 }

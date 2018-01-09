@@ -1,4 +1,6 @@
-﻿using MathNet.Numerics.LinearAlgebra;
+﻿using CII.LAR.Commond;
+using CII.LAR.Protocol;
+using MathNet.Numerics.LinearAlgebra;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,6 +16,22 @@ namespace CII.LAR.Algorithm
     /// </summary>
     public class Coordinate
     {
+        //上一点,电机坐标系
+        private Point lastPoint = Point.Empty;
+        public Point LastPoint
+        {
+            get { return this.lastPoint; }
+            set { this.lastPoint = value; }
+        }
+
+        //当前点，电机坐标系
+        private Point thisPoint;
+        public Point ThisPoint
+        {
+            get { return this.thisPoint; }
+            set { this.thisPoint = value; }
+        }
+
         //屏幕坐标系坐标
         private Dictionary<int, Point> clickPointsDic;
 
@@ -28,6 +46,10 @@ namespace CII.LAR.Algorithm
 
         //电机坐标系坐标
         private Dictionary<int, Point> motorPoints;
+        public Dictionary<int, Point> MotorPoints
+        {
+            get { return this.motorPoints; }
+        }
 
         private List<Point> boundPoints;
         public static Coordinate coordinate;
@@ -53,12 +75,41 @@ namespace CII.LAR.Algorithm
             finalMatrix = mb.Dense(3, 3);
         }
 
+        public void SendAlignmentMotorPoint()
+        {
+            MotorProtocolFactory motorProtocolFactory = MotorProtocolFactory.GetInstance();
+            var request = new MotorC60Request(0x60, 0x66);
+            request.ControlSelection = 0x60;
+            request.ControlMode61 = 0x01;
+            request.Direction61 = ThisPoint.X - LastPoint.X > 0 ? (byte)0x00 : (byte)0x01;
+            request.TotalSteps61 = ThisPoint.X - LastPoint.X;
+            request.ControlMode62 = 0x01;
+            request.Direction62 = ThisPoint.Y - LastPoint.Y > 0 ? (byte)0x00 : (byte)0x01; ;
+            request.TotalSteps62 = ThisPoint.Y - LastPoint.Y;
+            motorProtocolFactory.SendMessage(request);
+        }
+
+        /// <summary>
+        /// 设置当前电机坐标系坐标和上一点坐标
+        /// </summary>
+        /// <param name="p"></param>
+        public void SetMotorThisPoint(Point p)
+        {
+            this.LastPoint = this.ThisPoint;
+            var screenArray = mb.DenseOfArray(new double[,] { { p.X }, { p.Y }, { 1 } });
+            if (this.FinalMatrix.Rank() != 0)
+            {
+                var temp = this.FinalMatrix * screenArray;
+                this.ThisPoint = new Point((int)temp[0, 0], (int)temp[1, 0]);
+            }
+        }
+
         /// <summary>
         /// 添加电机坐标
         /// </summary>
         /// <param name="index"></param>
         /// <param name="pictureBoxSize"></param>
-        private void CreatePresetMotorPoint(int index, Size pictureBoxSize)
+        public void CreatePresetMotorPoint(int index, Size pictureBoxSize)
         {
             //屏幕坐标
             Point psp = CreatePresetScreenPoint(index, pictureBoxSize);

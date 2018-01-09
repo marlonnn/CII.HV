@@ -237,6 +237,7 @@ namespace CII.LAR
             BaseCtrls.Add(laserCtrl);
 
             laserAlignment = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment);
+            laserAlignment.VideoControl = this.videoControl;
             BaseCtrls.Add(laserAlignment);
 
             videoChooseCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<VideoChooseCtrl>(CtrlType.VideoChooseCtrl);

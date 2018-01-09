@@ -37,6 +37,11 @@ namespace CII.LAR.UI
 
         private AlignInfoHelper helper;
         private VideoControl videoControl;
+        public VideoControl VideoControl
+        {
+            get { return this.videoControl; }
+            set { this.videoControl = value; }
+        }
 
         public Label LabelInfo
         {
@@ -72,8 +77,6 @@ namespace CII.LAR.UI
             //    this.pictureBox.Invalidate();
         }
 
-        private List<Point> threePoints = new List<Point>() { new Point(1500, 1500), new Point(1500, 1600), new Point(1600, 1500) };
-
         private void btnNext_Click(object sender, EventArgs e)
         {
             if (Index != 7)
@@ -95,17 +98,29 @@ namespace CII.LAR.UI
                 }
                 if (Index > -1 && Index < 7)
                 {
-                    FirstThreeAlignment(Index);
+                    if (Index >= 3 && Index <= 6)
+                    {
+                        if (Index == 3)
+                        {
+                            Coordinate.GetCoordinate().CalculateFirstMatrix();
+                            var v = Coordinate.GetCoordinate().FistMatrix;
+                            Console.WriteLine(" first matrix: " + v.ToString());
+                            Console.WriteLine(" first matrix Rank: " + v.Rank());
+                        }
+                        else if (Index == 6)
+                        {
+                            Coordinate.GetCoordinate().GetFinalMatrix();
+                            var v = Coordinate.GetCoordinate().FinalMatrix;
+                            Console.WriteLine(" final matrix: " + v.ToString());
+                            Console.WriteLine(" final matrix Rank: " + v.Rank());
+                        }
+                        Coordinate.GetCoordinate().CreatePresetMotorPoint(Index, this.VideoControl.Size);
+                    }
+                    SendAlignmentMotorPoint();
                     AlignLaser laser = Program.EntryForm.Laser as AlignLaser;
                     if (laser != null)
                     {
                         laser.Index = Index;
-                    }
-                    if (Index == 3)
-                    {
-                        Coordinate.GetCoordinate().CalculateFirstMatrix();
-                        var v = Coordinate.GetCoordinate().FistMatrix;
-                        Console.WriteLine(" first matrix: " + v.ToString());
                     }
                     //this.pictureBox.ZoomFit();
                 }
@@ -118,20 +133,14 @@ namespace CII.LAR.UI
             }
         }
 
-        private void FirstThreeAlignment(int index)
+        private void SendAlignmentMotorPoint()
         {
-            if (index > -1 && index < 3)
+            if (Index >= 0 && Index <= 6)
             {
-                MotorProtocolFactory motorProtocolFactory = MotorProtocolFactory.GetInstance();
-                var request = new MotorC60Request(0x60, 0x66);
-                request.ControlSelection = 0x60;
-                request.ControlMode61 = 0x01;
-                request.Direction61 = 0x01;
-                request.TotalSteps61 = threePoints[index].X;
-                request.ControlMode62 = 0x01;
-                request.Direction62 = 0x01;
-                request.TotalSteps62 = threePoints[index].Y;
-                motorProtocolFactory.SendMessage(request);
+                if (Index > 0)
+                    Coordinate.GetCoordinate().LastPoint = Coordinate.GetCoordinate().MotorPoints[Index - 1];
+                Coordinate.GetCoordinate().ThisPoint = Coordinate.GetCoordinate().MotorPoints[Index];
+                Coordinate.GetCoordinate().SendAlignmentMotorPoint();
             }
         }
 

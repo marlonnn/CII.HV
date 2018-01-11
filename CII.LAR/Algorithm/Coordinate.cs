@@ -32,6 +32,19 @@ namespace CII.LAR.Algorithm
             set { this.thisPoint = value; }
         }
 
+        private bool motionComplete = false;
+        public bool MotionComplete
+        {
+            get { return this.motionComplete; }
+            set
+            {
+                if (value != this.motionComplete)
+                {
+                    this.motionComplete = value;
+                }
+            }
+        }
+
         //屏幕坐标系坐标
         private Dictionary<int, Point> clickPointsDic;
 
@@ -84,7 +97,7 @@ namespace CII.LAR.Algorithm
             request.Direction61 = ThisPoint.X - LastPoint.X > 0 ? (byte)0x00 : (byte)0x01;
             request.TotalSteps61 = ThisPoint.X - LastPoint.X;
             request.ControlMode62 = 0x01;
-            request.Direction62 = ThisPoint.Y - LastPoint.Y > 0 ? (byte)0x00 : (byte)0x01; ;
+            request.Direction62 = ThisPoint.Y - LastPoint.Y > 0 ? (byte)0x00 : (byte)0x01;
             request.TotalSteps62 = ThisPoint.Y - LastPoint.Y;
             motorProtocolFactory.SendMessage(request);
         }

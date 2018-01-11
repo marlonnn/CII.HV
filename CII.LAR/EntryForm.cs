@@ -1,4 +1,5 @@
 ﻿using AForge.Video.DirectShow;
+using CII.LAR.Algorithm;
 using CII.LAR.Commond;
 using CII.LAR.DrawTools;
 using CII.LAR.Laser;
@@ -49,22 +50,21 @@ namespace CII.LAR
         private FullScreen fullScreen;
         private FormWindowState tempWindowState;
 
-        private float zoom = 1;
         public float Zoom
         {
             get
             {
-                return zoom;
+                return this.videoControl.Zoom;
             }
             set
             {
-                if (value != this.zoom)
+                if (value != this.videoControl.Zoom)
                 {
-                    this.zoom = value;
+                    this.videoControl.Zoom = value;
                 }
                 //if zoom == 1,enable draw tools and show graphics
                 //else disable draw tools and hide graphics
-                EnableDrawTools(this.zoom == 1);
+                EnableDrawTools(this.videoControl.Zoom == 1);
             }
         }
 
@@ -860,6 +860,11 @@ namespace CII.LAR
                                 m40r.Motor2Status == 0x08 && m40r.Motor2completeSteps == 0)
                             {
                                 //XY电机运动到指定位置
+                                Coordinate.GetCoordinate().MotionComplete = true;
+                            }
+                            else
+                            {
+                                Coordinate.GetCoordinate().MotionComplete = false;
                             }
                         }
                     }
@@ -884,7 +889,8 @@ namespace CII.LAR
 
         private void toolStripButtonScale_Click(object sender, EventArgs e)
         {
-
+            this.videoControl.Rulers.ShowRulers = !this.videoControl.Rulers.ShowRulers;
+            this.videoControl.Invalidate();
         }
     }
 }

@@ -20,6 +20,28 @@ namespace CII.LAR.UI
         private bool mousePressed;
         private Point lastBaseCtrlMousePos;//记录鼠标指针的坐标
 
+        private float zoom = 1;
+        public float Zoom
+        {
+            get
+            {
+                return zoom;
+            }
+            set
+            {
+                zoom = value;
+            }
+        }
+
+        private Rulers rulers;
+        public Rulers Rulers
+        {
+            get
+            {
+                return rulers;
+            }
+        }
+
         /// <summary>
         /// the new area where the Statistics control to be dragged
         /// </summary>
@@ -162,6 +184,7 @@ namespace CII.LAR.UI
         {
             this.DoubleBuffered = true;
             this.GraphicsList = new GraphicsList();
+            this.rulers = new Rulers(this);
             InitializeTools();
             this.KeyDown += VideoControl_KeyDown;
             this.MouseDown += VideoControl_MouseDown;
@@ -305,6 +328,10 @@ namespace CII.LAR.UI
             if (GraphicsList != null)
             {
                 GraphicsList.Draw(e.Graphics, this);
+            }
+            if (rulers != null)
+            {
+                rulers.Draw(e.Graphics);
             }
         }
 

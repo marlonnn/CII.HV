@@ -884,7 +884,8 @@ namespace CII.LAR
 
         private void toolStripFiles_Click(object sender, EventArgs e)
         {
-
+            FilesForm filesForm = new FilesForm();
+            filesForm.ShowDialog();
         }
 
         private void toolStripButtonScale_Click(object sender, EventArgs e)

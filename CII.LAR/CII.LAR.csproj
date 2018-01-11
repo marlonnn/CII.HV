@@ -194,22 +194,76 @@
     <Compile Include="Protocol\MotorProtocolFactory.cs" />
     <Compile Include="Protocol\Original.cs" />
     <Compile Include="Protocol\OriginalBytes.cs" />
+    <Compile Include="Report\Report.cs" />
+    <Compile Include="Report\ReportItemBase.cs" />
+    <Compile Include="Report\ReportPage.cs" />
+    <Compile Include="Report\ReportPictureItem.cs" />
     <Compile Include="Res\LaserAlignment.Designer.cs" />
     <Compile Include="Res\LaserCtrl.Designer.cs" />
     <Compile Include="SerialPortModel.cs" />
+    <Compile Include="SysClass\AllPatients.cs" />
     <Compile Include="SysClass\FullScreen.cs" />
     <Compile Include="SysClass\HandleTaskBar.cs" />
     <Compile Include="SysClass\HolePulsePoint.cs" />
     <Compile Include="SysClass\JsonFile.cs" />
     <Compile Include="SysClass\LaserConfig.cs" />
     <Compile Include="SysClass\Lense.cs" />
+    <Compile Include="SysClass\Patient.cs" />
     <Compile Include="SysClass\SysConfig.cs" />
     <Compile Include="UI\ArrayChangedEventArgs.cs" />
+    <Compile Include="UI\AssignForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AssignForm.designer.cs">
+      <DependentUpon>AssignForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\BaseCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\BaseCtrl.Designer.cs">
       <DependentUpon>BaseCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FilesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FilesForm.designer.cs">
+      <DependentUpon>FilesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ImageForm.designer.cs">
+      <DependentUpon>ImageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReportCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ReportCtrl.designer.cs">
+      <DependentUpon>ReportCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReportCtrlPicture.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ReportCtrlPicture.designer.cs">
+      <DependentUpon>ReportCtrlPicture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ReportForm.designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReportLayout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\ReportLayout.designer.cs">
+      <DependentUpon>ReportLayout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReportPageUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ReportPageUI.designer.cs">
+      <DependentUpon>ReportPageUI.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\VideoChooseCtrl.cs">
       <SubType>UserControl</SubType>
@@ -339,8 +393,29 @@
     <EmbeddedResource Include="Res\LaserAlignment.zh-CN.resx" />
     <EmbeddedResource Include="Res\LaserCtrl.resx" />
     <EmbeddedResource Include="Res\LaserCtrl.zh-CN.resx" />
+    <EmbeddedResource Include="UI\AssignForm.resx">
+      <DependentUpon>AssignForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\BaseCtrl.resx">
       <DependentUpon>BaseCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FilesForm.resx">
+      <DependentUpon>FilesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ImageForm.resx">
+      <DependentUpon>ImageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ReportCtrl.resx">
+      <DependentUpon>ReportCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ReportCtrlPicture.resx">
+      <DependentUpon>ReportCtrlPicture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ReportPageUI.resx">
+      <DependentUpon>ReportPageUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\VideoChooseCtrl.resx">
       <DependentUpon>VideoChooseCtrl.cs</DependentUpon>

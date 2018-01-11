@@ -91,6 +91,7 @@ namespace CII.LAR.UI
 
         protected virtual void RefreshUI()
         {
+            if (resources == null) return;
             foreach (var item in this.Controls)
             {
                 Button btnX = item as Button;

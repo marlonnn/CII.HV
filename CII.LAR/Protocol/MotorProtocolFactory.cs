@@ -205,12 +205,13 @@ namespace CII.LAR.Protocol
                                 OriginalBytes obytes = o as OriginalBytes;
                                 if (o != null)
                                 {
-                                    if (obytes.Data[0] == 0x5D && obytes.Data[0] == 0x5B)
+                                    if (obytes.Data[0] == 0x5D && obytes.Data[1] == 0x5B)
                                     {
                                         MotorProtocol mp = motorProtocol.DePackage(obytes.Data);
                                         byte[] data = mp.CodeRegion;
                                         byte commandCode = data[0];
                                         byte additionCode = data[1];
+                                        if (!Decoders.ContainsKey(commandCode)) return;
                                         MotorBaseResponse mr = Decoders[commandCode].Decode(obytes);
                                         if (mr != null)
                                         {

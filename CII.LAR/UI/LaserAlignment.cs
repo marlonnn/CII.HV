@@ -137,8 +137,8 @@ namespace CII.LAR.UI
         {
             if (Index >= 0 && Index <= 6)
             {
-                if (Index > 0)
-                    Coordinate.GetCoordinate().LastPoint = Coordinate.GetCoordinate().MotorPoints[Index - 1];
+                //if (Index > 0)
+                    //Coordinate.GetCoordinate().LastPoint = Coordinate.GetCoordinate().MotorPoints[Index - 1];
                 Coordinate.GetCoordinate().ThisPoint = Coordinate.GetCoordinate().MotorPoints[Index];
                 Coordinate.GetCoordinate().SendAlignmentMotorPoint();
             }

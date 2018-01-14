@@ -170,13 +170,13 @@ namespace CII.LAR.Laser
                 Graphics g = e.Graphics;
                 g.CompositingQuality = CompositingQuality.HighQuality;
                 g.SmoothingMode = SmoothingMode.AntiAlias;
-                g.DrawEllipse(new Pen(Color.Orange, 2f), AlignCircle.Rectangle);
-                Circle circle2 = new Circle(AlignCircle.CenterPoint, 
-                    new Size((int)(1.4 * AlignCircle.Rectangle.Width), (int)(1.4 * AlignCircle.Rectangle.Width)));
-                Circle circle3 = new Circle(AlignCircle.CenterPoint, 
-                    new Size((int)(1.4 * circle2.Rectangle.Width), (int)(1.4 * circle2.Rectangle.Width)));
-                g.DrawEllipse(new Pen(Color.Orange, 2f), circle2.Rectangle);
-                g.DrawEllipse(new Pen(Color.Orange, 2f), circle3.Rectangle);
+                //g.DrawEllipse(new Pen(Color.Orange, 2f), AlignCircle.Rectangle);
+                //Circle circle2 = new Circle(AlignCircle.CenterPoint, 
+                //    new Size((int)(1.4 * AlignCircle.Rectangle.Width), (int)(1.4 * AlignCircle.Rectangle.Width)));
+                //Circle circle3 = new Circle(AlignCircle.CenterPoint, 
+                //    new Size((int)(1.4 * circle2.Rectangle.Width), (int)(1.4 * circle2.Rectangle.Width)));
+                //g.DrawEllipse(new Pen(Color.Orange, 2f), circle2.Rectangle);
+                //g.DrawEllipse(new Pen(Color.Orange, 2f), circle3.Rectangle);
                 if (IsShowCross)
                     DrawCross(g);
             }

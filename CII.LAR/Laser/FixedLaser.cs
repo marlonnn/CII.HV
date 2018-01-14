@@ -1,4 +1,5 @@
-﻿using CII.LAR.DrawTools;
+﻿using CII.LAR.Algorithm;
+using CII.LAR.DrawTools;
 using CII.LAR.SysClass;
 using CII.LAR.UI;
 using System;
@@ -74,6 +75,7 @@ namespace CII.LAR.Laser
             Point point = e.Location;
             CenterPoint = new PointF(point.X, point.Y);
             this.videoControl.Invalidate();
+            Coordinate.GetCoordinate().SetMotorThisPoint(point);
         }
 
         public override void OnMouseMove(VideoControl videoControl, MouseEventArgs e)

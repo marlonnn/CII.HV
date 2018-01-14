@@ -230,6 +230,7 @@ namespace CII.LAR.Commond
 
         public override MotorBaseResponse Decode(OriginalBytes obytes)
         {
+            if (obytes.Data.Length != 164) return null;
             byte commandCode = obytes.Data[6];
             byte additionalCode = obytes.Data[7];
             MotorC40Response m40r = new MotorC40Response(commandCode, additionalCode);

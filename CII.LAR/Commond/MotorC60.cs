@@ -478,7 +478,10 @@ namespace CII.LAR.Commond
             else if (m60r.AdditionCode == 0x99)
             {
                 //写回应
-                m60r.ResponseCode = m60r.CodeArea.Data[0];
+                if (m60r.CodeArea.Data != null)
+                {
+                    m60r.ResponseCode = m60r.CodeArea.Data[0];
+                }
             }
             m60r.BasePackage = new CIIBasePackage(m60r.CodeArea, false);
             return m60r;

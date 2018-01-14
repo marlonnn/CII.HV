@@ -206,6 +206,7 @@ namespace CII.LAR
             MotorProtocolFactory.StartEncodeThread();
 
             this.autoSendTimer.Enabled = true;
+            this.autoReceiverTimer.Enabled = true;
             this.systemMonitorTimer.Enabled = true;
             this.LaserFactory = LaserFactory.GetInstance(this.videoControl);
             LaserType = LaserType.SaturnFixed;
@@ -856,8 +857,12 @@ namespace CII.LAR
                         MotorC40Response m40r = bs as MotorC40Response;
                         if (m40r != null)
                         {
-                            if (m40r.Motor1Status == 0x08 && m40r.Motor1completeSteps == 0 &&
-                                m40r.Motor2Status == 0x08 && m40r.Motor2completeSteps == 0)
+                            //if (Coordinate.GetCoordinate().LastPoint.IsEmpty)
+                            {
+                                Coordinate.GetCoordinate().LastPoint = new Point(m40r.Motor1Steps, m40r.Motor2Steps);
+                            }
+                            if (m40r.Motor1Status == 0x08 /*&& m40r.Motor1completeSteps == 0 */&&
+                                m40r.Motor2Status == 0x08 /*&& m40r.Motor2completeSteps == 0*/)
                             {
                                 //XY电机运动到指定位置
                                 Coordinate.GetCoordinate().MotionComplete = true;

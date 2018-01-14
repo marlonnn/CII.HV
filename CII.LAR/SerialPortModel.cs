@@ -68,8 +68,11 @@ namespace CII.LAR
                     var destData = CheckCIIData(data, len);
                     if (destData != null)
                     {
-                        MotorProtocolFactory.GetInstance().RxQueue.Push(new OriginalBytes(DateTime.Now, destData));
-                        LogHelper.GetLogger<SerialPortModel>().Error(string.Format("电机接受到的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(destData)));
+                        foreach (var d in destData)
+                        {
+                            MotorProtocolFactory.GetInstance().RxQueue.Push(new OriginalBytes(DateTime.Now, d));
+                            LogHelper.GetLogger<SerialPortModel>().Error(string.Format("电机接受到的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(d)));
+                        }
                     }
                 }
                 catch (System.Exception ex)
@@ -128,13 +131,15 @@ namespace CII.LAR
         /// <param name="srcBytes"></param>
         /// <param name="length"></param>
         /// <returns></returns>
-        private byte[] CheckCIIData(byte[] srcBytes, int length)
+        private List<byte[]> CheckCIIData(byte[] srcBytes, int length)
         {
             if (srcBytes != null && length > 4)
             {
+                List<byte[]> reBytes = new List<byte[]>();
                 if (srcBytes[0] == 0x5D && srcBytes[1] == 0x5B && srcBytes[length - 1] == 0x5D && srcBytes[length - 2] == 0x5D)
                 {
-                    return srcBytes;
+                    reBytes.Add(srcBytes);
+                    return reBytes;
                 }
                 else if ((srcBytes[0] == 0x5D && srcBytes[1] == 0x5B) && (srcBytes[length - 1] != 0x5D && srcBytes[length - 2] != 0x5D))
                 {
@@ -144,10 +149,41 @@ namespace CII.LAR
                 }
                 else if ((srcBytes[0] != 0x5D && srcBytes[1] != 0x5B) && (srcBytes[length - 1] == 0x5D && srcBytes[length - 2] == 0x5D))
                 {
-                    byte[] newBytes = new byte[motorBuffer.Length + length];
-                    Array.Copy(motorBuffer, 0, newBytes, 0, motorBuffer.Length);
-                    Array.Copy(srcBytes, 0, newBytes, motorBuffer.Length, length);
-                    return newBytes;
+                    int count = 0;
+                    for (int i = 0; i < length; i++)
+                    {
+                        if (srcBytes[i] == 0x5D)
+                        {
+                            if (i + 1 < length)
+                            {
+                                if (srcBytes[i + 1] == 0x5D)
+                                {
+                                    count = i;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    if (count + 2 == length)
+                    {
+                        byte[] newBytes = new byte[motorBuffer.Length + length];
+                        Array.Copy(motorBuffer, 0, newBytes, 0, motorBuffer.Length);
+                        Array.Copy(srcBytes, 0, newBytes, motorBuffer.Length, length);
+                        reBytes.Add(newBytes);
+                    }
+                    else if (count + 2 < length)
+                    {
+                        int index = count + 1;
+                        byte[] newBytes1 = new byte[motorBuffer.Length + index + 1];
+                        Array.Copy(motorBuffer, 0, newBytes1, 0, motorBuffer.Length);
+                        Array.Copy(srcBytes, 0, newBytes1, motorBuffer.Length, index + 1);
+
+                        byte[] newBytes2 = new byte[length - (index + 1)];
+                        Array.Copy(srcBytes, index + 1, newBytes2, 0, newBytes2.Length);
+                        reBytes.Add(newBytes1);
+                        reBytes.Add(newBytes2);
+                    }
+                    return reBytes;
                 }
                 else
                 {
@@ -159,6 +195,7 @@ namespace CII.LAR
                 return null;
             }
         }
+
         /// <summary>
         /// LaserSendData bytes to device
         /// </summary>

@@ -11,6 +11,7 @@ using DevComponents.DotNetBar;
 using CII.LAR.DrawTools;
 using CII.LAR.Laser;
 using CII.LAR.SysClass;
+using CII.LAR.Algorithm;
 
 namespace CII.LAR.UI
 {
@@ -76,6 +77,7 @@ namespace CII.LAR.UI
         private void btnFire_Click(object sender, EventArgs e)
         {
             Program.EntryForm.Laser.Flashing = !flashing;
+            Coordinate.GetCoordinate().SendAlignmentMotorPoint();
         }
 
         private void btnAlignLaser_Click(object sender, EventArgs e)

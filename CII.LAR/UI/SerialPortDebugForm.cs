@@ -415,7 +415,7 @@ namespace CII.LAR.UI
 
         private void btn75_Click(object sender, EventArgs e)
         {
-            LaserProtocolFactory.SendMessage(new LaserC75Request(17));
+            LaserProtocolFactory.SendMessage(new LaserC75Request(3));
         }
 
         private void btn09_Click(object sender, EventArgs e)

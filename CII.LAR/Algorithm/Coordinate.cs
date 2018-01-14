@@ -79,7 +79,7 @@ namespace CII.LAR.Algorithm
             clickPointsDic = new Dictionary<int, Point>();
             transformMatrix = new Dictionary<int, Matrix<double>>();
             motorPoints = new Dictionary<int, Point>();
-            motorPoints.Add(0, new Point(1500, 1500));
+            motorPoints.Add(0, new Point(1400, 1400));
             motorPoints.Add(1, new Point(1600, 1500));
             motorPoints.Add(2, new Point(1500, 1600));
 
@@ -94,11 +94,11 @@ namespace CII.LAR.Algorithm
             var request = new MotorC60Request(0x60, 0x66);
             request.ControlSelection = 0x60;
             request.ControlMode61 = 0x01;
-            request.Direction61 = ThisPoint.X - LastPoint.X > 0 ? (byte)0x00 : (byte)0x01;
-            request.TotalSteps61 = ThisPoint.X - LastPoint.X;
+            request.Direction61 = ThisPoint.X - LastPoint.X > 0 ? (byte)0x01 : (byte)0x00;
+            request.TotalSteps61 = Math.Abs(ThisPoint.X - LastPoint.X);
             request.ControlMode62 = 0x01;
-            request.Direction62 = ThisPoint.Y - LastPoint.Y > 0 ? (byte)0x00 : (byte)0x01;
-            request.TotalSteps62 = ThisPoint.Y - LastPoint.Y;
+            request.Direction62 = ThisPoint.Y - LastPoint.Y > 0 ? (byte)0x01 : (byte)0x00;
+            request.TotalSteps62 = Math.Abs(ThisPoint.Y - LastPoint.Y);
             motorProtocolFactory.SendMessage(request);
         }
 
@@ -108,7 +108,7 @@ namespace CII.LAR.Algorithm
         /// <param name="p"></param>
         public void SetMotorThisPoint(Point p)
         {
-            this.LastPoint = this.ThisPoint;
+            //this.LastPoint = this.ThisPoint;
             var screenArray = mb.DenseOfArray(new double[,] { { p.X }, { p.Y }, { 1 } });
             if (this.FinalMatrix.Rank() != 0)
             {
@@ -143,16 +143,16 @@ namespace CII.LAR.Algorithm
             switch (index)
             {
                 case 3:
-                    psp = new Point(pictureBoxSize.Width - 100, pictureBoxSize.Height / 2);
+                    psp = new Point(pictureBoxSize.Width - 200, pictureBoxSize.Height / 2);
                     break;
                 case 4:
-                    psp = new Point(pictureBoxSize.Width / 2, pictureBoxSize.Height);
+                    psp = new Point(pictureBoxSize.Width / 2, pictureBoxSize.Height - 200);
                     break;
                 case 5:
-                    psp = new Point(100, pictureBoxSize.Height / 2);
+                    psp = new Point(100 + 100, pictureBoxSize.Height / 2 - 100);
                     break;
                 case 6:
-                    psp = new Point(pictureBoxSize.Width / 2, 100);
+                    psp = new Point(pictureBoxSize.Width / 2, 100 + 50);
                     break;
             }
             //check point in legal region

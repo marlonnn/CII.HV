@@ -18,6 +18,11 @@ namespace CII.LAR.Laser
         private Point endPoint;
 
         private ActiveCircle activeCircle;
+        public ActiveCircle ActiveCircle
+        {
+            get { return this.activeCircle; }
+        }
+
         public ActiveLaser(VideoControl videoControl) : base()
         {
             this.videoControl = videoControl;

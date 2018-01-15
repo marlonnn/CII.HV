@@ -69,7 +69,7 @@ namespace CII.LAR.DrawTools
                 }
                 o = graphicsList[i];
                 o.Draw(g, videoControl);
-                //o.DrawTest(g, videoControl);
+                o.DrawTest(g, videoControl);
                 //if (o.Selected)
                 //{
                 //    o.DrawTracker(g, videoControl);

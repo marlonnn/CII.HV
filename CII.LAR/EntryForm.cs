@@ -857,20 +857,8 @@ namespace CII.LAR
                         MotorC40Response m40r = bs as MotorC40Response;
                         if (m40r != null)
                         {
-                            //if (Coordinate.GetCoordinate().LastPoint.IsEmpty)
-                            {
-                                Coordinate.GetCoordinate().LastPoint = new Point(m40r.Motor1Steps, m40r.Motor2Steps);
-                            }
-                            if (m40r.Motor1Status == 0x08 /*&& m40r.Motor1completeSteps == 0 */&&
-                                m40r.Motor2Status == 0x08 /*&& m40r.Motor2completeSteps == 0*/)
-                            {
-                                //XY电机运动到指定位置
-                                Coordinate.GetCoordinate().MotionComplete = true;
-                            }
-                            else
-                            {
-                                Coordinate.GetCoordinate().MotionComplete = false;
-                            }
+                            Coordinate.GetCoordinate().LastPoint = new Point(m40r.Motor1Steps, m40r.Motor2Steps);
+                            Coordinate.GetCoordinate().MotionComplete = m40r.Motor1Status == 0x08 && m40r.Motor2Status == 0x08;
                         }
                     }
                 }

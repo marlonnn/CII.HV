@@ -65,15 +65,17 @@ namespace CII.LAR
                 try
                 {
                     motorSerialPort.Read(data, 0, len);
-                    var datas = CheckData(data, len);
+                    var datas= CheckData(data, len);
                     if (datas != null)
                     {
                         foreach (var rawData in datas)
                         {
-                            if (CheckDataValidate(rawData))
+                            var cleanData = Check88Data(rawData);
+
+                            if (CheckDataValidate(cleanData))
                             {
-                                MotorProtocolFactory.GetInstance().RxQueue.Push(new OriginalBytes(DateTime.Now, rawData));
-                                LogHelper.GetLogger<SerialPortModel>().Error(string.Format("完整数据为： {0}", ByteHelper.Byte2ReadalbeXstring(rawData)));
+                                MotorProtocolFactory.GetInstance().RxQueue.Push(new OriginalBytes(DateTime.Now, cleanData));
+                                LogHelper.GetLogger<SerialPortModel>().Error(string.Format("完整数据为： {0}", ByteHelper.Byte2ReadalbeXstring(cleanData)));
                             }
                         }
                     }
@@ -137,8 +139,74 @@ namespace CII.LAR
 
         private byte[] motorBuffer;
 
+        private int tailCount = 0;
+
+        private int headCount = 0;
+
         private bool hasHead = false;
+        public bool HasHead
+        {
+            get { return this.hasHead; }
+            set
+            {
+                if (value != this.hasHead)
+                {
+                    if (value)
+                    {
+                        if (headCount == 1)
+                        {
+                            headCount = 0;
+                        }
+                        headCount++;
+                    }
+                    this.hasHead = value;
+                }
+            }
+        }
+
         private bool hasTail = false;
+        public bool HasTail
+        {
+            get { return this.hasTail; }
+            set
+            {
+                if (value != this.hasTail)
+                {
+                    if (value)
+                    {
+                        if (tailCount == 1)
+                        {
+                            tailCount = 0;
+                        }
+                        tailCount++;
+                    }
+                    this.hasTail = value;
+                }
+            }
+        }
+
+        private byte[] Check88Data(byte[] srcBytes)
+        {
+            List<int> indexs = new List<int>();
+
+            if (srcBytes != null && srcBytes.Length > 10)
+            {
+                for (int i = 10; i < srcBytes.Length - 2; i++)
+                {
+                    if (srcBytes[i] == 0x88 && srcBytes[i -1] == 0x5D)
+                    {
+                        indexs.Add(i);
+                    }
+                }
+            }
+
+            List<byte> bs = new List<byte>(srcBytes);
+            foreach (int index in indexs)
+            {
+                bs.RemoveAt(index);
+            }
+            return bs.ToArray();
+        }
 
         /// <summary>
         /// 数据有效性检查，包含CRC16校验
@@ -183,13 +251,13 @@ namespace CII.LAR
             {
                 for (int i=0; i<srcBytes.Length - 1; i++)
                 {
-                    hasHead |= (srcBytes[i] == 0x5D && srcBytes[i + 1] == 0x5B);
-                    hasTail |= (srcBytes[i] == 0x5D && srcBytes[i + 1] == 0x5D);
-                    if (hasHead && hasTail)
+                    HasHead |= (srcBytes[i] == 0x5D && srcBytes[i + 1] == 0x5B);
+                    HasTail |= (srcBytes[i] == 0x5D && srcBytes[i + 1] == 0x5D);
+                    if ((headCount == 1 && HasHead) && (tailCount == 1 && HasTail))
                     {
                         //5D 5B *** 5D 5B
-                        hasHead = false;
-                        hasTail = false;
+                        HasHead = false;
+                        HasTail = false;
                         int len = i + 2;
                         byte[] data = new byte[len];
                         Array.Copy(srcBytes, 0, data, 0, len);
@@ -199,18 +267,18 @@ namespace CII.LAR
                         {
                             int overLen = length - len;
                             byte[] overData = new byte[overLen];
-                            Array.Copy(srcBytes, overLen, overData, 0, overLen);
+                            Array.Copy(srcBytes, len, overData, 0, overLen);
                             CheckData(overData, overLen);
                         }
                     }
-                    else if (hasHead && !hasTail)
+                    else if ((headCount == 1 && HasHead) && !HasTail)
                     {
                         //5D 5B ***
                         int len = i + 2;
                         if (len == length)
                         {
-                            hasHead = false;
-                            hasTail = false;
+                            HasHead = false;
+                            HasTail = false;
                             motorBuffer = new byte[len];
                             Array.Copy(srcBytes, 0, motorBuffer, 0, len);
                         }
@@ -223,21 +291,13 @@ namespace CII.LAR
                         //    CheckData(overData, overLen);
                         //}
                     }
-                    else if (!hasHead && hasTail)
+                    else if (!HasHead && (tailCount == 1 && HasTail))
                     {
                         //*** 5D 5D
-                        hasHead = false;
-                        hasTail = false;
+                        HasHead = false;
+                        HasTail = false;
 
                         int len = i + 2;
-
-                        if (motorBuffer != null && motorBuffer.Length != 0)
-                        {
-                            byte[] data = new byte[len + motorBuffer.Length];
-                            Array.Copy(motorBuffer, 0, data, 0, motorBuffer.Length);
-                            Array.Copy(srcBytes, 0, data, motorBuffer.Length - 1, srcBytes.Length);
-                            rawData.Add(data);
-                        }
 
                         if (len < length)
                         {
@@ -245,6 +305,16 @@ namespace CII.LAR
                             byte[] overData = new byte[overLen];
                             Array.Copy(srcBytes, overLen, overData, 0, overLen);
                             CheckData(overData, overLen);
+                        }
+                        else if (len == length)
+                        {
+                            if (motorBuffer != null && motorBuffer.Length != 0)
+                            {
+                                byte[] data = new byte[len + motorBuffer.Length];
+                                Array.Copy(motorBuffer, 0, data, 0, motorBuffer.Length);
+                                Array.Copy(srcBytes, 0, data, motorBuffer.Length, srcBytes.Length);
+                                rawData.Add(data);
+                            }
                         }
                     }
                 }

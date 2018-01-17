@@ -65,15 +65,27 @@ namespace CII.LAR
                 try
                 {
                     motorSerialPort.Read(data, 0, len);
-                    var destData = CheckCIIData(data, len);
-                    if (destData != null)
+                    var datas = CheckData(data, len);
+                    if (datas != null)
                     {
-                        foreach (var d in destData)
+                        foreach (var rawData in datas)
                         {
-                            MotorProtocolFactory.GetInstance().RxQueue.Push(new OriginalBytes(DateTime.Now, d));
-                            LogHelper.GetLogger<SerialPortModel>().Error(string.Format("电机接受到的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(d)));
+                            if (CheckDataValidate(rawData))
+                            {
+                                MotorProtocolFactory.GetInstance().RxQueue.Push(new OriginalBytes(DateTime.Now, rawData));
+                                LogHelper.GetLogger<SerialPortModel>().Error(string.Format("电机接受到的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(rawData)));
+                            }
                         }
                     }
+                    //var destData = CheckCIIData(data, len);
+                    //if (destData != null)
+                    //{
+                    //    foreach (var d in destData)
+                    //    {
+                    //        MotorProtocolFactory.GetInstance().RxQueue.Push(new OriginalBytes(DateTime.Now, d));
+                    //        LogHelper.GetLogger<SerialPortModel>().Error(string.Format("电机接受到的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(d)));
+                    //    }
+                    //}
                 }
                 catch (System.Exception ex)
                 {
@@ -124,6 +136,118 @@ namespace CII.LAR
 
 
         private byte[] motorBuffer;
+
+        private bool hasHead = false;
+        private bool hasTail = false;
+
+        /// <summary>
+        /// 数据有效性检查，包含CRC16校验
+        /// </summary>
+        /// <param name="srcBytes"></param>
+        /// <returns></returns>
+        private bool CheckDataValidate(byte[] srcBytes)
+        {
+            bool validate = false;
+            int length = srcBytes.Length;
+            if (srcBytes[0] == 0x5D && srcBytes[1] == 0x5B && srcBytes[length - 1] == 0x5D && srcBytes[length - 2] == 0x5D)
+            {
+                Byte uchCRCHi = 0xFF;            /*  High CRC Byte initialize */
+                Byte uchCRCLo = 0xFF;            /*  Low CRC Byte initialize  */
+                int uIndex;                      /*  CRC loop index */
+                for (int i = 2; i < srcBytes.Length - 4; i++)
+                {
+                    uIndex = uchCRCHi ^ srcBytes[i];
+                    uchCRCHi = (Byte)(uchCRCLo ^ CRC16.auchCRCHi[uIndex]);
+                    uchCRCLo = CRC16.auchCRCLo[uIndex];
+                }
+                var crc = (UInt16)(uchCRCLo << 8 | uchCRCHi);
+                byte[] crc16 = BitConverter.GetBytes(crc);
+                if (crc16[0] == srcBytes[length - 4] && crc16[1] == srcBytes[length - 3])
+                {
+                    validate = true;
+                }
+            }
+            return validate;
+        }
+
+        /// <summary>
+        /// 数据完整性检查
+        /// </summary>
+        /// <param name="srcBytes"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        private List<byte[]> CheckData(byte[] srcBytes, int length)
+        {
+            List<byte[]> rawData = new List<byte[]>();
+            if (srcBytes != null && length > 4)
+            {
+                for (int i=0; i<srcBytes.Length; i++)
+                {
+                    hasHead |= (srcBytes[i] == 0x5D && srcBytes[i + 1] == 0x5B);
+                    hasTail |= (srcBytes[i] == 0x5D && srcBytes[i + 1] == 0x5D);
+                    if (hasHead && hasTail)
+                    {
+                        //5D 5B *** 5D 5B
+                        hasHead = false;
+                        hasTail = false;
+                        int len = i + 2;
+                        byte[] data = new byte[len];
+                        Array.Copy(srcBytes, 0, data, 0, len);
+                        rawData.Add(data);
+
+                        if (len < length)
+                        {
+                            int overLen = length - len;
+                            byte[] overData = new byte[overLen];
+                            Array.Copy(srcBytes, overLen, overData, 0, overLen);
+                            CheckData(overData, overLen);
+                        }
+                    }
+                    else if (hasHead && !hasTail)
+                    {
+                        //5D 5B ***
+                        hasHead = false;
+                        hasTail = false;
+                        int len = i + 2;
+                        motorBuffer = new byte[len];
+                        Array.Copy(srcBytes, 0, motorBuffer, 0, len);
+
+                        if (len < length)
+                        {
+                            int overLen = length - len;
+                            byte[] overData = new byte[overLen];
+                            Array.Copy(srcBytes, overLen, overData, 0, overLen);
+                            CheckData(overData, overLen);
+                        }
+                    }
+                    else if (!hasHead && hasTail)
+                    {
+                        //*** 5D 5D
+                        hasHead = false;
+                        hasTail = false;
+
+                        int len = i + 2;
+
+                        if (motorBuffer != null && motorBuffer.Length != 0)
+                        {
+                            byte[] data = new byte[len + motorBuffer.Length];
+                            Array.Copy(motorBuffer, 0, data, 0, motorBuffer.Length);
+                            Array.Copy(srcBytes, 0, data, motorBuffer.Length, data.Length);
+                            rawData.Add(data);
+                        }
+
+                        if (len < length)
+                        {
+                            int overLen = length - len;
+                            byte[] overData = new byte[overLen];
+                            Array.Copy(srcBytes, overLen, overData, 0, overLen);
+                            CheckData(overData, overLen);
+                        }
+                    }
+                }
+            }
+            return rawData;
+        }
 
         /// <summary>
         /// 数据完整性检查

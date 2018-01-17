@@ -73,7 +73,7 @@ namespace CII.LAR
                             if (CheckDataValidate(rawData))
                             {
                                 MotorProtocolFactory.GetInstance().RxQueue.Push(new OriginalBytes(DateTime.Now, rawData));
-                                LogHelper.GetLogger<SerialPortModel>().Error(string.Format("电机接受到的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(rawData)));
+                                LogHelper.GetLogger<SerialPortModel>().Error(string.Format("完整数据为： {0}", ByteHelper.Byte2ReadalbeXstring(rawData)));
                             }
                         }
                     }
@@ -181,7 +181,7 @@ namespace CII.LAR
             List<byte[]> rawData = new List<byte[]>();
             if (srcBytes != null && length > 4)
             {
-                for (int i=0; i<srcBytes.Length; i++)
+                for (int i=0; i<srcBytes.Length - 1; i++)
                 {
                     hasHead |= (srcBytes[i] == 0x5D && srcBytes[i + 1] == 0x5B);
                     hasTail |= (srcBytes[i] == 0x5D && srcBytes[i + 1] == 0x5D);
@@ -206,19 +206,22 @@ namespace CII.LAR
                     else if (hasHead && !hasTail)
                     {
                         //5D 5B ***
-                        hasHead = false;
-                        hasTail = false;
                         int len = i + 2;
-                        motorBuffer = new byte[len];
-                        Array.Copy(srcBytes, 0, motorBuffer, 0, len);
-
-                        if (len < length)
+                        if (len == length)
                         {
-                            int overLen = length - len;
-                            byte[] overData = new byte[overLen];
-                            Array.Copy(srcBytes, overLen, overData, 0, overLen);
-                            CheckData(overData, overLen);
+                            hasHead = false;
+                            hasTail = false;
+                            motorBuffer = new byte[len];
+                            Array.Copy(srcBytes, 0, motorBuffer, 0, len);
                         }
+
+                        //if (len < length)
+                        //{
+                        //    int overLen = length - len;
+                        //    byte[] overData = new byte[overLen];
+                        //    Array.Copy(srcBytes, overLen, overData, 0, overLen);
+                        //    CheckData(overData, overLen);
+                        //}
                     }
                     else if (!hasHead && hasTail)
                     {
@@ -232,7 +235,7 @@ namespace CII.LAR
                         {
                             byte[] data = new byte[len + motorBuffer.Length];
                             Array.Copy(motorBuffer, 0, data, 0, motorBuffer.Length);
-                            Array.Copy(srcBytes, 0, data, motorBuffer.Length, data.Length);
+                            Array.Copy(srcBytes, 0, data, motorBuffer.Length - 1, srcBytes.Length);
                             rawData.Add(data);
                         }
 

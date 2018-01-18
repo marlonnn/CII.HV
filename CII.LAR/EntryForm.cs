@@ -96,6 +96,7 @@ namespace CII.LAR
         private LaserCtrl laserCtrl;
         private LaserAlignment laserAlignment;
         private VideoChooseCtrl videoChooseCtrl;
+        private DebugCtrl df;
 
         #endregion
 
@@ -239,10 +240,12 @@ namespace CII.LAR
 
             laserAlignment = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment);
             laserAlignment.VideoControl = this.videoControl;
+            laserAlignment.VideoKeyDownHandler += this.OnKeyDown;
             BaseCtrls.Add(laserAlignment);
 
             videoChooseCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<VideoChooseCtrl>(CtrlType.VideoChooseCtrl);
             videoChooseCtrl.CaptureDeviceHandler += CaptureDeviceHandler;
+
             BaseCtrls.Add(videoChooseCtrl);
         }
 
@@ -394,6 +397,16 @@ namespace CII.LAR
             base.OnLoad(e);
             fullScreen = new FullScreen(this);
             fullScreen.ShowFullScreen();
+
+            LoadDebugCtrl();
+        }
+
+        private void LoadDebugCtrl()
+        {
+            df = new DebugCtrl();
+            df.VideoKeyDownHandler += this.OnKeyDown;
+            df.Location = new Point(10, 30);
+            this.Controls.Add(df);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -859,6 +872,10 @@ namespace CII.LAR
                         {
                             Coordinate.GetCoordinate().LastPoint = new Point(m40r.Motor1Steps, m40r.Motor2Steps);
                             Coordinate.GetCoordinate().MotionComplete = m40r.Motor1Status == 0x08 && m40r.Motor2Status == 0x08;
+                            if (df != null)
+                            {
+                                df.UpdateSteps(m40r);
+                            }
                         }
                     }
                 }
@@ -885,6 +902,21 @@ namespace CII.LAR
         {
             this.videoControl.Rulers.ShowRulers = !this.videoControl.Rulers.ShowRulers;
             this.videoControl.Invalidate();
+        }
+
+        private void toolStripButtonOpen_Click(object sender, EventArgs e)
+        {
+            if (df == null)
+            {
+                df = new DebugCtrl();
+                df.VideoKeyDownHandler += this.OnKeyDown;
+                df.Location = new Point(10, 30);
+                this.Controls.Add(df);
+            }
+            else
+            {
+                df.Visible = true;
+            }
         }
     }
 }

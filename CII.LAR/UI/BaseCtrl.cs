@@ -18,6 +18,9 @@ namespace CII.LAR.UI
     /// </summary>
     public partial class BaseCtrl : UserControl
     {
+        public delegate void VideoKeyDown(KeyEventArgs e);
+        public VideoKeyDown VideoKeyDownHandler;
+
         public delegate void UpdateSliderValue(float value);
         public UpdateSliderValue UpdateSliderValueHandler;
 

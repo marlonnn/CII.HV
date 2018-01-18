@@ -223,6 +223,12 @@
     <Compile Include="UI\BaseCtrl.Designer.cs">
       <DependentUpon>BaseCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\DebugCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\DebugForm.Designer.cs">
+      <DependentUpon>DebugCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FilesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -398,6 +404,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\BaseCtrl.resx">
       <DependentUpon>BaseCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DebugCtrl.resx">
+      <DependentUpon>DebugCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FilesForm.resx">
       <DependentUpon>FilesForm.cs</DependentUpon>

@@ -303,6 +303,7 @@
             this.toolStripButtonOpen.Image = global::CII.LAR.Properties.Resources.open;
             this.toolStripButtonOpen.Name = "toolStripButtonOpen";
             resources.ApplyResources(this.toolStripButtonOpen, "toolStripButtonOpen");
+            this.toolStripButtonOpen.Click += new System.EventHandler(this.toolStripButtonOpen_Click);
             // 
             // toolStripDropDownCamera
             // 

@@ -66,8 +66,16 @@ namespace CII.LAR.UI
             helper = new AlignInfoHelper(this);
             this.Load += LaserAlignment_Load;
             Index = -2;
+            this.KeyDown += LaserAlignment_KeyDown;
         }
 
+        private void LaserAlignment_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (VideoKeyDownHandler != null)
+            {
+                VideoKeyDownHandler(e);
+            }
+        }
 
         private void LaserAlignment_Load(object sender, System.EventArgs e)
         {

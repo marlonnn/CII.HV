@@ -107,8 +107,11 @@ namespace CII.LAR.Laser
 
         private void SendAlignmentMotorPoint()
         {
-            Coordinate.GetCoordinate().SetMotorThisPoint(Point.Ceiling(ActiveCircle.InnerCircles[_flickCount].CenterPoint));
-            Coordinate.GetCoordinate().SendAlignmentMotorPoint();
+            if (_flickCount >= 0 && _flickCount < ActiveCircle.InnerCircles.Count)
+            {
+                Coordinate.GetCoordinate().SetMotorThisPoint(Point.Ceiling(ActiveCircle.InnerCircles[_flickCount].CenterPoint));
+                Coordinate.GetCoordinate().SendAlignmentMotorPoint();
+            }
         }
 
         public void UpdateHoleNumber(int value)

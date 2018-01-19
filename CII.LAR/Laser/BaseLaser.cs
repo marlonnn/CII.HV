@@ -13,7 +13,7 @@ namespace CII.LAR.Laser
 {
     public class BaseLaser
     {
-        private Timer FlashTimer;
+        protected Timer FlashTimer;
 
         protected int _flickCount;
         public int FlickCount
@@ -71,7 +71,7 @@ namespace CII.LAR.Laser
         public BaseLaser()
         {
             this.FlashTimer = new Timer();
-            this.FlashTimer.Interval = 500;
+            this.FlashTimer.Interval = 1000;
             this.FlashTimer.Tick += new System.EventHandler(this.FlashTimer_Tick);
             GraphicsProperties = SysConfig.GetSysConfig().LaserConfig.GraphicsProperties;
         }

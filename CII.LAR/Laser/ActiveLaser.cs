@@ -1,4 +1,5 @@
-﻿using CII.LAR.DrawTools;
+﻿using CII.LAR.Algorithm;
+using CII.LAR.DrawTools;
 using CII.LAR.SysClass;
 using CII.LAR.UI;
 using System;
@@ -25,6 +26,7 @@ namespace CII.LAR.Laser
 
         public ActiveLaser(VideoControl videoControl) : base()
         {
+            this.FlashTimer.Interval = 2000;
             this.videoControl = videoControl;
             activeCircle = new ActiveCircle(videoControl, this);
             this.GraphicsProperties.GraphicsPropertiesChangedHandler += GraphicsPropertiesChangedHandler;
@@ -95,11 +97,18 @@ namespace CII.LAR.Laser
         protected override void FlashTimer_Tick(object sender, EventArgs e)
         {
             _flickCount++;
+            SendAlignmentMotorPoint();
             this.videoControl.Invalidate();
             if (_flickCount == this.activeCircle.InnerCircles.Count)
             {
                 Flashing = false;
             }
+        }
+
+        private void SendAlignmentMotorPoint()
+        {
+            Coordinate.GetCoordinate().SetMotorThisPoint(Point.Ceiling(ActiveCircle.InnerCircles[_flickCount].CenterPoint));
+            Coordinate.GetCoordinate().SendAlignmentMotorPoint();
         }
 
         public void UpdateHoleNumber(int value)

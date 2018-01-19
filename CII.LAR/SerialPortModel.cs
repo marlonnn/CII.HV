@@ -269,6 +269,7 @@ namespace CII.LAR
                             byte[] overData = new byte[overLen];
                             Array.Copy(srcBytes, len, overData, 0, overLen);
                             CheckData(overData, overLen);
+                            break;
                         }
                     }
                     else if ((headCount == 1 && HasHead) && !HasTail)
@@ -301,10 +302,18 @@ namespace CII.LAR
 
                         if (len < length)
                         {
+                            if (motorBuffer != null && motorBuffer.Length != 0)
+                            {
+                                byte[] data = new byte[len + motorBuffer.Length];
+                                Array.Copy(motorBuffer, 0, data, 0, motorBuffer.Length);
+                                Array.Copy(srcBytes, 0, data, motorBuffer.Length, len);
+                                rawData.Add(data);
+                            }
                             int overLen = length - len;
                             byte[] overData = new byte[overLen];
-                            Array.Copy(srcBytes, overLen, overData, 0, overLen);
+                            Array.Copy(srcBytes, len, overData, 0, overLen);
                             CheckData(overData, overLen);
+                            break;
                         }
                         else if (len == length)
                         {

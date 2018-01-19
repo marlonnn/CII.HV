@@ -82,6 +82,48 @@ namespace CII.LAR.Protocol
             set { this.responseCode = value; }
         }
 
+        public string GetResponseCode()
+        {
+            string code = "";
+            switch (responseCode)
+            {
+                case 0x00:
+                    code = "系统正常工作中";
+                    break;
+                case 0x11:
+                    code = "系统设定中";
+                    break;
+                case 0x22:
+                    code = "系统标定中";
+                    break;
+                case 0x33:
+                    code = "系统初始化中";
+                    break;
+                case 0x44:
+                    code = "系统自检中";
+                    break;
+                case 0x55:
+                    code = "系统故障中";
+                    break;
+                case 0x66:
+                    code = "系统调零中";
+                    break;
+                case 0x77:
+                    code = "系统预标定中";
+                    break;
+                case 0x88:
+                    code = "写命令成功";
+                    break;
+                case 0x99:
+                    code = "网络忙(写命令失败)";
+                    break;
+                case 0xAA:
+                    code = "写入数据非法或者超限";
+                    break;
+            }
+            return code;
+        }
+
         public MotorBaseResponse()
         {
             CodeArea = new CIICodeArea();

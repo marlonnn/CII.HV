@@ -478,6 +478,13 @@ namespace CII.LAR.Commond
             else if (m60r.AdditionCode == 0x99)
             {
                 //写回应
+                m60r.CommandCode = obytes.Data[6];
+                m60r.AdditionCode = obytes.Data[7];
+                Array.Copy(obytes.Data, 8, m60r.CodeArea.DataLength, 0, 2);
+                m60r.CodeArea.Data = new byte[m60r.CodeArea.Length];
+                Array.Copy(obytes.Data, 10, m60r.CodeArea.Data, 0, m60r.CodeArea.Length);
+                Array.Copy(obytes.Data, 10 + m60r.CodeArea.Length, m60r.CodeArea.CRC16Code, 0, 2);
+                m60r.ControlSelection = m60r.CodeArea.Data[0];
                 if (m60r.CodeArea.Data != null)
                 {
                     m60r.ResponseCode = m60r.CodeArea.Data[0];

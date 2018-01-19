@@ -27,6 +27,11 @@ namespace CII.LAR.UI
             this.m2Steps.Text = m40r.Motor2Steps.ToString();
         }
 
+        public void UpdateResponseCode(MotorC60Response m60r)
+        {
+            this.responseCode.Text = m60r.GetResponseCode();
+        }
+
         private void DebugCtrl_KeyDown(object sender, KeyEventArgs e)
         {
             if (VideoKeyDownHandler != null)

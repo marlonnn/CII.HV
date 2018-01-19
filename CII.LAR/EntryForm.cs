@@ -877,6 +877,11 @@ namespace CII.LAR
                                 df.UpdateSteps(m40r);
                             }
                         }
+                        MotorC60Response m60R = bs as MotorC60Response;
+                        if (m60R != null)
+                        {
+                            df.UpdateResponseCode(m60R);
+                        }
                     }
                 }
             }

@@ -106,6 +106,7 @@ namespace CII.LAR.Laser
         public  ButtonState ButtonStateHandler;
         public override void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
         {
+
             LaserAlignment laserAlignment = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment);
             if (e.Button == MouseButtons.Left /*&& IsClickLaser(e.Location)*/ && laserAlignment.Index > -1)
             {

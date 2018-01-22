@@ -1,5 +1,6 @@
 ﻿using CII.LAR.Commond;
 using CII.LAR.Protocol;
+using CII.LAR.SysClass;
 using MathNet.Numerics.LinearAlgebra;
 using System;
 using System.Collections.Generic;
@@ -76,6 +77,9 @@ namespace CII.LAR.Algorithm
 
         public Coordinate()
         {
+            var matrixString = JsonFile.ReadJsonMatrixString();
+
+
             clickPointsDic = new Dictionary<int, Point>();
             transformMatrix = new Dictionary<int, Matrix<double>>();
             motorPoints = new Dictionary<int, Point>();
@@ -86,6 +90,11 @@ namespace CII.LAR.Algorithm
             boundPoints = new List<Point>() { new Point(0, 0), new Point(0, 3000), new Point(3000, 3000), new Point(3000, 0)};
 
             finalMatrix = mb.Dense(3, 3);
+            //if (!string.IsNullOrEmpty(matrixString))
+            //{
+            //    var finalMatrix = JsonFile.GetConfigFromJsonText<Matrix<double>>(matrixString);
+            //    Console.WriteLine(finalMatrix.ToString());
+            //}
         }
 
         public void SendAlignmentMotorPoint()
@@ -117,6 +126,17 @@ namespace CII.LAR.Algorithm
             }
         }
 
+        public void SetMotorLastPoint(Point p)
+        {
+            //this.LastPoint = this.ThisPoint;
+            var screenArray = mb.DenseOfArray(new double[,] { { p.X }, { p.Y }, { 1 } });
+            if (this.FinalMatrix.Rank() != 0)
+            {
+                var temp = this.FinalMatrix * screenArray;
+                this.lastPoint = new Point((int)temp[0, 0], (int)temp[1, 0]);
+            }
+        }
+
         /// <summary>
         /// 添加电机坐标
         /// </summary>
@@ -143,16 +163,16 @@ namespace CII.LAR.Algorithm
             switch (index)
             {
                 case 3:
-                    psp = new Point(pictureBoxSize.Width - 200, pictureBoxSize.Height / 2);
+                    psp = new Point(pictureBoxSize.Width - 100, pictureBoxSize.Height / 2);
                     break;
                 case 4:
-                    psp = new Point(pictureBoxSize.Width / 2, pictureBoxSize.Height - 200);
+                    psp = new Point(pictureBoxSize.Width / 2, pictureBoxSize.Height - 100);
                     break;
                 case 5:
                     psp = new Point(100 + 100, pictureBoxSize.Height / 2 - 100);
                     break;
                 case 6:
-                    psp = new Point(pictureBoxSize.Width / 2, 100 + 50);
+                    psp = new Point(pictureBoxSize.Width / 2, 100 );
                     break;
             }
             //check point in legal region

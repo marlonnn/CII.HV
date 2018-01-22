@@ -18,7 +18,9 @@ namespace CII.LAR.SysClass
         /// json config file name
         /// </summary>
         public static string fileName = string.Format("{0}\\Config\\config.json", System.Environment.CurrentDirectory);
-        
+
+        public static string coordinateFileName = string.Format("{0}\\Config\\Coordinate.json", System.Environment.CurrentDirectory);
+
         /// <summary>
         /// get config from json string
         /// </summary>
@@ -63,6 +65,37 @@ namespace CII.LAR.SysClass
                 jsonString = File.ReadAllText(fileName);
             }
             return jsonString;
+        }
+
+        public static string ReadJsonMatrixString()
+        {
+            string jsonString = "";
+            if (File.Exists(coordinateFileName))
+            {
+                jsonString = File.ReadAllText(coordinateFileName);
+            }
+            return jsonString;
+        }
+
+        /// <summary>
+        /// write json config to local file
+        /// </summary>
+        /// <param name="jsonConfig"></param>
+        public static void WriteMatrixConfigToLocal(string jsonConfig)
+        {
+            try
+            {
+                if (!File.Exists(coordinateFileName))
+                {
+                    File.Create(coordinateFileName);
+                }
+                File.WriteAllText(coordinateFileName, jsonConfig);
+            }
+            catch (Exception ee)
+            {
+                LogHelper.GetLogger<JsonFile>().Error(ee.Message);
+                LogHelper.GetLogger<JsonFile>().Error(ee.StackTrace);
+            }
         }
 
         /// <summary>

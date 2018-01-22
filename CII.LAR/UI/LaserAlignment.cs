@@ -11,6 +11,8 @@ using CII.LAR.Laser;
 using CII.LAR.Protocol;
 using CII.LAR.Commond;
 using CII.LAR.Algorithm;
+using CII.LAR.SysClass;
+using MathNet.Numerics.LinearAlgebra;
 
 namespace CII.LAR.UI
 {
@@ -121,6 +123,8 @@ namespace CII.LAR.UI
                             var v = Coordinate.GetCoordinate().FinalMatrix;
                             Console.WriteLine(" final matrix: " + v.ToString());
                             Console.WriteLine(" final matrix Rank: " + v.Rank());
+                            string matrixJsonString = JsonFile.GetJsonTextFromConfig<Matrix<double>>(v);
+                            JsonFile.WriteMatrixConfigToLocal(matrixJsonString);
                         }
                         Coordinate.GetCoordinate().CreatePresetMotorPoint(Index, this.VideoControl.Size);
                     }

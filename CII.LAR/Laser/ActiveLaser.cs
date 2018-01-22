@@ -26,7 +26,7 @@ namespace CII.LAR.Laser
 
         public ActiveLaser(VideoControl videoControl) : base()
         {
-            this.FlashTimer.Interval = 2000;
+            this.FlashTimer.Interval = 800;
             this.videoControl = videoControl;
             activeCircle = new ActiveCircle(videoControl, this);
             this.GraphicsProperties.GraphicsPropertiesChangedHandler += GraphicsPropertiesChangedHandler;
@@ -96,12 +96,15 @@ namespace CII.LAR.Laser
 
         protected override void FlashTimer_Tick(object sender, EventArgs e)
         {
-            _flickCount++;
-            SendAlignmentMotorPoint();
-            this.videoControl.Invalidate();
-            if (_flickCount == this.activeCircle.InnerCircles.Count)
+            if (Coordinate.GetCoordinate().MotionComplete)
             {
-                Flashing = false;
+                _flickCount++;
+                SendAlignmentMotorPoint();
+                this.videoControl.Invalidate();
+                if (_flickCount == this.activeCircle.InnerCircles.Count)
+                {
+                    Flashing = false;
+                }
             }
         }
 
@@ -109,6 +112,8 @@ namespace CII.LAR.Laser
         {
             if (_flickCount >= 0 && _flickCount < ActiveCircle.InnerCircles.Count)
             {
+                if (_flickCount > 1)
+                    Coordinate.GetCoordinate().SetMotorLastPoint(Point.Ceiling(ActiveCircle.InnerCircles[_flickCount  - 1].CenterPoint));
                 Coordinate.GetCoordinate().SetMotorThisPoint(Point.Ceiling(ActiveCircle.InnerCircles[_flickCount].CenterPoint));
                 Coordinate.GetCoordinate().SendAlignmentMotorPoint();
             }

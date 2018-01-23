@@ -15,9 +15,9 @@ using CII.Library.Xml;
 using CII.Ins.Model.GlobalConfig;
 using System.IO;
 using CII.Library.Alarm;
-using CII.Ins.Model.Data.HV;
+using CII.Ins.Model.Data.LAR;
 using CII.Ins.Business.Command.Interface;
-using CII.Ins.Business.Command.HV;
+using CII.Ins.Business.Command.LAR;
 using CII.Ins.Business.Alarm;
 
 namespace CII.Ins.Business.Instrument
@@ -64,7 +64,7 @@ namespace CII.Ins.Business.Instrument
             }
             catch (Exception ex)
             {
-                Entry.HV.Entry.LogException(ex);
+                Entry.LAR.Entry.LogException(ex);
             }
         }
 
@@ -168,7 +168,7 @@ namespace CII.Ins.Business.Instrument
                 }
                 else
                 {
-                    Entry.HV.Entry.LogDebug(string.Format("Equipment connect failed, count={0}", this.EquipmentConnectFailedCount));
+                    Entry.LAR.Entry.LogDebug(string.Format("Equipment connect failed, count={0}", this.EquipmentConnectFailedCount));
                 }
             }
             CheckAlarm(alarmCode.ToArray());
@@ -215,7 +215,7 @@ namespace CII.Ins.Business.Instrument
             }
             catch (Exception ex)
             {
-                Entry.HV.Entry.LogException(ex);
+                Entry.LAR.Entry.LogException(ex);
             }
         }
         #endregion

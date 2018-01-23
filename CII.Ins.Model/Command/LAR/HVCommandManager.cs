@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using CII.Library.CIINet.Commands.Config;
 
-namespace CII.Ins.Model.Command.HV
+namespace CII.Ins.Model.Command.LAR
 {
     /// <summary>
     /// Cell100通信管理类定义

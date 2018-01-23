@@ -69,7 +69,7 @@ namespace CII.Ins.Business.Alarm
             }
             catch (Exception ex)
             {
-                Entry.HV.Entry.LogException(ex);
+                Entry.LAR.Entry.LogException(ex);
             }
         }
 
@@ -88,7 +88,7 @@ namespace CII.Ins.Business.Alarm
             }
             catch (Exception ex)
             {
-                Entry.HV.Entry.LogException(ex);
+                Entry.LAR.Entry.LogException(ex);
             }
         }
         #endregion

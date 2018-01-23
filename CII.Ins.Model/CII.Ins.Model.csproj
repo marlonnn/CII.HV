@@ -49,9 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command\HV\HVCommandDefine.cs" />
-    <Compile Include="Command\HV\HVCommandManager.cs" />
-    <Compile Include="Data\HV\HVDataDefine.cs" />
+    <Compile Include="Command\LAR\HVCommandDefine.cs" />
+    <Compile Include="Command\LAR\HVCommandManager.cs" />
+    <Compile Include="Data\LAR\HVDataDefine.cs" />
     <Compile Include="Global\GlobalConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protocols\InsCommunicationProtol.cs" />

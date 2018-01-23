@@ -11,7 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using CII.Ins.Model.Data.HV;
+using CII.Ins.Model.Data.LAR;
 using CII.Ins.Business.Instrument;
 
 namespace CII.Ins.Business.Command.Interface

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<InstrumentManager>
+    <instrumentTypes>
+        <instrumentType>
+            <id>LAR</id>
+            <name>LAR</name>
+            <directLink>True</directLink>
+        </instrumentType>
+    </instrumentTypes>
+    <instruments>
+        <instrument>
+            <id>LAR</id>
+            <name>LAR</name>
+            <address>0x21</address>
+            <type>LAR</type>
+        </instrument>
+    </instruments>
+</InstrumentManager>

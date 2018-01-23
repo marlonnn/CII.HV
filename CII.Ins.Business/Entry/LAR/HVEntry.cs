@@ -14,7 +14,7 @@ using System.Text;
 using CII.Library.Xml;
 using CII.Ins.Model.GlobalConfig;
 
-namespace CII.Ins.Business.Entry.HV
+namespace CII.Ins.Business.Entry.LAR
 {
     /// <summary>
     /// Cell100统一接口操作类定义（如写数据到文件到数据库，从文件或数据库读数据，与仪器通信操作等）

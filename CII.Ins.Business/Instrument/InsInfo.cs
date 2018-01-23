@@ -13,8 +13,8 @@ using System.Linq;
 using System.Text;
 using CII.Library.Xml;
 using CII.Ins.Business.Command.Interface;
-using CII.Ins.Model.Data.HV;
-using CII.Ins.Business.Command.HV;
+using CII.Ins.Model.Data.LAR;
+using CII.Ins.Business.Command.LAR;
 
 namespace CII.Ins.Business.Instrument
 {

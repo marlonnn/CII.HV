@@ -21,10 +21,10 @@ namespace CII.LAR.UI
             InitializeComponent();
         }
 
-        public void UpdateSteps(MotorC40Response m40r)
+        public void UpdateSteps(int s1, int s2)
         {
-            this.m1Steps.Text = m40r.Motor1Steps.ToString();
-            this.m2Steps.Text = m40r.Motor2Steps.ToString();
+            this.m1Steps.Text = s1.ToString();
+            this.m2Steps.Text = s2.ToString();
         }
 
         public void UpdateResponseCode(MotorC60Response m60r)

@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using CII.Library.Xml;
 
-namespace CII.Ins.Model.Data.HV
+namespace CII.Ins.Model.Data.LAR
 {
     /// <summary>
     /// 消息枚举类型

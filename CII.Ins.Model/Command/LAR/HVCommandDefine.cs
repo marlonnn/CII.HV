@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CII.Ins.Model.Command.HV
+namespace CII.Ins.Model.Command.LAR
 {
     /// <summary>
     /// 通讯编号(ID)

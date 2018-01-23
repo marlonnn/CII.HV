@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--复制此文档各种Ioc定义方式到需要的地方-->
 <!--日志配置文件，此文件应放置在 Config 目录下，文件名为log4net.xml-->
 <!--如果系统查找不到此文件，则默认使用控制台方式输出-->
@@ -13,8 +13,8 @@
   <appender name="RollingLogFileAppender" type="log4net.Appender.RollingFileAppender">
     <file value="./log/LAR.log" />
     <appendToFile value="true" />
-    <threshold value="ERROR"/>
-    <lockingModel type="log4net.Appender.FileAppender+MinimalLock"/>
+    <threshold value="ERROR" />
+    <lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
     <rollingStyle value="Composite" />
     <datePattern value="yyyyMMdd" />
     <maxSizeRollBackups value="15" />
@@ -28,8 +28,8 @@
     <file value="./log/SerialPort.log" />
     <appendToFile value="true" />
     <rollingStyle value="Date" />
-    <threshold value="DEBUG"/>
-    <lockingModel type="log4net.Appender.FileAppender+MinimalLock"/>
+    <threshold value="DEBUG" />
+    <lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
     <rollingStyle value="Composite" />
     <datePattern value="yyyyMMdd" />
     <maxSizeRollBackups value="15" />

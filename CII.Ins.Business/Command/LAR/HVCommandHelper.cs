@@ -12,15 +12,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CII.Library.CIINet.Commands;
-using CII.Ins.Model.Command.HV;
+using CII.Ins.Model.Command.LAR;
 using CII.Library.CIINet.Manager;
-using CII.Ins.Model.Data.HV;
+using CII.Ins.Model.Data.LAR;
 using CII.Ins.Model.GlobalConfig;
 using CII.Ins.Business.Command.Interface;
 using CII.Library.CIINet.Converter;
 using CII.Ins.Business.Instrument;
 
-namespace CII.Ins.Business.Command.HV
+namespace CII.Ins.Business.Command.LAR
 {
     /// <summary>
     /// Cell100通信操作类定义，本类内函数定义以流水式顺序罗列
@@ -46,7 +46,7 @@ namespace CII.Ins.Business.Command.HV
         /// <summary>
         /// 仪器名称，在CommandManager.xml协议配置文件中确定的
         /// </summary>
-        private static readonly string InsName = "HV";
+        private static readonly string InsName = "LAR";
         #endregion
 
         #region -- 检查返回值 --
@@ -103,7 +103,7 @@ namespace CII.Ins.Business.Command.HV
             MonitorData data = new MonitorData();
 
             SendCommand sendCmd40 = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Read);
-            RecvCommand recvCmd40 = (RecvCommand)PortManager.GetInstance().Send("HV", sendCmd40);
+            RecvCommand recvCmd40 = (RecvCommand)PortManager.GetInstance().Send("LAR", sendCmd40);
             CheckRecvCommand(recvCmd40);
             data.Motor1Switch = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Status);
             data.Motor1Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Result);
@@ -114,31 +114,6 @@ namespace CII.Ins.Business.Command.HV
             data.Motor2Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor2Result);
             data.Motor2completeSteps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor2CompleteSteps);
             data.Motor2Steps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor2SumSteps);
-
-
-            //SendCommand sendCmd = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Read);
-            ////sendCmd.SetValue(ParamId.SystemMonitor_Read_AC1,0x01);
-            //RecvCommand recvCmd = (RecvCommand)PortManager.GetInstance().Send(InsName, sendCmd);
-            //CheckRecvCommand(recvCmd);
-            //data.FlowStatus = recvCmd.GetByte(ParamId.SystemMonitor_ReadResponse_FlowStatus);
-
-            ////0x45
-            //SendCommand sendCmd = new SendCommand(CommandId.HVBoard, CommandExtendId.Read);
-            //RecvCommand recvCmd = (RecvCommand)PortManager.GetInstance().Send(InsName, sendCmd);
-            //CheckRecvCommand(recvCmd);
-
-            //data.Voltage = recvCmd.GetSingle(ParamId.HVBoard_ReadResponse_Voltage);
-            //data.Frequency = recvCmd.GetSingle(ParamId.HVBoard_ReadResponse_Frequency);
-            //data.Electric = recvCmd.GetSingle(ParamId.HVBoard_ReadResponse_Electric);
-            //data.AlarmCount = recvCmd.GetByte(ParamId.HVBoard_ReadResponse_AlarmCount);
-            //data.AlarmCode = recvCmd.GetByte(ParamId.HVBoard_ReadResponse_AlarmCode);
-
-            ////0x44
-            //SendCommand sendCmd2 = new SendCommand(CommandId.TSTRTemperature, CommandExtendId.Read);
-            //RecvCommand recvCmd2 = (RecvCommand)PortManager.GetInstance().Send(InsName, sendCmd2);
-            //CheckRecvCommand(recvCmd2);
-
-            //data.Temperature = recvCmd2.GetByte(ParamId.TSTRTemperature_ReadResponse_Temperature);
 
             return data;
         }

@@ -95,18 +95,32 @@ namespace CII.Ins.Business.Command.HV
         }
 
         /// <summary>
-        /// 0x44、0x45读取监控数据
+        /// 0x40读取监控数据
         /// </summary>
         /// <returns></returns>
         public MonitorData GetMonitorData()
         {
             MonitorData data = new MonitorData();
 
-            SendCommand sendCmd = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Read);
-            //sendCmd.SetValue(ParamId.SystemMonitor_Read_AC1,0x01);
-            RecvCommand recvCmd = (RecvCommand)PortManager.GetInstance().Send(InsName, sendCmd);
-            CheckRecvCommand(recvCmd);
-            data.FlowStatus = recvCmd.GetByte(ParamId.SystemMonitor_ReadResponse_FlowStatus);
+            SendCommand sendCmd40 = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Read);
+            RecvCommand recvCmd40 = (RecvCommand)PortManager.GetInstance().Send("HV", sendCmd40);
+            CheckRecvCommand(recvCmd40);
+            data.Motor1Switch = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Status);
+            data.Motor1Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Result);
+            data.Motor1completeSteps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor1CompleteSteps);
+            data.Motor1Steps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor1SumSteps);
+
+            data.Motor2Switch = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor2Status);
+            data.Motor2Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor2Result);
+            data.Motor2completeSteps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor2CompleteSteps);
+            data.Motor2Steps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor2SumSteps);
+
+
+            //SendCommand sendCmd = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Read);
+            ////sendCmd.SetValue(ParamId.SystemMonitor_Read_AC1,0x01);
+            //RecvCommand recvCmd = (RecvCommand)PortManager.GetInstance().Send(InsName, sendCmd);
+            //CheckRecvCommand(recvCmd);
+            //data.FlowStatus = recvCmd.GetByte(ParamId.SystemMonitor_ReadResponse_FlowStatus);
 
             ////0x45
             //SendCommand sendCmd = new SendCommand(CommandId.HVBoard, CommandExtendId.Read);

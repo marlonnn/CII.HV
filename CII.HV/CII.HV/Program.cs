@@ -28,7 +28,7 @@ namespace CII.HV
                 //Form frm = CII.Library.UI.PC.Config.UIManager.GetInstance().MainForm;
                 //Application.Run(frm);
                 CII.Library.LoadingForm frm = new Library.LoadingForm();
-                Bitmap bitmap = new Bitmap("test.JPG");
+                Bitmap bitmap = new Bitmap("test.png");
                 frm.SetLoadingImage((Image)bitmap);
                 frm.SetLoadingName("Welcome");
                 frm.ShowDialog();
@@ -68,6 +68,35 @@ namespace CII.HV
                 //sendCmd.SetValue(ParamId.ControlConfig_ReadWrite_TotalSteps2, 50);
                 RecvCommand recvCmd = (RecvCommand)PortManager.GetInstance().Send("HV", sendCmd);
                 var v = recvCmd.GetBytes();
+
+                SendCommand sendCmd40 = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Read);
+                RecvCommand recvCmd40 = (RecvCommand)PortManager.GetInstance().Send("HV", sendCmd40);
+                var v40 = recvCmd40.GetBytes();
+                var m1Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Status);
+                var m1Results = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Result);
+                var m1CompleteSteps = recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor1CompleteSteps);
+                var m1SumSteps = recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor1SumSteps);
+
+                var m2Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor2Status);
+                var m2Results = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor2Result);
+                var m2CompleteSteps = recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor2CompleteSteps);
+                var m2SumSteps = recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor2SumSteps);
+
+                SendCommand sendCmd60 = new SendCommand(CommandId.ControlConfig, CommandExtendId.Write);
+                sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_Select, 0x60);
+
+                sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_ControlMode1, 0x01);
+                sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_Direction1, 0x01);
+                sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_TotalSteps1, 100);
+
+                sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_ControlMode2, 0x01);
+                sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_Direction2, 0x01);
+                sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_TotalSteps2, 100);
+
+                RecvCommand recvCmd60 = (RecvCommand)PortManager.GetInstance().Send("HV", sendCmd60);
+                var v60 = recvCmd60.GetBytes();
+                //var vv = recvCmd60.GetByte();
+                Application.Run(new Form1());
             }
             catch (Exception ex)
             {

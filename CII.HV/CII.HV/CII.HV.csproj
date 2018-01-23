@@ -69,6 +69,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -96,12 +99,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\CII.Ins.Business\CII.Ins.Business.csproj">
-      <Project>{8a2151d8-14e9-4173-afbb-1d325f33abf5}</Project>
-      <Name>CII.Ins.Business</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\AlarmManager.xml">
@@ -149,6 +146,16 @@
     <Content Include="Config\Var.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CII.Ins.Business\CII.Ins.Business.csproj">
+      <Project>{8A2151D8-14E9-4173-AFBB-1D325F33ABF5}</Project>
+      <Name>CII.Ins.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CII.Ins.Model\CII.Ins.Model.csproj">
+      <Project>{da67960d-cca8-41bf-9fcb-85f4c9d88705}</Project>
+      <Name>CII.Ins.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

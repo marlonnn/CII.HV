@@ -155,7 +155,7 @@ namespace CII.Ins.Business.Instrument
             {
                 MonitorData = this.MthData.GetMonitorData();
                 this.EquipmentConnectFailedCount = 0;
-                alarmCode.Add(MonitorData.AlarmCode);
+                //alarmCode.Add(MonitorData.AlarmCode);
             }
             catch (Exception ex)
             {

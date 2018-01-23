@@ -101,6 +101,13 @@ namespace CII.LAR.UI
                 {
                     this.btnNext.Text = Res.LaserAlignment.StrSave;
                     //计算平均转换矩阵
+                    Coordinate.GetCoordinate().CalculateOtherMatix();
+                    Coordinate.GetCoordinate().GetFinalMatrix();
+                    var v = Coordinate.GetCoordinate().FinalMatrix;
+                    Console.WriteLine(" final matrix: " + v.ToString());
+                    Console.WriteLine(" final matrix Rank: " + v.Rank());
+                    string matrixJsonString = JsonFile.GetJsonTextFromConfig<Matrix<double>>(v);
+                    JsonFile.WriteMatrixConfigToLocal(matrixJsonString);
                 }
                 else
                 {
@@ -110,6 +117,7 @@ namespace CII.LAR.UI
                 {
                     if (Index >= 3 && Index <= 6)
                     {
+                        Coordinate.GetCoordinate().CreatePresetMotorPoint(Index, this.VideoControl.Size);
                         if (Index == 3)
                         {
                             Coordinate.GetCoordinate().CalculateFirstMatrix();
@@ -117,16 +125,6 @@ namespace CII.LAR.UI
                             Console.WriteLine(" first matrix: " + v.ToString());
                             Console.WriteLine(" first matrix Rank: " + v.Rank());
                         }
-                        else if (Index == 6)
-                        {
-                            Coordinate.GetCoordinate().GetFinalMatrix();
-                            var v = Coordinate.GetCoordinate().FinalMatrix;
-                            Console.WriteLine(" final matrix: " + v.ToString());
-                            Console.WriteLine(" final matrix Rank: " + v.Rank());
-                            string matrixJsonString = JsonFile.GetJsonTextFromConfig<Matrix<double>>(v);
-                            JsonFile.WriteMatrixConfigToLocal(matrixJsonString);
-                        }
-                        Coordinate.GetCoordinate().CreatePresetMotorPoint(Index, this.VideoControl.Size);
                     }
                     SendAlignmentMotorPoint();
                     AlignLaser laser = Program.EntryForm.Laser as AlignLaser;

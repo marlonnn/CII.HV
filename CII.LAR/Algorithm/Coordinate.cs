@@ -346,7 +346,7 @@ namespace CII.LAR.Algorithm
         }
 
         /// <summary>
-        /// 创建其他三个转换矩阵
+        /// 创建其他四个转换矩阵
         /// </summary>
         public void CalculateOtherMatix()
         {
@@ -356,6 +356,8 @@ namespace CII.LAR.Algorithm
             CalculateOtherMatix(indexs, 2);
             indexs = new List<int>() { 4, 5, 6 };
             CalculateOtherMatix(indexs, 3);
+            indexs = new List<int>() { 3, 5, 6 };
+            CalculateOtherMatix(indexs, 4);
         }
 
         /// <summary>

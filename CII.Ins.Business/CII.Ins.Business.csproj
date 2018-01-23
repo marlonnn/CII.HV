@@ -55,7 +55,7 @@
     <Compile Include="Alarm\AlarmHelper.cs" />
     <Compile Include="Alarm\HistoryAlarm.cs" />
     <Compile Include="Alarm\HistoryAlarmInfo.cs" />
-    <Compile Include="Command\LAR\HVCommandHelper.cs" />
+    <Compile Include="Command\LAR\LARCommandHelper.cs" />
     <Compile Include="Command\Interface\ICommandHelper.cs" />
     <Compile Include="Common\Common.cs" />
     <Compile Include="Entry\LAR\HVEntry.cs" />

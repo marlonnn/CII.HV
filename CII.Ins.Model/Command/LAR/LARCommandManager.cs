@@ -20,9 +20,9 @@ namespace CII.Ins.Model.Command.LAR
     /// 创建人：刘海生
     /// 创建时间: 2015.11.13
     /// </summary>
-    public class HVCommandManager : CommandManager
+    public class LARCommandManager : CommandManager
     {
-        public HVCommandManager()
+        public LARCommandManager()
         : base()
         {
 

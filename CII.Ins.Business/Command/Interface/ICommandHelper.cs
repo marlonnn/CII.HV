@@ -29,9 +29,6 @@ namespace CII.Ins.Business.Command.Interface
         /// <returns></returns>
         MonitorData GetMonitorData();
 
-        /// <summary>
-        /// 0x41设置高压频率、电压
-        /// </summary>
-        void SetHvFrequency(uint frequency, uint voltage);
+        ResponseCode SetMotorSteps(byte controlMode1, byte direction1, int totalSteps1, byte controlMode2, byte direction2, int totalSteps2);
     }
 }

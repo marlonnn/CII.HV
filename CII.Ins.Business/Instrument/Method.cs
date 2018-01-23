@@ -29,7 +29,7 @@ namespace CII.Ins.Business.Instrument
         /// <summary>
         /// 当前直接指定仪器型号：HV
         /// </summary>
-        private ICommandHelper ICommandHelper = new HVCommandHelper();
+        private ICommandHelper ICommandHelper = new LARCommandHelper();
 
         /// <summary>
         /// 读取监控信息
@@ -45,7 +45,7 @@ namespace CII.Ins.Business.Instrument
         /// </summary>
         public void SetMethod()
         {
-            ICommandHelper.SetHvFrequency(Frequency, Voltage);
+            //ICommandHelper.SetHvFrequency(Frequency, Voltage);
         }
 
         public uint frequency = 0;

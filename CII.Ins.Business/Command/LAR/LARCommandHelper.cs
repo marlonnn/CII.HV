@@ -27,7 +27,7 @@ namespace CII.Ins.Business.Command.LAR
     /// 创建人：刘海生
     /// 创建时间: 2015.11.13
     /// </summary>
-    public class HVCommandHelper : ICommandHelper
+    public class LARCommandHelper : ICommandHelper
     {
         #region -- CommandHelper配置属性及方法 --
         /// <summary>
@@ -83,15 +83,35 @@ namespace CII.Ins.Business.Command.LAR
         }
         #endregion
 
-        /// <summary>
-        /// 0x41设置高压频率、电压
-        /// </summary>
-        public void SetHvFrequency(uint frequency, uint voltage)
-        {
-            //SendCommand sendCmd = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Write);
-            //RecvCommand recvCmd = (RecvCommand)PortManager.GetInstance().Send(InsName, sendCmd);
-            //CheckRecvCommand(recvCmd);
+        public static LARCommandHelper helper;
 
+        public static LARCommandHelper GetInstance()
+        {
+            if (helper == null)
+            {
+                helper = new LARCommandHelper();
+            }
+            return helper;
+        }
+
+        public ResponseCode SetMotorSteps(byte controlMode1, byte direction1, int totalSteps1, byte controlMode2, byte direction2, int totalSteps2)
+        {
+            SendCommand sendCmd60 = new SendCommand(CommandId.ControlConfig, CommandExtendId.Write);
+            sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_Select, 0x60);
+
+            sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_ControlMode1, controlMode1);
+            sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_Direction1, direction1);
+            sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_TotalSteps1, totalSteps1);
+
+            sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_ControlMode2, controlMode2);
+            sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_Direction2, direction2);
+            sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_TotalSteps2, totalSteps1);
+
+            RecvCommand recvCmd60 = (RecvCommand)PortManager.GetInstance().Send(InsName, sendCmd60);
+            var v60 = recvCmd60.GetBytes();
+            ResponseCode responeCode = new ResponseCode();
+            responeCode.Code = recvCmd60.GetBytes()[0];
+            return responeCode;
         }
 
         /// <summary>
@@ -103,7 +123,7 @@ namespace CII.Ins.Business.Command.LAR
             MonitorData data = new MonitorData();
 
             SendCommand sendCmd40 = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Read);
-            RecvCommand recvCmd40 = (RecvCommand)PortManager.GetInstance().Send("LAR", sendCmd40);
+            RecvCommand recvCmd40 = (RecvCommand)PortManager.GetInstance().Send(InsName, sendCmd40);
             CheckRecvCommand(recvCmd40);
             data.Motor1Switch = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Status);
             data.Motor1Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Result);

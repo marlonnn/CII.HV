@@ -27,9 +27,9 @@ namespace CII.LAR.UI
             this.m2Steps.Text = s2.ToString();
         }
 
-        public void UpdateResponseCode(MotorC60Response m60r)
+        public void UpdateResponseCode(string code)
         {
-            this.responseCode.Text = m60r.GetResponseCode();
+            this.responseCode.Text = code;
         }
 
         private void DebugCtrl_KeyDown(object sender, KeyEventArgs e)

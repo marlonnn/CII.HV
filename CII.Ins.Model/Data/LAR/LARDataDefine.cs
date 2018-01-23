@@ -55,6 +55,61 @@ namespace CII.Ins.Model.Data.LAR
         Stop = 101,
     }
 
+    public class ResponseCode
+    {
+        /// <summary>
+        /// 写回应码
+        /// </summary>
+        private byte code;
+        public byte Code
+        {
+            get { return this.code; }
+            set { this.code = value; }
+        }
+
+        public string GetResponseCode()
+        {
+            string codeString = "";
+            switch (code)
+            {
+                case 0x00:
+                    codeString = "系统正常工作中";
+                    break;
+                case 0x11:
+                    codeString = "系统设定中";
+                    break;
+                case 0x22:
+                    codeString = "系统标定中";
+                    break;
+                case 0x33:
+                    codeString = "系统初始化中";
+                    break;
+                case 0x44:
+                    codeString = "系统自检中";
+                    break;
+                case 0x55:
+                    codeString = "系统故障中";
+                    break;
+                case 0x66:
+                    codeString = "系统调零中";
+                    break;
+                case 0x77:
+                    codeString = "系统预标定中";
+                    break;
+                case 0x88:
+                    codeString = "写命令成功";
+                    break;
+                case 0x99:
+                    codeString = "网络忙(写命令失败)";
+                    break;
+                case 0xAA:
+                    codeString = "写入数据非法或者超限";
+                    break;
+            }
+            return codeString;
+        }
+    }
+
     /// <summary>
     /// HV读取数据
     /// </summary>

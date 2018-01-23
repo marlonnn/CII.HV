@@ -16,17 +16,15 @@ namespace CII.HV
 {
     public partial class Form1 : Form
     {
-        private HVCommandHelper hvCommandHelper;
 
         public Form1()
         {
-            hvCommandHelper = new HVCommandHelper();
             InitializeComponent();
         }
 
         private void sendTimer_Tick(object sender, EventArgs e)
         {
-            var v  = hvCommandHelper.GetMonitorData();
+            var v  = LARCommandHelper.GetInstance().GetMonitorData();
             Console.WriteLine("motor 1 steps: " + v.Motor1Steps);
             Console.WriteLine("motor 2 steps: " + v.Motor2Steps);
             //SendCommand sendCmd40 = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Read);

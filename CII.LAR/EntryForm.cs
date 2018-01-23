@@ -24,8 +24,6 @@ namespace CII.LAR
 {
     public partial class EntryForm : Form
     {
-        private HVCommandHelper hvCommandHelper;
-
         private VideoCaptureDevice videoDevice;
 
         #region 串口相关
@@ -173,7 +171,6 @@ namespace CII.LAR
 
         public EntryForm()
         {
-            hvCommandHelper = new HVCommandHelper();
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             listViewItemArray = new ListViewItemArray();
@@ -847,14 +844,9 @@ namespace CII.LAR
         /// <param name="e"></param>
         private void systemMonitorTimer_Tick(object sender, EventArgs e)
         {
-            //if (MotorProtocolFactory.GetInstance() != null)
-            //{
-            //    var request = new MotorC40Request(0x40, 0x55);
-            //    MotorProtocolFactory.GetInstance().SendMessage(request);
-            //}
-            if (hvCommandHelper != null)
+            if (LARCommandHelper.GetInstance() != null)
             {
-                var monitorData = hvCommandHelper.GetMonitorData();
+                var monitorData = LARCommandHelper.GetInstance().GetMonitorData();
                 if (monitorData != null)
                 {
                     Coordinate.GetCoordinate().LastPoint = new Point(monitorData.Motor1Steps, monitorData.Motor2Steps);
@@ -864,7 +856,9 @@ namespace CII.LAR
                         df.UpdateSteps(monitorData.Motor1Steps, monitorData.Motor2Steps);
                         LogHelper.GetLogger<EntryForm>().Error(string.Format("电机1当前步数： {0}， 电机2当前步数： {1}", monitorData.Motor1Steps, monitorData.Motor2Steps));
                         //Entry.Log(string.Format("电机1当前步数： {0}， 电机2当前步数： {1}", monitorData.Motor1Steps, monitorData.Motor2Steps));
+                        df.UpdateResponseCode(Coordinate.GetCoordinate().ResponseCode);
                     }
+
                 }
             }
         }
@@ -879,32 +873,6 @@ namespace CII.LAR
 
                 }
             }
-
-            //if (MotorProtocolFactory.GetInstance().RxMsgQueue != null)
-            //{
-            //    List<MotorBaseResponse> baseResponses = MotorProtocolFactory.GetInstance().RxMsgQueue.PopAll();
-            //    if (baseResponses != null && baseResponses.Count > 0)
-            //    {
-            //        foreach (var bs in baseResponses)
-            //        {
-            //            MotorC40Response m40r = bs as MotorC40Response;
-            //            if (m40r != null)
-            //            {
-            //                Coordinate.GetCoordinate().LastPoint = new Point(m40r.Motor1Steps, m40r.Motor2Steps);
-            //                Coordinate.GetCoordinate().MotionComplete = m40r.Motor1Status == 0x08 && m40r.Motor2Status == 0x08;
-            //                if (df != null)
-            //                {
-            //                    df.UpdateSteps(m40r);
-            //                }
-            //            }
-            //            MotorC60Response m60R = bs as MotorC60Response;
-            //            if (m60R != null)
-            //            {
-            //                df.UpdateResponseCode(m60R);
-            //            }
-            //        }
-            //    }
-            //}
         }
 
         private void toolStripButtonCapture_Click(object sender, EventArgs e)

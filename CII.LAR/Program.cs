@@ -1,16 +1,9 @@
 ﻿using CII.Ins.Business.Entry.LAR;
 using CII.Ins.Model.Command.LAR;
-using CII.Ins.Model.GlobalConfig;
 using CII.Library.CIINet.Commands;
 using CII.Library.CIINet.Manager;
-using CII.Library.Users;
-using CII.Library.Xml;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CII.LAR

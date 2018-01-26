@@ -179,7 +179,6 @@ namespace Manina.Windows.Forms
             /// -or-
             /// The number of elements in the source <see cref="T:System.Collections.Generic.ICollection`1"/> is greater than the available space from <paramref name="arrayIndex"/> to the end of the destination <paramref name="array"/>.
             /// -or-
-            /// Type <paramref name="T"/> cannot be cast automatically to the type of the destination <paramref name="array"/>.
             /// </exception>
             void ICollection<ImageListViewItem>.CopyTo(ImageListViewItem[] array, int arrayIndex)
             {

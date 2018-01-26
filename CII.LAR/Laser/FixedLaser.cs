@@ -86,6 +86,7 @@ namespace CII.LAR.Laser
         public override void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
         {
             base.OnMouseUp(videoControl, e);
+            Coordinate.GetCoordinate().SendAlignmentMotorPoint();
         }
 
         private void FlickerColor(int cycle)

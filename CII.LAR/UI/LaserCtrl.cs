@@ -77,11 +77,11 @@ namespace CII.LAR.UI
         private void btnFire_Click(object sender, EventArgs e)
         {
             Program.EntryForm.Laser.Flashing = !flashing;
-            var fixedLaser = Program.EntryForm.Laser as FixedLaser;
-            if (fixedLaser != null)
-            {
-                Coordinate.GetCoordinate().SendAlignmentMotorPoint();
-            }
+            //var fixedLaser = Program.EntryForm.Laser as FixedLaser;
+            //if (fixedLaser != null)
+            //{
+            //    Coordinate.GetCoordinate().SendAlignmentMotorPoint();
+            //}
             //var activeLaser = Program.EntryForm.Laser as ActiveLaser;
             //if (activeLaser != null)
             //{

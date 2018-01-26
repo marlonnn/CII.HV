@@ -97,15 +97,26 @@ namespace CII.Ins.Business.Command.LAR
         public ResponseCode SetMotorSteps(byte controlMode1, byte direction1, int totalSteps1, byte controlMode2, byte direction2, int totalSteps2)
         {
             SendCommand sendCmd60 = new SendCommand(CommandId.ControlConfig, CommandExtendId.Write);
+            sendCmd60.SetParamValid(ParamId.ControlConfig_ReadWrite_Select, true);
             sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_Select, 0x60);
 
+            sendCmd60.SetParamValid(ParamId.ControlConfig_ReadWrite_ControlMode1, true);
             sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_ControlMode1, controlMode1);
+
+            sendCmd60.SetParamValid(ParamId.ControlConfig_ReadWrite_Direction1, true);
             sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_Direction1, direction1);
+
+            sendCmd60.SetParamValid(ParamId.ControlConfig_ReadWrite_TotalSteps1, true);
             sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_TotalSteps1, totalSteps1);
 
+            sendCmd60.SetParamValid(ParamId.ControlConfig_ReadWrite_ControlMode2, true);
             sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_ControlMode2, controlMode2);
+
+            sendCmd60.SetParamValid(ParamId.ControlConfig_ReadWrite_Direction2, true);
             sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_Direction2, direction2);
-            sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_TotalSteps2, totalSteps1);
+
+            sendCmd60.SetParamValid(ParamId.ControlConfig_ReadWrite_TotalSteps2, true);
+            sendCmd60.SetValue(ParamId.ControlConfig_ReadWrite_TotalSteps2, totalSteps2);
 
             RecvCommand recvCmd60 = (RecvCommand)PortManager.GetInstance().Send(InsName, sendCmd60);
             var v60 = recvCmd60.GetBytes();

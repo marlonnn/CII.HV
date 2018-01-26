@@ -1,6 +1,5 @@
 using CII.LAR.UI;
 using CII.LAR.ExpClass;
-using CII.LAR.UI;
 using DevComponents.DotNetBar;
 using Manina.Windows.Forms;
 using System;

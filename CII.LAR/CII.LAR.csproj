@@ -663,6 +663,9 @@
     <Content Include="Resources\Zoom-32.png" />
     <Content Include="Resources\zoom.png" />
     <Content Include="Resources\zoomFit.png" />
+    <Content Include="test.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CII.Ins.Business\CII.Ins.Business.csproj">

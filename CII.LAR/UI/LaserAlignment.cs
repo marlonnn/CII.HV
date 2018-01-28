@@ -117,7 +117,6 @@ namespace CII.LAR.UI
                 {
                     if (Index >= 3 && Index <= 6)
                     {
-                        Coordinate.GetCoordinate().CreatePresetMotorPoint(Index, this.VideoControl.Size);
                         if (Index == 3)
                         {
                             Coordinate.GetCoordinate().CalculateFirstMatrix();
@@ -125,6 +124,7 @@ namespace CII.LAR.UI
                             Console.WriteLine(" first matrix: " + v.ToString());
                             Console.WriteLine(" first matrix Rank: " + v.Rank());
                         }
+                        Coordinate.GetCoordinate().CreatePresetMotorPoint(Index, this.VideoControl.Size);
                     }
                     SendAlignmentMotorPoint();
                     AlignLaser laser = Program.EntryForm.Laser as AlignLaser;

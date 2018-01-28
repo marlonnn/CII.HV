@@ -248,7 +248,7 @@ namespace CII.LAR.Protocol
                         foreach (var o in list)
                         {
                             OriginalBytes obytes = o as OriginalBytes;
-                            if (o != null)
+                            if (o != null && obytes.Data.Count() > 5)
                             {
                                 LaserProtocol lp = laserProtocol.DePackage(obytes.Data);
                                 byte[] data = lp.Body;

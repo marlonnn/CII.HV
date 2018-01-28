@@ -213,6 +213,16 @@ namespace CII.LAR
             this.systemMonitorTimer.Enabled = true;
             this.LaserFactory = LaserFactory.GetInstance(this.videoControl);
             LaserType = LaserType.SaturnFixed;
+
+            Coordinate.GetCoordinate().MoveStepHandler += MoveStepHandler;
+        }
+
+        private void MoveStepHandler(int x, byte ox, int y, byte oy)
+        {
+            if (df != null)
+            {
+                df.UpdateMoveStep(x, ox, y, oy);
+            }
         }
 
         private void InitializeControls()

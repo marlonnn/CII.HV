@@ -52,18 +52,18 @@ namespace CII.LAR
                 frm.SetLoadingName("Welcome");
                 frm.ShowDialog();
 
-                SendCommand sendCmd40 = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Read);
-                RecvCommand recvCmd40 = (RecvCommand)PortManager.GetInstance().Send("LAR", sendCmd40);
-                var v40 = recvCmd40.GetBytes();
-                var m1Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Status);
-                var m1Results = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Result);
-                var m1CompleteSteps = recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor1CompleteSteps);
-                var m1SumSteps = recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor1SumSteps);
+                //SendCommand sendCmd40 = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Read);
+                //RecvCommand recvCmd40 = (RecvCommand)PortManager.GetInstance().Send("LAR", sendCmd40);
+                //var v40 = recvCmd40.GetBytes();
+                //var m1Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Status);
+                //var m1Results = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Result);
+                //var m1CompleteSteps = recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor1CompleteSteps);
+                //var m1SumSteps = recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor1SumSteps);
 
-                var m2Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor2Status);
-                var m2Results = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor2Result);
-                var m2CompleteSteps = recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor2CompleteSteps);
-                var m2SumSteps = recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor2SumSteps);
+                //var m2Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor2Status);
+                //var m2Results = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor2Result);
+                //var m2CompleteSteps = recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor2CompleteSteps);
+                //var m2SumSteps = recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor2SumSteps);
 
                 //byte[] temp = new byte[] { 0x01, 0x21, 0x01, 0xFE, 0x60, 0x66, 0x00, 0x07, 0x61, 0x01, 0x00, 0x00, 0x00, 0x00, 0x32};
                 ////var v = BitConverter.GetBytes(Protocol.CRC16.Compute(temp));

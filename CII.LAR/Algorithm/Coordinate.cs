@@ -105,12 +105,21 @@ namespace CII.LAR.Algorithm
             private set { this.responseCode = value; }
         }
 
+        public delegate void MoveStep(int x, byte ox, int y, byte oy);
+        public MoveStep MoveStepHandler;
+
         public void SendAlignmentMotorPoint()
         {
-            var code = LARCommandHelper.GetInstance().SetMotorSteps(
-                0x01, ThisPoint.X - LastPoint.X > 0 ? (byte)0x01 : (byte)0x00, Math.Abs(ThisPoint.X - LastPoint.X),
-                0x01, ThisPoint.Y - LastPoint.Y > 0 ? (byte)0x01 : (byte)0x00, Math.Abs(ThisPoint.Y - LastPoint.Y));
+            int x = ThisPoint.X - LastPoint.X;
+            int y = ThisPoint.Y - LastPoint.Y;
+            byte ox = x > 0 ? (byte)0x01 : (byte)0x00;
+            byte oy = y > 0 ? (byte)0x01 : (byte)0x00;
+            var code = LARCommandHelper.GetInstance().SetMotorSteps(0x01, ox, Math.Abs(x), 0x01, oy, Math.Abs(y));
             ResponseCode = code.GetResponseCode();
+            if (MoveStepHandler != null)
+            {
+                MoveStepHandler(x, ox, y, oy);
+            }
             //MotorProtocolFactory motorProtocolFactory = MotorProtocolFactory.GetInstance();
             //var request = new MotorC60Request(0x60, 0x66);
             //request.ControlSelection = 0x60;
@@ -218,7 +227,10 @@ namespace CII.LAR.Algorithm
             {
                 FinalMatrix += values;
             }
-            return FinalMatrix.Divide(transformMatrix.Values.Count);
+            var value = FinalMatrix.Divide(transformMatrix.Values.Count);
+            Console.WriteLine(value.ToString());
+            this.FinalMatrix = value;
+            return value;
         }
 
         /// <summary>
@@ -350,7 +362,7 @@ namespace CII.LAR.Algorithm
         /// </summary>
         public void CalculateOtherMatix()
         {
-            List<int> indexs = new List<int>() { 3, 4, 5 };
+            List<int> indexs = new List<int>() { 3, 4, 5};
             CalculateOtherMatix(indexs, 1);
             indexs = new List<int>() { 3, 4, 6 };
             CalculateOtherMatix(indexs, 2);

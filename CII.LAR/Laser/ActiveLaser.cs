@@ -1,5 +1,7 @@
 ﻿using CII.LAR.Algorithm;
+using CII.LAR.Commond;
 using CII.LAR.DrawTools;
+using CII.LAR.Protocol;
 using CII.LAR.SysClass;
 using CII.LAR.UI;
 using System;
@@ -26,7 +28,7 @@ namespace CII.LAR.Laser
 
         public ActiveLaser(VideoControl videoControl) : base()
         {
-            this.FlashTimer.Interval = 800;
+            this.FlashTimer.Interval = 500;
             this.videoControl = videoControl;
             activeCircle = new ActiveCircle(videoControl, this);
             this.GraphicsProperties.GraphicsPropertiesChangedHandler += GraphicsPropertiesChangedHandler;
@@ -99,6 +101,11 @@ namespace CII.LAR.Laser
             if (Coordinate.GetCoordinate().MotionComplete)
             {
                 _flickCount++;
+                //if (_flickCount > 1)
+                {
+                    LaserProtocolFactory.GetInstance().SendMessage(new LaserC71Request());
+                    //Thread.Sleep(10);
+                }
                 SendAlignmentMotorPoint();
                 this.videoControl.Invalidate();
                 if (_flickCount == this.activeCircle.InnerCircles.Count)
@@ -113,7 +120,9 @@ namespace CII.LAR.Laser
             if (_flickCount >= 0 && _flickCount < ActiveCircle.InnerCircles.Count)
             {
                 if (_flickCount > 1)
-                    Coordinate.GetCoordinate().SetMotorLastPoint(Point.Ceiling(ActiveCircle.InnerCircles[_flickCount  - 1].CenterPoint));
+                {
+                    Coordinate.GetCoordinate().SetMotorLastPoint(Point.Ceiling(ActiveCircle.InnerCircles[_flickCount - 1].CenterPoint));
+                }
                 Coordinate.GetCoordinate().SetMotorThisPoint(Point.Ceiling(ActiveCircle.InnerCircles[_flickCount].CenterPoint));
                 Coordinate.GetCoordinate().SendAlignmentMotorPoint();
             }

@@ -108,7 +108,7 @@ namespace CII.LAR
         {
             if (srcBytes != null)
             {
-                if (srcBytes[0] == 0x80 && srcBytes[length - 1] == 0xFF)
+                if (srcBytes[0] == 0x80 && srcBytes[length - 1] == 0xFF && srcBytes.Length > 4)
                 {
                     return srcBytes;
                 }

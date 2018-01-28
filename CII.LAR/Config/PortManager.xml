@@ -68,7 +68,7 @@
 						<Property>
 							<id>port</id>
 							<name>port</name>
-							<value>COM3</value>
+							<value>COM7</value>
 						</Property>
 
 						<Property>

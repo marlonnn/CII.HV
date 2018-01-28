@@ -12,6 +12,8 @@ using CII.LAR.DrawTools;
 using CII.LAR.Laser;
 using CII.LAR.SysClass;
 using CII.LAR.Algorithm;
+using CII.LAR.Protocol;
+using CII.LAR.Commond;
 
 namespace CII.LAR.UI
 {
@@ -27,6 +29,14 @@ namespace CII.LAR.UI
 
         private GraphicsProperties graphicsProperties;
 
+        private int pulseValue;
+
+        public int PulseValue
+        {
+            get { return this.pulseValue; }
+            set { this.pulseValue = value; }
+        }
+
         public LaserCtrl() : base()
         {
             resources = new ComponentResourceManager(typeof(LaserCtrl));
@@ -35,14 +45,22 @@ namespace CII.LAR.UI
             graphicsProperties = graphicsPropertiesManager.GetPropertiesByName("Circle");
             InitializeComponent();
             InitializeSlider();
+
+            this.sliderCtrl.Slider.MouseUp += Slider_MouseUp;
+        }
+
+        private void Slider_MouseUp(object sender, MouseEventArgs e)
+        {
+            LaserProtocolFactory.GetInstance().SendMessage(new LaserC72Request(PulseValue));
         }
 
         private void InitializeSlider()
         {
-            this.sliderCtrl.SetMinMaxValue(5, 2500);
+            this.sliderCtrl.SetMinMaxValue(5, 1600);
             this.sliderCtrl.SetValue(0.5f);
             this.btnFire.BackColor = Color.LightYellow;
             this.btnFire.Text = Res.LaserCtrl.StrFire;
+            PulseValue = this.sliderCtrl.Slider.Value;
         }
 
         public void HolesNumberSlider(bool isShow)
@@ -77,11 +95,14 @@ namespace CII.LAR.UI
         private void btnFire_Click(object sender, EventArgs e)
         {
             Program.EntryForm.Laser.Flashing = !flashing;
-            //var fixedLaser = Program.EntryForm.Laser as FixedLaser;
-            //if (fixedLaser != null)
-            //{
-            //    Coordinate.GetCoordinate().SendAlignmentMotorPoint();
-            //}
+
+            var fixedLaser = Program.EntryForm.Laser as FixedLaser;
+            if (fixedLaser != null)
+            {
+
+                LaserProtocolFactory.GetInstance().SendMessage(new LaserC71Request());
+                //Coordinate.GetCoordinate().SendAlignmentMotorPoint();
+            }
             //var activeLaser = Program.EntryForm.Laser as ActiveLaser;
             //if (activeLaser != null)
             //{
@@ -107,9 +128,9 @@ namespace CII.LAR.UI
 
         private void SliderValueChangedHandler(object sender, EventArgs e)
         {
-            var value = this.sliderCtrl.Slider.Value;
-            double y = CalSlopeFunction(value);
-            this.sliderCtrl.PulseHole.Text = string.Format("{0:N}ms {1:N}um", value / 1000d, y);
+            PulseValue = this.sliderCtrl.Slider.Value;
+            double y = CalSlopeFunction(PulseValue);
+            this.sliderCtrl.PulseHole.Text = string.Format("{0:N}ms {1:N}um", PulseValue / 1000d, y);
 
             CheckPulse((int)y);
 
@@ -118,7 +139,11 @@ namespace CII.LAR.UI
                 SysConfig.GetSysConfig().LaserConfig.UpdatePulseWidth((float)y);
             }
             this.sliderCtrl.Update = false;
-            UpdateSliderValueHandler?.Invoke(value / 1000f);
+            if (UpdateSliderValueHandler != null)
+            {
+                UpdateSliderValueHandler?.Invoke(PulseValue / 1000f);
+            }
+
             this.sliderCtrl.Update = true;
         }
 

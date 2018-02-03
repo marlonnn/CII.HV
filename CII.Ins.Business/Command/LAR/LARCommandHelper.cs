@@ -19,6 +19,7 @@ using CII.Ins.Model.GlobalConfig;
 using CII.Ins.Business.Command.Interface;
 using CII.Library.CIINet.Converter;
 using CII.Ins.Business.Instrument;
+using System.Windows.Forms;
 
 namespace CII.Ins.Business.Command.LAR
 {
@@ -60,7 +61,9 @@ namespace CII.Ins.Business.Command.LAR
             {
                 //PC或MCU问题；
                 //通信操作返回值为空：同步通讯不会为空，检查通信日志的MCU读/写回应记录来确定是PC上位机问题还是MCU下位机问题；
-                throw new Exception("ErrorCode(0xFF)");
+                //throw new Exception("ErrorCode(0xFF)");
+                //MessageBox.Show("检查电机串口配置是否正确", "错误", MessageBoxButtons.OK);
+                return;
             }
             if (((CII.Library.CIINet.Commands.Command)(recvCmd)).GetParamData() == null || ((CII.Library.CIINet.Commands.Command)(recvCmd)).GetParamData().Length <= 0)
             {
@@ -136,17 +139,24 @@ namespace CII.Ins.Business.Command.LAR
             SendCommand sendCmd40 = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Read);
             RecvCommand recvCmd40 = (RecvCommand)PortManager.GetInstance().Send(InsName, sendCmd40);
             CheckRecvCommand(recvCmd40);
-            data.Motor1Switch = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Status);
-            data.Motor1Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Result);
-            data.Motor1completeSteps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor1CompleteSteps);
-            data.Motor1Steps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor1SumSteps);
+            if (recvCmd40 != null)
+            {
+                data.Motor1Switch = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Status);
+                data.Motor1Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Result);
+                data.Motor1completeSteps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor1CompleteSteps);
+                data.Motor1Steps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor1SumSteps);
 
-            data.Motor2Switch = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor2Status);
-            data.Motor2Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor2Result);
-            data.Motor2completeSteps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor2CompleteSteps);
-            data.Motor2Steps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor2SumSteps);
+                data.Motor2Switch = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor2Status);
+                data.Motor2Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor2Result);
+                data.Motor2completeSteps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor2CompleteSteps);
+                data.Motor2Steps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor2SumSteps);
+                return data;
+            }
+            else
+            {
+                return null;
+            }
 
-            return data;
         }
 
     }

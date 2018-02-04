@@ -61,6 +61,18 @@ namespace CII.LAR.DrawTools
             }
         }
 
+        public float ScaleFactor
+        {
+            get
+            {
+                if (float.IsNaN(videoControl.Zoom) || float.IsInfinity(videoControl.Zoom))
+                {
+                    return 1;
+                }
+                return Math.Abs(videoControl.Zoom);
+            }
+        }
+
         private Dictionary<char, Point[]> signsTable;
 
         public Rulers()
@@ -346,7 +358,7 @@ namespace CII.LAR.DrawTools
 
                 if (x1 != 0)
                 {
-                    DrawScaledNumber(g, x1, x1Coord, videoControl.Height / 2 - 20, 1, true);
+                    DrawScaledNumber(g, x1, x1Coord, videoControl.Height / 2 - 20, ScaleFactor, true);
                 }
                 x1 += this.rulerStep;
 
@@ -356,7 +368,7 @@ namespace CII.LAR.DrawTools
 
                 if (x2 != 0)
                 {
-                    DrawScaledNumber(g, x2, x2Coord, videoControl.Height / 2 - 20, 1, true);
+                    DrawScaledNumber(g, x2, x2Coord, videoControl.Height / 2 - 20, ScaleFactor, true);
                 }
                 x2Coord -= RulerStep;
                 x2 -= this.rulerStep;
@@ -384,7 +396,7 @@ namespace CII.LAR.DrawTools
 
                 if (y1 != 0)
                 {
-                    DrawScaledNumber(g, y1, videoControl.Width / 2 - 20, y1Coord - 2, 1, true);
+                    DrawScaledNumber(g, y1, videoControl.Width / 2 - 20, y1Coord - 2, ScaleFactor, true);
                 }
                 y1 += this.rulerStep;
 
@@ -393,7 +405,7 @@ namespace CII.LAR.DrawTools
 
                 if (y2 != 0)
                 {
-                    DrawScaledNumber(g, y2, videoControl.Width / 2 - 20, y2Coord - 2, 1, true);
+                    DrawScaledNumber(g, y2, videoControl.Width / 2 - 20, y2Coord - 2, ScaleFactor, true);
                 }
                 y2Coord -= RulerStep;
                 y2 -= this.rulerStep;

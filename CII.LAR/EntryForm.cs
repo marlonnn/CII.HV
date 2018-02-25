@@ -1,4 +1,8 @@
-﻿using AForge.Video.DirectShow;
+﻿using AForge.Video;
+using AForge.Video.DirectShow;
+using AForge.Video.VFW;
+//using AForge.Video.FFMPEG;
+//using AForge.Video.VFW;
 using CII.Ins.Business.Command.LAR;
 using CII.Ins.Business.Entry.LAR;
 using CII.LAR.Algorithm;
@@ -9,11 +13,13 @@ using CII.LAR.Opertion;
 using CII.LAR.Protocol;
 using CII.LAR.SysClass;
 using CII.LAR.UI;
+using DevComponents.DotNetBar;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -24,6 +30,11 @@ namespace CII.LAR
 {
     public partial class EntryForm : Form
     {
+        private Bitmap videoFrame;
+        private bool canCapture = false;
+        private bool captureVideo = false;
+        private AVIWriter AVIwriter = new AVIWriter("wmv3");
+
         private VideoCaptureDevice videoDevice;
 
         #region 串口相关
@@ -193,6 +204,12 @@ namespace CII.LAR
             MotorProtocolFactory.DestroyEncodeThread();
             this.autoSendTimer.Enabled = false;
             this.systemMonitorTimer.Enabled = false;
+
+            if (videoDevice == null) return;
+            if (videoDevice.IsRunning)
+            {
+                this.AVIwriter.Close();
+            }
         }
 
         private void EntryForm_Load(object sender, EventArgs e)
@@ -268,8 +285,23 @@ namespace CII.LAR
             {
                 this.videoControl.Bounds = new Rectangle((this.Width - videoSize.Width) / 2, (this.Height - videoSize.Height) / 2, videoSize.Width, videoSize.Height);
                 this.videoControl.VideoSource = videoDevice;
+                this.videoControl.VideoSource.NewFrame += new NewFrameEventHandler(VideoSource_NewFrame);
                 this.videoControl.Start();
 
+            }
+        }
+
+        private void VideoSource_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        {
+            if (captureVideo && canCapture)
+            {
+                videoFrame = (Bitmap)eventArgs.Frame.Clone();
+                AVIwriter.Quality = 0;
+                AVIwriter.AddFrame(videoFrame);
+            }
+            else
+            {
+                videoFrame = (Bitmap)eventArgs.Frame.Clone();
             }
         }
 
@@ -887,12 +919,72 @@ namespace CII.LAR
 
         private void toolStripButtonCapture_Click(object sender, EventArgs e)
         {
+            if (videoFrame != null)
+            {
+                string fileName = string.Format(@"{0}\{1}.png", SysConfig.GetSysConfig().StorePath, DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff"));
+                if (CheckStorePath(SysConfig.GetSysConfig().StorePath))
+                {
+                    Bitmap bitmap = new Bitmap(this.videoControl.Bounds.Width, this.videoControl.Bounds.Height);
+                    this.videoControl.DrawToBitmap(bitmap, new Rectangle(0, 0, bitmap.Width, bitmap.Height));
+                    bitmap.Save(fileName, ImageFormat.Png);
+                    ShowToastNotification();
+                }
+            }
+        }
 
+        private void ShowToastNotification()
+        {
+            ToastNotification.Show(this, "Screenshot success",
+                global::CII.LAR.Properties.Resources.capture, 1000, eToastGlowColor.Blue,
+                eToastPosition.MiddleCenter);
+        }
+
+        private bool CheckStorePath(string filePath)
+        {
+            if (!Directory.Exists(filePath))
+            {
+                File.Create(filePath);
+            }
+            return true;
         }
 
         private void toolStripButtonVideo_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                captureVideo = !captureVideo;
+                if (captureVideo)
+                {
+                    var filePath = SysConfig.GetSysConfig().StorePath;
+                    if (!Directory.Exists(filePath))
+                    {
+                        File.Create(filePath);
+                    }
+                    if (videoDevice != null)
+                    {
+                        int h = videoDevice.VideoCapabilities[0].FrameSize.Height;
+                        int w = videoDevice.VideoCapabilities[0].FrameSize.Width;
+                        string fileName = string.Format(@"{0}\{1}.avi", filePath, DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff"));
+                        AVIwriter.Open(fileName, w, h);
+                        this.toolStripButtonVideo.Image = global::CII.LAR.Properties.Resources.Stop;
+                        canCapture = true;
+                    }
+                }
+                else
+                {
+                    if (videoDevice == null) return;
+                    if (videoDevice.IsRunning)
+                    {
+                        canCapture = false;
+                        this.AVIwriter.Close();
+                    }
+                    this.toolStripButtonVideo.Image = global::CII.LAR.Properties.Resources.video;
+                }
+            }
+            catch (Exception ex)
+            {
+                canCapture = false;
+            }
         }
 
         private void toolStripFiles_Click(object sender, EventArgs e)

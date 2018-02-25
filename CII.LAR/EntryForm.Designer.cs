@@ -401,6 +401,7 @@
             this.videoControl.Name = "videoControl";
             this.videoControl.UnitOfMeasure = CII.LAR.DrawTools.enUniMis.mm;
             this.videoControl.VideoSource = null;
+            this.videoControl.Zoom = 1F;
             // 
             // EntryForm
             // 

@@ -190,8 +190,14 @@ namespace CII.LAR
             this.MouseWheel += EntryForm_MouseWheel;
             this.Load += EntryForm_Load;
             this.FormClosing += EntryForm_FormClosing;
+            this.FormClosed += EntryForm_FormClosed;
             this.videoControl.VideoKeyDownHandler += this.OnKeyDown;
             InitializeControls();
+        }
+
+        private void EntryForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            SysConfig.Save(Program.SysConfig, Program.SysConfigOrigin);
         }
 
         private void EntryForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -921,8 +927,8 @@ namespace CII.LAR
         {
             if (videoFrame != null)
             {
-                string fileName = string.Format(@"{0}\{1}.png", SysConfig.GetSysConfig().StorePath, DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff"));
-                if (CheckStorePath(SysConfig.GetSysConfig().StorePath))
+                string fileName = string.Format(@"{0}\{1}.png", Program.SysConfig.StorePath, DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff"));
+                if (CheckStorePath(Program.SysConfig.StorePath))
                 {
                     Bitmap bitmap = new Bitmap(this.videoControl.Bounds.Width, this.videoControl.Bounds.Height);
                     this.videoControl.DrawToBitmap(bitmap, new Rectangle(0, 0, bitmap.Width, bitmap.Height));
@@ -955,7 +961,7 @@ namespace CII.LAR
                 captureVideo = !captureVideo;
                 if (captureVideo)
                 {
-                    var filePath = SysConfig.GetSysConfig().StorePath;
+                    var filePath = Program.SysConfig.StorePath;
                     if (!Directory.Exists(filePath))
                     {
                         File.Create(filePath);

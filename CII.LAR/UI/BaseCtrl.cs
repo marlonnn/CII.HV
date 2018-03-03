@@ -25,7 +25,6 @@ namespace CII.LAR.UI
         public UpdateSliderValue UpdateSliderValueHandler;
 
         protected ComponentResourceManager resources;
-        protected SysConfig sysConfig;
 
         /// <summary>
         /// title font
@@ -75,18 +74,20 @@ namespace CII.LAR.UI
         public BaseCtrl()
         {
             InitializeComponent();
-            sysConfig = SysConfig.GetSysConfig();
-            sysConfig.PropertyChanged += SysConfig_PropertyChanged;
             this.Load += BaseCtrl_Load;
         }
 
         private void BaseCtrl_Load(object sender, EventArgs e)
         {
+            if (Program.SysConfig != null)
+            {
+                Program.SysConfig.PropertyChanged += SysConfig_PropertyChanged;
+            }
         }
 
         private void SysConfig_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == sysConfig.GetPropertyName(() => sysConfig.UICulture))
+            if (e.PropertyName == Program.SysConfig.GetPropertyName(() => Program.SysConfig.UICulture))
             {
                 RefreshUI();
             }

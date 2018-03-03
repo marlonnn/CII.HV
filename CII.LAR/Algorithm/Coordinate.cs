@@ -110,26 +110,22 @@ namespace CII.LAR.Algorithm
 
         public void SendAlignmentMotorPoint()
         {
-            int x = ThisPoint.X - LastPoint.X;
-            int y = ThisPoint.Y - LastPoint.Y;
-            byte ox = x > 0 ? (byte)0x01 : (byte)0x00;
-            byte oy = y > 0 ? (byte)0x01 : (byte)0x00;
-            var code = LARCommandHelper.GetInstance().SetMotorSteps(0x01, ox, Math.Abs(x), 0x01, oy, Math.Abs(y));
-            ResponseCode = code.GetResponseCode();
-            if (MoveStepHandler != null)
+            try
             {
-                MoveStepHandler(x, ox, y, oy);
+                int x = ThisPoint.X - LastPoint.X;
+                int y = ThisPoint.Y - LastPoint.Y;
+                byte ox = x > 0 ? (byte)0x01 : (byte)0x00;
+                byte oy = y > 0 ? (byte)0x01 : (byte)0x00;
+                var code = LARCommandHelper.GetInstance().SetMotorSteps(0x01, ox, Math.Abs(x), 0x01, oy, Math.Abs(y));
+                ResponseCode = code.GetResponseCode();
+                if (MoveStepHandler != null)
+                {
+                    MoveStepHandler(x, ox, y, oy);
+                }
             }
-            //MotorProtocolFactory motorProtocolFactory = MotorProtocolFactory.GetInstance();
-            //var request = new MotorC60Request(0x60, 0x66);
-            //request.ControlSelection = 0x60;
-            //request.ControlMode61 = 0x01;
-            //request.Direction61 = ThisPoint.X - LastPoint.X > 0 ? (byte)0x01 : (byte)0x00;
-            //request.TotalSteps61 = Math.Abs(ThisPoint.X - LastPoint.X);
-            //request.ControlMode62 = 0x01;
-            //request.Direction62 = ThisPoint.Y - LastPoint.Y > 0 ? (byte)0x01 : (byte)0x00;
-            //request.TotalSteps62 = Math.Abs(ThisPoint.Y - LastPoint.Y);
-            //motorProtocolFactory.SendMessage(request);
+            catch (Exception ex)
+            {
+            }
         }
 
         /// <summary>

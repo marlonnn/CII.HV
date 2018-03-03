@@ -14,7 +14,7 @@ namespace CII.LAR.UI
 {
     public partial class RulerAppearanceCtrl : BaseCtrl
     {
-        private GraphicsPropertiesManager graphicsPropertiesManager = GraphicsPropertiesManager.GraphicsManagerSingleInstance();
+        private GraphicsPropertiesManager graphicsPropertiesManager = Program.SysConfig.GraphicsPropertiesManager;
 
         private GraphicsProperties graphicsProperties;
         public RulerAppearanceCtrl() : base()

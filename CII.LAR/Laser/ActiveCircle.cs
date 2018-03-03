@@ -66,7 +66,7 @@ namespace CII.LAR.Laser
         /// <summary>
         /// GraphicsPropertiesManager: include all the draw object graphics properties
         /// </summary>
-        private GraphicsPropertiesManager graphicsPropertiesManager = GraphicsPropertiesManager.GraphicsManagerSingleInstance();
+        private GraphicsPropertiesManager graphicsPropertiesManager = Program.SysConfig.GraphicsPropertiesManager;
         public GraphicsPropertiesManager GraphicsPropertiesManager
         {
             get
@@ -227,9 +227,9 @@ namespace CII.LAR.Laser
 
             circleData = new CircleData();
             InitializeGraphicsProperties();
-            float pulseSize = SysConfig.GetSysConfig().LaserConfig.PulseSize;
-            OutterCircleSize = new SizeF(pulseSize + SysConfig.GetSysConfig().LaserConfig.GraphicsProperties.ExclusionSize,
-                pulseSize + SysConfig.GetSysConfig().LaserConfig.GraphicsProperties.ExclusionSize);
+            float pulseSize = Program.SysConfig.LaserConfig.PulseSize;
+            OutterCircleSize = new SizeF(pulseSize + Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Circle").ExclusionSize,
+                pulseSize + Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Circle").ExclusionSize);
             InnerCircleSize = new SizeF(pulseSize, pulseSize);
             crossSize = new Size(38, 38);
             clickCount = 0;

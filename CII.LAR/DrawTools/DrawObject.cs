@@ -37,22 +37,6 @@ namespace CII.LAR.DrawTools
         }
 
         /// <summary>
-        /// GraphicsPropertiesManager: include all the draw object graphics properties
-        /// </summary>
-        private GraphicsPropertiesManager graphicsPropertiesManager = GraphicsPropertiesManager.GraphicsManagerSingleInstance();
-        public GraphicsPropertiesManager GraphicsPropertiesManager
-        {
-            get
-            {
-                return graphicsPropertiesManager;
-            }
-            set
-            {
-                graphicsPropertiesManager = value;
-            }
-        }
-
-        /// <summary>
         /// GraphicsProperties of this draw object 
         /// </summary>
         private GraphicsProperties graphicsProperties;
@@ -380,7 +364,7 @@ namespace CII.LAR.DrawTools
 
         public virtual void DrawTest(Graphics g, VideoControl videoControl)
         {
-            SolidBrush brush = new SolidBrush(GraphicsPropertiesManager.GetPropertiesByName("Text").Color);
+            SolidBrush brush = new SolidBrush(Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Text").Color);
             RectangleF r = GetTextF(this.Name, g, this.ID);
             r.Offset(MovingOffset);
             g.DrawString(this.Name, this.Font, brush, r);
@@ -397,8 +381,8 @@ namespace CII.LAR.DrawTools
             if (Selected)
             {
                 SolidBrush brush = new SolidBrush(Color.White);
-                Pen pen = new Pen(GraphicsPropertiesManager.GetPropertiesByName("Text").Color,
-                    GraphicsPropertiesManager.GetPropertiesByName("Text").PenWidth);
+                Pen pen = new Pen(Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Text").Color,
+                    Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Text").PenWidth);
 
                 for (int i = 1; i <= HandleCount; i++)
                 {

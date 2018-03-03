@@ -1,5 +1,6 @@
 ﻿using CII.Ins.Business.Entry.LAR;
 using CII.Ins.Model.Command.LAR;
+using CII.LAR.SysClass;
 using CII.Library.CIINet.Commands;
 using CII.Library.CIINet.Manager;
 using System;
@@ -30,6 +31,26 @@ namespace CII.LAR
             get { return expManager; }
         }
 
+        private static SysConfig _sysConfig;
+
+        /// <summary>
+        /// The configure information about software and hardware
+        /// </summary>
+        public static SysConfig SysConfig
+        {
+            get { return _sysConfig; }
+        }
+
+        private static SysConfig _sysConfigOrigin;
+
+        /// <summary>
+        /// The original configuration about software and hardware
+        /// </summary>
+        public static SysConfig SysConfigOrigin
+        {
+            get { return _sysConfigOrigin; }
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -45,6 +66,9 @@ namespace CII.LAR
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
+
+                _sysConfig = SysConfig.Load();
+                _sysConfigOrigin = SysConfig.Load();
 
                 CII.Library.LoadingForm frm = new Library.LoadingForm();
                 Bitmap bitmap = new Bitmap("test.png");

@@ -15,7 +15,7 @@ namespace CII.LAR.UI
     public partial class LaserHoleSize : BaseCtrl
     {
         private List<HolePulsePoint> holePulsePoints;
-        private GraphicsPropertiesManager graphicsPropertiesManager = GraphicsPropertiesManager.GraphicsManagerSingleInstance();
+        private GraphicsPropertiesManager graphicsPropertiesManager = Program.SysConfig.GraphicsPropertiesManager;
 
         private GraphicsProperties graphicsProperties;
 
@@ -45,7 +45,7 @@ namespace CII.LAR.UI
 
         private void InitializeHolePulsePoints()
         {
-            holePulsePoints = SysConfig.GetSysConfig().LaserConfig.HolePulsePoints;
+            holePulsePoints = Program.SysConfig.LaserConfig.HolePulsePoints;
             CalPiecewiseFunction();
         }
 
@@ -82,7 +82,7 @@ namespace CII.LAR.UI
             }
             if (this.graphicsProperties != null)
             {
-                SysConfig.GetSysConfig().LaserConfig.UpdatePulseWidth(CurrentPoint.Y);
+                Program.SysConfig.LaserConfig.UpdatePulseWidth(CurrentPoint.Y);
             }
         }
 
@@ -193,7 +193,7 @@ namespace CII.LAR.UI
             CalXY(x);
             if (this.graphicsProperties != null)
             {
-                SysConfig.GetSysConfig().LaserConfig.UpdatePulseWidth(CurrentPoint.Y);
+                Program.SysConfig.LaserConfig.UpdatePulseWidth(CurrentPoint.Y);
             }
             this.sliderPulse.Update = false;
             UpdateSliderValueHandler?.Invoke(x);

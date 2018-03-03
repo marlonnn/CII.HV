@@ -36,7 +36,7 @@ namespace CII.LAR.Laser
 
         private void GraphicsPropertiesChangedHandler(DrawObject drawObject, GraphicsProperties graphicsProperties)
         {
-            float pulseSize = SysConfig.GetSysConfig().LaserConfig.PulseSize;
+            float pulseSize = Program.SysConfig.LaserConfig.PulseSize;
             activeCircle.OutterCircleSize = new SizeF(this.GraphicsProperties.ExclusionSize + pulseSize,
                 this.GraphicsProperties.ExclusionSize + pulseSize);
             activeCircle.InnerCircleSize = new SizeF(pulseSize, pulseSize);

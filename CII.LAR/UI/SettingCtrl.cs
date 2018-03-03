@@ -31,7 +31,7 @@ namespace CII.LAR.UI
             this.ShowIndex = 0;
             InitializeComponent();
             resources = new ComponentResourceManager(typeof(SettingCtrl));
-            this.textBoxItemStoragePath.Text = sysConfig.StorePath;
+            this.textBoxItemStoragePath.Text = Program.SysConfig.StorePath;
             UpdateComboLanguage();
             InitializeLaserType();
             this.cmbLaser.SelectedIndexChanged += new System.EventHandler(this.cmbLaser_SelectedIndexChanged);
@@ -44,7 +44,7 @@ namespace CII.LAR.UI
         {
             foreach (ComboItem item in comboBoxItemLanguage.Items)
             {
-                if (item.Value.ToString() == sysConfig.UICulture)
+                if (item.Value.ToString() == Program.SysConfig.UICulture)
                 {
                     comboBoxItemLanguage.SelectedItem = item;
                     break;
@@ -65,8 +65,8 @@ namespace CII.LAR.UI
                 if (result == DialogResult.OK && 
                     !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
-                    sysConfig.StorePath = fbd.SelectedPath;
-                    this.textBoxItemStoragePath.Text = sysConfig.StorePath;
+                    Program.SysConfig.StorePath = fbd.SelectedPath;
+                    this.textBoxItemStoragePath.Text = Program.SysConfig.StorePath;
                 }
             }
         }
@@ -86,7 +86,7 @@ namespace CII.LAR.UI
         {
             string language = this.comboBoxItemLanguage.SelectedItem.ToString();
             var culture = ((ComboItem)comboBoxItemLanguage.SelectedItem).Value.ToString();
-            SysConfig.GetSysConfig().UICulture = culture;
+            Program.SysConfig.UICulture = culture;
         }
 
         private void comboBoxItemLanguage_ExpandChange(object sender, EventArgs e)
@@ -156,10 +156,10 @@ namespace CII.LAR.UI
             var lense = comboBoxItemLense.SelectedItem;
             if (lense != null)
             {
-                int index = SysConfig.GetSysConfig().Lenses.FindIndex(l => (l.ToString() == lense.ToString()));
-                SysConfig.GetSysConfig().DeleteLense(lense.ToString());
+                int index = Program.SysConfig.Lenses.FindIndex(l => (l.ToString() == lense.ToString()));
+                Program.SysConfig.DeleteLense(lense.ToString());
                 comboBoxItemLense.Items.Clear();
-                comboBoxItemLense.Items.AddRange(SysConfig.GetSysConfig().Lenses.ToArray());
+                comboBoxItemLense.Items.AddRange(Program.SysConfig.Lenses.ToArray());
                 comboBoxItemLense.SelectedIndex = index - 1;
 
             }
@@ -174,7 +174,7 @@ namespace CII.LAR.UI
                 if (factor != 0)
                 {
                     Lense lense = new Lense(factor);
-                    if (SysConfig.GetSysConfig().AddLense(lense))
+                    if (Program.SysConfig.AddLense(lense))
                     {
                         UpdateComBoxItemLense(lense);
                         UpdateLenseHandler?.Invoke(lense);
@@ -192,8 +192,8 @@ namespace CII.LAR.UI
         private void UpdateComBoxItemLense(Lense lense)
         {
             comboBoxItemLense.Items.Clear();
-            comboBoxItemLense.Items.AddRange(SysConfig.GetSysConfig().Lenses.ToArray());
-            int index = SysConfig.GetSysConfig().Lenses.FindIndex(l => (l.ToString() == lense.ToString()));
+            comboBoxItemLense.Items.AddRange(Program.SysConfig.Lenses.ToArray());
+            int index = Program.SysConfig.Lenses.FindIndex(l => (l.ToString() == lense.ToString()));
             comboBoxItemLense.SelectedIndex = index;
         }
 

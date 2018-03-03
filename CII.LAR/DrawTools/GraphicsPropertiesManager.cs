@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,23 +11,19 @@ namespace CII.LAR.DrawTools
     /// Graphics properties manager
     /// Author:Zhong Wen 2017/08/10
     /// </summary>
+    [Serializable]
     public class GraphicsPropertiesManager
     {
-        public static GraphicsPropertiesManager graphicsManager;
-        public static GraphicsPropertiesManager GraphicsManagerSingleInstance()
-        {
-            if (graphicsManager == null)
-            {
-                graphicsManager = new GraphicsPropertiesManager();
-            }
-            return graphicsManager;
-        }
-
         /// <summary>
         /// all the graphics properties
         /// </summary>
         private List<GraphicsProperties> properties;
         public GraphicsPropertiesManager()
+        {
+            SetDefault();
+        }
+
+        private void SetDefault()
         {
             InitializeGraphicsProperties();
         }
@@ -84,5 +81,17 @@ namespace CII.LAR.DrawTools
             return propertie;
         }
 
+        // set default value
+        [OnDeserializing]
+        private void OnDeserializing(StreamingContext sc)
+        {
+            SetDefault();
+        }
+
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext sc)
+        {
+
+        }
     }
 }

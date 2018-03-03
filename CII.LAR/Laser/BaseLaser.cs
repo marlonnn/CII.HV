@@ -73,7 +73,7 @@ namespace CII.LAR.Laser
             this.FlashTimer = new Timer();
             this.FlashTimer.Interval = 1000;
             this.FlashTimer.Tick += new System.EventHandler(this.FlashTimer_Tick);
-            GraphicsProperties = SysConfig.GetSysConfig().LaserConfig.GraphicsProperties;
+            GraphicsProperties = Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Circle");
         }
 
         protected virtual void FlashTimer_Tick(object sender, EventArgs e)

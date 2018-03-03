@@ -124,7 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithm\Coordinate.cs" />
-    <Compile Include="Algorithm\MotorMatrix.cs" />
     <Compile Include="ByteHelper.cs" />
     <Compile Include="Commond\LaserC0C.cs" />
     <Compile Include="Commond\LaserC00.cs" />
@@ -181,6 +180,7 @@
       <DependentUpon>EntryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ExpManager.cs" />
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="LaserFactory.cs" />
@@ -231,6 +231,7 @@
     <Compile Include="Res\LaserCtrl.Designer.cs" />
     <Compile Include="SerialPortModel.cs" />
     <Compile Include="SysClass\AllPatients.cs" />
+    <Compile Include="SysClass\CustomAttrs.cs" />
     <Compile Include="SysClass\FullScreen.cs" />
     <Compile Include="SysClass\HandleTaskBar.cs" />
     <Compile Include="SysClass\HolePulsePoint.cs" />

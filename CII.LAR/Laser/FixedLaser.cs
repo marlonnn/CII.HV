@@ -53,15 +53,15 @@ namespace CII.LAR.Laser
         public FixedLaser(VideoControl videoControl) : base()
         {
             this.videoControl = videoControl;
-            float pulseSize = SysConfig.GetSysConfig().LaserConfig.PulseSize;
-            OutterCircleSize = new SizeF(pulseSize + SysConfig.GetSysConfig().LaserConfig.GraphicsProperties.ExclusionSize, 
-                pulseSize + SysConfig.GetSysConfig().LaserConfig.GraphicsProperties.ExclusionSize);
+            float pulseSize = Program.SysConfig.LaserConfig.PulseSize;
+            OutterCircleSize = new SizeF(pulseSize + Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Circle").ExclusionSize, 
+                pulseSize + Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Circle").ExclusionSize);
             InnerCircleSize = new SizeF(pulseSize, pulseSize);
             this.GraphicsProperties.GraphicsPropertiesChangedHandler += GraphicsPropertiesChangedHandler;
         }
         private void GraphicsPropertiesChangedHandler(DrawObject drawObject, GraphicsProperties graphicsProperties)
         {
-            float pulseSize = SysConfig.GetSysConfig().LaserConfig.PulseSize;
+            float pulseSize = Program.SysConfig.LaserConfig.PulseSize;
             OutterCircleSize = new SizeF(this.GraphicsProperties.ExclusionSize + pulseSize,
                 this.GraphicsProperties.ExclusionSize + pulseSize);
             InnerCircleSize = new SizeF(pulseSize, pulseSize);

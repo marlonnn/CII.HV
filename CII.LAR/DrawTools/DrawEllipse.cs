@@ -88,8 +88,8 @@ namespace CII.LAR.DrawTools
 
         private void InitializeGraphicsProperties()
         {
-            this.GraphicsProperties = GraphicsPropertiesManager.GetPropertiesByName("Ellipse");
-            this.GraphicsProperties.Color = Color.Orange;
+            this.GraphicsProperties = Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Ellipse");
+            //this.GraphicsProperties.Color = Color.Orange;
             this.GraphicsProperties.DrawObject = this;
             this.GraphicsProperties.Alpha = (this.GraphicsProperties.Alpha == 0xFF || this.GraphicsProperties.Alpha == 0) ? 0xFF
                 : this.GraphicsProperties.Alpha;
@@ -110,7 +110,7 @@ namespace CII.LAR.DrawTools
                 TransformLinear(DefaultDrawAreaSize.Width * 1.0 / drawAreaSize.Width, DefaultDrawAreaSize.Height * 1.0 / drawAreaSize.Height, 0, 0);
                 drawAreaSize = DefaultDrawAreaSize;
             }
-            //this.GraphicsProperties.GraphicsPropertiesChangedHandler += videoControl.GraphicsPropertiesChangedHandler;
+            this.GraphicsProperties.GraphicsPropertiesChangedHandler += videoControl.GraphicsPropertiesChangedHandler;
 
         }
 

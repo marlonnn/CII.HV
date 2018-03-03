@@ -10,6 +10,7 @@ namespace CII.LAR.SysClass
     /// Object lense
     /// Author: Zhong Wen 2017/09/23
     /// </summary>
+    [Serializable]
     public class Lense
     {
         private int factor;

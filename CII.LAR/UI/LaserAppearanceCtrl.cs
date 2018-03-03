@@ -18,7 +18,7 @@ namespace CII.LAR.UI
     /// </summary>
     public partial class LaserAppearanceCtrl : BaseCtrl
     {
-        private GraphicsPropertiesManager graphicsPropertiesManager = GraphicsPropertiesManager.GraphicsManagerSingleInstance();
+        private GraphicsPropertiesManager graphicsPropertiesManager = Program.SysConfig.GraphicsPropertiesManager;
 
         private GraphicsProperties graphicsProperties;
 

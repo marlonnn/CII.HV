@@ -29,7 +29,7 @@ namespace CII.LAR.DrawTools
 
         private const int DigitWidth = 6;
 
-        private GraphicsPropertiesManager graphicsPropertiesManager = GraphicsPropertiesManager.GraphicsManagerSingleInstance();
+        private GraphicsPropertiesManager graphicsPropertiesManager = Program.SysConfig.GraphicsPropertiesManager;
         public GraphicsPropertiesManager GraphicsPropertiesManager
         {
             get

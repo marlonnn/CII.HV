@@ -1,4 +1,5 @@
-﻿using DevComponents.DotNetBar;
+﻿using CII.LAR.DrawTools;
+using DevComponents.DotNetBar;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +7,8 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,10 +18,119 @@ namespace CII.LAR.SysClass
     [Serializable]
     public class SysConfig
     {
+        [NonSerialized]
+        private static string filePath = Application.StartupPath + "\\LConfig";
+
+        public static SysConfig Load()
+        {
+            SysConfig config = null;
+
+            try
+            {
+                config = config.SerializeFromFile(filePath);
+            }
+            catch (Exception e)
+            {
+                config = new SysConfig();
+            }
+
+            return config;
+        }
+
+        /// <summary>
+        /// do not manually call this function during software, the config should only be saved before software quit
+        /// </summary>
+        /// <param name="config"></param>
+        public static void Save(SysConfig config)
+        {
+            if (config != null)
+            {
+                try
+                {
+                    config.SerializeToFile(filePath);
+                }
+                catch (System.Exception ex)
+                {
+                    Ins.Business.Entry.LAR.Entry.LogException(ex);
+                }
+            }
+        }
+
+        public static void Save(SysConfig config, SysConfig configOrigin)
+        {
+            SysConfig configNewer = SysConfig.Load();
+
+            //merge the sysConfig
+            FieldInfo[] fieldsSysConfig = config.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+            foreach (FieldInfo fieldSysConfig in fieldsSysConfig)
+            {
+                if (fieldSysConfig == null)
+                    continue;
+                if ((fieldSysConfig.Attributes & FieldAttributes.NotSerialized) != FieldAttributes.NotSerialized)
+                {
+                    object origin = fieldSysConfig.GetValue(configOrigin);
+                    object modified = fieldSysConfig.GetValue(config);
+                    object newer = fieldSysConfig.GetValue(configNewer);
+                    CustomAttrs attr = (CustomAttrs)Attribute.GetCustomAttribute(fieldSysConfig, typeof(CustomAttrs));
+                    if (attr != null && !attr.IfEntirelyModify)
+                    {
+                        object mergedProperty = MergeField(origin, modified, newer);
+                        fieldSysConfig.SetValue(configNewer, mergedProperty);
+                    }
+                    else
+                    {
+                        if (!FieldEqual(origin, modified))
+                        {
+                            fieldSysConfig.SetValue(configNewer, modified);
+                        }
+                    }
+                }
+            }
+            Save(configNewer);
+        }
+
+        /// <summary>
+        /// compare two serializable objects
+        /// </summary>
+        /// <param name="origin"></param>
+        /// <param name="modified"></param>
+        /// <returns></returns>
+        public static bool FieldEqual(object origin, object modified)
+        {
+            return origin == modified || (origin != null && modified != null && modified.SerializeEqual(origin));
+        }
+
+        public static Object MergeField(Object objOrigin, Object objModified, Object objNewer)
+        {
+            if (objModified == objOrigin) return objNewer;      // both null
+
+            if (objOrigin == null || objModified == null || objNewer == null) return objModified;
+
+            FieldInfo[] fields = objModified.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+
+            foreach (FieldInfo field in fields)
+            {
+                if (field == null) continue;
+
+                // ignore notserialized field
+                if ((field.Attributes & FieldAttributes.NotSerialized) == FieldAttributes.NotSerialized) continue;
+
+                object origin = field.GetValue(objOrigin);
+                object modified = field.GetValue(objModified);
+
+                if (!FieldEqual(origin, modified))
+                {
+                    field.SetValue(objNewer, modified);
+                }
+            }
+            return objNewer;
+        }
+
         private LaserConfig laserConfig;
         public LaserConfig LaserConfig
         {
             get { return this.laserConfig; }
+            set { this.laserConfig = value; }
         }
 
         public static SysConfig systemConfig;
@@ -86,6 +198,14 @@ namespace CII.LAR.SysClass
             set { lenses = value; }
         }
 
+        private GraphicsPropertiesManager graphicsPropertiesManager;
+
+        public GraphicsPropertiesManager GraphicsPropertiesManager
+        {
+            get { return this.graphicsPropertiesManager; }
+            set { this.graphicsPropertiesManager = value; }
+        }
+
         public bool AddLense(Lense newLense)
         {
             var lense = Lenses.Find(l => (l.Factor == newLense.Factor));
@@ -110,6 +230,7 @@ namespace CII.LAR.SysClass
             }
         }
 
+        [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged<T>(Expression<Func<T>> propertyId)
@@ -132,10 +253,31 @@ namespace CII.LAR.SysClass
 
         public SysConfig()
         {
-            this.storagePath = string.Format("{0}\\Archive",System.Environment.CurrentDirectory);
+            SetDefault();
+
+            SysConfig.Save(this);
+        }
+
+        private void SetDefault()
+        {
+            this.graphicsPropertiesManager = new GraphicsPropertiesManager();
+            this.lenses = new List<Lense>();
+            this.laserConfig = new LaserConfig();
+            this.storagePath = string.Format("{0}\\Archive", System.Environment.CurrentDirectory);
             this.archivePath = string.Format("{0}\\Archive", System.Environment.CurrentDirectory);
-            lenses = new List<Lense>();
-            this.laserConfig = LaserConfig.GetLaserConfig();
+        }
+
+        // set default value
+        [OnDeserializing]
+        private void OnDeserializing(StreamingContext sc)
+        {
+            SetDefault();
+        }
+
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext sc)
+        {
+
         }
 
         public CultureInfo GetSysDefaultCulture()
@@ -146,15 +288,6 @@ namespace CII.LAR.SysClass
                 sysDefault = new CultureInfo("en-US");
             }
             return sysDefault;
-        }
-
-        public static SysConfig GetSysConfig()
-        {
-            if (systemConfig == null)
-            {
-                systemConfig = new SysConfig();
-            }
-            return systemConfig;
         }
 
         public string GetPropertyName<TValue>(Expression<Func<TValue>> propertyId)

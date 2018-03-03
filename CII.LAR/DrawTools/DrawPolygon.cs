@@ -144,8 +144,8 @@ namespace CII.LAR.DrawTools
             }
 
             SolidBrush brush = new SolidBrush(Color.White);
-            Pen pen = new Pen(GraphicsPropertiesManager.GetPropertiesByName("Text").Color,
-                GraphicsPropertiesManager.GetPropertiesByName("Text").PenWidth);
+            Pen pen = new Pen(Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Text").Color,
+                Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Text").PenWidth);
 
             for (int i = 1; i <= HandleCount; i++)
             {

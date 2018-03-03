@@ -103,8 +103,8 @@ namespace CII.LAR.DrawTools
 
         private void InitializeGraphicsProperties()
         {
-            this.GraphicsProperties = GraphicsPropertiesManager.GetPropertiesByName("Circle");
-            this.GraphicsProperties.Color = Color.Yellow;
+            this.GraphicsProperties = Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Circle");
+            //this.GraphicsProperties.Color = Color.Yellow;
         }
 
         public override void Draw(Graphics g, VideoControl videoControl)

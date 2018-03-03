@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,9 +12,12 @@ namespace CII.LAR.DrawTools
     /// Graphics property
     /// Author:Zhong Wen 2017/07/25
     /// </summary>
+    [Serializable]
     public class GraphicsProperties
     {
         public delegate void GraphicsPropertiesChangedDelegate(DrawObject drawObject, GraphicsProperties graphicsProperties);
+
+        [field: NonSerialized]
         public GraphicsPropertiesChangedDelegate GraphicsPropertiesChangedHandler;
 
         private string graphicsName;
@@ -100,7 +104,7 @@ namespace CII.LAR.DrawTools
         /// <summary>
         /// use for laser circle target size
         /// </summary>
-        private int targetSize = 1;
+        private int targetSize;
 
         public int TargetSize
         {
@@ -118,7 +122,7 @@ namespace CII.LAR.DrawTools
         /// <summary>
         /// use for laser circle exclusion target size
         /// </summary>
-        private int exclusionSize = 20;
+        private int exclusionSize;
 
         public int ExclusionSize
         {
@@ -133,7 +137,7 @@ namespace CII.LAR.DrawTools
             }
         }
 
-        private float pulseSize = 1;
+        private float pulseSize;
         public float PulseSize
         {
             get { return this.pulseSize; }
@@ -148,6 +152,7 @@ namespace CII.LAR.DrawTools
             }
         }
 
+        [NonSerialized]
         private DrawObject drawObject;
 
         public DrawObject DrawObject
@@ -161,12 +166,35 @@ namespace CII.LAR.DrawTools
                 this.drawObject = value;
             }
         }
+
         public GraphicsProperties(string name)
         {
-            color = Color.Red;
-            penWidth = 1;
             graphicsName = name;
-            InitializeColorSets();
+            switch(name)
+            {
+                case "Line":
+                    color = Color.Green;
+                    break;
+                case "Text":
+                    color = Color.Black;
+                    break;
+                case "Rectangle":
+                    color = Color.Violet;
+                    break;
+                case "Ellipse":
+                    color = Color.Orange;
+                    break;
+                case "Polygon":
+                    color = Color.Blue;
+                    break;
+                case "Circle":
+                    color = Color.Yellow;
+                    break;
+                case "Ruler":
+                    color = Color.Red;
+                    break;
+            }
+            SetDefault();
         }
 
         private void InitializeColorSets()
@@ -176,12 +204,35 @@ namespace CII.LAR.DrawTools
                 Color.Blue, Color.Violet,Color.YellowGreen, Color.DarkGreen, Color.BlueViolet};
         }
 
+        private void SetDefault()
+        {
+            penWidth = 1;
+            pulseSize = 1;
+            exclusionSize = 20;
+            targetSize = 1;
+            alpha = 255;
+            InitializeColorSets();
+        }
+
         public void ChangeColor(int value)
         {
             if (value > 0 && value < 11)
             {
                 this.Color = ColorSets[value - 1];
             }
+        }
+
+        // set default value
+        [OnDeserializing]
+        private void OnDeserializing(StreamingContext sc)
+        {
+            SetDefault();
+        }
+
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext sc)
+        {
+
         }
     }
 }

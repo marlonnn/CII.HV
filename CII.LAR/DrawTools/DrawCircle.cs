@@ -128,7 +128,7 @@ namespace CII.LAR.DrawTools
 
         private void InitializeGraphicsProperties()
         {
-            this.GraphicsProperties = GraphicsPropertiesManager.GetPropertiesByName("Circle");
+            this.GraphicsProperties = Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Circle");
             this.GraphicsProperties.Color = Color.Yellow;
         }
 

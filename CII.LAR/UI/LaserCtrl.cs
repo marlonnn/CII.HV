@@ -25,7 +25,7 @@ namespace CII.LAR.UI
     {
         private List<HolePulsePoint> holePulsePoints;
 
-        private GraphicsPropertiesManager graphicsPropertiesManager = GraphicsPropertiesManager.GraphicsManagerSingleInstance();
+        private GraphicsPropertiesManager graphicsPropertiesManager = Program.SysConfig.GraphicsPropertiesManager;
 
         private GraphicsProperties graphicsProperties;
 
@@ -40,7 +40,7 @@ namespace CII.LAR.UI
         public LaserCtrl() : base()
         {
             resources = new ComponentResourceManager(typeof(LaserCtrl));
-            holePulsePoints = SysConfig.GetSysConfig().LaserConfig.HolePulsePoints;
+            holePulsePoints = Program.SysConfig.LaserConfig.HolePulsePoints;
             this.ShowIndex = 5;
             graphicsProperties = graphicsPropertiesManager.GetPropertiesByName("Circle");
             InitializeComponent();
@@ -57,7 +57,7 @@ namespace CII.LAR.UI
         private void InitializeSlider()
         {
             this.sliderCtrl.SetMinMaxValue(5, 1600);
-            this.sliderCtrl.SetValue(0.5f);
+            this.sliderCtrl.SetValue(Program.SysConfig.LaserConfig.PulseWidth);
             this.btnFire.BackColor = Color.LightYellow;
             this.btnFire.Text = Res.LaserCtrl.StrFire;
             PulseValue = this.sliderCtrl.Slider.Value;
@@ -129,14 +129,15 @@ namespace CII.LAR.UI
         private void SliderValueChangedHandler(object sender, EventArgs e)
         {
             PulseValue = this.sliderCtrl.Slider.Value;
+            Program.SysConfig.LaserConfig.PulseWidth = PulseValue / 1000f;
             double y = CalSlopeFunction(PulseValue);
             this.sliderCtrl.PulseHole.Text = string.Format("{0:N}ms {1:N}um", PulseValue / 1000d, y);
 
             CheckPulse((int)y);
 
-            if (graphicsProperties != null && SysConfig.GetSysConfig().LaserConfig != null)
+            if (graphicsProperties != null && Program.SysConfig.LaserConfig != null)
             {
-                SysConfig.GetSysConfig().LaserConfig.UpdatePulseWidth((float)y);
+                Program.SysConfig.LaserConfig.UpdatePulseWidth((float)y);
             }
             this.sliderCtrl.Update = false;
             if (UpdateSliderValueHandler != null)
@@ -154,12 +155,12 @@ namespace CII.LAR.UI
 
         private void CheckPulse(int value)
         {
-            if (value > SysConfig.GetSysConfig().LaserConfig.MaxPulseWidth)
+            if (value > Program.SysConfig.LaserConfig.MaxPulseWidth)
             {
                 this.btnFire.BackColor = Color.LightSalmon;
                 this.btnFire.Text = Res.LaserCtrl.StrBigPulse;
             }
-            else if (value < SysConfig.GetSysConfig().LaserConfig.MinPulseWidth)
+            else if (value < Program.SysConfig.LaserConfig.MinPulseWidth)
             {
                 this.btnFire.BackColor = Color.LightSalmon;
                 this.btnFire.Text = Res.LaserCtrl.StrSmallPulse;

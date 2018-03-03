@@ -27,7 +27,7 @@ namespace CII.LAR
             this.WindowState = FormWindowState.Maximized;
             InitializeComponent();
             videoFiles = new List<string>();
-            string folderName = SysConfig.GetSysConfig().StorePath;
+            string folderName = Program.SysConfig.StorePath;
             string[] extesnsions = new string[] { ".png", ".avi" };
             var files = GetFiles(folderName, extesnsions, SearchOption.TopDirectoryOnly);
             //this.imageListView.View = Manina.Windows.Forms.View.Gallery;

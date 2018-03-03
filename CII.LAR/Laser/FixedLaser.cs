@@ -54,8 +54,8 @@ namespace CII.LAR.Laser
         {
             this.videoControl = videoControl;
             float pulseSize = Program.SysConfig.LaserConfig.PulseSize;
-            OutterCircleSize = new SizeF(pulseSize + Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Circle").ExclusionSize, 
-                pulseSize + Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Circle").ExclusionSize);
+            OutterCircleSize = new SizeF(pulseSize + this.GraphicsProperties.ExclusionSize, 
+                pulseSize + this.GraphicsProperties.ExclusionSize);
             InnerCircleSize = new SizeF(pulseSize, pulseSize);
             this.GraphicsProperties.GraphicsPropertiesChangedHandler += GraphicsPropertiesChangedHandler;
         }
@@ -129,7 +129,7 @@ namespace CII.LAR.Laser
         {
             g.DrawLine(new Pen(Color.Black, this.GraphicsProperties.PenWidth),
                 InnerCircle.CenterPoint.X, InnerCircle.CenterPoint.Y - 10 * this.GraphicsProperties.TargetSize,
-                InnerCircle.CenterPoint.X, InnerCircle.CenterPoint.Y + 10 *this.GraphicsProperties.TargetSize);
+                InnerCircle.CenterPoint.X, InnerCircle.CenterPoint.Y + 10 * this.GraphicsProperties.TargetSize);
 
             g.DrawLine(new Pen(Color.Black, this.GraphicsProperties.PenWidth),
                 InnerCircle.CenterPoint.X - 10 * this.GraphicsProperties.TargetSize, InnerCircle.CenterPoint.Y,

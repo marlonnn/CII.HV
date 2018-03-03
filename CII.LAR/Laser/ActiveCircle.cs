@@ -242,7 +242,6 @@ namespace CII.LAR.Laser
         private void InitializeGraphicsProperties()
         {
             this.GraphicsProperties = GraphicsPropertiesManager.GetPropertiesByName("Circle");
-            this.GraphicsProperties.Color = Color.Yellow;
         }
 
         public void OnMouseDown(Point point)

@@ -14,7 +14,7 @@ namespace CII.LAR.UI
 {
     public partial class LaserHoleSize : BaseCtrl
     {
-        private List<HolePulsePoint> holePulsePoints;
+        //private List<HolePulsePoint> Program.SysConfig.LaserConfig.HolePulsePoints;
         private GraphicsPropertiesManager graphicsPropertiesManager = Program.SysConfig.GraphicsPropertiesManager;
 
         private GraphicsProperties graphicsProperties;
@@ -45,20 +45,21 @@ namespace CII.LAR.UI
 
         private void InitializeHolePulsePoints()
         {
-            holePulsePoints = Program.SysConfig.LaserConfig.HolePulsePoints;
             CalPiecewiseFunction();
         }
 
         private void InitializeSlider()
         {
-            this.sliderPulse.SetMinMaxValue(5, 2500);
-            this.sliderPulse.SetValue(5);
+            this.sliderPulse.SetMinMaxValue(5, 1600);
+            this.sliderPulse.SetValue(Program.SysConfig.LaserConfig.PulseWidth);
+            this.sliderPulse.Slider.Value = (int)(Program.SysConfig.LaserConfig.PulseWidth * 1000);
             this.sliderPulse.SliderValueChangedHandler += PulseSliderValueChangedHandler;
         }
 
+
         private void InitializeChartSeries()
         {
-            this.chart1.ChartAreas[0].AxisX.Maximum = 2.500d;
+            this.chart1.ChartAreas[0].AxisX.Maximum = 1.600d;
             this.chart1.ChartAreas[0].AxisX.Minimum = 0.005d;
             this.chart1.ChartAreas[0].AxisX.LabelStyle.Format = "0.00";
             this.chart1.ChartAreas[0].AxisX.Title = "ms";
@@ -88,13 +89,13 @@ namespace CII.LAR.UI
 
         private void RemovePoint(HolePulsePoint point)
         {
-            if (holePulsePoints != null)
+            if (Program.SysConfig.LaserConfig.HolePulsePoints != null)
             {
-                for (int i = 0; i < holePulsePoints.Count; i++)
+                for (int i = 0; i < Program.SysConfig.LaserConfig.HolePulsePoints.Count; i++)
                 {
-                    if (holePulsePoints[i].X == point.X)
+                    if (Program.SysConfig.LaserConfig.HolePulsePoints[i].X == point.X)
                     {
-                        holePulsePoints.Remove(holePulsePoints[i]);
+                        Program.SysConfig.LaserConfig.HolePulsePoints.Remove(Program.SysConfig.LaserConfig.HolePulsePoints[i]);
                     }
                 }
                 CalPiecewiseFunction();
@@ -103,22 +104,22 @@ namespace CII.LAR.UI
 
         private void AddPoint(HolePulsePoint point)
         {
-            if (holePulsePoints != null)
+            if (Program.SysConfig.LaserConfig.HolePulsePoints != null)
             {
-                holePulsePoints.Add(point);
+                Program.SysConfig.LaserConfig.HolePulsePoints.Add(point);
                 CalPiecewiseFunction();
             }
         }
 
         private void UpdatePoint(HolePulsePoint point)
         {
-            if (holePulsePoints != null && holePulsePoints.Count > 0)
+            if (Program.SysConfig.LaserConfig.HolePulsePoints != null && Program.SysConfig.LaserConfig.HolePulsePoints.Count > 0)
             {
-                for (int i = 0; i < holePulsePoints.Count; i++)
+                for (int i = 0; i < Program.SysConfig.LaserConfig.HolePulsePoints.Count; i++)
                 {
-                    if (holePulsePoints[i].X == point.X)
+                    if (Program.SysConfig.LaserConfig.HolePulsePoints[i].X == point.X)
                     {
-                        holePulsePoints[i].Y = point.Y;
+                        Program.SysConfig.LaserConfig.HolePulsePoints[i].Y = point.Y;
                     }
                 }
                 CalPiecewiseFunction();
@@ -128,11 +129,11 @@ namespace CII.LAR.UI
         private bool CheckPoint(HolePulsePoint point)
         {
             bool exist = false;
-            if (holePulsePoints != null && holePulsePoints.Count > 0)
+            if (Program.SysConfig.LaserConfig.HolePulsePoints != null && Program.SysConfig.LaserConfig.HolePulsePoints.Count > 0)
             {
-                for (int i=0; i< holePulsePoints.Count; i++)
+                for (int i=0; i< Program.SysConfig.LaserConfig.HolePulsePoints.Count; i++)
                 {
-                    if (holePulsePoints[i].X == point.X)
+                    if (Program.SysConfig.LaserConfig.HolePulsePoints[i].X == point.X)
                     {
                         exist = true;
                     }
@@ -144,11 +145,11 @@ namespace CII.LAR.UI
         private bool CheckPoint(float x)
         {
             bool exist = false;
-            if (holePulsePoints != null && holePulsePoints.Count > 0)
+            if (Program.SysConfig.LaserConfig.HolePulsePoints != null && Program.SysConfig.LaserConfig.HolePulsePoints.Count > 0)
             {
-                for (int i = 0; i < holePulsePoints.Count; i++)
+                for (int i = 0; i < Program.SysConfig.LaserConfig.HolePulsePoints.Count; i++)
                 {
-                    if (holePulsePoints[i].X == x)
+                    if (Program.SysConfig.LaserConfig.HolePulsePoints[i].X == x)
                     {
                         exist = true;
                     }
@@ -159,20 +160,20 @@ namespace CII.LAR.UI
 
         private void SortPoints()
         {
-            holePulsePoints.Sort((p1, p2) => p1.X.CompareTo(p2.X));
+            Program.SysConfig.LaserConfig.HolePulsePoints.Sort((p1, p2) => p1.X.CompareTo(p2.X));
         }
 
         private void CalPiecewiseFunction()
         {
-            if (holePulsePoints != null && holePulsePoints.Count > 0)
+            if (Program.SysConfig.LaserConfig.HolePulsePoints != null && Program.SysConfig.LaserConfig.HolePulsePoints.Count > 0)
             {
                 SortPoints();
                 this.chart1.Series[0].Points.Clear();
-                for (int i=0; i<holePulsePoints.Count; i++)
+                for (int i=0; i<Program.SysConfig.LaserConfig.HolePulsePoints.Count; i++)
                 {
-                    if (i + 1 < holePulsePoints.Count)
+                    if (i + 1 < Program.SysConfig.LaserConfig.HolePulsePoints.Count)
                     {
-                        CalSlopeFunction(holePulsePoints[i], holePulsePoints[i + 1]);
+                        CalSlopeFunction(Program.SysConfig.LaserConfig.HolePulsePoints[i], Program.SysConfig.LaserConfig.HolePulsePoints[i + 1]);
                     }
                 }
             }
@@ -208,11 +209,11 @@ namespace CII.LAR.UI
 
         private void CalXY(float value)
         {
-            for (int i = 0; i < holePulsePoints.Count - 1; i++)
+            for (int i = 0; i < Program.SysConfig.LaserConfig.HolePulsePoints.Count - 1; i++)
             {
                 var x = value;
-                double k = (holePulsePoints[i + 1].Y - holePulsePoints[i].Y) / (holePulsePoints[i + 1].X - holePulsePoints[i].X);
-                var y = k * (value - holePulsePoints[i].X) + holePulsePoints[i].Y;
+                double k = (Program.SysConfig.LaserConfig.HolePulsePoints[i + 1].Y - Program.SysConfig.LaserConfig.HolePulsePoints[i].Y) / (Program.SysConfig.LaserConfig.HolePulsePoints[i + 1].X - Program.SysConfig.LaserConfig.HolePulsePoints[i].X);
+                var y = k * (value - Program.SysConfig.LaserConfig.HolePulsePoints[i].X) + Program.SysConfig.LaserConfig.HolePulsePoints[i].Y;
                 CurrentPoint = new HolePulsePoint(x, (float)y);
             }
         }

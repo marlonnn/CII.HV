@@ -29,19 +29,6 @@ namespace CII.LAR.DrawTools
 
         private const int DigitWidth = 6;
 
-        private GraphicsPropertiesManager graphicsPropertiesManager = Program.SysConfig.GraphicsPropertiesManager;
-        public GraphicsPropertiesManager GraphicsPropertiesManager
-        {
-            get
-            {
-                return graphicsPropertiesManager;
-            }
-            set
-            {
-                graphicsPropertiesManager = value;
-            }
-        }
-
         private VideoControl videoControl;
 
         private float rulerStep = 100;
@@ -278,8 +265,8 @@ namespace CII.LAR.DrawTools
                 }
                 else
                 {
-                    using (Pen pen = new Pen(GraphicsPropertiesManager.GetPropertiesByName("Ruler").Color,
-                        GraphicsPropertiesManager.GetPropertiesByName("Ruler").PenWidth))
+                    using (Pen pen = new Pen(Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Ruler").Color,
+                        Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Ruler").PenWidth))
                     {
                         g.DrawLines(pen, logicalList.ToArray());
                         logicalList.Clear();
@@ -329,8 +316,8 @@ namespace CII.LAR.DrawTools
         {
             if (ShowRulers)
             {
-                using (Pen pen = new Pen(GraphicsPropertiesManager.GetPropertiesByName("Ruler").Color, 
-                    GraphicsPropertiesManager.GetPropertiesByName("Ruler").PenWidth))
+                using (Pen pen = new Pen(Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Ruler").Color,
+                    Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Ruler").PenWidth))
                 {
                     //g.ResetTransform();
                     DrawHorizontalRuler(g, pen);

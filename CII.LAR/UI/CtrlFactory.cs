@@ -31,6 +31,7 @@ namespace CII.LAR.UI
         private LaserCtrl laserCtrl;
         private LaserAlignment laserAlignment;
         private VideoChooseCtrl videoChooseCtrl;
+        private LaserHoleSize laserHoleSize;
 
         public static void InitializeCtrlFactory(VideoControl videoControl)
         {
@@ -47,6 +48,7 @@ namespace CII.LAR.UI
             laserCtrl = new LaserCtrl();
             this.laserAlignment = new LaserAlignment();
             videoChooseCtrl = new VideoChooseCtrl();
+            laserHoleSize = new LaserHoleSize();
         }
 
         public static CtrlFactory GetCtrlFactory()
@@ -94,6 +96,9 @@ namespace CII.LAR.UI
                     break;
                 case CtrlType.VideoChooseCtrl:
                     ctrl = this.videoChooseCtrl as T;
+                    break;
+                case CtrlType.LaserHoleSize:
+                    ctrl = this.laserHoleSize as T;
                     break;
             }
             return ctrl;

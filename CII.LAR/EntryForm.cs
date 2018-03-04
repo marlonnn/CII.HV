@@ -108,6 +108,7 @@ namespace CII.LAR
         private RulerAppearanceCtrl rulerAppearanceCtrl;
         private LaserCtrl laserCtrl;
         private LaserAlignment laserAlignment;
+        private LaserHoleSize laserHoleSize;
         private VideoChooseCtrl videoChooseCtrl;
         private DebugCtrl df;
 
@@ -278,6 +279,8 @@ namespace CII.LAR
             laserAlignment.VideoKeyDownHandler += this.OnKeyDown;
             BaseCtrls.Add(laserAlignment);
 
+            laserHoleSize = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserHoleSize>(CtrlType.LaserHoleSize);
+            BaseCtrls.Add(laserHoleSize);
             videoChooseCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<VideoChooseCtrl>(CtrlType.VideoChooseCtrl);
             videoChooseCtrl.CaptureDeviceHandler += CaptureDeviceHandler;
 
@@ -367,9 +370,9 @@ namespace CII.LAR
                 case "Laser Alignment":
                     ShowBaseCtrl(true, this.BaseCtrls[6]);
                     break;
-                    //case "Laser Hole Size":
-                    //    ShowBaseCtrl(true, this.BaseCtrls[6]);
-                    //    break;
+                case "Laser Hole Size":
+                    ShowBaseCtrl(true, this.BaseCtrls[7]);
+                    break;
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using CII.LAR.DrawTools;
+using MathNet.Numerics.LinearAlgebra;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,13 @@ namespace CII.LAR.SysClass
     [Serializable]
     public class LaserConfig
     {
+        private Matrix<double> finalMatrix;
+        public Matrix<double> FinalMatrix
+        {
+            get { return this.finalMatrix; }
+            set { this.finalMatrix = value; }
+        }
+
         private int pulseSizeRatio;
         public int PulseSizeRatio
         {
@@ -67,6 +75,7 @@ namespace CII.LAR.SysClass
             this.maxPulseWidth = 40;
             pulseSizeRatio = 2;
             pulseWidth = 0.5f;
+            this.FinalMatrix = Matrix<double>.Build.Dense(3, 3);
             InitializeHolePulsePoints();
         }
 

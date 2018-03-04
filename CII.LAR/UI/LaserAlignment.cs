@@ -103,7 +103,7 @@ namespace CII.LAR.UI
                     //计算平均转换矩阵
                     Coordinate.GetCoordinate().CalculateOtherMatix();
                     Coordinate.GetCoordinate().GetFinalMatrix();
-                    var v = Coordinate.GetCoordinate().FinalMatrix;
+                    var v = Program.SysConfig.LaserConfig.FinalMatrix;
                     Console.WriteLine(" final matrix: " + v.ToString());
                     Console.WriteLine(" final matrix Rank: " + v.Rank());
                     string matrixJsonString = JsonFile.GetJsonTextFromConfig<Matrix<double>>(v);

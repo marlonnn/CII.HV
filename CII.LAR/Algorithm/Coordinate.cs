@@ -69,13 +69,6 @@ namespace CII.LAR.Algorithm
         private List<Point> boundPoints;
         public static Coordinate coordinate;
 
-        private Matrix<double> finalMatrix;
-        public Matrix<double> FinalMatrix
-        {
-            get { return this.finalMatrix; }
-            private set { this.finalMatrix = value; }
-        }
-
         public Coordinate()
         {
             var matrixString = JsonFile.ReadJsonMatrixString();
@@ -89,13 +82,6 @@ namespace CII.LAR.Algorithm
             motorPoints.Add(2, new Point(1500, 1600));
 
             boundPoints = new List<Point>() { new Point(0, 0), new Point(0, 3000), new Point(3000, 3000), new Point(3000, 0)};
-
-            finalMatrix = mb.Dense(3, 3);
-            //if (!string.IsNullOrEmpty(matrixString))
-            //{
-            //    var finalMatrix = JsonFile.GetConfigFromJsonText<Matrix<double>>(matrixString);
-            //    Console.WriteLine(finalMatrix.ToString());
-            //}
         }
 
         private string responseCode = "";
@@ -136,9 +122,9 @@ namespace CII.LAR.Algorithm
         {
             //this.LastPoint = this.ThisPoint;
             var screenArray = mb.DenseOfArray(new double[,] { { p.X }, { p.Y }, { 1 } });
-            if (this.FinalMatrix.Rank() != 0)
+            if (Program.SysConfig.LaserConfig.FinalMatrix.Rank() != 0)
             {
-                var temp = this.FinalMatrix * screenArray;
+                var temp = Program.SysConfig.LaserConfig.FinalMatrix * screenArray;
                 this.ThisPoint = new Point((int)temp[0, 0], (int)temp[1, 0]);
             }
         }
@@ -147,9 +133,9 @@ namespace CII.LAR.Algorithm
         {
             //this.LastPoint = this.ThisPoint;
             var screenArray = mb.DenseOfArray(new double[,] { { p.X }, { p.Y }, { 1 } });
-            if (this.FinalMatrix.Rank() != 0)
+            if (Program.SysConfig.LaserConfig.FinalMatrix.Rank() != 0)
             {
-                var temp = this.FinalMatrix * screenArray;
+                var temp = Program.SysConfig.LaserConfig.FinalMatrix * screenArray;
                 this.lastPoint = new Point((int)temp[0, 0], (int)temp[1, 0]);
             }
         }
@@ -221,11 +207,11 @@ namespace CII.LAR.Algorithm
         {
             foreach (var values in transformMatrix.Values)
             {
-                FinalMatrix += values;
+                Program.SysConfig.LaserConfig.FinalMatrix += values;
             }
-            var value = FinalMatrix.Divide(transformMatrix.Values.Count);
+            var value = Program.SysConfig.LaserConfig.FinalMatrix.Divide(transformMatrix.Values.Count);
             Console.WriteLine(value.ToString());
-            this.FinalMatrix = value;
+            Program.SysConfig.LaserConfig.FinalMatrix = value;
             return value;
         }
 

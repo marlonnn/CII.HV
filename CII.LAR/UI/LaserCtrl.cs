@@ -45,7 +45,7 @@ namespace CII.LAR.UI
             graphicsProperties = graphicsPropertiesManager.GetPropertiesByName("Circle");
             InitializeComponent();
             InitializeSlider();
-
+            this.sliderCtrl.Slider.Value = (int)(Program.SysConfig.LaserConfig.PulseWidth * 1000);
             this.sliderCtrl.Slider.MouseUp += Slider_MouseUp;
         }
 

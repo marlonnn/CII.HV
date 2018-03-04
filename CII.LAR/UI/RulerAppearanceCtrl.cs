@@ -24,6 +24,15 @@ namespace CII.LAR.UI
             InitializeComponent();
         }
 
+        private void SetSliderValue()
+        {
+            //this.sliderTargetSize.Value = graphicsProperties.TargetSize;
+            this.sliderThickness.Value = graphicsProperties.PenWidth;
+            this.sliderTransparency.Value = graphicsProperties.Alpha * (100 / 0xFF);
+            //this.sliderTickLength.Value = graphicsProperties.TargetSize;
+            this.sliderColour.Value = graphicsProperties.ColorIndex() * 10;
+        }
+
         private void btnLaserCtrl_Click(object sender, EventArgs e)
         {
             ClickDelegateHandler?.Invoke(sender, "Statistics control");
@@ -46,7 +55,7 @@ namespace CII.LAR.UI
         {
             var name = this.cmboxRuler.SelectedItem.ToString();
             graphicsProperties = graphicsPropertiesManager.GetPropertiesByName(name);
-
+            SetSliderValue();
 
         }
 

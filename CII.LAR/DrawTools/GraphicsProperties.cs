@@ -222,6 +222,20 @@ namespace CII.LAR.DrawTools
             }
         }
 
+        public int ColorIndex()
+        {
+            int index = 0;
+            for (int i=0; i<ColorSets.Length; i++)
+            {
+                if (this.color == ColorSets[i])
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
+        }
+
         // set default value
         [OnDeserializing]
         private void OnDeserializing(StreamingContext sc)

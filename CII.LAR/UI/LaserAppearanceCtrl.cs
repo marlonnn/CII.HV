@@ -28,6 +28,12 @@ namespace CII.LAR.UI
             this.ShowIndex = 3;
             graphicsProperties = graphicsPropertiesManager.GetPropertiesByName("Circle");
             InitializeComponent();
+
+            this.sliderTargetSize.Value = graphicsProperties.TargetSize;
+            this.sliderThickness.Value = graphicsProperties.PenWidth;
+            this.sliderTransparency.Value = graphicsProperties.Alpha * (100 / 0xFF);
+            this.sliderZoneSize.Value = graphicsProperties.ExclusionSize;
+            this.sliderZoneColour.Value = graphicsProperties.ColorIndex() * 10;
         }
 
         private void btnLaserCtrl_Click(object sender, EventArgs e)

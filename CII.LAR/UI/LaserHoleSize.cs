@@ -33,7 +33,7 @@ namespace CII.LAR.UI
         public LaserHoleSize()
         {
             resources = new ComponentResourceManager(typeof(LaserHoleSize));
-            this.ShowIndex = 7;
+            this.ShowIndex = 8;
             graphicsProperties = graphicsPropertiesManager.GetPropertiesByName("Circle");
             InitializeComponent();
             InitializeSlider();

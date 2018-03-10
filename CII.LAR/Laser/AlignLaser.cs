@@ -122,8 +122,9 @@ namespace CII.LAR.Laser
                     ClickPoint = e.Location;
                     Count = 0;
                     ButtonStateHandler?.Invoke(true);
-                    Coordinate.GetCoordinate().AddPoint(Index, e.Location);
+                    Coordinate.GetCoordinate().AddPoint(Index, new PointF(e.Location.X / videoControl.Zoom, e.Location.Y / videoControl.Zoom));
                 }
+                Console.WriteLine(e.Location.ToString());
             }
         }
 

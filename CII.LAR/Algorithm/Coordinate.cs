@@ -48,7 +48,7 @@ namespace CII.LAR.Algorithm
         }
 
         //屏幕坐标系坐标
-        private Dictionary<int, Point> clickPointsDic;
+        private Dictionary<int, PointF> clickPointsDic;
 
         private MatrixBuilder<double> mb = Matrix<double>.Build;
 
@@ -74,7 +74,7 @@ namespace CII.LAR.Algorithm
             var matrixString = JsonFile.ReadJsonMatrixString();
 
 
-            clickPointsDic = new Dictionary<int, Point>();
+            clickPointsDic = new Dictionary<int, PointF>();
             transformMatrix = new Dictionary<int, Matrix<double>>();
             motorPoints = new Dictionary<int, Point>();
             motorPoints.Add(0, new Point(1400, 1400));
@@ -281,7 +281,7 @@ namespace CII.LAR.Algorithm
         /// </summary>
         /// <param name="index"></param>
         /// <param name="point"></param>
-        public void AddPoint(int index, Point point)
+        public void AddPoint(int index, PointF point)
         {
             if (clickPointsDic.ContainsKey(index))
             {
@@ -300,7 +300,7 @@ namespace CII.LAR.Algorithm
         /// </summary>
         public void CalculateFirstMatrix()
         {
-            List<Point> sps = new List<Point>();
+            List<PointF> sps = new List<PointF>();
             if (clickPointsDic.Count > 2)
             {
                 foreach (var value in clickPointsDic.Values)
@@ -328,7 +328,7 @@ namespace CII.LAR.Algorithm
         /// <param name="index"></param>
         public void CalculateOtherMatix(List<int> indexs, int index)
         {
-            List<Point> sps = new List<Point>();
+            List<PointF> sps = new List<PointF>();
             List<Point> mps = new List<Point>();
             foreach (int i in indexs)
             {
@@ -377,7 +377,7 @@ namespace CII.LAR.Algorithm
         /// <param name="motorPoints">电机坐标系上的点</param>
         /// <param name="screenPoints">屏幕上的点</param>
         /// <returns></returns>
-        public Matrix<double> CalculateTransformMatrix(List<Point> motorPoints ,List<Point> screenPoints)
+        public Matrix<double> CalculateTransformMatrix(List<Point> motorPoints ,List<PointF> screenPoints)
         {
             double[,] mps = { { motorPoints[0].X, motorPoints[1].X, motorPoints[2].X }, { motorPoints[0].Y, motorPoints[1].Y, motorPoints[2].Y }, { 1, 1, 1 } };
             var motorArray = mb.DenseOfArray(mps);

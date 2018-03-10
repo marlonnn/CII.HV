@@ -139,7 +139,7 @@ namespace CII.LAR.UI
             {
                 this.Visible = false;
                 this.Enabled = false;
-                //this.pictureBox.ZoomFit();
+                this.VideoControl.ZoomFit();
             }
         }
 

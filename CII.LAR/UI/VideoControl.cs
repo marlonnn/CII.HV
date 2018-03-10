@@ -180,8 +180,16 @@ namespace CII.LAR.UI
             }
         }
 
+        private Size videoSize;
+        public Size VideoSize
+        {
+            get { return this.videoSize; }
+            set { this.videoSize = value; }
+        }
+
         public VideoControl()
         {
+            VideoSize = new Size(1280, 960);
             this.DoubleBuffered = true;
             this.GraphicsList = new GraphicsList();
             this.rulers = new Rulers(this);
@@ -333,6 +341,61 @@ namespace CII.LAR.UI
             {
                 rulers.Draw(e.Graphics);
             }
+        }
+
+        private Point mousePos;
+        private int offsetX;
+        public int OffsetX
+        {
+            get
+            {
+                return offsetX;
+            }
+            set
+            {
+                offsetX = value;
+            }
+        }
+
+        private int offsetY;
+        public int OffsetY
+        {
+            get
+            {
+                return offsetY;
+            }
+            set
+            {
+                offsetY = value;
+            }
+        }
+
+        public void ZoomHandler(MouseEventArgs e, bool zoomIn)
+        {
+            if (zoomIn)
+            {
+                Zoom = 1.5f;
+                Size parentSize = this.Parent.Size;
+
+                PointF newPoint = new PointF(e.Location.X, e.Location.Y);
+
+                Size size = Size.Ceiling(new SizeF(VideoSize.Width * Zoom, VideoSize.Height * Zoom));
+                PointF centerPoint = new PointF((parentSize.Width - size.Width) / 2, (parentSize.Height - size.Height) / 2);
+                Rectangle rect = new Rectangle(Point.Ceiling(centerPoint), size);
+
+                this.Bounds = rect;
+            }
+            else
+            {
+                ZoomFit();
+            }
+        }
+
+        public void ZoomFit()
+        {
+            this.Zoom = 1;
+            Size size = this.Parent.Size;
+            this.Bounds = new Rectangle((size.Width - VideoSize.Width) / 2, (size.Height - VideoSize.Height) / 2, VideoSize.Width, VideoSize.Height);
         }
 
         private void VideoControl_KeyDown(object sender, KeyEventArgs e)

@@ -367,7 +367,8 @@ namespace CII.LAR.DrawTools
             SolidBrush brush = new SolidBrush(Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Text").Color);
             RectangleF r = GetTextF(this.Name, g, this.ID);
             r.Offset(MovingOffset);
-            g.DrawString(this.Name, this.Font, brush, r);
+            
+            g.DrawString(this.Name, this.Font, brush, new RectangleF(r.X * videoControl.Zoom, r.Y * videoControl.Zoom, r.Width * videoControl.Zoom, r.Height * videoControl.Zoom));
             brush.Dispose();
         }
 

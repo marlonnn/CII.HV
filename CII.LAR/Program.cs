@@ -70,11 +70,11 @@ namespace CII.LAR
                 _sysConfig = SysConfig.Load();
                 _sysConfigOrigin = SysConfig.Load();
 
-                CII.Library.LoadingForm frm = new Library.LoadingForm();
-                Bitmap bitmap = new Bitmap("test.png");
-                frm.SetLoadingImage((Image)bitmap);
-                frm.SetLoadingName("Welcome");
-                frm.ShowDialog();
+                //CII.Library.LoadingForm frm = new Library.LoadingForm();
+                //Bitmap bitmap = new Bitmap("test.png");
+                //frm.SetLoadingImage((Image)bitmap);
+                //frm.SetLoadingName("Welcome");
+                //frm.ShowDialog();
 
                 //SendCommand sendCmd40 = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Read);
                 //RecvCommand recvCmd40 = (RecvCommand)PortManager.GetInstance().Send("LAR", sendCmd40);

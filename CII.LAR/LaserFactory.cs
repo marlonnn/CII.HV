@@ -35,7 +35,7 @@ namespace CII.LAR
             this.fixedLaser = new FixedLaser(videoControl);
             this.activeLaser = new ActiveLaser(videoControl);
             this.alignLaser = new AlignLaser(videoControl);
-            //alignLaser.ZoomHandler += videoControl.ZoomHandler;
+            this.alignLaser.ZoomHandler += videoControl.ZoomHandler;
             alignLaser.ButtonStateHandler += Program.EntryForm.ButtonStateHandler;
         }
 

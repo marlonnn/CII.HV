@@ -59,7 +59,6 @@ namespace CII.LAR
         }
         #endregion
 
-        private Size videoSize = new Size(1280, 960);
         private FullScreen fullScreen;
         private FormWindowState tempWindowState;
 
@@ -239,6 +238,8 @@ namespace CII.LAR
             LaserType = LaserType.SaturnFixed;
 
             Coordinate.GetCoordinate().MoveStepHandler += MoveStepHandler;
+            this.videoControl.OffsetX = (this.Width - this.videoControl.VideoSize.Width) / 2;
+            this.videoControl.OffsetY = (this.Height - this.videoControl.VideoSize.Height) / 2;
         }
 
         private void MoveStepHandler(int x, byte ox, int y, byte oy)
@@ -293,6 +294,7 @@ namespace CII.LAR
             videoDevice = new VideoCaptureDevice(deviceMoniker);
             if (videoDevice != null)
             {
+                Size videoSize = this.videoControl.VideoSize;
                 this.videoControl.Bounds = new Rectangle((this.Width - videoSize.Width) / 2, (this.Height - videoSize.Height) / 2, videoSize.Width, videoSize.Height);
                 this.videoControl.VideoSource = videoDevice;
                 this.videoControl.VideoSource.NewFrame += new NewFrameEventHandler(VideoSource_NewFrame);
@@ -487,6 +489,7 @@ namespace CII.LAR
 
         private void ChangeVideoCtrlSize()
         {
+            Size videoSize = this.videoControl.VideoSize;
             this.videoControl.Bounds = new Rectangle((this.Width - videoSize.Width) / 2, (this.Height - videoSize.Height) / 2, videoSize.Width, videoSize.Height);
         }
 
@@ -755,7 +758,7 @@ namespace CII.LAR
 
         public void ButtonStateHandler(bool isEnable)
         {
-            LaserAlignment laserAlignment = controls[5] as LaserAlignment;
+            LaserAlignment laserAlignment = controls[6] as LaserAlignment;
             if (laserAlignment != null)
             {
                 laserAlignment.ButtonNext(isEnable);
@@ -857,21 +860,22 @@ namespace CII.LAR
         private void toolStripButtonZoomIn_Click(object sender, EventArgs e)
         {
             Zoom += 0.1f;
+            Size videoSize = this.videoControl.VideoSize;
             Size size = Size.Ceiling(new SizeF(videoSize.Width * Zoom, videoSize.Height * Zoom));
-            this.videoControl.Bounds = new Rectangle((this.Width - size.Width) / 2, (this.Height - size.Height) / 2, size.Width, size.Height);
+            this.videoControl.Bounds = new Rectangle((this.Width - size.Width) / 2 - 50, (this.Height - size.Height) / 2 -50, size.Width, size.Height);
         }
 
         private void toolStripButtonZoomOut_Click(object sender, EventArgs e)
         {
             Zoom -= 0.1f;
+            Size videoSize = this.videoControl.VideoSize;
             Size size = Size.Ceiling(new SizeF(videoSize.Width * Zoom, videoSize.Height * Zoom));
             this.videoControl.Bounds = new Rectangle((this.Width - size.Width) / 2, (this.Height - size.Height) / 2, size.Width, size.Height);
         }
 
         private void toolStripButtonFit_Click(object sender, EventArgs e)
         {
-            Zoom = 1;
-            this.videoControl.Bounds = new Rectangle((this.Width - videoSize.Width) / 2, (this.Height - videoSize.Height) / 2, videoSize.Width, videoSize.Height);
+            this.videoControl.ZoomFit();
         }
 
         private void viewLog(string[] logname)

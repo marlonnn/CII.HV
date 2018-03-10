@@ -61,7 +61,6 @@
             this.toolStripButtonOpen = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownCamera = new System.Windows.Forms.ToolStripDropDownButton();
             this.openCameraLiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openCameraAndStopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeCameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.freeRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.snapshotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -310,7 +309,6 @@
             this.toolStripDropDownCamera.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripDropDownCamera.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openCameraLiveToolStripMenuItem,
-            this.openCameraAndStopToolStripMenuItem,
             this.closeCameraToolStripMenuItem,
             this.freeRunToolStripMenuItem,
             this.snapshotToolStripMenuItem});
@@ -323,11 +321,6 @@
             this.openCameraLiveToolStripMenuItem.Name = "openCameraLiveToolStripMenuItem";
             resources.ApplyResources(this.openCameraLiveToolStripMenuItem, "openCameraLiveToolStripMenuItem");
             this.openCameraLiveToolStripMenuItem.Click += new System.EventHandler(this.openCameraLiveToolStripMenuItem_Click);
-            // 
-            // openCameraAndStopToolStripMenuItem
-            // 
-            this.openCameraAndStopToolStripMenuItem.Name = "openCameraAndStopToolStripMenuItem";
-            resources.ApplyResources(this.openCameraAndStopToolStripMenuItem, "openCameraAndStopToolStripMenuItem");
             // 
             // closeCameraToolStripMenuItem
             // 
@@ -455,7 +448,6 @@
         private System.Windows.Forms.ToolStripMenuItem snapshot;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownCamera;
         private System.Windows.Forms.ToolStripMenuItem openCameraLiveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openCameraAndStopToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeCameraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem freeRunToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem snapshotToolStripMenuItem;

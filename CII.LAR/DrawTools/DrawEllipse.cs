@@ -142,7 +142,10 @@ namespace CII.LAR.DrawTools
         {
             if (ellipseForDraw == null)
             {
-                ellipseForDraw = new Ellipse(startPoint, endPoint, coeffcient, drawAreaSize);
+                var s = new PointF(startPoint.X * videoControl.Zoom, startPoint.Y * videoControl.Zoom);
+                var e = new PointF(endPoint.X * videoControl.Zoom, endPoint.Y * videoControl.Zoom);
+                var size = new Size((int)(drawAreaSize.Width * videoControl.Zoom), (int)(drawAreaSize.Height * videoControl.Zoom));
+                ellipseForDraw = new Ellipse(s, e, coeffcient, size);
             }
 
             g.SmoothingMode = SmoothingMode.AntiAlias;

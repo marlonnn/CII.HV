@@ -87,7 +87,7 @@ namespace CII.LAR.DrawTools
 
             using (Pen pen = new Pen(Color.FromArgb(GraphicsProperties.Alpha, GraphicsProperties.Color), GraphicsProperties.PenWidth))
             {
-                g.DrawLine(pen, startDataPoint.X, startDataPoint.Y, endDataPoint.X, endDataPoint.Y);
+                g.DrawLine(pen, startDataPoint.X * videoControl.Zoom, startDataPoint.Y * videoControl.Zoom, endDataPoint.X * videoControl.Zoom, endDataPoint.Y * videoControl.Zoom);
             }
         }
 

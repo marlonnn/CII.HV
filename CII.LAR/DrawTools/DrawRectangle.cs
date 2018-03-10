@@ -63,7 +63,7 @@ namespace CII.LAR.DrawTools
         {
             g.SmoothingMode = SmoothingMode.AntiAlias;
 
-            Rectangle r = GetNormalizedRectangle(GetRectangle());
+            RectangleF r = GetNormalizedRectangle(GetRectangle());
             using (Pen pen = new Pen(Color.FromArgb(GraphicsProperties.Alpha, GraphicsProperties.Color), GraphicsProperties.PenWidth))
             {
                 if (IsMoving)
@@ -73,7 +73,7 @@ namespace CII.LAR.DrawTools
                 }
 
                 rectangle.Offset(MovingOffset);
-                g.DrawRectangle(pen, r);
+                g.DrawRectangle(pen, Rectangle.Ceiling(r));
             }
         }
 
@@ -84,7 +84,7 @@ namespace CII.LAR.DrawTools
                 sizeF.Width, sizeF.Height);
         }
 
-        public static Rectangle GetNormalizedRectangle(Rectangle r)
+        public RectangleF GetNormalizedRectangle(RectangleF r)
         {
             return GetNormalizedRectangle(r.X, r.Y, r.X + r.Width, r.Y + r.Height);
         }
@@ -97,23 +97,23 @@ namespace CII.LAR.DrawTools
         /// <param name="x2"></param>
         /// <param name="y2"></param>
         /// <returns></returns>
-        public static Rectangle GetNormalizedRectangle(int x1, int y1, int x2, int y2)
+        public RectangleF GetNormalizedRectangle(float x1, float y1, float x2, float y2)
         {
             if (x2 < x1)
             {
-                int tmp = x2;
+                float tmp = x2;
                 x2 = x1;
                 x1 = tmp;
             }
 
             if (y2 < y1)
             {
-                int tmp = y2;
+                float tmp = y2;
                 y2 = y1;
                 y1 = tmp;
             }
 
-            return new Rectangle(x1, y1, x2 - x1, y2 - y1);
+            return new RectangleF(x1 * this.videoControl.Zoom, y1 * this.videoControl.Zoom, (x2 - x1) * this.videoControl.Zoom, (y2 - y1) * this.videoControl.Zoom);
         }
 
         /// <summary>
@@ -123,8 +123,8 @@ namespace CII.LAR.DrawTools
         /// <returns></returns>
         public override Point GetHandle(VideoControl videoControl, int handleNumber)
         {
-            int x, y, xCenter, yCenter;
-            Rectangle rectangle = GetRectangle();
+            float x, y, xCenter, yCenter;
+            RectangleF rectangle = GetRectangle();
 
             xCenter = rectangle.X + rectangle.Width / 2;
             yCenter = rectangle.Y + rectangle.Height / 2;
@@ -167,14 +167,14 @@ namespace CII.LAR.DrawTools
                     break;
             }
 
-            return new Point(x, y);
+            return new Point((int)x, (int)y);
 
         }
 
         public override void Move(VideoControl videoControl, int deltaX, int deltaY)
         {
-            Rectangle rect = GetRectangle();
-            SetRectangle(new Rectangle(rect.X + deltaX, rect.Y + deltaY, rect.Width, rect.Height));
+            RectangleF rect = GetRectangle();
+            SetRectangle(new RectangleF(rect.X + deltaX, rect.Y + deltaY, rect.Width, rect.Height));
         }
 
         /// <summary>
@@ -241,7 +241,7 @@ namespace CII.LAR.DrawTools
             return string.Format("{0:F2} {1}²", Math.Abs(area), videoControl.UnitOfMeasure.ToString());
         }
 
-        private void SetRectangle(Rectangle r)
+        private void SetRectangle(RectangleF r)
         {
             PointF dataLeftTop = new PointF(r.Left, r.Top);
             PointF dataRightBottom = new PointF(r.Right, r.Bottom);
@@ -251,17 +251,17 @@ namespace CII.LAR.DrawTools
             dataBottom = dataRightBottom.Y;
         }
 
-        protected Rectangle GetRectangle()
+        protected RectangleF GetRectangle()
         {
             return ToDrawRectangle(dataLeft, dataRight, dataTop, dataBottom);
         }
 
-        private Rectangle ToDrawRectangle(float left, float right, float top, float bottom)
+        private RectangleF ToDrawRectangle(float left, float right, float top, float bottom)
         {
             Point leftTop = Point.Ceiling(new PointF(left, top));
             Point rightBottom = Point.Ceiling(new PointF(right, bottom));
 
-            return new Rectangle(leftTop.X, leftTop.Y, rightBottom.X - leftTop.X, rightBottom.Y - leftTop.Y);
+            return new RectangleF(leftTop.X, leftTop.Y, rightBottom.X - leftTop.X, rightBottom.Y - leftTop.Y);
         }
 
         /// <summary>
@@ -302,8 +302,8 @@ namespace CII.LAR.DrawTools
 
         public override HitTestResult HitTestForSelection(VideoControl videoControl, Point point)
         {
-            Rectangle rectGate = GetRectangle();
-            Rectangle rectLarge = rectGate, rectSamll = rectGate;
+            RectangleF rectGate = GetRectangle();
+            RectangleF rectLarge = rectGate, rectSamll = rectGate;
             rectLarge.Inflate(SelectionHitTestWidth, SelectionHitTestWidth);
             rectSamll.Inflate(-SelectionHitTestWidth, -SelectionHitTestWidth);
 

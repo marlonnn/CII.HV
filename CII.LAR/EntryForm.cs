@@ -62,24 +62,6 @@ namespace CII.LAR
         private FullScreen fullScreen;
         private FormWindowState tempWindowState;
 
-        public float Zoom
-        {
-            get
-            {
-                return this.videoControl.Zoom;
-            }
-            set
-            {
-                if (value != this.videoControl.Zoom)
-                {
-                    this.videoControl.Zoom = value;
-                }
-                //if zoom == 1,enable draw tools and show graphics
-                //else disable draw tools and hide graphics
-                EnableDrawTools(this.videoControl.Zoom == 1);
-            }
-        }
-
         #region BaseCtrl
         private BaseCtrl baseCtrl;
         [BrowsableAttribute(false)]
@@ -238,8 +220,6 @@ namespace CII.LAR
             LaserType = LaserType.SaturnFixed;
 
             Coordinate.GetCoordinate().MoveStepHandler += MoveStepHandler;
-            this.videoControl.OffsetX = (this.Width - this.videoControl.VideoSize.Width) / 2;
-            this.videoControl.OffsetY = (this.Height - this.videoControl.VideoSize.Height) / 2;
         }
 
         private void MoveStepHandler(int x, byte ox, int y, byte oy)
@@ -859,23 +839,20 @@ namespace CII.LAR
 
         private void toolStripButtonZoomIn_Click(object sender, EventArgs e)
         {
-            Zoom += 0.1f;
-            Size videoSize = this.videoControl.VideoSize;
-            Size size = Size.Ceiling(new SizeF(videoSize.Width * Zoom, videoSize.Height * Zoom));
-            this.videoControl.Bounds = new Rectangle((this.Width - size.Width) / 2 - 50, (this.Height - size.Height) / 2 -50, size.Width, size.Height);
+            this.videoControl.ZoomIn();
+            EnableDrawTools(this.videoControl.Zoom == 1.0f);
         }
 
         private void toolStripButtonZoomOut_Click(object sender, EventArgs e)
         {
-            Zoom -= 0.1f;
-            Size videoSize = this.videoControl.VideoSize;
-            Size size = Size.Ceiling(new SizeF(videoSize.Width * Zoom, videoSize.Height * Zoom));
-            this.videoControl.Bounds = new Rectangle((this.Width - size.Width) / 2, (this.Height - size.Height) / 2, size.Width, size.Height);
+            this.videoControl.ZoomOut();
+            EnableDrawTools(this.videoControl.Zoom == 1.0f);
         }
 
         private void toolStripButtonFit_Click(object sender, EventArgs e)
         {
             this.videoControl.ZoomFit();
+            EnableDrawTools(this.videoControl.Zoom == 1.0f);
         }
 
         private void viewLog(string[] logname)

@@ -67,12 +67,6 @@ namespace CII.LAR.UI
             T ctrl = null;
             switch (ctrlType)
             {
-                //case CtrlType.LaserHoleSize:
-                //    ctrl = this.laserHoleSize as T;
-                //    break;
-                //case CtrlType.StatisticsCtrl:
-                //    ctrl = this.statisticsCtrl as T;
-                //    break;
                 case CtrlType.SettingCtrl:
                     ctrl = this.settingCtrl as T;
                     break;

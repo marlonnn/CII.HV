@@ -122,7 +122,9 @@ namespace CII.LAR.Laser
                     ClickPoint = e.Location;
                     Count = 0;
                     ButtonStateHandler?.Invoke(true);
-                    Coordinate.GetCoordinate().AddPoint(Index, new PointF(e.Location.X / videoControl.Zoom, e.Location.Y / videoControl.Zoom));
+                    PointF pointF = new PointF(e.Location.X / videoControl.Zoom, e.Location.Y / videoControl.Zoom);
+                    Coordinate.GetCoordinate().AddPoint(Index, pointF);
+                    Console.WriteLine("add point: " + pointF.ToString());
                 }
                 Console.WriteLine(e.Location.ToString());
             }
@@ -173,13 +175,13 @@ namespace CII.LAR.Laser
                 g.CompositingQuality = CompositingQuality.HighQuality;
                 g.SmoothingMode = SmoothingMode.AntiAlias;
 
-                g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(AlignCircle.Rectangle.X * this.videoControl.Zoom, AlignCircle.Rectangle.Y * this.videoControl.Zoom, AlignCircle.Rectangle.Width * this.videoControl.Zoom, AlignCircle.Rectangle.Height * this.videoControl.Zoom));
-                Circle circle2 = new Circle(AlignCircle.CenterPoint, 
-                    new Size((int)(1.4 * AlignCircle.Rectangle.Width), (int)(1.4 * AlignCircle.Rectangle.Width)));
-                Circle circle3 = new Circle(AlignCircle.CenterPoint, 
-                    new Size((int)(1.4 * circle2.Rectangle.Width), (int)(1.4 * circle2.Rectangle.Width)));
-                g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(circle2.Rectangle.X * this.videoControl.Zoom, circle2.Rectangle.Y * this.videoControl.Zoom, circle2.Rectangle.Width * this.videoControl.Zoom, circle2.Rectangle.Height * this.videoControl.Zoom));
-                g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(circle3.Rectangle.X * this.videoControl.Zoom, circle3.Rectangle.Y * this.videoControl.Zoom, circle3.Rectangle.Width * this.videoControl.Zoom, circle3.Rectangle.Height * this.videoControl.Zoom));
+                //g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(AlignCircle.Rectangle.X * this.videoControl.Zoom, AlignCircle.Rectangle.Y * this.videoControl.Zoom, AlignCircle.Rectangle.Width * this.videoControl.Zoom, AlignCircle.Rectangle.Height * this.videoControl.Zoom));
+                //Circle circle2 = new Circle(AlignCircle.CenterPoint, 
+                //    new Size((int)(1.4 * AlignCircle.Rectangle.Width), (int)(1.4 * AlignCircle.Rectangle.Width)));
+                //Circle circle3 = new Circle(AlignCircle.CenterPoint, 
+                //    new Size((int)(1.4 * circle2.Rectangle.Width), (int)(1.4 * circle2.Rectangle.Width)));
+                //g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(circle2.Rectangle.X * this.videoControl.Zoom, circle2.Rectangle.Y * this.videoControl.Zoom, circle2.Rectangle.Width * this.videoControl.Zoom, circle2.Rectangle.Height * this.videoControl.Zoom));
+                //g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(circle3.Rectangle.X * this.videoControl.Zoom, circle3.Rectangle.Y * this.videoControl.Zoom, circle3.Rectangle.Width * this.videoControl.Zoom, circle3.Rectangle.Height * this.videoControl.Zoom));
 
                 if (IsShowCross)
                     DrawCross(g);

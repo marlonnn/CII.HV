@@ -124,7 +124,7 @@ namespace CII.LAR.UI
                             Console.WriteLine(" first matrix: " + v.ToString());
                             Console.WriteLine(" first matrix Rank: " + v.Rank());
                         }
-                        Coordinate.GetCoordinate().CreatePresetMotorPoint(Index, this.VideoControl.Size);
+                        Coordinate.GetCoordinate().CreatePresetMotorPoint(Index, this.VideoControl.VideoSize);
                     }
                     SendAlignmentMotorPoint();
                     AlignLaser laser = Program.EntryForm.Laser as AlignLaser;

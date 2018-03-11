@@ -69,6 +69,14 @@ namespace CII.LAR.Algorithm
         private List<Point> boundPoints;
         public static Coordinate coordinate;
 
+        private Matrix<double> finalMatrix;
+        public Matrix<double> FinalMatrix
+        {
+            get { return this.finalMatrix; }
+            private set { this.finalMatrix = value; }
+        }
+
+
         public Coordinate()
         {
             var matrixString = JsonFile.ReadJsonMatrixString();
@@ -82,6 +90,7 @@ namespace CII.LAR.Algorithm
             motorPoints.Add(2, new Point(1500, 1600));
 
             boundPoints = new List<Point>() { new Point(0, 0), new Point(0, 3000), new Point(3000, 3000), new Point(3000, 0)};
+            finalMatrix = mb.Dense(3, 3);
         }
 
         private string responseCode = "";
@@ -166,16 +175,16 @@ namespace CII.LAR.Algorithm
             switch (index)
             {
                 case 3:
-                    psp = new Point(pictureBoxSize.Width - 100, pictureBoxSize.Height / 2);
+                    psp = new Point(pictureBoxSize.Width - 200, pictureBoxSize.Height / 2);
                     break;
                 case 4:
-                    psp = new Point(pictureBoxSize.Width / 2, pictureBoxSize.Height - 100);
+                    psp = new Point(pictureBoxSize.Width / 2, pictureBoxSize.Height - 200);
                     break;
                 case 5:
-                    psp = new Point(100 + 100, pictureBoxSize.Height / 2 - 100);
+                    psp = new Point(100 + 200, pictureBoxSize.Height / 2 - 200);
                     break;
                 case 6:
-                    psp = new Point(pictureBoxSize.Width / 2, 100 );
+                    psp = new Point(pictureBoxSize.Width / 2, 200 );
                     break;
             }
             //check point in legal region
@@ -207,10 +216,11 @@ namespace CII.LAR.Algorithm
         {
             foreach (var values in transformMatrix.Values)
             {
-                Program.SysConfig.LaserConfig.FinalMatrix += values;
+                FinalMatrix += values;
             }
-            var value = Program.SysConfig.LaserConfig.FinalMatrix.Divide(transformMatrix.Values.Count);
+            var value = FinalMatrix.Divide(transformMatrix.Values.Count);
             Console.WriteLine(value.ToString());
+            this.FinalMatrix = value;
             Program.SysConfig.LaserConfig.FinalMatrix = value;
             return value;
         }

@@ -81,5 +81,19 @@ namespace CII.Ins.Model.GlobalConfig
         /// 允许最大的通信失败次数
         /// </summary>
         public static int EquipmentConnectFailedMaxCount = 2;
+
+        public static string PortManagerPipeName = "HVPipe";
+
+        public static string PortManagerCOMBusName = "CII.Library.CIINet.Buses.SPCommBus";
+
+        public static string PortManagerCOMBusPort = "port";
+
+        public static string PortManagerCOMBusBaud = "baud";
+
+        public static string PortManagerCOMBusDataBit = "dataBit";
+
+        public static string PortManagerCOMBusStopBit = "stopBit";
+
+        //public static string PortManagerCOMBusParity = "";
     }
 }

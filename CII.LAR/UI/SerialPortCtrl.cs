@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CII.Ins.Model.GlobalConfig;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -174,15 +175,34 @@ namespace CII.LAR.UI
             {
                 if (controller != null)
                 {
-                    controller.OpenMotorSerialPort(motorComListCbx.Text, motorBaudRateCbx.Text, motorDataBitsCbx.Text, motorStopBitsCbx.Text, motorParityCbx.Text, motorHandshakingcbx.Text);
+                    string pipeName = GlobalConfig.PortManagerPipeName;
+                    string busName = GlobalConfig.PortManagerCOMBusName;
+                    string busPort = GlobalConfig.PortManagerCOMBusPort;
+                    string busBaud = GlobalConfig.PortManagerCOMBusBaud;
+                    string busDataBit = GlobalConfig.PortManagerCOMBusDataBit;
+                    string busStopBit = GlobalConfig.PortManagerCOMBusStopBit;
+                    if (CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName] != null &&
+                        CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName) != null &&
+                        CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busPort) != null)
+                    {
+                        CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busPort).value = motorComListCbx.Text;
+                        CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busBaud).value = motorBaudRateCbx.Text;
+                        CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busDataBit).value = motorDataBitsCbx.Text;
+                        CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busStopBit).value = motorStopBitsCbx.Text;
+                        CII.Library.CIINet.Manager.PortManager.GetInstance().Save();
+                        CII.Library.CIINet.Manager.PortManager.GetInstance().Reset();
+                    }
+
+                    //controller.OpenMotorSerialPort(motorComListCbx.Text, motorBaudRateCbx.Text, motorDataBitsCbx.Text, motorStopBitsCbx.Text, motorParityCbx.Text, motorHandshakingcbx.Text);
                 }
             }
             else
             {
-                if (controller != null)
-                {
-                    controller.CloseMotorSerialPort();
-                }
+                CII.Library.CIINet.Manager.PortManager.GetInstance().Close();
+                //if (controller != null)
+                //{
+                //    controller.CloseMotorSerialPort();
+                //}
             }
         }
 

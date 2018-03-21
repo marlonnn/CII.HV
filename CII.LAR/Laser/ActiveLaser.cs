@@ -52,24 +52,18 @@ namespace CII.LAR.Laser
         public override void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
         {
             mouseDownPoint = e.Location;
-            Point point = e.Location;
 
-            activeCircle.OnMouseDown(point);
+            activeCircle.OnMouseDown(e.Location);
             this.videoControl.Invalidate();
         }
 
         public override void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
         {
-            Point point = e.Location;
-
+            base.OnMouseMove(videoControl, e);
             Point mousePosNow = e.Location;
-
-            endPoint = point;
-
             int dx = mousePosNow.X - mouseDownPoint.X;
             int dy = mousePosNow.Y - mouseDownPoint.Y;
-            var length = Math.Sqrt(dx * dx + dy * dy);
-            activeCircle.OnMouseMove(e, point, dx, dy);
+            activeCircle.OnMouseMove(e, e.Location, dx, dy);
             this.videoControl.Invalidate();
         }
 

@@ -251,7 +251,7 @@ namespace CII.LAR.Laser
                 IsMouseUp = false;
                 clickCount++;
                 StartPoint = point;
-                EndPoint = point;
+                //EndPoint = point;
             }
         }
 
@@ -261,46 +261,39 @@ namespace CII.LAR.Laser
 
         public void OnMouseMove(MouseEventArgs e, Point point, int dx, int dy)
         {
-            if (!IsMouseUp)
-            {
-                EndPoint = point;
-                CalculateContinuousCircle(dx, dy);
-                shape = LaserShape.Line;
-            }
-            else
+            if (IsMouseUp)
             {
                 if (!CenterPoint.IsEmpty)
                 {
                     RectangleF rect = new RectangleF(new PointF(CenterPoint.X - 50, CenterPoint.Y - 50), new Size(100, 100));
                     centerHole = rect.Contains(point);
-                    if (centerHole)
-                    {
-                        HoleType = InHoleType.CenterHole;
-                    }
+                    if (centerHole) HoleType = InHoleType.CenterHole;
                 }
                 if (!StartPoint.IsEmpty)
                 {
                     RectangleF rect = new RectangleF(new PointF(StartPoint.X - 50, StartPoint.Y - 50), new Size(100, 100));
                     startHole = rect.Contains(point);
-                    if (startHole)
-                    {
-                        HoleType = InHoleType.StartHole;
-                    }
+                    if (startHole) HoleType = InHoleType.StartHole;
                 }
                 if (!EndPoint.IsEmpty)
                 {
                     RectangleF rect = new RectangleF(new PointF(EndPoint.X - 50, EndPoint.Y - 50), new Size(100, 100));
                     endHole = rect.Contains(point);
-                    if (endHole)
-                    {
-                        HoleType = InHoleType.EndHole;
-                    }
+                    if (endHole) HoleType = InHoleType.EndHole;
                 }
                 InTheHole = startHole || centerHole || endHole;
-                if (InTheHole && (e.Button == MouseButtons.Left))
+                if (HoleType != InHoleType.Empty && InTheHole && (e.Button == MouseButtons.Left))
                 {
                     MoveCircle(point, dx, dy);
                 }
+            }
+            else
+            {
+                shape = LaserShape.Line;
+                EndPoint = point;
+                int x = EndPoint.X - StartPoint.X;
+                int y = EndPoint.Y - StartPoint.Y;
+                CalculateContinuousCircle(x, y);
             }
         }
 
@@ -689,12 +682,9 @@ namespace CII.LAR.Laser
 
         public void OnMouseUp()
         {
-            if (clickCount % 2 == 0)
+            if (clickCount % 2 == 0 && !InTheHole)
             {
-                if (!InTheHole)
-                {
-                    IsMouseUp = true;
-                }
+                IsMouseUp = true;
             }
         }
 
@@ -813,10 +803,7 @@ namespace CII.LAR.Laser
 
         public void OnPaint(Graphics g)
         {
-            if (startCircle ==null || endCircle == null || startCircle.CenterPoint.IsEmpty || endCircle.CenterPoint.IsEmpty)
-            {
-                return;
-            }
+            if (startCircle ==null || endCircle == null || startCircle.CenterPoint.IsEmpty || endCircle.CenterPoint.IsEmpty) return;
 
             Draw(g);
         }

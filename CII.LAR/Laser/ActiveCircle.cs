@@ -530,154 +530,32 @@ namespace CII.LAR.Laser
             }
             innerCircles.Add(endCircle);
             outterCircles.Add(new Circle(endPoint, OutterCircleSize));
-            CenterPoint = innerCircles[count / 2].CenterPoint;
-            //CalArcCenterPoint();
-            //CalCenterPoint();
-            //Console.WriteLine("X : " + CenterPoint.X + " Y : " + CenterPoint);
+            CalArcCenterPoint(count);
         }
 
-        /// <summary>
-        /// 1.通过圆弧上的点与圆心组成的向量与起点和终点组成的向量垂直
-        /// 2.向量的模长为半径
-        /// 令向量(x-center.x, y-center.y) 和向量(pt2.x - pt1.x, pt2.y - pt1.y)，则：
-        /// (x-center.x, y-center.y) * (pt2.x - pt1.x, pt2.y - pt1.y) = 0 式子(1)
-        /// (x-center.x)² + (y-center.y)² = R²                            式子(2)
-        /// </summary>
-        private void CalCenterPoint()
+        private void CalArcCenterPoint(int count)
         {
-            //double A1, A2, B1, B2;
-            double x1 = 0;
-            double y1 = 0;
-
-            double x2 = 0;
-            double y2 = 0;
-            //A1 = x - circleData.CenterPt.X;
-            //B1 = y - circleData.CenterPt.Y;
-            //A2 = EndPoint.X - StartPoint.X;
-            //B2 = EndPoint.Y - StartPoint.Y;
-
-            //A1 * A2 + B1 * B2 =0;
-            //Math.Pow(A1, 2) + Math.Pow(B1, 2) == Math.Pow(circleData.Radius, 2);
-            if (EndPoint.Y - StartPoint.Y == 0)
+            int amount = count + 2;
+            if (amount % 2 == 0)
             {
-                x1 = circleData.CenterPt.X;
-                y1 = circleData.CenterPt.Y + circleData.Radius;
-            }
-            else if (EndPoint.X - StartPoint.X == 0)
-            {
-                if (circleData.Radius < 0)
-                {
-                    x1 = circleData.CenterPt.X + circleData.Radius;
-                }
-                else if (circleData.Radius > 0)
-                {
-                    x1 = circleData.CenterPt.X - circleData.Radius;
-                }
-                y1 = circleData.CenterPt.Y;
+                int index = amount / 2;
+                var x = (innerCircles[index - 1].CenterPoint.X + innerCircles[index].CenterPoint.X) / 2f;
+                var y = (innerCircles[index - 1].CenterPoint.Y + innerCircles[index].CenterPoint.Y) / 2f;
+                CenterPoint = new PointF(x, y);
             }
             else
             {
-                var u = (StartPoint.X - EndPoint.X) / (EndPoint.Y - StartPoint.Y);
-                x1 = circleData.CenterPt.X - Math.Abs(circleData.Radius) / Math.Sqrt(1 + u * u);
-                x2 = circleData.CenterPt.X + Math.Abs(circleData.Radius) / Math.Sqrt(1 + u * u);
-                y1 = u * (x1 - circleData.CenterPt.X) + circleData.CenterPt.Y;
-                y2 = u * (x2 - circleData.CenterPt.X) + circleData.CenterPt.Y;
+                var temp = innerCircles[amount / 2].CenterPoint;
+                CenterPoint = temp;
             }
-            //Console.WriteLine("X : " + x1 + "Y : " + y1);
-            //(StartPoint.X - circleData.CenterPt.X , StartPoint.Y - circleData.CenterPt.Y)
-            //(x - circleData.CenterPt.X , y - circleData.CenterPt.Y)
-            //(EndPoint.X - circleData.CenterPt.X , EndPoint.Y - circleData.CenterPt.Y)
-            var ax = StartPoint.X - circleData.CenterPt.X;
-            var ay = StartPoint.Y - circleData.CenterPt.Y;
-            var bx = EndPoint.X - circleData.CenterPt.X;
-            var by = EndPoint.Y - circleData.CenterPt.Y;
-
-            var cx1 = x1 - circleData.CenterPt.X;
-            var cy1 = y1 - circleData.CenterPt.Y;
-
-            var cx2 = x2 - circleData.CenterPt.X;
-            var cy2 = y2 - circleData.CenterPt.Y;
-
-            var f1 = ax * cy1 - ay * cx1;
-            var f2 = cx1 * by - cy1 * bx;
-
-            var f3 = ax * cy2 - ay * cx2;
-            var f4 = cx2 * by - cy2 * bx;
-            Console.WriteLine("f1 : " + f1 + "  f2 : " + f2);
-            Console.WriteLine("f3 : " + f3 + "  f4 : " + f4);
-            //CenterPoint = new PointF((float)x1, (float)y1);
         }
 
-        private void CalArcCenterPoint()
+        private bool CheckArcCenterPoint(float x, float y)
         {
-            double x = 0;
-            double y = 0;
-            double x1 = 0;
-            double y1 = 0;
-            double x2 = 0;
-            double y2 = 0;
-            var r2 = Math.Pow(circleData.Radius, 2);
-            if (EndPoint.Y - StartPoint.Y == 0)
-            {
-                x = (EndPoint.X - StartPoint.X) / 2d;
-                var xSqrt = Math.Pow((x - circleData.CenterPt.X), 2);
-                //var ySqrt = Math.Pow((y - circleData.CenterPt.Y), 2);
-                y1 = circleData.CenterPt.Y + Math.Sqrt(r2 - xSqrt);
-                y2 = circleData.CenterPt.Y - Math.Sqrt(r2 - xSqrt);
-                x1 = x;
-                x2 = x;
-            }
-            else if (EndPoint.X - StartPoint.X == 0)
-            {
-                y = (EndPoint.Y - StartPoint.Y) / 2d;
-                var ySqrt = Math.Pow((y - circleData.CenterPt.Y), 2);
-                x1 = circleData.CenterPt.X + Math.Sqrt(r2 - ySqrt);
-                x2 = circleData.CenterPt.X - Math.Sqrt(r2 - ySqrt);
-                y1 = y;
-                y2 = y;
-            }
-            else
-            {
-                double temp = EndPoint.X - StartPoint.X;
-                var k = (EndPoint.Y - StartPoint.Y) / temp;
-                var kx = -1 / k;
-                var cy = (EndPoint.Y - StartPoint.Y) / 2d;
-                var cx = (EndPoint.X - StartPoint.X) / 2d;
-                //y = kx * x  + (cy - cx * kx);
-                var b = cy - cx * kx;
-                long delta = (long)(4 * ( (kx * b - kx * circleData.CenterPt.Y - circleData.CenterPt.X) * (kx * b - kx * circleData.CenterPt.Y - circleData.CenterPt.X)) - 
-                    4 * (1 + kx * kx) * (circleData.CenterPt.X * circleData.CenterPt.X + (b - circleData.CenterPt.Y) * (b - circleData.CenterPt.Y) - 
-                    circleData.Radius * circleData.Radius));
-                if (delta < 0 )
-                {
-                    return;
-                }
-                x1 = (-b + Math.Sqrt(delta)) / (2 * (1 + kx * kx));
-                y1 = kx * x1 + (circleData.CenterPt.Y - circleData.CenterPt.X * kx);
-
-                x2 = (-b - Math.Sqrt(delta)) / (2 * (1 + kx * kx));
-                y2 = kx * x2 + (circleData.CenterPt.Y - circleData.CenterPt.X * kx);
-            }
-            CheckArcCenter(x1, y1);
-            CheckArcCenter(x2, y2);
-        }
-
-        private bool CheckArcCenter(double x, double y)
-        {
-            bool isCenterPoint = false;
-            //a(ax, ay) b(bx, by) c(x -circleData.CenterPt.X, y - circleData.CenterPt.Y)
-            //bx * cy - by * cx 
-            //cx * ay - cy * ax 
-            var ax = StartPoint.X - circleData.CenterPt.X;
-            var ay = StartPoint.Y - circleData.CenterPt.Y;
-            var bx = EndPoint.X - circleData.CenterPt.X;
-            var by = EndPoint.Y - circleData.CenterPt.Y;
-            var cx = x - circleData.CenterPt.X;
-            var cy = y - circleData.CenterPt.Y;
-            var v1 = bx * cy - by * cx;
-            var v2 = cx * ay - cy * ax;
-            Console.WriteLine("v1 : " + v1 + "  v2 : " + v2);
-            return isCenterPoint;
+            var tx = (StartPoint.X + EndPoint.X) / 2f;
+            var ty = (StartPoint.Y + EndPoint.Y) / 2f;
+            var value = Math.Pow((x - tx), 2) + Math.Pow((y - ty), 2);
+            return value < Math.Pow(circleData.Radius, 2);
         }
 
         public void OnMouseUp()

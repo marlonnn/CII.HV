@@ -1,5 +1,6 @@
 ﻿using CII.Ins.Business.Entry.LAR;
 using CII.Ins.Model.Command.LAR;
+using CII.Ins.Model.GlobalConfig;
 using CII.LAR.SysClass;
 using CII.Library.CIINet.Commands;
 using CII.Library.CIINet.Manager;
@@ -96,6 +97,38 @@ namespace CII.LAR
                 //IController controller = new IController(view);
 
                 //Application.Run(view);
+
+                //string pipeName = GlobalConfig.PortManagerPipeName;
+                //string busName = GlobalConfig.PortManagerCOMBusName;
+                //string busPort = GlobalConfig.PortManagerCOMBusPort;
+                //string busBaud = GlobalConfig.PortManagerCOMBusBaud;
+                //string busDataBit = GlobalConfig.PortManagerCOMBusDataBit;
+                //string busStopBit = GlobalConfig.PortManagerCOMBusStopBit;
+                //string busProtocolName = GlobalConfig.PortManagerProtocolName;
+                //string busProtocolRouterPort = GlobalConfig.PortManagerRouterPort;
+                //string pcAddress = GlobalConfig.PortManagerPCAddress;
+                //if (CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName] != null &&
+                //    CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName) != null &&
+                //    CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busPort) != null)
+                //{
+                //    CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busPort).value = "COM3";
+                //    CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busBaud).value = "115200";
+                //    CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busDataBit).value = "8";
+                //    CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busStopBit).value = "1";
+                //}
+                //var v1 = CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busProtocolName).GetProperty(busProtocolRouterPort);
+                //var V2 = v1.GetProperty(pcAddress);
+                ////PC
+                //if (CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName] != null &&
+                //     CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busProtocolName) != null &&
+                //     CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busProtocolName).GetProperty(busProtocolRouterPort) != null &&
+                //     CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busProtocolName).GetProperty(busProtocolRouterPort).GetProperty(pcAddress) != null)
+                //{
+                //    CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busProtocolName).GetProperty(busProtocolRouterPort).GetProperty(pcAddress).value = "0xFE";
+                //    CII.Library.CIINet.Manager.PortManager.GetInstance().Save();
+                //    CII.Library.CIINet.Manager.PortManager.GetInstance().Reset();
+                //    CII.Library.CIINet.Manager.PortManager.GetInstance().Open();
+                //}
 
                 entryForm = new EntryForm();
 

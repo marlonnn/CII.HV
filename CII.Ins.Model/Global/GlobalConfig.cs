@@ -94,6 +94,13 @@ namespace CII.Ins.Model.GlobalConfig
 
         public static string PortManagerCOMBusStopBit = "stopBit";
 
+        public static string PortManagerProtocolName = "CII.Ins.Model.Protocols.InsCommunicationProtol";
+
+        public static string PortManagerRouterPort = "CII.Library.CIINet.Ports.CIIPorts.CIIRouterPort";
+
+        public static string PortManagerPCAddress = "address";
+
+
         //public static string PortManagerCOMBusParity = "";
     }
 }

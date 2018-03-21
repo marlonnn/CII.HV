@@ -173,36 +173,43 @@ namespace CII.LAR.UI
         {
             if (motorOpenCloseSpbtn.Text == "Open")
             {
-                if (controller != null)
+                string pipeName = GlobalConfig.PortManagerPipeName;
+                string busName = GlobalConfig.PortManagerCOMBusName;
+                string busPort = GlobalConfig.PortManagerCOMBusPort;
+                string busBaud = GlobalConfig.PortManagerCOMBusBaud;
+                string busDataBit = GlobalConfig.PortManagerCOMBusDataBit;
+                string busStopBit = GlobalConfig.PortManagerCOMBusStopBit;
+                string busProtocolName = GlobalConfig.PortManagerProtocolName;
+                string busProtocolRouterPort = GlobalConfig.PortManagerRouterPort;
+                string pcAddress = GlobalConfig.PortManagerPCAddress;
+                if (CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName] != null &&
+                    CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName) != null &&
+                    CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busPort) != null)
                 {
-                    string pipeName = GlobalConfig.PortManagerPipeName;
-                    string busName = GlobalConfig.PortManagerCOMBusName;
-                    string busPort = GlobalConfig.PortManagerCOMBusPort;
-                    string busBaud = GlobalConfig.PortManagerCOMBusBaud;
-                    string busDataBit = GlobalConfig.PortManagerCOMBusDataBit;
-                    string busStopBit = GlobalConfig.PortManagerCOMBusStopBit;
-                    if (CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName] != null &&
-                        CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName) != null &&
-                        CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busPort) != null)
-                    {
-                        CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busPort).value = motorComListCbx.Text;
-                        CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busBaud).value = motorBaudRateCbx.Text;
-                        CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busDataBit).value = motorDataBitsCbx.Text;
-                        CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busStopBit).value = motorStopBitsCbx.Text;
-                        CII.Library.CIINet.Manager.PortManager.GetInstance().Save();
-                        CII.Library.CIINet.Manager.PortManager.GetInstance().Reset();
-                    }
-
-                    //controller.OpenMotorSerialPort(motorComListCbx.Text, motorBaudRateCbx.Text, motorDataBitsCbx.Text, motorStopBitsCbx.Text, motorParityCbx.Text, motorHandshakingcbx.Text);
+                    CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busPort).value = motorComListCbx.Text;
+                    CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busBaud).value = "115200";
+                    CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busDataBit).value = motorDataBitsCbx.Text;
+                    CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busName).GetProperty(busStopBit).value = "1";
                 }
+                //PC
+                if (CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName] != null &&
+                     CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busProtocolName) != null &&
+                     CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busProtocolName).GetProperty(busProtocolRouterPort) != null && 
+                     CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busProtocolName).GetProperty(busProtocolRouterPort).GetProperty(pcAddress) != null)
+                {
+                    CII.Library.CIINet.Manager.PortManager.GetInstance().pipes[pipeName].GetProperty(busProtocolName).GetProperty(busProtocolRouterPort).GetProperty(pcAddress).value = "0xFE";
+                }
+                CII.Library.CIINet.Manager.PortManager.GetInstance().Save();
+                CII.Library.CIINet.Manager.PortManager.GetInstance().Reset();
+                //CII.Library.CIINet.Manager.PortManager.GetInstance().Open();
+                motorOpenCloseSpbtn.Text = "Close";
+                motorStatus.Text = motorComListCbx.Text + " Opend";
             }
             else
             {
                 CII.Library.CIINet.Manager.PortManager.GetInstance().Close();
-                //if (controller != null)
-                //{
-                //    controller.CloseMotorSerialPort();
-                //}
+                motorOpenCloseSpbtn.Text = "Open";
+                motorStatus.Text = motorComListCbx.Text + " Closed";
             }
         }
 

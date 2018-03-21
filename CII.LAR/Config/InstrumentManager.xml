@@ -2,17 +2,17 @@
 <InstrumentManager>
     <instrumentTypes>
         <instrumentType>
-            <id>LAR</id>
-            <name>LAR</name>
+            <id>HV</id>
+            <name>HV</name>
             <directLink>True</directLink>
         </instrumentType>
     </instrumentTypes>
     <instruments>
         <instrument>
-            <id>LAR</id>
-            <name>LAR</name>
+            <id>HV</id>
+            <name>HV</name>
             <address>0x21</address>
-            <type>LAR</type>
+            <type>HV</type>
         </instrument>
     </instruments>
 </InstrumentManager>

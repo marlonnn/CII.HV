@@ -383,7 +383,7 @@
 
 			</commandExtends>
 
-			<destInstrument>LAR</destInstrument>
+			<destInstrument>HV</destInstrument>
 		</CII.Library.CIINet.Commands.Config.CommandDesc>
 
 		<CII.Library.CIINet.Commands.Config.CommandDesc>

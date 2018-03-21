@@ -10,7 +10,7 @@
 			<impBus>CII.Library.CIINet.Buses.SPCommBus</impBus>
 			<impProtocol>CII.Ins.Model.Protocols.InsCommunicationProtol</impProtocol>
 			<targets>
-				<target>LAR</target>
+				<target>HV</target>
 			</targets>
 			<propertys>
 				<property>
@@ -24,7 +24,7 @@
 								<property>
 									<id>address</id>
 									<name>new Name</name>
-									<value>0xF2</value>
+									<value>0xFE</value>
 								</property>
 
 							</propertys>
@@ -68,7 +68,7 @@
 						<Property>
 							<id>port</id>
 							<name>port</name>
-							<value>COM8</value>
+							<value>COM4</value>
 						</Property>
 
 						<Property>

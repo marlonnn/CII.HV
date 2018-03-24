@@ -205,11 +205,14 @@ namespace CII.LAR.Laser
             }
         }
 
+        /// <summary>
+        /// 圆弧中点坐标
+        /// </summary>
         private PointF centerPoint;
         public PointF CenterPoint
         {
             get { return this.centerPoint; }
-            set { this.centerPoint = value; }
+            private set { this.centerPoint = value; }
         }
 
         private Size crossSize;
@@ -251,10 +254,12 @@ namespace CII.LAR.Laser
                 IsMouseUp = false;
                 clickCount++;
                 StartPoint = point;
-                //EndPoint = point;
             }
         }
 
+        /// <summary>
+        /// 鼠标点在起点、终点、或者中间点 标志位
+        /// </summary>
         private bool centerHole = false;
         private bool startHole = false;
         private bool endHole = false;
@@ -291,9 +296,7 @@ namespace CII.LAR.Laser
             {
                 shape = LaserShape.Line;
                 EndPoint = point;
-                int x = EndPoint.X - StartPoint.X;
-                int y = EndPoint.Y - StartPoint.Y;
-                CalculateContinuousCircle(x, y);
+                MoveToContinuousCircle();
             }
         }
 
@@ -301,10 +304,12 @@ namespace CII.LAR.Laser
         {
             switch (HoleType)
             {
+                //移动中间点
                 case InHoleType.CenterHole:
                     MoveCenterArc(point, dx, dy);
                     shape = LaserShape.Arc;
                     break;
+                //移动起点
                 case InHoleType.StartHole:
                     MoveStartPoint(point);
                     if (shape == LaserShape.Line)
@@ -313,9 +318,10 @@ namespace CII.LAR.Laser
                     }
                     else if (shape == LaserShape.Arc)
                     {
-                        //CalcAngle(point, dx, dy);
+                        MoveStartEndArcPoint(point);
                     }
                     break;
+                //移动终点
                 case InHoleType.EndHole:
                     MoveEndPoint(point);
                     if (shape == LaserShape.Line)
@@ -324,7 +330,7 @@ namespace CII.LAR.Laser
                     }
                     else if (shape == LaserShape.Arc)
                     {
-                        //CalcAngle(point, dx, dy);
+                        MoveStartEndArcPoint(point);
                     }
                     break;
             }
@@ -353,7 +359,7 @@ namespace CII.LAR.Laser
         }
 
         /// <summary>
-        /// Move center of arc
+        /// 移动中间点
         /// </summary>
         /// <param name="point"></param>
         /// <param name="dx"></param>
@@ -372,7 +378,7 @@ namespace CII.LAR.Laser
             var angle = Math.PI - Math.Asin(value);
             //Console.WriteLine("angle: " + angle);
 
-            var v1 = angle * (180 / Math.PI);
+            //var v1 = angle * (180 / Math.PI);
             //Console.WriteLine("real angle: " + v1);
             //Console.WriteLine("length / 2: " + Length / 2);
 
@@ -389,10 +395,11 @@ namespace CII.LAR.Laser
 
             HolesInfo.MinHoleNum = (int)(circleData.LengthArc / InnerCircleSize.Width) + 1;
             HolesInfo.MaxHoleNum = (int)(2 * circleData.LengthArc / InnerCircleSize.Width) + 2;
-            innerCircles.Clear();
-            outterCircles.Clear();
             if (HolesInfo.MinHoleNum == 1)
             {
+                innerCircles.Clear();
+                outterCircles.Clear();
+
                 innerCircles.Add(startCircle);
                 outterCircles.Add(new Circle(startPoint, OutterCircleSize));
                 innerCircles.Add(endCircle);
@@ -471,9 +478,6 @@ namespace CII.LAR.Laser
                 centerPt.Y = (float)((A1 * C2 - A2 * C1) / temp);
             }
             circleData.CenterPt = centerPt;
-            var radius = Math.Sqrt((circleData.CenterPt.X - pt1.X) * (circleData.CenterPt.X - pt1.X) + (circleData.CenterPt.Y - pt1.Y) * (circleData.CenterPt.Y - pt1.Y));
-            //circleData.Radius = radius;
-            //Console.WriteLine("new radius2: " + radius);
         }
 
         private void CalcCirclePoint(PointF centerPt, Point startPt, Point endPt, double Radii, int ccw, int count)
@@ -511,6 +515,8 @@ namespace CII.LAR.Laser
                     angle = 2.0 * Math.PI - angle;                                          // 取另一边
                 }
             }
+            innerCircles.Clear();
+            outterCircles.Clear();
 
             double theta = angle / (double)(count - 1);                                 // 要求的点与圆心连线矢量和圆心与起点连线矢量的角的弧度, 每一小段弧长弧度
             innerCircles.Add(startCircle);
@@ -531,8 +537,13 @@ namespace CII.LAR.Laser
             innerCircles.Add(endCircle);
             outterCircles.Add(new Circle(endPoint, OutterCircleSize));
             CalArcCenterPoint(count);
+            //CalArcAngle();
         }
 
+        /// <summary>
+        /// 动态计算圆弧中间点坐标
+        /// </summary>
+        /// <param name="count"></param>
         private void CalArcCenterPoint(int count)
         {
             int amount = count + 2;
@@ -545,19 +556,110 @@ namespace CII.LAR.Laser
             }
             else
             {
-                var temp = innerCircles[amount / 2].CenterPoint;
-                CenterPoint = temp;
+                CenterPoint = innerCircles[amount / 2].CenterPoint;
             }
         }
 
-        private bool CheckArcCenterPoint(float x, float y)
+        /// <summary>
+        /// 计算扇形的圆心角
+        /// </summary>
+        private void CalArcAngle()
         {
-            var tx = (StartPoint.X + EndPoint.X) / 2f;
-            var ty = (StartPoint.Y + EndPoint.Y) / 2f;
-            var value = Math.Pow((x - tx), 2) + Math.Pow((y - ty), 2);
-            return value < Math.Pow(circleData.Radius, 2);
+            var X1 = StartPoint.X - circleData.CenterPt.X;
+            var Y1 = StartPoint.Y - circleData.CenterPt.Y;
+            var X2 = EndPoint.X - circleData.CenterPt.X;
+            var Y2 = EndPoint.Y - circleData.CenterPt.Y;
+            var C = X1 * X2 + Y1 * Y2;
+            var v1 = Math.Sqrt(Math.Pow(X1, 2) + Math.Pow(Y1, 2));
+            var v2 = Math.Sqrt(Math.Pow(X2, 2) + Math.Pow(Y2, 2));
+
+            var value = C / (circleData.Radius * circleData.Radius);
+            //Console.WriteLine(" cos : " + value + " result: " + Math.Cos(circleData.AngleArc));
+            var angle = Math.Acos(value);
+            var v = circleData.AngleArc;
+            Console.WriteLine("angle: " + angle + " a : " + circleData.AngleArc +  " d: " + circleData.AngleArc * 180 / Math.PI + " r: " + circleData.Radius + " l: " + circleData.LengthArc);
+            //var value = (StartPoint.X * EndPoint.Y + EndPoint.X * StartPoint.Y) / Math.Sqrt()
         }
 
+        /// <summary>
+        /// 移动圆弧的起点或者终点坐标
+        /// 计算起点和终点距离变化量系数sacle
+        /// 1.假设新圆弧的弧长也是按照系数scale变化
+        /// 2.假设新圆弧的圆形角保持不变
+        /// 3.计算新圆弧的圆心
+        /// 4.计算新圆弧的半径
+        /// 5.重新由圆弧的圆心、半径、起点和终点左边绘制新的圆弧
+        /// </summary>
+        /// <param name="point"></param>
+        /// <param name="dx"></param>
+        /// <param name="dy"></param>
+        private void MoveStartEndArcPoint(Point point)
+        {
+            var dx = EndPoint.X - StartPoint.X;
+            var dy = EndPoint.Y - StartPoint.Y;
+            if (dy == 0) return;
+            var tempLength = Math.Sqrt(dx * dx + dy * dy);
+            var sacle = tempLength / Length;
+            circleData.LengthArc = circleData.LengthArc * sacle;
+            //求新的圆心和半径
+            circleData.Radius = circleData.LengthArc / circleData.AngleArc;
+
+            var k = (EndPoint.X - StartPoint.X) / (StartPoint.Y - EndPoint.Y);
+            var t = (Math.Pow(StartPoint.X, 2) - Math.Pow(EndPoint.X, 2) + Math.Pow(StartPoint.Y, 2) - Math.Pow(EndPoint.Y, 2)) / (2 * (StartPoint.Y - EndPoint.Y));
+
+            var a = 1 + Math.Pow(k, 2);
+            var b = 2 * k * t - StartPoint.X - EndPoint.X - k * (StartPoint.Y + EndPoint.Y);
+            var c = StartPoint.X * EndPoint.X + StartPoint.Y * EndPoint.Y + Math.Pow(t, 2) - t * (StartPoint.Y + EndPoint.Y) - Math.Pow(circleData.Radius, 2) * Math.Cos(circleData.AngleArc);
+
+            var deltaSqrt = Math.Sqrt(b * b - 4 * a * c);
+
+            var x1 = (-b + deltaSqrt) / (2 * a);
+            var x2 = (-b - deltaSqrt) / (2 * a);
+            var y1 = k * x1 + t;
+            var y2 = k * x2 + t;
+
+            var X1 = StartPoint.X - x1;
+            var Y1 = StartPoint.Y - y1;
+
+            var X2 = EndPoint.X - x1;
+            var Y2 = EndPoint.Y - y1;
+            var V1 = X1 * X2 + Y1 * Y2;
+
+            this.Length = tempLength;
+
+            var v = circleData.Radius * circleData.Radius * Math.Cos(circleData.AngleArc);
+            if (v > 0)
+            {
+                if (V1 > 0)
+                {
+                    circleData.CenterPt = new PointF((float)x1, (float)y1);
+                }
+                else
+                {
+                    circleData.CenterPt = new PointF((float)x2, (float)y2);
+                }
+            }
+            else if (v < 0)
+            {
+                if (V1 < 0)
+                {
+                    circleData.CenterPt = new PointF((float)x1, (float)y1);
+                }
+                else
+                {
+                    circleData.CenterPt = new PointF((float)x2, (float)y2);
+                }
+            }
+            HolesInfo.MinHoleNum = (int)(circleData.LengthArc / InnerCircleSize.Width) + 1;
+            HolesInfo.MaxHoleNum = (int)(2 * circleData.LengthArc / InnerCircleSize.Width) + 2;
+            HolesInfo.HoleNum = (HolesInfo.MinHoleNum + HolesInfo.MaxHoleNum) / 2;
+
+            if (circleData.Radius > 0)
+                CalcCirclePoint(circleData.CenterPt, StartPoint, EndPoint, circleData.Radius, -1, HolesInfo.HoleNum);
+            else
+                CalcCirclePoint(circleData.CenterPt, StartPoint, EndPoint, Math.Abs(circleData.Radius), 1, HolesInfo.HoleNum);
+
+        }
         public void OnMouseUp()
         {
             if (clickCount % 2 == 0 && !InTheHole)
@@ -566,11 +668,20 @@ namespace CII.LAR.Laser
             }
         }
 
+        /// <summary>
+        /// 起点和终点的距离
+        /// </summary>
         private double length;
         public double Length
         {
             get { return this.length; }
-            set { this.length = value; }
+            private set
+            {
+                if (value != this.length)
+                {
+                    this.length = value;
+                }
+            }
         }
 
         /// <summary>
@@ -633,7 +744,7 @@ namespace CII.LAR.Laser
                 return;
             }
 
-            Add2Circles(length, HolesInfo.HoleNum, HolesInfo.MinHoleNum);
+            Add2Circles(Length, HolesInfo.HoleNum, HolesInfo.MinHoleNum);
         }
 
         /// <summary>
@@ -643,24 +754,6 @@ namespace CII.LAR.Laser
         /// N:Number of holes
         /// HolesInfo.HoleNum: all the active number of circle
         /// </summary>
-        /// <param name="dx"></param>
-        /// <param name="dy"></param>
-        private void CalculateContinuousCircle(int dx, int dy)
-        {
-            if (startCircle == null || endCircle == null)
-            {
-                return;
-            }
-            Length = Math.Sqrt(dx * dx + dy * dy);
-
-            HolesInfo.MinHoleNum = (int) (length / InnerCircleSize.Width) + 1;
-            HolesInfo.MaxHoleNum = (int)(2 * length / InnerCircleSize.Width) + 2;
-            HolesInfo.HoleNum = (HolesInfo.MinHoleNum + HolesInfo.MaxHoleNum) / 2;
-
-            Add2Circles(length, HolesInfo.HoleNum, HolesInfo.MinHoleNum);
-
-        }
-
         private void MoveToContinuousCircle()
         {
             if (startCircle == null || endCircle == null)
@@ -671,11 +764,11 @@ namespace CII.LAR.Laser
             var dy = EndPoint.Y - StartPoint.Y;
             Length = Math.Sqrt(dx * dx + dy * dy);
 
-            HolesInfo.MinHoleNum = (int)(length / InnerCircleSize.Width) + 1;
-            HolesInfo.MaxHoleNum = (int)(2 * length / InnerCircleSize.Width) + 2;
+            HolesInfo.MinHoleNum = (int)(Length / InnerCircleSize.Width) + 1;
+            HolesInfo.MaxHoleNum = (int)(2 * Length / InnerCircleSize.Width) + 2;
             HolesInfo.HoleNum = (HolesInfo.MinHoleNum + HolesInfo.MaxHoleNum) / 2;
 
-            Add2Circles(length, HolesInfo.HoleNum, HolesInfo.MinHoleNum);
+            Add2Circles(Length, HolesInfo.HoleNum, HolesInfo.MinHoleNum);
 
         }
 

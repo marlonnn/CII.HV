@@ -23,8 +23,14 @@ namespace CII.LAR.UI
             this.ShowIndex = 7;
             InitializeComponent();
             listViewCamera.FullRowSelect = true;
+            filterInfoDic = new Dictionary<string, FilterInfo>();
         }
 
+        private Dictionary<string, FilterInfo> filterInfoDic;
+        private void AddFilterInfo(FilterInfo filterInfo)
+        {
+            filterInfoDic.Add(filterInfo.Name, filterInfo);
+        }
 
         public void EnumerateVideoDevices()
         {
@@ -33,32 +39,48 @@ namespace CII.LAR.UI
             {
                 foreach (var device in videoDevices)
                 {
-                    var filterInfo = device as FilterInfo;
+                    FilterInfo filterInfo = device as FilterInfo;
                     if (filterInfo != null)
                     {
-                        ListViewItem item = new ListViewItem();
-                        item.Text = filterInfo.Name;
-                        listViewCamera.Items.Add(item);
+                        if (!filterInfoDic.ContainsKey(filterInfo.Name))
+                        {
+                            ListViewItem item = new ListViewItem();
+                            item.Text = filterInfo.Name;
+                            listViewCamera.Items.Add(item);
+                            AddFilterInfo(filterInfo);
+                        }
                     }
                 }
             }
             else
             {
-                ListViewItem item = new ListViewItem();
-                item.Text = "No DirectShow devices found";
-                //item.SubItems.Add("No DirectShow devices found");
-                listViewCamera.Items.Add(item);
+                if (!filterInfoDic.ContainsKey("No DirectShow devices found"))
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.Text = "No DirectShow devices found";
+                    //item.SubItems.Add("No DirectShow devices found");
+                    listViewCamera.Items.Add(item);
+                    AddFilterInfo(new FilterInfo("No DirectShow devices found"));
+                }
+            }
+            if (listViewCamera.SelectedItems != null)
+            {
+                this.listViewCamera.Focus();
+                this.listViewCamera.Items[0].Selected = true;
             }
         }
 
         private void listViewCamera_DoubleClick(object sender, EventArgs e)
         {
+            if (listViewCamera.SelectedItems == null || listViewCamera.SelectedItems.Count == 0) return;
+
             var deviceInfoName = listViewCamera.SelectedItems[0].Text;
             string deviceMoniker = GetMonikerString(deviceInfoName);
             if (deviceMoniker != "" && CaptureDeviceHandler != null)
             {
                 CaptureDeviceHandler(deviceMoniker);
             }
+            this.Visible = false;
         }
 
         private string GetMonikerString(string filterInfoName)

@@ -133,7 +133,7 @@ namespace CII.LAR.UI
             double y = CalSlopeFunction(PulseValue);
             this.sliderCtrl.PulseHole.Text = string.Format("{0:N}ms {1:N}um", PulseValue / 1000d, y);
 
-            CheckPulse((int)y);
+            CheckPulse(PulseValue);
 
             if (graphicsProperties != null && Program.SysConfig.LaserConfig != null)
             {

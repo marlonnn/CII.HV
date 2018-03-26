@@ -71,8 +71,8 @@ namespace CII.LAR.SysClass
 
         private void SetDefault()
         {
-            this.minPulseWidth = 8;
-            this.maxPulseWidth = 40;
+            this.minPulseWidth = 15;
+            this.maxPulseWidth = 1000;
             pulseSizeRatio = 2;
             pulseWidth = 0.5f;
             this.FinalMatrix = Matrix<double>.Build.Dense(3, 3);

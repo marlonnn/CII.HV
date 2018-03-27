@@ -237,7 +237,17 @@ namespace CII.LAR.UI
 
         public Size RealSize
         {
-            get { return Program.SysConfig.LiveMode ? this.VideoSize : this.Image.Size; } 
+            get
+            {
+                if (this.Image != null)
+                {
+                    return Program.SysConfig.LiveMode ? this.VideoSize : this.Image.Size;
+                }
+                else
+                {
+                    return this.VideoSize;
+                }
+            } 
         }
 
         public RichPictureBox()
@@ -377,6 +387,7 @@ namespace CII.LAR.UI
         #region 鼠标事件
         protected override void OnMouseDown(MouseEventArgs e)
         {
+            if (!IsInLegalRegion(e.Location)) return;
             if (e.Button == MouseButtons.Left)
             {
                 if (!mousePressed)
@@ -410,8 +421,14 @@ namespace CII.LAR.UI
             }
         }
 
+        private bool IsInLegalRegion(Point point)
+        {
+            return (new Rectangle(this.OffsetX, this.OffsetY, this.RealSize.Width, this.RealSize.Height)).Contains(point);
+        }
+
         protected override void OnMouseMove(MouseEventArgs e)
         {
+            if (!IsInLegalRegion(e.Location)) return;
             if (LaserFunction)
             {
                 if (Program.EntryForm.Laser != null)
@@ -460,6 +477,7 @@ namespace CII.LAR.UI
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
+            if (!IsInLegalRegion(e.Location)) return;
             if (activeTool != DrawToolType.Move)
             {
                 if (LaserFunction)

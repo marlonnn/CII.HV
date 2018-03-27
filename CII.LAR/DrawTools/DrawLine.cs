@@ -59,12 +59,12 @@ namespace CII.LAR.DrawTools
             this.RegisterUpdateStatisticsHandler();
         }
 
-        public DrawLine(VideoControl videoControl, int x1, int y1, int x2, int y2) : this()
+        public DrawLine(RichPictureBox richPictureBox, int x1, int y1, int x2, int y2) : this()
         {
-            this.videoControl = videoControl;
+            this.richPictureBox = richPictureBox;
             startDataPoint = new Point(x1, y1);
             endDataPoint = new Point(x2, y2);
-            this.GraphicsProperties.GraphicsPropertiesChangedHandler += videoControl.GraphicsPropertiesChangedHandler;
+            this.GraphicsProperties.GraphicsPropertiesChangedHandler += richPictureBox.GraphicsPropertiesChangedHandler;
         }
 
         private void InitializeGraphicsProperties()
@@ -80,21 +80,21 @@ namespace CII.LAR.DrawTools
         /// draw line graphic
         /// </summary>
         /// <param name="g"></param>
-        /// <param name="videoControl"></param>
-        public override void Draw(Graphics g, VideoControl videoControl)
+        /// <param name="richPictureBox"></param>
+        public override void Draw(Graphics g, RichPictureBox richPictureBox)
         {
             g.SmoothingMode = SmoothingMode.AntiAlias;
 
             using (Pen pen = new Pen(Color.FromArgb(GraphicsProperties.Alpha, GraphicsProperties.Color), GraphicsProperties.PenWidth))
             {
-                g.DrawLine(pen, startDataPoint.X * videoControl.Zoom, startDataPoint.Y * videoControl.Zoom, endDataPoint.X * videoControl.Zoom, endDataPoint.Y * videoControl.Zoom);
+                g.DrawLine(pen, startDataPoint.X, startDataPoint.Y, endDataPoint.X, endDataPoint.Y);
             }
         }
 
         public override RectangleF GetTextF(string name, Graphics g, int index)
         {
             SizeF sizeF = g.MeasureString(name, this.Font);
-            return new RectangleF(startDataPoint.X - sizeF.Width /*- videoControl.StartOffsetX*/, startDataPoint.Y - sizeF.Height / 2,
+            return new RectangleF(startDataPoint.X - sizeF.Width /*- richPictureBox.StartOffsetX*/, startDataPoint.Y - sizeF.Height / 2,
                 sizeF.Width, sizeF.Height);
         }
 
@@ -127,7 +127,7 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="handleNumber"></param>
         /// <returns></returns>
-        public override Point GetHandle(VideoControl videoControl, int handleNumber)
+        public override Point GetHandle(RichPictureBox richPictureBox, int handleNumber)
         {
             if (handleNumber == 1)
             {
@@ -139,7 +139,7 @@ namespace CII.LAR.DrawTools
             }
         }
 
-        public override void Move(VideoControl videoControl, int deltaX, int deltaY)
+        public override void Move(RichPictureBox richPictureBox, int deltaX, int deltaY)
         {
             Point s = Point.Ceiling(startDataPoint), e = Point.Ceiling(endDataPoint);
 
@@ -150,10 +150,10 @@ namespace CII.LAR.DrawTools
         /// <summary>
         /// Mouse move to new point
         /// </summary>
-        /// <param name="videoControl"></param>
+        /// <param name="richPictureBox"></param>
         /// <param name="point"></param>
         /// <param name="handleNumber"></param>
-        public override void MoveHandleTo(VideoControl videoControl, Point point, int handleNumber)
+        public override void MoveHandleTo(RichPictureBox richPictureBox, Point point, int handleNumber)
         {
             if (handleNumber == 1)
             {
@@ -171,7 +171,7 @@ namespace CII.LAR.DrawTools
         {
             float x = System.Math.Abs(endPoint.X - startPoint.X);
             float y = System.Math.Abs(endPoint.Y - startPoint.Y);
-            return string.Format("{0:F2} {1}", Math.Sqrt(x * x + y * y) / UnitOfMeasureFactor, videoControl.UnitOfMeasure.ToString());
+            return string.Format("{0:F2} {1}", Math.Sqrt(x * x + y * y) / UnitOfMeasureFactor, richPictureBox.UnitOfMeasure.ToString());
         }
 
         public override bool HitTest(int nIndex, PointF dataPoint)
@@ -179,7 +179,7 @@ namespace CII.LAR.DrawTools
             return false;
         }
 
-        public override HitTestResult HitTestForSelection(VideoControl videoControl, Point point)
+        public override HitTestResult HitTestForSelection(RichPictureBox richPictureBox, Point point)
         {
             Rectangle rect = new Rectangle(Point.Ceiling(startDataPoint), new Size((int)(endDataPoint.X - startDataPoint.X), 1));
             rect.Inflate(0, this.SelectionHitTestWidth);

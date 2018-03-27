@@ -27,14 +27,14 @@ namespace CII.LAR.DrawTools
             this.RegisterUpdateStatisticsHandler();
         }
 
-        public DrawRectangle(VideoControl videoControl, int x, int y, int width, int height) : this()
+        public DrawRectangle(RichPictureBox richPictureBox, int x, int y, int width, int height) : this()
         {
-            this.videoControl = videoControl;
+            this.richPictureBox = richPictureBox;
             InitializeGraphicsProperties();
             this.ObjectType = ObjectType.Rectangle;
             rectangle = new Rectangle(x, y, width, height);
             SetRectangle(rectangle);
-            this.GraphicsProperties.GraphicsPropertiesChangedHandler += videoControl.GraphicsPropertiesChangedHandler;
+            this.GraphicsProperties.GraphicsPropertiesChangedHandler += richPictureBox.GraphicsPropertiesChangedHandler;
         }
 
         private void InitializeGraphicsProperties()
@@ -58,8 +58,8 @@ namespace CII.LAR.DrawTools
         /// draw graphic object
         /// </summary>
         /// <param name="g"></param>
-        /// <param name="videoControl"></param>
-        public override void Draw(Graphics g, VideoControl videoControl)
+        /// <param name="richPictureBox"></param>
+        public override void Draw(Graphics g, RichPictureBox richPictureBox)
         {
             g.SmoothingMode = SmoothingMode.AntiAlias;
 
@@ -113,7 +113,7 @@ namespace CII.LAR.DrawTools
                 y1 = tmp;
             }
 
-            return new RectangleF(x1 * this.videoControl.Zoom, y1 * this.videoControl.Zoom, (x2 - x1) * this.videoControl.Zoom, (y2 - y1) * this.videoControl.Zoom);
+            return new RectangleF(x1, y1, (x2 - x1), (y2 - y1));
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="handleNumber"></param>
         /// <returns></returns>
-        public override Point GetHandle(VideoControl videoControl, int handleNumber)
+        public override Point GetHandle(RichPictureBox richPictureBox, int handleNumber)
         {
             float x, y, xCenter, yCenter;
             RectangleF rectangle = GetRectangle();
@@ -171,7 +171,7 @@ namespace CII.LAR.DrawTools
 
         }
 
-        public override void Move(VideoControl videoControl, int deltaX, int deltaY)
+        public override void Move(RichPictureBox richPictureBox, int deltaX, int deltaY)
         {
             RectangleF rect = GetRectangle();
             SetRectangle(new RectangleF(rect.X + deltaX, rect.Y + deltaY, rect.Width, rect.Height));
@@ -180,10 +180,10 @@ namespace CII.LAR.DrawTools
         /// <summary>
         /// Mouse move to new point
         /// </summary>
-        /// <param name="videoControl"></param>
+        /// <param name="richPictureBox"></param>
         /// <param name="point"></param>
         /// <param name="handleNumber"></param>
-        public override void MoveHandleTo(VideoControl videoControl, Point point, int handleNumber)
+        public override void MoveHandleTo(RichPictureBox richPictureBox, Point point, int handleNumber)
         {
             int left = rectangle.Left;
             int top = rectangle.Top;
@@ -232,13 +232,13 @@ namespace CII.LAR.DrawTools
         private string GetCircumference()
         {
             var length = 2 * Math.Abs(rectangle.Width + rectangle.Height) / UnitOfMeasureFactor;
-            return string.Format("{0:F2} {1}", length, videoControl.UnitOfMeasure.ToString());
+            return string.Format("{0:F2} {1}", length, richPictureBox.UnitOfMeasure.ToString());
         }
 
         private string GetArea()
         {
             var area = (rectangle.Width / UnitOfMeasureFactor) * (rectangle.Height / UnitOfMeasureFactor);
-            return string.Format("{0:F2} {1}²", Math.Abs(area), videoControl.UnitOfMeasure.ToString());
+            return string.Format("{0:F2} {1}²", Math.Abs(area), richPictureBox.UnitOfMeasure.ToString());
         }
 
         private void SetRectangle(RectangleF r)
@@ -300,7 +300,7 @@ namespace CII.LAR.DrawTools
                && dataPoint.Y >= dataBottom && dataPoint.Y <= dataTop;
         }
 
-        public override HitTestResult HitTestForSelection(VideoControl videoControl, Point point)
+        public override HitTestResult HitTestForSelection(RichPictureBox richPictureBox, Point point)
         {
             RectangleF rectGate = GetRectangle();
             RectangleF rectLarge = rectGate, rectSamll = rectGate;

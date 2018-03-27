@@ -41,10 +41,10 @@ namespace CII.LAR.Laser
                     this.FlashTimer.Enabled = value;
                     this.FlashTimer.Stop();
                 }
-                this.videoControl.Invalidate();
+                this.richPictureBox.Invalidate();
             }
         }
-        protected VideoControl videoControl;
+        protected RichPictureBox richPictureBox;
 
         protected SolidBrush brush;
         public SolidBrush Brush
@@ -79,7 +79,7 @@ namespace CII.LAR.Laser
         protected virtual void FlashTimer_Tick(object sender, EventArgs e)
         {
             _flickCount++;
-            this.videoControl.Invalidate();
+            this.richPictureBox.Invalidate();
             if (_flickCount == 6)
             {
                 Flashing = false;
@@ -89,18 +89,18 @@ namespace CII.LAR.Laser
         /// <summary>
         /// Left nous button is pressed
         /// </summary>
-        /// <param name="videoControl"></param>
+        /// <param name="richPictureBox"></param>
         /// <param name="e"></param>
-        public virtual void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
+        public virtual void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
         }
 
         /// <summary>
         /// Mouse is moved, left mouse button is pressed or none button is pressed
         /// </summary>
-        /// <param name="videoControl"></param>
+        /// <param name="richPictureBox"></param>
         /// <param name="e"></param>
-        public virtual void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
+        public virtual void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
         }
 
@@ -109,7 +109,7 @@ namespace CII.LAR.Laser
         /// </summary>
         /// <param name="drawArea"></param>
         /// <param name="e"></param>
-        public virtual void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
+        public virtual void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
         }
 

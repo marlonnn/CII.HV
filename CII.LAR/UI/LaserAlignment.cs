@@ -38,11 +38,11 @@ namespace CII.LAR.UI
         }
 
         private AlignInfoHelper helper;
-        private VideoControl videoControl;
-        public VideoControl VideoControl
+        private RichPictureBox richPictureBox;
+        public RichPictureBox RichPictureBox
         {
-            get { return this.videoControl; }
-            set { this.videoControl = value; }
+            get { return this.richPictureBox; }
+            set { this.richPictureBox = value; }
         }
 
         public Label LabelInfo
@@ -124,7 +124,7 @@ namespace CII.LAR.UI
                             Console.WriteLine(" first matrix: " + v.ToString());
                             Console.WriteLine(" first matrix Rank: " + v.Rank());
                         }
-                        Coordinate.GetCoordinate().CreatePresetMotorPoint(Index, this.VideoControl.VideoSize);
+                        Coordinate.GetCoordinate().CreatePresetMotorPoint(Index, this.RichPictureBox);
                     }
                     SendAlignmentMotorPoint();
                     AlignLaser laser = Program.EntryForm.Laser as AlignLaser;
@@ -139,7 +139,7 @@ namespace CII.LAR.UI
             {
                 this.Visible = false;
                 this.Enabled = false;
-                this.VideoControl.ZoomFit();
+                this.RichPictureBox.ZoomFit();
             }
         }
 

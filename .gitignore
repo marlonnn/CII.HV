@@ -240,3 +240,6 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/Soft/HV
+/CII.LAR.7z
+/CII.LAR_327.7z

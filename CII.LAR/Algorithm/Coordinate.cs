@@ -2,6 +2,7 @@
 using CII.LAR.Commond;
 using CII.LAR.Protocol;
 using CII.LAR.SysClass;
+using CII.LAR.UI;
 using MathNet.Numerics.LinearAlgebra;
 using System;
 using System.Collections.Generic;
@@ -113,6 +114,7 @@ namespace CII.LAR.Algorithm
                 byte oy = y > 0 ? (byte)0x01 : (byte)0x00;
                 var code = LARCommandHelper.GetInstance().SetMotorSteps(0x01, ox, Math.Abs(x), 0x01, oy, Math.Abs(y));
                 ResponseCode = code.GetResponseCode();
+                Console.WriteLine("Response code: " + ResponseCode + "last point: " + lastPoint.ToString());
                 if (MoveStepHandler != null)
                 {
                     MoveStepHandler(x, ox, y, oy);
@@ -154,14 +156,18 @@ namespace CII.LAR.Algorithm
         /// </summary>
         /// <param name="index"></param>
         /// <param name="pictureBoxSize"></param>
-        public void CreatePresetMotorPoint(int index, Size pictureBoxSize)
+        public void CreatePresetMotorPoint(int index, RichPictureBox richPictureBox)
         {
             //屏幕坐标
-            Point psp = CreatePresetScreenPoint(index, pictureBoxSize);
+            Point psp = CreatePresetScreenPoint(index, richPictureBox);
+            P = psp;
+
             //转换矩阵变化为电机坐标
             Point pmp = ChangeScreenPointToMotorPoint(psp);
             AddMotorPoint(index, pmp);
         }
+
+        public Point P;
 
         /// <summary>
         /// 创建预设屏幕4点坐标
@@ -169,22 +175,23 @@ namespace CII.LAR.Algorithm
         /// <param name="index"></param>
         /// <param name="pictureBoxSize"></param>
         /// <returns></returns>
-        private Point CreatePresetScreenPoint(int index, Size pictureBoxSize)
+        private Point CreatePresetScreenPoint(int index, RichPictureBox richPictureBox)
         {
             Point psp = Point.Empty;
+            Rectangle bounds = new Rectangle(0, 0, richPictureBox.RealSize.Width, richPictureBox.RealSize.Height);
             switch (index)
             {
                 case 3:
-                    psp = new Point(pictureBoxSize.Width - 200, pictureBoxSize.Height / 2);
+                    psp = new Point(bounds.X + bounds.Width - 200, bounds.Y + bounds.Height / 2);
                     break;
                 case 4:
-                    psp = new Point(pictureBoxSize.Width / 2, pictureBoxSize.Height - 200);
+                    psp = new Point(bounds.X + bounds.Width / 2, bounds.Y + bounds.Height - 200);
                     break;
                 case 5:
-                    psp = new Point(100 + 200, pictureBoxSize.Height / 2 - 200);
+                    psp = new Point(bounds.X + 200, bounds.Y + bounds.Height / 2);
                     break;
                 case 6:
-                    psp = new Point(pictureBoxSize.Width / 2, 200 );
+                    psp = new Point(bounds.X + bounds.Width / 2, bounds.Y + 200);
                     break;
             }
             //check point in legal region

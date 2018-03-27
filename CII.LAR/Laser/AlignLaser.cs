@@ -29,7 +29,7 @@ namespace CII.LAR.Laser
                 {
                     isAlign = value;
                     this.AlignCircle = null;
-                    this.videoControl.Invalidate();
+                    this.richPictureBox.Invalidate();
                 }
             }
         }
@@ -61,8 +61,8 @@ namespace CII.LAR.Laser
                     this.AlignCircle = circles[value];
                     this.IsShowCross = false;
                     ButtonStateHandler?.Invoke(false);
-                    this.videoControl.ZoomFit();
-                    this.videoControl.Invalidate();
+                    this.richPictureBox.ZoomFit();
+                    this.richPictureBox.Invalidate();
                 }
             }
         }
@@ -76,7 +76,7 @@ namespace CII.LAR.Laser
                 if (value != this.isShowCross)
                 {
                     this.isShowCross = value;
-                    this.videoControl.Invalidate();
+                    this.richPictureBox.Invalidate();
                 }
             }
         }
@@ -94,9 +94,9 @@ namespace CII.LAR.Laser
             }
         }
 
-        public AlignLaser(VideoControl videoControl) : base()
+        public AlignLaser(RichPictureBox richPictureBox) : base()
         {
-            this.videoControl = videoControl;
+            this.richPictureBox = richPictureBox;
             circles = new List<Circle>();
             string jsonConfig = JsonFile.ReadJsonConfigString();
             circles = JsonFile.GetConfigFromJsonText<List<Circle>>(jsonConfig);
@@ -104,7 +104,7 @@ namespace CII.LAR.Laser
 
         public delegate void ButtonState(bool enable);
         public  ButtonState ButtonStateHandler;
-        public override void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
 
             LaserAlignment laserAlignment = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment);
@@ -122,11 +122,11 @@ namespace CII.LAR.Laser
                     ClickPoint = e.Location;
                     Count = 0;
                     ButtonStateHandler?.Invoke(true);
-                    PointF pointF = new PointF(e.Location.X / videoControl.Zoom, e.Location.Y / videoControl.Zoom);
+                    PointF pointF = new PointF(e.Location.X/* / richPictureBox.Zoom*/, e.Location.Y/* / richPictureBox.Zoom*/);
                     Coordinate.GetCoordinate().AddPoint(Index, pointF);
-                    Console.WriteLine("add point: " + pointF.ToString());
+                    //Console.WriteLine("add point: " + pointF.ToString());
                 }
-                Console.WriteLine(e.Location.ToString());
+                //Console.WriteLine(e.Location.ToString());
             }
         }
 
@@ -153,14 +153,14 @@ namespace CII.LAR.Laser
         public delegate void Zoom(MouseEventArgs e, bool zoom);
         public Zoom ZoomHandler;
 
-        public override void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            base.OnMouseMove(videoControl, e);
+            base.OnMouseMove(richPictureBox, e);
         }
 
-        public override void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            base.OnMouseUp(videoControl, e);
+            base.OnMouseUp(richPictureBox, e);
         }
 
         public override void OnPaint(PaintEventArgs e)
@@ -174,15 +174,28 @@ namespace CII.LAR.Laser
                 Graphics g = e.Graphics;
                 g.CompositingQuality = CompositingQuality.HighQuality;
                 g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.ScaleTransform(this.richPictureBox.Zoom, this.richPictureBox.Zoom);
+                g.TranslateTransform(this.richPictureBox.OffsetX, this.richPictureBox.OffsetY);
+                Point point = Coordinate.GetCoordinate().P;
+                if (!point.IsEmpty)
+                {
+                    g.DrawLine(new Pen(Color.Red, 1f),
+                        point.X, point.Y - AlignCircle.Rectangle.Width,
+                        point.X, point.Y + AlignCircle.Rectangle.Width);
 
-                //g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(AlignCircle.Rectangle.X * this.videoControl.Zoom, AlignCircle.Rectangle.Y * this.videoControl.Zoom, AlignCircle.Rectangle.Width * this.videoControl.Zoom, AlignCircle.Rectangle.Height * this.videoControl.Zoom));
-                //Circle circle2 = new Circle(AlignCircle.CenterPoint, 
+                    g.DrawLine(new Pen(Color.Red, 1f),
+                        point.X - AlignCircle.Rectangle.Width, point.Y,
+                        point.X + AlignCircle.Rectangle.Width, point.Y);
+                }
+
+                //g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(AlignCircle.Rectangle.X, AlignCircle.Rectangle.Y, AlignCircle.Rectangle.Width, AlignCircle.Rectangle.Height));
+                //Circle circle2 = new Circle(AlignCircle.CenterPoint,
                 //    new Size((int)(1.4 * AlignCircle.Rectangle.Width), (int)(1.4 * AlignCircle.Rectangle.Width)));
-                //Circle circle3 = new Circle(AlignCircle.CenterPoint, 
+                //Circle circle3 = new Circle(AlignCircle.CenterPoint,
                 //    new Size((int)(1.4 * circle2.Rectangle.Width), (int)(1.4 * circle2.Rectangle.Width)));
-                //g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(circle2.Rectangle.X * this.videoControl.Zoom, circle2.Rectangle.Y * this.videoControl.Zoom, circle2.Rectangle.Width * this.videoControl.Zoom, circle2.Rectangle.Height * this.videoControl.Zoom));
-                //g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(circle3.Rectangle.X * this.videoControl.Zoom, circle3.Rectangle.Y * this.videoControl.Zoom, circle3.Rectangle.Width * this.videoControl.Zoom, circle3.Rectangle.Height * this.videoControl.Zoom));
-
+                //g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(circle2.Rectangle.X, circle2.Rectangle.Y, circle2.Rectangle.Width, circle2.Rectangle.Height));
+                //g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(circle3.Rectangle.X, circle3.Rectangle.Y, circle3.Rectangle.Width, circle3.Rectangle.Height));
+                g.ResetTransform();
                 if (IsShowCross)
                     DrawCross(g);
             }
@@ -218,6 +231,8 @@ namespace CII.LAR.Laser
             }
             var vx = ClickPoint.X;
             var vy = ClickPoint.Y ;
+            //g.ScaleTransform(this.richPictureBox.Zoom, this.richPictureBox.Zoom);
+            //g.TranslateTransform(this.richPictureBox.OffsetX, this.richPictureBox.OffsetY);
             g.DrawLine(new Pen(Color.Red, 1f),
                 ClickPoint.X, ClickPoint.Y  - AlignCircle.Rectangle.Width,
                 ClickPoint.X, ClickPoint.Y + AlignCircle.Rectangle.Width);
@@ -225,6 +240,7 @@ namespace CII.LAR.Laser
             g.DrawLine(new Pen(Color.Red, 1f),
                 ClickPoint.X - AlignCircle.Rectangle.Width, ClickPoint.Y,
                 ClickPoint.X + AlignCircle.Rectangle.Width, ClickPoint.Y);
+            //g.ResetTransform();
         }
     }
 }

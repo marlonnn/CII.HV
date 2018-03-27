@@ -26,13 +26,13 @@ namespace CII.LAR.DrawTools
     {
         public ObjectType ObjectType;
 
-        protected VideoControl videoControl;
+        protected RichPictureBox richPictureBox;
 
         protected double UnitOfMeasureFactor
         {
             get
             {
-                return MeasureSystem.CustomUnitToMicron(1, videoControl.UnitOfMeasure);
+                return MeasureSystem.CustomUnitToMicron(1, richPictureBox.UnitOfMeasure);
             }
         }
 
@@ -271,13 +271,13 @@ namespace CII.LAR.DrawTools
 
         public abstract bool HitTest(int nIndex, PointF dataPoint);
 
-        public HitTestResult HitTest(VideoControl videoControl, Point point, bool forSelection, bool hitTestHandle = true)
+        public HitTestResult HitTest(RichPictureBox richPictureBox, Point point, bool forSelection, bool hitTestHandle = true)
         {
             if (Selected && hitTestHandle)
             {
                 for (int i = 1; i <= HandleCount; i++)
                 {
-                    if (CheckHandleRegion(videoControl, i, point))
+                    if (CheckHandleRegion(richPictureBox, i, point))
                     {
                         return new HitTestResult(ElementType.Handle, i);
                     }
@@ -286,11 +286,11 @@ namespace CII.LAR.DrawTools
             UpdateHitTestRegions();
             if (forSelection)
             {
-                return HitTestForSelection(videoControl, point);
+                return HitTestForSelection(richPictureBox, point);
             }
             else
             {
-                for (int i = 0; i < videoControl.GraphicsList.Count; i++)
+                for (int i = 0; i < richPictureBox.GraphicsList.Count; i++)
                 {
                     PointF dataPoint = point;
                     if (HitTest(i, dataPoint))
@@ -302,9 +302,9 @@ namespace CII.LAR.DrawTools
             }
         }
 
-        protected virtual bool CheckHandleRegion(VideoControl videoControl, int handleNumber, Point point)
+        protected virtual bool CheckHandleRegion(RichPictureBox richPictureBox, int handleNumber, Point point)
         {
-            return (GetHandleRectangle(videoControl, handleNumber).Contains(point));
+            return (GetHandleRectangle(richPictureBox, handleNumber).Contains(point));
         }
 
         /// <summary>
@@ -312,14 +312,14 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="drawArea"></param>
         /// <param name="point"></param>
-        public abstract HitTestResult HitTestForSelection(VideoControl videoControl, Point point);
+        public abstract HitTestResult HitTestForSelection(RichPictureBox richPictureBox, Point point);
 
         /// <summary>
         /// Get handle point by 1-based number
         /// </summary>
         /// <param name="handleNumber"></param>
         /// <returns></returns>
-        public virtual Point GetHandle(VideoControl videoControl, int handleNumber)
+        public virtual Point GetHandle(RichPictureBox richPictureBox, int handleNumber)
         {
             return new Point(0, 0);
         }
@@ -329,9 +329,9 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="handleNumber"></param>
         /// <returns></returns>
-        public virtual Rectangle GetHandleRectangle(VideoControl videoControl, int handleNumber)
+        public virtual Rectangle GetHandleRectangle(RichPictureBox richPictureBox, int handleNumber)
         {
-            Point point = GetHandle(videoControl, handleNumber);
+            Point point = GetHandle(richPictureBox, handleNumber);
 
             return new Rectangle(point.X - 3, point.Y - 3, 6, 6);
         }
@@ -341,7 +341,7 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="deltaX"></param>
         /// <param name="deltaY"></param>
-        public virtual void Move(VideoControl videoControl, int deltaX, int deltaY)
+        public virtual void Move(RichPictureBox richPictureBox, int deltaX, int deltaY)
         {
         }
 
@@ -350,7 +350,7 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="point"></param>
         /// <param name="handleNumber"></param>
-        public virtual void MoveHandleTo(VideoControl videoControl, Point point, int handleNumber)
+        public virtual void MoveHandleTo(RichPictureBox richPictureBox, Point point, int handleNumber)
         {
         }
 
@@ -358,17 +358,17 @@ namespace CII.LAR.DrawTools
         /// Draw object
         /// </summary>
         /// <param name="g"></param>
-        public virtual void Draw(Graphics g, VideoControl videoControl)
+        public virtual void Draw(Graphics g, RichPictureBox richPictureBox)
         {
         }
 
-        public virtual void DrawTest(Graphics g, VideoControl videoControl)
+        public virtual void DrawTest(Graphics g, RichPictureBox richPictureBox)
         {
             SolidBrush brush = new SolidBrush(Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Text").Color);
             RectangleF r = GetTextF(this.Name, g, this.ID);
             r.Offset(MovingOffset);
             
-            g.DrawString(this.Name, this.Font, brush, new RectangleF(r.X * videoControl.Zoom, r.Y * videoControl.Zoom, r.Width * videoControl.Zoom, r.Height * videoControl.Zoom));
+            g.DrawString(this.Name, this.Font, brush, r);
             brush.Dispose();
         }
 
@@ -377,7 +377,7 @@ namespace CII.LAR.DrawTools
             return new RectangleF();
         }
 
-        public virtual void DrawTracker(Graphics g, VideoControl videoControl)
+        public virtual void DrawTracker(Graphics g, RichPictureBox richPictureBox)
         {
             if (Selected)
             {
@@ -390,7 +390,7 @@ namespace CII.LAR.DrawTools
                     if (!IsHandleVisible(i))
                         continue;
 
-                    Rectangle r = GetHandleRectangle(videoControl, i);
+                    Rectangle r = GetHandleRectangle(richPictureBox, i);
                     r.Offset(MovingOffset);
                     try
                     {

@@ -176,7 +176,7 @@ namespace CII.LAR.DrawTools
                     color = Color.Green;
                     break;
                 case "Text":
-                    color = Color.Black;
+                    color = Color.OrangeRed;
                     break;
                 case "Rectangle":
                     color = Color.Violet;

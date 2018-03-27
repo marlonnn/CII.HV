@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LogManager>
+	<messageTypes>
+		<messageType>
+			<id>SystemMessage</id>
+			<name>系统日志</name>
+			<isFixed>True</isFixed>
+			<listeners>
+				<listener>CII.Library.Log.MessageListenerImp.SystemMessageListener</listener>
+			</listeners>
+		</messageType>
+
+		<messageType>
+			<id>DBMessage</id>
+			<name>存储日志</name>
+			<isFixed>True</isFixed>
+			<listeners>
+			</listeners>
+		</messageType>
+
+		<messageType>
+			<id>ExceptionMessage</id>
+			<name>异常日志</name>
+			<isFixed>True</isFixed>
+			<listeners>
+				<listener>CII.Library.Log.MessageListenerImp.ExceptionMessageListener</listener>
+			</listeners>
+		</messageType>
+
+		<messageType>
+			<id>UserInfoMessage</id>
+			<name>普通信息</name>
+			<isFixed>True</isFixed>
+			<listeners>
+			</listeners>
+		</messageType>
+
+		<messageType>
+			<id>UserWarningMessage</id>
+			<name>警告信息</name>
+			<isFixed>True</isFixed>
+			<listeners>
+				<listener>CII.Library.Log.MessageListenerImp.TextFileMessageListener</listener>
+			</listeners>
+		</messageType>
+
+		<messageType>
+			<id>UserErrorMessage</id>
+			<name>错误信息</name>
+			<isFixed>True</isFixed>
+			<listeners>
+				<listener>CII.Library.Log.MessageListenerImp.TextFileMessageListener</listener>
+			</listeners>
+		</messageType>
+
+		<messageType>
+			<id>DebugInfoMessage</id>
+			<name>普通信息(调试)</name>
+			<isFixed>True</isFixed>
+			<listeners>
+			</listeners>
+		</messageType>
+
+		<messageType>
+			<id>DebugWarningMessage</id>
+			<name>警告信息(调试)</name>
+			<isFixed>True</isFixed>
+			<listeners>
+			</listeners>
+		</messageType>
+
+		<messageType>
+			<id>DebugErrorMessage</id>
+			<name>错误信息(调试)</name>
+			<isFixed>True</isFixed>
+			<listeners>
+			</listeners>
+		</messageType>
+
+		<messageType>
+			<id>CommunicationMessage</id>
+			<name>通讯模块信息(调试)</name>
+			<isFixed>False</isFixed>
+			<listeners>
+			</listeners>
+		</messageType>
+
+		<messageType>
+			<id>ProtocolMessage</id>
+			<name>通讯协议信息(调试)</name>
+			<isFixed>False</isFixed>
+			<listeners>
+			</listeners>
+		</messageType>
+
+		<messageType>
+			<id>BusMessage</id>
+			<name>通讯总线信息(调试)</name>
+			<isFixed>False</isFixed>
+			<listeners>
+			</listeners>
+		</messageType>
+
+	</messageTypes>
+
+</LogManager>

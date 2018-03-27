@@ -1,4 +1,7 @@
-﻿namespace CII.LAR
+﻿using AForge.Controls;
+using CII.LAR.UI;
+
+namespace CII.LAR
 {
     partial class EntryForm
     {
@@ -74,7 +77,9 @@
             this.systemMonitorTimer = new System.Windows.Forms.Timer(this.components);
             this.autoReceiverTimer = new System.Windows.Forms.Timer(this.components);
             this.videoControl = new CII.LAR.UI.VideoControl();
+            this.richPictureBox = new CII.LAR.UI.RichPictureBox();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.richPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -388,23 +393,36 @@
             // 
             // videoControl
             // 
-            this.videoControl.DrawObject = null;
-            this.videoControl.LaserFunction = false;
+            //this.videoControl.DrawObject = null;
+            //this.videoControl.LaserFunction = false;
             resources.ApplyResources(this.videoControl, "videoControl");
             this.videoControl.Name = "videoControl";
-            this.videoControl.UnitOfMeasure = CII.LAR.DrawTools.enUniMis.mm;
+            //this.videoControl.UnitOfMeasure = CII.LAR.DrawTools.enUniMis.mm;
+            //this.videoControl.VideoSize = new System.Drawing.Size(1280, 960);
             this.videoControl.VideoSource = null;
-            this.videoControl.Zoom = 1F;
+            //this.videoControl.Zoom = 1F;
+            // 
+            // richPictureBox
+            // 
+            resources.ApplyResources(this.richPictureBox, "richPictureBox");
+            this.richPictureBox.Name = "richPictureBox";
+            this.richPictureBox.BackColor = System.Drawing.Color.Gray;
+            this.richPictureBox.OffsetX = 0;
+            this.richPictureBox.OffsetY = 0;
+            this.richPictureBox.TabStop = false;
+            this.richPictureBox.UnitOfMeasure = DrawTools.enUniMis.mm;
+            this.richPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // EntryForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.videoControl);
+            this.Controls.Add(this.richPictureBox);
             this.Name = "EntryForm";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.richPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -455,6 +473,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonPort;
         private System.Windows.Forms.Timer systemMonitorTimer;
         private System.Windows.Forms.Timer autoReceiverTimer;
-        private UI.VideoControl videoControl;
+        private VideoSourcePlayer videoControl;
+        private RichPictureBox richPictureBox;
     }
 }

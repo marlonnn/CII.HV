@@ -44,15 +44,15 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="drawArea"></param>
         /// <param name="e"></param>
-        public override void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
 
-            if (videoControl.CreatingDrawObject)
+            if (richPictureBox.CreatingDrawObject)
             {
                 if (e.Button == MouseButtons.Left)
                 {
-                    videoControl.GraphicsList[0].UpdateStatisticsInformation();
-                    videoControl.ActiveTool = DrawToolType.Pointer;
+                    richPictureBox.GraphicsList[0].UpdateStatisticsInformation();
+                    richPictureBox.ActiveTool = DrawToolType.Pointer;
                 }
             }
         }
@@ -60,11 +60,11 @@ namespace CII.LAR.DrawTools
         /// <summary>
         /// left mouse is leave
         /// </summary>
-        /// <param name="videoControl"></param>
+        /// <param name="richPictureBox"></param>
         /// <param name="e"></param>
-        public override void OnMouseLeave(VideoControl videoControl, EventArgs e)
+        public override void OnMouseLeave(RichPictureBox richPictureBox, EventArgs e)
         {
-            OnMouseUp(videoControl, new MouseEventArgs(MouseButtons.Left, 0, 0, 0, 0));
+            OnMouseUp(richPictureBox, new MouseEventArgs(MouseButtons.Left, 0, 0, 0, 0));
         }
 
         /// <summary>
@@ -72,28 +72,28 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="drawArea"></param>
         /// <param name="cancelSelection"></param>
-        public override void OnCancel(VideoControl videoControl, bool cancelSelection)
+        public override void OnCancel(RichPictureBox richPictureBox, bool cancelSelection)
         {
             // cancel adding 
-            if (videoControl.GraphicsList.Count > 0 && videoControl.GraphicsList[0].Creating)
+            if (richPictureBox.GraphicsList.Count > 0 && richPictureBox.GraphicsList[0].Creating)
             {
-                videoControl.GraphicsList.DeleteLastAddedObject();
+                richPictureBox.GraphicsList.DeleteLastAddedObject();
             }
         }
 
         /// <summary>
         /// add new object to picturebox
         /// </summary>
-        /// <param name="videoControl"></param>
+        /// <param name="richPictureBox"></param>
         /// <param name="o"></param>
-        protected void AddNewObject(VideoControl videoControl, DrawObject o)
+        protected void AddNewObject(RichPictureBox richPictureBox, DrawObject o)
         {
-            videoControl.GraphicsList.UnselectAll();
+            richPictureBox.GraphicsList.UnselectAll();
 
             o.Selected = true;
             o.Creating = true;
 
-            videoControl.GraphicsList.Add(o);
+            richPictureBox.GraphicsList.Add(o);
         }
     }
 }

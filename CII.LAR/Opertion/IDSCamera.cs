@@ -129,7 +129,7 @@ namespace CII.LAR.Opertion
 
                     if (videoControl.GraphicsList != null)
                     {
-                        videoControl.GraphicsList.Draw(graphics, videoControl);
+                        //videoControl.GraphicsList.Draw(graphics, videoControl);
                     }
                     //if (Program.EntryForm.PictureBox.LaserFunction)
                     //{

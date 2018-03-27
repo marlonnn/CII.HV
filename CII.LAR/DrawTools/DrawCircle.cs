@@ -86,8 +86,8 @@ namespace CII.LAR.DrawTools
                     this.timer.Enabled = value;
                     this.timer.Stop();
                 }
-                if (this.videoControl != null)
-                    this.videoControl.Invalidate();
+                if (this.richPictureBox != null)
+                    this.richPictureBox.Invalidate();
             } 
         }
 
@@ -109,9 +109,9 @@ namespace CII.LAR.DrawTools
             Flashing = true;
         }
 
-        public DrawCircle(VideoControl videoControl, PointF centerPoint) : this()
+        public DrawCircle(RichPictureBox richPictureBox, PointF centerPoint) : this()
         {
-            this.videoControl = videoControl;
+            this.richPictureBox = richPictureBox;
             CenterPoint = centerPoint;
             this.GraphicsProperties.GraphicsPropertiesChangedHandler += GraphicsPropertiesChangedHandler;
         }
@@ -123,7 +123,7 @@ namespace CII.LAR.DrawTools
             InnerCircleSize = new Size(38 * this.GraphicsProperties.TargetSize, 38 * this.GraphicsProperties.TargetSize);
             OutterCircle = new Circle(CenterPoint, OutterCircleSize);
             InnerCircle = new Circle(CenterPoint, InnerCircleSize);
-            videoControl.GraphicsPropertiesChangedHandler(drawObject, graphicsProperties);
+            richPictureBox.GraphicsPropertiesChangedHandler(drawObject, graphicsProperties);
         }
 
         private void InitializeGraphicsProperties()
@@ -136,9 +136,9 @@ namespace CII.LAR.DrawTools
         {
 
             flickCount++;
-            if (this.videoControl != null)
+            if (this.richPictureBox != null)
             {
-                this.videoControl.Invalidate();
+                this.richPictureBox.Invalidate();
             }
             //if (flickCount == 6)
             //{
@@ -146,7 +146,7 @@ namespace CII.LAR.DrawTools
             //}
         }
 
-        public override void Draw(Graphics g, VideoControl videoControl)
+        public override void Draw(Graphics g, RichPictureBox richPictureBox)
         {
             if (OutterCircle == null)
             {
@@ -194,10 +194,10 @@ namespace CII.LAR.DrawTools
         /// <summary>
         /// Mouse move to new point
         /// </summary>
-        /// <param name="videoControl"></param>
+        /// <param name="richPictureBox"></param>
         /// <param name="point"></param>
         /// <param name="handleNumber"></param>
-        public override void MoveHandleTo(VideoControl videoControl, Point point, int handleNumber)
+        public override void MoveHandleTo(RichPictureBox richPictureBox, Point point, int handleNumber)
         {
         }
 
@@ -207,7 +207,7 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="handleNumber"></param>
         /// <returns></returns>
-        public override Point GetHandle(VideoControl videoControl, int handleNumber)
+        public override Point GetHandle(RichPictureBox richPictureBox, int handleNumber)
         {
             float x = 0, y = 0, xCenter, yCenter;
 
@@ -246,7 +246,7 @@ namespace CII.LAR.DrawTools
             throw new NotImplementedException();
         }
 
-        public override HitTestResult HitTestForSelection(VideoControl videoControl, Point point)
+        public override HitTestResult HitTestForSelection(RichPictureBox richPictureBox, Point point)
         {
             throw new NotImplementedException();
         }

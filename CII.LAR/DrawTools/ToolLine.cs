@@ -21,45 +21,45 @@ namespace CII.LAR.DrawTools
             clickCount = 0;
         }
 
-        public override void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             clickCount++;
             if (clickCount % 2 == 1)
             {
-                base.OnMouseDown(videoControl, e);
-                drawObject = new DrawLine(videoControl, startPoint.X, startPoint.Y, startPoint.X + 1, startPoint.Y + 1);
-                AddNewObject(videoControl, drawObject);
+                //base.OnMouseDown(richPictureBox, e);
+                startPoint = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
+                drawObject = new DrawLine(richPictureBox, startPoint.X, startPoint.Y, startPoint.X + 1, startPoint.Y + 1);
+                AddNewObject(richPictureBox, drawObject);
             }
         }
 
-        public override void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            videoControl.Cursor = Cursor;
+            richPictureBox.Cursor = Cursor;
 
             if (clickCount % 2 == 1)
             {
-                Point point = Point.Empty;
-                point = new Point(e.X, e.Y);
-                videoControl.GraphicsList[0].MoveHandleTo(videoControl, point, 2);
-                videoControl.Invalidate();
+                Point point = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
+                richPictureBox.GraphicsList[0].MoveHandleTo(richPictureBox, point, 2);
+                richPictureBox.Invalidate();
             }
         }
 
-        public override void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             if (clickCount % 2 == 0)
             {
-                endPoint = new Point(e.X, e.Y);
+                endPoint = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
                 Rectangle rectangle = new Rectangle(new Point(startPoint.X - 1, startPoint.Y - 1), new Size(2, 2));
                 if (rectangle.Contains(endPoint))
                 {
-                    videoControl.GraphicsList.DeleteDrawObject(drawObject);
-                    videoControl.Invalidate();
+                    richPictureBox.GraphicsList.DeleteDrawObject(drawObject);
+                    richPictureBox.Invalidate();
                 }
                 else
                 {
-                    videoControl.GraphicsList[0].UpdateStatisticsInformation();
-                    videoControl.ActiveTool = DrawToolType.Line;
+                    richPictureBox.GraphicsList[0].UpdateStatisticsInformation();
+                    richPictureBox.ActiveTool = DrawToolType.Line;
                 }
             }
         }

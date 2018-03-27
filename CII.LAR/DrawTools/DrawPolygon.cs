@@ -43,24 +43,24 @@ namespace CII.LAR.DrawTools
             drawAreaSize = DefaultDrawAreaSize;
         }
 
-        public DrawPolygon(VideoControl videoControl, List<PointF> dataPoints) : this()
+        public DrawPolygon(RichPictureBox richPictureBox, List<PointF> dataPoints) : this()
         {
             pointArray = new PointFList(dataPoints);
             pointArrayProportion = new PointFList();
 
         }
 
-        public DrawPolygon(VideoControl videoControl, int x1, int y1, int x2, int y2) : this()
+        public DrawPolygon(RichPictureBox richPictureBox, int x1, int y1, int x2, int y2) : this()
         {
-            this.videoControl = videoControl;
+            this.richPictureBox = richPictureBox;
             pointArray = new PointFList();
             pointArrayProportion = new PointFList();
 
-            AddPoint(videoControl, new Point(x1, y1), false);
-            AddPoint(videoControl, new Point(x2, y2), false);
+            AddPoint(richPictureBox, new Point(x1, y1), false);
+            AddPoint(richPictureBox, new Point(x2, y2), false);
         }
 
-        public override void Move(VideoControl videoControl, int deltaX, int deltaY)
+        public override void Move(RichPictureBox richPictureBox, int deltaX, int deltaY)
         {
             int n = pointArray.Count;
             Point point;
@@ -78,8 +78,8 @@ namespace CII.LAR.DrawTools
         /// draw object
         /// </summary>
         /// <param name="g"></param>
-        /// <param name="videoControl"></param>
-        public override void Draw(Graphics g, VideoControl videoControl)
+        /// <param name="richPictureBox"></param>
+        public override void Draw(Graphics g, RichPictureBox richPictureBox)
         {
             Point p1 = Point.Empty; // previous point
             Point p2 = Point.Empty; // current point
@@ -111,7 +111,7 @@ namespace CII.LAR.DrawTools
             }
         }
 
-        public void AddPoint(VideoControl videoControl, Point point, bool checkClose)
+        public void AddPoint(RichPictureBox richPictureBox, Point point, bool checkClose)
         {
             bool addPoint = true;
             if (checkClose)
@@ -136,7 +136,7 @@ namespace CII.LAR.DrawTools
             return Math.Abs(src.X - des.X) <= 3 && Math.Abs(src.Y - des.Y) <= 3;
         }
 
-        public override void DrawTracker(Graphics g, VideoControl videoControl)
+        public override void DrawTracker(Graphics g, RichPictureBox richPictureBox)
         {
             if (!Selected)
             {
@@ -149,7 +149,7 @@ namespace CII.LAR.DrawTools
 
             for (int i = 1; i <= HandleCount; i++)
             {
-                Rectangle r = GetHandleRectangle(videoControl, i);
+                Rectangle r = GetHandleRectangle(richPictureBox, i);
                 if (i <= PointCount)
                 {
                     r.Offset(MovingOffset);
@@ -261,10 +261,10 @@ namespace CII.LAR.DrawTools
             return false;
         }
 
-        public override HitTestResult HitTestForSelection(VideoControl videoControl, Point point0)
+        public override HitTestResult HitTestForSelection(RichPictureBox richPictureBox, Point point0)
         {
             //transfer point according to const draw area size for hit test
-            Point point = new Point(point0.X * videoControl.Width, point0.Y * videoControl.Height);
+            Point point = new Point(point0.X * richPictureBox.Width, point0.Y * richPictureBox.Height);
             GraphicsPath pathOut = AreaPath.Clone() as GraphicsPath;
             Pen pen = new Pen(Color.Black, SelectionHitTestWidth * 2);
             pathOut.Widen(pen);
@@ -285,11 +285,11 @@ namespace CII.LAR.DrawTools
             return result ? new HitTestResult(ElementType.Gate, 0) : new HitTestResult(ElementType.Nothing, -1);
         }
 
-        public void MoveLastHandleTo(VideoControl videoControl, Point point)
+        public void MoveLastHandleTo(RichPictureBox richPictureBox, Point point)
         {
             if (PointCount == 0) return;
 
-            if (PointCount > 3 && CloseToFirstPoint(videoControl, point))
+            if (PointCount > 3 && CloseToFirstPoint(richPictureBox, point))
             {
                 pointArray[PointCount - 1] = pointArray[0];
             }
@@ -328,7 +328,7 @@ namespace CII.LAR.DrawTools
                 p2 = Point.Ceiling(enumerator.Current);
                 p2.Offset(MovingOffset);
             }
-            return string.Format("{0:F2} {1}", sum, videoControl.UnitOfMeasure.ToString());
+            return string.Format("{0:F2} {1}", sum, richPictureBox.UnitOfMeasure.ToString());
         }
 
         private double GetArea()
@@ -336,7 +336,7 @@ namespace CII.LAR.DrawTools
             return 0;
         }
 
-        public bool CloseToFirstPoint(VideoControl videoControl, Point point)
+        public bool CloseToFirstPoint(RichPictureBox richPictureBox, Point point)
         {
             if (PointCount <= 0) return false;
 
@@ -350,9 +350,9 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="handleNumber"></param>
         /// <returns></returns>
-        public override Rectangle GetHandleRectangle(VideoControl videoControl, int handleNumber)
+        public override Rectangle GetHandleRectangle(RichPictureBox richPictureBox, int handleNumber)
         {
-            Point point = GetHandle(videoControl, handleNumber);
+            Point point = GetHandle(richPictureBox, handleNumber);
 
             return new Rectangle(point.X - 3, point.Y - 3, 6, 6);
         }
@@ -395,7 +395,7 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="handleNumber"></param>
         /// <returns></returns>
-        public override Point GetHandle(VideoControl videoControl, int handleNumber)
+        public override Point GetHandle(RichPictureBox richPictureBox, int handleNumber)
         {
             if (handleNumber < 1)
             {

@@ -40,7 +40,7 @@ namespace CII.LAR.DrawTools
 
         }
 
-        public override void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             wasMove = false;
             Point point = new Point(e.X, e.Y);
@@ -48,13 +48,13 @@ namespace CII.LAR.DrawTools
             dragBoxFromMouseDown = Rectangle.Empty;
 
             // Test for moving or resizing (only if control is selected, cursor is on the handle)
-            foreach (DrawObject o in videoControl.GraphicsList)
+            foreach (DrawObject o in richPictureBox.GraphicsList)
             {
                 if (o is DrawCircle)
                 {
                     continue;
                 }
-                DrawObject.HitTestResult htr = o.HitTest(videoControl, point, false);
+                DrawObject.HitTestResult htr = o.HitTest(richPictureBox, point, false);
                 if (!o.Selected)    // test for drag and drop
                 {
                     if (htr.ElementType == DrawObject.ElementType.Gate)
@@ -85,14 +85,14 @@ namespace CII.LAR.DrawTools
                             (resizedObject as DrawPolyLine).SetProportion = true;
                         }
 
-                        videoControl.GraphicsList.UnselectAll();
+                        richPictureBox.GraphicsList.UnselectAll();
                         o.Selected = true;
                     }
                 }
                 else if (htr.ElementType == DrawObject.ElementType.Gate)
                 {
                     selectMode = SelectionMode.Move;
-                    videoControl.Cursor = Cursors.SizeAll;
+                    richPictureBox.Cursor = Cursors.SizeAll;
                     break;
                 }
             }
@@ -102,16 +102,16 @@ namespace CII.LAR.DrawTools
             {
                 DrawObject o = null;
                 int gateIndex = 0;
-                for (int i = 0; i < videoControl.GraphicsList.Count; i++)
+                for (int i = 0; i < richPictureBox.GraphicsList.Count; i++)
                 {
-                    if (videoControl.GraphicsList[i] is DrawCircle)
+                    if (richPictureBox.GraphicsList[i] is DrawCircle)
                     {
                         continue;
                     }
-                    DrawObject.HitTestResult htr = videoControl.GraphicsList[i].HitTest(videoControl, point, true);
+                    DrawObject.HitTestResult htr = richPictureBox.GraphicsList[i].HitTest(richPictureBox, point, true);
                     if (htr.ElementType == DrawObject.ElementType.Gate)
                     {
-                        o = videoControl.GraphicsList[i];
+                        o = richPictureBox.GraphicsList[i];
                         gateIndex = htr.Index;
                         selectMode = o.Selected ? SelectionMode.Move : SelectionMode.Select;
                         break;
@@ -121,7 +121,7 @@ namespace CII.LAR.DrawTools
                 {
                     if ((Control.ModifierKeys & Keys.Control) == 0 && !o.Selected)
                     {
-                        videoControl.GraphicsList.UnselectAll();
+                        richPictureBox.GraphicsList.UnselectAll();
                     }
                     o.Selected = true;
                 }
@@ -133,7 +133,7 @@ namespace CII.LAR.DrawTools
                 // click on background
                 if ((Control.ModifierKeys & Keys.Control) == 0)
                 {
-                    videoControl.GraphicsList.UnselectAll();
+                    richPictureBox.GraphicsList.UnselectAll();
                 }
             }
 
@@ -147,11 +147,11 @@ namespace CII.LAR.DrawTools
             startPoint.X = e.X;
             startPoint.Y = e.Y;
 
-            videoControl.Capture = true;
-            videoControl.Refresh();
+            richPictureBox.Capture = true;
+            richPictureBox.Refresh();
         }
 
-        public override void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             Point point = new Point(e.X, e.Y);
             Point oldPoint = lastPoint;
@@ -161,19 +161,19 @@ namespace CII.LAR.DrawTools
             {
                 Cursor cursor = null;
 
-                for (int i = 0; i < videoControl.GraphicsList.Count; i++)
+                for (int i = 0; i < richPictureBox.GraphicsList.Count; i++)
                 {
-                    if (!videoControl.GraphicsList[i].Selected || (videoControl.GraphicsList[i] is DrawCircle)) continue;
+                    if (!richPictureBox.GraphicsList[i].Selected || (richPictureBox.GraphicsList[i] is DrawCircle)) continue;
 
-                    DrawTools.DrawObject.HitTestResult result = videoControl.GraphicsList[i].HitTest(videoControl, point, false);
+                    DrawTools.DrawObject.HitTestResult result = richPictureBox.GraphicsList[i].HitTest(richPictureBox, point, false);
 
                     if (result.ElementType == DrawTools.DrawObject.ElementType.Handle && result.Index > 0)
                     {
-                        cursor = videoControl.GraphicsList[i].GetHandleCursor(result.Index);
+                        cursor = richPictureBox.GraphicsList[i].GetHandleCursor(result.Index);
                         break;
                     }
                     else if (result.ElementType == DrawTools.DrawObject.ElementType.Label &&
-                                videoControl.GraphicsList[i].Selected)
+                                richPictureBox.GraphicsList[i].Selected)
                     {
                         cursor = Cursors.SizeAll;
                     }
@@ -182,7 +182,7 @@ namespace CII.LAR.DrawTools
                 if (cursor == null)
                     cursor = Cursors.Default;
 
-                videoControl.Cursor = cursor;
+                richPictureBox.Cursor = cursor;
                 return;
             }
 
@@ -208,48 +208,48 @@ namespace CII.LAR.DrawTools
             {
                 if (resizedObject != null)
                 {
-                    resizedObject.MoveHandleTo(videoControl, point, resizedObjectHandle);
-                    videoControl.Refresh();
+                    resizedObject.MoveHandleTo(richPictureBox, point, resizedObjectHandle);
+                    richPictureBox.Refresh();
                 }
             }
 
             // move
             if (selectMode == SelectionMode.Move)
             {
-                foreach (DrawObject o in videoControl.GraphicsList.Selection)
+                foreach (DrawObject o in richPictureBox.GraphicsList.Selection)
                 {
                     o.MovingOffset = new Point(o.MovingOffset.X + dx, o.MovingOffset.Y + dy);
                     // start drag and drop
-                    if (!videoControl.ClientRectangle.Contains(e.Location))
+                    if (!richPictureBox.ClientRectangle.Contains(e.Location))
                     {
                         o.MovingOffset = Point.Empty;
-                        videoControl.Refresh();
-                        videoControl.DoDragDrop(o, DragDropEffects.Copy | DragDropEffects.Link);
+                        richPictureBox.Refresh();
+                        richPictureBox.DoDragDrop(o, DragDropEffects.Copy | DragDropEffects.Link);
                     }
                 }
 
-                videoControl.Cursor = Cursors.SizeAll;
-                videoControl.Refresh();
+                richPictureBox.Cursor = Cursors.SizeAll;
+                richPictureBox.Refresh();
             }
 
             //if (selectMode == SelectionMode.NetSelection)
             //{
-            //    videoControl.RectNetSelection = new Rectangle(startPoint.X, startPoint.Y, point.X - startPoint.X, point.Y - startPoint.Y);
-            //    videoControl.Refresh();
+            //    richPictureBox.RectNetSelection = new Rectangle(startPoint.X, startPoint.Y, point.X - startPoint.X, point.Y - startPoint.Y);
+            //    richPictureBox.Refresh();
             //    return;
             //}
         }
 
-        public override void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             if (selectMode == SelectionMode.NetSelection)
             {
-                //videoControl.RectNetSelection = Rectangle.Empty;
+                //richPictureBox.RectNetSelection = Rectangle.Empty;
 
                 //if (Math.Abs(startPoint.X - lastPoint.X) > 3 || Math.Abs(startPoint.Y - lastPoint.Y) > 3)
                 //{
                 //    // Make group selection
-                //    videoControl.GraphicsList.SelectInRectangle(videoControl,
+                //    richPictureBox.GraphicsList.SelectInRectangle(richPictureBox,
                 //        DrawRectangle.GetNormalizedRectangle(startPoint, lastPoint));
                 //}
                 selectMode = SelectionMode.None;
@@ -257,24 +257,24 @@ namespace CII.LAR.DrawTools
 
             if (selectMode == SelectionMode.Move && wasMove)
             {
-                foreach (DrawObject o in videoControl.GraphicsList.Selection)
+                foreach (DrawObject o in richPictureBox.GraphicsList.Selection)
                 {
-                    o.Move(videoControl, o.MovingOffset.X, o.MovingOffset.Y);
+                    o.Move(richPictureBox, o.MovingOffset.X, o.MovingOffset.Y);
                     o.MovingOffset = Point.Empty;
                 }
 
                 // gate could be moved, but lost selection
-                foreach (DrawObject o in videoControl.GraphicsList)
+                foreach (DrawObject o in richPictureBox.GraphicsList)
                 {
                     o.MovingOffset = Point.Empty;
                 }
                 selectMode = SelectionMode.None;
-                videoControl.Refresh();
+                richPictureBox.Refresh();
             }
             wasMove = false;
         }
 
-        public override void OnCancel(VideoControl videoControl, bool cancelSelection)
+        public override void OnCancel(RichPictureBox richPictureBox, bool cancelSelection)
         {
 
         }

@@ -21,6 +21,9 @@ namespace CII.LAR.SysClass
         [NonSerialized]
         private static string filePath = Application.StartupPath + "\\LConfig";
 
+        [NonSerialized]
+        public bool LiveMode = false;
+
         public static SysConfig Load()
         {
             SysConfig config = null;

@@ -25,21 +25,21 @@ namespace CII.LAR.DrawTools
             Cursor = s_cursor;
         }
 
-        public override void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             Point point = e.Location;
-            AddNewObject(videoControl, new DrawCircle(videoControl, new PointF(point.X, point.Y)));
+            AddNewObject(richPictureBox, new DrawCircle(richPictureBox, new PointF(point.X, point.Y)));
         }
 
-        public override void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            //videoControl.Cursor = Cursor;
+            //richPictureBox.Cursor = Cursor;
 
             //if (e.Button == MouseButtons.Left)
             //{
             //    Point point = new Point(e.X, e.Y);
-            //    videoControl.GraphicsList[0].MoveHandleTo(videoControl, point, 5);
-            //    videoControl.Refresh();
+            //    richPictureBox.GraphicsList[0].MoveHandleTo(richPictureBox, point, 5);
+            //    richPictureBox.Refresh();
             //}
         }
     }

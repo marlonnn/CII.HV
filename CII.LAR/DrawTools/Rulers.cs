@@ -29,7 +29,7 @@ namespace CII.LAR.DrawTools
 
         private const int DigitWidth = 6;
 
-        private VideoControl videoControl;
+        private RichPictureBox richPictureBox;
 
         private float rulerStep = 100;
 
@@ -37,7 +37,7 @@ namespace CII.LAR.DrawTools
         {
             get
             {
-                return rulerStep * videoControl.Zoom;
+                return rulerStep * richPictureBox.Zoom;
             }
             set
             {
@@ -52,11 +52,11 @@ namespace CII.LAR.DrawTools
         {
             get
             {
-                if (float.IsNaN(videoControl.Zoom) || float.IsInfinity(videoControl.Zoom))
+                if (float.IsNaN(richPictureBox.Zoom) || float.IsInfinity(richPictureBox.Zoom))
                 {
                     return 1;
                 }
-                return Math.Abs(videoControl.Zoom);
+                return Math.Abs(richPictureBox.Zoom);
             }
         }
 
@@ -67,9 +67,9 @@ namespace CII.LAR.DrawTools
             InitializeSignsTable();
         }
 
-        public Rulers(VideoControl videoControl) : this()
+        public Rulers(RichPictureBox richPictureBox) : this()
         {
-            this.videoControl = videoControl;
+            this.richPictureBox = richPictureBox;
         }
 
         #region initialize signs table
@@ -333,35 +333,35 @@ namespace CII.LAR.DrawTools
         /// <param name="pen"></param>
         public void DrawHorizontalRuler(Graphics g, Pen pen)
         {
-            float x1Coord = videoControl.Width / 2;
-            float x2Coord = videoControl.Width / 2;
+            float x1Coord = richPictureBox.Width / 2;
+            float x2Coord = richPictureBox.Width / 2;
             float x1 = 0;
             float x2 = 0;
-            for ( ; x1Coord < videoControl.Width; x1Coord += RulerStep)
+            for ( ; x1Coord < richPictureBox.Width; x1Coord += RulerStep)
             {
                 //1.X > 0
-                g.DrawLine(pen, x1Coord, videoControl.Height / 2 - 10, x1Coord, videoControl.Height / 2);
-                g.DrawLine(pen, x1Coord + RulerStep / 2, videoControl.Height / 2 - 5, x1Coord + RulerStep / 2, videoControl.Height / 2);
+                g.DrawLine(pen, x1Coord, richPictureBox.Height / 2 - 10, x1Coord, richPictureBox.Height / 2);
+                g.DrawLine(pen, x1Coord + RulerStep / 2, richPictureBox.Height / 2 - 5, x1Coord + RulerStep / 2, richPictureBox.Height / 2);
 
                 if (x1 != 0)
                 {
-                    DrawScaledNumber(g, x1, x1Coord, videoControl.Height / 2 - 20, ScaleFactor, true);
+                    DrawScaledNumber(g, x1, x1Coord, richPictureBox.Height / 2 - 20, ScaleFactor, true);
                 }
                 x1 += this.rulerStep;
 
                 //2.X < 0
-                g.DrawLine(pen, x2Coord, videoControl.Height / 2 - 10, x2Coord, videoControl.Height / 2);
-                g.DrawLine(pen, x2Coord + RulerStep / 2, videoControl.Height / 2 - 5, x2Coord + RulerStep / 2, videoControl.Height / 2);
+                g.DrawLine(pen, x2Coord, richPictureBox.Height / 2 - 10, x2Coord, richPictureBox.Height / 2);
+                g.DrawLine(pen, x2Coord + RulerStep / 2, richPictureBox.Height / 2 - 5, x2Coord + RulerStep / 2, richPictureBox.Height / 2);
 
                 if (x2 != 0)
                 {
-                    DrawScaledNumber(g, x2, x2Coord, videoControl.Height / 2 - 20, ScaleFactor, true);
+                    DrawScaledNumber(g, x2, x2Coord, richPictureBox.Height / 2 - 20, ScaleFactor, true);
                 }
                 x2Coord -= RulerStep;
                 x2 -= this.rulerStep;
             }
 
-            g.DrawLine(pen, 0, videoControl.Height / 2, videoControl.Width, videoControl.Height / 2);
+            g.DrawLine(pen, 0, richPictureBox.Height / 2, richPictureBox.Width, richPictureBox.Height / 2);
         }
 
         /// <summary>
@@ -371,33 +371,33 @@ namespace CII.LAR.DrawTools
         /// <param name="pen"></param>
         public void DrawVerticalRuler(Graphics g, Pen pen)
         {
-            float y1Coord = videoControl.Height / 2;
-            float y2Coord = videoControl.Height / 2;
+            float y1Coord = richPictureBox.Height / 2;
+            float y2Coord = richPictureBox.Height / 2;
             float y1 = 0;
             float y2 = 0;
-            for ( ; y1Coord < videoControl.Height; y1Coord += RulerStep)
+            for ( ; y1Coord < richPictureBox.Height; y1Coord += RulerStep)
             {
                 //1.Y > 0
-                g.DrawLine(pen, videoControl.Width / 2 - 10, y1Coord, videoControl.Width / 2, y1Coord);
-                g.DrawLine(pen, videoControl.Width / 2 - 5, y1Coord + RulerStep / 2, videoControl.Width / 2, y1Coord + RulerStep / 2);
+                g.DrawLine(pen, richPictureBox.Width / 2 - 10, y1Coord, richPictureBox.Width / 2, y1Coord);
+                g.DrawLine(pen, richPictureBox.Width / 2 - 5, y1Coord + RulerStep / 2, richPictureBox.Width / 2, y1Coord + RulerStep / 2);
 
                 if (y1 != 0)
                 {
-                    DrawScaledNumber(g, y1, videoControl.Width / 2 - 20, y1Coord - 2, ScaleFactor, true);
+                    DrawScaledNumber(g, y1, richPictureBox.Width / 2 - 20, y1Coord - 2, ScaleFactor, true);
                 }
                 y1 += this.rulerStep;
 
-                g.DrawLine(pen, videoControl.Width / 2 - 10, y2Coord, videoControl.Width / 2, y2Coord);
-                g.DrawLine(pen, videoControl.Width / 2 - 5, y2Coord + RulerStep / 2, videoControl.Width / 2, y2Coord + RulerStep / 2);
+                g.DrawLine(pen, richPictureBox.Width / 2 - 10, y2Coord, richPictureBox.Width / 2, y2Coord);
+                g.DrawLine(pen, richPictureBox.Width / 2 - 5, y2Coord + RulerStep / 2, richPictureBox.Width / 2, y2Coord + RulerStep / 2);
 
                 if (y2 != 0)
                 {
-                    DrawScaledNumber(g, y2, videoControl.Width / 2 - 20, y2Coord - 2, ScaleFactor, true);
+                    DrawScaledNumber(g, y2, richPictureBox.Width / 2 - 20, y2Coord - 2, ScaleFactor, true);
                 }
                 y2Coord -= RulerStep;
                 y2 -= this.rulerStep;
             }
-            g.DrawLine(pen, videoControl.Width / 2, 0, videoControl.Width / 2, videoControl.Height);
+            g.DrawLine(pen, richPictureBox.Width / 2, 0, richPictureBox.Width / 2, richPictureBox.Height);
         }
     }
 }

@@ -29,19 +29,19 @@ namespace CII.LAR.DrawTools
             Cursor = s_cursor;
         }
 
-        public override void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             Point point = e.Location;
-            newPolygon = new DrawPolygon(videoControl, point.X, point.Y, point.X + 1, point.Y + 1);
-            AddNewObject(videoControl, newPolygon);
+            newPolygon = new DrawPolygon(richPictureBox, point.X, point.Y, point.X + 1, point.Y + 1);
+            AddNewObject(richPictureBox, newPolygon);
 
             lastX = point.X;
             lastY = point.Y;
         }
 
-        public override void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            videoControl.Cursor = Cursor;
+            richPictureBox.Cursor = Cursor;
 
             if (e.Button != MouseButtons.Left)
             {
@@ -60,24 +60,24 @@ namespace CII.LAR.DrawTools
             {
                 // Distance between last two points is less than minimum -
                 // move last point
-                newPolygon.MoveHandleTo(videoControl, point, newPolygon.PointCount);
+                newPolygon.MoveHandleTo(richPictureBox, point, newPolygon.PointCount);
             }
             else
             {
                 // Add new point
-                newPolygon.AddPoint(videoControl, point, false);
+                newPolygon.AddPoint(richPictureBox, point, false);
                 lastX = point.X;
                 lastY = point.Y;
             }
-            videoControl.Invalidate();
+            richPictureBox.Invalidate();
         }
 
-        public override void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             newPolygon.Creating = false;
             newPolygon = null;
 
-            base.OnMouseUp(videoControl, e);
+            base.OnMouseUp(richPictureBox, e);
         }
     }
 }

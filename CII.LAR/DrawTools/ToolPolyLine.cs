@@ -27,12 +27,12 @@ namespace CII.LAR.DrawTools
             Cursor = s_cursor;
         }
 
-        public override void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             // operations are done in OnMouseUp
         }
 
-        public override void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             if (cancelNewFlag)
             {
@@ -41,7 +41,7 @@ namespace CII.LAR.DrawTools
             }
 
             // if new object creation is canceled
-            if (!videoControl.CreatingDrawObject && newPolyLine != null)
+            if (!richPictureBox.CreatingDrawObject && newPolyLine != null)
             {
                 return;
             }
@@ -49,8 +49,8 @@ namespace CII.LAR.DrawTools
             if (newPolyLine == null)
             {
                 Point point = e.Location;
-                newPolyLine = new DrawPolyLine(videoControl, point.X, point.Y, point.X + 1, point.Y + 1);
-                AddNewObject(videoControl, newPolyLine);
+                newPolyLine = new DrawPolyLine(richPictureBox, point.X, point.Y, point.X + 1, point.Y + 1);
+                AddNewObject(richPictureBox, newPolyLine);
             }
             else
             {
@@ -58,22 +58,22 @@ namespace CII.LAR.DrawTools
                 if (newPolyLine.CloseToFirstPoint(e.Location) && newPolyLine.PointCount > 3)
                 {
                     newPolyLine.RemovePointAt(newPolyLine.PointCount - 1); // remove the last added point, it is closed to first
-                    EndCreating(videoControl);
+                    EndCreating(richPictureBox);
                     return;
                 }
                 // Drawing is in process, so simply add a new point
                 Point point = e.Location;
-                newPolyLine.AddPoint(videoControl, point, true);
+                newPolyLine.AddPoint(richPictureBox, point, true);
             }
-            videoControl.Capture = false;
-            videoControl.Invalidate();
+            richPictureBox.Capture = false;
+            richPictureBox.Invalidate();
         }
 
-        public override void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            videoControl.Cursor = Cursor;
+            richPictureBox.Cursor = Cursor;
             // if new object creation is canceled
-            if (!videoControl.CreatingDrawObject) return;
+            if (!richPictureBox.CreatingDrawObject) return;
 
             if (newPolyLine == null)
                 return; // precaution
@@ -81,17 +81,17 @@ namespace CII.LAR.DrawTools
             Point point = e.Location;
 
             // move last point
-            newPolyLine.MoveLastHandleTo(videoControl, point);
-            videoControl.Invalidate();
+            newPolyLine.MoveLastHandleTo(richPictureBox, point);
+            richPictureBox.Invalidate();
         }
 
-        public override void OnMouseLeave(VideoControl videoControl, System.EventArgs e)
+        public override void OnMouseLeave(RichPictureBox richPictureBox, System.EventArgs e)
         {
         }
 
-        public override void OnCancel(VideoControl videoControl, bool cancelSelection)
+        public override void OnCancel(RichPictureBox richPictureBox, bool cancelSelection)
         {
-            base.OnCancel(videoControl, cancelSelection);
+            base.OnCancel(richPictureBox, cancelSelection);
 
             newPolyLine = null;
         }
@@ -102,7 +102,7 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="drawArea"></param>
         /// <param name="e"></param>
-        public override void OnDoubleClick(VideoControl videoControl, MouseEventArgs e)
+        public override void OnDoubleClick(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             if (newPolyLine == null)
                 return;
@@ -112,16 +112,16 @@ namespace CII.LAR.DrawTools
             if (newPolyLine.PointCount < 3)
                 return;
 
-            EndCreating(videoControl);
+            EndCreating(richPictureBox);
 
             // there is a mouse up event after double click event when in Continuous mode
             cancelNewFlag = true;
 
-            videoControl.GraphicsList[0].UpdateStatisticsInformation();
-            videoControl.ActiveTool = DrawToolType.PolyLine;
+            richPictureBox.GraphicsList[0].UpdateStatisticsInformation();
+            richPictureBox.ActiveTool = DrawToolType.PolyLine;
         }
 
-        private void EndCreating(VideoControl videoControl)
+        private void EndCreating(RichPictureBox richPictureBox)
         {
             newPolyLine.Creating = false;
             newPolyLine = null;

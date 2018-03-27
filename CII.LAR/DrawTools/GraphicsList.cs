@@ -54,7 +54,7 @@ namespace CII.LAR.DrawTools
             return graphicsList.GetEnumerator();
         }
 
-        public void Draw(Graphics g, VideoControl videoControl)
+        public void Draw(Graphics g, RichPictureBox richPictureBox)
         {
             int n = graphicsList.Count;
             DrawObject o;
@@ -63,16 +63,19 @@ namespace CII.LAR.DrawTools
             // object on the top of Z-order.
             for (int i = n - 1; i >= 0; i--)
             {
-                if (videoControl == null)
+                if (richPictureBox == null)
                 {
                     break;
                 }
                 o = graphicsList[i];
-                o.Draw(g, videoControl);
-                o.DrawTest(g, videoControl);
+                g.ScaleTransform(richPictureBox.Zoom, richPictureBox.Zoom);
+                g.TranslateTransform(richPictureBox.OffsetX, richPictureBox.OffsetY);
+                o.Draw(g, richPictureBox);
+                o.DrawTest(g, richPictureBox);
+                g.ResetTransform();
                 //if (o.Selected)
                 //{
-                //    o.DrawTracker(g, videoControl);
+                //    o.DrawTracker(g, richPictureBox);
                 //}
             }
         }

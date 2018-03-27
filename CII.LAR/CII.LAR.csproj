@@ -271,6 +271,12 @@
     <Compile Include="UI\ImageForm.designer.cs">
       <DependentUpon>ImageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ImageTracker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ImageTracker.designer.cs">
+      <DependentUpon>ImageTracker.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ReportCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -300,6 +306,9 @@
     </Compile>
     <Compile Include="UI\ReportPageUI.designer.cs">
       <DependentUpon>ReportPageUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\RichPictureBox.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="UI\VideoChooseCtrl.cs">
       <SubType>UserControl</SubType>
@@ -408,6 +417,7 @@
     <Compile Include="UI\VideoControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Util.cs" />
     <EmbeddedResource Include="EntryForm.resx">
       <DependentUpon>EntryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -443,6 +453,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ImageForm.resx">
       <DependentUpon>ImageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ImageTracker.resx">
+      <DependentUpon>ImageTracker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ReportCtrl.resx">
       <DependentUpon>ReportCtrl.cs</DependentUpon>

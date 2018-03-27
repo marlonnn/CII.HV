@@ -26,11 +26,11 @@ namespace CII.LAR.Laser
             get { return this.activeCircle; }
         }
 
-        public ActiveLaser(VideoControl videoControl) : base()
+        public ActiveLaser(RichPictureBox richPictureBox) : base()
         {
             this.FlashTimer.Interval = 500;
-            this.videoControl = videoControl;
-            activeCircle = new ActiveCircle(videoControl, this);
+            this.richPictureBox = richPictureBox;
+            activeCircle = new ActiveCircle(richPictureBox, this);
             this.GraphicsProperties.GraphicsPropertiesChangedHandler += GraphicsPropertiesChangedHandler;
         }
 
@@ -46,32 +46,32 @@ namespace CII.LAR.Laser
                 activeCircle.InnerCircles[i] = new Circle(activeCircle.InnerCircles[i].CenterPoint, activeCircle.InnerCircleSize);
                 activeCircle.OutterCircle[i] = new Circle(activeCircle.OutterCircle[i].CenterPoint, activeCircle.OutterCircleSize);
             }
-            this.videoControl.Invalidate();
+            this.richPictureBox.Invalidate();
         }
 
-        public override void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             mouseDownPoint = e.Location;
 
             activeCircle.OnMouseDown(e.Location);
-            this.videoControl.Invalidate();
+            this.richPictureBox.Invalidate();
         }
 
-        public override void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            base.OnMouseMove(videoControl, e);
+            base.OnMouseMove(richPictureBox, e);
             Point mousePosNow = e.Location;
             int dx = mousePosNow.X - mouseDownPoint.X;
             int dy = mousePosNow.Y - mouseDownPoint.Y;
             activeCircle.OnMouseMove(e, e.Location, dx, dy);
-            this.videoControl.Invalidate();
+            this.richPictureBox.Invalidate();
         }
 
-        public override void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            base.OnMouseUp(videoControl, e);
+            base.OnMouseUp(richPictureBox, e);
             activeCircle.OnMouseUp();
-            this.videoControl.Invalidate();
+            this.richPictureBox.Invalidate();
         }
 
         public override void OnPaint(PaintEventArgs e)
@@ -101,7 +101,7 @@ namespace CII.LAR.Laser
                     //Thread.Sleep(10);
                 }
                 SendAlignmentMotorPoint();
-                this.videoControl.Invalidate();
+                this.richPictureBox.Invalidate();
                 if (_flickCount == this.activeCircle.InnerCircles.Count)
                 {
                     Flashing = false;
@@ -125,7 +125,7 @@ namespace CII.LAR.Laser
         public void UpdateHoleNumber(int value)
         {
             activeCircle.UpdateHoleNum(value);
-            this.videoControl.Invalidate();
+            this.richPictureBox.Invalidate();
         }
     }
 }

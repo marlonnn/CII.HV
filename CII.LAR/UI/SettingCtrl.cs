@@ -13,7 +13,7 @@ namespace CII.LAR.UI
 {
     public partial class SettingCtrl : BaseCtrl
     {
-        private VideoControl videoControl;
+        private RichPictureBox richPictureBox;
 
         private SystemInfoForm systemInfoForm;
 
@@ -25,9 +25,9 @@ namespace CII.LAR.UI
 
         public delegate void UpdateSimulatorImage(int selectIndex);
         public UpdateSimulatorImage UpdateSimulatorImageHandler;
-        public SettingCtrl(VideoControl videoControl) : base()
+        public SettingCtrl(RichPictureBox richPictureBox) : base()
         {
-            this.videoControl = videoControl;
+            this.richPictureBox = richPictureBox;
             this.ShowIndex = 0;
             InitializeComponent();
             resources = new ComponentResourceManager(typeof(SettingCtrl));
@@ -203,6 +203,7 @@ namespace CII.LAR.UI
             if (UpdateSimulatorImageHandler != null)
             {
                 UpdateSimulatorImageHandler(cmbImage.SelectedIndex);
+                Program.SysConfig.LiveMode = false;
             }
         }
 
@@ -222,7 +223,8 @@ namespace CII.LAR.UI
 
         private void btnSimulator_Click(object sender, EventArgs e)
         {
-            videoControl.LoadImage(string.Format("{0}\\Resources\\Simulator\\Embryo.bmp", System.Environment.CurrentDirectory));
+            richPictureBox.LoadImage(string.Format("{0}\\Resources\\Simulator\\Embryo.bmp", System.Environment.CurrentDirectory));
+            Program.SysConfig.LiveMode = false;
         }
     }
 }

@@ -33,14 +33,14 @@ namespace CII.LAR.UI
         private VideoChooseCtrl videoChooseCtrl;
         private LaserHoleSize laserHoleSize;
 
-        public static void InitializeCtrlFactory(VideoControl videoControl)
+        public static void InitializeCtrlFactory(RichPictureBox richPictureBox)
         {
-            ctrlFactory = new CtrlFactory(videoControl);
+            ctrlFactory = new CtrlFactory(richPictureBox);
         }
 
-        public CtrlFactory(VideoControl videoControl)
+        public CtrlFactory(RichPictureBox richPictureBox)
         {
-            settingCtrl = new SettingCtrl(videoControl);
+            settingCtrl = new SettingCtrl(richPictureBox);
             serialPortCtrl = new SerialPortCtrl();
             statisticsCtrl = new StatisticsCtrl();
             laserAppearanceCtrl = new LaserAppearanceCtrl();

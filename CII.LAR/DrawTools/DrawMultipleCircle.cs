@@ -95,9 +95,9 @@ namespace CII.LAR.DrawTools
             InnerCircles = new List<Circle>();
         }
 
-        public DrawMultipleCircle(VideoControl videoControl, PointF centerPoint) : this()
+        public DrawMultipleCircle(RichPictureBox richPictureBox, PointF centerPoint) : this()
         {
-            this.videoControl = videoControl;
+            this.richPictureBox = richPictureBox;
             StartCenterPoint = centerPoint;
         }
 
@@ -107,7 +107,7 @@ namespace CII.LAR.DrawTools
             //this.GraphicsProperties.Color = Color.Yellow;
         }
 
-        public override void Draw(Graphics g, VideoControl videoControl)
+        public override void Draw(Graphics g, RichPictureBox richPictureBox)
         {
             
             g.CompositingQuality = CompositingQuality.HighQuality;
@@ -141,7 +141,7 @@ namespace CII.LAR.DrawTools
             region1.Dispose();
         }
 
-        public override void MoveHandleTo(VideoControl videoControl, Point point, int handleNumber)
+        public override void MoveHandleTo(RichPictureBox richPictureBox, Point point, int handleNumber)
         {
             OutterCircles.Clear();
             InnerCircles.Clear();
@@ -206,7 +206,7 @@ namespace CII.LAR.DrawTools
             return false;
         }
 
-        public override HitTestResult HitTestForSelection(VideoControl videoControl, Point point)
+        public override HitTestResult HitTestForSelection(RichPictureBox richPictureBox, Point point)
         {
             throw new NotImplementedException();
         }

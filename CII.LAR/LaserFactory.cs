@@ -28,24 +28,24 @@ namespace CII.LAR
             get { return this.alignLaser; }
         }
 
-        private VideoControl videoControl;
-        public LaserFactory(VideoControl videoControl)
+        private RichPictureBox richPictureBox;
+        public LaserFactory(RichPictureBox richPictureBox)
         {
-            this.videoControl = videoControl;
-            this.fixedLaser = new FixedLaser(videoControl);
-            this.activeLaser = new ActiveLaser(videoControl);
-            this.alignLaser = new AlignLaser(videoControl);
-            this.alignLaser.ZoomHandler += videoControl.ZoomHandler;
+            this.richPictureBox = richPictureBox;
+            this.fixedLaser = new FixedLaser(richPictureBox);
+            this.activeLaser = new ActiveLaser(richPictureBox);
+            this.alignLaser = new AlignLaser(richPictureBox);
+            this.alignLaser.ZoomHandler += richPictureBox.ZoomHandler;
             alignLaser.ButtonStateHandler += Program.EntryForm.ButtonStateHandler;
         }
 
         private static LaserFactory factory;
 
-        public static LaserFactory GetInstance(VideoControl videoControl)
+        public static LaserFactory GetInstance(RichPictureBox richPictureBox)
         {
             if (factory == null)
             {
-                factory = new LaserFactory(videoControl);
+                factory = new LaserFactory(richPictureBox);
             }
             return factory;
         }

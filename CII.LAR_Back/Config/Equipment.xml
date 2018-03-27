@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CII.Ins.Business.Instrument.Equipment>
+	<id>DefaultID</id>
+	<name>DefaultName</name>
+	<insInfoListData>
+		<CII.Ins.Business.Instrument.InsInfo>
+			<id>0</id>
+			<name>0</name>
+			<insName>HV-01</insName>
+			<insIP>172.30.1.5</insIP>
+			<insPort>10000</insPort>
+			<insID></insID>
+		</CII.Ins.Business.Instrument.InsInfo>
+
+		<CII.Ins.Business.Instrument.InsInfo>
+			<id>1</id>
+			<name>1</name>
+			<insName>HV-01</insName>
+			<insIP>172.30.1.6</insIP>
+			<insPort>10000</insPort>
+			<insID></insID>
+		</CII.Ins.Business.Instrument.InsInfo>
+
+		<CII.Ins.Business.Instrument.InsInfo>
+			<id>2</id>
+			<name>2</name>
+			<insName>HV-01</insName>
+			<insIP>172.30.1.7</insIP>
+			<insPort>10000</insPort>
+			<insID></insID>
+		</CII.Ins.Business.Instrument.InsInfo>
+
+		<CII.Ins.Business.Instrument.InsInfo>
+			<id>3</id>
+			<name>3</name>
+			<insName>HV-01</insName>
+			<insIP>172.30.1.8</insIP>
+			<insPort>10000</insPort>
+			<insID></insID>
+		</CII.Ins.Business.Instrument.InsInfo>
+
+	</insInfoListData>
+
+	<mthData>
+		<CII.Ins.Business.Instrument.Method>
+			<id>MethodData</id>
+			<name>MethodData</name>
+			<frequency>20000</frequency>
+			<voltage>1000</voltage>
+		</CII.Ins.Business.Instrument.Method>
+
+	</mthData>
+
+</CII.Ins.Business.Instrument.Equipment>

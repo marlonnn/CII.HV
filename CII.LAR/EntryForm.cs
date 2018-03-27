@@ -91,7 +91,7 @@ namespace CII.LAR
         private LaserAlignment laserAlignment;
         private LaserHoleSize laserHoleSize;
         private VideoChooseCtrl videoChooseCtrl;
-        private DebugCtrl df;
+        //private DebugCtrl df;
 
         #endregion
 
@@ -173,7 +173,7 @@ namespace CII.LAR
             this.Load += EntryForm_Load;
             this.FormClosing += EntryForm_FormClosing;
             this.FormClosed += EntryForm_FormClosed;
-            this.videoControl.VideoKeyDownHandler += this.OnKeyDown;
+            this.richPictureBox.VideoKeyDownHandler += this.OnKeyDown;
             InitializeControls();
         }
 
@@ -203,7 +203,6 @@ namespace CII.LAR
         private void EntryForm_Load(object sender, EventArgs e)
         {
             InitializeBaseCtrls();
-
             MotorProtocolFactory = MotorProtocolFactory.GetInstance();
             LaserProtocolFactory = LaserProtocolFactory.GetInstance();
 
@@ -216,23 +215,24 @@ namespace CII.LAR
             this.autoSendTimer.Enabled = true;
             this.autoReceiverTimer.Enabled = true;
             this.systemMonitorTimer.Enabled = true;
-            this.LaserFactory = LaserFactory.GetInstance(this.videoControl);
+            this.LaserFactory = LaserFactory.GetInstance(this.richPictureBox);
             LaserType = LaserType.SaturnFixed;
 
             Coordinate.GetCoordinate().MoveStepHandler += MoveStepHandler;
+
         }
 
         private void MoveStepHandler(int x, byte ox, int y, byte oy)
         {
-            if (df != null)
+            if (this.richPictureBox.df != null)
             {
-                df.UpdateMoveStep(x, ox, y, oy);
+                this.richPictureBox.df.UpdateMoveStep(x, ox, y, oy);
             }
         }
 
         private void InitializeControls()
         {
-            CtrlFactory.InitializeCtrlFactory(this.videoControl);
+            CtrlFactory.InitializeCtrlFactory(this.richPictureBox);
             BaseCtrls = new List<BaseCtrl>();
 
             settingCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SettingCtrl>(CtrlType.SettingCtrl);
@@ -256,7 +256,7 @@ namespace CII.LAR
             BaseCtrls.Add(laserCtrl);
 
             laserAlignment = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment);
-            laserAlignment.VideoControl = this.videoControl;
+            laserAlignment.RichPictureBox = this.richPictureBox;
             laserAlignment.VideoKeyDownHandler += this.OnKeyDown;
             BaseCtrls.Add(laserAlignment);
 
@@ -274,8 +274,12 @@ namespace CII.LAR
             videoDevice = new VideoCaptureDevice(deviceMoniker);
             if (videoDevice != null)
             {
-                Size videoSize = this.videoControl.VideoSize;
-                this.videoControl.Bounds = new Rectangle((this.Width - videoSize.Width) / 2, (this.Height - videoSize.Height) / 2, videoSize.Width, videoSize.Height);
+                Program.SysConfig.LiveMode = true;
+                Size videoSize = this.richPictureBox.RealSize;
+                int offsetX = (this.Width - videoSize.Width) / 2;
+                int offsetY = (this.Height - videoSize.Height) / 2;
+                this.richPictureBox.SetOffset(offsetX, offsetY);
+                this.videoControl.Bounds = new Rectangle(0, 0, videoSize.Width, videoSize.Height);
                 this.videoControl.VideoSource = videoDevice;
                 this.videoControl.VideoSource.NewFrame += new NewFrameEventHandler(VideoSource_NewFrame);
                 this.videoControl.Start();
@@ -285,15 +289,24 @@ namespace CII.LAR
 
         private void VideoSource_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
-            if (captureVideo && canCapture)
+            try
             {
-                videoFrame = (Bitmap)eventArgs.Frame.Clone();
-                AVIwriter.Quality = 0;
-                AVIwriter.AddFrame(videoFrame);
+                if (captureVideo && canCapture)
+                {
+                    videoFrame = (Bitmap)eventArgs.Frame.Clone();
+                    AVIwriter.Quality = 0;
+                    AVIwriter.AddFrame(videoFrame);
+                }
+                else
+                {
+                    videoFrame = (Bitmap)eventArgs.Frame.Clone();
+                }
+                if (this.richPictureBox.Image != null) this.richPictureBox.Image.Dispose();
+
+                this.richPictureBox.Image = videoFrame;
             }
-            else
+            catch (Exception ex)
             {
-                videoFrame = (Bitmap)eventArgs.Frame.Clone();
             }
         }
 
@@ -304,6 +317,11 @@ namespace CII.LAR
                 this.videoControl.SignalToStop();
                 this.videoControl.WaitForStop();
                 this.videoControl.VideoSource = null;
+            }
+            if (this.richPictureBox != null)
+            {
+                this.richPictureBox.Image = null;
+                this.richPictureBox.Invalidate();
             }
         }
 
@@ -384,7 +402,7 @@ namespace CII.LAR
                     fileName = string.Format("{0}\\Resources\\Simulator\\egg.bmp", System.Environment.CurrentDirectory);
                     break;
             }
-            this.videoControl.LoadImage(fileName);
+            this.richPictureBox.LoadImage(fileName);
         }
 
         /// <summary>
@@ -443,10 +461,11 @@ namespace CII.LAR
 
         private void LoadDebugCtrl()
         {
-            df = new DebugCtrl();
-            df.VideoKeyDownHandler += this.OnKeyDown;
-            df.Location = new Point(10, 30);
-            this.Controls.Add(df);
+            //df = new DebugCtrl();
+            //df.VideoKeyDownHandler += this.OnKeyDown;
+            //df.Location = new Point(10, 30);
+            //this.Controls.Add(df);
+            this.richPictureBox.LoadDebugCtrl();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -463,21 +482,27 @@ namespace CII.LAR
                 {
                     fullScreen.ShowFullScreen();
                 }
-                ChangeVideoCtrlSize();
+                //ChangeVideoCtrlSize();
             }
         }
 
         private void ChangeVideoCtrlSize()
         {
-            Size videoSize = this.videoControl.VideoSize;
-            this.videoControl.Bounds = new Rectangle((this.Width - videoSize.Width) / 2, (this.Height - videoSize.Height) / 2, videoSize.Width, videoSize.Height);
+            //Size videoSize = this.richPictureBox.VideoSize;
+            //this.videoControl.Bounds = new Rectangle((this.Width - videoSize.Width) / 2, (this.Height - videoSize.Height) / 2, videoSize.Width, videoSize.Height);
+        }
+
+        protected override void OnMouseWheel(MouseEventArgs e)
+        {
+            //base.OnMouseWheel(e);
+            this.richPictureBox.RichPictureBoxMouseWheel(e);
         }
 
         protected override void OnKeyDown(KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape && this.videoControl.ActiveTool != UI.DrawToolType.Pointer)
+            if (e.KeyCode == Keys.Escape && this.richPictureBox.ActiveTool != UI.DrawToolType.Pointer)
             {
-                this.videoControl.ActiveTool = DrawToolType.Pointer;
+                this.richPictureBox.ActiveTool = DrawToolType.Pointer;
             }
             if (e.KeyCode == Keys.Escape)
             {
@@ -526,11 +551,11 @@ namespace CII.LAR
         /// <param name="statistics"></param>
         private void AppendItems(DrawObject drawObject, Statistics statistics)
         {
-            if (this.videoControl.DrawObject == null || drawObject.Name != this.videoControl.DrawObject.Name)
+            if (this.richPictureBox.DrawObject == null || drawObject.Name != this.richPictureBox.DrawObject.Name)
             {
                 try
                 {
-                    this.videoControl.DrawObject = drawObject;
+                    this.richPictureBox.DrawObject = drawObject;
                     ListViewItem lvi = new ListViewItem();
                     lvi.Text = drawObject.Name;
                     lvi.SubItems.Add(statistics.Circumference.ToString());
@@ -595,8 +620,8 @@ namespace CII.LAR
         {
             if (drawObject != null)
             {
-                this.videoControl.GraphicsList.DeleteDrawObject(drawObject);
-                this.videoControl.Invalidate();
+                this.richPictureBox.GraphicsList.DeleteDrawObject(drawObject);
+                this.richPictureBox.Invalidate();
                 EnableAppearanceButton();
             }
         }
@@ -609,7 +634,7 @@ namespace CII.LAR
             var baseCtrl = this.controls[2] as StatisticsCtrl;
             if (baseCtrl != null)
             {
-                if (this.videoControl.GraphicsList != null && this.videoControl.GraphicsList.Count > 0)
+                if (this.richPictureBox.GraphicsList != null && this.richPictureBox.GraphicsList.Count > 0)
                 {
                     baseCtrl.BtnAppearance.Enabled = true;
                 }
@@ -815,44 +840,44 @@ namespace CII.LAR
 
         private void SetActiveTool(DrawToolType toolType)
         {
-            this.videoControl.LaserFunction = false;
-            this.videoControl.ActiveTool = toolType;
+            this.richPictureBox.LaserFunction = false;
+            this.richPictureBox.ActiveTool = toolType;
             ShowBaseCtrl(true, 2);
         }
 
         private void toolStripButtonLaser_Click(object sender, EventArgs e)
         {
-            this.videoControl.LaserFunction = true;
+            this.richPictureBox.LaserFunction = true;
             if (LaserType == LaserType.SaturnFixed)
             {
-                this.videoControl.ActiveTool = DrawToolType.Circle;
+                this.richPictureBox.ActiveTool = DrawToolType.Circle;
             }
             else if (LaserType == LaserType.SaturnActive)
             {
-                this.videoControl.ActiveTool = DrawToolType.MultipleCircle;
+                this.richPictureBox.ActiveTool = DrawToolType.MultipleCircle;
             }
             ShowBaseCtrl(true, 5);
-            this.videoControl.GraphicsList.DeleteAll();
-            this.videoControl.Invalidate();
+            this.richPictureBox.GraphicsList.DeleteAll();
+            this.richPictureBox.Invalidate();
             SetLaserByType(LaserType);
         }
 
         private void toolStripButtonZoomIn_Click(object sender, EventArgs e)
         {
-            this.videoControl.ZoomIn();
-            EnableDrawTools(this.videoControl.Zoom == 1.0f);
+            this.richPictureBox.ZoomIn();
+            EnableDrawTools(this.richPictureBox.Zoom == 1.0f);
         }
 
         private void toolStripButtonZoomOut_Click(object sender, EventArgs e)
         {
-            this.videoControl.ZoomOut();
-            EnableDrawTools(this.videoControl.Zoom == 1.0f);
+            this.richPictureBox.ZoomOut();
+            EnableDrawTools(this.richPictureBox.Zoom == 1.0f);
         }
 
         private void toolStripButtonFit_Click(object sender, EventArgs e)
         {
-            this.videoControl.ZoomFit();
-            EnableDrawTools(this.videoControl.Zoom == 1.0f);
+            this.richPictureBox.ZoomFit();
+            EnableDrawTools(this.richPictureBox.Zoom == 1.0f);
         }
 
         private void viewLog(string[] logname)
@@ -888,12 +913,12 @@ namespace CII.LAR
                 {
                     Coordinate.GetCoordinate().LastPoint = new Point(monitorData.Motor1Steps, monitorData.Motor2Steps);
                     Coordinate.GetCoordinate().MotionComplete = monitorData.Motor1Status == 0x08 && monitorData.Motor2Status == 0x08;
-                    if (df != null)
+                    if (this.richPictureBox.df != null)
                     {
-                        df.UpdateSteps(monitorData.Motor1Steps, monitorData.Motor2Steps);
+                        this.richPictureBox.df.UpdateSteps(monitorData.Motor1Steps, monitorData.Motor2Steps);
                         LogHelper.GetLogger<EntryForm>().Error(string.Format("电机1当前步数： {0}， 电机2当前步数： {1}", monitorData.Motor1Steps, monitorData.Motor2Steps));
                         //Entry.Log(string.Format("电机1当前步数： {0}， 电机2当前步数： {1}", monitorData.Motor1Steps, monitorData.Motor2Steps));
-                        df.UpdateResponseCode(Coordinate.GetCoordinate().ResponseCode);
+                        this.richPictureBox.df.UpdateResponseCode(Coordinate.GetCoordinate().ResponseCode);
                     }
 
                 }
@@ -990,22 +1015,22 @@ namespace CII.LAR
 
         private void toolStripButtonScale_Click(object sender, EventArgs e)
         {
-            this.videoControl.Rulers.ShowRulers = !this.videoControl.Rulers.ShowRulers;
-            this.videoControl.Invalidate();
+            this.richPictureBox.Rulers.ShowRulers = !this.richPictureBox.Rulers.ShowRulers;
+            this.richPictureBox.Invalidate();
         }
 
         private void toolStripButtonOpen_Click(object sender, EventArgs e)
         {
-            if (df == null)
+            if (this.richPictureBox.df == null)
             {
-                df = new DebugCtrl();
-                df.VideoKeyDownHandler += this.OnKeyDown;
-                df.Location = new Point(10, 30);
-                this.Controls.Add(df);
+                this.richPictureBox.df = new DebugCtrl();
+                this.richPictureBox.df.VideoKeyDownHandler += this.OnKeyDown;
+                this.richPictureBox.df.Location = new Point(10, 30);
+                this.Controls.Add(this.richPictureBox.df);
             }
             else
             {
-                df.Visible = true;
+                this.richPictureBox.df.Visible = true;
             }
         }
     }

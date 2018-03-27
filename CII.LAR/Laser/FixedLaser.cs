@@ -50,9 +50,9 @@ namespace CII.LAR.Laser
 
         public SizeF InnerCircleSize { get; set; }
 
-        public FixedLaser(VideoControl videoControl) : base()
+        public FixedLaser(RichPictureBox richPictureBox) : base()
         {
-            this.videoControl = videoControl;
+            this.richPictureBox = richPictureBox;
             float pulseSize = Program.SysConfig.LaserConfig.PulseSize;
             OutterCircleSize = new SizeF(pulseSize + this.GraphicsProperties.ExclusionSize, 
                 pulseSize + this.GraphicsProperties.ExclusionSize);
@@ -67,25 +67,25 @@ namespace CII.LAR.Laser
             InnerCircleSize = new SizeF(pulseSize, pulseSize);
             OutterCircle = new Circle(CenterPoint, OutterCircleSize);
             InnerCircle = new Circle(CenterPoint, InnerCircleSize);
-            this.videoControl.Invalidate();
+            this.richPictureBox.Invalidate();
         }
 
-        public override void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             Point point = e.Location;
             CenterPoint = new PointF(point.X, point.Y);
-            this.videoControl.Invalidate();
+            this.richPictureBox.Invalidate();
             Coordinate.GetCoordinate().SetMotorThisPoint(point);
         }
 
-        public override void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            base.OnMouseMove(videoControl, e);
+            base.OnMouseMove(richPictureBox, e);
         }
 
-        public override void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
+        public override void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            base.OnMouseUp(videoControl, e);
+            base.OnMouseUp(richPictureBox, e);
             Coordinate.GetCoordinate().SendAlignmentMotorPoint();
         }
 

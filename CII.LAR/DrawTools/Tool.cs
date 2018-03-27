@@ -22,9 +22,9 @@ namespace CII.LAR.DrawTools
         /// <summary>
         /// Left nous button is pressed
         /// </summary>
-        /// <param name="videoControl"></param>
+        /// <param name="richPictureBox"></param>
         /// <param name="e"></param>
-        public virtual void OnMouseDown(VideoControl videoControl, MouseEventArgs e)
+        public virtual void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             startPoint = new Point(e.X, e.Y);
         }
@@ -33,12 +33,12 @@ namespace CII.LAR.DrawTools
         /// <summary>
         /// Mouse is moved, left mouse button is pressed or none button is pressed
         /// </summary>
-        /// <param name="videoControl"></param>
+        /// <param name="richPictureBox"></param>
         /// <param name="e"></param>
-        public virtual void OnMouseMove(VideoControl videoControl, MouseEventArgs e)
+        public virtual void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
         }
-        public virtual void OnMouseMoveZoom(VideoControl videoControl, MouseEventArgs e)
+        public virtual void OnMouseMoveZoom(RichPictureBox richPictureBox, MouseEventArgs e)
         {
         }
 
@@ -47,11 +47,11 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="drawArea"></param>
         /// <param name="e"></param>
-        public virtual void OnMouseUp(VideoControl videoControl, MouseEventArgs e)
+        public virtual void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             endPoint = new Point(e.X, e.Y);
         }
-        public virtual void OnMouseUpZoom(VideoControl videoControl, MouseEventArgs e)
+        public virtual void OnMouseUpZoom(RichPictureBox richPictureBox, MouseEventArgs e)
         {
         }
 
@@ -60,7 +60,7 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="drawArea"></param>
         /// <param name="e"></param>
-        public virtual void OnMouseLeave(VideoControl videoControl, EventArgs e)
+        public virtual void OnMouseLeave(RichPictureBox richPictureBox, EventArgs e)
         {
 
         }
@@ -70,23 +70,23 @@ namespace CII.LAR.DrawTools
         /// </summary>
         /// <param name="drawArea"></param>
         /// <param name="e"></param>
-        public virtual void OnDoubleClick(VideoControl videoControl, MouseEventArgs e)
+        public virtual void OnDoubleClick(RichPictureBox richPictureBox, MouseEventArgs e)
         {
         }
 
         /// <summary>
         /// call when press "Escape" key
         /// </summary>
-        public virtual void OnCancel(VideoControl videoControl, bool cancelSelection)
+        public virtual void OnCancel(RichPictureBox richPictureBox, bool cancelSelection)
         {
         }
 
-        public virtual void OnKeyMove(VideoControl videoControl, Keys keyData, bool isPressCtrl)
+        public virtual void OnKeyMove(RichPictureBox richPictureBox, Keys keyData, bool isPressCtrl)
         {
 
         }
 
-        public virtual void OnKeyUp(VideoControl videoControl, Keys keyData, bool isPressCtrl)
+        public virtual void OnKeyUp(RichPictureBox richPictureBox, Keys keyData, bool isPressCtrl)
         {
 
         }

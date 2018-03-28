@@ -26,6 +26,7 @@ namespace CII.LAR.UI
         {
             resources = new ComponentResourceManager(typeof(LaserAppearanceCtrl));
             this.ShowIndex = 3;
+            this.CtrlType = CtrlType.LaserAppreance;
             graphicsProperties = graphicsPropertiesManager.GetPropertiesByName("Circle");
             InitializeComponent();
 
@@ -38,7 +39,7 @@ namespace CII.LAR.UI
 
         private void btnLaserCtrl_Click(object sender, EventArgs e)
         {
-            ClickDelegateHandler?.Invoke(sender, "Laser Control");
+            DelegateClass.GetDelegate().ClickDelegateHandler?.Invoke(sender, CtrlType.LaserCtrl);
         }
 
         private void sliderTransparency_ValueChanged(object sender, EventArgs e)

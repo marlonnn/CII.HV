@@ -34,6 +34,7 @@ namespace CII.LAR.UI
         {
             resources = new ComponentResourceManager(typeof(LaserHoleSize));
             this.ShowIndex = 8;
+            this.CtrlType = CtrlType.LaserHoleSize;
             graphicsProperties = graphicsPropertiesManager.GetPropertiesByName("Circle");
             InitializeComponent();
             InitializeSlider();
@@ -232,7 +233,7 @@ namespace CII.LAR.UI
 
         private void btnLaserCtrl_Click(object sender, EventArgs e)
         {
-            ClickDelegateHandler?.Invoke(sender, "Laser Control");
+            DelegateClass.GetDelegate().ClickDelegateHandler?.Invoke(sender, CtrlType.LaserCtrl);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

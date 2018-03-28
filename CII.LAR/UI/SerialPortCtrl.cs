@@ -21,7 +21,7 @@ namespace CII.LAR.UI
         {
             resources = new ComponentResourceManager(typeof(SerialPortCtrl));
             this.ShowIndex = 1;
-
+            this.CtrlType = CtrlType.SerialPort;
             InitializeComponent();
             InitializeLaserCOMCombox();
             InitializeMotorCOMCombox();

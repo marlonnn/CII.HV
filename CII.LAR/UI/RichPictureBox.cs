@@ -114,9 +114,6 @@ namespace CII.LAR.UI
         /// </summary>
         private Rectangle draggingBaseCtrlRectangle;
 
-        public delegate void VideoKeyDown(KeyEventArgs e);
-        public VideoKeyDown VideoKeyDownHandler;
-
         #region Measure tool
         public event OnMeasureUnitChangedEventHandler OnMeasureUnitChanged;
         public delegate void OnMeasureUnitChangedEventHandler(enUniMis unit);
@@ -397,9 +394,9 @@ namespace CII.LAR.UI
         }
         protected override void OnKeyDown(KeyEventArgs e)
         {
-            if (VideoKeyDownHandler != null)
+            if (DelegateClass.GetDelegate().VideoKeyDownHandler != null)
             {
-                VideoKeyDownHandler(e);
+                DelegateClass.GetDelegate().VideoKeyDownHandler(e);
             }
         }
 

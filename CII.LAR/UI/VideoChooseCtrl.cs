@@ -21,6 +21,7 @@ namespace CII.LAR.UI
         public VideoChooseCtrl()
         {
             this.ShowIndex = 7;
+            this.CtrlType = CtrlType.VideoChooseCtrl;
             InitializeComponent();
             listViewCamera.FullRowSelect = true;
             filterInfoDic = new Dictionary<string, FilterInfo>();

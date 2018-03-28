@@ -42,6 +42,7 @@ namespace CII.LAR.UI
             resources = new ComponentResourceManager(typeof(LaserCtrl));
             holePulsePoints = Program.SysConfig.LaserConfig.HolePulsePoints;
             this.ShowIndex = 5;
+            this.CtrlType = CtrlType.LaserCtrl;
             graphicsProperties = graphicsPropertiesManager.GetPropertiesByName("Circle");
             InitializeComponent();
             InitializeSlider();
@@ -113,17 +114,17 @@ namespace CII.LAR.UI
 
         private void btnAlignLaser_Click(object sender, EventArgs e)
         {
-            ClickDelegateHandler?.Invoke(sender, "Laser Alignment");
+            DelegateClass.GetDelegate().ClickDelegateHandler?.Invoke(sender, CtrlType.LaserAlignment);
         }
 
         private void btnHoleSize_Click(object sender, EventArgs e)
         {
-            ClickDelegateHandler?.Invoke(sender, "Laser Hole Size");
+            DelegateClass.GetDelegate().ClickDelegateHandler?.Invoke(sender, CtrlType.LaserHoleSize);
         }
 
         private void btnAppearance_Click(object sender, EventArgs e)
         {
-            ClickDelegateHandler?.Invoke(sender, "Laser Appearance");
+            DelegateClass.GetDelegate().ClickDelegateHandler?.Invoke(sender, CtrlType.LaserAlignment);
         }
 
         private void SliderValueChangedHandler(object sender, EventArgs e)

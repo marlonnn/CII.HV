@@ -49,6 +49,7 @@ namespace CII.LAR.UI
         public StatisticsCtrl() : base()
         {
             this.ShowIndex = 2;
+            this.CtrlType = CtrlType.StatisticsCtrl;
             InitializeComponent();
             resources = new ComponentResourceManager(typeof(StatisticsCtrl));
         }
@@ -68,7 +69,7 @@ namespace CII.LAR.UI
 
         private void btnAppearance_Click(object sender, EventArgs e)
         {
-            ClickDelegateHandler?.Invoke(sender, "Ruler Appearance");
+            DelegateClass.GetDelegate().ClickDelegateHandler?.Invoke(sender, CtrlType.RulerAppearanceCtrl);
         }
 
         protected override void RefreshUI()

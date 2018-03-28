@@ -64,6 +64,7 @@ namespace CII.LAR.UI
         {
             resources = new ComponentResourceManager(typeof(LaserAlignment));
             this.ShowIndex = 6;
+            this.CtrlType = CtrlType.LaserAlignment;
             InitializeComponent();
             helper = new AlignInfoHelper(this);
             this.Load += LaserAlignment_Load;
@@ -180,7 +181,7 @@ namespace CII.LAR.UI
             {
                 this.Visible = false;
                 this.Enabled = false;
-                Program.EntryForm.ShowBaseCtrl(true, 0);
+                Program.EntryForm.ShowBaseCtrl(true, CtrlType.SettingCtrl);
             }
         }
 

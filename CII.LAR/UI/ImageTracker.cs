@@ -162,9 +162,9 @@ namespace CII.LAR.UI
 
         protected override void OnKeyDown(KeyEventArgs e)
         {
-            if (this.richPictureBox.VideoKeyDownHandler != null)
+            if (DelegateClass.GetDelegate().VideoKeyDownHandler != null)
             {
-                richPictureBox.VideoKeyDownHandler(e);
+                DelegateClass.GetDelegate().VideoKeyDownHandler(e);
             }
         }
 

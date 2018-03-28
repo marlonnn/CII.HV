@@ -173,7 +173,7 @@ namespace CII.LAR
             this.Load += EntryForm_Load;
             this.FormClosing += EntryForm_FormClosing;
             this.FormClosed += EntryForm_FormClosed;
-            this.richPictureBox.VideoKeyDownHandler += this.OnKeyDown;
+            DelegateClass.GetDelegate().VideoKeyDownHandler += this.OnKeyDown;
             InitializeControls();
         }
 
@@ -349,7 +349,6 @@ namespace CII.LAR
             foreach (var ctrl in this.BaseCtrls)
             {
                 ctrl.InitializeLocation(this.Size);
-                ctrl.ClickDelegateHandler += new BaseCtrl.ClickDelegate(this.ClickDelegateHandler);
                 ctrl.MouseDown += BaseCtrl_MouseDown;
                 ctrl.MouseMove += BaseCtrl_MouseMove;
                 ctrl.MouseUp += BaseCtrl_MouseUp;
@@ -357,6 +356,19 @@ namespace CII.LAR
                 ctrl.Enabled = false;
                 this.Controls.Add(ctrl);
             }
+            DelegateClass.GetDelegate().ClickDelegateHandler += this.ClickDelegateHandler;
+        }
+
+        private BaseCtrl GetBascCtrl(CtrlType type)
+        {
+            foreach (var bc in this.BaseCtrls)
+            {
+                if (bc.CtrlType == type)
+                {
+                    return bc;
+                }
+            }
+            return null;
         }
 
         /// <summary>
@@ -364,40 +376,9 @@ namespace CII.LAR
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="name"></param>
-        private void ClickDelegateHandler(object sender, string name)
+        private void ClickDelegateHandler(object sender, CtrlType type)
         {
-            switch (name)
-            {
-                case "Setting control":
-                    ShowBaseCtrl(true, this.BaseCtrls[0]);
-                    break;
-                case "Serial Port Config":
-                    ShowBaseCtrl(true, this.BaseCtrls[1]);
-                    break;
-                case "Statistics control":
-                    ShowBaseCtrl(true, this.BaseCtrls[2]);
-                    break;
-                case "Laser Appearance":
-                    ShowBaseCtrl(true, this.BaseCtrls[3]);
-                    break;
-                case "Ruler Appearance":
-                    ShowBaseCtrl(true, this.BaseCtrls[4]);
-                    break;
-                case "Laser Control":
-                    ShowBaseCtrl(true, this.BaseCtrls[5]);
-                    break;
-
-                case "Laser Alignment":
-                    ShowBaseCtrl(true, this.BaseCtrls[6]);
-                    break;
-
-                //case "":
-                //    ShowBaseCtrl(true, this.BaseCtrls[7]);
-                    //break;
-                case "Laser Hole Size":
-                    ShowBaseCtrl(true, this.BaseCtrls[8]);
-                    break;
-            }
+            ShowBaseCtrl(true, GetBascCtrl(type));
         }
 
         private void UpdateSimulatorImageHandler(int selectIndex)
@@ -428,13 +409,13 @@ namespace CII.LAR
         /// show laser control
         /// </summary>
         /// <param name="show"></param>
-        public void ShowBaseCtrl(bool show, int index)
+        public void ShowBaseCtrl(bool show, CtrlType type)
         {
             for (int i = 0; i < this.controls.Count; i++)
             {
-                if (this.controls[i].ShowIndex == index)
+                if (this.controls[i].CtrlType == type)
                 {
-                    this.baseCtrl = controls[index];
+                    this.baseCtrl = GetBascCtrl(type);
                     this.Controls.SetChildIndex(this.baseCtrl, 0);
                     this.baseCtrl.Visible = show;
                     this.baseCtrl.Enabled = show;
@@ -455,14 +436,17 @@ namespace CII.LAR
         /// <param name="baseCtrl"></param>
         public void ShowBaseCtrl(bool show, BaseCtrl baseCtrl)
         {
-            this.baseCtrl.Visible = false;
-            this.baseCtrl.Enabled = false;
+            if (baseCtrl != null)
+            {
+                this.baseCtrl.Visible = false;
+                this.baseCtrl.Enabled = false;
 
-            this.baseCtrl = baseCtrl;
-            this.Controls.SetChildIndex(this.baseCtrl, 0);
+                this.baseCtrl = baseCtrl;
+                this.Controls.SetChildIndex(this.baseCtrl, 0);
 
-            this.baseCtrl.Visible = show;
-            this.baseCtrl.Enabled = show;
+                this.baseCtrl.Visible = show;
+                this.baseCtrl.Enabled = show;
+            }
         }
 
         private void EntryForm_MouseWheel(object sender, MouseEventArgs e)
@@ -545,7 +529,7 @@ namespace CII.LAR
 
         private void openCameraLiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowBaseCtrl(true, 7);
+            ShowBaseCtrl(true, CtrlType.VideoChooseCtrl);
             this.videoChooseCtrl.EnumerateVideoDevices();
         }
 
@@ -829,12 +813,12 @@ namespace CII.LAR
 
         private void toolStripButtonSetting_Click(object sender, EventArgs e)
         {
-            ShowBaseCtrl(true, 0);
+            ShowBaseCtrl(true, CtrlType.SettingCtrl);
         }
 
         private void toolStripButtonPort_Click(object sender, EventArgs e)
         {
-            ShowBaseCtrl(true, 1);
+            ShowBaseCtrl(true, CtrlType.SerialPort);
         }
 
         private void toolStripButtonLine_Click(object sender, EventArgs e)
@@ -861,7 +845,7 @@ namespace CII.LAR
         {
             this.richPictureBox.LaserFunction = false;
             this.richPictureBox.ActiveTool = toolType;
-            ShowBaseCtrl(true, 2);
+            ShowBaseCtrl(true, CtrlType.StatisticsCtrl);
         }
 
         private void toolStripButtonLaser_Click(object sender, EventArgs e)
@@ -875,7 +859,7 @@ namespace CII.LAR
             {
                 this.richPictureBox.ActiveTool = DrawToolType.MultipleCircle;
             }
-            ShowBaseCtrl(true, 5);
+            ShowBaseCtrl(true, CtrlType.LaserCtrl);
             this.richPictureBox.GraphicsList.DeleteAll();
             this.richPictureBox.Invalidate();
             SetLaserByType(LaserType);
@@ -958,7 +942,7 @@ namespace CII.LAR
                             {
                                 //手动配置界面
                                 msgShowTime = 0;
-                                ShowBaseCtrl(true, 1);
+                                ShowBaseCtrl(true, CtrlType.SerialPort);
                             }
                             else
                             {

@@ -260,6 +260,7 @@
     <Compile Include="UI\DebugForm.Designer.cs">
       <DependentUpon>DebugCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\DelegateClass.cs" />
     <Compile Include="UI\FilesForm.cs">
       <SubType>Form</SubType>
     </Compile>

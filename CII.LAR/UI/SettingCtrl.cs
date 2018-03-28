@@ -29,6 +29,7 @@ namespace CII.LAR.UI
         {
             this.richPictureBox = richPictureBox;
             this.ShowIndex = 0;
+            this.CtrlType = CtrlType.SettingCtrl;
             InitializeComponent();
             resources = new ComponentResourceManager(typeof(SettingCtrl));
             this.textBoxItemStoragePath.Text = Program.SysConfig.StorePath;

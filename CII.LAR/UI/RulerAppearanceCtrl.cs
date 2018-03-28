@@ -21,6 +21,7 @@ namespace CII.LAR.UI
         {
             resources = new ComponentResourceManager(typeof(RulerAppearanceCtrl));
             this.ShowIndex = 4;
+            this.CtrlType = CtrlType.RulerAppearanceCtrl;
             InitializeComponent();
         }
 
@@ -35,7 +36,7 @@ namespace CII.LAR.UI
 
         private void btnLaserCtrl_Click(object sender, EventArgs e)
         {
-            ClickDelegateHandler?.Invoke(sender, "Statistics control");
+            DelegateClass.GetDelegate().ClickDelegateHandler?.Invoke(sender, CtrlType.StatisticsCtrl);
         }
 
         private void cmboxRuler_DropDown(object sender, EventArgs e)

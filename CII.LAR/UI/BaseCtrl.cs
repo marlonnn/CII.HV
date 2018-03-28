@@ -63,14 +63,16 @@ namespace CII.LAR.UI
             }
         }
 
+        private CtrlType ctrlType;
+        public CtrlType CtrlType
+        {
+            get { return this.ctrlType; }
+            set
+            {
+                this.ctrlType = value;
+            }
+        }
 
-        /// <summary>
-        /// button click delegate
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="name"></param>
-        public delegate void ClickDelegate(object sender, string name);
-        public ClickDelegate ClickDelegateHandler;
         public BaseCtrl()
         {
             InitializeComponent();
@@ -145,6 +147,14 @@ namespace CII.LAR.UI
         public virtual void InitializeLocation(Size size)
         {
             this.Location = new Point(size.Width - this.Width - 20, 30);
+        }
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            if (DelegateClass.GetDelegate().VideoKeyDownHandler != null)
+            {
+                DelegateClass.GetDelegate().VideoKeyDownHandler(e);
+            }
         }
     }
 }

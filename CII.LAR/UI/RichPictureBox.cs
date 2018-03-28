@@ -20,6 +20,25 @@ namespace CII.LAR.UI
         private Point lastMousePos;//记录鼠标指针的坐标
         private Point mousePos = Point.Empty;
 
+        /// <summary>
+        /// 当前帧图和缩略图帧图
+        /// </summary>
+        private Image picture;
+        public Image Picture
+        {
+            get { return this.picture; }
+            set
+            {
+                if (this.picture != null) this.picture.Dispose();
+                if (value != this.picture)
+                {
+                    this.picture = value;
+                    this.Image = value;
+                    this.imageTracker.Picture = value;
+                }
+            }
+        }
+
         //小窗口
         private ImageTracker imageTracker;
         public ImageTracker ImageTracker { get { return this.imageTracker; } }
@@ -533,7 +552,7 @@ namespace CII.LAR.UI
                 }
                 else
                 {
-                    zoom += 0.2F;
+                    zoom += 1;
                     ZoomOnMouseCenter(e, oldzoom);
                 }
             }
@@ -551,7 +570,7 @@ namespace CII.LAR.UI
                 {
                     if (zoom > 1)
                     {
-                        zoom = Math.Max(zoom - 0.2F, 0.01F);
+                        zoom -= 1;
                         ZoomOnMouseCenter(e, oldzoom);
                     }
                 }
@@ -655,7 +674,7 @@ namespace CII.LAR.UI
                 mousePos = new Point(this.Width / 2, this.Height / 2);
             }
             MouseEventArgs args = new MouseEventArgs(new MouseButtons(), 1, mousePos.X, mousePos.Y, 0);
-            zoom += 0.2F;
+            zoom += 1;
             ZoomOnMouseCenter(args, oldzoom);
             this.imageTracker.ScalePercent = zoom * 100;
             this.Invalidate();
@@ -671,7 +690,8 @@ namespace CII.LAR.UI
                     mousePos = new Point(this.Width / 2, this.Height / 2);
                 }
                 MouseEventArgs args = new MouseEventArgs(new MouseButtons(), 1, mousePos.X, mousePos.Y, 0);
-                zoom = Math.Max(zoom - 0.2F, 0.01F);
+                //zoom = Math.Max(zoom - 0.2F, 0.01F);
+                zoom -= 1;
                 ZoomOnMouseCenter(args, oldzoom);
                 this.imageTracker.ScalePercent = zoom * 100;
                 this.Invalidate();
@@ -680,10 +700,9 @@ namespace CII.LAR.UI
 
         public void LoadImage(string imageFile)
         {
-            this.Image = Image.FromFile(imageFile);
+            this.Picture = Image.FromFile(imageFile);
             this.OffsetX = (this.Width - this.Image.Width) / 2;
             this.OffsetY = (this.Height - this.Image.Height) / 2 + 25;
-            imageTracker.Picture = this.Image;
             this.zoom = 1;
             this.imageTracker.ScalePercent = zoom * 100;
             this.Invalidate();
@@ -716,12 +735,12 @@ namespace CII.LAR.UI
                     PictureBoxPaintedEvent(controlClientRect, this.ClientRectangle);
                 }
 
-                if (this.Image != null)
+                if (this.Picture != null)
                 {
                     e.Graphics.ScaleTransform(Zoom, Zoom);
                     e.Graphics.TranslateTransform(OffsetX, OffsetY);
-                    e.Graphics.DrawImage(this.Image, 0, 0, RealSize.Width, RealSize.Height);
-                    this.imageTracker.Picture = this.Image;
+                    e.Graphics.DrawImage(this.Picture, 0, 0, RealSize.Width, RealSize.Height);
+                    //this.imageTracker.Picture = this.Image;
                     e.Graphics.ResetTransform();
                 }
 

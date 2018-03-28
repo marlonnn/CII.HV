@@ -321,9 +321,8 @@ namespace CII.LAR
                 {
                     videoFrame = (Bitmap)eventArgs.Frame.Clone();
                 }
-                if (this.richPictureBox.Image != null) this.richPictureBox.Image.Dispose();
-
-                this.richPictureBox.Image = videoFrame;
+    
+                this.richPictureBox.Picture = videoFrame;
             }
             catch (Exception ex)
             {
@@ -340,7 +339,7 @@ namespace CII.LAR
             }
             if (this.richPictureBox != null)
             {
-                this.richPictureBox.Image = null;
+                this.richPictureBox.Picture = null;
                 this.richPictureBox.Invalidate();
             }
         }

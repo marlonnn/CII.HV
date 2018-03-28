@@ -94,10 +94,10 @@ namespace CII.LAR.UI
             get { return this.thumbnail; }
             set
             {
-                if (thumbnail != null)
-                {
-                    thumbnail.Dispose();
-                }
+                //if (thumbnail != null)
+                //{
+                //    thumbnail.Dispose();
+                //}
                 if (value != null)
                 {
                     Rectangle srcRect = this.picturePanel.ClientRectangle;

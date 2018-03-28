@@ -28,8 +28,28 @@ using System.Windows.Forms;
 
 namespace CII.LAR
 {
+    public enum FlipType
+    {
+        Horizontal,
+        Vertical,
+        Empty
+    }
     public partial class EntryForm : Form
     {
+        //视频翻转类型
+        private FlipType flipType;
+        public FlipType FlipType
+        {
+            get { return this.flipType; }
+            set
+            {
+                if (value != this.flipType)
+                {
+                    this.flipType = value;
+                }
+            }
+        }
+
         private Bitmap videoFrame;
         private bool canCapture = false;
         private bool captureVideo = false;
@@ -173,6 +193,7 @@ namespace CII.LAR
             this.Load += EntryForm_Load;
             this.FormClosing += EntryForm_FormClosing;
             this.FormClosed += EntryForm_FormClosed;
+            this.FlipType = FlipType.Empty;
             DelegateClass.GetDelegate().VideoKeyDownHandler += this.OnKeyDown;
             InitializeControls();
         }
@@ -321,12 +342,63 @@ namespace CII.LAR
                 {
                     videoFrame = (Bitmap)eventArgs.Frame.Clone();
                 }
-    
-                this.richPictureBox.Picture = videoFrame;
+  
+
+                //videoFrame.RotateFlip(RotateFlipType.Rotate180FlipY);
+                this.richPictureBox.Picture = FilpImage(videoFrame);
             }
             catch (Exception ex)
             {
             }
+        }
+
+        private Image FilpImage(Image image)
+        {
+            switch (FlipType)
+            {
+                case FlipType.Horizontal:
+                    image.RotateFlip(RotateFlipType.Rotate180FlipY);
+                    break;
+                case FlipType.Vertical:
+                    image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                    break;
+                case FlipType.Empty:
+                    image.RotateFlip(RotateFlipType.RotateNoneFlipNone);
+                    break;
+                default:
+                    break;
+            }
+            return image;
+        }
+
+        public Image RotateImage(Image img, float rotationAngle)
+        {
+            //create an empty Bitmap image
+            Bitmap bmp = new Bitmap(img.Width, img.Height);
+
+            //turn the Bitmap into a Graphics object
+            Graphics gfx = Graphics.FromImage(bmp);
+
+            //now we set the rotation point to the center of our image
+            gfx.TranslateTransform((float)bmp.Width / 2, (float)bmp.Height / 2);
+
+            //now rotate the image
+            gfx.RotateTransform(rotationAngle);
+
+            gfx.TranslateTransform(-(float)bmp.Width / 2, -(float)bmp.Height / 2);
+
+            //set the InterpolationMode to HighQualityBicubic so to ensure a high
+            //quality image once it is transformed to the specified size
+            gfx.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+
+            //now draw our new image onto the graphics object
+            gfx.DrawImage(img, new Point(0, 0));
+
+            //dispose of our Graphics object
+            gfx.Dispose();
+
+            //return the image
+            return bmp;
         }
 
         private void StopVideoDevice()
@@ -1070,6 +1142,39 @@ namespace CII.LAR
             {
                 this.richPictureBox.df.Visible = true;
             }
+        }
+
+        private bool flipHorizontal;
+        private bool flipVertical;
+        private void horizontalFlipToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            flipHorizontal = !flipHorizontal;
+            this.horizontalFlipToolStripMenuItem.Checked = flipHorizontal;
+            if (flipHorizontal)
+            {
+                this.FlipType = FlipType.Horizontal;
+                this.verticalFlipToolStripMenuItem.Checked = false;
+            }
+            else
+            {
+                this.FlipType = FlipType.Empty;
+            }
+        }
+
+        private void verticalFlipToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            flipVertical = !flipVertical;
+            this.verticalFlipToolStripMenuItem.Checked = flipVertical;
+            if (flipVertical)
+            {
+                this.FlipType = FlipType.Vertical ;
+                this.horizontalFlipToolStripMenuItem.Checked = false;
+            }
+            else
+            {
+                this.FlipType = FlipType.Empty;
+            }
+
         }
     }
 }

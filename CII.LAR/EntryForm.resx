@@ -235,6 +235,21 @@
   <data name="toolStripButtonOpen.Text" xml:space="preserve">
     <value>Open</value>
   </data>
+  <data name="snapshotToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Open camera live</value>
+  </data>
+  <data name="horizontalFlipToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
+  </data>
+  <data name="horizontalFlipToolStripMenuItem.Text" xml:space="preserve">
+    <value>Horizontal Flip Video</value>
+  </data>
+  <data name="verticalFlipToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
+  </data>
+  <data name="verticalFlipToolStripMenuItem.Text" xml:space="preserve">
+    <value>Vertical Flip Video</value>
+  </data>
   <data name="toolStripDropDownCamera.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -704,13 +719,7 @@
   <data name="&gt;&gt;autoReceiverTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>EntryForm</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Cross" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>DrawTools\Cross.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -728,5 +737,23 @@
   </data>
   <data name="Rectangle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>DrawTools\Rectangle.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;horizontalFlipToolStripMenuItem.Name" xml:space="preserve">
+    <value>horizontalFlipToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;horizontalFlipToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;verticalFlipToolStripMenuItem.Name" xml:space="preserve">
+    <value>verticalFlipToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;verticalFlipToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>EntryForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

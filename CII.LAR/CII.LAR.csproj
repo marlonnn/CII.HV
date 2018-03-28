@@ -645,6 +645,7 @@
     <Content Include="Resources\elliptical.png" />
     <Content Include="Resources\exclamation.png" />
     <Content Include="Resources\files.png" />
+    <Content Include="Resources\flip.png" />
     <Content Include="Resources\hand.png" />
     <Content Include="Resources\idscamera.png" />
     <Content Include="Resources\image.png" />

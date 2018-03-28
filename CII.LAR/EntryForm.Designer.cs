@@ -78,6 +78,8 @@ namespace CII.LAR
             this.autoReceiverTimer = new System.Windows.Forms.Timer(this.components);
             this.videoControl = new CII.LAR.UI.VideoControl();
             this.richPictureBox = new CII.LAR.UI.RichPictureBox();
+            this.horizontalFlipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalFlipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.richPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -316,7 +318,9 @@ namespace CII.LAR
             this.openCameraLiveToolStripMenuItem,
             this.closeCameraToolStripMenuItem,
             this.freeRunToolStripMenuItem,
-            this.snapshotToolStripMenuItem});
+            this.snapshotToolStripMenuItem,
+            this.horizontalFlipToolStripMenuItem,
+            this.verticalFlipToolStripMenuItem});
             this.toolStripDropDownCamera.Image = global::CII.LAR.Properties.Resources.idscamera;
             resources.ApplyResources(this.toolStripDropDownCamera, "toolStripDropDownCamera");
             this.toolStripDropDownCamera.Name = "toolStripDropDownCamera";
@@ -412,6 +416,18 @@ namespace CII.LAR
             this.richPictureBox.TabStop = false;
             this.richPictureBox.UnitOfMeasure = DrawTools.enUniMis.mm;
             this.richPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			// 
+            // horizontalFlipToolStripMenuItem
+            // 
+            this.horizontalFlipToolStripMenuItem.Name = "horizontalFlipToolStripMenuItem";
+            resources.ApplyResources(this.horizontalFlipToolStripMenuItem, "horizontalFlipToolStripMenuItem");
+            this.horizontalFlipToolStripMenuItem.Click += new System.EventHandler(this.horizontalFlipToolStripMenuItem_Click);
+            // 
+            // verticalFlipToolStripMenuItem
+            // 
+            this.verticalFlipToolStripMenuItem.Name = "verticalFlipToolStripMenuItem";
+            resources.ApplyResources(this.verticalFlipToolStripMenuItem, "verticalFlipToolStripMenuItem");
+            this.verticalFlipToolStripMenuItem.Click += new System.EventHandler(this.verticalFlipToolStripMenuItem_Click);
             // 
             // EntryForm
             // 
@@ -473,7 +489,9 @@ namespace CII.LAR
         private System.Windows.Forms.ToolStripButton toolStripButtonPort;
         private System.Windows.Forms.Timer systemMonitorTimer;
         private System.Windows.Forms.Timer autoReceiverTimer;
-        private VideoSourcePlayer videoControl;
         private RichPictureBox richPictureBox;
+        private VideoControl videoControl;
+        private System.Windows.Forms.ToolStripMenuItem horizontalFlipToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verticalFlipToolStripMenuItem;
     }
 }

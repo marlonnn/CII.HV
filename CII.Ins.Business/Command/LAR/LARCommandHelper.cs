@@ -134,25 +134,32 @@ namespace CII.Ins.Business.Command.LAR
         /// <returns></returns>
         public MonitorData GetMonitorData()
         {
-            MonitorData data = new MonitorData();
-
-            SendCommand sendCmd40 = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Read);
-            RecvCommand recvCmd40 = (RecvCommand)PortManager.GetInstance().Send(InsName, sendCmd40);
-            CheckRecvCommand(recvCmd40);
-            if (recvCmd40 != null)
+            try
             {
-                data.Motor1Switch = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Status);
-                data.Motor1Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Result);
-                data.Motor1completeSteps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor1CompleteSteps);
-                data.Motor1Steps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor1SumSteps);
+                MonitorData data = new MonitorData();
 
-                data.Motor2Switch = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor2Status);
-                data.Motor2Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor2Result);
-                data.Motor2completeSteps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor2CompleteSteps);
-                data.Motor2Steps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor2SumSteps);
-                return data;
+                SendCommand sendCmd40 = new SendCommand(CommandId.SystemMonitor, CommandExtendId.Read);
+                RecvCommand recvCmd40 = (RecvCommand)PortManager.GetInstance().Send(InsName, sendCmd40);
+                CheckRecvCommand(recvCmd40);
+                if (recvCmd40 != null)
+                {
+                    data.Motor1Switch = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Status);
+                    data.Motor1Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor1Result);
+                    data.Motor1completeSteps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor1CompleteSteps);
+                    data.Motor1Steps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor1SumSteps);
+
+                    data.Motor2Switch = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor2Status);
+                    data.Motor2Status = recvCmd40.GetByte(ParamId.SystemMonitor_ReadResponse_Motor2Result);
+                    data.Motor2completeSteps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor2CompleteSteps);
+                    data.Motor2Steps = (int)recvCmd40.GetULong(ParamId.SystemMonitor_ReadResponse_Motor2SumSteps);
+                    return data;
+                }
+                else
+                {
+                    return null;
+                }
             }
-            else
+            catch (Exception ex)
             {
                 return null;
             }

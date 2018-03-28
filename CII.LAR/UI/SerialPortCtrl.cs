@@ -14,6 +14,7 @@ namespace CII.LAR.UI
 {
     public partial class SerialPortCtrl : BaseCtrl, IView
     {
+        private Timer timer;
         private IController controller;
 
         public SerialPortCtrl()
@@ -24,6 +25,32 @@ namespace CII.LAR.UI
             InitializeComponent();
             InitializeLaserCOMCombox();
             InitializeMotorCOMCombox();
+
+            timer = new Timer();
+            timer.Interval = 1000;
+            timer.Tick += Timer_Tick;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            //动态获取激光器和电机串口
+            //Com Ports
+            string[] ArrayComPortsNames = SerialPortHelper.GetHelper().GetPorts();
+            if (ArrayComPortsNames != null && ArrayComPortsNames.Length > 0)
+            {
+                Array.Sort(ArrayComPortsNames);
+                for (int i = 0; i < ArrayComPortsNames.Length; i++)
+                {
+                    for (int j = 0; j < motorComListCbx.Items.Count; j++)
+                    {
+                        if (ArrayComPortsNames[i] != motorComListCbx.Items[j].ToString())
+                        {
+                            motorComListCbx.Items.Add(ArrayComPortsNames[i]);
+                            laserComListCbx.Items.Add(ArrayComPortsNames[i]);
+                        }
+                    }
+                }
+            }
         }
 
         private void InitializeLaserCOMCombox()
@@ -99,8 +126,8 @@ namespace CII.LAR.UI
             motorBaudRateCbx.Items.Add(57600);
             motorBaudRateCbx.Items.Add(115200);
             motorBaudRateCbx.Items.ToString();
-            //get 9600 print in text
-            motorBaudRateCbx.Text = motorBaudRateCbx.Items[1].ToString();
+            //get 115200 print in text
+            motorBaudRateCbx.Text = motorBaudRateCbx.Items[5].ToString();
 
             //Data bits
             motorDataBitsCbx.Items.Add(7);
@@ -132,7 +159,7 @@ namespace CII.LAR.UI
             motorHandshakingcbx.Text = motorHandshakingcbx.Items[0].ToString();
 
             //Com Ports
-            string[] ArrayComPortsNames = SerialPort.GetPortNames();
+            string[] ArrayComPortsNames = SerialPortHelper.GetHelper().GetPorts();
             if (ArrayComPortsNames.Length == 0)
             {
                 motorStatus.Text = "No COM found !";
@@ -150,6 +177,14 @@ namespace CII.LAR.UI
             }
         }
 
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            this.timer.Enabled = this.Visible;
+        }
+
+        public delegate void OpenBtnClick(string btnName);
+        public OpenBtnClick OpenBtnClickHandler;
+
         private void laserOpenCloseSpbtn_Click(object sender, EventArgs e)
         {
             if (laserOpenCloseSpbtn.Text == "Open")
@@ -158,6 +193,7 @@ namespace CII.LAR.UI
                 {
                     controller.OpenLaserSerialPort(laserComListCbx.Text, laserBaudRateCbx.Text,
                         laserDataBitsCbx.Text, laserStopBitsCbx.Text, laserParityCbx.Text, laserHandshakingcbx.Text);
+                    OpenBtnClickHandler?.Invoke("laser");
                 }
             }
             else
@@ -204,6 +240,7 @@ namespace CII.LAR.UI
                 //CII.Library.CIINet.Manager.PortManager.GetInstance().Open();
                 motorOpenCloseSpbtn.Text = "Close";
                 motorStatus.Text = motorComListCbx.Text + " Opend";
+                OpenBtnClickHandler?.Invoke("motor");
             }
             else
             {
@@ -315,6 +352,13 @@ namespace CII.LAR.UI
         protected override void RefreshUI()
         {
             base.RefreshUI();
+        }
+
+        protected override void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            this.Enabled = false;
+            OpenBtnClickHandler?.Invoke("close");
         }
     }
 }

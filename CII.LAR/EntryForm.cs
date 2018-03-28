@@ -240,6 +240,7 @@ namespace CII.LAR
             BaseCtrls.Add(settingCtrl);
 
             serialPortCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SerialPortCtrl>(CtrlType.SerialPort);
+            serialPortCtrl.OpenBtnClickHandler += OpenBtnClickHandler;
             controller = new IController(serialPortCtrl);
             BaseCtrls.Add(serialPortCtrl);
 
@@ -267,6 +268,25 @@ namespace CII.LAR
 
             laserHoleSize = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserHoleSize>(CtrlType.LaserHoleSize);
             BaseCtrls.Add(laserHoleSize);
+        }
+
+        private void OpenBtnClickHandler(string btnName)
+        {
+            switch (btnName)
+            {
+                case "motor":
+                    SerialPortHelper.GetHelper().ResetIndex();
+                    autoCheckMotorPort = true;
+                    this.systemMonitorTimer.Enabled = true;
+                    break;
+                case "laser":
+                    break;
+                case "close":
+                    SerialPortHelper.GetHelper().ResetIndex();
+                    autoCheckMotorPort = true;
+                    this.systemMonitorTimer.Enabled = true;
+                    break;
+            }
         }
 
         private void CaptureDeviceHandler(string deviceMoniker)
@@ -922,8 +942,43 @@ namespace CII.LAR
                     }
 
                 }
+                else
+                {
+                    //1.查看串口是否存在，不存在则弹出一个对话框
+                    //2.遍历串口，尝试连接
+                    //3.连接成功则保存串口到本地，失败则继续尝试
+                    if (SerialPortHelper.GetHelper().WaringCheckSystem())
+                    {
+                        //弹对话框，跳转到手动配置界面
+                        this.systemMonitorTimer.Enabled = false;
+                        autoCheckMotorPort = false;
+                        msgShowTime++;
+                        if (msgShowTime == 1)
+                        {
+                            if (MessageBox.Show("自动配置串口失败，请检查本地串口是否正确，点击确定将跳转到手动配置界面", "激光破膜仪", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                            {
+                                //手动配置界面
+                                msgShowTime = 0;
+                                ShowBaseCtrl(true, 1);
+                            }
+                            else
+                            {
+                                //退出系统
+                                fullScreen.ResetFullScreen();
+                                this.Close();
+                            }
+                        }
+                    }
+                    else if (autoCheckMotorPort)
+                    {
+                        SerialPortHelper.GetHelper().CheckPort();
+                    }
+                }
             }
         }
+
+        private bool autoCheckMotorPort = true;
+        private int msgShowTime = 0;
 
         private void autoReceiverTimer_Tick(object sender, EventArgs e)
         {

@@ -345,7 +345,7 @@ namespace CII.LAR.DrawTools
 
                 if (x1 != 0)
                 {
-                    DrawScaledNumber(g, x1, x1Coord, richPictureBox.Height / 2 - 20, ScaleFactor, true);
+                    DrawScaledNumber(g, x1, x1Coord, richPictureBox.Height / 2 - 20, 1, true);
                 }
                 x1 += this.rulerStep;
 
@@ -355,7 +355,7 @@ namespace CII.LAR.DrawTools
 
                 if (x2 != 0)
                 {
-                    DrawScaledNumber(g, x2, x2Coord, richPictureBox.Height / 2 - 20, ScaleFactor, true);
+                    DrawScaledNumber(g, x2, x2Coord, richPictureBox.Height / 2 - 20, 1, true);
                 }
                 x2Coord -= RulerStep;
                 x2 -= this.rulerStep;
@@ -383,7 +383,7 @@ namespace CII.LAR.DrawTools
 
                 if (y1 != 0)
                 {
-                    DrawScaledNumber(g, y1, richPictureBox.Width / 2 - 20, y1Coord - 2, ScaleFactor, true);
+                    DrawScaledNumber(g, y1, richPictureBox.Width / 2 - 20, y1Coord - 2, 1, true);
                 }
                 y1 += this.rulerStep;
 
@@ -392,7 +392,7 @@ namespace CII.LAR.DrawTools
 
                 if (y2 != 0)
                 {
-                    DrawScaledNumber(g, y2, richPictureBox.Width / 2 - 20, y2Coord - 2, ScaleFactor, true);
+                    DrawScaledNumber(g, y2, richPictureBox.Width / 2 - 20, y2Coord - 2, 1, true);
                 }
                 y2Coord -= RulerStep;
                 y2 -= this.rulerStep;

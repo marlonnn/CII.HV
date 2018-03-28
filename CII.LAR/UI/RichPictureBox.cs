@@ -266,7 +266,7 @@ namespace CII.LAR.UI
         {
             df = new DebugCtrl();
             df.VideoKeyDownHandler += this.OnKeyDown;
-            df.Location = new Point(10, 30);
+            df.Location = new Point(10, this.Height - df.Height);
             this.Controls.Add(df);
         }
         public void SetOffset(int offsetX, int offsetY)
@@ -293,7 +293,7 @@ namespace CII.LAR.UI
 
         private void InitializeImageTracker()
         {
-            this.imageTracker = new ImageTracker();
+            this.imageTracker = new ImageTracker(this);
             this.imageTracker.Location = new System.Drawing.Point(5, 30);
             this.imageTracker.Size = new System.Drawing.Size(137, 152);
             this.imageTracker.TabIndex = 1;
@@ -423,7 +423,14 @@ namespace CII.LAR.UI
 
         private bool IsInLegalRegion(Point point)
         {
-            return (new Rectangle(this.OffsetX, this.OffsetY, this.RealSize.Width, this.RealSize.Height)).Contains(point);
+            if (this.Zoom == 1)
+            {
+                return (new Rectangle(this.OffsetX, this.OffsetY, this.RealSize.Width, this.RealSize.Height)).Contains(point);
+            }
+            else
+            {
+                return true;
+            }
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
@@ -453,23 +460,23 @@ namespace CII.LAR.UI
                     OffsetX = (int)(startX + deltaX / zoom);
                     OffsetY = (int)(startY + deltaY / zoom);
 
-                    if (mousePressed)
-                    {
-                        Point newPos = new Point(
-                            draggingBaseCtrlRectangle.Location.X + e.X - lastMousePos.X,
-                            draggingBaseCtrlRectangle.Location.Y + e.Y - lastMousePos.Y);
-                        Rectangle newPictureTrackerArea = draggingBaseCtrlRectangle;
-                        newPictureTrackerArea.Location = newPos;
+                    //if (mousePressed)
+                    //{
+                    //    Point newPos = new Point(
+                    //        draggingBaseCtrlRectangle.Location.X + e.X - lastMousePos.X,
+                    //        draggingBaseCtrlRectangle.Location.Y + e.Y - lastMousePos.Y);
+                    //    Rectangle newPictureTrackerArea = draggingBaseCtrlRectangle;
+                    //    newPictureTrackerArea.Location = newPos;
 
-                        this.lastMousePos = e.Location;
-                        // dragging Statistics ctrl only when the candidate dragging rectangle
-                        // is within this ScalablePictureBox control
-                        if (this.ClientRectangle.Contains(newPictureTrackerArea))
-                        {
-                            // updating dragging rectangle
-                            draggingBaseCtrlRectangle = newPictureTrackerArea;
-                        }
-                    }
+                    //    this.lastMousePos = e.Location;
+                    //    // dragging Statistics ctrl only when the candidate dragging rectangle
+                    //    // is within this ScalablePictureBox control
+                    //    if (this.ClientRectangle.Contains(newPictureTrackerArea))
+                    //    {
+                    //        // updating dragging rectangle
+                    //        draggingBaseCtrlRectangle = newPictureTrackerArea;
+                    //    }
+                    //}
                     this.Invalidate();
                 }
             }
@@ -701,7 +708,6 @@ namespace CII.LAR.UI
         {
             try
             {
-                Graphics g = e.Graphics;
                 if (PictureBoxPaintedEvent != null)
                 {
                     Rectangle controlClientRect = ClientRectangle;
@@ -712,11 +718,11 @@ namespace CII.LAR.UI
 
                 if (this.Image != null)
                 {
-                    g.ScaleTransform(Zoom, Zoom);
-                    g.TranslateTransform(OffsetX, OffsetY);
-                    g.DrawImage(this.Image, 0, 0, RealSize.Width, RealSize.Height);
+                    e.Graphics.ScaleTransform(Zoom, Zoom);
+                    e.Graphics.TranslateTransform(OffsetX, OffsetY);
+                    e.Graphics.DrawImage(this.Image, 0, 0, RealSize.Width, RealSize.Height);
                     this.imageTracker.Picture = this.Image;
-                    g.ResetTransform();
+                    e.Graphics.ResetTransform();
                 }
 
                 if (LaserFunction)

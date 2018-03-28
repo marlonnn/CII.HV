@@ -112,9 +112,11 @@ namespace CII.LAR.UI
             }
         }
 
-        public ImageTracker()
+        private RichPictureBox richPictureBox;
+        public ImageTracker(RichPictureBox richPictureBox)
         {
             InitializeComponent();
+            this.richPictureBox = richPictureBox;
         }
 
         public void OnPicturePainted(Rectangle showingRect, Rectangle pictureBoxRect)
@@ -158,29 +160,11 @@ namespace CII.LAR.UI
             e.Graphics.DrawString("Zoom rate:" + (int)ScalePercent + "%", zoomRateFont, Brushes.Navy, 3, 3);
         }
 
-        private int offsetX;
-        public int OffsetX
+        protected override void OnKeyDown(KeyEventArgs e)
         {
-            get
+            if (this.richPictureBox.VideoKeyDownHandler != null)
             {
-                return offsetX;
-            }
-            set
-            {
-                offsetX = value;
-            }
-        }
-
-        private int offsetY;
-        public int OffsetY
-        {
-            get
-            {
-                return offsetY;
-            }
-            set
-            {
-                offsetY = value;
+                richPictureBox.VideoKeyDownHandler(e);
             }
         }
 

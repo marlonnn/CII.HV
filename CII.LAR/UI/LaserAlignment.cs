@@ -263,7 +263,7 @@ namespace CII.LAR.UI
 
         public override void InitializeLocation(Size size)
         {
-            this.Location = new Point(size.Width - this.Width - 5, size.Height - this.Height);
+            this.Location = new Point(size.Width - this.Width - 20, size.Height - this.Height - 20);
         }
     }
 }

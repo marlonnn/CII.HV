@@ -138,9 +138,13 @@ namespace CII.LAR.UI
             e.Graphics.DrawString(Title, font, Brushes.Navy, 3, 3);
         }
 
+        /// <summary>
+        /// 初始化控件位置
+        /// </summary>
+        /// <param name="size"></param>
         public virtual void InitializeLocation(Size size)
         {
-            this.Location = new Point(10, 30);
+            this.Location = new Point(size.Width - this.Width - 20, 30);
         }
     }
 }

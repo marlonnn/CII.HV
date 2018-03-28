@@ -939,14 +939,20 @@ namespace CII.LAR
 
         private void toolStripButtonZoomIn_Click(object sender, EventArgs e)
         {
-            this.richPictureBox.ZoomIn();
-            EnableDrawTools(this.richPictureBox.Zoom == 1.0f);
+            if (this.richPictureBox.CanZoom())
+            {
+                this.richPictureBox.ZoomIn();
+                EnableDrawTools(this.richPictureBox.Zoom == 1.0f);
+            }
         }
 
         private void toolStripButtonZoomOut_Click(object sender, EventArgs e)
         {
-            this.richPictureBox.ZoomOut();
-            EnableDrawTools(this.richPictureBox.Zoom == 1.0f);
+            if (this.richPictureBox.CanZoom())
+            {
+                this.richPictureBox.ZoomOut();
+                EnableDrawTools(this.richPictureBox.Zoom == 1.0f);
+            }
         }
 
         private void toolStripButtonFit_Click(object sender, EventArgs e)

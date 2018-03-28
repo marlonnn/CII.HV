@@ -535,6 +535,7 @@ namespace CII.LAR.UI
         }
         protected override void OnMouseWheel(MouseEventArgs e)
         {
+            if (this.Picture == null) return;
             float oldzoom = zoom;
 
             if (e.Delta > 0)
@@ -565,7 +566,13 @@ namespace CII.LAR.UI
                 }
                 else
                 {
-                    if (zoom > 1)
+                    if (zoom - 1 < 1) return;
+                    if (zoom == 2)
+                    {
+                        zoom -= 1;
+                        ZoomFit();
+                    }
+                    else if (zoom > 1)
                     {
                         zoom -= 1;
                         ZoomOnMouseCenter(e, oldzoom);
@@ -693,6 +700,11 @@ namespace CII.LAR.UI
                 this.imageTracker.ScalePercent = zoom * 100;
                 this.Invalidate();
             }
+        }
+
+        public bool CanZoom()
+        {
+            return this.Picture != null;
         }
 
         public void LoadImage(string imageFile)

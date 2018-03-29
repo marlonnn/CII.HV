@@ -387,7 +387,7 @@ namespace CII.LAR
             // 
             // systemMonitorTimer
             // 
-            this.systemMonitorTimer.Interval = 300;
+            this.systemMonitorTimer.Interval = 1000;
             this.systemMonitorTimer.Tick += new System.EventHandler(this.systemMonitorTimer_Tick);
             // 
             // autoReceiverTimer

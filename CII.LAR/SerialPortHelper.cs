@@ -50,6 +50,21 @@ namespace CII.LAR
             return SerialPort.GetPortNames();
         }
 
+        public bool HasPorts
+        {
+            get
+            {
+                if (GetPorts() != null && GetPorts().Length > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
         public void CheckPort()
         {
             string[] ports = GetPorts();
@@ -59,7 +74,14 @@ namespace CII.LAR
                 {
                     Save(ports[index]);
                 }
-                index++;
+                if (index + 1 <ports.Length)
+                {
+                    index++;
+                }
+                else
+                {
+                    index = 0;
+                }
             }
         }
 

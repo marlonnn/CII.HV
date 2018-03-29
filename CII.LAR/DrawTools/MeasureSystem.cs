@@ -6,16 +6,6 @@ using System.Threading.Tasks;
 
 namespace CII.LAR.DrawTools
 {
-    public enum enUniMis
-    {
-        um = 0,
-        dmm = 1,
-        mm = 2,
-        cm = 3,
-        inches = 4,
-        meters = 5
-    }
-
     public class MeasureSystem
     {
         public static event MeasureUnitChangedEventHandler MeasureUnitChanged;

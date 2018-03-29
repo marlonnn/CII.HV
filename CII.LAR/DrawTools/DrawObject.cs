@@ -9,15 +9,6 @@ using System.Windows.Forms;
 
 namespace CII.LAR.DrawTools
 {
-    public enum ObjectType
-    {
-        Line,
-        Rectangle,
-        Ellipse,
-        Polygon,
-        Circle,
-        Text
-    }
     /// <summary>
     /// Base class for all draw objects
     /// Author:Zhong Wen 2017/07/25

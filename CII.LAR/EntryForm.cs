@@ -196,7 +196,13 @@ namespace CII.LAR
             this.FlipType = FlipType.Empty;
             DelegateClass.GetDelegate().VideoKeyDownHandler += this.OnKeyDown;
             DelegateClass.GetDelegate().ChangeSysFunctionHandler += this.ChangeSysFunctionHandler;
+            DelegateClass.GetDelegate().CheckCloseVideoHandler += this.CheckCloseVideoHandler;
             InitializeControls();
+        }
+
+        private void CheckCloseVideoHandler()
+        {
+            StopVideoDevice();
         }
 
         private void ChangeSysFunctionHandler()
@@ -258,6 +264,7 @@ namespace CII.LAR
         private void EntryForm_Load(object sender, EventArgs e)
         {
             InitializeBaseCtrls();
+            Application.Idle += OnIdle;
             MotorProtocolFactory = MotorProtocolFactory.GetInstance();
             LaserProtocolFactory = LaserProtocolFactory.GetInstance();
 
@@ -275,6 +282,17 @@ namespace CII.LAR
 
             Coordinate.GetCoordinate().MoveStepHandler += MoveStepHandler;
 
+        }
+
+        private void OnIdle(object sender, EventArgs e)
+        {
+            //if (this.richPictureBox.Zoom != 1)
+            //{
+            //    this.toolStripButtonLine.Enabled = false;
+            //}
+            bool enable = this.richPictureBox.Zoom == 1;
+            EnableDrawTools(enable);
+            if (!enable) this.richPictureBox.ActiveTool = DrawToolType.Pointer;
         }
 
         private void MoveStepHandler(int x, byte ox, int y, byte oy)
@@ -435,6 +453,9 @@ namespace CII.LAR
             return bmp;
         }
 
+        /// <summary>
+        /// 关闭视频设备
+        /// </summary>
         private void StopVideoDevice()
         {
             if (this.videoControl.VideoSource != null)
@@ -609,7 +630,7 @@ namespace CII.LAR
 
         protected override void OnKeyDown(KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape && this.richPictureBox.ActiveTool != UI.DrawToolType.Pointer)
+            if (e.KeyCode == Keys.Escape && this.richPictureBox.ActiveTool != DrawToolType.Pointer)
             {
                 this.richPictureBox.ActiveTool = DrawToolType.Pointer;
             }
@@ -808,6 +829,7 @@ namespace CII.LAR
             this.toolStripButtonRectangle.Enabled = Enabled;
             this.toolStripButtonPolygon.Enabled = Enabled;
             this.toolStripButtonElliptical.Enabled = Enabled;
+            this.toolStripButtonLaser.Enabled = Enabled;
         }
 
         #region 鼠标点击拖动BaseCtrl

@@ -41,5 +41,11 @@ namespace CII.LAR.UI
         /// </summary>
         public delegate void ChangeSysFunction();
         public ChangeSysFunction ChangeSysFunctionHandler;
+
+        /// <summary>
+        /// 在模拟模式下需要判断相机是否开启，开启则先要关闭相机
+        /// </summary>
+        public delegate void CheckCloseVideo();
+        public CheckCloseVideo CheckCloseVideoHandler;
     }
 }

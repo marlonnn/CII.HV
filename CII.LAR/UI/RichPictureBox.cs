@@ -736,6 +736,8 @@ namespace CII.LAR.UI
 
         public void LoadImage(string imageFile)
         {
+            //判断视频是否开启，若开启则先关闭视频
+            DelegateClass.GetDelegate().CheckCloseVideoHandler?.Invoke();
             this.Picture = Image.FromFile(imageFile);
             this.OffsetX = (this.Width - this.Image.Width) / 2;
             this.OffsetY = (this.Height - this.Image.Height) / 2 + 25;

@@ -6,19 +6,6 @@ using System.Threading.Tasks;
 
 namespace CII.LAR.UI
 {
-    public enum CtrlType
-    {
-        SettingCtrl,
-        SerialPort,
-        StatisticsCtrl,
-        LaserAlignment,
-        LaserAppreance,
-        LaserCtrl,
-        VideoChooseCtrl,
-        LaserHoleSize,
-        RulerAppearanceCtrl
-    }
-
     public class CtrlFactory
     {
         private static CtrlFactory ctrlFactory;

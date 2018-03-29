@@ -13,14 +13,6 @@ using System.Windows.Forms;
 
 namespace CII.LAR.Laser
 {
-    public enum InHoleType
-    {
-        StartHole,
-        CenterHole,
-        EndHole,
-        Empty
-    }
-
     public class ActiveCircle
     {
         private InHoleType holeType;
@@ -48,11 +40,7 @@ namespace CII.LAR.Laser
                 CalcAngle();
             }
         }
-        public enum LaserShape
-        {
-            Line,
-            Arc
-        }
+
         private LaserShape shape;
 
         private HolesInfo holesInfo;

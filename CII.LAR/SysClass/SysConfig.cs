@@ -15,13 +15,6 @@ using System.Windows.Forms;
 
 namespace CII.LAR.SysClass
 {
-    public enum SystemFunction
-    {
-        Laser,
-        Measure,
-        Empty
-    }
-
     [Serializable]
     public class SysConfig
     {

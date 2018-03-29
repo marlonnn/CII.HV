@@ -7,13 +7,6 @@ using System.Threading.Tasks;
 
 namespace CII.LAR
 {
-    public enum LaserType
-    {
-        SaturnFixed,
-        SaturnActive,
-        Alignment
-    }
-
     public class ExpManager
     {
         private Coordinate coordinate;

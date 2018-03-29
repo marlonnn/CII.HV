@@ -34,5 +34,12 @@ namespace CII.LAR.UI
         /// <param name="name"></param>
         public delegate void ClickDelegate(object sender, CtrlType type);
         public ClickDelegate ClickDelegateHandler;
+
+        /// <summary>
+        /// 切换功能时判断当前子窗口是否为当前功能的窗口，
+        /// 若不是，则切换到当前功能窗口
+        /// </summary>
+        public delegate void ChangeSysFunction();
+        public ChangeSysFunction ChangeSysFunctionHandler;
     }
 }

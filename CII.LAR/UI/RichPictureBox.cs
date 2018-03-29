@@ -233,12 +233,12 @@ namespace CII.LAR.UI
                 case DrawToolType.MultipleCircle:
                     Program.SysConfig.Function = SystemFunction.Laser;
                     break;
-                case DrawToolType.Pointer:
-                    Program.SysConfig.Function = SystemFunction.Empty;
-                    break;
-                default:
-                    Program.SysConfig.Function = SystemFunction.Empty;
-                    break;
+                //case DrawToolType.Pointer:
+                //    Program.SysConfig.Function = SystemFunction.Empty;
+                //    break;
+                //default:
+                //    Program.SysConfig.Function = SystemFunction.Empty;
+                //    break;
             }
         }
         #endregion

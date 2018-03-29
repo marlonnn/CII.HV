@@ -95,11 +95,11 @@ namespace CII.LAR
                 return this.baseCtrl;
             }
         }
-        private List<BaseCtrl> controls;
+        private List<BaseCtrl> baseControls;
         public List<BaseCtrl> BaseCtrls
         {
-            get { return this.controls; }
-            private set { this.controls = value; }
+            get { return this.baseControls; }
+            private set { this.baseControls = value; }
         }
 
         private SettingCtrl settingCtrl;
@@ -195,7 +195,41 @@ namespace CII.LAR
             this.FormClosed += EntryForm_FormClosed;
             this.FlipType = FlipType.Empty;
             DelegateClass.GetDelegate().VideoKeyDownHandler += this.OnKeyDown;
+            DelegateClass.GetDelegate().ChangeSysFunctionHandler += this.ChangeSysFunctionHandler;
             InitializeControls();
+        }
+
+        private void ChangeSysFunctionHandler()
+        {
+            switch (Program.SysConfig.Function)
+            {
+                case SystemFunction.Laser:
+                    if (!BaseCtrlVisiable(CtrlType.LaserCtrl))
+                    {
+                        ShowBaseCtrl(true, CtrlType.LaserCtrl);
+                    }
+                    break;
+                case SystemFunction.Measure:
+                    if (!BaseCtrlVisiable(CtrlType.StatisticsCtrl))
+                    {
+                        ShowBaseCtrl(true, CtrlType.StatisticsCtrl);
+                    }
+                    break;
+                case SystemFunction.Empty:
+                    break;
+            }
+        }
+
+        private bool BaseCtrlVisiable(CtrlType type)
+        {
+            foreach (var baseCtrl in this.baseControls)
+            {
+                if (baseCtrl.CtrlType == type)
+                {
+                    return baseCtrl.Visible;
+                }
+            }
+            return false;
         }
 
         private void EntryForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -483,9 +517,9 @@ namespace CII.LAR
         /// <param name="show"></param>
         public void ShowBaseCtrl(bool show, CtrlType type)
         {
-            for (int i = 0; i < this.controls.Count; i++)
+            for (int i = 0; i < this.baseControls.Count; i++)
             {
-                if (this.controls[i].CtrlType == type)
+                if (this.baseControls[i].CtrlType == type)
                 {
                     this.baseCtrl = GetBascCtrl(type);
                     this.Controls.SetChildIndex(this.baseCtrl, 0);
@@ -495,8 +529,8 @@ namespace CII.LAR
                 }
                 else
                 {
-                    this.controls[i].Visible = !show;
-                    this.controls[i].Enabled = !show;
+                    this.baseControls[i].Visible = !show;
+                    this.baseControls[i].Enabled = !show;
                 }
             }
         }
@@ -717,7 +751,7 @@ namespace CII.LAR
         /// </summary>
         private void EnableAppearanceButton()
         {
-            var baseCtrl = this.controls[2] as StatisticsCtrl;
+            var baseCtrl = this.baseControls[2] as StatisticsCtrl;
             if (baseCtrl != null)
             {
                 if (this.richPictureBox.GraphicsList != null && this.richPictureBox.GraphicsList.Count > 0)
@@ -849,7 +883,7 @@ namespace CII.LAR
 
         public void ButtonStateHandler(bool isEnable)
         {
-            LaserAlignment laserAlignment = controls[6] as LaserAlignment;
+            LaserAlignment laserAlignment = baseControls[6] as LaserAlignment;
             if (laserAlignment != null)
             {
                 laserAlignment.ButtonNext(isEnable);
@@ -860,7 +894,7 @@ namespace CII.LAR
         {
             if (holesInfo != null)
             {
-                LaserCtrl laserCtrl = controls[5] as LaserCtrl;
+                LaserCtrl laserCtrl = baseControls[5] as LaserCtrl;
                 if (laserCtrl != null)
                 {
                     laserCtrl.UpdateHolesInfo(holesInfo);
@@ -870,9 +904,9 @@ namespace CII.LAR
 
         public void HolesNumberSlider(bool isShow)
         {
-            if (controls != null && controls.Count > 0)
+            if (baseControls != null && baseControls.Count > 0)
             {
-                LaserCtrl laserCtrl = controls[5] as LaserCtrl;
+                LaserCtrl laserCtrl = baseControls[5] as LaserCtrl;
                 if (laserCtrl != null)
                 {
                     laserCtrl.HolesNumberSlider(isShow);

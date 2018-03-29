@@ -39,6 +39,7 @@ namespace CII.LAR.DrawTools
 
             if (clickCount % 2 == 1)
             {
+                base.OnMouseMove(richPictureBox, e);
                 Point point = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
                 richPictureBox.GraphicsList[0].MoveHandleTo(richPictureBox, point, 2);
                 //richPictureBox.GraphicsList[0].UpdateStatisticsInformation();

@@ -81,6 +81,7 @@ namespace CII.LAR.DrawTools
             Point point = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
 
             // move last point
+            base.OnMouseMove(richPictureBox, e);
             newPolyLine.MoveLastHandleTo(richPictureBox, point);
             richPictureBox.Invalidate();
         }

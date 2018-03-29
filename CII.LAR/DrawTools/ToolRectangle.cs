@@ -26,6 +26,7 @@ namespace CII.LAR.DrawTools
             clickCount++;
             if (clickCount % 2 == 1)
             {
+                base.OnMouseMove(richPictureBox, e);
                 startPoint = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
                 drawObject = new DrawRectangle(richPictureBox, startPoint.X, startPoint.Y, 1, 1);
                 AddNewObject(richPictureBox, drawObject);

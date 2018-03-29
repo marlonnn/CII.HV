@@ -37,6 +37,7 @@ namespace CII.LAR.DrawTools
         /// <param name="e"></param>
         public virtual void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
+            DelegateClass.GetDelegate().ChangeSysFunctionHandler?.Invoke();
         }
         public virtual void OnMouseMoveZoom(RichPictureBox richPictureBox, MouseEventArgs e)
         {

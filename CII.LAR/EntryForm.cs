@@ -111,7 +111,7 @@ namespace CII.LAR
         private LaserAlignment laserAlignment;
         private LaserHoleSize laserHoleSize;
         private VideoChooseCtrl videoChooseCtrl;
-        //private DebugCtrl df;
+
 
         #endregion
 
@@ -286,9 +286,16 @@ namespace CII.LAR
 
         private void OnIdle(object sender, EventArgs e)
         {
-            bool enable = (this.richPictureBox.Zoom == 1 && this.richPictureBox.Picture != null);
-            EnableDrawTools(enable);
-            if (!enable) this.richPictureBox.ActiveTool = DrawToolType.Pointer;
+            if (this.richPictureBox.Picture != null && Program.SysConfig.LiveMode == true)
+            {
+                EnableDrawTools(true);
+            }
+            else
+            {
+                bool enable = (this.richPictureBox.Zoom == 1 && this.richPictureBox.Picture != null);
+                EnableDrawTools(enable);
+                if (!enable) this.richPictureBox.ActiveTool = DrawToolType.Pointer;
+            }
         }
 
         private void MoveStepHandler(int x, byte ox, int y, byte oy)
@@ -647,6 +654,10 @@ namespace CII.LAR
                 SerialPortDebugForm debugForm = new SerialPortDebugForm();
                 debugForm.Controller = this.controller;
                 debugForm.ShowDialog();
+            }
+            else if (e.Control == true && e.KeyCode == Keys.A)
+            {
+                this.richPictureBox.DebugCtrlVisiable();
             }
         }
 

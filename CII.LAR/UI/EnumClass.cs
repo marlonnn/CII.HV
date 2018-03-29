@@ -117,6 +117,7 @@ namespace CII.LAR
         LaserCtrl,
         VideoChooseCtrl,
         LaserHoleSize,
-        RulerAppearanceCtrl
+        RulerAppearanceCtrl,
+        DebugCtrl
     }
 }

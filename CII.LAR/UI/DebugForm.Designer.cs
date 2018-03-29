@@ -42,7 +42,16 @@
             this.motor1Origination = new System.Windows.Forms.Label();
             this.motor2Steps = new System.Windows.Forms.Label();
             this.motor2Origination = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblMousePosition = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblMatrix = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // closeButton
+            // 
+            this.closeButton.Location = new System.Drawing.Point(204, 0);
+            this.closeButton.Visible = false;
             // 
             // label1
             // 
@@ -83,7 +92,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 176);
+            this.label3.Location = new System.Drawing.Point(3, 178);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 12);
             this.label3.TabIndex = 5;
@@ -92,7 +101,7 @@
             // responseCode
             // 
             this.responseCode.AutoSize = true;
-            this.responseCode.Location = new System.Drawing.Point(44, 176);
+            this.responseCode.Location = new System.Drawing.Point(44, 178);
             this.responseCode.Name = "responseCode";
             this.responseCode.Size = new System.Drawing.Size(0, 12);
             this.responseCode.TabIndex = 6;
@@ -165,10 +174,48 @@
             this.motor2Origination.Size = new System.Drawing.Size(0, 12);
             this.motor2Origination.TabIndex = 14;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 203);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 12);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "鼠标坐标：";
+            // 
+            // lblMousePosition
+            // 
+            this.lblMousePosition.AutoSize = true;
+            this.lblMousePosition.Location = new System.Drawing.Point(68, 203);
+            this.lblMousePosition.Name = "lblMousePosition";
+            this.lblMousePosition.Size = new System.Drawing.Size(35, 12);
+            this.lblMousePosition.TabIndex = 16;
+            this.lblMousePosition.Text = "[0,0]";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(3, 226);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(59, 12);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "转换矩阵:";
+            // 
+            // lblMatrix
+            // 
+            this.lblMatrix.Location = new System.Drawing.Point(3, 250);
+            this.lblMatrix.Name = "lblMatrix";
+            this.lblMatrix.Size = new System.Drawing.Size(214, 112);
+            this.lblMatrix.TabIndex = 18;
+            // 
             // DebugCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblMatrix);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lblMousePosition);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.motor2Origination);
             this.Controls.Add(this.motor2Steps);
             this.Controls.Add(this.motor1Origination);
@@ -184,8 +231,27 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "DebugCtrl";
-            this.Size = new System.Drawing.Size(220, 205);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DebugCtrl_KeyDown);
+            this.Size = new System.Drawing.Size(220, 362);
+            this.Title = "调试信息";
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.m1Steps, 0);
+            this.Controls.SetChildIndex(this.m2Steps, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.responseCode, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.label5, 0);
+            this.Controls.SetChildIndex(this.label7, 0);
+            this.Controls.SetChildIndex(this.label6, 0);
+            this.Controls.SetChildIndex(this.motor1Steps, 0);
+            this.Controls.SetChildIndex(this.motor1Origination, 0);
+            this.Controls.SetChildIndex(this.motor2Steps, 0);
+            this.Controls.SetChildIndex(this.motor2Origination, 0);
+            this.Controls.SetChildIndex(this.label8, 0);
+            this.Controls.SetChildIndex(this.lblMousePosition, 0);
+            this.Controls.SetChildIndex(this.label9, 0);
+            this.Controls.SetChildIndex(this.lblMatrix, 0);
+            this.Controls.SetChildIndex(this.closeButton, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,5 +273,9 @@
         private System.Windows.Forms.Label motor1Origination;
         private System.Windows.Forms.Label motor2Steps;
         private System.Windows.Forms.Label motor2Origination;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblMousePosition;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblMatrix;
     }
 }

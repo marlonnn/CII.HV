@@ -8,14 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CII.LAR.Commond;
+using CII.LAR.Algorithm;
 
 namespace CII.LAR.UI
 {
-    public partial class DebugCtrl : UserControl
+    public partial class DebugCtrl : BaseCtrl
     {
-        public delegate void VideoKeyDown(KeyEventArgs e);
-        public VideoKeyDown VideoKeyDownHandler;
-
         public DebugCtrl()
         {
             InitializeComponent();
@@ -30,6 +28,8 @@ namespace CII.LAR.UI
         public void UpdateResponseCode(string code)
         {
             this.responseCode.Text = code;
+            this.lblMatrix.Text = Program.SysConfig.LaserConfig.FinalMatrix.ToString();
+            this.lblMousePosition.Text = Program.SysConfig.Point.ToString();
         }
 
         public void UpdateMoveStep(int x, byte ox, int y, byte oy)
@@ -40,12 +40,10 @@ namespace CII.LAR.UI
             this.motor2Origination.Text = oy.ToString();
         }
 
-        private void DebugCtrl_KeyDown(object sender, KeyEventArgs e)
+        protected override void closeButton_Click(object sender, EventArgs e)
         {
-            if (VideoKeyDownHandler != null)
-            {
-                VideoKeyDownHandler(e);
-            }
+            this.Visible = false;
+            this.Enabled = false;
         }
 
     }

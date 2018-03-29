@@ -307,11 +307,16 @@ namespace CII.LAR.UI
         public DebugCtrl df;
         public void LoadDebugCtrl()
         {
-            df = new DebugCtrl();
-            df.VideoKeyDownHandler += this.OnKeyDown;
+            df = CtrlFactory.GetCtrlFactory().GetCtrlByType<DebugCtrl>(CtrlType.DebugCtrl);
             df.Location = new Point(10, this.Height - df.Height);
             this.Controls.Add(df);
         }
+
+        public void DebugCtrlVisiable()
+        {
+            this.df.Visible = !this.df.Visible;
+        }
+
         public void SetOffset(int offsetX, int offsetY)
         {
             this.OffsetX = offsetX;

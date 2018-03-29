@@ -111,6 +111,8 @@ namespace CII.LAR.Laser
         /// <param name="e"></param>
         public virtual void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
+            //保存鼠标当前点
+            Program.SysConfig.Point = e.Location;
         }
 
         public virtual void OnPaint(PaintEventArgs e)

@@ -27,6 +27,9 @@ namespace CII.LAR.SysClass
         [NonSerialized]
         public SystemFunction Function;
 
+        [NonSerialized]
+        public System.Drawing.Point Point = System.Drawing.Point.Empty;
+
         public static SysConfig Load()
         {
             SysConfig config = null;

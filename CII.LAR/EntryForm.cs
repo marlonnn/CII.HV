@@ -286,11 +286,7 @@ namespace CII.LAR
 
         private void OnIdle(object sender, EventArgs e)
         {
-            //if (this.richPictureBox.Zoom != 1)
-            //{
-            //    this.toolStripButtonLine.Enabled = false;
-            //}
-            bool enable = this.richPictureBox.Zoom == 1;
+            bool enable = (this.richPictureBox.Zoom == 1 && this.richPictureBox.Picture != null);
             EnableDrawTools(enable);
             if (!enable) this.richPictureBox.ActiveTool = DrawToolType.Pointer;
         }

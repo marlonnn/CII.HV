@@ -103,5 +103,10 @@ namespace CII.LAR.UI
         {
             this.Visible = false;
         }
+
+        public override void InitializeLocation(Size size)
+        {
+            this.Location = new Point(30, 30);
+        }
     }
 }

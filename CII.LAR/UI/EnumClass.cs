@@ -120,4 +120,14 @@ namespace CII.LAR
         RulerAppearanceCtrl,
         DebugCtrl
     }
+
+    /// <summary>
+    /// 相机水平或者垂直翻转
+    /// </summary>
+    public enum FlipType
+    {
+        Horizontal,
+        Vertical,
+        Empty
+    }
 }

@@ -582,6 +582,8 @@ namespace CII.LAR.UI
                 }
                 else
                 {
+                    //最大放大16倍
+                    if (zoom + 1 == 17) return;
                     zoom += 1;
                     ZoomOnMouseCenter(e, oldzoom);
                 }
@@ -710,6 +712,8 @@ namespace CII.LAR.UI
                 mousePos = new Point(this.Width / 2, this.Height / 2);
             }
             MouseEventArgs args = new MouseEventArgs(new MouseButtons(), 1, mousePos.X, mousePos.Y, 0);
+            //最大放大16倍
+            if (zoom + 1 == 17) return;
             zoom += 1;
             ZoomOnMouseCenter(args, oldzoom);
             this.imageTracker.ScalePercent = zoom * 100;

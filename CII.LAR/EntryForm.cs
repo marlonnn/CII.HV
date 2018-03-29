@@ -28,12 +28,6 @@ using System.Windows.Forms;
 
 namespace CII.LAR
 {
-    public enum FlipType
-    {
-        Horizontal,
-        Vertical,
-        Empty
-    }
     public partial class EntryForm : Form
     {
         //视频翻转类型
@@ -470,6 +464,8 @@ namespace CII.LAR
             if (this.richPictureBox != null)
             {
                 this.richPictureBox.Picture = null;
+                this.richPictureBox.GraphicsList.DeleteAll();
+                this.statisticsCtrl.StatisticsListView.Items.Clear();
                 this.richPictureBox.Invalidate();
             }
         }

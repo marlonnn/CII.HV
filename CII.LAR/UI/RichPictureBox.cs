@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CII.LAR.DrawTools;
 using System.IO;
 using System.Resources;
+using CII.LAR.SysClass;
 
 namespace CII.LAR.UI
 {
@@ -212,6 +213,32 @@ namespace CII.LAR.UI
                     Cursor = tools[(int)activeTool] is ToolPointer ? Cursors.Default : (tools[(int)activeTool] as ToolObject).Cursor;
                 }
                 Enabled = activeTool != DrawToolType.None;
+                SetSystemFunction(value);
+            }
+        }
+
+        private void SetSystemFunction(DrawToolType tool)
+        {
+            switch (tool)
+            {
+                case DrawToolType.Line:
+                case DrawToolType.Ellipse:
+                case DrawToolType.Rectangle:
+                case DrawToolType.Polygon:
+                case DrawToolType.PolyLine:
+                    Program.SysConfig.Function = SystemFunction.Measure;
+                    this.Invalidate();
+                    break;
+                case DrawToolType.Circle:
+                case DrawToolType.MultipleCircle:
+                    Program.SysConfig.Function = SystemFunction.Laser;
+                    break;
+                case DrawToolType.Pointer:
+                    Program.SysConfig.Function = SystemFunction.Empty;
+                    break;
+                default:
+                    Program.SysConfig.Function = SystemFunction.Empty;
+                    break;
             }
         }
         #endregion
@@ -755,12 +782,12 @@ namespace CII.LAR.UI
 
                 if (LaserFunction)
                 {
-                    if (Program.EntryForm.Laser != null)
+                    if (Program.EntryForm.Laser != null && Program.SysConfig.Function == SystemFunction.Laser)
                     {
                         Program.EntryForm.Laser.OnPaint(e);
                     }
                 }
-                if (GraphicsList != null)
+                if (GraphicsList != null && Program.SysConfig.Function == SystemFunction.Measure)
                 {
                     GraphicsList.Draw(e.Graphics, this);
                 }

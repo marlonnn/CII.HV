@@ -943,7 +943,7 @@ namespace CII.LAR
                 this.richPictureBox.ActiveTool = DrawToolType.MultipleCircle;
             }
             ShowBaseCtrl(true, CtrlType.LaserCtrl);
-            this.richPictureBox.GraphicsList.DeleteAll();
+            //this.richPictureBox.GraphicsList.DeleteAll();
             this.richPictureBox.Invalidate();
             SetLaserByType(LaserType);
         }

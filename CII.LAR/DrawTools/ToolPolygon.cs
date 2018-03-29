@@ -31,7 +31,7 @@ namespace CII.LAR.DrawTools
 
         public override void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            Point point = e.Location;
+            Point point = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
             newPolygon = new DrawPolygon(richPictureBox, point.X, point.Y, point.X + 1, point.Y + 1);
             AddNewObject(richPictureBox, newPolygon);
 
@@ -52,8 +52,7 @@ namespace CII.LAR.DrawTools
                 return;
             }
 
-            Point point = e.Location;
-
+            Point point = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
             int distance = (point.X - lastX) * (point.X - lastX) + (point.Y - lastY) * (point.Y - lastY);
 
             if (distance < minDistance)

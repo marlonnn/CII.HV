@@ -15,6 +15,13 @@ using System.Windows.Forms;
 
 namespace CII.LAR.SysClass
 {
+    public enum SystemFunction
+    {
+        Laser,
+        Measure,
+        Empty
+    }
+
     [Serializable]
     public class SysConfig
     {
@@ -23,6 +30,9 @@ namespace CII.LAR.SysClass
 
         [NonSerialized]
         public bool LiveMode = false;
+
+        [NonSerialized]
+        public SystemFunction Function;
 
         public static SysConfig Load()
         {
@@ -268,6 +278,7 @@ namespace CII.LAR.SysClass
             this.laserConfig = new LaserConfig();
             this.storagePath = string.Format("{0}\\Archive", System.Environment.CurrentDirectory);
             this.archivePath = string.Format("{0}\\Archive", System.Environment.CurrentDirectory);
+            this.Function = SystemFunction.Empty;
         }
 
         // set default value

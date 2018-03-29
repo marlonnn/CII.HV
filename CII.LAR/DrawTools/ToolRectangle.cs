@@ -42,7 +42,7 @@ namespace CII.LAR.DrawTools
                 {
                     Point point = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
                     richPictureBox.GraphicsList[0].MoveHandleTo(richPictureBox, point, 5);
-                    richPictureBox.Refresh();
+                    richPictureBox.Invalidate();
                 }
             }
         }

@@ -48,7 +48,7 @@ namespace CII.LAR.DrawTools
 
             if (newPolyLine == null)
             {
-                Point point = e.Location;
+                Point point = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
                 newPolyLine = new DrawPolyLine(richPictureBox, point.X, point.Y, point.X + 1, point.Y + 1);
                 AddNewObject(richPictureBox, newPolyLine);
             }
@@ -78,7 +78,7 @@ namespace CII.LAR.DrawTools
             if (newPolyLine == null)
                 return; // precaution
 
-            Point point = e.Location;
+            Point point = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
 
             // move last point
             newPolyLine.MoveLastHandleTo(richPictureBox, point);

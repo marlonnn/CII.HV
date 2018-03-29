@@ -225,10 +225,11 @@ namespace CII.LAR.DrawTools
             UpdateEllipseForHit();
             this.Statistics.Area = GetArea();
             this.Statistics.Circumference = GetCircumference();
-            Console.WriteLine("area:" + GetArea());
-            Console.WriteLine("Circumference:" + GetCircumference());
-            Console.WriteLine("Height:" + ellipseForDraw.Rectangle.Height);
-            Console.WriteLine("Width:" + ellipseForDraw.Rectangle.Width);
+            UpdateStatisticsInformation();
+            //Console.WriteLine("area:" + GetArea());
+            //Console.WriteLine("Circumference:" + GetCircumference());
+            //Console.WriteLine("Height:" + ellipseForDraw.Rectangle.Height);
+            //Console.WriteLine("Width:" + ellipseForDraw.Rectangle.Width);
         }
 
         /// <summary>

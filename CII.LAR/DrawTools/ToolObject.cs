@@ -51,7 +51,7 @@ namespace CII.LAR.DrawTools
             {
                 if (e.Button == MouseButtons.Left)
                 {
-                    richPictureBox.GraphicsList[0].UpdateStatisticsInformation();
+                    //richPictureBox.GraphicsList[0].UpdateStatisticsInformation();
                     richPictureBox.ActiveTool = DrawToolType.Pointer;
                 }
             }

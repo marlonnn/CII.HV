@@ -299,7 +299,8 @@ namespace CII.LAR.DrawTools
             }
             this.Statistics.Circumference = GetCircumference();
             this.Statistics.Area = "Unknown";
-            Console.WriteLine("Circumference:" + GetCircumference());
+            //Console.WriteLine("Circumference:" + GetCircumference());
+            UpdateStatisticsInformation();
         }
 
         private string GetCircumference()

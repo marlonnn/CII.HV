@@ -647,6 +647,17 @@ namespace CII.LAR
                     LogHelper.GetLogger<EntryForm>().Error(ee.StackTrace);
                 }
             }
+            else if (this.richPictureBox.DrawObject != null && drawObject.Name == this.richPictureBox.DrawObject.Name)
+            {
+                foreach (ListViewItem item in this.statisticsCtrl.StatisticsListView.Items)
+                {
+                    if (item != null && item.Text == this.richPictureBox.DrawObject.Name)
+                    {
+                        if (statistics.Circumference != null) item.SubItems[1].Text = statistics.Circumference.ToString();
+                        if (statistics.Area != null) item.SubItems[2].Text = statistics.Area.ToString();
+                    }
+                }
+            }
         }
 
         /// <summary>

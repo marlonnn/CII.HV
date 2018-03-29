@@ -224,9 +224,10 @@ namespace CII.LAR.DrawTools
             SetRectangle(rectangle);
             this.Statistics.Area = GetArea();
             this.Statistics.Circumference = GetCircumference();
-            Console.WriteLine("area:" + this.Statistics.Area);
-            Console.WriteLine("Circumference:" + this.Statistics.Circumference);
-            Console.WriteLine("Height:" + rectangle.Height);
+            //Console.WriteLine("area:" + this.Statistics.Area);
+            //Console.WriteLine("Circumference:" + this.Statistics.Circumference);
+            //Console.WriteLine("Height:" + rectangle.Height);
+            UpdateStatisticsInformation();
         }
 
         private string GetCircumference()

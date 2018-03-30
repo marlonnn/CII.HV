@@ -68,6 +68,9 @@ namespace CII.LAR.UI
             this.comboItem6 = new DevComponents.Editors.ComboItem();
             this.comboItem3 = new DevComponents.Editors.ComboItem();
             this.comboItem4 = new DevComponents.Editors.ComboItem();
+            this.itemPanel5 = new DevComponents.DotNetBar.ItemPanel();
+            this.labelItemScale = new DevComponents.DotNetBar.LabelItem();
+            this.cbxScale = new DevComponents.DotNetBar.ComboBoxItem();
             this.itemPanel2.SuspendLayout();
             this.itemPanelCamera.SuspendLayout();
             this.SuspendLayout();
@@ -396,10 +399,39 @@ namespace CII.LAR.UI
             // 
             resources.ApplyResources(this.comboItem4, "comboItem4");
             // 
+            // itemPanel5
+            // 
+            this.itemPanel5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            // 
+            // 
+            // 
+            this.itemPanel5.BackgroundStyle.Class = "ItemPanel";
+            this.itemPanel5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.itemPanel5.ContainerControlProcessDialogKey = true;
+            this.itemPanel5.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.labelItemScale,
+            this.cbxScale});
+            this.itemPanel5.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
+            this.itemPanel5.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
+            resources.ApplyResources(this.itemPanel5, "itemPanel5");
+            this.itemPanel5.Name = "itemPanel5";
+            // 
+            // labelItemScale
+            // 
+            this.labelItemScale.Name = "labelItemScale";
+            resources.ApplyResources(this.labelItemScale, "labelItemScale");
+            // 
+            // cbxScale
+            // 
+            this.cbxScale.DropDownHeight = 106;
+            this.cbxScale.ItemHeight = 16;
+            this.cbxScale.Name = "cbxScale";
+            // 
             // SettingCtrl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.itemPanel5);
             this.Controls.Add(this.itemPanel4);
             this.Controls.Add(this.itemPanel3);
             this.Controls.Add(this.buttonSysInfo);
@@ -416,6 +448,7 @@ namespace CII.LAR.UI
             this.Controls.SetChildIndex(this.closeButton, 0);
             this.Controls.SetChildIndex(this.itemPanel3, 0);
             this.Controls.SetChildIndex(this.itemPanel4, 0);
+            this.Controls.SetChildIndex(this.itemPanel5, 0);
             this.itemPanel2.ResumeLayout(false);
             this.itemPanelCamera.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -462,6 +495,9 @@ namespace CII.LAR.UI
         private DevComponents.Editors.ComboItem comboItem8;
         private DevComponents.Editors.ComboItem comboItem9;
         private DevComponents.Editors.ComboItem comboItem10;
+        private DevComponents.DotNetBar.ItemPanel itemPanel5;
+        private DevComponents.DotNetBar.LabelItem labelItemScale;
+        private DevComponents.DotNetBar.ComboBoxItem cbxScale;
     }
 }
 

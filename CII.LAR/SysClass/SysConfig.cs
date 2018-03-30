@@ -30,6 +30,8 @@ namespace CII.LAR.SysClass
         [NonSerialized]
         public System.Drawing.Point Point = System.Drawing.Point.Empty;
 
+        public int DefaultScaleCoefficient;
+
         public static SysConfig Load()
         {
             SysConfig config = null;
@@ -275,6 +277,7 @@ namespace CII.LAR.SysClass
             this.storagePath = string.Format("{0}\\Archive", System.Environment.CurrentDirectory);
             this.archivePath = string.Format("{0}\\Archive", System.Environment.CurrentDirectory);
             this.Function = SystemFunction.Empty;
+            this.DefaultScaleCoefficient = 4;
         }
 
         // set default value

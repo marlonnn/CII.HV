@@ -676,7 +676,7 @@ namespace CII.LAR.UI
         {
             if (zoomIn)
             {
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < Program.SysConfig.DefaultScaleCoefficient; i++)
                 {
                     float oldzoom = zoom;
                     zoom += 1F;

@@ -144,6 +144,9 @@
   <data name="labelItemLanguage.Text" xml:space="preserve">
     <value>语言</value>
   </data>
+  <data name="labelItemScale.Text" xml:space="preserve">
+    <value>默认放大倍数</value>
+  </data>
   <data name="labelItemStoragePath.Text" xml:space="preserve">
     <value>存储路径</value>
   </data>

@@ -321,7 +321,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;itemPanelCamera.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
+  </data>
+  <data name="comboItem7.Text" xml:space="preserve">
+    <value>Embyro</value>
+  </data>
+  <data name="comboItem8.Text" xml:space="preserve">
+    <value>Sperm</value>
+  </data>
+  <data name="comboItem9.Text" xml:space="preserve">
+    <value>Embyro 8 Cell</value>
+  </data>
+  <data name="comboItem10.Text" xml:space="preserve">
+    <value>Egg</value>
   </data>
   <data name="buttonItemSimulator.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -433,6 +445,33 @@
   </data>
   <data name="comboItem4.Text" xml:space="preserve">
     <value>Saturn Active</value>
+  </data>
+  <data name="labelItemScale.Text" xml:space="preserve">
+    <value>Default scale coefficient</value>
+  </data>
+  <data name="itemPanel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 464</value>
+  </data>
+  <data name="itemPanel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 53</value>
+  </data>
+  <data name="itemPanel5.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="itemPanel5.Text" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="&gt;&gt;itemPanel5.Name" xml:space="preserve">
+    <value>itemPanel5</value>
+  </data>
+  <data name="&gt;&gt;itemPanel5.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ItemPanel, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;itemPanel5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;itemPanel5.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -619,6 +658,18 @@
   </data>
   <data name="&gt;&gt;comboItem4.Type" xml:space="preserve">
     <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;labelItemScale.Name" xml:space="preserve">
+    <value>labelItemScale</value>
+  </data>
+  <data name="&gt;&gt;labelItemScale.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;cbxScale.Name" xml:space="preserve">
+    <value>cbxScale</value>
+  </data>
+  <data name="&gt;&gt;cbxScale.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ComboBoxItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>SettingCtrl</value>

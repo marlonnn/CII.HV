@@ -35,7 +35,23 @@ namespace CII.LAR.UI
             this.textBoxItemStoragePath.Text = Program.SysConfig.StorePath;
             UpdateComboLanguage();
             InitializeLaserType();
+            InitializeScaleCoefficient();
             this.cmbLaser.SelectedIndexChanged += new System.EventHandler(this.cmbLaser_SelectedIndexChanged);
+            this.cbxScale.SelectedIndexChanged += CbxScale_SelectedIndexChanged;
+        }
+
+        private void CbxScale_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Program.SysConfig.DefaultScaleCoefficient = (int)this.cbxScale.SelectedItem;
+        }
+
+        private void InitializeScaleCoefficient()
+        {
+            for(int i =1; i < 17; i++)
+            {
+                this.cbxScale.Items.Add(i);
+            }
+            this.cbxScale.SelectedIndex = Program.SysConfig.DefaultScaleCoefficient - 1;
         }
 
         /// <summary>
@@ -107,6 +123,7 @@ namespace CII.LAR.UI
             resources.ApplyResources(this.lblSimulator, lblSimulator.Name);
             resources.ApplyResources(this.lense, lense.Name);
             resources.ApplyResources(this.btnDelete, btnDelete.Name);
+            resources.ApplyResources(this.labelItemScale, labelItemScale.Text);
             this.itemContainer2.Refresh();
             foreach (var ctrl in this.Controls)
             {

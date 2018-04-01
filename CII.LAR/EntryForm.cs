@@ -391,10 +391,13 @@ namespace CII.LAR
                 {
                     videoFrame = (Bitmap)eventArgs.Frame.Clone();
                 }
-  
+
 
                 //videoFrame.RotateFlip(RotateFlipType.Rotate180FlipY);
-                this.richPictureBox.Picture = FilpImage(videoFrame);
+                Image filpImage = FilpImage(videoFrame);
+                this.richPictureBox.ImageTracker.Picture = filpImage;
+                this.richPictureBox.Picture = filpImage;
+
             }
             catch (Exception ex)
             {
@@ -640,6 +643,10 @@ namespace CII.LAR
             else if (e.KeyCode == Keys.F)
             {
                 fullScreen.ShowFullScreen();
+                if (this.richPictureBox != null && this.richPictureBox.Picture != null)
+                {
+                    this.richPictureBox.ZoomFit();
+                }
             }
             else if (e.Control == true && e.KeyCode == Keys.F7)
             {

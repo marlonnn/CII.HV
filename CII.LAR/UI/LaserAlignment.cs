@@ -140,6 +140,7 @@ namespace CII.LAR.UI
             {
                 this.Visible = false;
                 this.Enabled = false;
+                this.btnNext.Text = Res.LaserAlignment.StrNext;
                 this.RichPictureBox.ZoomFit();
             }
         }

@@ -35,7 +35,7 @@ namespace CII.LAR.UI
                 {
                     this.picture = value;
                     this.Image = value;
-                    this.imageTracker.Picture = value;
+                    //this.imageTracker.Picture = value;
                 }
             }
         }

@@ -67,6 +67,19 @@ namespace CII.LAR.Algorithm
             get { return this.motorPoints; }
         }
 
+        public void ReInitialize()
+        {
+            clickPointsDic = new Dictionary<int, PointF>();
+            transformMatrix = new Dictionary<int, Matrix<double>>();
+            motorPoints = new Dictionary<int, Point>();
+            motorPoints.Add(0, new Point(1400, 1400));
+            motorPoints.Add(1, new Point(1600, 1500));
+            motorPoints.Add(2, new Point(1500, 1600));
+
+            boundPoints = new List<Point>() { new Point(0, 0), new Point(0, 3000), new Point(3000, 3000), new Point(3000, 0) };
+            finalMatrix = mb.Dense(3, 3);
+        }
+
         private List<Point> boundPoints;
         public static Coordinate coordinate;
 
@@ -179,19 +192,21 @@ namespace CII.LAR.Algorithm
         {
             Point psp = Point.Empty;
             Rectangle bounds = new Rectangle(0, 0, richPictureBox.RealSize.Width, richPictureBox.RealSize.Height);
+            int offSetX = (richPictureBox.Width - richPictureBox.RealSize.Width) / 2;
+            int offsetY = (richPictureBox.Height - richPictureBox.RealSize.Height) / 2;
             switch (index)
             {
                 case 3:
-                    psp = new Point(bounds.X + bounds.Width - 200, bounds.Y + bounds.Height / 2);
+                    psp = new Point(offSetX + bounds.Width -150, offsetY + bounds.Height / 2);
                     break;
                 case 4:
-                    psp = new Point(bounds.X + bounds.Width / 2, bounds.Y + bounds.Height - 200);
+                    psp = new Point(offSetX + bounds.Width / 2, offsetY + bounds.Height - 150);
                     break;
                 case 5:
-                    psp = new Point(bounds.X + 200, bounds.Y + bounds.Height / 2);
+                    psp = new Point(offSetX + 150, offsetY + bounds.Height / 2);
                     break;
                 case 6:
-                    psp = new Point(bounds.X + bounds.Width / 2, bounds.Y + 200);
+                    psp = new Point(offSetX + bounds.Width / 2, offsetY + 150);
                     break;
             }
             //check point in legal region
@@ -229,6 +244,7 @@ namespace CII.LAR.Algorithm
             Console.WriteLine(value.ToString());
             this.FinalMatrix = value;
             Program.SysConfig.LaserConfig.FinalMatrix = value;
+            ReInitialize();
             return value;
         }
 

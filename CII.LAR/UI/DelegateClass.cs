@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CII.LAR.SysClass;
 
 namespace CII.LAR.UI
 {
@@ -47,5 +48,8 @@ namespace CII.LAR.UI
         /// </summary>
         public delegate void CheckCloseVideo();
         public CheckCloseVideo CheckCloseVideoHandler;
+
+        public delegate void UpdateLense(Lense lense);
+        public UpdateLense UpdateLenseHandler;
     }
 }

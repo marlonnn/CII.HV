@@ -279,6 +279,12 @@
     <Compile Include="UI\ImageTracker.designer.cs">
       <DependentUpon>ImageTracker.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ObjectLenseCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ObjectLenseCtrl.Designer.cs">
+      <DependentUpon>ObjectLenseCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ReportCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -458,6 +464,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ImageTracker.resx">
       <DependentUpon>ImageTracker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ObjectLenseCtrl.resx">
+      <DependentUpon>ObjectLenseCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ReportCtrl.resx">
       <DependentUpon>ReportCtrl.cs</DependentUpon>

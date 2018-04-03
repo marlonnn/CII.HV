@@ -105,7 +105,7 @@ namespace CII.LAR
         private LaserAlignment laserAlignment;
         private LaserHoleSize laserHoleSize;
         private VideoChooseCtrl videoChooseCtrl;
-
+        private ObjectLenseCtrl lenseCtrl;
 
         #endregion
 
@@ -338,6 +338,9 @@ namespace CII.LAR
 
             laserHoleSize = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserHoleSize>(CtrlType.LaserHoleSize);
             BaseCtrls.Add(laserHoleSize);
+
+            lenseCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<ObjectLenseCtrl>(CtrlType.LenseCtrl);
+            BaseCtrls.Add(lenseCtrl);
         }
 
         private void OpenBtnClickHandler(string btnName)
@@ -661,6 +664,10 @@ namespace CII.LAR
             else if (e.Control == true && e.KeyCode == Keys.A)
             {
                 this.richPictureBox.DebugCtrlVisiable();
+            }
+            else if (e.Control == true && e.KeyCode == Keys.O)
+            {
+                ShowBaseCtrl(true, CtrlType.LenseCtrl);
             }
         }
 

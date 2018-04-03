@@ -20,6 +20,7 @@ namespace CII.LAR.UI
         private VideoChooseCtrl videoChooseCtrl;
         private LaserHoleSize laserHoleSize;
         private DebugCtrl debugCtrl;
+        private ObjectLenseCtrl lenseCtrl;
 
         public static void InitializeCtrlFactory(RichPictureBox richPictureBox)
         {
@@ -38,6 +39,7 @@ namespace CII.LAR.UI
             videoChooseCtrl = new VideoChooseCtrl();
             laserHoleSize = new LaserHoleSize();
             debugCtrl = new DebugCtrl();
+            lenseCtrl = new ObjectLenseCtrl();
         }
 
         public static CtrlFactory GetCtrlFactory()
@@ -85,6 +87,9 @@ namespace CII.LAR.UI
                     break;
                 case CtrlType.DebugCtrl:
                     ctrl = this.debugCtrl as T;
+                    break;
+                case CtrlType.LenseCtrl:
+                    ctrl = this.lenseCtrl as T;
                     break;
             }
             return ctrl;

@@ -20,9 +20,6 @@ namespace CII.LAR.UI
         public delegate void UpdateTimerState(bool enable);
         public UpdateTimerState UpdateTimerStatesHandler;
 
-        public delegate void UpdateLense(Lense lense);
-        public UpdateLense UpdateLenseHandler;
-
         public delegate void UpdateSimulatorImage(int selectIndex);
         public UpdateSimulatorImage UpdateSimulatorImageHandler;
         public SettingCtrl(RichPictureBox richPictureBox) : base()
@@ -195,7 +192,7 @@ namespace CII.LAR.UI
                     if (Program.SysConfig.AddLense(lense))
                     {
                         UpdateComBoxItemLense(lense);
-                        UpdateLenseHandler?.Invoke(lense);
+                        DelegateClass.GetDelegate().UpdateLenseHandler?.Invoke(lense);
                     }
 
                 }

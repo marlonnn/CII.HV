@@ -27,7 +27,7 @@ namespace CII.LAR.UI
             InitializeMotorCOMCombox();
 
             timer = new Timer();
-            timer.Interval = 1000;
+            timer.Interval = 3000;
             timer.Tick += Timer_Tick;
         }
 
@@ -41,16 +41,27 @@ namespace CII.LAR.UI
                 Array.Sort(ArrayComPortsNames);
                 for (int i = 0; i < ArrayComPortsNames.Length; i++)
                 {
-                    for (int j = 0; j < motorComListCbx.Items.Count; j++)
+                    if (!CheckHasSameData(motorComListCbx, ArrayComPortsNames[i])) motorComListCbx.Items.Add(ArrayComPortsNames[i]);
+                    if (!CheckHasSameData(laserComListCbx, ArrayComPortsNames[i])) laserComListCbx.Items.Add(ArrayComPortsNames[i]);
+                }
+            }
+        }
+
+        private bool CheckHasSameData(ComboBox combox, string portName)
+        {
+            bool hasPort = false;
+            if (combox != null && combox.Items != null && combox.Items.Count > 0)
+            {
+                foreach (var item in combox.Items)
+                {
+                    if (item.ToString() == portName)
                     {
-                        if (ArrayComPortsNames[i] != motorComListCbx.Items[j].ToString())
-                        {
-                            motorComListCbx.Items.Add(ArrayComPortsNames[i]);
-                            laserComListCbx.Items.Add(ArrayComPortsNames[i]);
-                        }
+                        hasPort = true;
+                        break;
                     }
                 }
             }
+            return hasPort;
         }
 
         private void InitializeLaserCOMCombox()

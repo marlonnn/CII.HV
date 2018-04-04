@@ -33,9 +33,9 @@
             this.lblCurrentLense = new DevComponents.DotNetBar.LabelX();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtAdd = new System.Windows.Forms.TextBox();
-            this.slider = new CII.LAR.UI.SliderCtrl();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.lblAdjustment = new DevComponents.DotNetBar.LabelX();
+            this.rulerAdjustCtrl1 = new CII.LAR.UI.RulerAdjustCtrl();
             this.SuspendLayout();
             // 
             // closeButton
@@ -71,12 +71,6 @@
             this.txtAdd.Name = "txtAdd";
             this.txtAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAdd_KeyPress);
             // 
-            // slider
-            // 
-            resources.ApplyResources(this.slider, "slider");
-            this.slider.Name = "slider";
-            this.slider.Update = true;
-            // 
             // labelX1
             // 
             // 
@@ -95,13 +89,18 @@
             resources.ApplyResources(this.lblAdjustment, "lblAdjustment");
             this.lblAdjustment.Name = "lblAdjustment";
             // 
+            // rulerAdjustCtrl1
+            // 
+            resources.ApplyResources(this.rulerAdjustCtrl1, "rulerAdjustCtrl1");
+            this.rulerAdjustCtrl1.Name = "rulerAdjustCtrl1";
+            // 
             // ObjectLenseCtrl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.rulerAdjustCtrl1);
             this.Controls.Add(this.lblAdjustment);
             this.Controls.Add(this.labelX1);
-            this.Controls.Add(this.slider);
             this.Controls.Add(this.txtAdd);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lblCurrentLense);
@@ -113,9 +112,9 @@
             this.Controls.SetChildIndex(this.lblCurrentLense, 0);
             this.Controls.SetChildIndex(this.btnDelete, 0);
             this.Controls.SetChildIndex(this.txtAdd, 0);
-            this.Controls.SetChildIndex(this.slider, 0);
             this.Controls.SetChildIndex(this.labelX1, 0);
             this.Controls.SetChildIndex(this.lblAdjustment, 0);
+            this.Controls.SetChildIndex(this.rulerAdjustCtrl1, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,8 +126,8 @@
         private DevComponents.DotNetBar.LabelX lblCurrentLense;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtAdd;
-        private SliderCtrl slider;
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.LabelX lblAdjustment;
+        private RulerAdjustCtrl rulerAdjustCtrl1;
     }
 }

@@ -318,6 +318,18 @@
     <Compile Include="UI\RichPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UI\RulerAdjustCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\RulerAdjustCtrl.Designer.cs">
+      <DependentUpon>RulerAdjustCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UpDownArrowCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UpDownArrowCtrl.Designer.cs">
+      <DependentUpon>UpDownArrowCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\VideoChooseCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -479,6 +491,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ReportPageUI.resx">
       <DependentUpon>ReportPageUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UpDownArrowCtrl.resx">
+      <DependentUpon>UpDownArrowCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\VideoChooseCtrl.resx">
       <DependentUpon>VideoChooseCtrl.cs</DependentUpon>

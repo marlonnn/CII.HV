@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CII.LAR.UI
 {
-    public partial class HoleSizeCtrl : UserControl
+    public partial class HoleSizeCtrl : UpDownArrowCtrl
     {
         public delegate void UpdownClick(bool isUp);
         public UpdownClick UpdownClickHandler;
@@ -25,13 +25,14 @@ namespace CII.LAR.UI
                 {
                     this.holeSize = value;
                     string v = holeSize.ToString("0.00");
-                    this.lblHoleSize.Text = string.Format("{0}um", v);
+                    this.LabelValue = string.Format("{0}um", v);
                 }
             }
         }
         public HoleSizeCtrl()
         {
             InitializeComponent();
+            this.LabelValue = "0.001um";
         }
 
         //public void UpdateHoleSize(double value)
@@ -41,12 +42,12 @@ namespace CII.LAR.UI
         //    this.lblHoleSize.Text = string.Format("{0}um", v);
         //}
 
-        private void btnUp_Click(object sender, EventArgs e)
+        protected override void UpClick(object sender, EventArgs e)
         {
             UpdownClickHandler?.Invoke(true);
         }
 
-        private void btnDown_Click(object sender, EventArgs e)
+        protected override void DownClick(object sender, EventArgs e)
         {
             UpdownClickHandler?.Invoke(false);
         }

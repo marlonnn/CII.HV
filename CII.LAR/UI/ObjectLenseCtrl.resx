@@ -134,10 +134,10 @@
     <value>7</value>
   </data>
   <data name="cmbLenses.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 44</value>
+    <value>83, 44</value>
   </data>
   <data name="cmbLenses.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 20</value>
+    <value>179, 20</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cmbLenses.TabIndex" type="System.Int32, mscorlib">
@@ -184,7 +184,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>172, 81</value>
+    <value>172, 131</value>
   </data>
   <data name="btnDelete.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 23</value>
@@ -208,10 +208,10 @@
     <value>4</value>
   </data>
   <data name="txtAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 83</value>
+    <value>83, 133</value>
   </data>
   <data name="txtAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 21</value>
+    <value>73, 21</value>
   </data>
   <data name="txtAdd.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -228,29 +228,8 @@
   <data name="&gt;&gt;txtAdd.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="slider.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 133</value>
-  </data>
-  <data name="slider.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 22</value>
-  </data>
-  <data name="slider.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;slider.Name" xml:space="preserve">
-    <value>slider</value>
-  </data>
-  <data name="&gt;&gt;slider.Type" xml:space="preserve">
-    <value>CII.LAR.UI.SliderCtrl, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;slider.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;slider.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="labelX1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 83</value>
+    <value>13, 131</value>
   </data>
   <data name="labelX1.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 26</value>
@@ -271,10 +250,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelX1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="lblAdjustment.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 129</value>
+    <value>3, 87</value>
   </data>
   <data name="lblAdjustment.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 26</value>
@@ -295,6 +274,27 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblAdjustment.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="rulerAdjustCtrl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>83, 87</value>
+  </data>
+  <data name="rulerAdjustCtrl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 38</value>
+  </data>
+  <data name="rulerAdjustCtrl1.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;rulerAdjustCtrl1.Name" xml:space="preserve">
+    <value>rulerAdjustCtrl1</value>
+  </data>
+  <data name="&gt;&gt;rulerAdjustCtrl1.Type" xml:space="preserve">
+    <value>CII.LAR.UI.RulerAdjustCtrl, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;rulerAdjustCtrl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;rulerAdjustCtrl1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

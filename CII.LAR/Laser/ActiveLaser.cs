@@ -54,6 +54,7 @@ namespace CII.LAR.Laser
             mouseDownPoint = e.Location;
 
             activeCircle.OnMouseDown(e.Location);
+            SendMotorPointOnMouseDown();
             this.richPictureBox.Invalidate();
         }
 
@@ -88,8 +89,8 @@ namespace CII.LAR.Laser
         {
             activeCircle.StartCircle = null;
             activeCircle.EndCircle = null;
-            activeCircle.StartCircle.CenterPoint = Point.Empty;
-            activeCircle.EndCircle.CenterPoint = Point.Empty;
+            //activeCircle.StartCircle.CenterPoint = Point.Empty;
+            //activeCircle.EndCircle.CenterPoint = Point.Empty;
         }
 
         public void FlickerColor(int cycle)
@@ -119,7 +120,7 @@ namespace CII.LAR.Laser
 
         private void SendAlignmentMotorPoint()
         {
-            if (_flickCount >= 0 && _flickCount < ActiveCircle.InnerCircles.Count)
+            if (_flickCount >= 1 && _flickCount < ActiveCircle.InnerCircles.Count)
             {
                 if (_flickCount > 1)
                 {
@@ -128,6 +129,12 @@ namespace CII.LAR.Laser
                 Coordinate.GetCoordinate().SetMotorThisPoint(Point.Ceiling(ActiveCircle.InnerCircles[_flickCount].CenterPoint));
                 Coordinate.GetCoordinate().SendAlignmentMotorPoint();
             }
+        }
+
+        private void SendMotorPointOnMouseDown()
+        {
+            Coordinate.GetCoordinate().SetMotorThisPoint(Point.Ceiling((new Circle(ActiveCircle.StartPoint, ActiveCircle.InnerCircleSize)).CenterPoint));
+            Coordinate.GetCoordinate().SendAlignmentMotorPoint();
         }
 
         public void UpdateHoleNumber(int value)

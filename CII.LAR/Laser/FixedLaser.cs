@@ -125,6 +125,10 @@ namespace CII.LAR.Laser
             brush.Dispose();
         }
 
+        public override void ClearLaser()
+        {
+            CenterPoint = Point.Empty;
+        }
         private void DrawCross(Graphics g)
         {
             g.DrawLine(new Pen(Color.Black, this.GraphicsProperties.PenWidth),

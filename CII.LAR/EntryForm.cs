@@ -175,6 +175,7 @@ namespace CII.LAR
                     this.Laser = LaserFactory.FixedLaser;
                     break;
             }
+            this.laser.ClearLaser();
         }
 
         public EntryForm()

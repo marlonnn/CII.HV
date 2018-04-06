@@ -119,5 +119,10 @@ namespace CII.LAR.Laser
         {
 
         }
+
+        public virtual void ClearLaser()
+        {
+
+        }
     }
 }

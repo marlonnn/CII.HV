@@ -84,6 +84,14 @@ namespace CII.LAR.Laser
             activeCircle.OnPaint(g);
         }
 
+        public override void ClearLaser()
+        {
+            activeCircle.StartCircle = null;
+            activeCircle.EndCircle = null;
+            activeCircle.StartCircle.CenterPoint = Point.Empty;
+            activeCircle.EndCircle.CenterPoint = Point.Empty;
+        }
+
         public void FlickerColor(int cycle)
         {
             //this.brush = new SolidBrush(cycle % 2 == 0 ? this.GraphicsProperties.Color : Color.Red);

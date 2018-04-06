@@ -201,6 +201,13 @@ namespace CII.LAR.SysClass
             }
         }
 
+        private Lense lense;
+        public Lense Lense
+        {
+            get { return lense; }
+            set { this.lense = value; }
+        }
+
         private List<Lense> lenses;
 
         public List<Lense> Lenses
@@ -215,6 +222,11 @@ namespace CII.LAR.SysClass
         {
             get { return this.graphicsPropertiesManager; }
             set { this.graphicsPropertiesManager = value; }
+        }
+
+        public Lense GetLense(string lense)
+        {
+            return Lenses.Find(l => (l.ToString() == lense));
         }
 
         public bool AddLense(Lense newLense)
@@ -234,7 +246,7 @@ namespace CII.LAR.SysClass
 
         public void DeleteLense(string lense)
         {
-            var item = Lenses.Find(l => (l.ToString() == lense));
+            var item = Lenses.Find(l => (l.Name == lense));
             if (item != null)
             {
                 Lenses.Remove(item);

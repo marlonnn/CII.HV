@@ -31,7 +31,7 @@ namespace CII.LAR.DrawTools
 
         private RichPictureBox richPictureBox;
 
-        private float rulerStep = 100;
+        private float rulerStep = 50;
 
         public float RulerStep
         {

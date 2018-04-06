@@ -47,6 +47,7 @@
             this.cmbLenses.FormattingEnabled = true;
             resources.ApplyResources(this.cmbLenses, "cmbLenses");
             this.cmbLenses.Name = "cmbLenses";
+            this.cmbLenses.SelectedIndexChanged += new System.EventHandler(this.cmbLenses_SelectedIndexChanged);
             // 
             // lblCurrentLense
             // 

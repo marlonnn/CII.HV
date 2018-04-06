@@ -13,15 +13,22 @@ namespace CII.LAR.SysClass
     [Serializable]
     public class Lense
     {
-        private int factor;
-        public int Factor
+        private string name;
+        public string Name
+        {
+            get { return this.name; }
+            set { this.name = value; }
+        }
+        private double factor;
+        public double Factor
         {
             get { return factor; }
             set { factor = value; }
         }
-        public Lense(int factor)
+        public Lense(double factor)
         {
             this.factor = factor;
+            this.name = string.Format("x{0}", factor);
         }
 
         public override string ToString()

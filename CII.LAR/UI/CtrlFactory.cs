@@ -39,7 +39,7 @@ namespace CII.LAR.UI
             videoChooseCtrl = new VideoChooseCtrl();
             laserHoleSize = new LaserHoleSize();
             debugCtrl = new DebugCtrl();
-            lenseCtrl = new ObjectLenseCtrl();
+            lenseCtrl = new ObjectLenseCtrl(richPictureBox);
         }
 
         public static CtrlFactory GetCtrlFactory()

@@ -279,6 +279,12 @@
     <Compile Include="UI\ImageTracker.designer.cs">
       <DependentUpon>ImageTracker.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\LaserDebugCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LaserDebugCtrl.Designer.cs">
+      <DependentUpon>LaserDebugCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ObjectLenseCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -477,6 +483,9 @@
     <EmbeddedResource Include="UI\ImageTracker.resx">
       <DependentUpon>ImageTracker.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\LaserDebugCtrl.resx">
+      <DependentUpon>LaserDebugCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ObjectLenseCtrl.resx">
       <DependentUpon>ObjectLenseCtrl.cs</DependentUpon>
     </EmbeddedResource>
@@ -660,6 +669,7 @@
     <Content Include="Reference\Newtonsoft.Json.dll" />
     <Content Include="Reference\uEyeDotNet.dll" />
     <Content Include="Resources\assign.png" />
+    <Content Include="Resources\backflush.png" />
     <Content Include="Resources\camera.png" />
     <Content Include="Resources\capture.png" />
     <Content Include="Resources\copy.png" />

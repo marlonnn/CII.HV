@@ -146,8 +146,42 @@ namespace CII.LAR.Laser
             set { this.endCircle = value; }
         }
 
-        public SizeF InnerCircleSize { get; set; }
-        public SizeF OutterCircleSize { get; set; }
+        private SizeF innerCircleSize;
+        public SizeF InnerCircleSize
+        {
+            get { return this.innerCircleSize; }
+            set
+            {
+                if (value != this.innerCircleSize)
+                {
+                    this.innerCircleSize = value;
+                    this.StartCircle = new Circle(this.StartPoint, value);
+                    this.EndCircle = new Circle(this.EndPoint, value);
+                    if (shape == LaserShape.Line)
+                    {
+                        MoveToContinuousCircle();
+                    }
+                    else if (shape == LaserShape.Arc)
+                    {
+                        UpdateArcCircle();
+                    }
+                }
+            }
+        }
+
+        private SizeF outterCircleSize;
+
+        public SizeF OutterCircleSize
+        {
+            get { return this.outterCircleSize; }
+            set
+            {
+                if (value != this.outterCircleSize)
+                {
+                    this.outterCircleSize = value;
+                }
+            }
+        }
 
         private RichPictureBox richPictureBox;
 
@@ -219,9 +253,9 @@ namespace CII.LAR.Laser
             circleData = new CircleData();
             InitializeGraphicsProperties();
             float pulseSize = Program.SysConfig.LaserConfig.PulseSize;
-            OutterCircleSize = new SizeF(pulseSize + Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Circle").ExclusionSize,
+            outterCircleSize = new SizeF(pulseSize + Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Circle").ExclusionSize,
                 pulseSize + Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Circle").ExclusionSize);
-            InnerCircleSize = new SizeF(pulseSize, pulseSize);
+            innerCircleSize = new SizeF(pulseSize, pulseSize);
             crossSize = new Size(38, 38);
             clickCount = 0;
 
@@ -379,6 +413,11 @@ namespace CII.LAR.Laser
 
             CalcCircleCenter(point, StartPoint, EndPoint);
 
+            UpdateArcCircle();
+        }
+
+        private void UpdateArcCircle()
+        {
             HolesInfo.MinHoleNum = (int)(circleData.LengthArc / InnerCircleSize.Width) + 1;
             HolesInfo.MaxHoleNum = (int)(2 * circleData.LengthArc / InnerCircleSize.Width) + 2;
             if (HolesInfo.MinHoleNum == 1)
@@ -386,9 +425,9 @@ namespace CII.LAR.Laser
                 innerCircles.Clear();
                 outterCircles.Clear();
 
-                innerCircles.Add(startCircle);
+                innerCircles.Add(StartCircle);
                 outterCircles.Add(new Circle(startPoint, OutterCircleSize));
-                innerCircles.Add(endCircle);
+                innerCircles.Add(EndCircle);
                 outterCircles.Add(new Circle(endPoint, OutterCircleSize));
                 return;
             }
@@ -504,8 +543,8 @@ namespace CII.LAR.Laser
             outterCircles.Clear();
 
             double theta = angle / (double)(count - 1);                                 // 要求的点与圆心连线矢量和圆心与起点连线矢量的角的弧度, 每一小段弧长弧度
-            innerCircles.Add(startCircle);
-            outterCircles.Add(new Circle(startPoint, OutterCircleSize));
+            innerCircles.Add(StartCircle);
+            outterCircles.Add(new Circle(StartPoint, OutterCircleSize));
             for (int i = 0; i < count; i++)
             {
                 // 得到相对圆心的位置, 用圆心与起点连线矢量来旋转, ccw为1时逆时针旋转, 为－1时正时针旋转
@@ -519,8 +558,8 @@ namespace CII.LAR.Laser
                 innerCircles.Add(new Circle(p, InnerCircleSize));
                 outterCircles.Add(new Circle(p, OutterCircleSize));
             }
-            innerCircles.Add(endCircle);
-            outterCircles.Add(new Circle(endPoint, OutterCircleSize));
+            innerCircles.Add(EndCircle);
+            outterCircles.Add(new Circle(EndPoint, OutterCircleSize));
             CalArcCenterPoint(count);
             //CalArcAngle();
         }
@@ -688,7 +727,7 @@ namespace CII.LAR.Laser
 
             double gapX = 0;
             double gapY = 0;
-            innerCircles.Add(startCircle);
+            innerCircles.Add(StartCircle);
             outterCircles.Add(new Circle(startPoint, OutterCircleSize));
             if (minHoleNum != 1)
             {
@@ -718,8 +757,8 @@ namespace CII.LAR.Laser
                 }
             }
 
-            innerCircles.Add(endCircle);
-            outterCircles.Add(new Circle(endPoint, OutterCircleSize));
+            innerCircles.Add(EndCircle);
+            outterCircles.Add(new Circle(EndPoint, OutterCircleSize));
         }
 
         /// <summary>

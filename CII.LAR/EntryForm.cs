@@ -106,6 +106,7 @@ namespace CII.LAR
         private LaserHoleSize laserHoleSize;
         private VideoChooseCtrl videoChooseCtrl;
         private ObjectLenseCtrl lenseCtrl;
+        private LaserDebugCtrl laserDebugCtrl;
 
         #endregion
 
@@ -259,6 +260,12 @@ namespace CII.LAR
         {
             InitializeBaseCtrls();
             Application.Idle += OnIdle;
+
+            fullScreen = new FullScreen(this);
+            fullScreen.ShowFullScreen();
+
+            LoadDebugCtrl();
+
             MotorProtocolFactory = MotorProtocolFactory.GetInstance();
             LaserProtocolFactory = LaserProtocolFactory.GetInstance();
 
@@ -277,6 +284,7 @@ namespace CII.LAR
             Coordinate.GetCoordinate().MoveStepHandler += MoveStepHandler;
             if (!string.IsNullOrEmpty(Program.SysConfig.DeviceMoniker))
                 CaptureDeviceHandler(Program.SysConfig.DeviceMoniker);
+
 
         }
 
@@ -344,6 +352,9 @@ namespace CII.LAR
 
             lenseCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<ObjectLenseCtrl>(CtrlType.LenseCtrl);
             BaseCtrls.Add(lenseCtrl);
+
+            laserDebugCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserDebugCtrl>(CtrlType.LaserDebugCtrl);
+            BaseCtrls.Add(laserDebugCtrl);
         }
 
         private void ShowObjectLenseManagerHandler()
@@ -593,14 +604,10 @@ namespace CII.LAR
         {
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            fullScreen = new FullScreen(this);
-            fullScreen.ShowFullScreen();
+        //protected override void OnLoad(EventArgs e)
+        //{
 
-            LoadDebugCtrl();
-        }
+        //}
 
         private void LoadDebugCtrl()
         {
@@ -852,7 +859,6 @@ namespace CII.LAR
         {
             this.toolStripButtonLine.Enabled = Enabled;
             this.toolStripButtonRectangle.Enabled = Enabled;
-            this.toolStripButtonPolygon.Enabled = Enabled;
             this.toolStripButtonElliptical.Enabled = Enabled;
             this.toolStripButtonLaser.Enabled = Enabled;
         }
@@ -983,6 +989,11 @@ namespace CII.LAR
         private void toolStripButtonPort_Click(object sender, EventArgs e)
         {
             ShowBaseCtrl(true, CtrlType.SerialPort);
+        }
+
+        private void toolStripButtonLaserDebug_Click(object sender, EventArgs e)
+        {
+            ShowBaseCtrl(true, CtrlType.LaserDebugCtrl);
         }
 
         private void toolStripButtonLine_Click(object sender, EventArgs e)

@@ -268,6 +268,12 @@
   <data name="toolStripButtonPort.Text" xml:space="preserve">
     <value>Serial port</value>
   </data>
+  <data name="toolStripButtonLaserDebug.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolStripButtonLaserDebug.Text" xml:space="preserve">
+    <value>Laser debug form</value>
+  </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -669,6 +675,12 @@
     <value>toolStripButtonPort</value>
   </data>
   <data name="&gt;&gt;toolStripButtonPort.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonLaserDebug.Name" xml:space="preserve">
+    <value>toolStripButtonLaserDebug</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonLaserDebug.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;openCameraLive.Name" xml:space="preserve">

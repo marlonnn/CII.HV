@@ -67,6 +67,7 @@ namespace CII.LAR
             this.freeRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.snapshotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButtonPort = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonLaserDebug = new System.Windows.Forms.ToolStripButton();
             this.openCameraLive = new System.Windows.Forms.ToolStripMenuItem();
             this.openCameraAndStop = new System.Windows.Forms.ToolStripMenuItem();
             this.closeCameraTool = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,7 +110,8 @@ namespace CII.LAR
             this.toolStripButtonSetting,
             this.toolStripButtonOpen,
             this.toolStripDropDownCamera,
-            this.toolStripButtonPort});
+            this.toolStripButtonPort,
+            this.toolStripButtonLaserDebug});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             // 
@@ -345,6 +347,14 @@ namespace CII.LAR
             this.toolStripButtonPort.Name = "toolStripButtonPort";
             this.toolStripButtonPort.Click += new System.EventHandler(this.toolStripButtonPort_Click);
             // 
+            // toolStripButtonLaserDebug
+            // 
+            this.toolStripButtonLaserDebug.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonLaserDebug.Image = global::CII.LAR.Properties.Resources.backflush;
+            this.toolStripButtonLaserDebug.Name = "toolStripButtonLaserDebug";
+            resources.ApplyResources(this.toolStripButtonLaserDebug, "toolStripButtonLaserDebug");
+            this.toolStripButtonLaserDebug.Click += new System.EventHandler(this.toolStripButtonLaserDebug_Click);
+            // 
             // openCameraLive
             // 
             this.openCameraLive.Name = "openCameraLive";
@@ -476,6 +486,7 @@ namespace CII.LAR
         private System.Windows.Forms.ToolStripMenuItem snapshotToolStripMenuItem;
         private System.Windows.Forms.Timer autoSendTimer;
         private System.Windows.Forms.ToolStripButton toolStripButtonPort;
+        private System.Windows.Forms.ToolStripButton toolStripButtonLaserDebug;
         private System.Windows.Forms.Timer systemMonitorTimer;
         private System.Windows.Forms.Timer autoReceiverTimer;
         private RichPictureBox richPictureBox;

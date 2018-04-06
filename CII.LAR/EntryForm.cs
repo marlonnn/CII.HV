@@ -275,6 +275,8 @@ namespace CII.LAR
             LaserType = LaserType.SaturnFixed;
 
             Coordinate.GetCoordinate().MoveStepHandler += MoveStepHandler;
+            if (!string.IsNullOrEmpty(Program.SysConfig.DeviceMoniker))
+                CaptureDeviceHandler(Program.SysConfig.DeviceMoniker);
 
         }
 

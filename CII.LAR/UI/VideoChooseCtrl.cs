@@ -80,6 +80,7 @@ namespace CII.LAR.UI
             if (deviceMoniker != "" && CaptureDeviceHandler != null)
             {
                 CaptureDeviceHandler(deviceMoniker);
+                Program.SysConfig.DeviceMoniker = deviceMoniker;
             }
             this.Visible = false;
         }

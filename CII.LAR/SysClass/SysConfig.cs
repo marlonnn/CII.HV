@@ -18,6 +18,13 @@ namespace CII.LAR.SysClass
     [Serializable]
     public class SysConfig
     {
+        private string deviceMoniker;
+        public string DeviceMoniker
+        {
+            get { return deviceMoniker; }
+            set { this.deviceMoniker = value; }
+        }
+
         [NonSerialized]
         private static string filePath = Application.StartupPath + "\\LConfig";
 

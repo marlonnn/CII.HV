@@ -50,7 +50,6 @@ namespace CII.LAR
             this.toolStripButtonLine = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRectangle = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonElliptical = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonPolygon = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownButtonUnit = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnUm = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDmm = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,7 +103,6 @@ namespace CII.LAR
             this.toolStripButtonLine,
             this.toolStripButtonRectangle,
             this.toolStripButtonElliptical,
-            this.toolStripButtonPolygon,
             this.toolStripDropDownButtonUnit,
             this.toolStripSeparator5,
             this.toolStripButtonLaser,
@@ -227,14 +225,6 @@ namespace CII.LAR
             this.toolStripButtonElliptical.Name = "toolStripButtonElliptical";
             resources.ApplyResources(this.toolStripButtonElliptical, "toolStripButtonElliptical");
             this.toolStripButtonElliptical.Click += new System.EventHandler(this.toolStripButtonElliptical_Click);
-            // 
-            // toolStripButtonPolygon
-            // 
-            this.toolStripButtonPolygon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonPolygon.Image = global::CII.LAR.Properties.Resources.polygon;
-            this.toolStripButtonPolygon.Name = "toolStripButtonPolygon";
-            resources.ApplyResources(this.toolStripButtonPolygon, "toolStripButtonPolygon");
-            this.toolStripButtonPolygon.Click += new System.EventHandler(this.toolStripButtonPolygon_Click);
             // 
             // toolStripDropDownButtonUnit
             // 
@@ -461,7 +451,6 @@ namespace CII.LAR
         private System.Windows.Forms.ToolStripButton toolStripButtonLine;
         private System.Windows.Forms.ToolStripButton toolStripButtonRectangle;
         private System.Windows.Forms.ToolStripButton toolStripButtonElliptical;
-        private System.Windows.Forms.ToolStripButton toolStripButtonPolygon;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton toolStripButtonLaser;
         private System.Windows.Forms.ToolStripButton toolStripButtonSetting;

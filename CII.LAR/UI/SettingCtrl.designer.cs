@@ -57,10 +57,6 @@ namespace CII.LAR.UI
             this.buttonSysInfo = new System.Windows.Forms.Button();
             this.itemPanel3 = new DevComponents.DotNetBar.ItemPanel();
             this.lense = new DevComponents.DotNetBar.LabelItem();
-            this.comboBoxItemLense = new DevComponents.DotNetBar.ComboBoxItem();
-            this.itemContainer2 = new DevComponents.DotNetBar.ItemContainer();
-            this.textBoxLense = new DevComponents.DotNetBar.TextBoxItem();
-            this.btnDelete = new DevComponents.DotNetBar.ButtonItem();
             this.itemPanel4 = new DevComponents.DotNetBar.ItemPanel();
             this.lblLaser = new DevComponents.DotNetBar.LabelItem();
             this.cmbLaser = new DevComponents.DotNetBar.ComboBoxItem();
@@ -71,8 +67,10 @@ namespace CII.LAR.UI
             this.itemPanel5 = new DevComponents.DotNetBar.ItemPanel();
             this.labelItemScale = new DevComponents.DotNetBar.LabelItem();
             this.cbxScale = new DevComponents.DotNetBar.ComboBoxItem();
+            this.button1 = new System.Windows.Forms.Button();
             this.itemPanel2.SuspendLayout();
             this.itemPanelCamera.SuspendLayout();
+            this.itemPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // closeButton
@@ -306,10 +304,9 @@ namespace CII.LAR.UI
             this.itemPanel3.BackgroundStyle.Class = "ItemPanel";
             this.itemPanel3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.itemPanel3.ContainerControlProcessDialogKey = true;
+            this.itemPanel3.Controls.Add(this.button1);
             this.itemPanel3.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.lense,
-            this.comboBoxItemLense,
-            this.itemContainer2});
+            this.lense});
             this.itemPanel3.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
             this.itemPanel3.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
             resources.ApplyResources(this.itemPanel3, "itemPanel3");
@@ -319,39 +316,6 @@ namespace CII.LAR.UI
             // 
             this.lense.Name = "lense";
             resources.ApplyResources(this.lense, "lense");
-            // 
-            // comboBoxItemLense
-            // 
-            this.comboBoxItemLense.DropDownHeight = 106;
-            this.comboBoxItemLense.ItemHeight = 16;
-            this.comboBoxItemLense.Name = "comboBoxItemLense";
-            // 
-            // itemContainer2
-            // 
-            // 
-            // 
-            // 
-            this.itemContainer2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.itemContainer2.Name = "itemContainer2";
-            this.itemContainer2.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.textBoxLense,
-            this.btnDelete});
-            // 
-            // 
-            // 
-            this.itemContainer2.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // textBoxLense
-            // 
-            this.textBoxLense.Name = "textBoxLense";
-            this.textBoxLense.WatermarkColor = System.Drawing.SystemColors.GrayText;
-            this.textBoxLense.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLense_KeyPress);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Name = "btnDelete";
-            resources.ApplyResources(this.btnDelete, "btnDelete");
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // itemPanel4
             // 
@@ -427,6 +391,14 @@ namespace CII.LAR.UI
             this.cbxScale.ItemHeight = 16;
             this.cbxScale.Name = "cbxScale";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Gray;
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // SettingCtrl
             // 
             resources.ApplyResources(this, "$this");
@@ -451,6 +423,7 @@ namespace CII.LAR.UI
             this.Controls.SetChildIndex(this.itemPanel5, 0);
             this.itemPanel2.ResumeLayout(false);
             this.itemPanelCamera.ResumeLayout(false);
+            this.itemPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -473,10 +446,6 @@ namespace CII.LAR.UI
         private DevComponents.Editors.ComboItem comboItem2;
         private DevComponents.DotNetBar.ItemPanel itemPanel3;
         private DevComponents.DotNetBar.LabelItem lense;
-        private DevComponents.DotNetBar.ComboBoxItem comboBoxItemLense;
-        private DevComponents.DotNetBar.ItemContainer itemContainer2;
-        private DevComponents.DotNetBar.ButtonItem btnDelete;
-        private DevComponents.DotNetBar.TextBoxItem textBoxLense;
         private DevComponents.DotNetBar.ItemContainer itemContainer3;
         private DevComponents.DotNetBar.LabelItem lblConnectedInfo;
         private DevComponents.DotNetBar.ItemContainer itemContainer4;
@@ -498,6 +467,7 @@ namespace CII.LAR.UI
         private DevComponents.DotNetBar.ItemPanel itemPanel5;
         private DevComponents.DotNetBar.LabelItem labelItemScale;
         private DevComponents.DotNetBar.ComboBoxItem cbxScale;
+        private System.Windows.Forms.Button button1;
     }
 }
 

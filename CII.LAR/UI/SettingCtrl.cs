@@ -22,6 +22,9 @@ namespace CII.LAR.UI
 
         public delegate void UpdateSimulatorImage(int selectIndex);
         public UpdateSimulatorImage UpdateSimulatorImageHandler;
+
+        public delegate void ShowObjectLenseManager();
+        public ShowObjectLenseManager ShowObjectLenseManagerHandler;
         public SettingCtrl(RichPictureBox richPictureBox) : base()
         {
             this.richPictureBox = richPictureBox;
@@ -119,9 +122,9 @@ namespace CII.LAR.UI
             resources.ApplyResources(this.lblLaser, lblLaser.Name);
             resources.ApplyResources(this.lblSimulator, lblSimulator.Name);
             resources.ApplyResources(this.lense, lense.Name);
-            resources.ApplyResources(this.btnDelete, btnDelete.Name);
+            //resources.ApplyResources(this.btnDelete, btnDelete.Name);
             resources.ApplyResources(this.labelItemScale, labelItemScale.Text);
-            this.itemContainer2.Refresh();
+            //this.itemContainer2.Refresh();
             foreach (var ctrl in this.Controls)
             {
                 Button btnX = ctrl as Button;
@@ -149,67 +152,6 @@ namespace CII.LAR.UI
         private void SettingCtrl_Load(object sender, EventArgs e)
         {
 
-        }
-
-        /// <summary>
-        /// Create a new object lense
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// delete existing lense
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            var lense = comboBoxItemLense.SelectedItem;
-            if (lense != null)
-            {
-                int index = Program.SysConfig.Lenses.FindIndex(l => (l.ToString() == lense.ToString()));
-                Program.SysConfig.DeleteLense(lense.ToString());
-                comboBoxItemLense.Items.Clear();
-                comboBoxItemLense.Items.AddRange(Program.SysConfig.Lenses.ToArray());
-                comboBoxItemLense.SelectedIndex = index - 1;
-
-            }
-        }
-
-        private void textBoxLense_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                int factor = 0;
-                Int32.TryParse(textBoxLense.Text, out factor);
-                if (factor != 0)
-                {
-                    Lense lense = new Lense(factor);
-                    if (Program.SysConfig.AddLense(lense))
-                    {
-                        UpdateComBoxItemLense(lense);
-                        DelegateClass.GetDelegate().UpdateLenseHandler?.Invoke(lense);
-                    }
-
-                }
-                else
-                {
-                    //should input correct lense factor
-                    //TO DO
-                }
-            }
-        }
-
-        private void UpdateComBoxItemLense(Lense lense)
-        {
-            comboBoxItemLense.Items.Clear();
-            comboBoxItemLense.Items.AddRange(Program.SysConfig.Lenses.ToArray());
-            int index = Program.SysConfig.Lenses.FindIndex(l => (l.ToString() == lense.ToString()));
-            comboBoxItemLense.SelectedIndex = index;
         }
 
         private void cmbImage_SelectedIndexChanged(object sender, EventArgs e)
@@ -240,6 +182,11 @@ namespace CII.LAR.UI
         {
             richPictureBox.LoadImage(string.Format("{0}\\Resources\\Simulator\\Embryo.bmp", System.Environment.CurrentDirectory));
             Program.SysConfig.LiveMode = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ShowObjectLenseManagerHandler?.Invoke();
         }
     }
 }

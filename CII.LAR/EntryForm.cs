@@ -307,6 +307,7 @@ namespace CII.LAR
 
             settingCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SettingCtrl>(CtrlType.SettingCtrl);
             settingCtrl.UpdateSimulatorImageHandler += UpdateSimulatorImageHandler;
+            settingCtrl.ShowObjectLenseManagerHandler += ShowObjectLenseManagerHandler;
             BaseCtrls.Add(settingCtrl);
 
             serialPortCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SerialPortCtrl>(CtrlType.SerialPort);
@@ -341,6 +342,11 @@ namespace CII.LAR
 
             lenseCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<ObjectLenseCtrl>(CtrlType.LenseCtrl);
             BaseCtrls.Add(lenseCtrl);
+        }
+
+        private void ShowObjectLenseManagerHandler()
+        {
+            ShowBaseCtrl(true, CtrlType.LenseCtrl);
         }
 
         private void OpenBtnClickHandler(string btnName)

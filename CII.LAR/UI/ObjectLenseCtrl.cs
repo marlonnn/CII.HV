@@ -72,6 +72,8 @@ namespace CII.LAR.UI
                         UpdateComBoxItemLense(lense);
                         //更新界面的刻度尺
                         DelegateClass.GetDelegate().UpdateLenseHandler?.Invoke(lense);
+                        if (!this.richPictureBox.Rulers.ShowRulers)
+                            this.richPictureBox.Rulers.ShowRulers = true;
                         this.richPictureBox.Invalidate();
                     }
 
@@ -119,6 +121,14 @@ namespace CII.LAR.UI
                 {
                     this.cmbLenses.SelectedIndex = currentIndex;
                     this.txtAdd.Text = Program.SysConfig.Lenses[currentIndex].Factor.ToString();
+                }
+                else
+                {
+                    this.cmbLenses.Text = "";
+                    this.txtAdd.Text = "";
+                    this.rulerAdjustCtrl1.LabelValue = "";
+                    Program.SysConfig.Lense.Factor = 1;
+                    this.richPictureBox.Invalidate();
                 }
 
             }

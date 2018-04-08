@@ -19,7 +19,7 @@ namespace CII.LAR.UI
             get { return this.labelValue; }
             set
             {
-                if (!string.IsNullOrEmpty(value) && value != labelValue)
+                if (value != null && value != labelValue)
                 {
                     InvokeInvalidate(this.lblValue, value);
                     this.Invalidate();

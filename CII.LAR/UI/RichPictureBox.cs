@@ -738,6 +738,20 @@ namespace CII.LAR.UI
             }
         }
 
+        /// <summary>
+        /// 新建物镜，需要放大适当的倍数
+        /// </summary>
+        public void ZoomNewLense(float zoom, float newZoom)
+        {
+            float oldzoom = zoom;
+            Point centerPoint = new Point(this.Width / 2, this.Height / 2);
+            MouseEventArgs args = new MouseEventArgs(new MouseButtons(), 1, centerPoint.X, centerPoint.Y, 0);
+            this.Zoom = newZoom;
+            ZoomOnMouseCenter(args, oldzoom);
+            this.imageTracker.ScalePercent = zoom * 100;
+            this.Invalidate();
+        }
+
         public bool CanZoom()
         {
             return this.Picture != null;

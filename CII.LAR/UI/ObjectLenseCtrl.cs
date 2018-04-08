@@ -36,16 +36,22 @@ namespace CII.LAR.UI
             {
                 if (isUp)
                 {
+                    //this.richPictureBox.ZoomNewLense((float)selectLense.Factor, (float)(selectLense.Factor+0.1f));
                     selectLense.Factor += 0.1;
                 }
                 else
                 {
                     if (selectLense.Factor - 0.1 != 0)
+                    {
+                        //this.richPictureBox.ZoomNewLense((float)selectLense.Factor, (float)(selectLense.Factor - 0.1f));
                         selectLense.Factor -= 0.1;
+                    }
                 }
                 UpdateComBoxItemLense(selectLense);
                 this.txtAdd.Text = selectLense.Factor.ToString();
-                this.richPictureBox.Zoom = (float)selectLense.Factor;
+                this.rulerAdjustCtrl1.LabelValue = selectLense.Factor.ToString();
+                //this.richPictureBox.Zoom = (float)selectLense.Factor;
+                //this.richPictureBox.ZoomNewLense();
                 this.richPictureBox.Invalidate();
             }
         }
@@ -61,9 +67,12 @@ namespace CII.LAR.UI
                     Lense lense = new Lense(factor);
                     if (Program.SysConfig.AddLense(lense))
                     {
+                        //this.richPictureBox.ZoomNewLense(1, factor);
+                        this.rulerAdjustCtrl1.LabelValue = factor.ToString();
                         UpdateComBoxItemLense(lense);
                         //更新界面的刻度尺
                         DelegateClass.GetDelegate().UpdateLenseHandler?.Invoke(lense);
+                        this.richPictureBox.Invalidate();
                     }
 
                 }
@@ -93,6 +102,7 @@ namespace CII.LAR.UI
             cmbLenses.Items.AddRange(Program.SysConfig.Lenses.ToArray());
             int index = Program.SysConfig.Lenses.FindIndex(l => (l.Name == lense.Name));
             cmbLenses.SelectedIndex = index;
+            Program.SysConfig.Lense = lense;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

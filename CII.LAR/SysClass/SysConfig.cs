@@ -291,6 +291,7 @@ namespace CII.LAR.SysClass
         private void SetDefault()
         {
             this.graphicsPropertiesManager = new GraphicsPropertiesManager();
+            this.Lense = new Lense(1);
             this.lenses = new List<Lense>();
             this.laserConfig = new LaserConfig();
             this.storagePath = string.Format("{0}\\Archive", System.Environment.CurrentDirectory);

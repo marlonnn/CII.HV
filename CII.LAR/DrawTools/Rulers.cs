@@ -37,7 +37,7 @@ namespace CII.LAR.DrawTools
         {
             get
             {
-                return rulerStep * richPictureBox.Zoom;
+                return rulerStep * /*richPictureBox.Zoom*/ (float)Program.SysConfig.Lense.Factor;
             }
             set
             {

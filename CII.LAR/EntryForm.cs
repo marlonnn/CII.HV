@@ -321,10 +321,10 @@ namespace CII.LAR
             settingCtrl.ShowObjectLenseManagerHandler += ShowObjectLenseManagerHandler;
             BaseCtrls.Add(settingCtrl);
 
-            serialPortCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SerialPortCtrl>(CtrlType.SerialPort);
-            serialPortCtrl.OpenBtnClickHandler += OpenBtnClickHandler;
-            controller = new IController(serialPortCtrl);
-            BaseCtrls.Add(serialPortCtrl);
+            //serialPortCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SerialPortCtrl>(CtrlType.SerialPort);
+            //serialPortCtrl.OpenBtnClickHandler += OpenBtnClickHandler;
+            //controller = new IController(serialPortCtrl);
+            //BaseCtrls.Add(serialPortCtrl);
 
             statisticsCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<StatisticsCtrl>(CtrlType.StatisticsCtrl);
             BaseCtrls.Add(statisticsCtrl);
@@ -354,8 +354,8 @@ namespace CII.LAR
             lenseCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<ObjectLenseCtrl>(CtrlType.LenseCtrl);
             BaseCtrls.Add(lenseCtrl);
 
-            laserDebugCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserDebugCtrl>(CtrlType.LaserDebugCtrl);
-            BaseCtrls.Add(laserDebugCtrl);
+            //laserDebugCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserDebugCtrl>(CtrlType.LaserDebugCtrl);
+            //BaseCtrls.Add(laserDebugCtrl);
         }
 
         private void ShowObjectLenseManagerHandler()
@@ -671,12 +671,12 @@ namespace CII.LAR
             {
                 viewLog(new string[] { "SerialPort.log"});
             }
-            else if (e.Control == true && e.KeyCode == Keys.D)
-            {
-                SerialPortDebugForm debugForm = new SerialPortDebugForm();
-                debugForm.Controller = this.controller;
-                debugForm.ShowDialog();
-            }
+            //else if (e.Control == true && e.KeyCode == Keys.D)
+            //{
+            //    SerialPortDebugForm debugForm = new SerialPortDebugForm();
+            //    debugForm.Controller = this.controller;
+            //    debugForm.ShowDialog();
+            //}
             else if (e.Control == true && e.KeyCode == Keys.A)
             {
                 this.richPictureBox.DebugCtrlVisiable();
@@ -994,7 +994,11 @@ namespace CII.LAR
 
         private void toolStripButtonLaserDebug_Click(object sender, EventArgs e)
         {
-            ShowBaseCtrl(true, CtrlType.LaserDebugCtrl);
+            //ShowBaseCtrl(true, CtrlType.LaserDebugCtrl);
+            LaserDebugCtrl laserDebugCtrl = new LaserDebugCtrl();
+            controller = new IController(laserDebugCtrl);
+            laserDebugCtrl.SetController(controller);
+            laserDebugCtrl.ShowDialog();
         }
 
         private void toolStripButtonLine_Click(object sender, EventArgs e)

@@ -119,8 +119,7 @@ namespace CII.LAR
         LaserHoleSize,
         RulerAppearanceCtrl,
         DebugCtrl,
-        LenseCtrl,
-        LaserDebugCtrl
+        LenseCtrl
     }
 
     /// <summary>

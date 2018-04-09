@@ -375,7 +375,7 @@ namespace CII.LAR.DrawTools
         public override HitTestResult HitTestForSelection(RichPictureBox richPicturmeBox, Point point0)
         {
             //transfer point according to const draw area size for hit test
-            Point point = new Point(point0.X * drawAreaSize.Width / richPictureBox.Width, point0.Y * drawAreaSize.Height / richPictureBox.Height);
+            Point point = new Point(point0.X/* * drawAreaSize.Width / richPictureBox.RealSize.Width*/, point0.Y/* * drawAreaSize.Height / richPictureBox.RealSize.Height*/);
 
             GraphicsPath pathOut = areaPath.Clone() as GraphicsPath;
             Pen pen = new Pen(Color.Black, SelectionHitTestWidth * 2);

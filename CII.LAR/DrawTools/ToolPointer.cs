@@ -43,7 +43,7 @@ namespace CII.LAR.DrawTools
         public override void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             wasMove = false;
-            Point point = new Point(e.X, e.Y);
+            Point point = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
             selectMode = SelectionMode.None;
             dragBoxFromMouseDown = Rectangle.Empty;
 
@@ -131,7 +131,7 @@ namespace CII.LAR.DrawTools
             if (selectMode == SelectionMode.None || selectMode == SelectionMode.Drag)
             {
                 // click on background
-                //if ((Control.ModifierKeys & Keys.Control) == 0)
+                if ((Control.ModifierKeys & Keys.Control) == 0)
                 {
                     richPictureBox.GraphicsList.UnselectAll();
                 }
@@ -153,7 +153,7 @@ namespace CII.LAR.DrawTools
 
         public override void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            Point point = new Point(e.X, e.Y);
+            Point point = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
             Point oldPoint = lastPoint;
 
             // set cursor when mouse button is not pressed

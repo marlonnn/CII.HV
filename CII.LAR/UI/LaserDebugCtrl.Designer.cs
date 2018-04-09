@@ -58,8 +58,7 @@
             // 
             this.slider.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.slider.Location = new System.Drawing.Point(62, 71);
-            this.slider.Maximum = 30;
-            this.slider.Minimum = 1;
+            this.slider.Maximum = 82;
             this.slider.Name = "slider";
             this.slider.Size = new System.Drawing.Size(251, 23);
             this.slider.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;

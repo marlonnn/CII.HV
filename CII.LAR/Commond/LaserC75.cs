@@ -15,7 +15,7 @@ namespace CII.LAR.Commond
         /// <summary>
         /// 电流设定系数
         /// </summary>
-        private int ld2_cof = 1;
+        private int ld2_cof = 4930;
 
         /// <summary>
         /// 写入的电流数字量
@@ -39,7 +39,7 @@ namespace CII.LAR.Commond
             LaserBasePackage bp1 = new LaserBasePackage(0x8F, 0x75, new byte[] { 0x75, 0x00 });
             bps.Add(bp1);
 
-            int digitalValue = (Currrent * 100 ) / ld2_cof;
+            int digitalValue = (Currrent * ld2_cof) / 100;
             byte aa = (byte)(digitalValue / 128);
             byte bb = (byte)(digitalValue % 128);
             LaserBasePackage bp2 = new LaserBasePackage(0x80, 0x75, new byte[] { aa, bb, 0x00, 0x00, 0x00, 0x00 });

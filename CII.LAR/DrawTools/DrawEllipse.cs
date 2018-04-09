@@ -372,6 +372,13 @@ namespace CII.LAR.DrawTools
             return areaRegion.IsVisible(dataPoint);
         }
 
+        protected override bool CheckHandleRegion(RichPictureBox richPictureBox, int handleNumber, Point point)
+        {
+            Rectangle rectangle = GetHandleRectangle(richPictureBox, handleNumber);
+            rectangle.Offset(-richPictureBox.OffsetX, -richPictureBox.OffsetY);
+            return rectangle.Contains(point);
+        }
+
         public override HitTestResult HitTestForSelection(RichPictureBox richPicturmeBox, Point point0)
         {
             //transfer point according to const draw area size for hit test

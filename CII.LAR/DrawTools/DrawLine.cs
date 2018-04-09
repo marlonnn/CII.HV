@@ -177,7 +177,7 @@ namespace CII.LAR.DrawTools
 
         public override bool HitTest(int nIndex, PointF dataPoint)
         {
-            return false;
+            return nIndex == 0 && dataPoint.X >= startDataPoint.X && dataPoint.X <= endDataPoint.X;
         }
 
         public override HitTestResult HitTestForSelection(RichPictureBox richPictureBox, Point point)

@@ -382,7 +382,14 @@ namespace CII.LAR.DrawTools
                         continue;
 
                     Rectangle r = GetHandleRectangle(richPictureBox, i);
-                    r.Offset(MovingOffset);
+                    if (this is DrawEllipse)
+                    {
+                        r.Offset(-richPictureBox.OffsetX, -richPictureBox.OffsetY);
+                    }
+                    else
+                    {
+                        r.Offset(MovingOffset);
+                    }
                     try
                     {
                         g.DrawRectangle(pen, r);

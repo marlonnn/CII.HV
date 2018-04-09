@@ -332,6 +332,17 @@ namespace CII.LAR.DrawTools
         }
 
         /// <summary>
+        /// Get handle rectangle by 1-based number
+        /// </summary>
+        /// <param name="handleNumber"></param>
+        /// <returns></returns>
+        public override Rectangle GetHandleRectangle(RichPictureBox richPictureBox, int handleNumber)
+        {
+            Point point = GetHandle(richPictureBox, handleNumber);
+            return new Rectangle(point.X - 3, point.Y - 3, 7, 7);
+        }
+
+        /// <summary>
         /// update ellipse for hit
         /// </summary>
         private void UpdateEllipseForHit()
@@ -361,7 +372,7 @@ namespace CII.LAR.DrawTools
             return areaRegion.IsVisible(dataPoint);
         }
 
-        public override HitTestResult HitTestForSelection(RichPictureBox richPictureBox, Point point0)
+        public override HitTestResult HitTestForSelection(RichPictureBox richPicturmeBox, Point point0)
         {
             //transfer point according to const draw area size for hit test
             Point point = new Point(point0.X * drawAreaSize.Width / richPictureBox.Width, point0.Y * drawAreaSize.Height / richPictureBox.Height);

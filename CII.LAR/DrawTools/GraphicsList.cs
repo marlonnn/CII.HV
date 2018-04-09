@@ -72,11 +72,11 @@ namespace CII.LAR.DrawTools
                 g.TranslateTransform(richPictureBox.OffsetX, richPictureBox.OffsetY);
                 o.Draw(g, richPictureBox);
                 o.DrawTest(g, richPictureBox);
+                if (o.Selected)
+                {
+                    o.DrawTracker(g, richPictureBox);
+                }
                 g.ResetTransform();
-                //if (o.Selected)
-                //{
-                //    o.DrawTracker(g, richPictureBox);
-                //}
             }
         }
 

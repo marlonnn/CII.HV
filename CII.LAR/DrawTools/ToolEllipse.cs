@@ -65,7 +65,8 @@ namespace CII.LAR.DrawTools
                 else
                 {
                     //richPictureBox.GraphicsList[0].UpdateStatisticsInformation();
-                    richPictureBox.ActiveTool = DrawToolType.Ellipse;
+                    richPictureBox.GraphicsList[0].Creating = false;
+                    richPictureBox.ActiveTool = DrawToolType.Pointer;
                 }
             }
         }

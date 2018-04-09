@@ -131,7 +131,7 @@ namespace CII.LAR.DrawTools
             if (selectMode == SelectionMode.None || selectMode == SelectionMode.Drag)
             {
                 // click on background
-                if ((Control.ModifierKeys & Keys.Control) == 0)
+                //if ((Control.ModifierKeys & Keys.Control) == 0)
                 {
                     richPictureBox.GraphicsList.UnselectAll();
                 }

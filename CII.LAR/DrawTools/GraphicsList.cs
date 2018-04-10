@@ -71,7 +71,7 @@ namespace CII.LAR.DrawTools
                 g.ScaleTransform(richPictureBox.Zoom, richPictureBox.Zoom);
                 g.TranslateTransform(richPictureBox.OffsetX, richPictureBox.OffsetY);
                 o.Draw(g, richPictureBox);
-                o.DrawTest(g, richPictureBox);
+                o.DrawText(g, richPictureBox);
                 if (o.Selected)
                 {
                     o.DrawTracker(g, richPictureBox);

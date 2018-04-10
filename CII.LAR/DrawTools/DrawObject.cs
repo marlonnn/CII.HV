@@ -353,7 +353,7 @@ namespace CII.LAR.DrawTools
         {
         }
 
-        public virtual void DrawTest(Graphics g, RichPictureBox richPictureBox)
+        public virtual void DrawText(Graphics g, RichPictureBox richPictureBox)
         {
             SolidBrush brush = new SolidBrush(Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Text").Color);
             RectangleF r = GetTextF(this.Name, g, this.ID);
@@ -385,6 +385,7 @@ namespace CII.LAR.DrawTools
                     if (this is DrawEllipse)
                     {
                         r.Offset(-richPictureBox.OffsetX, -richPictureBox.OffsetY);
+                        r.Offset(MovingOffset);
                     }
                     else
                     {

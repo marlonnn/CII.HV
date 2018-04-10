@@ -229,7 +229,7 @@ namespace CII.LAR.DrawTools
                 }
 
                 richPictureBox.Cursor = Cursors.SizeAll;
-                richPictureBox.Refresh();
+                richPictureBox.Invalidate();
             }
 
             //if (selectMode == SelectionMode.NetSelection)
@@ -269,7 +269,7 @@ namespace CII.LAR.DrawTools
                     o.MovingOffset = Point.Empty;
                 }
                 selectMode = SelectionMode.None;
-                richPictureBox.Refresh();
+                richPictureBox.Invalidate();
             }
             wasMove = false;
         }

@@ -72,7 +72,7 @@ namespace CII.LAR.DrawTools
                     pen.DashPattern = new float[] { 4.0F, 2.8F };
                 }
 
-                rectangle.Offset(MovingOffset);
+                r.Offset(MovingOffset);
                 g.DrawRectangle(pen, Rectangle.Ceiling(r));
             }
         }
@@ -80,7 +80,8 @@ namespace CII.LAR.DrawTools
         public override RectangleF GetTextF(string name, Graphics g, int index)
         {
             SizeF sizeF = g.MeasureString(name, this.Font);
-            return new RectangleF(rectangle.X - sizeF.Width, rectangle.Y - sizeF.Height,
+            RectangleF r = GetNormalizedRectangle(GetRectangle());
+            return new RectangleF(r.X - sizeF.Width, r.Y - sizeF.Height,
                 sizeF.Width, sizeF.Height);
         }
 

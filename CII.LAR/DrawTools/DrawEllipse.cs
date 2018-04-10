@@ -210,7 +210,7 @@ namespace CII.LAR.DrawTools
                 ellipseForDraw.Coeffcient = coef;
 
                 UpdateEllipseForHit();
-
+                CalculateStatistics();
                 return;
             }
 
@@ -224,13 +224,14 @@ namespace CII.LAR.DrawTools
             }
 
             UpdateEllipseForHit();
+            CalculateStatistics();
+        }
+
+        private void CalculateStatistics()
+        {
             this.Statistics.Area = GetArea();
             this.Statistics.Circumference = GetCircumference();
             UpdateStatisticsInformation();
-            //Console.WriteLine("area:" + GetArea());
-            //Console.WriteLine("Circumference:" + GetCircumference());
-            //Console.WriteLine("Height:" + ellipseForDraw.Rectangle.Height);
-            //Console.WriteLine("Width:" + ellipseForDraw.Rectangle.Width);
         }
 
         /// <summary>

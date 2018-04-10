@@ -184,6 +184,7 @@ namespace CII.LAR.DrawTools
 
             ellipseForDraw.StartPoint = new PointF(ps.X + deltaX, ps.Y + deltaY);
             ellipseForDraw.EndPoint = new PointF(pe.X + deltaX, pe.Y + deltaY);
+            UpdateEllipseForHit();
         }
 
         /// <summary>

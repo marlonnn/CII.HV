@@ -87,7 +87,13 @@ namespace CII.LAR.DrawTools
 
             using (Pen pen = new Pen(Color.FromArgb(GraphicsProperties.Alpha, GraphicsProperties.Color), GraphicsProperties.PenWidth))
             {
-                g.DrawLine(pen, startDataPoint.X, startDataPoint.Y, endDataPoint.X, endDataPoint.Y);
+                if (IsMoving)
+                {
+                    pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+                    pen.DashPattern = new float[] { 4.0F, 2.8F };
+                }
+                g.DrawLine(pen, startDataPoint.X + MovingOffset.X, startDataPoint.Y + MovingOffset.Y, 
+                    endDataPoint.X + MovingOffset.X, endDataPoint.Y + MovingOffset.Y);
             }
         }
 
@@ -108,18 +114,19 @@ namespace CII.LAR.DrawTools
 
         public override Cursor GetHandleCursor(int handleNumber)
         {
-            switch (handleNumber)
-            {
-                case 1:
-                case 2:
-                    {
-                        return Cursors.SizeAll;
-                    }
-                default:
-                    {
-                        return Cursors.Default;
-                    }
-            }
+            //switch (handleNumber)
+            //{
+            //    case 1:
+            //    case 2:
+            //        {
+            //            return Cursors.SizeAll;
+            //        }
+            //    default:
+            //        {
+            //            return Cursors.Default;
+            //        }
+            //}
+            return Cursors.SizeWE;
         }
 
         /// <summary>

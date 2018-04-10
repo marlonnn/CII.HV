@@ -263,7 +263,7 @@ namespace CII.LAR.DrawTools
                     o.MovingOffset = Point.Empty;
                 }
 
-                // gate could be moved, but lost selection
+                //// gate could be moved, but lost selection
                 foreach (DrawObject o in richPictureBox.GraphicsList)
                 {
                     o.MovingOffset = Point.Empty;

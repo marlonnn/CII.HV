@@ -245,12 +245,10 @@ namespace CII.LAR.DrawTools
 
         private void SetRectangle(RectangleF r)
         {
-            PointF dataLeftTop = new PointF(r.Left, r.Top);
-            PointF dataRightBottom = new PointF(r.Right, r.Bottom);
-            dataLeft = dataLeftTop.X;
-            dataTop = dataLeftTop.Y;
-            dataRight = dataRightBottom.X;
-            dataBottom = dataRightBottom.Y;
+            dataLeft = r.Left;
+            dataTop = r.Top;
+            dataRight = r.Right;
+            dataBottom = r.Bottom;
         }
 
         protected RectangleF GetRectangle()
@@ -298,8 +296,10 @@ namespace CII.LAR.DrawTools
 
         public override bool HitTest(int nIndex, PointF dataPoint)
         {
+            //return dataPoint.X >= rectangle.Left && dataPoint.X <= rectangle.Right
+            //    && dataPoint.Y <= rectangle.Bottom && dataPoint.Y >= rectangle.Top;
             return dataPoint.X >= dataLeft && dataPoint.X <= dataRight
-               && dataPoint.Y >= dataBottom && dataPoint.Y <= dataTop;
+               && dataPoint.Y <= dataBottom && dataPoint.Y >= dataTop;
         }
 
         public override HitTestResult HitTestForSelection(RichPictureBox richPictureBox, Point point)
@@ -324,6 +324,28 @@ namespace CII.LAR.DrawTools
             {
                 return 8;
             }
+        }
+
+        /// <summary>
+        /// Normalize rectangle
+        /// </summary>
+        public override void Normalize()
+        {
+
+            if (dataRight < dataLeft)
+            {
+                float tmp = dataRight;
+                dataRight = dataLeft;
+                dataLeft = tmp;
+            }
+
+            if (dataBottom < dataTop)
+            {
+                float tmp = dataBottom;
+                dataBottom = dataTop;
+                dataTop = tmp;
+            }
+
         }
     }
 }

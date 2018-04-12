@@ -242,6 +242,8 @@ namespace CII.LAR.DrawTools
 
         public override void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
+            dragBoxFromMouseDown = Rectangle.Empty;
+
             if (selectMode == SelectionMode.NetSelection)
             {
                 //richPictureBox.RectNetSelection = Rectangle.Empty;
@@ -255,12 +257,15 @@ namespace CII.LAR.DrawTools
                 selectMode = SelectionMode.None;
             }
 
+            SubmitResizeObject();
+
             if (selectMode == SelectionMode.Move && wasMove)
             {
                 foreach (DrawObject o in richPictureBox.GraphicsList.Selection)
                 {
                     o.Move(richPictureBox, o.MovingOffset.X, o.MovingOffset.Y);
                     o.MovingOffset = Point.Empty;
+                    o.RaiseChanged(true);    // raise DrawObjChanged event
                 }
 
                 //// gate could be moved, but lost selection
@@ -272,6 +277,24 @@ namespace CII.LAR.DrawTools
                 richPictureBox.Invalidate();
             }
             wasMove = false;
+        }
+
+        private bool SubmitResizeObject()
+        {
+            bool result = false;
+            if (resizedObject != null)
+            {
+                // after resizing
+                resizedObject.Normalize();
+                if (wasMove)
+                {
+                    resizedObject.RaiseChanged(true);    // raise DrawObjChanged event
+                    result = true;
+                }
+                resizedObject = null;
+                selectMode = SelectionMode.Select;
+            }
+            return result;
         }
 
         public override void OnCancel(RichPictureBox richPictureBox, bool cancelSelection)

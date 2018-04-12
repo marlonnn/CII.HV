@@ -346,6 +346,18 @@ namespace CII.LAR.DrawTools
         }
 
         /// <summary>
+        /// Normalize object.
+        /// Call this function in the end of object resizing.
+        /// </summary>
+        public virtual void Normalize()
+        {
+        }
+
+        public void RaiseChanged(bool userManually = false)
+        {
+            UpdateHitTestRegions();
+        }
+        /// <summary>
         /// Draw object
         /// </summary>
         /// <param name="g"></param>

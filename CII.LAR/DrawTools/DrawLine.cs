@@ -112,6 +112,18 @@ namespace CII.LAR.DrawTools
             }
         }
 
+        public override void Normalize()
+        {
+            endDataPoint.Y = startDataPoint.Y;
+
+            if (startDataPoint.X > endDataPoint.X)  // make sure start point is left than end point
+            {
+                float temp = startDataPoint.X;
+                startDataPoint.X = endDataPoint.X;
+                endDataPoint.X = temp;
+            }
+        }
+
         public override Cursor GetHandleCursor(int handleNumber)
         {
             //switch (handleNumber)

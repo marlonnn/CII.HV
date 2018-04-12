@@ -154,6 +154,12 @@ namespace CII.LAR.DrawTools
             {
                 try
                 {
+                    if (IsMoving)
+                    {
+                        pen.DashStyle = DashStyle.Custom;
+                        pen.DashPattern = new float[] { 4.0F, 2.8F };
+                    }
+
                     OrgMatrix = g.Transform;
                     g.Transform = DrawMatrix;
 

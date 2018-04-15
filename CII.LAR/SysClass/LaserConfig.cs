@@ -45,9 +45,9 @@ namespace CII.LAR.SysClass
             }
         }
 
-        private float pulseWidth;
+        private double pulseWidth;
 
-        public float PulseWidth
+        public double PulseWidth
         {
             get { return this.pulseWidth; }
             set { this.pulseWidth = value; }
@@ -98,8 +98,8 @@ namespace CII.LAR.SysClass
         private void InitializeHolePulsePoints()
         {
             holePulsePoints = new List<HolePulsePoint>();
-            holePulsePoints.Add(new HolePulsePoint(0.005f, 0.1f));
-            holePulsePoints.Add(new HolePulsePoint(2.5f, 50f));
+            holePulsePoints.Add(new HolePulsePoint(0.0001f, 0.01f));
+            holePulsePoints.Add(new HolePulsePoint(1.6f, 32f));
         }
 
         // set default value

@@ -731,13 +731,13 @@ namespace CII.LAR.Laser
             outterCircles.Add(new Circle(startPoint, OutterCircleSize));
             if (minHoleNum != 1)
             {
-                if (dx == 0)
+                if (dx == 0 && dy != 0)
                 {
                     gapX = 0;
                     gapY = (length / holeNum) * (dy / Math.Abs(dy));
                     CenterPoint = new PointF(StartCircle.CenterPoint.X, StartCircle.CenterPoint.Y + Math.Abs(dy / 2));
                 }
-                else if (dy == 0)
+                else if (dy == 0 && dx != 0)
                 {
                     gapX = (length / holeNum) * (dx / Math.Abs(dx));
                     gapY = 0;
@@ -745,6 +745,7 @@ namespace CII.LAR.Laser
                 }
                 else
                 {
+                    if (dx == 0) return;
                     var k = dy / dx;
                     gapX = (endCircle.CenterPoint.X - startCircle.CenterPoint.X) / HolesInfo.HoleNum;
                     gapY = (endCircle.CenterPoint.Y - startCircle.CenterPoint.Y) / HolesInfo.HoleNum;

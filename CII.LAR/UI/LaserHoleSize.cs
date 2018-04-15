@@ -52,7 +52,7 @@ namespace CII.LAR.UI
         private void InitializeSlider()
         {
             this.sliderPulse.SetMinMaxValue(5, 1600);
-            this.sliderPulse.SetValue(Program.SysConfig.LaserConfig.PulseWidth);
+            this.sliderPulse.SetValue((float)Program.SysConfig.LaserConfig.PulseWidth);
             this.sliderPulse.Slider.Value = (int)(Program.SysConfig.LaserConfig.PulseWidth * 1000);
             this.sliderPulse.SliderValueChangedHandler += PulseSliderValueChangedHandler;
         }

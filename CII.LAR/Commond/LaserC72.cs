@@ -15,19 +15,19 @@ namespace CII.LAR.Commond
         /// <summary>
         /// 脉宽的最小间隔为5us
         /// </summary>
-        private int interval = 5;
+        private double interval = 5;
 
         /// <summary>
         /// 写入的脉宽数字量
         /// </summary>
-        private int pulseWidth;
-        public int PulseWidth
+        private double pulseWidth;
+        public double PulseWidth
         {
             get { return this.pulseWidth; }
             private set { this.pulseWidth = value; }
         }
 
-        public LaserC72Request(int pulseWidth)
+        public LaserC72Request(double pulseWidth)
         {
             this.pulseWidth = pulseWidth;
             this.Type = 0x72;
@@ -39,7 +39,7 @@ namespace CII.LAR.Commond
             LaserBasePackage bp1 = new LaserBasePackage(0x8F, 0x72, new byte[] { 0x72, 0x00 });
             bps.Add(bp1);
 
-            int digitalValue = PulseWidth /*/ interval*/;
+            double digitalValue = PulseWidth /*/ interval*/;
             byte aa = (byte)(digitalValue / 128);
             byte bb = (byte)(digitalValue % 128);
             LaserBasePackage bp2 = new LaserBasePackage(0x80, 0x72, new byte[] { aa, bb, 0x00, 0x00, 0x00, 0x00 });

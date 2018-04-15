@@ -29,9 +29,9 @@ namespace CII.LAR.UI
 
         private GraphicsProperties graphicsProperties;
 
-        private int pulseValue;
+        private double pulseValue;
 
-        public int PulseValue
+        public double PulseValue
         {
             get { return this.pulseValue; }
             set { this.pulseValue = value; }
@@ -57,8 +57,8 @@ namespace CII.LAR.UI
 
         private void InitializeSlider()
         {
-            this.sliderCtrl.SetMinMaxValue(5, 1600);
-            this.sliderCtrl.SetValue(Program.SysConfig.LaserConfig.PulseWidth);
+            this.sliderCtrl.SetMinMaxValue(1, 16000);
+            this.sliderCtrl.SetValue((float)Program.SysConfig.LaserConfig.PulseWidth);
             this.btnFire.BackColor = Color.LightYellow;
             this.btnFire.Text = Res.LaserCtrl.StrFire;
             PulseValue = this.sliderCtrl.Slider.Value;
@@ -129,24 +129,35 @@ namespace CII.LAR.UI
 
         private void SliderValueChangedHandler(object sender, EventArgs e)
         {
-            PulseValue = this.sliderCtrl.Slider.Value;
-            Program.SysConfig.LaserConfig.PulseWidth = PulseValue / 1000f;
-            double y = CalSlopeFunction(PulseValue);
-            this.sliderCtrl.PulseHole.Text = string.Format("{0:N}ms {1:N}um", PulseValue / 1000d, y);
-
-            CheckPulse(PulseValue);
-
-            if (graphicsProperties != null && Program.SysConfig.LaserConfig != null)
+            try
             {
-                Program.SysConfig.LaserConfig.UpdatePulseWidth((float)y);
-            }
-            this.sliderCtrl.Update = false;
-            if (UpdateSliderValueHandler != null)
-            {
-                UpdateSliderValueHandler?.Invoke(PulseValue / 1000f);
-            }
+                if (this.sliderCtrl.Slider.Value <= 10 && this.sliderCtrl.Slider.Value > 1)
+                {
+                    var v = this.sliderCtrl.Slider.Value / 10f;
+                }
 
-            this.sliderCtrl.Update = true;
+                PulseValue = this.sliderCtrl.Slider.Value / 10f;
+                Program.SysConfig.LaserConfig.PulseWidth = PulseValue / 1000f;
+                double y = CalSlopeFunction(PulseValue);
+                this.sliderCtrl.PulseHole.Text = string.Format("{0:N}us {1:N}um", PulseValue, y);
+
+                CheckPulse(PulseValue);
+
+                if (graphicsProperties != null && Program.SysConfig.LaserConfig != null)
+                {
+                    Program.SysConfig.LaserConfig.UpdatePulseWidth((float)y);
+                }
+                this.sliderCtrl.Update = false;
+                if (UpdateSliderValueHandler != null)
+                {
+                    UpdateSliderValueHandler?.Invoke((float)(PulseValue / 1000f));
+                }
+
+                this.sliderCtrl.Update = true;
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         public void UpdatePulseWidthSlider(float value)
@@ -154,7 +165,7 @@ namespace CII.LAR.UI
             this.sliderCtrl.UpdateValue(value);
         }
 
-        private void CheckPulse(int value)
+        private void CheckPulse(double value)
         {
             if (value > Program.SysConfig.LaserConfig.MaxPulseWidth)
             {
@@ -174,7 +185,7 @@ namespace CII.LAR.UI
             this.btnFire.Invalidate();
         }
 
-        private double CalSlopeFunction(int value)
+        private double CalSlopeFunction(double value)
         {
             double y = 0;
             int index = GetValueIndex(value);
@@ -185,7 +196,7 @@ namespace CII.LAR.UI
             return y;
         }
 
-        private double CalSlopeFunction(HolePulsePoint p1, HolePulsePoint p2, int value)
+        private double CalSlopeFunction(HolePulsePoint p1, HolePulsePoint p2, double value)
         {
             double k = 0;
             k = (p2.Y - p1.Y) / (p2.X - p1.X);
@@ -195,7 +206,7 @@ namespace CII.LAR.UI
             return  k * (x - p2.X) + p2.Y;
         }
 
-        private int GetValueIndex(int value)
+        private int GetValueIndex(double value)
         {
             int index = -1;
             var x = value / 1000d;

@@ -119,13 +119,13 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="closeButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>248, 3</value>
+    <value>270, 3</value>
   </data>
   <data name="&gt;&gt;closeButton.Name" xml:space="preserve">
     <value>closeButton</value>
   </data>
   <data name="&gt;&gt;closeButton.Type" xml:space="preserve">
-    <value>Cii.Lar.UI.TransparentButton, Cii.Lar, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>CII.LAR.UI.TransparentButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;closeButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -162,7 +162,7 @@
     <value>3, 62</value>
   </data>
   <data name="sliderCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 19</value>
+    <value>283, 19</value>
   </data>
   <data name="sliderCtrl.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -171,7 +171,7 @@
     <value>sliderCtrl</value>
   </data>
   <data name="&gt;&gt;sliderCtrl.Type" xml:space="preserve">
-    <value>Cii.Lar.UI.SliderCtrl, Cii.Lar, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>CII.LAR.UI.SliderCtrl, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;sliderCtrl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -183,7 +183,7 @@
     <value>3, 21</value>
   </data>
   <data name="line1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 10</value>
+    <value>286, 10</value>
   </data>
   <data name="line1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -228,7 +228,7 @@
     <value>8</value>
   </data>
   <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>198, 115</value>
+    <value>215, 115</value>
   </data>
   <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 23</value>
@@ -252,7 +252,7 @@
     <value>7</value>
   </data>
   <data name="btnFire.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 153</value>
+    <value>105, 153</value>
   </data>
   <data name="btnFire.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -279,7 +279,7 @@
     <value>3, 184</value>
   </data>
   <data name="line2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>261, 10</value>
+    <value>283, 10</value>
   </data>
   <data name="line2.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -303,7 +303,7 @@
     <value>5</value>
   </data>
   <data name="btnAlignLaser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 203</value>
+    <value>58, 203</value>
   </data>
   <data name="btnAlignLaser.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 23</value>
@@ -327,7 +327,7 @@
     <value>4</value>
   </data>
   <data name="btnHoleSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 232</value>
+    <value>58, 232</value>
   </data>
   <data name="btnHoleSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 23</value>
@@ -351,7 +351,7 @@
     <value>3</value>
   </data>
   <data name="btnAppearance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 261</value>
+    <value>58, 261</value>
   </data>
   <data name="btnAppearance.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 23</value>
@@ -402,12 +402,12 @@
     <value>6, 12</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>267, 289</value>
+    <value>289, 289</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>LaserCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Cii.Lar.UI.BaseCtrl, Cii.Lar, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>CII.LAR.UI.BaseCtrl, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

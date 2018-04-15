@@ -43,7 +43,7 @@
             this.slider.Maximum = 10;
             this.slider.Minimum = 1;
             this.slider.Name = "slider";
-            this.slider.Size = new System.Drawing.Size(150, 20);
+            this.slider.Size = new System.Drawing.Size(150, 18);
             this.slider.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.slider.TabIndex = 0;
             this.slider.Value = 1;
@@ -57,18 +57,18 @@
             this.PulseHoleWS.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.PulseHoleWS.Location = new System.Drawing.Point(154, 3);
             this.PulseHoleWS.Name = "PulseHoleWS";
-            this.PulseHoleWS.Size = new System.Drawing.Size(105, 17);
+            this.PulseHoleWS.Size = new System.Drawing.Size(130, 16);
             this.PulseHoleWS.TabIndex = 1;
             this.PulseHoleWS.Text = "0.200ms 5.0um";
             // 
             // SliderCtrl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.PulseHoleWS);
             this.Controls.Add(this.slider);
             this.Name = "SliderCtrl";
-            this.Size = new System.Drawing.Size(264, 23);
+            this.Size = new System.Drawing.Size(284, 21);
             this.ResumeLayout(false);
 
         }

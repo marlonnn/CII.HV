@@ -280,7 +280,7 @@
       <DependentUpon>ImageTracker.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\LaserDebugCtrl.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\LaserDebugCtrl.Designer.cs">
       <DependentUpon>LaserDebugCtrl.cs</DependentUpon>
@@ -443,6 +443,12 @@
     <Compile Include="UI\VideoControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="UI\VideoPropertyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\VideoPropertyForm.Designer.cs">
+      <DependentUpon>VideoPropertyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Util.cs" />
     <EmbeddedResource Include="EntryForm.resx">
       <DependentUpon>EntryForm.cs</DependentUpon>
@@ -575,6 +581,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\TransparentButton.resx">
       <DependentUpon>TransparentButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\VideoPropertyForm.resx">
+      <DependentUpon>VideoPropertyForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="bug.xlsx" />
     <None Include="Config\config.json">

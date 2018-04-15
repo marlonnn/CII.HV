@@ -80,6 +80,7 @@ namespace CII.LAR
             this.richPictureBox = new CII.LAR.UI.RichPictureBox();
             this.horizontalFlipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verticalFlipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.LaserCheckTimer = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.richPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -382,7 +383,7 @@ namespace CII.LAR
             // 
             // autoSendTimer
             // 
-            this.autoSendTimer.Interval = 200;
+            this.autoSendTimer.Interval = 2000;
             this.autoSendTimer.Tick += new System.EventHandler(this.autoSendTimer_Tick);
             // 
             // systemMonitorTimer
@@ -428,6 +429,11 @@ namespace CII.LAR
             this.verticalFlipToolStripMenuItem.Name = "verticalFlipToolStripMenuItem";
             resources.ApplyResources(this.verticalFlipToolStripMenuItem, "verticalFlipToolStripMenuItem");
             this.verticalFlipToolStripMenuItem.Click += new System.EventHandler(this.verticalFlipToolStripMenuItem_Click);
+
+            // LaserCheckTimer
+            // 
+            this.LaserCheckTimer.Interval = 2000;
+            this.LaserCheckTimer.Tick += new System.EventHandler(this.LaserCheckTimer_Tick);
             // 
             // EntryForm
             // 
@@ -493,5 +499,6 @@ namespace CII.LAR
         private VideoControl videoControl;
         private System.Windows.Forms.ToolStripMenuItem horizontalFlipToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verticalFlipToolStripMenuItem;
+        private System.Windows.Forms.Timer LaserCheckTimer;
     }
 }

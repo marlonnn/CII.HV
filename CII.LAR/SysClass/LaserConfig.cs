@@ -16,6 +16,14 @@ namespace CII.LAR.SysClass
     [Serializable]
     public class LaserConfig
     {
+        //当前红光电流设定值 mA
+        private double redCurrent;
+        public double RedCurrent
+        {
+            get { return this.redCurrent; }
+            set { this.redCurrent = value; }
+        }
+
         private Matrix<double> finalMatrix;
         public Matrix<double> FinalMatrix
         {

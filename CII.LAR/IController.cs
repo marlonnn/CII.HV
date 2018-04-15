@@ -9,19 +9,24 @@ namespace CII.LAR
     public class IController
     {
         private SerialPortModel model;
+        public SerialPortModel SerialPortModel
+        {
+            get { return this.model; }
+        }
         private IView view;
         public IController(IView view)
         {
             model = new SerialPortModel();
             this.view = view;
-            view.SetController(this);
+            //view.SetController(this);
             model.laserComCloseEvent += new SerialPortEventHandler(view.LaserCloseComEvent);
             model.laserComOpenEvent += new SerialPortEventHandler(view.LaserOpenComEvent);
-
-            model.motorComCloseEvent += new SerialPortEventHandler(view.MotorCloseComEvent);
-            model.motorComOpenEvent += new SerialPortEventHandler(view.MotorOpenComEvent);
         }
 
+        public bool IsOpened
+        {
+            get { return this.model.IsOpened; }
+        }
         /// <summary>
         /// Hex to byte
         /// </summary>
@@ -98,15 +103,6 @@ namespace CII.LAR
             return model.LaserSendData(data);
         }
 
-        /// <summary>
-        /// send bytes to serial port
-        /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        public bool SendDataToMotorCom(Byte[] data)
-        {
-            return model.MotorSendData(data);
-        }
 
         public void OpenLaserSerialPort(string portName, String baudRate,
             string dataBits, string stopBits, string parity, string handshake)
@@ -117,23 +113,9 @@ namespace CII.LAR
             }
         }
 
-        public void OpenMotorSerialPort(string portName, String baudRate,
-            string dataBits, string stopBits, string parity, string handshake)
-        {
-            if (portName != null && portName != "")
-            {
-                model.MotorSerialPortOpen(portName, baudRate, dataBits, stopBits, parity, handshake);
-            }
-        }
-
         public void CloseLaserSerialPort()
         {
             model.CloseLaserSerialThread();
-        }
-
-        public void CloseMotorSerialPort()
-        {
-            model.CloseMotorSerialThread();
         }
     }
 }

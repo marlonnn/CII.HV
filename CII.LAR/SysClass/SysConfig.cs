@@ -18,6 +18,26 @@ namespace CII.LAR.SysClass
     [Serializable]
     public class SysConfig
     {
+        [NonSerialized]
+        private bool laserPortConected;
+        public bool LaserPortConected
+        {
+            get { return this.laserPortConected; }
+            set { this.laserPortConected = value; }
+        }
+        private string laserPort;
+        public string LaserPort
+        {
+            get { return this.laserPort; }
+            set { this.laserPort = value; }
+        }
+
+        private string motorPort;
+        public string MotorPort
+        {
+            get { return this.motorPort; }
+            set { this.motorPort = value; }
+        }
         private string deviceMoniker;
         public string DeviceMoniker
         {

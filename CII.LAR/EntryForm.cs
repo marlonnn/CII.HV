@@ -23,12 +23,13 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CII.LAR
 {
-    public partial class EntryForm : Form
+    public partial class EntryForm : Form, IView
     {
         //视频翻转类型
         private FlipType flipType;
@@ -106,7 +107,6 @@ namespace CII.LAR
         private LaserHoleSize laserHoleSize;
         private VideoChooseCtrl videoChooseCtrl;
         private ObjectLenseCtrl lenseCtrl;
-        private LaserDebugCtrl laserDebugCtrl;
 
         #endregion
 
@@ -194,6 +194,8 @@ namespace CII.LAR
             DelegateClass.GetDelegate().ChangeSysFunctionHandler += this.ChangeSysFunctionHandler;
             DelegateClass.GetDelegate().CheckCloseVideoHandler += this.CheckCloseVideoHandler;
             InitializeControls();
+
+            this.controller = new IController(this);
         }
 
         private void CheckCloseVideoHandler()
@@ -320,11 +322,6 @@ namespace CII.LAR
             settingCtrl.UpdateSimulatorImageHandler += UpdateSimulatorImageHandler;
             settingCtrl.ShowObjectLenseManagerHandler += ShowObjectLenseManagerHandler;
             BaseCtrls.Add(settingCtrl);
-
-            //serialPortCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SerialPortCtrl>(CtrlType.SerialPort);
-            //serialPortCtrl.OpenBtnClickHandler += OpenBtnClickHandler;
-            //controller = new IController(serialPortCtrl);
-            //BaseCtrls.Add(serialPortCtrl);
 
             statisticsCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<StatisticsCtrl>(CtrlType.StatisticsCtrl);
             BaseCtrls.Add(statisticsCtrl);
@@ -685,6 +682,11 @@ namespace CII.LAR
             {
                 ShowBaseCtrl(true, CtrlType.LenseCtrl);
             }
+            else if (e.Control == true && e.KeyCode == Keys.V)
+            {
+                VideoPropertyForm form = new VideoPropertyForm();
+                form.ShowDialog();
+            }
         }
 
         private void openCameraLiveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -829,27 +831,13 @@ namespace CII.LAR
             if (LaserProtocolFactory.GetInstance().TxQueue != null)
             {
                 var laserOriginalBytes = LaserProtocolFactory.GetInstance().TxQueue.PopAll();
-                if (laserOriginalBytes != null  && laserOriginalBytes.Count > 0)
+                if (laserOriginalBytes != null && laserOriginalBytes.Count > 0)
                 {
                     foreach (OriginalBytes ob in laserOriginalBytes)
                     {
                         if (this.SerialController != null)
                         {
                             this.SerialController.SendDataToLaserCom(ob.Data);
-                        }
-                    }
-                }
-            }
-            if (MotorProtocolFactory.GetInstance().TxQueue != null)
-            {
-                var motorOriginalBytes = MotorProtocolFactory.GetInstance().TxQueue.PopAll();
-                if (motorOriginalBytes != null && motorOriginalBytes.Count > 0)
-                {
-                    foreach (OriginalBytes ob in motorOriginalBytes)
-                    {
-                        if (this.SerialController != null)
-                        {
-                            this.SerialController.SendDataToMotorCom(ob.Data);
                         }
                     }
                 }
@@ -992,13 +980,15 @@ namespace CII.LAR
             ShowBaseCtrl(true, CtrlType.SerialPort);
         }
 
+        private LaserDebugCtrl laserDebugForm;
         private void toolStripButtonLaserDebug_Click(object sender, EventArgs e)
         {
             //ShowBaseCtrl(true, CtrlType.LaserDebugCtrl);
-            LaserDebugCtrl laserDebugCtrl = new LaserDebugCtrl();
-            controller = new IController(laserDebugCtrl);
-            laserDebugCtrl.SetController(controller);
-            laserDebugCtrl.ShowDialog();
+            laserDebugForm = new LaserDebugCtrl();
+            //controller = new IController(laserDebugCtrl);
+            laserDebugForm.SetController(this.controller);
+            this.LaserCheckTimer.Enabled = false;
+            laserDebugForm.ShowDialog();
         }
 
         private void toolStripButtonLine_Click(object sender, EventArgs e)
@@ -1103,6 +1093,10 @@ namespace CII.LAR
                     if (this.systemMonitorTimer.Interval != 300)
                     {
                         this.systemMonitorTimer.Interval = 300;
+                    }
+                    if (!Program.SysConfig.LaserPortConected && this.LaserCheckTimer.Enabled == false)
+                    {
+                        this.LaserCheckTimer.Enabled = true;
                     }
                     Coordinate.GetCoordinate().LastPoint = new Point(monitorData.Motor1Steps, monitorData.Motor2Steps);
                     Coordinate.GetCoordinate().MotionComplete = monitorData.Motor1Status == 0x08 && monitorData.Motor2Status == 0x08;
@@ -1308,6 +1302,45 @@ namespace CII.LAR
                 this.FlipType = FlipType.Empty;
             }
 
+        }
+
+        public void LaserOpenComEvent(object sender, SerialPortEventArgs e)
+        {
+            if (this.laserDebugForm != null && !this.controller.SerialPortModel.CheckConnect) this.laserDebugForm.LaserOpenComEvent(sender, e);
+        }
+
+        public void LaserCloseComEvent(object sender, SerialPortEventArgs e)
+        {
+            if (this.laserDebugForm != null && !this.controller.SerialPortModel.CheckConnect) this.laserDebugForm.LaserCloseComEvent(sender, e);
+        }
+
+        private void LaserCheckTimer_Tick(object sender, EventArgs e)
+        {
+            if (this.controller != null)
+            {
+                var ports = SerialPortHelper.GetHelper().GetPorts();
+                if (ports != null && ports.Count() > 0)
+                {
+                    foreach (var p in ports)
+                    {
+                        if (Program.SysConfig.MotorPort != null && Program.SysConfig.MotorPort == p) continue;
+                        //打开串口
+                        if (this.controller.SerialPortModel.SerialPort.IsOpen) this.controller.SerialPortModel.SerialPort.Close();
+                        this.controller.OpenLaserSerialPort(p, "9600", "8", "One", "None", "None");
+                        Thread.Sleep(100);
+                        this.controller.SendDataToLaserCom(new byte[] { 0x8F, 0x00, 0x00, 0x00});
+                        Thread.Sleep(200);
+                        if (this.controller.SerialPortModel.CheckConectData != null)
+                        {
+                            this.controller.SerialPortModel.CheckConnect = false;
+                            Program.SysConfig.LaserPort = p;
+                            Program.SysConfig.LaserPortConected = true;
+                            this.LaserCheckTimer.Enabled = false;
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 }

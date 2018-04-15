@@ -35,7 +35,7 @@ namespace CII.LAR.Commond
         /// <summary>
         /// LD对应电流设定系数
         /// </summary>
-        private float cof = 1F;
+        private float cof = 4934F;
         public float COF
         {
             get { return this.cof; }
@@ -67,6 +67,7 @@ namespace CII.LAR.Commond
                 c09Response.OriginalBytes = obytes;
                 //cc*128 + dd = T 红光激光器电流设定值数字量 (data) T = (data / 4096) * 2500 (MA)
                 c09Response.Current = (obytes.Data[3] * 128 + obytes.Data[4]) * 100 / COF;
+                Program.SysConfig.LaserConfig.RedCurrent = c09Response.Current;
                 return CreateOneList(c09Response);
             }
             else

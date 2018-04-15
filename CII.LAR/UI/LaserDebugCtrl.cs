@@ -13,7 +13,7 @@ using CII.LAR.Commond;
 
 namespace CII.LAR.UI
 {
-    public partial class LaserDebugCtrl : Form, IView
+    public partial class LaserDebugCtrl : Form
     {
         private IController controller;
         public IController Controller
@@ -27,6 +27,12 @@ namespace CII.LAR.UI
             //this.CtrlType = CtrlType.LaserDebugCtrl;
             InitializeComponent();
             InitializeLaserCOMCombox();
+            this.Load += LaserDebugCtrl_Load;
+        }
+
+        private void LaserDebugCtrl_Load(object sender, EventArgs e)
+        {
+            IsOpened(this.Controller.IsOpened);
         }
 
         /// <summary>
@@ -132,6 +138,30 @@ namespace CII.LAR.UI
             this.btn70.Enabled = enable;
         }
 
+        private void IsOpened(bool isOpened)
+        {
+            if (isOpened)
+            {
+                for (int i =0; i < laserComListCbx.Items.Count; i++)
+                {
+                    if (laserComListCbx.Items[i].ToString() == Program.SysConfig.LaserPort)
+                    {
+                        laserComListCbx.SelectedItem = Program.SysConfig.LaserPort;
+                        laserComListCbx.Text = Program.SysConfig.LaserPort;
+                    }
+                }
+                laserStatus.Text = Program.SysConfig.LaserPort + " Opened";
+                laserOpenCloseSpbtn.Text = "Close";
+
+                laserComListCbx.Enabled = false;
+                laserBaudRateCbx.Enabled = false;
+                laserDataBitsCbx.Enabled = false;
+                laserStopBitsCbx.Enabled = false;
+                laserParityCbx.Enabled = false;
+                laserHandshakingcbx.Enabled = false;
+            }
+        }
+
         public void LaserOpenComEvent(object sender, SerialPortEventArgs e)
         {
             if (this.InvokeRequired)
@@ -151,6 +181,7 @@ namespace CII.LAR.UI
                 laserStopBitsCbx.Enabled = false;
                 laserParityCbx.Enabled = false;
                 laserHandshakingcbx.Enabled = false;
+                Program.SysConfig.LaserPort = laserComListCbx.Text;
             }
             else    //Open failed
             {
@@ -179,19 +210,12 @@ namespace CII.LAR.UI
             }
         }
 
-        void IView.MotorOpenComEvent(object sender, SerialPortEventArgs e)
-        {
-
-        }
-
-        void IView.MotorCloseComEvent(object sender, SerialPortEventArgs e)
-        {
-
-        }
-
         private void btn70_Click(object sender, EventArgs e)
         {
-            LaserProtocolFactory.GetInstance().SendMessage(new LaserC70Request());
+            //LaserProtocolFactory.GetInstance().SendMessage(new LaserC70Request());
+            var c70 = new LaserC70Request();
+            var bytes = LaserProtocolFactory.GetInstance().LaserProtocol.EnPackage(c70.Encode()[0]);
+            this.controller.SendDataToLaserCom(bytes);
         }
     }
 }

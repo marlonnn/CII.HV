@@ -64,7 +64,7 @@ namespace CII.LAR.Protocol
         /// 发送消息之前必须先设置解码器
         /// </summary>
         /// <param name="type"></param>
-        private void SetDecoder(byte type)
+        public void SetDecoder(byte type)
         {
             if (Decoders.ContainsKey(type))
             {

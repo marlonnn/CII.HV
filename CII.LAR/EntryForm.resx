@@ -461,6 +461,9 @@
   <data name="&gt;&gt;richPictureBox.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="LaserCheckTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>582, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -758,6 +761,12 @@
   </data>
   <data name="&gt;&gt;verticalFlipToolStripMenuItem.Name" xml:space="preserve">
     <value>verticalFlipToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;LaserCheckTimer.Name" xml:space="preserve">
+    <value>LaserCheckTimer</value>
+  </data>
+  <data name="&gt;&gt;LaserCheckTimer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;verticalFlipToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

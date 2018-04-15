@@ -352,18 +352,18 @@ namespace CII.LAR.UI
             {
                 if (controller != null)
                 {
-                    controller.OpenMotorSerialPort(motorComListCbx.Text, motorBaudRateCbx.Text, motorDataBitsCbx.Text, motorStopBitsCbx.Text, motorParityCbx.Text, motorHandshakingcbx.Text);
-                    motorOpenCloseSpbtn.Text = "Close";
-                    this.motorStatus.Text = "Conected";
+                    //controller.OpenMotorSerialPort(motorComListCbx.Text, motorBaudRateCbx.Text, motorDataBitsCbx.Text, motorStopBitsCbx.Text, motorParityCbx.Text, motorHandshakingcbx.Text);
+                    //motorOpenCloseSpbtn.Text = "Close";
+                    //this.motorStatus.Text = "Conected";
                 }
             }
             else
             {
                 if (controller != null)
                 {
-                    controller.CloseMotorSerialPort();
-                    motorOpenCloseSpbtn.Text = "Open";
-                    this.motorStatus.Text = "Not Conected";
+                    //controller.CloseMotorSerialPort();
+                    //motorOpenCloseSpbtn.Text = "Open";
+                    //this.motorStatus.Text = "Not Conected";
                 }
             }
         }

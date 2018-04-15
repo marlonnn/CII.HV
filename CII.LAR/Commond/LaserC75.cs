@@ -15,7 +15,7 @@ namespace CII.LAR.Commond
         /// <summary>
         /// 电流设定系数
         /// </summary>
-        private int ld2_cof = 4930;
+        private int ld2_cof = 4934;
 
         /// <summary>
         /// 写入的电流数字量

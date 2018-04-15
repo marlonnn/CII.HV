@@ -48,6 +48,19 @@ namespace CII.LAR
         private Bitmap videoFrame;
         private bool canCapture = false;
         private bool captureVideo = false;
+        public bool CaptureVideo
+        {
+            get { return this.captureVideo; }
+            set
+            {
+                if (value != this.captureVideo)
+                {
+                    this.captureVideo = value;
+                    this.richPictureBox.CaptureVideo = value;
+                    this.richPictureBox.Invalidate();
+                }
+            }
+        }
         private AVIWriter AVIwriter = new AVIWriter("wmv3");
 
         private VideoCaptureDevice videoDevice;
@@ -406,7 +419,7 @@ namespace CII.LAR
         {
             try
             {
-                if (captureVideo && canCapture)
+                if (CaptureVideo && canCapture)
                 {
                     videoFrame = (Bitmap)eventArgs.Frame.Clone();
                     AVIwriter.Quality = 0;
@@ -1214,8 +1227,8 @@ namespace CII.LAR
         {
             try
             {
-                captureVideo = !captureVideo;
-                if (captureVideo)
+                CaptureVideo = !CaptureVideo;
+                if (CaptureVideo)
                 {
                     var filePath = Program.SysConfig.StorePath;
                     if (!Directory.Exists(filePath))

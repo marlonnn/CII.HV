@@ -17,6 +17,18 @@ namespace CII.LAR.UI
     public partial class RichPictureBox : PictureBox
     {
         private static Cursor s_cursor = new Cursor(new MemoryStream((byte[])new ResourceManager(typeof(EntryForm)).GetObject("Cross")));
+        private bool captureVideo = false;
+        public bool CaptureVideo
+        {
+            get { return this.captureVideo; }
+            set
+            {
+                if (value != this.captureVideo)
+                {
+                    this.captureVideo = value;
+                }
+            }
+        }
         private bool mousePressed;
         private Point lastMousePos;//记录鼠标指针的坐标
         private Point mousePos = Point.Empty;
@@ -819,6 +831,24 @@ namespace CII.LAR.UI
                 if (rulers != null)
                 {
                     rulers.Draw(e.Graphics);
+                }
+
+                if (this.CaptureVideo)
+                {
+                    Color drawColor = Color.FromArgb(200, Color.Red);
+
+                    using (Pen pen = new Pen(drawColor, 2f))
+                    using (Font font = new Font("宋体", 25f, FontStyle.Bold))
+                    using (SolidBrush sb = new SolidBrush(drawColor))
+                    {
+                        e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                        e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                        Circle circle = new Circle(new PointF(50, 60), new SizeF(40, 40));
+                        //e.Graphics.DrawEllipse(pen, circle.Rectangle);
+                        var size = e.Graphics.MeasureString("REC", font);
+                        e.Graphics.DrawString("REC", font, sb, circle.CenterPoint.X + 30, 60 - size.Height / 2);
+                        e.Graphics.FillEllipse(sb, circle.Rectangle);
+                    }
                 }
             }
             catch (Exception ex)

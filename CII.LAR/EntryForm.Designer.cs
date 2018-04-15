@@ -239,6 +239,7 @@ namespace CII.LAR
             this.btnCm,
             this.btnInches,
             this.btnMeters});
+            this.toolStripDropDownButtonUnit.Visible = false;
             this.toolStripDropDownButtonUnit.Image = global::CII.LAR.Properties.Resources.unit;
             this.toolStripDropDownButtonUnit.Name = "toolStripDropDownButtonUnit";
             resources.ApplyResources(this.toolStripDropDownButtonUnit, "toolStripDropDownButtonUnit");

@@ -51,6 +51,10 @@ namespace CII.LAR
         private AVIWriter AVIwriter = new AVIWriter("wmv3");
 
         private VideoCaptureDevice videoDevice;
+        public VideoCaptureDevice VideoDevice
+        {
+            get { return this.videoDevice; }
+        }
 
         #region 串口相关
         private LaserProtocolFactory laserProtocolFactory;
@@ -193,9 +197,9 @@ namespace CII.LAR
             DelegateClass.GetDelegate().VideoKeyDownHandler += this.OnKeyDown;
             DelegateClass.GetDelegate().ChangeSysFunctionHandler += this.ChangeSysFunctionHandler;
             DelegateClass.GetDelegate().CheckCloseVideoHandler += this.CheckCloseVideoHandler;
-            InitializeControls();
 
             this.controller = new IController(this);
+            InitializeControls();
         }
 
         private void CheckCloseVideoHandler()
@@ -336,6 +340,7 @@ namespace CII.LAR
             BaseCtrls.Add(laserCtrl);
 
             laserAlignment = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment);
+            laserAlignment.SetController(this.controller);
             laserAlignment.RichPictureBox = this.richPictureBox;
             laserAlignment.VideoKeyDownHandler += this.OnKeyDown;
             BaseCtrls.Add(laserAlignment);

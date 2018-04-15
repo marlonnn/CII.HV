@@ -22,6 +22,17 @@ namespace CII.LAR.UI
     /// </summary>
     public partial class LaserAlignment : BaseCtrl
     {
+        private IController controller;
+        public IController Controller
+        {
+            get { return this.controller; }
+            set { this.controller = value; }
+        }
+
+        public void SetController(IController controller)
+        {
+            this.controller = controller;
+        }
         private int index;
         public int Index
         {
@@ -88,6 +99,13 @@ namespace CII.LAR.UI
             //    this.pictureBox.Invalidate();
         }
 
+        private void EnableRedLaser()
+        {
+            var c70 = new LaserC70Request();
+            var bytes = LaserProtocolFactory.GetInstance().LaserProtocol.EnPackage(c70.Encode()[0]);
+            this.controller.SendDataToLaserCom(bytes);
+        }
+
         private void btnNext_Click(object sender, EventArgs e)
         {
             if (Index != 7)
@@ -109,6 +127,8 @@ namespace CII.LAR.UI
                     Console.WriteLine(" final matrix Rank: " + v.Rank());
                     string matrixJsonString = JsonFile.GetJsonTextFromConfig<Matrix<double>>(v);
                     JsonFile.WriteMatrixConfigToLocal(matrixJsonString);
+                    //关闭红光引导光
+                    EnableRedLaser();
                 }
                 else
                 {
@@ -116,6 +136,11 @@ namespace CII.LAR.UI
                 }
                 if (Index > -1 && Index < 7)
                 {
+                    if(Index == 0)
+                    {
+                        //开启红光引导光
+                        EnableRedLaser();
+                    }
                     if (Index >= 3 && Index <= 6)
                     {
                         if (Index == 3)

@@ -27,6 +27,25 @@ namespace CII.LAR.UI
             filterInfoDic = new Dictionary<string, FilterInfo>();
         }
 
+        private void SelectDevice()
+        {
+            string selectedDevice = GetDeviceName(Program.SysConfig.DeviceMoniker);
+            if (!string.IsNullOrEmpty(selectedDevice))
+            {
+                if (listViewCamera.Items != null || listViewCamera.Items.Count > 0)
+                {
+                    for(int i=0; i< listViewCamera.Items.Count; i++)
+                    {
+                        if (selectedDevice == listViewCamera.Items[i].Text.ToString())
+                        {
+                            this.listViewCamera.Focus();
+                            this.listViewCamera.Items[i].Selected = true;
+                        }
+                    }
+                }
+            }
+        }
+
         private Dictionary<string, FilterInfo> filterInfoDic;
         private void AddFilterInfo(FilterInfo filterInfo)
         {
@@ -68,6 +87,15 @@ namespace CII.LAR.UI
             {
                 this.listViewCamera.Focus();
                 this.listViewCamera.Items[0].Selected = true;
+                SelectDevice();
+            }
+        }
+
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            if (this.Visible)
+            {
+                SelectDevice();
             }
         }
 
@@ -75,10 +103,16 @@ namespace CII.LAR.UI
         {
             if (listViewCamera.SelectedItems == null || listViewCamera.SelectedItems.Count == 0) return;
 
-            var deviceInfoName = listViewCamera.SelectedItems[0].Text;
-            string deviceMoniker = GetMonikerString(deviceInfoName);
+            string selectedDevice = listViewCamera.SelectedItems[0].Text;
+            string deviceMoniker = GetMonikerString(selectedDevice);
             if (deviceMoniker != "" && CaptureDeviceHandler != null)
             {
+                var videoDevice = Program.EntryForm.VideoDevice;
+                if (videoDevice != null && videoDevice.IsRunning)
+                {
+                    this.Visible = false;
+                    return;
+                }
                 CaptureDeviceHandler(deviceMoniker);
                 Program.SysConfig.DeviceMoniker = deviceMoniker;
             }
@@ -98,6 +132,25 @@ namespace CII.LAR.UI
                 }
             }
             return deviceMoniker;
+        }
+
+        private string GetDeviceName(string deviceMoniker)
+        {
+            if (string.IsNullOrEmpty(deviceMoniker)) return null;
+            string deviceName = "";
+            if (this.videoDevices != null && this.videoDevices.Count > 0)
+            {
+                foreach (var device in this.videoDevices)
+                {
+                    var filterInfo = device as FilterInfo;
+                    if (filterInfo != null && filterInfo.MonikerString == deviceMoniker)
+                    {
+                        deviceName = filterInfo.Name;
+                        break;
+                    }
+                }
+            }
+            return deviceName;
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)

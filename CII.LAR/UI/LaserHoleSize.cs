@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CII.LAR.DrawTools;
 using CII.LAR.SysClass;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CII.LAR.UI
 {
@@ -148,7 +149,7 @@ namespace CII.LAR.UI
             bool exist = false;
             if (Program.SysConfig.LaserConfig.HolePulsePoints != null && Program.SysConfig.LaserConfig.HolePulsePoints.Count > 0)
             {
-                for (int i = 0; i < Program.SysConfig.LaserConfig.HolePulsePoints.Count; i++)
+                for (int i = 0; i < Program.SysConfig.LaserConfig.HolePulsePoints.Count - 1; i++)
                 {
                     if (Program.SysConfig.LaserConfig.HolePulsePoints[i].X == x)
                     {
@@ -240,6 +241,85 @@ namespace CII.LAR.UI
         {
             RemovePoint(CurrentPoint);
             SaveDeleteButtonVisiable(false);
+        }
+
+        Point? prevPosition = null;
+        //ToolTip tooltip = new ToolTip();
+
+        private void chart1_MouseMove(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                var pos = e.Location;
+                if (prevPosition.HasValue && pos == prevPosition.Value)
+                    return;
+                //tooltip.RemoveAll();
+                prevPosition = pos;
+                var results = chart1.HitTest(pos.X, pos.Y, false,
+                                                ChartElementType.DataPoint);
+                foreach (var result in results)
+                {
+                    if (result.ChartElementType == ChartElementType.DataPoint)
+                    {
+                        var prop = result.Object as DataPoint;
+                        if (prop != null)
+                        {
+                            var pointXPixel = result.ChartArea.AxisX.ValueToPixelPosition(prop.XValue);
+                            var pointYPixel = result.ChartArea.AxisY.ValueToPixelPosition(prop.YValues[0]);
+
+                            // check if the cursor is really close to the point (2 pixels around the point)
+                            if (Math.Abs(pos.X - pointXPixel) < 2 &&
+                                Math.Abs(pos.Y - pointYPixel) < 2)
+                            {
+                                //tooltip.Show("X=" + prop.XValue + ", Y=" + prop.YValues[0], this.chart1,
+                                //                pos.X, pos.Y - 15);
+                                valueToFindX = prop.XValue;
+                                valueToFindY = prop.YValues[0];
+                                findPoint = true;
+                            }
+                            else
+                            {
+                                findPoint = false;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private double valueToFindX;
+        private double valueToFindY;
+        private bool findPoint = false;
+
+        private void chart1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left && findPoint)
+            {
+                var dataPoints = this.chart1.Series[0].Points;
+                if (dataPoints != null && dataPoints.Count > 0)
+                {
+                    for (int i =0; i < dataPoints.Count; i++)
+                    {
+                        if (Math.Abs(valueToFindX - dataPoints[i].XValue) < 0.001)
+                        {
+                            dataPoints[i].MarkerStyle = MarkerStyle.Circle;
+                            dataPoints[i].MarkerColor = Color.Red;
+                            dataPoints[i].MarkerSize = 10;
+                            CurrentPoint = new HolePulsePoint((float)dataPoints[i].XValue, (float)dataPoints[i].YValues[0]);
+                            SaveDeleteButtonVisiable(true);
+                        }
+                        else
+                        {
+                            dataPoints[i].MarkerSize = 10;
+                            dataPoints[i].MarkerColor = Color.DarkGreen;
+                        }
+                    }
+                    this.chart1.Invalidate();
+                }
+            }
         }
     }
 }

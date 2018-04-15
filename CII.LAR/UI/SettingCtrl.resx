@@ -379,7 +379,7 @@
     <value>10001</value>
   </data>
   <data name="button1.Text" xml:space="preserve">
-    <value>Object Lense Manager</value>
+    <value>物镜管理</value>
   </data>
   <data name="&gt;&gt;button1.Name" xml:space="preserve">
     <value>button1</value>
@@ -394,7 +394,7 @@
     <value>0</value>
   </data>
   <data name="lense.Text" xml:space="preserve">
-    <value>Object Lense Manager</value>
+    <value>物镜</value>
   </data>
   <data name="itemPanel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 384</value>
@@ -484,6 +484,123 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;itemPanel5.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelItem1.Text" xml:space="preserve">
+    <value>录屏时长(单位：分钟)</value>
+  </data>
+  <data name="comboItem19.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="comboItem19.Value" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="comboItem20.Text" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="comboItem20.Value" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="comboItem21.Text" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="comboItem21.Value" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="comboItem22.Text" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="comboItem22.Value" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="comboItem23.Text" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="comboItem23.Value" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="comboItem24.Text" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="comboItem24.Value" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="comboItem25.Text" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="comboItem25.Value" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="comboItem26.Text" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="comboItem26.Value" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="comboItem27.Text" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="comboItem27.Value" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="comboItem13.Text" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="comboItem13.Value" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="comboItem14.Text" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="comboItem14.Value" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="comboItem15.Text" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="comboItem15.Value" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="comboItem16.Text" xml:space="preserve">
+    <value>40</value>
+  </data>
+  <data name="comboItem16.Value" xml:space="preserve">
+    <value>40</value>
+  </data>
+  <data name="comboItem17.Text" xml:space="preserve">
+    <value>50</value>
+  </data>
+  <data name="comboItem17.Value" xml:space="preserve">
+    <value>50</value>
+  </data>
+  <data name="comboItem18.Text" xml:space="preserve">
+    <value>60</value>
+  </data>
+  <data name="comboItem18.Value" xml:space="preserve">
+    <value>60</value>
+  </data>
+  <data name="itemPanel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 510</value>
+  </data>
+  <data name="itemPanel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 49</value>
+  </data>
+  <data name="itemPanel6.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="itemPanel6.Text" xml:space="preserve">
+    <value>itemPanel6</value>
+  </data>
+  <data name="&gt;&gt;itemPanel6.Name" xml:space="preserve">
+    <value>itemPanel6</value>
+  </data>
+  <data name="&gt;&gt;itemPanel6.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ItemPanel, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;itemPanel6.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;itemPanel6.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -659,6 +776,120 @@
   </data>
   <data name="&gt;&gt;cbxScale.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.ComboBoxItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;labelItem1.Name" xml:space="preserve">
+    <value>labelItem1</value>
+  </data>
+  <data name="&gt;&gt;labelItem1.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;cmbTime.Name" xml:space="preserve">
+    <value>cmbTime</value>
+  </data>
+  <data name="&gt;&gt;cmbTime.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ComboBoxItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;comboItem19.Name" xml:space="preserve">
+    <value>comboItem19</value>
+  </data>
+  <data name="&gt;&gt;comboItem19.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;comboItem20.Name" xml:space="preserve">
+    <value>comboItem20</value>
+  </data>
+  <data name="&gt;&gt;comboItem20.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;comboItem21.Name" xml:space="preserve">
+    <value>comboItem21</value>
+  </data>
+  <data name="&gt;&gt;comboItem21.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;comboItem22.Name" xml:space="preserve">
+    <value>comboItem22</value>
+  </data>
+  <data name="&gt;&gt;comboItem22.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;comboItem23.Name" xml:space="preserve">
+    <value>comboItem23</value>
+  </data>
+  <data name="&gt;&gt;comboItem23.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;comboItem24.Name" xml:space="preserve">
+    <value>comboItem24</value>
+  </data>
+  <data name="&gt;&gt;comboItem24.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;comboItem25.Name" xml:space="preserve">
+    <value>comboItem25</value>
+  </data>
+  <data name="&gt;&gt;comboItem25.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;comboItem26.Name" xml:space="preserve">
+    <value>comboItem26</value>
+  </data>
+  <data name="&gt;&gt;comboItem26.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;comboItem27.Name" xml:space="preserve">
+    <value>comboItem27</value>
+  </data>
+  <data name="&gt;&gt;comboItem27.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;comboItem13.Name" xml:space="preserve">
+    <value>comboItem13</value>
+  </data>
+  <data name="&gt;&gt;comboItem13.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;comboItem14.Name" xml:space="preserve">
+    <value>comboItem14</value>
+  </data>
+  <data name="&gt;&gt;comboItem14.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;comboItem15.Name" xml:space="preserve">
+    <value>comboItem15</value>
+  </data>
+  <data name="&gt;&gt;comboItem15.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;comboItem16.Name" xml:space="preserve">
+    <value>comboItem16</value>
+  </data>
+  <data name="&gt;&gt;comboItem16.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;comboItem17.Name" xml:space="preserve">
+    <value>comboItem17</value>
+  </data>
+  <data name="&gt;&gt;comboItem17.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;comboItem18.Name" xml:space="preserve">
+    <value>comboItem18</value>
+  </data>
+  <data name="&gt;&gt;comboItem18.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;comboItem11.Name" xml:space="preserve">
+    <value>comboItem11</value>
+  </data>
+  <data name="&gt;&gt;comboItem11.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;comboItem12.Name" xml:space="preserve">
+    <value>comboItem12</value>
+  </data>
+  <data name="&gt;&gt;comboItem12.Type" xml:space="preserve">
+    <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>SettingCtrl</value>

@@ -1223,6 +1223,9 @@ namespace CII.LAR
             return true;
         }
 
+        private System.Timers.Timer recordTimer;
+        private int recordCount;
+
         private void toolStripButtonVideo_Click(object sender, EventArgs e)
         {
             try
@@ -1243,6 +1246,13 @@ namespace CII.LAR
                         AVIwriter.Open(fileName, w, h);
                         this.toolStripButtonVideo.Image = global::CII.LAR.Properties.Resources.Stop;
                         canCapture = true;
+                        if (Program.SysConfig.RecordTime != 0)
+                        {
+                            recordTimer = new System.Timers.Timer(1000);
+                            recordTimer.Elapsed += RecordTimer_Elapsed;
+                            recordCount = 0;
+                            recordTimer.Start();
+                        }
                     }
                 }
                 else
@@ -1260,6 +1270,23 @@ namespace CII.LAR
             {
                 canCapture = false;
             }
+        }
+        
+        private void RecordTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            if (recordCount == Program.SysConfig.RecordTime * 60)
+            {
+                recordTimer.Stop();
+                CaptureVideo = false;
+                if (videoDevice == null) return;
+                if (videoDevice.IsRunning)
+                {
+                    canCapture = false;
+                    this.AVIwriter.Close();
+                }
+                this.toolStripButtonVideo.Image = global::CII.LAR.Properties.Resources.video;
+            }
+            recordCount++;
         }
 
         private void toolStripFiles_Click(object sender, EventArgs e)

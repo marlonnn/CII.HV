@@ -56,6 +56,7 @@ namespace CII.LAR.UI
             this.buttonItemSimulator = new System.Windows.Forms.Button();
             this.buttonSysInfo = new System.Windows.Forms.Button();
             this.itemPanel3 = new DevComponents.DotNetBar.ItemPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.lense = new DevComponents.DotNetBar.LabelItem();
             this.itemPanel4 = new DevComponents.DotNetBar.ItemPanel();
             this.lblLaser = new DevComponents.DotNetBar.LabelItem();
@@ -67,7 +68,26 @@ namespace CII.LAR.UI
             this.itemPanel5 = new DevComponents.DotNetBar.ItemPanel();
             this.labelItemScale = new DevComponents.DotNetBar.LabelItem();
             this.cbxScale = new DevComponents.DotNetBar.ComboBoxItem();
-            this.button1 = new System.Windows.Forms.Button();
+            this.itemPanel6 = new DevComponents.DotNetBar.ItemPanel();
+            this.labelItem1 = new DevComponents.DotNetBar.LabelItem();
+            this.cmbTime = new DevComponents.DotNetBar.ComboBoxItem();
+            this.comboItem19 = new DevComponents.Editors.ComboItem();
+            this.comboItem20 = new DevComponents.Editors.ComboItem();
+            this.comboItem21 = new DevComponents.Editors.ComboItem();
+            this.comboItem22 = new DevComponents.Editors.ComboItem();
+            this.comboItem23 = new DevComponents.Editors.ComboItem();
+            this.comboItem24 = new DevComponents.Editors.ComboItem();
+            this.comboItem25 = new DevComponents.Editors.ComboItem();
+            this.comboItem26 = new DevComponents.Editors.ComboItem();
+            this.comboItem27 = new DevComponents.Editors.ComboItem();
+            this.comboItem13 = new DevComponents.Editors.ComboItem();
+            this.comboItem14 = new DevComponents.Editors.ComboItem();
+            this.comboItem15 = new DevComponents.Editors.ComboItem();
+            this.comboItem16 = new DevComponents.Editors.ComboItem();
+            this.comboItem17 = new DevComponents.Editors.ComboItem();
+            this.comboItem18 = new DevComponents.Editors.ComboItem();
+            this.comboItem11 = new DevComponents.Editors.ComboItem();
+            this.comboItem12 = new DevComponents.Editors.ComboItem();
             this.itemPanel2.SuspendLayout();
             this.itemPanelCamera.SuspendLayout();
             this.itemPanel3.SuspendLayout();
@@ -312,6 +332,14 @@ namespace CII.LAR.UI
             resources.ApplyResources(this.itemPanel3, "itemPanel3");
             this.itemPanel3.Name = "itemPanel3";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Gray;
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // lense
             // 
             this.lense.Name = "lense";
@@ -391,18 +419,123 @@ namespace CII.LAR.UI
             this.cbxScale.ItemHeight = 16;
             this.cbxScale.Name = "cbxScale";
             // 
-            // button1
+            // itemPanel6
             // 
-            this.button1.BackColor = System.Drawing.Color.Gray;
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // 
+            // 
+            this.itemPanel6.BackgroundStyle.Class = "ItemPanel";
+            this.itemPanel6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.itemPanel6.ContainerControlProcessDialogKey = true;
+            this.itemPanel6.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.labelItem1,
+            this.cmbTime});
+            this.itemPanel6.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
+            this.itemPanel6.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
+            resources.ApplyResources(this.itemPanel6, "itemPanel6");
+            this.itemPanel6.Name = "itemPanel6";
+            // 
+            // labelItem1
+            // 
+            this.labelItem1.Name = "labelItem1";
+            resources.ApplyResources(this.labelItem1, "labelItem1");
+            // 
+            // cmbTime
+            // 
+            this.cmbTime.DropDownHeight = 106;
+            this.cmbTime.ItemHeight = 16;
+            this.cmbTime.Items.AddRange(new object[] {
+            this.comboItem19,
+            this.comboItem20,
+            this.comboItem21,
+            this.comboItem22,
+            this.comboItem23,
+            this.comboItem24,
+            this.comboItem25,
+            this.comboItem26,
+            this.comboItem27,
+            this.comboItem13,
+            this.comboItem14,
+            this.comboItem15,
+            this.comboItem16,
+            this.comboItem17,
+            this.comboItem18});
+            this.cmbTime.Name = "cmbTime";
+            this.cmbTime.SelectedIndexChanged += new System.EventHandler(this.cmbTime_SelectedIndexChanged);
+            // 
+            // comboItem19
+            // 
+            resources.ApplyResources(this.comboItem19, "comboItem19");
+            // 
+            // comboItem20
+            // 
+            resources.ApplyResources(this.comboItem20, "comboItem20");
+            // 
+            // comboItem21
+            // 
+            resources.ApplyResources(this.comboItem21, "comboItem21");
+            // 
+            // comboItem22
+            // 
+            resources.ApplyResources(this.comboItem22, "comboItem22");
+            // 
+            // comboItem23
+            // 
+            resources.ApplyResources(this.comboItem23, "comboItem23");
+            // 
+            // comboItem24
+            // 
+            resources.ApplyResources(this.comboItem24, "comboItem24");
+            // 
+            // comboItem25
+            // 
+            resources.ApplyResources(this.comboItem25, "comboItem25");
+            // 
+            // comboItem26
+            // 
+            resources.ApplyResources(this.comboItem26, "comboItem26");
+            // 
+            // comboItem27
+            // 
+            resources.ApplyResources(this.comboItem27, "comboItem27");
+            // 
+            // comboItem13
+            // 
+            resources.ApplyResources(this.comboItem13, "comboItem13");
+            // 
+            // comboItem14
+            // 
+            resources.ApplyResources(this.comboItem14, "comboItem14");
+            // 
+            // comboItem15
+            // 
+            resources.ApplyResources(this.comboItem15, "comboItem15");
+            // 
+            // comboItem16
+            // 
+            resources.ApplyResources(this.comboItem16, "comboItem16");
+            // 
+            // comboItem17
+            // 
+            resources.ApplyResources(this.comboItem17, "comboItem17");
+            // 
+            // comboItem18
+            // 
+            resources.ApplyResources(this.comboItem18, "comboItem18");
+            // 
+            // comboItem11
+            // 
+            resources.ApplyResources(this.comboItem11, "comboItem11");
+            // 
+            // comboItem12
+            // 
+            resources.ApplyResources(this.comboItem12, "comboItem12");
             // 
             // SettingCtrl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.itemPanel6);
             this.Controls.Add(this.itemPanel5);
             this.Controls.Add(this.itemPanel4);
             this.Controls.Add(this.itemPanel3);
@@ -421,6 +554,7 @@ namespace CII.LAR.UI
             this.Controls.SetChildIndex(this.itemPanel3, 0);
             this.Controls.SetChildIndex(this.itemPanel4, 0);
             this.Controls.SetChildIndex(this.itemPanel5, 0);
+            this.Controls.SetChildIndex(this.itemPanel6, 0);
             this.itemPanel2.ResumeLayout(false);
             this.itemPanelCamera.ResumeLayout(false);
             this.itemPanel3.ResumeLayout(false);
@@ -468,6 +602,26 @@ namespace CII.LAR.UI
         private DevComponents.DotNetBar.LabelItem labelItemScale;
         private DevComponents.DotNetBar.ComboBoxItem cbxScale;
         private System.Windows.Forms.Button button1;
+        private DevComponents.DotNetBar.ItemPanel itemPanel6;
+        private DevComponents.DotNetBar.LabelItem labelItem1;
+        private DevComponents.DotNetBar.ComboBoxItem cmbTime;
+        private DevComponents.Editors.ComboItem comboItem13;
+        private DevComponents.Editors.ComboItem comboItem14;
+        private DevComponents.Editors.ComboItem comboItem15;
+        private DevComponents.Editors.ComboItem comboItem16;
+        private DevComponents.Editors.ComboItem comboItem17;
+        private DevComponents.Editors.ComboItem comboItem18;
+        private DevComponents.Editors.ComboItem comboItem11;
+        private DevComponents.Editors.ComboItem comboItem12;
+        private DevComponents.Editors.ComboItem comboItem19;
+        private DevComponents.Editors.ComboItem comboItem20;
+        private DevComponents.Editors.ComboItem comboItem21;
+        private DevComponents.Editors.ComboItem comboItem22;
+        private DevComponents.Editors.ComboItem comboItem23;
+        private DevComponents.Editors.ComboItem comboItem24;
+        private DevComponents.Editors.ComboItem comboItem25;
+        private DevComponents.Editors.ComboItem comboItem26;
+        private DevComponents.Editors.ComboItem comboItem27;
     }
 }
 

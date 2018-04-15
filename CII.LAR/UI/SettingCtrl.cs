@@ -188,5 +188,16 @@ namespace CII.LAR.UI
         {
             ShowObjectLenseManagerHandler?.Invoke();
         }
+
+        private void cmbTime_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Program.SysConfig.RecordTime = Int32.Parse(this.cmbTime.SelectedItem.ToString());
+            }
+            catch (Exception ex)
+            {
+            }
+        }
     }
 }

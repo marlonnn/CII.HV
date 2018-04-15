@@ -18,6 +18,12 @@ namespace CII.LAR.SysClass
     [Serializable]
     public class SysConfig
     {
+        private int recordTime;
+        public int RecordTime
+        {
+            get { return this.recordTime; }
+            set { this.recordTime = value; }
+        }
         [NonSerialized]
         private bool laserPortConected;
         public bool LaserPortConected
@@ -318,6 +324,7 @@ namespace CII.LAR.SysClass
             this.archivePath = string.Format("{0}\\Archive", System.Environment.CurrentDirectory);
             this.Function = SystemFunction.Empty;
             this.DefaultScaleCoefficient = 4;
+            this.recordTime = 0;
         }
 
         // set default value

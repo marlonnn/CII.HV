@@ -139,6 +139,7 @@ namespace CII.LAR
         }
 
         private ImageForm imageForm;
+        private VideoForm videoForm;
 
         private void imageListView_ItemDoubleClick(object sender, ItemClickEventArgs e)
         {
@@ -151,9 +152,9 @@ namespace CII.LAR
                     if (fileExtension == ".avi")
                     {
                         string fileName = item.FileName;
-                        //int v = videoFiles.FindIndex(file => { return file == fileName; });
-                        //videoForm = new VideoForm(videoFiles, fileName);
-                        //videoForm.ShowDialog();
+                        int v = videoFiles.FindIndex(file => { return file == fileName; });
+                        videoForm = new VideoForm(videoFiles, fileName);
+                        videoForm.ShowDialog();
                     }
                     else if (fileExtension == ".png")
                     {

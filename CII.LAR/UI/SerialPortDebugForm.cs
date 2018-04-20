@@ -43,7 +43,6 @@ namespace CII.LAR.UI
         {
             InitializeComponent();
             InitializeLaserCOMCombox();
-            InitializeMotorCOMCombox();
             InitializeLaserProtocolFactory();
             this.Load += SerialPortDebugForm_Load;
             this.FormClosing += SerialPortDebugForm_FormClosing;
@@ -58,7 +57,6 @@ namespace CII.LAR.UI
         private void InitializeLaserProtocolFactory()
         {
             LaserProtocolFactory = LaserProtocolFactory.GetInstance();
-            MotorProtocolFactory = MotorProtocolFactory.GetInstance();
         }
 
         private void SerialPortDebugForm_Load(object sender, EventArgs e)
@@ -126,67 +124,6 @@ namespace CII.LAR.UI
                 }
                 laserComListCbx.Text = ArrayComPortsNames[0];
                 laserOpenCloseSpbtn.Enabled = true;
-            }
-        }
-        private void InitializeMotorCOMCombox()
-        {
-            //laserBaudRateCbx
-            //BaudRate
-            motorBaudRateCbx.Items.Add(4800);
-            motorBaudRateCbx.Items.Add(9600);
-            motorBaudRateCbx.Items.Add(19200);
-            motorBaudRateCbx.Items.Add(38400);
-            motorBaudRateCbx.Items.Add(57600);
-            motorBaudRateCbx.Items.Add(115200);
-            motorBaudRateCbx.Items.ToString();
-            //get 9600 print in text
-            motorBaudRateCbx.Text = motorBaudRateCbx.Items[1].ToString();
-
-            //Data bits
-            motorDataBitsCbx.Items.Add(7);
-            motorDataBitsCbx.Items.Add(8);
-            //get the 8bit item print it in the text 
-            motorDataBitsCbx.Text = motorDataBitsCbx.Items[1].ToString();
-
-            //Stop bits
-            motorStopBitsCbx.Items.Add("One");
-            motorStopBitsCbx.Items.Add("OnePointFive");
-            motorStopBitsCbx.Items.Add("Two");
-            //get the One item print in the text
-            motorStopBitsCbx.Text = motorStopBitsCbx.Items[0].ToString();
-
-            //Parity
-            motorParityCbx.Items.Add("None");
-            motorParityCbx.Items.Add("Even");
-            motorParityCbx.Items.Add("Mark");
-            motorParityCbx.Items.Add("Odd");
-            motorParityCbx.Items.Add("Space");
-            //get the first item print in the text
-            motorParityCbx.Text = motorParityCbx.Items[0].ToString();
-
-            //Handshaking
-            motorHandshakingcbx.Items.Add("None");
-            motorHandshakingcbx.Items.Add("XOnXOff");
-            motorHandshakingcbx.Items.Add("RequestToSend");
-            motorHandshakingcbx.Items.Add("RequestToSendXOnXOff");
-            motorHandshakingcbx.Text = motorHandshakingcbx.Items[0].ToString();
-
-            //Com Ports
-            string[] ArrayComPortsNames = SerialPort.GetPortNames();
-            if (ArrayComPortsNames.Length == 0)
-            {
-                motorStatus.Text = "No COM found !";
-                motorOpenCloseSpbtn.Enabled = false;
-            }
-            else
-            {
-                Array.Sort(ArrayComPortsNames);
-                for (int i = 0; i < ArrayComPortsNames.Length; i++)
-                {
-                    motorComListCbx.Items.Add(ArrayComPortsNames[i]);
-                }
-                motorComListCbx.Text = ArrayComPortsNames[0];
-                motorOpenCloseSpbtn.Enabled = true;
             }
         }
 
@@ -280,53 +217,6 @@ namespace CII.LAR.UI
             }
         }
 
-        public void MotorOpenComEvent(object sender, SerialPortEventArgs e)
-        {
-            if (this.InvokeRequired)
-            {
-                Invoke(new Action<Object, SerialPortEventArgs>(MotorOpenComEvent), sender, e);
-                return;
-            }
-            if (e.isOpend)
-            {
-                motorStatus.Text = motorComListCbx.Text + " Opend";
-                motorOpenCloseSpbtn.Text = "Close";
-
-                motorComListCbx.Enabled = false;
-                motorBaudRateCbx.Enabled = false;
-                motorDataBitsCbx.Enabled = false;
-                motorStopBitsCbx.Enabled = false;
-                motorParityCbx.Enabled = false;
-                motorHandshakingcbx.Enabled = false;
-
-            }
-            else
-            {
-                motorStatus.Text = "Open failed !";
-            }
-        }
-
-        public void MotorCloseComEvent(object sender, SerialPortEventArgs e)
-        {
-            if (this.InvokeRequired)
-            {
-                Invoke(new Action<Object, SerialPortEventArgs>(MotorCloseComEvent), sender, e);
-                return;
-            }
-            if (!e.isOpend) //close successfully
-            {
-                motorStatus.Text = laserComListCbx.Text + " Closed";
-                motorOpenCloseSpbtn.Text = "Open";
-
-                motorComListCbx.Enabled = true;
-                motorBaudRateCbx.Enabled = true;
-                motorDataBitsCbx.Enabled = true;
-                motorStopBitsCbx.Enabled = true;
-                motorParityCbx.Enabled = true;
-                motorHandshakingcbx.Enabled = true;
-            }
-        }
-
         private void laserOpenCloseSpbtn_Click(object sender, EventArgs e)
         {
             if (laserOpenCloseSpbtn.Text == "Open")
@@ -342,28 +232,6 @@ namespace CII.LAR.UI
                 if (controller != null)
                 {
                     controller.CloseLaserSerialPort();
-                }
-            }
-        }
-
-        private void motorOpenCloseSpbtn_Click(object sender, EventArgs e)
-        {
-            if (motorOpenCloseSpbtn.Text == "Open")
-            {
-                if (controller != null)
-                {
-                    //controller.OpenMotorSerialPort(motorComListCbx.Text, motorBaudRateCbx.Text, motorDataBitsCbx.Text, motorStopBitsCbx.Text, motorParityCbx.Text, motorHandshakingcbx.Text);
-                    //motorOpenCloseSpbtn.Text = "Close";
-                    //this.motorStatus.Text = "Conected";
-                }
-            }
-            else
-            {
-                if (controller != null)
-                {
-                    //controller.CloseMotorSerialPort();
-                    //motorOpenCloseSpbtn.Text = "Open";
-                    //this.motorStatus.Text = "Not Conected";
                 }
             }
         }
@@ -446,75 +314,6 @@ namespace CII.LAR.UI
         private void btn72_Click(object sender, EventArgs e)
         {
             LaserProtocolFactory.SendMessage(new LaserC72Request(20));
-        }
-
-        private void btnC60_Click(object sender, EventArgs e)
-        {
-            var request = new MotorC60Request(0x60, 0x66);
-            request.ControlSelection = 0x61;
-            request.ControlMode61 = 0x01;
-            request.Direction61 = 0x00;
-            request.TotalSteps61 = 50;
-            MotorProtocolFactory.SendMessage(request);
-        }
-
-        private void btn6062_Click(object sender, EventArgs e)
-        {
-            var request = new MotorC60Request(0x60, 0x66);
-            request.ControlSelection = 0x62;
-            request.ControlMode62 = 0x01;
-            request.Direction62 = 0x00;
-            request.TotalSteps62 = 100;
-            MotorProtocolFactory.SendMessage(request);
-        }
-
-        private void btn6060_Click(object sender, EventArgs e)
-        {
-            var request = new MotorC60Request(0x60, 0x66);
-            request.ControlSelection = 0x60;
-            request.ControlMode61 = 0x01;
-            request.Direction61 = 0x00;
-            request.TotalSteps61 = 50;
-
-            request.ControlMode62 = 0x01;
-            request.Direction62 = 0x00;
-            request.TotalSteps62 = 100;
-            MotorProtocolFactory.SendMessage(request);
-        }
-
-        private void btn6055_Click(object sender, EventArgs e)
-        {
-            var request = new MotorC60Request(0x60, 0x55);
-            request.ControlSelection = 0x60;
-            MotorProtocolFactory.SendMessage(request);
-        }
-
-        private void btn6055A0_Click(object sender, EventArgs e)
-        {
-            var request = new MotorC60Request(0x60, 0x55);
-            request.ControlSelection = 0xA0;
-            MotorProtocolFactory.SendMessage(request);
-        }
-
-        private void btn605500_Click(object sender, EventArgs e)
-        {
-            var request = new MotorC60Request(0x60, 0x55);
-            request.ControlSelection = 0x00;
-            MotorProtocolFactory.SendMessage(request);
-        }
-
-        private void btn605562_Click(object sender, EventArgs e)
-        {
-            var request = new MotorC60Request(0x60, 0x55);
-            request.ControlSelection = 0x62;
-            MotorProtocolFactory.SendMessage(request);
-        }
-
-        private void btn605561_Click(object sender, EventArgs e)
-        {
-            var request = new MotorC60Request(0x60, 0x55);
-            request.ControlSelection = 0x61;
-            MotorProtocolFactory.SendMessage(request);
         }
 
         private void autoReceiverTimer_Tick(object sender, EventArgs e)

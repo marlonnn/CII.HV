@@ -41,21 +41,6 @@
             this.sendbtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBoxMotor = new System.Windows.Forms.GroupBox();
-            this.motorStatus = new System.Windows.Forms.Label();
-            this.motorHandshakingcbx = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.motorDataBitsCbx = new System.Windows.Forms.ComboBox();
-            this.motorComListCbx = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.motorOpenCloseSpbtn = new System.Windows.Forms.Button();
-            this.motorBaudRateCbx = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.motorParityCbx = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.motorStopBitsCbx = new System.Windows.Forms.ComboBox();
             this.groupBoxLaser = new System.Windows.Forms.GroupBox();
             this.laserStatus = new System.Windows.Forms.Label();
             this.laserHandshakingcbx = new System.Windows.Forms.ComboBox();
@@ -87,18 +72,9 @@
             this.btn71 = new System.Windows.Forms.Button();
             this.btn72 = new System.Windows.Forms.Button();
             this.btn73 = new System.Windows.Forms.Button();
-            this.btnC60 = new System.Windows.Forms.Button();
-            this.btn6062 = new System.Windows.Forms.Button();
-            this.btn6060 = new System.Windows.Forms.Button();
-            this.btn6055 = new System.Windows.Forms.Button();
-            this.btn6055A0 = new System.Windows.Forms.Button();
-            this.btn605500 = new System.Windows.Forms.Button();
-            this.btn605561 = new System.Windows.Forms.Button();
-            this.btn605562 = new System.Windows.Forms.Button();
             this.autoReceiverTimer = new System.Windows.Forms.Timer(this.components);
             this.btn70 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            this.groupBoxMotor.SuspendLayout();
             this.groupBoxLaser.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,7 +96,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(368, 12);
+            this.groupBox1.Location = new System.Drawing.Point(190, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(367, 355);
             this.groupBox1.TabIndex = 26;
@@ -231,162 +207,6 @@
             this.label2.Size = new System.Drawing.Size(39, 15);
             this.label2.TabIndex = 5;
             this.label2.Text = "Send:";
-            // 
-            // groupBoxMotor
-            // 
-            this.groupBoxMotor.Controls.Add(this.motorStatus);
-            this.groupBoxMotor.Controls.Add(this.motorHandshakingcbx);
-            this.groupBoxMotor.Controls.Add(this.label11);
-            this.groupBoxMotor.Controls.Add(this.motorDataBitsCbx);
-            this.groupBoxMotor.Controls.Add(this.motorComListCbx);
-            this.groupBoxMotor.Controls.Add(this.label12);
-            this.groupBoxMotor.Controls.Add(this.motorOpenCloseSpbtn);
-            this.groupBoxMotor.Controls.Add(this.motorBaudRateCbx);
-            this.groupBoxMotor.Controls.Add(this.label13);
-            this.groupBoxMotor.Controls.Add(this.label14);
-            this.groupBoxMotor.Controls.Add(this.motorParityCbx);
-            this.groupBoxMotor.Controls.Add(this.label15);
-            this.groupBoxMotor.Controls.Add(this.label16);
-            this.groupBoxMotor.Controls.Add(this.motorStopBitsCbx);
-            this.groupBoxMotor.Location = new System.Drawing.Point(190, 12);
-            this.groupBoxMotor.Name = "groupBoxMotor";
-            this.groupBoxMotor.Size = new System.Drawing.Size(172, 355);
-            this.groupBoxMotor.TabIndex = 30;
-            this.groupBoxMotor.TabStop = false;
-            this.groupBoxMotor.Text = "Motor Serial Port";
-            // 
-            // motorStatus
-            // 
-            this.motorStatus.AutoSize = true;
-            this.motorStatus.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.motorStatus.Location = new System.Drawing.Point(37, 313);
-            this.motorStatus.Name = "motorStatus";
-            this.motorStatus.Size = new System.Drawing.Size(83, 12);
-            this.motorStatus.TabIndex = 26;
-            this.motorStatus.Text = "Not Connected";
-            // 
-            // motorHandshakingcbx
-            // 
-            this.motorHandshakingcbx.FormattingEnabled = true;
-            this.motorHandshakingcbx.Location = new System.Drawing.Point(14, 235);
-            this.motorHandshakingcbx.Name = "motorHandshakingcbx";
-            this.motorHandshakingcbx.Size = new System.Drawing.Size(152, 20);
-            this.motorHandshakingcbx.TabIndex = 24;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label11.Location = new System.Drawing.Point(7, 220);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(77, 12);
-            this.label11.TabIndex = 23;
-            this.label11.Text = "HandShaking:";
-            // 
-            // motorDataBitsCbx
-            // 
-            this.motorDataBitsCbx.FormattingEnabled = true;
-            this.motorDataBitsCbx.Location = new System.Drawing.Point(14, 115);
-            this.motorDataBitsCbx.Name = "motorDataBitsCbx";
-            this.motorDataBitsCbx.Size = new System.Drawing.Size(152, 20);
-            this.motorDataBitsCbx.TabIndex = 11;
-            // 
-            // motorComListCbx
-            // 
-            this.motorComListCbx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.motorComListCbx.FormattingEnabled = true;
-            this.motorComListCbx.Location = new System.Drawing.Point(14, 35);
-            this.motorComListCbx.Name = "motorComListCbx";
-            this.motorComListCbx.Size = new System.Drawing.Size(152, 20);
-            this.motorComListCbx.TabIndex = 7;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label12.Location = new System.Drawing.Point(7, 20);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(65, 12);
-            this.label12.TabIndex = 8;
-            this.label12.Text = "Port Name:";
-            // 
-            // motorOpenCloseSpbtn
-            // 
-            this.motorOpenCloseSpbtn.Enabled = false;
-            this.motorOpenCloseSpbtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.motorOpenCloseSpbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.motorOpenCloseSpbtn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.motorOpenCloseSpbtn.Location = new System.Drawing.Point(14, 261);
-            this.motorOpenCloseSpbtn.Name = "motorOpenCloseSpbtn";
-            this.motorOpenCloseSpbtn.Size = new System.Drawing.Size(152, 36);
-            this.motorOpenCloseSpbtn.TabIndex = 17;
-            this.motorOpenCloseSpbtn.Text = "Open";
-            this.motorOpenCloseSpbtn.UseVisualStyleBackColor = true;
-            this.motorOpenCloseSpbtn.Click += new System.EventHandler(this.motorOpenCloseSpbtn_Click);
-            // 
-            // motorBaudRateCbx
-            // 
-            this.motorBaudRateCbx.FormattingEnabled = true;
-            this.motorBaudRateCbx.Location = new System.Drawing.Point(14, 75);
-            this.motorBaudRateCbx.Name = "motorBaudRateCbx";
-            this.motorBaudRateCbx.Size = new System.Drawing.Size(152, 20);
-            this.motorBaudRateCbx.TabIndex = 9;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label13.Location = new System.Drawing.Point(7, 180);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(47, 12);
-            this.label13.TabIndex = 16;
-            this.label13.Text = "Parity:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label14.Location = new System.Drawing.Point(7, 60);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(65, 12);
-            this.label14.TabIndex = 10;
-            this.label14.Text = "Baud Rate:";
-            // 
-            // motorParityCbx
-            // 
-            this.motorParityCbx.FormattingEnabled = true;
-            this.motorParityCbx.Location = new System.Drawing.Point(14, 195);
-            this.motorParityCbx.Name = "motorParityCbx";
-            this.motorParityCbx.Size = new System.Drawing.Size(152, 20);
-            this.motorParityCbx.TabIndex = 15;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label15.Location = new System.Drawing.Point(7, 100);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 12);
-            this.label15.TabIndex = 12;
-            this.label15.Text = "Data Bits:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label16.Location = new System.Drawing.Point(7, 140);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(65, 12);
-            this.label16.TabIndex = 14;
-            this.label16.Text = "Stop Bits:";
-            // 
-            // motorStopBitsCbx
-            // 
-            this.motorStopBitsCbx.FormattingEnabled = true;
-            this.motorStopBitsCbx.Location = new System.Drawing.Point(14, 155);
-            this.motorStopBitsCbx.Name = "motorStopBitsCbx";
-            this.motorStopBitsCbx.Size = new System.Drawing.Size(152, 20);
-            this.motorStopBitsCbx.TabIndex = 13;
             // 
             // groupBoxLaser
             // 
@@ -546,7 +366,7 @@
             // 
             // btn00
             // 
-            this.btn00.Location = new System.Drawing.Point(752, 21);
+            this.btn00.Location = new System.Drawing.Point(570, 21);
             this.btn00.Name = "btn00";
             this.btn00.Size = new System.Drawing.Size(75, 23);
             this.btn00.TabIndex = 25;
@@ -556,7 +376,7 @@
             // 
             // btn01
             // 
-            this.btn01.Location = new System.Drawing.Point(752, 44);
+            this.btn01.Location = new System.Drawing.Point(570, 44);
             this.btn01.Name = "btn01";
             this.btn01.Size = new System.Drawing.Size(75, 23);
             this.btn01.TabIndex = 26;
@@ -566,7 +386,7 @@
             // 
             // btn03
             // 
-            this.btn03.Location = new System.Drawing.Point(752, 67);
+            this.btn03.Location = new System.Drawing.Point(570, 67);
             this.btn03.Name = "btn03";
             this.btn03.Size = new System.Drawing.Size(75, 23);
             this.btn03.TabIndex = 27;
@@ -576,7 +396,7 @@
             // 
             // btn04
             // 
-            this.btn04.Location = new System.Drawing.Point(752, 91);
+            this.btn04.Location = new System.Drawing.Point(570, 91);
             this.btn04.Name = "btn04";
             this.btn04.Size = new System.Drawing.Size(75, 23);
             this.btn04.TabIndex = 28;
@@ -586,7 +406,7 @@
             // 
             // btn05
             // 
-            this.btn05.Location = new System.Drawing.Point(752, 114);
+            this.btn05.Location = new System.Drawing.Point(570, 114);
             this.btn05.Name = "btn05";
             this.btn05.Size = new System.Drawing.Size(75, 23);
             this.btn05.TabIndex = 29;
@@ -596,7 +416,7 @@
             // 
             // btn06
             // 
-            this.btn06.Location = new System.Drawing.Point(752, 137);
+            this.btn06.Location = new System.Drawing.Point(570, 137);
             this.btn06.Name = "btn06";
             this.btn06.Size = new System.Drawing.Size(75, 23);
             this.btn06.TabIndex = 30;
@@ -606,7 +426,7 @@
             // 
             // btn07
             // 
-            this.btn07.Location = new System.Drawing.Point(752, 160);
+            this.btn07.Location = new System.Drawing.Point(570, 160);
             this.btn07.Name = "btn07";
             this.btn07.Size = new System.Drawing.Size(75, 23);
             this.btn07.TabIndex = 31;
@@ -616,7 +436,7 @@
             // 
             // btn08
             // 
-            this.btn08.Location = new System.Drawing.Point(752, 182);
+            this.btn08.Location = new System.Drawing.Point(570, 182);
             this.btn08.Name = "btn08";
             this.btn08.Size = new System.Drawing.Size(75, 23);
             this.btn08.TabIndex = 32;
@@ -626,7 +446,7 @@
             // 
             // btn0B
             // 
-            this.btn0B.Location = new System.Drawing.Point(752, 230);
+            this.btn0B.Location = new System.Drawing.Point(570, 230);
             this.btn0B.Name = "btn0B";
             this.btn0B.Size = new System.Drawing.Size(75, 23);
             this.btn0B.TabIndex = 33;
@@ -636,7 +456,7 @@
             // 
             // btn75
             // 
-            this.btn75.Location = new System.Drawing.Point(752, 370);
+            this.btn75.Location = new System.Drawing.Point(664, 138);
             this.btn75.Name = "btn75";
             this.btn75.Size = new System.Drawing.Size(75, 23);
             this.btn75.TabIndex = 34;
@@ -646,7 +466,7 @@
             // 
             // btn09
             // 
-            this.btn09.Location = new System.Drawing.Point(752, 206);
+            this.btn09.Location = new System.Drawing.Point(570, 206);
             this.btn09.Name = "btn09";
             this.btn09.Size = new System.Drawing.Size(75, 23);
             this.btn09.TabIndex = 35;
@@ -656,7 +476,7 @@
             // 
             // btn74
             // 
-            this.btn74.Location = new System.Drawing.Point(752, 346);
+            this.btn74.Location = new System.Drawing.Point(664, 114);
             this.btn74.Name = "btn74";
             this.btn74.Size = new System.Drawing.Size(75, 23);
             this.btn74.TabIndex = 36;
@@ -666,7 +486,7 @@
             // 
             // btn0C
             // 
-            this.btn0C.Location = new System.Drawing.Point(752, 253);
+            this.btn0C.Location = new System.Drawing.Point(570, 253);
             this.btn0C.Name = "btn0C";
             this.btn0C.Size = new System.Drawing.Size(75, 23);
             this.btn0C.TabIndex = 37;
@@ -676,7 +496,7 @@
             // 
             // btn71
             // 
-            this.btn71.Location = new System.Drawing.Point(752, 276);
+            this.btn71.Location = new System.Drawing.Point(664, 44);
             this.btn71.Name = "btn71";
             this.btn71.Size = new System.Drawing.Size(75, 23);
             this.btn71.TabIndex = 38;
@@ -686,7 +506,7 @@
             // 
             // btn72
             // 
-            this.btn72.Location = new System.Drawing.Point(752, 299);
+            this.btn72.Location = new System.Drawing.Point(664, 67);
             this.btn72.Name = "btn72";
             this.btn72.Size = new System.Drawing.Size(75, 23);
             this.btn72.TabIndex = 39;
@@ -696,7 +516,7 @@
             // 
             // btn73
             // 
-            this.btn73.Location = new System.Drawing.Point(752, 322);
+            this.btn73.Location = new System.Drawing.Point(664, 90);
             this.btn73.Name = "btn73";
             this.btn73.Size = new System.Drawing.Size(75, 23);
             this.btn73.TabIndex = 40;
@@ -704,93 +524,13 @@
             this.btn73.UseVisualStyleBackColor = true;
             this.btn73.Click += new System.EventHandler(this.btn73_Click);
             // 
-            // btnC60
-            // 
-            this.btnC60.Location = new System.Drawing.Point(851, 43);
-            this.btnC60.Name = "btnC60";
-            this.btnC60.Size = new System.Drawing.Size(75, 23);
-            this.btnC60.TabIndex = 41;
-            this.btnC60.Text = "60 61";
-            this.btnC60.UseVisualStyleBackColor = true;
-            this.btnC60.Click += new System.EventHandler(this.btnC60_Click);
-            // 
-            // btn6062
-            // 
-            this.btn6062.Location = new System.Drawing.Point(851, 66);
-            this.btn6062.Name = "btn6062";
-            this.btn6062.Size = new System.Drawing.Size(75, 23);
-            this.btn6062.TabIndex = 42;
-            this.btn6062.Text = "60 62";
-            this.btn6062.UseVisualStyleBackColor = true;
-            this.btn6062.Click += new System.EventHandler(this.btn6062_Click);
-            // 
-            // btn6060
-            // 
-            this.btn6060.Location = new System.Drawing.Point(851, 21);
-            this.btn6060.Name = "btn6060";
-            this.btn6060.Size = new System.Drawing.Size(75, 23);
-            this.btn6060.TabIndex = 43;
-            this.btn6060.Text = "60 60";
-            this.btn6060.UseVisualStyleBackColor = true;
-            this.btn6060.Click += new System.EventHandler(this.btn6060_Click);
-            // 
-            // btn6055
-            // 
-            this.btn6055.Location = new System.Drawing.Point(851, 91);
-            this.btn6055.Name = "btn6055";
-            this.btn6055.Size = new System.Drawing.Size(75, 23);
-            this.btn6055.TabIndex = 44;
-            this.btn6055.Text = "60 55 60";
-            this.btn6055.UseVisualStyleBackColor = true;
-            this.btn6055.Click += new System.EventHandler(this.btn6055_Click);
-            // 
-            // btn6055A0
-            // 
-            this.btn6055A0.Location = new System.Drawing.Point(851, 114);
-            this.btn6055A0.Name = "btn6055A0";
-            this.btn6055A0.Size = new System.Drawing.Size(75, 23);
-            this.btn6055A0.TabIndex = 45;
-            this.btn6055A0.Text = "60 55 A0";
-            this.btn6055A0.UseVisualStyleBackColor = true;
-            this.btn6055A0.Click += new System.EventHandler(this.btn6055A0_Click);
-            // 
-            // btn605500
-            // 
-            this.btn605500.Location = new System.Drawing.Point(851, 138);
-            this.btn605500.Name = "btn605500";
-            this.btn605500.Size = new System.Drawing.Size(75, 23);
-            this.btn605500.TabIndex = 46;
-            this.btn605500.Text = "60 55 00";
-            this.btn605500.UseVisualStyleBackColor = true;
-            this.btn605500.Click += new System.EventHandler(this.btn605500_Click);
-            // 
-            // btn605561
-            // 
-            this.btn605561.Location = new System.Drawing.Point(851, 161);
-            this.btn605561.Name = "btn605561";
-            this.btn605561.Size = new System.Drawing.Size(75, 23);
-            this.btn605561.TabIndex = 47;
-            this.btn605561.Text = "60 55 61";
-            this.btn605561.UseVisualStyleBackColor = true;
-            this.btn605561.Click += new System.EventHandler(this.btn605561_Click);
-            // 
-            // btn605562
-            // 
-            this.btn605562.Location = new System.Drawing.Point(851, 184);
-            this.btn605562.Name = "btn605562";
-            this.btn605562.Size = new System.Drawing.Size(75, 23);
-            this.btn605562.TabIndex = 48;
-            this.btn605562.Text = "60 55 62";
-            this.btn605562.UseVisualStyleBackColor = true;
-            this.btn605562.Click += new System.EventHandler(this.btn605562_Click);
-            // 
             // autoReceiverTimer
             // 
             this.autoReceiverTimer.Tick += new System.EventHandler(this.autoReceiverTimer_Tick);
             // 
             // btn70
             // 
-            this.btn70.Location = new System.Drawing.Point(833, 276);
+            this.btn70.Location = new System.Drawing.Point(664, 21);
             this.btn70.Name = "btn70";
             this.btn70.Size = new System.Drawing.Size(75, 23);
             this.btn70.TabIndex = 49;
@@ -804,14 +544,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 405);
             this.Controls.Add(this.btn70);
-            this.Controls.Add(this.btn605562);
-            this.Controls.Add(this.btn605561);
-            this.Controls.Add(this.btn605500);
-            this.Controls.Add(this.btn6055A0);
-            this.Controls.Add(this.btn6055);
-            this.Controls.Add(this.btn6060);
-            this.Controls.Add(this.btn6062);
-            this.Controls.Add(this.btnC60);
             this.Controls.Add(this.btn73);
             this.Controls.Add(this.btn72);
             this.Controls.Add(this.btn71);
@@ -829,14 +561,11 @@
             this.Controls.Add(this.btn01);
             this.Controls.Add(this.btn00);
             this.Controls.Add(this.groupBoxLaser);
-            this.Controls.Add(this.groupBoxMotor);
             this.Controls.Add(this.groupBox1);
             this.Name = "SerialPortDebugForm";
             this.Text = "SerialPortDebugForm";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBoxMotor.ResumeLayout(false);
-            this.groupBoxMotor.PerformLayout();
             this.groupBoxLaser.ResumeLayout(false);
             this.groupBoxLaser.PerformLayout();
             this.ResumeLayout(false);
@@ -857,21 +586,6 @@
         private System.Windows.Forms.Button sendbtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBoxMotor;
-        private System.Windows.Forms.Label motorStatus;
-        private System.Windows.Forms.ComboBox motorHandshakingcbx;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox motorDataBitsCbx;
-        private System.Windows.Forms.ComboBox motorComListCbx;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button motorOpenCloseSpbtn;
-        private System.Windows.Forms.ComboBox motorBaudRateCbx;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox motorParityCbx;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ComboBox motorStopBitsCbx;
         private System.Windows.Forms.GroupBox groupBoxLaser;
         private System.Windows.Forms.Label laserStatus;
         private System.Windows.Forms.ComboBox laserHandshakingcbx;
@@ -904,14 +618,6 @@
         private System.Windows.Forms.Button btn71;
         private System.Windows.Forms.Button btn72;
         private System.Windows.Forms.Button btn73;
-        private System.Windows.Forms.Button btnC60;
-        private System.Windows.Forms.Button btn6062;
-        private System.Windows.Forms.Button btn6060;
-        private System.Windows.Forms.Button btn6055;
-        private System.Windows.Forms.Button btn6055A0;
-        private System.Windows.Forms.Button btn605500;
-        private System.Windows.Forms.Button btn605561;
-        private System.Windows.Forms.Button btn605562;
         private System.Windows.Forms.Timer autoReceiverTimer;
         private System.Windows.Forms.Button btn70;
     }

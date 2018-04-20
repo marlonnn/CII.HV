@@ -229,6 +229,7 @@
     <Compile Include="Report\ReportPictureItem.cs" />
     <Compile Include="Res\LaserAlignment.Designer.cs" />
     <Compile Include="Res\LaserCtrl.Designer.cs" />
+    <Compile Include="SerialPortCommunication.cs" />
     <Compile Include="SerialPortHelper.cs" />
     <Compile Include="SerialPortModel.cs" />
     <Compile Include="SysClass\AllPatients.cs" />

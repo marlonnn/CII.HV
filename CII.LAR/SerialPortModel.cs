@@ -154,59 +154,6 @@ namespace CII.LAR
             }
         }
 
-        private byte[] Check88Data(byte[] srcBytes)
-        {
-            List<int> indexs = new List<int>();
-
-            if (srcBytes != null && srcBytes.Length > 10)
-            {
-                for (int i = 10; i < srcBytes.Length - 2; i++)
-                {
-                    if (srcBytes[i] == 0x88 && srcBytes[i -1] == 0x5D)
-                    {
-                        indexs.Add(i);
-                    }
-                }
-            }
-
-            List<byte> bs = new List<byte>(srcBytes);
-            foreach (int index in indexs)
-            {
-                bs.RemoveAt(index);
-            }
-            return bs.ToArray();
-        }
-
-        /// <summary>
-        /// 数据有效性检查，包含CRC16校验
-        /// </summary>
-        /// <param name="srcBytes"></param>
-        /// <returns></returns>
-        private bool CheckDataValidate(byte[] srcBytes)
-        {
-            bool validate = false;
-            int length = srcBytes.Length;
-            if (srcBytes[0] == 0x5D && srcBytes[1] == 0x5B && srcBytes[length - 1] == 0x5D && srcBytes[length - 2] == 0x5D)
-            {
-                Byte uchCRCHi = 0xFF;            /*  High CRC Byte initialize */
-                Byte uchCRCLo = 0xFF;            /*  Low CRC Byte initialize  */
-                int uIndex;                      /*  CRC loop index */
-                for (int i = 2; i < srcBytes.Length - 4; i++)
-                {
-                    uIndex = uchCRCHi ^ srcBytes[i];
-                    uchCRCHi = (Byte)(uchCRCLo ^ CRC16.auchCRCHi[uIndex]);
-                    uchCRCLo = CRC16.auchCRCLo[uIndex];
-                }
-                var crc = (UInt16)(uchCRCLo << 8 | uchCRCHi);
-                byte[] crc16 = BitConverter.GetBytes(crc);
-                if (crc16[0] == srcBytes[length - 4] && crc16[1] == srcBytes[length - 3])
-                {
-                    validate = true;
-                }
-            }
-            return validate;
-        }
-
         /// <summary>
         /// 数据完整性检查
         /// </summary>
@@ -298,77 +245,6 @@ namespace CII.LAR
                 }
             }
             return rawData;
-        }
-
-        /// <summary>
-        /// 数据完整性检查
-        /// </summary>
-        /// <param name="srcBytes"></param>
-        /// <param name="length"></param>
-        /// <returns></returns>
-        private List<byte[]> CheckCIIData(byte[] srcBytes, int length)
-        {
-            if (srcBytes != null && length > 4)
-            {
-                List<byte[]> reBytes = new List<byte[]>();
-                if (srcBytes[0] == 0x5D && srcBytes[1] == 0x5B && srcBytes[length - 1] == 0x5D && srcBytes[length - 2] == 0x5D)
-                {
-                    reBytes.Add(srcBytes);
-                    return reBytes;
-                }
-                else if ((srcBytes[0] == 0x5D && srcBytes[1] == 0x5B) && (srcBytes[length - 1] != 0x5D && srcBytes[length - 2] != 0x5D))
-                {
-                    motorBuffer = new byte[length];
-                    Array.Copy(srcBytes, 0, motorBuffer, 0, length);
-                    return null;
-                }
-                else if ((srcBytes[0] != 0x5D && srcBytes[1] != 0x5B) && (srcBytes[length - 1] == 0x5D && srcBytes[length - 2] == 0x5D))
-                {
-                    int count = 0;
-                    for (int i = 0; i < length; i++)
-                    {
-                        if (srcBytes[i] == 0x5D)
-                        {
-                            if (i + 1 < length)
-                            {
-                                if (srcBytes[i + 1] == 0x5D)
-                                {
-                                    count = i;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    if (count + 2 == length)
-                    {
-                        byte[] newBytes = new byte[motorBuffer.Length + length];
-                        Array.Copy(motorBuffer, 0, newBytes, 0, motorBuffer.Length);
-                        Array.Copy(srcBytes, 0, newBytes, motorBuffer.Length, length);
-                        reBytes.Add(newBytes);
-                    }
-                    else if (count + 2 < length)
-                    {
-                        int index = count + 1;
-                        byte[] newBytes1 = new byte[motorBuffer.Length + index + 1];
-                        Array.Copy(motorBuffer, 0, newBytes1, 0, motorBuffer.Length);
-                        Array.Copy(srcBytes, 0, newBytes1, motorBuffer.Length, index + 1);
-
-                        byte[] newBytes2 = new byte[length - (index + 1)];
-                        Array.Copy(srcBytes, index + 1, newBytes2, 0, newBytes2.Length);
-                        reBytes.Add(newBytes1);
-                        reBytes.Add(newBytes2);
-                    }
-                    return reBytes;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else
-            {
-                return null;
-            }
         }
 
         /// <summary>

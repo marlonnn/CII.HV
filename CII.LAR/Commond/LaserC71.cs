@@ -37,20 +37,21 @@ namespace CII.LAR.Commond
             this.Type = 0x71;
         }
 
-        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
+        public override LaserBaseResponse Decode(OriginalBytes obytes)
         {
-            base.Decode(bp, obytes);
-            if (CheckResponse(obytes.Data))
-            {
-                LaserC71Response c71Response = new LaserC71Response();
-                c71Response.DtTime = DateTime.Now;
-                c71Response.OriginalBytes = obytes;
-                return CreateOneList(c71Response);
-            }
-            else
-            {
-                return null;
-            }
+            base.Decode(obytes);
+            return this;
         }
+
+        public override string ToString()
+        {
+            string ret = "";
+            if (this != null)
+            {
+                ret = PrintOriginalData() + "\n";
+            }
+            return ret;
+        }
+
     }
 }

@@ -44,16 +44,24 @@ namespace CII.LAR.Commond
             this.Type = 0x03;
         }
 
-        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
+        public override LaserBaseResponse Decode(OriginalBytes obytes)
         {
-            base.Decode(bp, obytes);
-
-            LaserC03Response c03Response = new LaserC03Response();
-            c03Response.DtTime = DateTime.Now;
-            c03Response.OriginalBytes = obytes;
+            base.Decode(obytes);
+            this.DtTime = DateTime.Now;
+            this.OriginalBytes = obytes;
             //aa*128 + bb = T 温度数字量 (data) T = data / 81.72 (℃)
-            c03Response.Temperature = (obytes.Data[1] * 128 + obytes.Data[2]) / 81.72;
-            return CreateOneList(c03Response);
+            this.Temperature = (obytes.Data[1] * 128 + obytes.Data[2]) / 81.72;
+            return this;
+        }
+
+        public override string ToString()
+        {
+            string ret = "";
+            if (this != null)
+            {
+                ret = PrintOriginalData() + "\n" + string.Format("1480激光器温度： {0}", this.Temperature);
+            }
+            return ret;
         }
     }
 }

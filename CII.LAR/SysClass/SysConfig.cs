@@ -359,38 +359,29 @@ namespace CII.LAR.SysClass
         {
             foreach (Control c in ctr.Controls)
             {
-                //resources.ApplyResources(c, c.Name);
-                //ControlCtrl control = c as ControlCtrl;
-                //if (control != null)
-                //{
-                //    control.RefreshUI();
-                //}
-                //RefreshUICulture(resources, c);
+                resources.ApplyResources(c, c.Name);
+                RefreshUICulture(resources, c);
 
-                //if (c is ToolStripButton)
-                //{
-                //    RefreshBaseItemsUICulture(resources, (c as ToolStripButton).Items);
-                //}
-                //else  if (c is RibbonBar)
-                //{
-                //    RefreshBaseItemsUICulture(resources, (c as RibbonBar).Items);
-                //}
-                //else if (c is RibbonControl)
-                //{
-                //    RefreshBaseItemsUICulture(resources, (c as RibbonControl).Items);
-                //}
-                //else if (c is Bar)
-                //{
-                //    RefreshBaseItemsUICulture(resources, (c as Bar).Items);
-                //}
-                //else if (c is ButtonX)
-                //{
-                //    RefreshBaseItemsUICulture(resources, (c as ButtonX).SubItems);
-                //}
-                //else if (c is ToolStrip)
-                //{
-                //    RefreshToolStripUICulture(resources, (c as ToolStrip).Items);
-                //}
+                if (c is RibbonBar)
+                {
+                    RefreshBaseItemsUICulture(resources, (c as RibbonBar).Items);
+                }
+                else if (c is RibbonControl)
+                {
+                    RefreshBaseItemsUICulture(resources, (c as RibbonControl).Items);
+                }
+                else if (c is Bar)
+                {
+                    RefreshBaseItemsUICulture(resources, (c as Bar).Items);
+                }
+                else if (c is ButtonX)
+                {
+                    RefreshBaseItemsUICulture(resources, (c as ButtonX).SubItems);
+                }
+                else if (c is ToolStrip)
+                {
+                    RefreshToolStripUICulture(resources, (c as ToolStrip).Items);
+                }
             }
         }
 

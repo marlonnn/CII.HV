@@ -56,25 +56,25 @@ namespace CII.LAR.Commond
             this.Type = 0x06;
         }
 
-        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
+        public override LaserBaseResponse Decode(OriginalBytes obytes)
         {
-            base.Decode(bp, obytes);
-            if (CheckResponse(obytes.Data))
-            {
-                LaserC06Response c06Response = new LaserC06Response();
-                c06Response.DtTime = DateTime.Now;
-                c06Response.OriginalBytes = obytes;
-                //aa*128 + bb 最小脉冲宽度 T = data * 10 (单位ns)
-                c06Response.MinimumPulseWidth = (obytes.Data[1] * 128 + obytes.Data[2]) * 10;
-                //cc*128 + dd 最大脉冲宽度 T = data * 10 (单位ns)
-                c06Response.MaxmumPulseWidth = (obytes.Data[3] * 128 + obytes.Data[4]) * 10;
-                return CreateOneList(c06Response);
-            }
-            else
-            {
-                return null;
-            }
+            base.Decode(obytes);
+            //aa*128 + bb 最小脉冲宽度 T = data(单位ns)
+            this.MinimumPulseWidth = obytes.Data[1] * 128 + obytes.Data[2];
+            //cc*128 + dd 最大脉冲宽度 T = data(单位ns)
+            this.MaxmumPulseWidth = obytes.Data[3] * 128 + obytes.Data[4];
+            return this;
 
+        }
+
+        public override string ToString()
+        {
+            string ret = "";
+            if (this != null)
+            {
+                ret = PrintOriginalData() + "\n" + string.Format("1480激光最小脉宽： {0}us， 最大脉宽： {1}us", this.MinimumPulseWidth, this.MaxmumPulseWidth);
+            }
+            return ret;
         }
     }
 }

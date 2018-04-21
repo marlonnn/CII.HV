@@ -16,6 +16,16 @@ namespace CII.LAR.SysClass
     [Serializable]
     public class LaserConfig
     {
+        /// <summary>
+        /// LD对应电流设定系数
+        /// </summary>
+        private float cof;
+        public float COF
+        {
+            get { return this.cof; }
+            set { this.cof = value; }
+        }
+
         //当前红光电流设定值 mA
         private double redCurrent;
         public double RedCurrent
@@ -85,6 +95,7 @@ namespace CII.LAR.SysClass
             pulseWidth = 0.5f;
             this.FinalMatrix = Matrix<double>.Build.Dense(3, 3);
             InitializeHolePulsePoints();
+            this.cof = 4934F;
         }
 
         public void UpdatePulseWidth(float value)

@@ -117,13 +117,14 @@ namespace CII.LAR.UI
             this.Title = global::CII.LAR.Properties.Resources.StrSetting;
             resources.ApplyResources(this.labelItemLanguage, labelItemLanguage.Name);
             resources.ApplyResources(this.labelItemStoragePath, labelItemStoragePath.Name);
+            resources.ApplyResources(this.lense, lense.Name);
+            resources.ApplyResources(this.labelItem1, labelItem1.Name);
             resources.ApplyResources(this.labelItemCamera, labelItemCamera.Name);
             resources.ApplyResources(this.lblConnectedInfo, lblConnectedInfo.Name);
             resources.ApplyResources(this.lblLaser, lblLaser.Name);
             resources.ApplyResources(this.lblSimulator, lblSimulator.Name);
             resources.ApplyResources(this.lense, lense.Name);
-            //resources.ApplyResources(this.btnDelete, btnDelete.Name);
-            resources.ApplyResources(this.labelItemScale, labelItemScale.Text);
+            resources.ApplyResources(this.labelItemScale, labelItemScale.Name);
             //this.itemContainer2.Refresh();
             foreach (var ctrl in this.Controls)
             {

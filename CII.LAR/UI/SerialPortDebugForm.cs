@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,52 +17,36 @@ namespace CII.LAR.UI
     /// <summary>
     /// 串口调试窗口
     /// </summary>
-    public partial class SerialPortDebugForm : Form, IView
+    public partial class SerialPortDebugForm : Form
     {
-        private IController controller;
-        public IController Controller
-        {
-            get { return this.controller; }
-            set { this.controller = value; }
-        }
-
-        private LaserProtocolFactory laserProtocolFactory;
-        public LaserProtocolFactory LaserProtocolFactory
-        {
-            get { return this.laserProtocolFactory; }
-            private set { this.laserProtocolFactory = value; }
-        }
-
-        private MotorProtocolFactory motorProtocolFactory;
-        public MotorProtocolFactory MotorProtocolFactory
-        {
-            get { return this.motorProtocolFactory; }
-            private set { this.motorProtocolFactory = value; }
-        }
+        private SerialPortCommunication serialPortCom;
 
         public SerialPortDebugForm()
         {
             InitializeComponent();
             InitializeLaserCOMCombox();
-            InitializeLaserProtocolFactory();
             this.Load += SerialPortDebugForm_Load;
             this.FormClosing += SerialPortDebugForm_FormClosing;
         }
 
         private void SerialPortDebugForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.autoReceiverTimer.Enabled = false;
             this.autoSendTimer.Enabled = false;
-        }
-
-        private void InitializeLaserProtocolFactory()
-        {
-            LaserProtocolFactory = LaserProtocolFactory.GetInstance();
+            serialPortCom.Close();
         }
 
         private void SerialPortDebugForm_Load(object sender, EventArgs e)
         {
-            this.autoReceiverTimer.Enabled = true;
+            serialPortCom = SerialPortCommunication.GetInstance();
+            serialPortCom.ComOpenEvent += LaserOpenComEvent;
+            serialPortCom.ComCloseEvent += LaserCloseComEvent;
+            serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
+        }
+
+        private void SerialDataReceivedHandler(LaserBaseResponse baseResponse)
+        {
+            if (baseResponse != null)
+                textBox.AppendText(baseResponse.ToString());
         }
 
         /// <summary>
@@ -157,11 +142,6 @@ namespace CII.LAR.UI
             }
         }
 
-        public void SetController(IController controller)
-        {
-            this.controller = controller;
-        }
-
         public void LaserOpenComEvent(object sender, SerialPortEventArgs e)
         {
             if (this.InvokeRequired)
@@ -221,142 +201,132 @@ namespace CII.LAR.UI
         {
             if (laserOpenCloseSpbtn.Text == "Open")
             {
-                if (controller != null)
+                if (serialPortCom != null)
                 {
-                    controller.OpenLaserSerialPort(laserComListCbx.Text, laserBaudRateCbx.Text,
+                    serialPortCom.SerialPortOpen(laserComListCbx.Text, laserBaudRateCbx.Text,
                         laserDataBitsCbx.Text, laserStopBitsCbx.Text, laserParityCbx.Text, laserHandshakingcbx.Text);
                 }
             }
             else
             {
-                if (controller != null)
+                if (serialPortCom != null)
                 {
-                    controller.CloseLaserSerialPort();
+                    serialPortCom.Close();
                 }
             }
+        }
+
+        private void Send(LaserBaseRequest br)
+        {
+            var bytes = LaserProtocolFactory.GetInstance().LaserProtocol.EnPackage(br.Encode()[0]);
+            SendData(bytes);
         }
 
         private void btn00_Click(object sender, EventArgs e)
         {
-            LaserProtocolFactory.SendMessage(new LaserC00Request());
+            var c00 = new LaserC00Request();
+            Send(c00);
         }
 
         private void btn01_Click(object sender, EventArgs e)
         {
-            LaserProtocolFactory.SendMessage(new LaserC01Request());
+            var c01 = new LaserC01Request();
+            Send(c01);
         }
 
         private void btn03_Click(object sender, EventArgs e)
         {
-            LaserProtocolFactory.SendMessage(new LaserC03Request());
+            var c03 = new LaserC03Request();
+            Send(c03);
         }
 
         private void btn04_Click(object sender, EventArgs e)
         {
-            LaserProtocolFactory.SendMessage(new LaserC04Request());
+            var c04 = new LaserC04Request();
+            Send(c04);
         }
 
         private void btn05_Click(object sender, EventArgs e)
         {
-            LaserProtocolFactory.SendMessage(new LaserC05Request());
+            var c05 = new LaserC05Request();
+            Send(c05);
         }
 
         private void btn06_Click(object sender, EventArgs e)
         {
-            LaserProtocolFactory.SendMessage(new LaserC06Request());
+            var c06 = new LaserC06Request();
+            Send(c06);
         }
 
         private void btn07_Click(object sender, EventArgs e)
         {
-            LaserProtocolFactory.SendMessage(new LaserC07Request());
+            var c07 = new LaserC07Request();
+            Send(c07);
         }
 
         private void btn08_Click(object sender, EventArgs e)
         {
-            LaserProtocolFactory.SendMessage(new LaserC08Request());
+            var c08 = new LaserC08Request();
+            Send(c08);
         }
 
         private void btn0B_Click(object sender, EventArgs e)
         {
-            LaserProtocolFactory.SendMessage(new LaserC0BRequest());
+             var c0b = new LaserC0BRequest();
+            Send(c0b);
         }
 
         private void btn75_Click(object sender, EventArgs e)
         {
-            LaserProtocolFactory.SendMessage(new LaserC75Request(3));
+            var c75 = new LaserC75Request(3);
+            Send(c75);
         }
 
         private void btn09_Click(object sender, EventArgs e)
         {
-            LaserProtocolFactory.SendMessage(new LaserC09Request());
-        }
-
-        private void btn74_Click(object sender, EventArgs e)
-        {
-            LaserProtocolFactory.SendMessage(new LaserC74Request(0x01));
+            var c09 = new LaserC09Request();
+            Send(c09);
         }
 
         private void btn0C_Click(object sender, EventArgs e)
         {
-            LaserProtocolFactory.SendMessage(new LaserC0CRequest());
+            var c0c = new LaserC0CRequest();
+            Send(c0c);
+        }
+        private void btn70_Click(object sender, EventArgs e)
+        {
+            var c70 = new LaserC70Request();
+            var bytes = LaserProtocolFactory.GetInstance().LaserProtocol.EnPackage(c70.Encode()[0]);
+            SendData(bytes);
         }
 
         private void btn71_Click(object sender, EventArgs e)
         {
-            LaserProtocolFactory.SendMessage(new LaserC71Request());
-        }
-
-        private void btn73_Click(object sender, EventArgs e)
-        {
-            LaserProtocolFactory.SendMessage(new LaserC73Request(100));
+            var c71 = new LaserC71Request();
+            Send(c71);
         }
 
         private void btn72_Click(object sender, EventArgs e)
         {
-            LaserProtocolFactory.SendMessage(new LaserC72Request(20));
+            var c72 = new LaserC72Request(20);
         }
 
-        private void autoReceiverTimer_Tick(object sender, EventArgs e)
+        private void btn73_Click(object sender, EventArgs e)
         {
-            if (LaserProtocolFactory.GetInstance().RxQueue != null)
-            {
-                List<Original> bytes = LaserProtocolFactory.GetInstance().RxQueue.PopAll();
-                if (bytes != null && bytes.Count > 0)
-                {
-                    foreach (var o in bytes)
-                    {
-                        OriginalBytes originalBytes = o as OriginalBytes;
-                        if (originalBytes != null)
-                        {
-                            if (receivetbx.Text.Length > 0)
-                            {
-                                receivetbx.AppendText("-");
-                            }
-                            receivetbx.AppendText(IController.Bytes2Hex(originalBytes.Data));
-                        }
-                    }
-                }
-            }
+            var c73 = new LaserC73Request(100);
+        }
 
-            if (MotorProtocolFactory.GetInstance().RxQueue != null)
+        private void btn74_Click(object sender, EventArgs e)
+        {
+            var c74 = new LaserC74Request(0x01);
+            var bps = c74.Encode();
+            List<byte[]> bytes = new List<byte[]>();
+            foreach (var b in bps)
             {
-                List<Original> bytes = MotorProtocolFactory.GetInstance().RxQueue.PopAll();
-                if (bytes != null && bytes.Count > 0)
-                {
-                    foreach (var o in bytes)
-                    {
-                        OriginalBytes originalBytes = o as OriginalBytes;
-                        if (originalBytes != null)
-                        {
-                            if (receivetbx.Text.Length > 0)
-                            {
-                                receivetbx.AppendText("-");
-                            }
-                            receivetbx.AppendText(IController.Bytes2Hex(originalBytes.Data));
-                        }
-                    }
-                }
+                var data = LaserProtocolFactory.GetInstance().LaserProtocol.EnPackage(b);
+                bytes.Add(data);
             }
+            SendData(bytes);
         }
 
         private void clearReceivebtn_Click(object sender, EventArgs e)
@@ -364,9 +334,89 @@ namespace CII.LAR.UI
             receivetbx.Clear();
         }
 
-        private void btn70_Click(object sender, EventArgs e)
+        private void slider_MouseUp(object sender, MouseEventArgs e)
         {
-            LaserProtocolFactory.SendMessage(new LaserC70Request());
+            var c75 = new LaserC75Request(this.slider.Value);
+            var bps = c75.Encode();
+            List<byte[]> bytes = new List<byte[]>();
+            foreach (var b in bps)
+            {
+                var data = LaserProtocolFactory.GetInstance().LaserProtocol.EnPackage(b);
+                bytes.Add(data);
+            }
+            SendData(bytes);
+        }
+
+        private void slider_ValueChanged(object sender, EventArgs e)
+        {
+            this.slider.Text = slider.Value.ToString();
+        }
+
+        private void SendData(byte[] data)
+        {
+            if (sendtbx.Text.Length > 0)
+            {
+                sendtbx.AppendText("\n");
+            }
+            if (data != null)
+            {
+                sendtbx.AppendText(IController.Bytes2Hex(data));
+            }
+            serialPortCom.SendData(data);
+            Thread.Sleep(100);
+            if (serialPortCom.FinalData != null)
+            {
+                if (receivetbx.Text.Length > 0)
+                {
+                    receivetbx.AppendText("\n");
+                }
+                if (serialPortCom.FinalData != null)
+                {
+                    receivetbx.AppendText(IController.Bytes2Hex(serialPortCom.FinalData));
+                }
+            }
+        }
+
+        private void SendData(List<byte[]> dataList)
+        {
+            if (sendtbx.Text.Length > 0)
+            {
+                sendtbx.AppendText("\n");
+            }
+            if (dataList != null)
+            {
+                foreach (var d in dataList)
+                {
+                    sendtbx.AppendText(IController.Bytes2Hex(d));
+                    if (sendtbx.Text.Length > 0)
+                    {
+                        sendtbx.AppendText("-");
+                    }
+                }
+            }
+            serialPortCom.SendData(dataList);
+            Thread.Sleep(100);
+            if (serialPortCom.FinalData != null)
+            {
+                if (receivetbx.Text.Length > 0)
+                {
+                    receivetbx.AppendText("\n");
+                }
+                if (serialPortCom.FinalData != null)
+                {
+                    receivetbx.AppendText(IController.Bytes2Hex(serialPortCom.FinalData));
+                }
+            }
+        }
+
+        private void clearSendbtn_Click(object sender, EventArgs e)
+        {
+            sendtbx.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            textBox.Clear();
         }
     }
 }

@@ -72,8 +72,11 @@
             this.btn71 = new System.Windows.Forms.Button();
             this.btn72 = new System.Windows.Forms.Button();
             this.btn73 = new System.Windows.Forms.Button();
-            this.autoReceiverTimer = new System.Windows.Forms.Timer(this.components);
             this.btn70 = new System.Windows.Forms.Button();
+            this.slider = new DevComponents.DotNetBar.Controls.Slider();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxLaser.SuspendLayout();
             this.SuspendLayout();
@@ -151,6 +154,7 @@
             this.clearSendbtn.TabIndex = 10;
             this.clearSendbtn.Text = "Clear";
             this.clearSendbtn.UseVisualStyleBackColor = true;
+            this.clearSendbtn.Click += new System.EventHandler(this.clearSendbtn_Click);
             // 
             // receivetbx
             // 
@@ -436,7 +440,7 @@
             // 
             // btn08
             // 
-            this.btn08.Location = new System.Drawing.Point(570, 182);
+            this.btn08.Location = new System.Drawing.Point(651, 21);
             this.btn08.Name = "btn08";
             this.btn08.Size = new System.Drawing.Size(75, 23);
             this.btn08.TabIndex = 32;
@@ -446,7 +450,7 @@
             // 
             // btn0B
             // 
-            this.btn0B.Location = new System.Drawing.Point(570, 230);
+            this.btn0B.Location = new System.Drawing.Point(651, 69);
             this.btn0B.Name = "btn0B";
             this.btn0B.Size = new System.Drawing.Size(75, 23);
             this.btn0B.TabIndex = 33;
@@ -456,7 +460,7 @@
             // 
             // btn75
             // 
-            this.btn75.Location = new System.Drawing.Point(664, 138);
+            this.btn75.Location = new System.Drawing.Point(741, 138);
             this.btn75.Name = "btn75";
             this.btn75.Size = new System.Drawing.Size(75, 23);
             this.btn75.TabIndex = 34;
@@ -466,7 +470,7 @@
             // 
             // btn09
             // 
-            this.btn09.Location = new System.Drawing.Point(570, 206);
+            this.btn09.Location = new System.Drawing.Point(651, 45);
             this.btn09.Name = "btn09";
             this.btn09.Size = new System.Drawing.Size(75, 23);
             this.btn09.TabIndex = 35;
@@ -476,7 +480,7 @@
             // 
             // btn74
             // 
-            this.btn74.Location = new System.Drawing.Point(664, 114);
+            this.btn74.Location = new System.Drawing.Point(741, 114);
             this.btn74.Name = "btn74";
             this.btn74.Size = new System.Drawing.Size(75, 23);
             this.btn74.TabIndex = 36;
@@ -486,7 +490,7 @@
             // 
             // btn0C
             // 
-            this.btn0C.Location = new System.Drawing.Point(570, 253);
+            this.btn0C.Location = new System.Drawing.Point(651, 92);
             this.btn0C.Name = "btn0C";
             this.btn0C.Size = new System.Drawing.Size(75, 23);
             this.btn0C.TabIndex = 37;
@@ -496,7 +500,7 @@
             // 
             // btn71
             // 
-            this.btn71.Location = new System.Drawing.Point(664, 44);
+            this.btn71.Location = new System.Drawing.Point(741, 44);
             this.btn71.Name = "btn71";
             this.btn71.Size = new System.Drawing.Size(75, 23);
             this.btn71.TabIndex = 38;
@@ -506,7 +510,7 @@
             // 
             // btn72
             // 
-            this.btn72.Location = new System.Drawing.Point(664, 67);
+            this.btn72.Location = new System.Drawing.Point(741, 67);
             this.btn72.Name = "btn72";
             this.btn72.Size = new System.Drawing.Size(75, 23);
             this.btn72.TabIndex = 39;
@@ -516,7 +520,7 @@
             // 
             // btn73
             // 
-            this.btn73.Location = new System.Drawing.Point(664, 90);
+            this.btn73.Location = new System.Drawing.Point(741, 90);
             this.btn73.Name = "btn73";
             this.btn73.Size = new System.Drawing.Size(75, 23);
             this.btn73.TabIndex = 40;
@@ -524,13 +528,9 @@
             this.btn73.UseVisualStyleBackColor = true;
             this.btn73.Click += new System.EventHandler(this.btn73_Click);
             // 
-            // autoReceiverTimer
-            // 
-            this.autoReceiverTimer.Tick += new System.EventHandler(this.autoReceiverTimer_Tick);
-            // 
             // btn70
             // 
-            this.btn70.Location = new System.Drawing.Point(664, 21);
+            this.btn70.Location = new System.Drawing.Point(741, 21);
             this.btn70.Name = "btn70";
             this.btn70.Size = new System.Drawing.Size(75, 23);
             this.btn70.TabIndex = 49;
@@ -538,11 +538,63 @@
             this.btn70.UseVisualStyleBackColor = true;
             this.btn70.Click += new System.EventHandler(this.btn70_Click);
             // 
+            // slider
+            // 
+            // 
+            // 
+            // 
+            this.slider.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.slider.Location = new System.Drawing.Point(629, 344);
+            this.slider.Maximum = 82;
+            this.slider.Name = "slider";
+            this.slider.Size = new System.Drawing.Size(251, 23);
+            this.slider.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.slider.TabIndex = 50;
+            this.slider.Text = "1";
+            this.slider.Value = 1;
+            this.slider.ValueChanged += new System.EventHandler(this.slider_ValueChanged);
+            this.slider.MouseUp += new System.Windows.Forms.MouseEventHandler(this.slider_MouseUp);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(567, 350);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(59, 12);
+            this.label10.TabIndex = 51;
+            this.label10.Text = "Red Laser";
+            // 
+            // textBox
+            // 
+            this.textBox.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox.ForeColor = System.Drawing.SystemColors.Info;
+            this.textBox.Location = new System.Drawing.Point(563, 219);
+            this.textBox.Multiline = true;
+            this.textBox.Name = "textBox";
+            this.textBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox.Size = new System.Drawing.Size(354, 98);
+            this.textBox.TabIndex = 52;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(840, 191);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(58, 25);
+            this.button1.TabIndex = 53;
+            this.button1.Text = "Clear";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // SerialPortDebugForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 405);
+            this.ClientSize = new System.Drawing.Size(927, 405);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox);
+            this.Controls.Add(this.slider);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.btn70);
             this.Controls.Add(this.btn73);
             this.Controls.Add(this.btn72);
@@ -569,6 +621,7 @@
             this.groupBoxLaser.ResumeLayout(false);
             this.groupBoxLaser.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -618,7 +671,10 @@
         private System.Windows.Forms.Button btn71;
         private System.Windows.Forms.Button btn72;
         private System.Windows.Forms.Button btn73;
-        private System.Windows.Forms.Timer autoReceiverTimer;
         private System.Windows.Forms.Button btn70;
+        private DevComponents.DotNetBar.Controls.Slider slider;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox;
+        private System.Windows.Forms.Button button1;
     }
 }

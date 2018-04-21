@@ -248,17 +248,10 @@ namespace CII.LAR.Protocol
                         foreach (var o in list)
                         {
                             OriginalBytes obytes = o as OriginalBytes;
-                            if (o != null && obytes.Data.Count() > 5)
+                            if (o != null && obytes.Data.Count() == 6)
                             {
-                                LaserProtocol lp = laserProtocol.DePackage(obytes.Data);
-                                byte[] data = lp.Body;
-                                byte markHead = data[0];
-                                byte type = GetMsgType();
-                                byte[] appData = new byte[data.Length - 2];
-                                Array.Copy(data, 1, appData, 0, data.Length - 2);
-                                LaserBasePackage bp = new LaserBasePackage(markHead, type, appData);
-                                List<LaserBaseResponse> responseList = Decoder.Decode(bp, obytes);
-                                if (responseList != null && responseList.Count > 0)
+                                LaserBaseResponse responseList = Decoder.Decode(obytes);
+                                if (responseList != null)
                                 {
                                     RxMsgQueue.Push(responseList);
                                 }

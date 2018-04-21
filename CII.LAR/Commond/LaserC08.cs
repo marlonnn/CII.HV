@@ -53,22 +53,22 @@ namespace CII.LAR.Commond
             this.Type = 0x08;
         }
 
-        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
+        public override LaserBaseResponse Decode(OriginalBytes obytes)
         {
-            base.Decode(bp, obytes);
-            if (CheckResponse(obytes.Data))
+            base.Decode(obytes);
+            //cc*128 + dd = T 红光激光器电流上限数字量 (data) T = (data / 4096) * 2500 (MA)
+            this.Current = (obytes.Data[3] * 128 + obytes.Data[4]) * 100 / Program.SysConfig.LaserConfig.COF;
+            return this;
+        }
+
+        public override string ToString()
+        {
+            string ret = "";
+            if (this != null)
             {
-                LaserC08Response c08Response = new LaserC08Response();
-                c08Response.DtTime = DateTime.Now;
-                c08Response.OriginalBytes = obytes;
-                //cc*128 + dd = T 红光激光器电流上限数字量 (data) T = (data / 4096) * 2500 (MA)
-                c08Response.Current = (obytes.Data[3] * 128 + obytes.Data[4]) * 100 / LD_COF;
-                return CreateOneList(c08Response);
+                ret = PrintOriginalData() + "\n" + string.Format("红光电流最大值： {0}mA", this.Current);
             }
-            else
-            {
-                return null;
-            }
+            return ret;
         }
     }
 }

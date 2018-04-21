@@ -67,19 +67,28 @@ namespace CII.LAR.Commond
             this.Type = 0x00;
         }
 
-        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
+        public override LaserBaseResponse Decode(OriginalBytes obytes)
         {
-            base.Decode(bp, obytes);
+            base.Decode(obytes);
 
-            LaserC00Response c00Response = new LaserC00Response();
-            c00Response.DtTime = DateTime.Now;
-            c00Response.OriginalBytes = obytes;
-            c00Response.VersionNumber = obytes.Data[1];
-            c00Response.Hour = obytes.Data[2];
-            c00Response.Month = obytes.Data[3];
-            c00Response.Second = obytes.Data[4];
+            this.DtTime = DateTime.Now;
+            this.OriginalBytes = obytes;
+            this.VersionNumber = obytes.Data[1];
+            this.Hour = obytes.Data[2];
+            this.Month = obytes.Data[3];
+            this.Second = obytes.Data[4];
 
-            return CreateOneList(c00Response);
+            return this;
+        }
+
+        public override string ToString()
+        {
+            string ret = "";
+            if (this != null)
+            {
+                ret = PrintOriginalData() + "\n" + string.Format("版本号： {0}， 时： {1}， 分： {2}， 秒： {3}", this.VersionNumber, this.Hour, this.Month, this.Second);
+            }
+            return ret;
         }
     }
 }

@@ -56,18 +56,24 @@ namespace CII.LAR.Commond
             this.Type = 0x05;
         }
 
-        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
+        public override LaserBaseResponse Decode(OriginalBytes obytes)
         {
-            base.Decode(bp, obytes);
-
-            LaserC05Response c05Response = new LaserC05Response();
-            c05Response.DtTime = DateTime.Now;
-            c05Response.OriginalBytes = obytes;
+            base.Decode(obytes);
             //aa*128 + bb 脉冲宽度 T = data * 10 (单位ns)
-            c05Response.PulseWidth = (obytes.Data[1] * 128 + obytes.Data[2]) * 10;
+            this.PulseWidth = (obytes.Data[1] * 128 + obytes.Data[2]) * 10;
             //cc*128 + dd 重复频率 T = data * 0.1 (单位KHZ)
             //c05Response.RepeatFrequency = (obytes.Data[3] * 128 + obytes.Data[4]) * 0.1;
-            return CreateOneList(c05Response);
+            return this;
+        }
+
+        public override string ToString()
+        {
+            string ret = "";
+            if (this != null)
+            {
+                ret = PrintOriginalData() + "\n" + string.Format("1480激光脉宽： {0}us", this.PulseWidth);
+            }
+            return ret;
         }
     }
 }

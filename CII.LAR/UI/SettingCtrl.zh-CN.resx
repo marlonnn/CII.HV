@@ -126,6 +126,9 @@
   <data name="btnSimulator.Text" xml:space="preserve">
     <value>开启模拟模式</value>
   </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>物镜管理</value>
+  </data>
   <data name="buttonItemSimulator.Text" xml:space="preserve">
     <value>开启仿真模式</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="buttonSysInfo.Text" xml:space="preserve">
     <value>系统信息</value>
+  </data>
+  <data name="labelItem1.Text" xml:space="preserve">
+    <value>录屏时长（单位：分钟）</value>
   </data>
   <data name="labelItemCamera.Text" xml:space="preserve">
     <value>相机</value>

@@ -29,8 +29,9 @@ using System.Windows.Forms;
 
 namespace CII.LAR
 {
-    public partial class EntryForm : Form, IView
+    public partial class EntryForm : Form
     {
+        private SerialPortCommunication serialPortCom;
         //视频翻转类型
         private FlipType flipType;
         public FlipType FlipType
@@ -68,28 +69,6 @@ namespace CII.LAR
         {
             get { return this.videoDevice; }
         }
-
-        #region 串口相关
-        private LaserProtocolFactory laserProtocolFactory;
-        public LaserProtocolFactory LaserProtocolFactory
-        {
-            get { return this.laserProtocolFactory; }
-            private set { this.laserProtocolFactory = value; }
-        }
-
-        private MotorProtocolFactory motorProtocolFactory;
-        public MotorProtocolFactory MotorProtocolFactory
-        {
-            get { return this.motorProtocolFactory; }
-            private set { this.motorProtocolFactory = value; }
-        }
-
-        private IController controller;
-        public IController SerialController
-        {
-            get { return this.controller; }
-        }
-        #endregion
 
         private FullScreen fullScreen;
         private FormWindowState tempWindowState;
@@ -211,8 +190,16 @@ namespace CII.LAR
             DelegateClass.GetDelegate().ChangeSysFunctionHandler += this.ChangeSysFunctionHandler;
             DelegateClass.GetDelegate().CheckCloseVideoHandler += this.CheckCloseVideoHandler;
 
-            this.controller = new IController(this);
+            //this.controller = new IController(this);
             InitializeControls();
+
+            serialPortCom = SerialPortCommunication.GetInstance();
+            serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
+        }
+
+        private void SerialDataReceivedHandler(LaserBaseResponse baseResponse)
+        {
+
         }
 
         private void CheckCloseVideoHandler()
@@ -261,18 +248,18 @@ namespace CII.LAR
         private void EntryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             StopVideoDevice();
-            LaserProtocolFactory.DestroyDecodeThread();
-            LaserProtocolFactory.DestroyEncodeThread();
-
-            MotorProtocolFactory.DestroyDecodeThread();
-            MotorProtocolFactory.DestroyEncodeThread();
-            this.autoSendTimer.Enabled = false;
             this.systemMonitorTimer.Enabled = false;
 
             if (videoDevice == null) return;
             if (videoDevice.IsRunning)
             {
                 this.AVIwriter.Close();
+            }
+
+            if (serialPortCom != null)
+            {
+                serialPortCom.SerialDataReceivedHandler -= SerialDataReceivedHandler;
+                if (serialPortCom.SerialPort.IsOpen) serialPortCom.Close();
             }
         }
 
@@ -286,17 +273,6 @@ namespace CII.LAR
 
             LoadDebugCtrl();
 
-            MotorProtocolFactory = MotorProtocolFactory.GetInstance();
-            LaserProtocolFactory = LaserProtocolFactory.GetInstance();
-
-            LaserProtocolFactory.StartDecodeThread();
-            LaserProtocolFactory.StartEncodeThread();
-
-            MotorProtocolFactory.StartDecodeThread();
-            MotorProtocolFactory.StartEncodeThread();
-
-            this.autoSendTimer.Enabled = true;
-            this.autoReceiverTimer.Enabled = true;
             this.systemMonitorTimer.Enabled = true;
             this.LaserFactory = LaserFactory.GetInstance(this.richPictureBox);
             LaserType = LaserType.SaturnFixed;
@@ -353,7 +329,7 @@ namespace CII.LAR
             BaseCtrls.Add(laserCtrl);
 
             laserAlignment = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment);
-            laserAlignment.SetController(this.controller);
+            //laserAlignment.SetController(this.controller);
             laserAlignment.RichPictureBox = this.richPictureBox;
             laserAlignment.VideoKeyDownHandler += this.OnKeyDown;
             BaseCtrls.Add(laserAlignment);
@@ -839,29 +815,6 @@ namespace CII.LAR
             }
         }
 
-        /// <summary>
-        /// 通过串口发送给激光器或者电机
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void autoSendTimer_Tick(object sender, EventArgs e)
-        {
-            if (LaserProtocolFactory.GetInstance().TxQueue != null)
-            {
-                var laserOriginalBytes = LaserProtocolFactory.GetInstance().TxQueue.PopAll();
-                if (laserOriginalBytes != null && laserOriginalBytes.Count > 0)
-                {
-                    foreach (OriginalBytes ob in laserOriginalBytes)
-                    {
-                        if (this.SerialController != null)
-                        {
-                            this.SerialController.SendDataToLaserCom(ob.Data);
-                        }
-                    }
-                }
-            }
-        }
-
         private void EnableDrawTools(bool Enabled)
         {
             this.toolStripButtonLine.Enabled = Enabled;
@@ -1002,11 +955,14 @@ namespace CII.LAR
         private void toolStripButtonLaserDebug_Click(object sender, EventArgs e)
         {
             //ShowBaseCtrl(true, CtrlType.LaserDebugCtrl);
-            laserDebugForm = new LaserDebugCtrl();
-            //controller = new IController(laserDebugCtrl);
-            laserDebugForm.SetController(this.controller);
-            this.LaserCheckTimer.Enabled = false;
-            laserDebugForm.ShowDialog();
+            //laserDebugForm = new LaserDebugCtrl();
+            ////controller = new IController(laserDebugCtrl);
+            //laserDebugForm.SetController(this.controller);
+            //this.LaserCheckTimer.Enabled = false;
+            //laserDebugForm.ShowDialog();
+
+            SerialPortDebugForm spd = new SerialPortDebugForm();
+            spd.ShowDialog();
         }
 
         private void toolStripButtonLine_Click(object sender, EventArgs e)
@@ -1180,18 +1136,6 @@ namespace CII.LAR
         //private bool autoCheckMotorPort = true;
         //private int msgShowTime = 0;
 
-        private void autoReceiverTimer_Tick(object sender, EventArgs e)
-        {
-            if (LaserProtocolFactory.GetInstance().RxMsgQueue != null)
-            {
-                List<LaserBaseResponse> baseResponses = LaserProtocolFactory.GetInstance().RxMsgQueue.PopAll();
-                if (baseResponses != null && baseResponses.Count > 0)
-                {
-
-                }
-            }
-        }
-
         private void toolStripButtonCapture_Click(object sender, EventArgs e)
         {
             if (videoFrame != null)
@@ -1349,19 +1293,9 @@ namespace CII.LAR
 
         }
 
-        public void LaserOpenComEvent(object sender, SerialPortEventArgs e)
-        {
-            if (this.laserDebugForm != null && !this.controller.SerialPortModel.CheckConnect) this.laserDebugForm.LaserOpenComEvent(sender, e);
-        }
-
-        public void LaserCloseComEvent(object sender, SerialPortEventArgs e)
-        {
-            if (this.laserDebugForm != null && !this.controller.SerialPortModel.CheckConnect) this.laserDebugForm.LaserCloseComEvent(sender, e);
-        }
-
         private void LaserCheckTimer_Tick(object sender, EventArgs e)
         {
-            if (this.controller != null)
+            if (serialPortCom != null)
             {
                 var ports = SerialPortHelper.GetHelper().GetPorts();
                 if (ports != null && ports.Count() > 0)
@@ -1369,15 +1303,14 @@ namespace CII.LAR
                     foreach (var p in ports)
                     {
                         if (Program.SysConfig.MotorPort != null && Program.SysConfig.MotorPort == p) continue;
-                        //打开串口
-                        if (this.controller.SerialPortModel.SerialPort.IsOpen) this.controller.SerialPortModel.SerialPort.Close();
-                        this.controller.OpenLaserSerialPort(p, "9600", "8", "One", "None", "None");
+                        if (serialPortCom.SerialPort.IsOpen) serialPortCom.Close();
+                        serialPortCom.SerialPortOpen(p, "9600", "8", "One", "None", "None");
+                        LaserC01Request c01R = new LaserC01Request();
+                        byte[] c01Bytes = serialPortCom.Encode(c01R);
+                        serialPortCom.SendData(c01Bytes);
                         Thread.Sleep(100);
-                        this.controller.SendDataToLaserCom(new byte[] { 0x8F, 0x00, 0x00, 0x00});
-                        Thread.Sleep(200);
-                        if (this.controller.SerialPortModel.CheckConectData != null)
+                        if (serialPortCom.FinalData != null)
                         {
-                            this.controller.SerialPortModel.CheckConnect = false;
                             Program.SysConfig.LaserPort = p;
                             Program.SysConfig.LaserPortConected = true;
                             this.LaserCheckTimer.Enabled = false;

@@ -44,16 +44,23 @@ namespace CII.LAR.Commond
             this.Type = 0x04;
         }
 
-        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
+        public override LaserBaseResponse Decode(OriginalBytes obytes)
         {
-            base.Decode(bp, obytes);
+            base.Decode(obytes);
 
-            LaserC04Response c04Response = new LaserC04Response();
-            c04Response.DtTime = DateTime.Now;
-            c04Response.OriginalBytes = obytes;
             //cc*128 + dd = T 电流数字量 (data) T = (data / 4096) * 2500 (MA)
-            c04Response.Current = ((obytes.Data[3] * 128 + obytes.Data[4]) / 4096) * 2500;
-            return CreateOneList(c04Response);
+            this.Current = ((obytes.Data[3] * 128 + obytes.Data[4]) / 4096d) * 2500;
+            return this;
+        }
+
+        public override string ToString()
+        {
+            string ret = "";
+            if (this != null)
+            {
+                ret = PrintOriginalData() + "\n" + string.Format("红光激光数字电流： {0}mA", this.Current);
+            }
+            return ret;
         }
     }
 }

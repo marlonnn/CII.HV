@@ -106,8 +106,12 @@ namespace CII.LAR.Laser
                 _flickCount++;
                 //if (_flickCount > 1)
                 {
-                    LaserProtocolFactory.GetInstance().SendMessage(new LaserC71Request());
-                    //Thread.Sleep(10);
+                    if (SerialPortCommunication.GetInstance() != null)
+                    {
+                        LaserC71Request c71 = new LaserC71Request();
+                        var bytes = SerialPortCommunication.GetInstance().Encode(c71);
+                        SerialPortCommunication.GetInstance().SendData(bytes);
+                    }
                 }
                 SendAlignmentMotorPoint();
                 this.richPictureBox.Invalidate();

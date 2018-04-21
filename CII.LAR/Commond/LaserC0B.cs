@@ -47,16 +47,23 @@ namespace CII.LAR.Commond
             this.Type = 0x0B;
         }
 
-        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
+        public override LaserBaseResponse Decode(OriginalBytes obytes)
         {
-            base.Decode(bp, obytes);
-
-            LaserC0BResponse c0BResponse = new LaserC0BResponse();
-            c0BResponse.DtTime = DateTime.Now;
-            c0BResponse.OriginalBytes = obytes;
+            base.Decode(obytes);
             //cc*128 + dd = T 红光激光器电流设定值系数
-            c0BResponse.COF = obytes.Data[3] * 128 + obytes.Data[4];
-            return CreateOneList(c0BResponse);
+            this.COF = obytes.Data[3] * 128 + obytes.Data[4];
+            Program.SysConfig.LaserConfig.COF = this.COF;
+            return this;
+        }
+
+        public override string ToString()
+        {
+            string ret = "";
+            if (this != null)
+            {
+                ret = PrintOriginalData() + "\n" + string.Format("红光电流系数： {0}", this.COF);
+            }
+            return ret;
         }
     }
 }

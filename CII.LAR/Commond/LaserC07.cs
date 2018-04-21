@@ -56,18 +56,14 @@ namespace CII.LAR.Commond
             this.Type = 0x07;
         }
 
-        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
+        public override LaserBaseResponse Decode(OriginalBytes obytes)
         {
-            base.Decode(bp, obytes);
-
-            LaserC07Response c07Response = new LaserC07Response();
-            c07Response.DtTime = DateTime.Now;
-            c07Response.OriginalBytes = obytes;
+            base.Decode(obytes);
             //aa*128 + bb 最小脉冲宽度 T = data * 0.1 (单位 KHZ)
-            c07Response.MinimumRepeatFrequency = (obytes.Data[1] * 128 + obytes.Data[2]) * 0.1;
+            this.MinimumRepeatFrequency = (obytes.Data[1] * 128 + obytes.Data[2]) * 0.1;
             //cc*128 + dd 最大脉冲宽度 T = data * 0.1 (单位 KHZ)
-            c07Response.MaxmumRepeatFrequency = (obytes.Data[3] * 128 + obytes.Data[4]) * 0.1;
-            return CreateOneList(c07Response);
+            this.MaxmumRepeatFrequency = (obytes.Data[3] * 128 + obytes.Data[4]) * 0.1;
+            return this;
         }
     }
 }

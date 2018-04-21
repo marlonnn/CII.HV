@@ -33,16 +33,6 @@ namespace CII.LAR.Commond
     public class LaserC09Response : LaserBaseResponse
     {
         /// <summary>
-        /// LD对应电流设定系数
-        /// </summary>
-        private float cof = 4934F;
-        public float COF
-        {
-            get { return this.cof; }
-            private set { this.cof = value; }
-        }
-
-        /// <summary>
         /// 红光激光器电流设定值
         /// </summary>
         private double current;
@@ -57,23 +47,24 @@ namespace CII.LAR.Commond
             this.Type = 0x09;
         }
         
-        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
+        public override LaserBaseResponse Decode(OriginalBytes obytes)
         {
-            base.Decode(bp, obytes);
-            if (CheckResponse(obytes.Data))
+            base.Decode(obytes);
+
+            //cc*128 + dd = T 红光激光器电流设定值数字量 (data) T = (data / 4096) * 2500 (MA)
+            this.Current = (obytes.Data[3] * 128 + obytes.Data[4]) * 100 / Program.SysConfig.LaserConfig.COF;
+            Program.SysConfig.LaserConfig.RedCurrent = this.Current;
+            return this;
+        }
+
+        public override string ToString()
+        {
+            string ret = "";
+            if (this != null)
             {
-                LaserC09Response c09Response = new LaserC09Response();
-                c09Response.DtTime = DateTime.Now;
-                c09Response.OriginalBytes = obytes;
-                //cc*128 + dd = T 红光激光器电流设定值数字量 (data) T = (data / 4096) * 2500 (MA)
-                c09Response.Current = (obytes.Data[3] * 128 + obytes.Data[4]) * 100 / COF;
-                Program.SysConfig.LaserConfig.RedCurrent = c09Response.Current;
-                return CreateOneList(c09Response);
+                ret = PrintOriginalData() + "\n" + string.Format("红光电流： {0}mA", this.Current);
             }
-            else
-            {
-                return null;
-            }
+            return ret;
         }
     }
 }

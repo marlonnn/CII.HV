@@ -73,9 +73,7 @@ namespace CII.LAR
             this.closeCameraTool = new System.Windows.Forms.ToolStripMenuItem();
             this.freeRun = new System.Windows.Forms.ToolStripMenuItem();
             this.snapshot = new System.Windows.Forms.ToolStripMenuItem();
-            this.autoSendTimer = new System.Windows.Forms.Timer(this.components);
             this.systemMonitorTimer = new System.Windows.Forms.Timer(this.components);
-            this.autoReceiverTimer = new System.Windows.Forms.Timer(this.components);
             this.videoControl = new CII.LAR.UI.VideoControl();
             this.richPictureBox = new CII.LAR.UI.RichPictureBox();
             this.horizontalFlipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -382,20 +380,10 @@ namespace CII.LAR
             this.snapshot.Name = "snapshot";
             resources.ApplyResources(this.snapshot, "snapshot");
             // 
-            // autoSendTimer
-            // 
-            this.autoSendTimer.Interval = 2000;
-            this.autoSendTimer.Tick += new System.EventHandler(this.autoSendTimer_Tick);
-            // 
             // systemMonitorTimer
             // 
             this.systemMonitorTimer.Interval = 1000;
             this.systemMonitorTimer.Tick += new System.EventHandler(this.systemMonitorTimer_Tick);
-            // 
-            // autoReceiverTimer
-            // 
-            this.autoReceiverTimer.Interval = 200;
-            this.autoReceiverTimer.Tick += new System.EventHandler(this.autoReceiverTimer_Tick);
             // 
             // videoControl
             // 
@@ -491,11 +479,9 @@ namespace CII.LAR
         private System.Windows.Forms.ToolStripMenuItem closeCameraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem freeRunToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem snapshotToolStripMenuItem;
-        private System.Windows.Forms.Timer autoSendTimer;
         //private System.Windows.Forms.ToolStripButton toolStripButtonPort;
         private System.Windows.Forms.ToolStripButton toolStripButtonLaserDebug;
         private System.Windows.Forms.Timer systemMonitorTimer;
-        private System.Windows.Forms.Timer autoReceiverTimer;
         private RichPictureBox richPictureBox;
         private VideoControl videoControl;
         private System.Windows.Forms.ToolStripMenuItem horizontalFlipToolStripMenuItem;

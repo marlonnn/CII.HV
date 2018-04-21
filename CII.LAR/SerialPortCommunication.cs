@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CII.LAR.Commond;
+using CII.LAR.Protocol;
+using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
@@ -9,6 +11,23 @@ namespace CII.LAR
 {
     public class SerialPortCommunication
     {
+        public delegate void SerialDataReceived(LaserBaseResponse baseResponse);
+        public SerialDataReceived SerialDataReceivedHandler;
+
+        private Dictionary<byte, LaserBaseResponse> decoders;
+        public Dictionary<byte, LaserBaseResponse> Decoders
+        {
+            get { return this.decoders; }
+            private set { this.decoders = value; }
+        }
+
+        private LaserBaseResponse decoder;
+        public LaserBaseResponse Decoder
+        {
+            get { return this.decoder; }
+            set { this.decoder = value; }
+        }
+
         private SerialPort serialPort;
         public SerialPort SerialPort
         {
@@ -26,7 +45,16 @@ namespace CII.LAR
         public byte[] FinalData
         {
             get { return this.finalData; }
-            set { this.finalData = value; }
+            set
+            {
+                this.finalData = value;
+                if (value != null)
+                {
+                    LaserBaseResponse responseList = Decoder.Decode(new OriginalBytes(DateTime.Now,value));
+                    if (responseList != null) SerialDataReceivedHandler?.Invoke(responseList);
+                    LogHelper.GetLogger<SerialPortCommunication>().Error(string.Format("激光器接受的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(value)));
+                }
+            }
         }
 
         public static SerialPortCommunication GetInstance()
@@ -40,7 +68,61 @@ namespace CII.LAR
 
         public SerialPortCommunication()
         {
+            serialPort = new SerialPort();
+            InitializeDecoders();
+        }
 
+        public byte[] Encode(LaserBaseRequest br)
+        {
+            var bytes = LaserProtocolFactory.GetInstance().LaserProtocol.EnPackage(br.Encode()[0]);
+            return bytes;
+        }
+
+        private void InitializeDecoders()
+        {
+            Decoders = new Dictionary<byte, LaserBaseResponse>();
+            Decoders[0x00] = new LaserC00Response();
+            Decoders[0x01] = new LaserC01Response();
+            Decoders[0x03] = new LaserC03Response();
+            Decoders[0x04] = new LaserC04Response();
+            Decoders[0x05] = new LaserC05Response();
+            Decoders[0x06] = new LaserC06Response();
+            Decoders[0x07] = new LaserC07Response();
+            Decoders[0x08] = new LaserC08Response();
+            Decoders[0x09] = new LaserC09Response();
+            Decoders[0x0B] = new LaserC0BResponse();
+            Decoders[0x0C] = new LaserC0CResponse();
+            Decoders[0x70] = new LaserC70Response();
+            Decoders[0x71] = new LaserC71Response();
+            Decoders[0x72] = new LaserC72Response();
+            Decoders[0x73] = new LaserC73Response();
+            Decoders[0x74] = new LaserC74Response();
+            Decoders[0x75] = new LaserC75Response();
+            Decoders[0x76] = new LaserC76Response();
+            //initialize default decoder
+            Decoder = Decoders[0x00];
+        }
+
+        /// <summary>
+        /// 发送消息之前必须先设置解码器
+        /// </summary>
+        /// <param name="type"></param>
+        public void SetDecoder(byte type)
+        {
+            if (Decoders.ContainsKey(type))
+            {
+                Decoder = Decoders[type];
+            }
+        }
+
+        private LaserBaseResponse GetLaserBaseResponse()
+        {
+            LaserBaseResponse br = null;
+            if (Decoders.ContainsValue(Decoder))
+            {
+                br = Decoders.FirstOrDefault(d => d.Value.Type == Decoder.Type).Value;
+            }
+            return br;
         }
 
         public void SendData(byte[] bytes)
@@ -50,6 +132,7 @@ namespace CII.LAR
                 try
                 {
                     this.FinalData = null;
+                    SetDecoder(bytes[1]);
                     serialPort.Write(bytes, 0, bytes.Length);
                     LogHelper.GetLogger<SerialPortCommunication>().Error(string.Format("激光器发送的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(bytes)));
 
@@ -68,10 +151,12 @@ namespace CII.LAR
                 try
                 {
                     this.FinalData = null;
-                    foreach (byte[] bytes in bytesList)
+                    for (int i =0; i< bytesList.Count; i++)
                     {
-                        serialPort.Write(bytes, 0, bytes.Length);
-                        LogHelper.GetLogger<SerialPortCommunication>().Error(string.Format("激光器发送的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(bytes)));
+                        if (i == 0) SetDecoder(bytesList[0][1]);
+                        serialPort.Write(bytesList[i], 0, bytesList[i].Length);
+                        LogHelper.GetLogger<SerialPortCommunication>().Error(string.Format("激光器发送的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(bytesList[i])));
+
                     }
                 }
                 catch (Exception ex)
@@ -138,7 +223,8 @@ namespace CII.LAR
                         }
                         else
                         {
-                            LogHelper.GetLogger<SerialPortCommunication>().Error(string.Format("激光器接受的原始数据异常，数据为： {0}", ByteHelper.Byte2ReadalbeXstring(rawData)));
+                            LogHelper.GetLogger<SerialPortCommunication>().Error(string.Format("激光器接受的原始数据异常，数据为： {0}", 
+                                ByteHelper.Byte2ReadalbeXstring(rawData)));
                         }
                     }
                 }
@@ -158,6 +244,7 @@ namespace CII.LAR
                         int bufferLength = buffer.Length;
                         int sumDataLength = bufferLength + length;
                         if (sumDataLength < 6)
+
                         {
                             byte[] tempData = new byte[sumDataLength];
                             Array.Copy(buffer, 0, tempData, 0, bufferLength);
@@ -202,7 +289,7 @@ namespace CII.LAR
             byte oddCheck = 0x00;
             if (data != null && data.Length == 6)
             {
-                for (int i = 1; i < data.Length - 2; i++)
+                for (int i = 1; i < data.Length - 1; i++)
                 {
                     oddCheck ^= data[i];
                 }
@@ -212,11 +299,14 @@ namespace CII.LAR
 
         public void Close()
         {
-            SerialPortEventArgs args = new SerialPortEventArgs();
-            args.isOpend = false;
-            serialPort.Close();
-            serialPort.DataReceived -= DataReceived;
-            ComCloseEvent?.Invoke(this, args);
+            if (serialPort.IsOpen)
+            {
+                SerialPortEventArgs args = new SerialPortEventArgs();
+                args.isOpend = false;
+                serialPort.Close();
+                serialPort.DataReceived -= DataReceived;
+                ComCloseEvent?.Invoke(this, args);
+            }
         }
     }
 }

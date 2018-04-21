@@ -71,26 +71,16 @@ namespace CII.LAR.Commond
             this.Type = 0x0C;
         }
 
-        public override List<LaserBaseResponse> Decode(LaserBasePackage bp, OriginalBytes obytes)
+        public override LaserBaseResponse Decode(OriginalBytes obytes)
         {
-            base.Decode(bp, obytes);
-            if (CheckResponse(obytes.Data))
-            {
-                LaserC0CResponse c0CResponse = new LaserC0CResponse();
-                c0CResponse.DtTime = DateTime.Now;
-                c0CResponse.OriginalBytes = obytes;
+            base.Decode(obytes);
 
-                c0CResponse.SN0 = obytes.Data[1];
-                c0CResponse.SN1 = obytes.Data[2];
-                c0CResponse.SN2 = obytes.Data[3];
-                c0CResponse.SN3 = obytes.Data[4];
-                c0CResponse.Serial = string.Format("{0}{1}{2}{3}", GetSN0String(c0CResponse.SN0), c0CResponse.SN1, c0CResponse.SN2, c0CResponse.SN3);
-                return CreateOneList(c0CResponse);
-            }
-            else
-            {
-                return null;
-            }
+            this.SN0 = obytes.Data[1];
+            this.SN1 = obytes.Data[2];
+            this.SN2 = obytes.Data[3];
+            this.SN3 = obytes.Data[4];
+            this.Serial = string.Format("{0}{1}{2}{3}", GetSN0String(this.SN0), this.SN1, this.SN2, this.SN3);
+            return this;
         }
 
         private string GetSN0String(byte sn0)
@@ -127,6 +117,16 @@ namespace CII.LAR.Commond
                     break;
             }
             return sn0string;
+        }
+
+        public override string ToString()
+        {
+            string ret = "";
+            if (this != null)
+            {
+                ret = PrintOriginalData() + "\n" + string.Format("序列号： {0}", this.Serial);
+            }
+            return ret;
         }
 
     }

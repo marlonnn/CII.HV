@@ -22,17 +22,8 @@ namespace CII.LAR.UI
     /// </summary>
     public partial class LaserAlignment : BaseCtrl
     {
-        private IController controller;
-        public IController Controller
-        {
-            get { return this.controller; }
-            set { this.controller = value; }
-        }
+        private SerialPortCommunication serialPortCom;
 
-        public void SetController(IController controller)
-        {
-            this.controller = controller;
-        }
         private int index;
         public int Index
         {
@@ -71,6 +62,8 @@ namespace CII.LAR.UI
             this.btnNext.Enabled = isEnable;
         }
 
+        private bool enableRedLaser = false;
+
         public LaserAlignment() :base()
         {
             resources = new ComponentResourceManager(typeof(LaserAlignment));
@@ -81,6 +74,41 @@ namespace CII.LAR.UI
             this.Load += LaserAlignment_Load;
             Index = -2;
             this.KeyDown += LaserAlignment_KeyDown;
+            serialPortCom = SerialPortCommunication.GetInstance();
+            serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
+        }
+
+        private void SerialDataReceivedHandler(LaserBaseResponse baseResponse)
+        {
+            if (baseResponse != null)
+            {
+                LaserC01Response c01r = baseResponse as LaserC01Response;
+                if (c01r != null)
+                {
+                    //开启红光
+                    if (enableRedLaser)
+                    {
+                        if (c01r.Flag == 1920)
+                        {
+                            //红光关闭，则强制开启
+                            LaserC70Request c70 = new LaserC70Request();
+                            var bytes = serialPortCom.Encode(c70);
+                            serialPortCom.SendData(bytes);
+                        }
+                    }
+                    else
+                    {
+                        //关闭红光
+                        if (c01r.Flag == 1664)
+                        {
+                            //红光开启，则强制关闭
+                            LaserC70Request c70 = new LaserC70Request();
+                            var bytes = serialPortCom.Encode(c70);
+                            serialPortCom.SendData(bytes);
+                        }
+                    }
+                }
+            }
         }
 
         private void LaserAlignment_KeyDown(object sender, KeyEventArgs e)
@@ -95,15 +123,14 @@ namespace CII.LAR.UI
         {
             this.lblInfo.Text = Res.LaserAlignment.StrPreSet0;
             Program.EntryForm.LaserType = LaserType.Alignment;
-            //if (Program.ExpManager.MachineStatus == MachineStatus.Simulate)
-            //    this.pictureBox.Invalidate();
         }
 
-        private void EnableRedLaser()
+        private void EnableRedLaser(bool enable)
         {
-            var c70 = new LaserC70Request();
-            var bytes = LaserProtocolFactory.GetInstance().LaserProtocol.EnPackage(c70.Encode()[0]);
-            this.controller.SendDataToLaserCom(bytes);
+            LaserC01Request c01 = new LaserC01Request();
+            byte[] c01Bytes = serialPortCom.Encode(c01);
+            serialPortCom.SendData(c01Bytes);
+            enableRedLaser = enable;
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -128,7 +155,7 @@ namespace CII.LAR.UI
                     string matrixJsonString = JsonFile.GetJsonTextFromConfig<Matrix<double>>(v);
                     JsonFile.WriteMatrixConfigToLocal(matrixJsonString);
                     //关闭红光引导光
-                    EnableRedLaser();
+                    EnableRedLaser(false);
                 }
                 else
                 {
@@ -139,7 +166,8 @@ namespace CII.LAR.UI
                     if(Index == 0)
                     {
                         //开启红光引导光
-                        EnableRedLaser();
+                        //先检查红光是否开启，若已经开启，则不用再开启
+                        EnableRedLaser(true);
                     }
                     if (Index >= 3 && Index <= 6)
                     {

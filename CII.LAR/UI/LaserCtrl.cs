@@ -48,11 +48,19 @@ namespace CII.LAR.UI
             InitializeSlider();
             this.sliderCtrl.Slider.Value = (int)(Program.SysConfig.LaserConfig.PulseWidth * 1000);
             this.sliderCtrl.Slider.MouseUp += Slider_MouseUp;
+            serialPortCom = SerialPortCommunication.GetInstance();
         }
+
+        private SerialPortCommunication serialPortCom;
 
         private void Slider_MouseUp(object sender, MouseEventArgs e)
         {
-            LaserProtocolFactory.GetInstance().SendMessage(new LaserC72Request(PulseValue));
+            if (serialPortCom != null)
+            {
+                LaserC72Request c72 = new LaserC72Request(PulseValue);
+                var bytes = serialPortCom.Encode(c72);
+                serialPortCom.SendData(bytes);
+            }
         }
 
         private void InitializeSlider()
@@ -100,16 +108,14 @@ namespace CII.LAR.UI
             var fixedLaser = Program.EntryForm.Laser as FixedLaser;
             if (fixedLaser != null)
             {
-
-                LaserProtocolFactory.GetInstance().SendMessage(new LaserC71Request());
+                if (serialPortCom != null)
+                {
+                    LaserC71Request c71 = new LaserC71Request();
+                    var bytes = serialPortCom.Encode(c71);
+                    serialPortCom.SendData(bytes);
+                }
                 //Coordinate.GetCoordinate().SendAlignmentMotorPoint();
             }
-            //var activeLaser = Program.EntryForm.Laser as ActiveLaser;
-            //if (activeLaser != null)
-            //{
-            //    var activeCircle = activeLaser.ActiveCircle;
-
-            //}
         }
 
         private void btnAlignLaser_Click(object sender, EventArgs e)

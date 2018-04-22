@@ -942,7 +942,7 @@ namespace CII.LAR
 
         public void ButtonStateHandler(bool isEnable)
         {
-            LaserAlignment laserAlignment = baseControls[6] as LaserAlignment;
+            LaserAlignment laserAlignment = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment);
             if (laserAlignment != null)
             {
                 laserAlignment.ButtonNext(isEnable);

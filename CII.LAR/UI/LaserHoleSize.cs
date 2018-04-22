@@ -243,6 +243,23 @@ namespace CII.LAR.UI
             SaveDeleteButtonVisiable(false);
         }
 
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            var dataPoints = this.chart1.Series[0].Points;
+            if (dataPoints != null && dataPoints.Count > 0)
+            {
+                for (int i = 0; i < dataPoints.Count; i++)
+                {
+                    if (Math.Abs(valueToFindX - dataPoints[i].XValue) < 0.01)
+                    {
+                        dataPoints[i].MarkerSize = 10;
+                        dataPoints[i].MarkerColor = Color.DarkGreen;
+                    }
+                }
+                this.chart1.Invalidate();
+            }
+        }
+
         Point? prevPosition = null;
         //ToolTip tooltip = new ToolTip();
 
@@ -268,8 +285,8 @@ namespace CII.LAR.UI
                             var pointYPixel = result.ChartArea.AxisY.ValueToPixelPosition(prop.YValues[0]);
 
                             // check if the cursor is really close to the point (2 pixels around the point)
-                            if (Math.Abs(pos.X - pointXPixel) < 2 &&
-                                Math.Abs(pos.Y - pointYPixel) < 2)
+                            if (Math.Abs(pos.X - pointXPixel) < 4&&
+                                Math.Abs(pos.Y - pointYPixel) < 4)
                             {
                                 //tooltip.Show("X=" + prop.XValue + ", Y=" + prop.YValues[0], this.chart1,
                                 //                pos.X, pos.Y - 15);
@@ -303,7 +320,7 @@ namespace CII.LAR.UI
                 {
                     for (int i =0; i < dataPoints.Count; i++)
                     {
-                        if (Math.Abs(valueToFindX - dataPoints[i].XValue) < 0.001)
+                        if (Math.Abs(valueToFindX - dataPoints[i].XValue) < 0.01)
                         {
                             dataPoints[i].MarkerStyle = MarkerStyle.Circle;
                             dataPoints[i].MarkerColor = Color.Red;

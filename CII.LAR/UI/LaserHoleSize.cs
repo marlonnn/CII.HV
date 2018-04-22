@@ -258,6 +258,7 @@ namespace CII.LAR.UI
                 }
                 this.chart1.Invalidate();
             }
+            SaveDeleteButtonVisiable(false);
         }
 
         Point? prevPosition = null;

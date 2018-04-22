@@ -15,19 +15,52 @@ namespace CII.LAR.UI
 {
     public partial class LaserDebugCtrl : Form
     {
-        private SerialPortCommunication serialPortCom;
+        private SerialPortCommunication serialPortCom = SerialPortCommunication.GetInstance();
         public LaserDebugCtrl()
         {
             //this.CtrlType = CtrlType.LaserDebugCtrl;
             InitializeComponent();
             InitializeLaserCOMCombox();
             this.Load += LaserDebugCtrl_Load;
+            this.FormClosing += LaserDebugCtrl_FormClosing;
+            serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
+        }
+
+        private void LaserDebugCtrl_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            serialPortCom.SerialDataReceivedHandler -= SerialDataReceivedHandler;
         }
 
         private void LaserDebugCtrl_Load(object sender, EventArgs e)
         {
-            serialPortCom = SerialPortCommunication.GetInstance();
             IsOpened(serialPortCom.SerialPort.IsOpen);
+            if (serialPortCom.SerialPort.IsOpen)
+            {
+                CheckLaserStatus();
+            }
+        }
+
+        private bool redLaserOpen = false;
+        private void SerialDataReceivedHandler(LaserBaseResponse baseResponse)
+        {
+            if (baseResponse != null)
+            {
+                LaserC01Response c01r = baseResponse as LaserC01Response;
+                if (c01r != null)
+                {
+                    if (c01r.Flag == 1920)
+                    {
+                        //红光关闭，则强制开启
+                        this.btn70.Text = "Open";
+                        redLaserOpen = false;
+                    }
+                    else if (c01r.Flag == 1664)
+                    {
+                        this.btn70.Text = "Closed";
+                        redLaserOpen = true;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -100,7 +133,23 @@ namespace CII.LAR.UI
 
         private void slider_MouseUp(object sender, MouseEventArgs e)
         {
-            LaserProtocolFactory.GetInstance().SendMessage(new LaserC75Request(this.slider.Value));
+            try
+            {
+                var c75 = new LaserC75Request(this.slider.Value);
+                var bps = c75.Encode();
+                List<byte[]> bytes = new List<byte[]>();
+                foreach (var b in bps)
+                {
+                    var data = LaserProtocolFactory.GetInstance().LaserProtocol.EnPackage(b);
+                    bytes.Add(data);
+                }
+                serialPortCom.SendData(bytes);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.GetLogger<LaserDebugControl>().Error(ex.Message);
+                LogHelper.GetLogger<LaserDebugControl>().Error(ex.StackTrace);
+            }
         }
 
         private void laserOpenCloseSpbtn_Click(object sender, EventArgs e)
@@ -199,14 +248,25 @@ namespace CII.LAR.UI
                 laserHandshakingcbx.Enabled = true;
             }
         }
+        private void CheckLaserStatus()
+        {
+            LaserC01Request c01 = new LaserC01Request();
+            var bytes = serialPortCom.Encode(c01);
+            serialPortCom.SendData(bytes);
+        }
+
+        private void SendEnableLaserData()
+        {
+            LaserC70Request c70 = new LaserC70Request();
+            var bytes = serialPortCom.Encode(c70);
+            serialPortCom.SendData(bytes);
+        }
 
         private void btn70_Click(object sender, EventArgs e)
         {
-            //LaserProtocolFactory.GetInstance().SendMessage(new LaserC70Request());
-            var c70 = new LaserC70Request();
-            var bytes = serialPortCom.Encode(c70);
-            if (serialPortCom != null && serialPortCom.SerialPort.IsOpen)
-                serialPortCom.SendData(bytes);
+            redLaserOpen = !redLaserOpen;
+            SendEnableLaserData();
+            this.btn70.Text = redLaserOpen ? "Closed" : "Open";
         }
     }
 }

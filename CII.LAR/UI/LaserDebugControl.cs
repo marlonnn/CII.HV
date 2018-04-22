@@ -41,6 +41,11 @@ namespace CII.LAR.UI
                         redLaserOpen = true;
                     }
                 }
+                LaserC09Response c09r = baseResponse as LaserC09Response;
+                if (c09r != null)
+                {
+                    this.slider.Value = (int)c09r.Current;
+                }
             }
         }
 
@@ -52,6 +57,12 @@ namespace CII.LAR.UI
             if (serialPortCom.SerialPort.IsOpen)  CheckLaserStatus();
         }
 
+        private void CheckRelLaserCurrent()
+        {
+            var c09 = new LaserC09Request();
+            var bytes = serialPortCom.Encode(c09);
+            serialPortCom.SendData(bytes);
+        }
         private void CheckLaserStatus()
         {
             LaserC01Request c01 = new LaserC01Request();

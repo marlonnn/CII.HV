@@ -962,14 +962,14 @@ namespace CII.LAR
         private void toolStripButtonLaserDebug_Click(object sender, EventArgs e)
         {
             //ShowBaseCtrl(true, CtrlType.LaserDebugCtrl);
-            //laserDebugForm = new LaserDebugCtrl();
+            laserDebugForm = new LaserDebugCtrl();
             ////controller = new IController(laserDebugCtrl);
             //laserDebugForm.SetController(this.controller);
-            //this.LaserCheckTimer.Enabled = false;
-            //laserDebugForm.ShowDialog();
+            this.LaserCheckTimer.Enabled = false;
+            laserDebugForm.ShowDialog();
 
-            LaserDebugControl ldc = new LaserDebugControl();
-            ldc.ShowDialog();
+            //LaserDebugControl ldc = new LaserDebugControl();
+            //ldc.ShowDialog();
         }
 
         private void toolStripButtonLine_Click(object sender, EventArgs e)

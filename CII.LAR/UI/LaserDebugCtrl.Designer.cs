@@ -254,7 +254,7 @@
             this.btn70.Name = "btn70";
             this.btn70.Size = new System.Drawing.Size(299, 36);
             this.btn70.TabIndex = 34;
-            this.btn70.Text = "70";
+            this.btn70.Text = "Open";
             this.btn70.UseVisualStyleBackColor = true;
             this.btn70.Click += new System.EventHandler(this.btn70_Click);
             // 

@@ -256,4 +256,7 @@
   <data name="StrShortcutTitle" xml:space="preserve">
     <value>Keyboard Shortcut Configuration</value>
   </data>
+  <data name="StrObjectLense" xml:space="preserve">
+    <value>Object Lense Manager</value>
+  </data>
 </root>

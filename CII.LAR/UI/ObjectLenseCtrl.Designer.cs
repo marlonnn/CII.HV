@@ -107,7 +107,7 @@
             this.Controls.Add(this.lblCurrentLense);
             this.Controls.Add(this.cmbLenses);
             this.Name = "ObjectLenseCtrl";
-            this.Title = "Object Lense Manager";
+            this.Title = global::CII.LAR.Properties.Resources.StrObjectLense;
             this.Controls.SetChildIndex(this.closeButton, 0);
             this.Controls.SetChildIndex(this.cmbLenses, 0);
             this.Controls.SetChildIndex(this.lblCurrentLense, 0);

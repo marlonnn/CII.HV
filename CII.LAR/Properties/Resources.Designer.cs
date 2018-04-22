@@ -364,6 +364,15 @@ namespace CII.LAR.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Object Lense Manager 的本地化字符串。
+        /// </summary>
+        internal static string StrObjectLense {
+            get {
+                return ResourceManager.GetString("StrObjectLense", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 OK 的本地化字符串。
         /// </summary>
         internal static string StrOK {

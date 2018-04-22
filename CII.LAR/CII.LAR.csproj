@@ -517,6 +517,9 @@
     <EmbeddedResource Include="UI\ObjectLenseCtrl.resx">
       <DependentUpon>ObjectLenseCtrl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\ObjectLenseCtrl.zh-CN.resx">
+      <DependentUpon>ObjectLenseCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ReportCtrl.resx">
       <DependentUpon>ReportCtrl.cs</DependentUpon>
     </EmbeddedResource>

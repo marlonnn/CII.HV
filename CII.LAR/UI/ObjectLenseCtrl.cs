@@ -26,6 +26,7 @@ namespace CII.LAR.UI
             this.richPictureBox = richPictureBox;
             InitializeComponent();
             InitializeLenses();
+            resources = new ComponentResourceManager(typeof(ObjectLenseCtrl));
             this.rulerAdjustCtrl1.UpdownClickHandler += UpdownClickHandler;
         }
 
@@ -147,6 +148,16 @@ namespace CII.LAR.UI
         private void cmbLenses_SelectedIndexChanged(object sender, EventArgs e)
         {
             Program.SysConfig.Lense = cmbLenses.SelectedItem as Lense;
+        }
+
+        public override void RefreshUI()
+        {
+            this.Title = global::CII.LAR.Properties.Resources.StrObjectLense;
+            resources.ApplyResources(this.labelX1, labelX1.Name);
+            resources.ApplyResources(this.lblAdjustment, lblAdjustment.Name);
+            resources.ApplyResources(this.lblCurrentLense, lblCurrentLense.Name);
+            resources.ApplyResources(this.btnDelete, btnDelete.Name);
+            this.Invalidate();
         }
     }
 }

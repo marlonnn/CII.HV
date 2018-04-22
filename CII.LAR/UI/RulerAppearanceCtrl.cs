@@ -27,11 +27,13 @@ namespace CII.LAR.UI
 
         private void SetSliderValue()
         {
+            invokeColorChange = false;
             //this.sliderTargetSize.Value = graphicsProperties.TargetSize;
             this.sliderThickness.Value = graphicsProperties.PenWidth;
             this.sliderTransparency.Value = graphicsProperties.Alpha * (100 / 0xFF);
             //this.sliderTickLength.Value = graphicsProperties.TargetSize;
             this.sliderColour.Value = graphicsProperties.ColorIndex() * 10;
+            invokeColorChange = true;
         }
 
         private void btnLaserCtrl_Click(object sender, EventArgs e)
@@ -88,12 +90,16 @@ namespace CII.LAR.UI
 
         }
 
+        private bool invokeColorChange = true;
         private void sliderColour_ValueChanged(object sender, EventArgs e)
         {
-            var value = this.sliderColour.Value / 10;
-            if (graphicsProperties != null)
+            if (invokeColorChange)
             {
-                graphicsProperties.ChangeColor(value);
+                var value = this.sliderColour.Value / 10;
+                if (graphicsProperties != null)
+                {
+                    graphicsProperties.ChangeColor(value);
+                }
             }
         }
 

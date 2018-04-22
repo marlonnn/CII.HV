@@ -28,17 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.autoSendTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.sendIntervalTimetbx = new System.Windows.Forms.TextBox();
-            this.autoSendcbx = new System.Windows.Forms.CheckBox();
             this.clearReceivebtn = new System.Windows.Forms.Button();
             this.clearSendbtn = new System.Windows.Forms.Button();
             this.receivetbx = new System.Windows.Forms.TextBox();
             this.sendtbx = new System.Windows.Forms.TextBox();
-            this.sendbtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBoxLaser = new System.Windows.Forms.GroupBox();
@@ -81,21 +75,12 @@
             this.groupBoxLaser.SuspendLayout();
             this.SuspendLayout();
             // 
-            // autoSendTimer
-            // 
-            this.autoSendTimer.Interval = 200;
-            this.autoSendTimer.Tick += new System.EventHandler(this.autoSendTimer_Tick);
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.sendIntervalTimetbx);
-            this.groupBox1.Controls.Add(this.autoSendcbx);
             this.groupBox1.Controls.Add(this.clearReceivebtn);
             this.groupBox1.Controls.Add(this.clearSendbtn);
             this.groupBox1.Controls.Add(this.receivetbx);
             this.groupBox1.Controls.Add(this.sendtbx);
-            this.groupBox1.Controls.Add(this.sendbtn);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -106,39 +91,10 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Data";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(143, 316);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(24, 15);
-            this.label8.TabIndex = 23;
-            this.label8.Text = "ms";
-            // 
-            // sendIntervalTimetbx
-            // 
-            this.sendIntervalTimetbx.Location = new System.Drawing.Point(93, 311);
-            this.sendIntervalTimetbx.MaxLength = 9;
-            this.sendIntervalTimetbx.Name = "sendIntervalTimetbx";
-            this.sendIntervalTimetbx.Size = new System.Drawing.Size(44, 21);
-            this.sendIntervalTimetbx.TabIndex = 22;
-            this.sendIntervalTimetbx.Text = "1000";
-            // 
-            // autoSendcbx
-            // 
-            this.autoSendcbx.AutoSize = true;
-            this.autoSendcbx.Location = new System.Drawing.Point(14, 313);
-            this.autoSendcbx.Name = "autoSendcbx";
-            this.autoSendcbx.Size = new System.Drawing.Size(79, 19);
-            this.autoSendcbx.TabIndex = 21;
-            this.autoSendcbx.Text = "AutoSend";
-            this.autoSendcbx.UseVisualStyleBackColor = true;
-            this.autoSendcbx.CheckedChanged += new System.EventHandler(this.autoSendcbx_CheckedChanged);
-            // 
             // clearReceivebtn
             // 
             this.clearReceivebtn.AutoSize = true;
-            this.clearReceivebtn.Location = new System.Drawing.Point(278, 13);
+            this.clearReceivebtn.Location = new System.Drawing.Point(287, 12);
             this.clearReceivebtn.Name = "clearReceivebtn";
             this.clearReceivebtn.Size = new System.Drawing.Size(58, 25);
             this.clearReceivebtn.TabIndex = 11;
@@ -181,18 +137,6 @@
             this.sendtbx.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.sendtbx.Size = new System.Drawing.Size(354, 98);
             this.sendtbx.TabIndex = 8;
-            // 
-            // sendbtn
-            // 
-            this.sendbtn.AutoSize = true;
-            this.sendbtn.Enabled = false;
-            this.sendbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sendbtn.Location = new System.Drawing.Point(287, 311);
-            this.sendbtn.Name = "sendbtn";
-            this.sendbtn.Size = new System.Drawing.Size(58, 36);
-            this.sendbtn.TabIndex = 7;
-            this.sendbtn.Text = "Send";
-            this.sendbtn.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -626,17 +570,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Timer autoSendTimer;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox sendIntervalTimetbx;
-        private System.Windows.Forms.CheckBox autoSendcbx;
         private System.Windows.Forms.Button clearReceivebtn;
         private System.Windows.Forms.Button clearSendbtn;
         private System.Windows.Forms.TextBox receivetbx;
         private System.Windows.Forms.TextBox sendtbx;
-        private System.Windows.Forms.Button sendbtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBoxLaser;

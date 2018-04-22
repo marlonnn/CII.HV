@@ -133,6 +133,18 @@ namespace CII.LAR.DrawTools
             }
         }
 
+        public override void DrawText(Graphics g, RichPictureBox richPictureBox)
+        {
+            SolidBrush brush = new SolidBrush(Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Text").Color);
+            Font font = new Font("Microsoft Sans Serif", GraphicsProperties.TextSize);
+            RectangleF r = GetTextF(this.Name, g, this.ID);
+            r.Offset(MovingOffset);
+
+            g.DrawString(this.Name, font, brush, r);
+            brush.Dispose();
+            font.Dispose();
+        }
+
         /// <summary>
         /// draw ellipse graphic
         /// </summary>
@@ -178,7 +190,9 @@ namespace CII.LAR.DrawTools
 
         public override RectangleF GetTextF(string name, Graphics g, int index)
         {
-            SizeF sizeF = g.MeasureString(name, this.Font);
+            Font font = new Font("Microsoft Sans Serif", GraphicsProperties.TextSize);
+            SizeF sizeF = g.MeasureString(name, font);
+            font.Dispose();
             return new RectangleF(startPoint.X - sizeF.Width, startPoint.Y - sizeF.Height,
                 sizeF.Width, sizeF.Height);
         }

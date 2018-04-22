@@ -152,6 +152,20 @@ namespace CII.LAR.DrawTools
             }
         }
 
+        private float textSize;
+        public float TextSize
+        {
+            get { return this.textSize; }
+            set
+            {
+                if (value != this.textSize)
+                {
+                    this.textSize = value;
+                    GraphicsPropertiesChangedHandler?.Invoke(DrawObject, this);
+                }
+            }
+        }
+
         [NonSerialized]
         private DrawObject drawObject;
 
@@ -211,6 +225,7 @@ namespace CII.LAR.DrawTools
             exclusionSize = 20;
             targetSize = 1;
             alpha = 255;
+            this.textSize = 9F;
             InitializeColorSets();
         }
 

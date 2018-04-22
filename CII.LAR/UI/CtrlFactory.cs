@@ -33,7 +33,7 @@ namespace CII.LAR.UI
             serialPortCtrl = new SerialPortCtrl();
             statisticsCtrl = new StatisticsCtrl();
             laserAppearanceCtrl = new LaserAppearanceCtrl();
-            rulerAppearanceCtrl = new RulerAppearanceCtrl();
+            rulerAppearanceCtrl = new RulerAppearanceCtrl(richPictureBox);
             laserCtrl = new LaserCtrl();
             this.laserAlignment = new LaserAlignment();
             videoChooseCtrl = new VideoChooseCtrl();

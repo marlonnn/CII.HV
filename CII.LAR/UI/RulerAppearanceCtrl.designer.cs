@@ -33,8 +33,6 @@
             this.btnLaserCtrl = new System.Windows.Forms.Button();
             this.sliderColour = new DevComponents.DotNetBar.Controls.Slider();
             this.lblZColour = new DevComponents.DotNetBar.LabelX();
-            this.sliderTickLength = new DevComponents.DotNetBar.Controls.Slider();
-            this.lblTickLength = new DevComponents.DotNetBar.LabelX();
             this.sliderTargetSize = new DevComponents.DotNetBar.Controls.Slider();
             this.lblTargerSize = new DevComponents.DotNetBar.LabelX();
             this.sliderThickness = new DevComponents.DotNetBar.Controls.Slider();
@@ -46,7 +44,6 @@
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.comboItem3 = new DevComponents.Editors.ComboItem();
-            this.comboItem4 = new DevComponents.Editors.ComboItem();
             this.SuspendLayout();
             // 
             // closeButton
@@ -89,28 +86,6 @@
             resources.ApplyResources(this.lblZColour, "lblZColour");
             this.lblZColour.Name = "lblZColour";
             // 
-            // sliderTickLength
-            // 
-            // 
-            // 
-            // 
-            this.sliderTickLength.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.sliderTickLength.LabelVisible = false;
-            resources.ApplyResources(this.sliderTickLength, "sliderTickLength");
-            this.sliderTickLength.Name = "sliderTickLength";
-            this.sliderTickLength.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.sliderTickLength.Value = 0;
-            this.sliderTickLength.ValueChanged += new System.EventHandler(this.sliderTickLength_ValueChanged);
-            // 
-            // lblTickLength
-            // 
-            // 
-            // 
-            // 
-            this.lblTickLength.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            resources.ApplyResources(this.lblTickLength, "lblTickLength");
-            this.lblTickLength.Name = "lblTickLength";
-            // 
             // sliderTargetSize
             // 
             // 
@@ -119,9 +94,11 @@
             this.sliderTargetSize.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.sliderTargetSize.LabelVisible = false;
             resources.ApplyResources(this.sliderTargetSize, "sliderTargetSize");
+            this.sliderTargetSize.Maximum = 20;
+            this.sliderTargetSize.Minimum = 8;
             this.sliderTargetSize.Name = "sliderTargetSize";
             this.sliderTargetSize.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.sliderTargetSize.Value = 0;
+            this.sliderTargetSize.Value = 9;
             this.sliderTargetSize.ValueChanged += new System.EventHandler(this.sliderTargetSize_ValueChanged);
             // 
             // lblTargerSize
@@ -197,8 +174,7 @@
             this.cmboxRuler.Items.AddRange(new object[] {
             this.comboItem1,
             this.comboItem2,
-            this.comboItem3,
-            this.comboItem4});
+            this.comboItem3});
             this.cmboxRuler.Name = "cmboxRuler";
             this.cmboxRuler.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmboxRuler.DropDown += new System.EventHandler(this.cmboxRuler_DropDown);
@@ -217,10 +193,6 @@
             // 
             resources.ApplyResources(this.comboItem3, "comboItem3");
             // 
-            // comboItem4
-            // 
-            resources.ApplyResources(this.comboItem4, "comboItem4");
-            // 
             // RulerAppearanceCtrl
             // 
             resources.ApplyResources(this, "$this");
@@ -230,8 +202,6 @@
             this.Controls.Add(this.btnLaserCtrl);
             this.Controls.Add(this.sliderColour);
             this.Controls.Add(this.lblZColour);
-            this.Controls.Add(this.sliderTickLength);
-            this.Controls.Add(this.lblTickLength);
             this.Controls.Add(this.sliderTargetSize);
             this.Controls.Add(this.lblTargerSize);
             this.Controls.Add(this.sliderThickness);
@@ -250,8 +220,6 @@
             this.Controls.SetChildIndex(this.sliderThickness, 0);
             this.Controls.SetChildIndex(this.lblTargerSize, 0);
             this.Controls.SetChildIndex(this.sliderTargetSize, 0);
-            this.Controls.SetChildIndex(this.lblTickLength, 0);
-            this.Controls.SetChildIndex(this.sliderTickLength, 0);
             this.Controls.SetChildIndex(this.lblZColour, 0);
             this.Controls.SetChildIndex(this.sliderColour, 0);
             this.Controls.SetChildIndex(this.btnLaserCtrl, 0);
@@ -267,8 +235,6 @@
         private System.Windows.Forms.Button btnLaserCtrl;
         private DevComponents.DotNetBar.Controls.Slider sliderColour;
         private DevComponents.DotNetBar.LabelX lblZColour;
-        private DevComponents.DotNetBar.Controls.Slider sliderTickLength;
-        private DevComponents.DotNetBar.LabelX lblTickLength;
         private DevComponents.DotNetBar.Controls.Slider sliderTargetSize;
         private DevComponents.DotNetBar.LabelX lblTargerSize;
         private DevComponents.DotNetBar.Controls.Slider sliderThickness;
@@ -280,6 +246,5 @@
         private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.Editors.ComboItem comboItem2;
         private DevComponents.Editors.ComboItem comboItem3;
-        private DevComponents.Editors.ComboItem comboItem4;
     }
 }

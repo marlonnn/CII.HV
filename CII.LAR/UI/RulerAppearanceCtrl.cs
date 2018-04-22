@@ -17,8 +17,10 @@ namespace CII.LAR.UI
         private GraphicsPropertiesManager graphicsPropertiesManager = Program.SysConfig.GraphicsPropertiesManager;
 
         private GraphicsProperties graphicsProperties;
-        public RulerAppearanceCtrl() : base()
+        private RichPictureBox pictureBox;
+        public RulerAppearanceCtrl(RichPictureBox pictureBox) : base()
         {
+            this.pictureBox = pictureBox;
             resources = new ComponentResourceManager(typeof(RulerAppearanceCtrl));
             this.ShowIndex = 4;
             this.CtrlType = CtrlType.RulerAppearanceCtrl;
@@ -28,7 +30,7 @@ namespace CII.LAR.UI
         private void SetSliderValue()
         {
             invokeColorChange = false;
-            //this.sliderTargetSize.Value = graphicsProperties.TargetSize;
+            this.sliderTargetSize.Value = (int)graphicsProperties.TextSize;
             this.sliderThickness.Value = graphicsProperties.PenWidth;
             this.sliderTransparency.Value = graphicsProperties.Alpha * (100 / 0xFF);
             //this.sliderTickLength.Value = graphicsProperties.TargetSize;
@@ -82,12 +84,14 @@ namespace CII.LAR.UI
 
         private void sliderTargetSize_ValueChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void sliderTickLength_ValueChanged(object sender, EventArgs e)
-        {
-
+            if (invokeColorChange)
+            {
+                var value = this.sliderTargetSize.Value;
+                if (graphicsProperties != null)
+                {
+                    graphicsProperties.TextSize = value;
+                }
+            }
         }
 
         private bool invokeColorChange = true;
@@ -99,6 +103,26 @@ namespace CII.LAR.UI
                 if (graphicsProperties != null)
                 {
                     graphicsProperties.ChangeColor(value);
+                }
+            }
+        }
+
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            if (this.Visible)
+            {
+                if (pictureBox.GraphicsList != null && pictureBox.GraphicsList.Count > 0)
+                {
+                    for (int i = 0; i < this.cmboxRuler.Items.Count; i++)
+                    {
+                        if (this.cmboxRuler.Items[i].ToString() == pictureBox.GraphicsList[0].ObjectType.ToString())
+                        {
+                            this.cmboxRuler.SelectedItem = this.cmboxRuler.Items[i];
+                            graphicsProperties = graphicsPropertiesManager.GetPropertiesByName(this.cmboxRuler.Items[i].ToString());
+                            SetSliderValue();
+                            break;
+                        }
+                    }
                 }
             }
         }

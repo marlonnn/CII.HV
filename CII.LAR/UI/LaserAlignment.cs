@@ -209,7 +209,7 @@ namespace CII.LAR.UI
             }
         }
 
-        protected override void RefreshUI()
+        public override void RefreshUI()
         {
             base.RefreshUI();
 

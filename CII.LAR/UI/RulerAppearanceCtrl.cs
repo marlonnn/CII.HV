@@ -97,7 +97,7 @@ namespace CII.LAR.UI
             }
         }
 
-        protected override void RefreshUI()
+        public override void RefreshUI()
         {
             base.RefreshUI();
             this.Title = global::CII.LAR.Properties.Resources.StrRulerAppearanceTitle;

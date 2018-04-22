@@ -197,16 +197,16 @@ namespace CII.LAR.Algorithm
             switch (index)
             {
                 case 3:
-                    psp = new Point(offSetX + bounds.Width -150, offsetY + bounds.Height / 2);
+                    psp = new Point(offSetX + bounds.Width -200, offsetY + bounds.Height / 2);
                     break;
                 case 4:
-                    psp = new Point(offSetX + bounds.Width / 2, offsetY + bounds.Height - 150);
+                    psp = new Point(offSetX + bounds.Width / 2, offsetY + bounds.Height - 200);
                     break;
                 case 5:
-                    psp = new Point(offSetX + 150, offsetY + bounds.Height / 2);
+                    psp = new Point(offSetX + 200, offsetY + bounds.Height / 2);
                     break;
                 case 6:
-                    psp = new Point(offSetX + bounds.Width / 2, offsetY + 150);
+                    psp = new Point(offSetX + bounds.Width / 2, offsetY + 200);
                     break;
             }
             //check point in legal region

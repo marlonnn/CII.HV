@@ -226,7 +226,7 @@ namespace CII.LAR.UI
             this.btnDelete.Visible = isVisiable;
         }
 
-        protected override void RefreshUI()
+        public override void RefreshUI()
         {
             base.RefreshUI();
             this.Title = global::CII.LAR.Properties.Resources.StrLaserHoleSizeCalibration;

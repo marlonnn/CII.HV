@@ -81,10 +81,10 @@ namespace CII.LAR.UI
 
         private void BaseCtrl_Load(object sender, EventArgs e)
         {
-            if (Program.SysConfig != null)
-            {
-                Program.SysConfig.PropertyChanged += SysConfig_PropertyChanged;
-            }
+            //if (Program.SysConfig != null)
+            //{
+            //    Program.SysConfig.PropertyChanged += SysConfig_PropertyChanged;
+            //}
         }
 
         private void SysConfig_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -95,7 +95,7 @@ namespace CII.LAR.UI
             }
         }
 
-        protected virtual void RefreshUI()
+        public virtual void RefreshUI()
         {
             if (resources == null) return;
             foreach (var item in this.Controls)

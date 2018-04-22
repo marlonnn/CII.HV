@@ -229,26 +229,35 @@
   <data name="toolStripButtonSetting.Text" xml:space="preserve">
     <value>Setting</value>
   </data>
-  <data name="toolStripButtonOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+  <data name="openCameraLiveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
   </data>
-  <data name="toolStripButtonOpen.Text" xml:space="preserve">
-    <value>Open</value>
-  </data>
-  <data name="snapshotToolStripMenuItem.ToolTipText" xml:space="preserve">
+  <data name="openCameraLiveToolStripMenuItem.Text" xml:space="preserve">
     <value>Open camera live</value>
+  </data>
+  <data name="openCameraLiveToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Open camera live</value>
+  </data>
+  <data name="closeCameraToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="closeCameraToolStripMenuItem.Text" xml:space="preserve">
+    <value>Close camera live</value>
+  </data>
+  <data name="closeCameraToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Close camera live</value>
   </data>
   <data name="horizontalFlipToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 22</value>
   </data>
   <data name="horizontalFlipToolStripMenuItem.Text" xml:space="preserve">
-    <value>Horizontal Flip Video</value>
+    <value>Horizontal flip</value>
   </data>
   <data name="verticalFlipToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 22</value>
   </data>
   <data name="verticalFlipToolStripMenuItem.Text" xml:space="preserve">
-    <value>Vertical Flip Video</value>
+    <value>Vertical flip</value>
   </data>
   <data name="toolStripDropDownCamera.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -258,15 +267,6 @@
   </data>
   <data name="toolStripDropDownCamera.Text" xml:space="preserve">
     <value>Camera</value>
-  </data>
-  <data name="toolStripButtonPort.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="toolStripButtonPort.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
-  </data>
-  <data name="toolStripButtonPort.Text" xml:space="preserve">
-    <value>Serial port</value>
   </data>
   <data name="toolStripButtonLaserDebug.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
@@ -638,12 +638,6 @@
   <data name="&gt;&gt;toolStripButtonSetting.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripButtonOpen.Name" xml:space="preserve">
-    <value>toolStripButtonOpen</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonOpen.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;toolStripDropDownCamera.Name" xml:space="preserve">
     <value>toolStripDropDownCamera</value>
   </data>
@@ -662,23 +656,17 @@
   <data name="&gt;&gt;closeCameraToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;freeRunToolStripMenuItem.Name" xml:space="preserve">
-    <value>freeRunToolStripMenuItem</value>
+  <data name="&gt;&gt;horizontalFlipToolStripMenuItem.Name" xml:space="preserve">
+    <value>horizontalFlipToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;freeRunToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;horizontalFlipToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;snapshotToolStripMenuItem.Name" xml:space="preserve">
-    <value>snapshotToolStripMenuItem</value>
+  <data name="&gt;&gt;verticalFlipToolStripMenuItem.Name" xml:space="preserve">
+    <value>verticalFlipToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;snapshotToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;verticalFlipToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonPort.Name" xml:space="preserve">
-    <value>toolStripButtonPort</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonPort.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripButtonLaserDebug.Name" xml:space="preserve">
     <value>toolStripButtonLaserDebug</value>

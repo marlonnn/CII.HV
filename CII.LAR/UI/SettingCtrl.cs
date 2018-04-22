@@ -113,7 +113,7 @@ namespace CII.LAR.UI
             UpdateTimerStatesHandler?.Invoke(!this.comboBoxItemLanguage.Expanded);
         }
 
-        protected override void RefreshUI()
+        public override void RefreshUI()
         {
             this.Title = global::CII.LAR.Properties.Resources.StrSetting;
             resources.ApplyResources(this.labelItemLanguage, labelItemLanguage.Name);

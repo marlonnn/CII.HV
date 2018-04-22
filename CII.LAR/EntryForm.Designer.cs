@@ -60,13 +60,11 @@ namespace CII.LAR
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonLaser = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSetting = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonOpen = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownCamera = new System.Windows.Forms.ToolStripDropDownButton();
             this.openCameraLiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeCameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.freeRunToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.snapshotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            //this.toolStripButtonPort = new System.Windows.Forms.ToolStripButton();
+            this.horizontalFlipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalFlipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButtonLaserDebug = new System.Windows.Forms.ToolStripButton();
             this.openCameraLive = new System.Windows.Forms.ToolStripMenuItem();
             this.openCameraAndStop = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,9 +74,7 @@ namespace CII.LAR
             this.systemMonitorTimer = new System.Windows.Forms.Timer(this.components);
             this.videoControl = new CII.LAR.UI.VideoControl();
             this.richPictureBox = new CII.LAR.UI.RichPictureBox();
-            this.horizontalFlipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verticalFlipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.LaserCheckTimer = new System.Windows.Forms.Timer(this.components);
+            this.LaserCheckTimer = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.richPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -107,9 +103,7 @@ namespace CII.LAR
             this.toolStripSeparator5,
             this.toolStripButtonLaser,
             this.toolStripButtonSetting,
-            this.toolStripButtonOpen,
             this.toolStripDropDownCamera,
-            //this.toolStripButtonPort,
             this.toolStripButtonLaserDebug});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
@@ -237,9 +231,9 @@ namespace CII.LAR
             this.btnCm,
             this.btnInches,
             this.btnMeters});
-            this.toolStripDropDownButtonUnit.Visible = false;
             this.toolStripDropDownButtonUnit.Image = global::CII.LAR.Properties.Resources.unit;
             this.toolStripDropDownButtonUnit.Name = "toolStripDropDownButtonUnit";
+            this.toolStripDropDownButtonUnit.Visible = false;
             resources.ApplyResources(this.toolStripDropDownButtonUnit, "toolStripDropDownButtonUnit");
             // 
             // btnUm
@@ -295,22 +289,12 @@ namespace CII.LAR
             resources.ApplyResources(this.toolStripButtonSetting, "toolStripButtonSetting");
             this.toolStripButtonSetting.Click += new System.EventHandler(this.toolStripButtonSetting_Click);
             // 
-            // toolStripButtonOpen
-            // 
-            this.toolStripButtonOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonOpen.Image = global::CII.LAR.Properties.Resources.open;
-            this.toolStripButtonOpen.Name = "toolStripButtonOpen";
-            resources.ApplyResources(this.toolStripButtonOpen, "toolStripButtonOpen");
-            this.toolStripButtonOpen.Click += new System.EventHandler(this.toolStripButtonOpen_Click);
-            // 
             // toolStripDropDownCamera
             // 
             this.toolStripDropDownCamera.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripDropDownCamera.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openCameraLiveToolStripMenuItem,
             this.closeCameraToolStripMenuItem,
-            this.freeRunToolStripMenuItem,
-            this.snapshotToolStripMenuItem,
             this.horizontalFlipToolStripMenuItem,
             this.verticalFlipToolStripMenuItem});
             this.toolStripDropDownCamera.Image = global::CII.LAR.Properties.Resources.idscamera;
@@ -328,24 +312,7 @@ namespace CII.LAR
             this.closeCameraToolStripMenuItem.Name = "closeCameraToolStripMenuItem";
             resources.ApplyResources(this.closeCameraToolStripMenuItem, "closeCameraToolStripMenuItem");
             this.closeCameraToolStripMenuItem.Click += new System.EventHandler(this.closeCameraToolStripMenuItem_Click);
-            // 
-            // freeRunToolStripMenuItem
-            // 
-            this.freeRunToolStripMenuItem.Name = "freeRunToolStripMenuItem";
-            resources.ApplyResources(this.freeRunToolStripMenuItem, "freeRunToolStripMenuItem");
-            // 
-            // snapshotToolStripMenuItem
-            // 
-            this.snapshotToolStripMenuItem.Name = "snapshotToolStripMenuItem";
-            resources.ApplyResources(this.snapshotToolStripMenuItem, "snapshotToolStripMenuItem");
-            //// 
-            //// toolStripButtonPort
-            //// 
-            //this.toolStripButtonPort.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            //this.toolStripButtonPort.Image = global::CII.LAR.Properties.Resources.port;
-            //resources.ApplyResources(this.toolStripButtonPort, "toolStripButtonPort");
-            //this.toolStripButtonPort.Name = "toolStripButtonPort";
-            //this.toolStripButtonPort.Click += new System.EventHandler(this.toolStripButtonPort_Click);
+
             // 
             // toolStripButtonLaserDebug
             // 
@@ -460,7 +427,6 @@ namespace CII.LAR
         private System.Windows.Forms.ToolStripButton toolStripButtonLaser;
         private System.Windows.Forms.ToolStripButton toolStripButtonSetting;
         private System.Windows.Forms.ToolStripButton toolStripButtonFit;
-        private System.Windows.Forms.ToolStripButton toolStripButtonOpen;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonUnit;
         private System.Windows.Forms.ToolStripMenuItem btnUm;
         private System.Windows.Forms.ToolStripMenuItem btnDmm;
@@ -477,8 +443,6 @@ namespace CII.LAR
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownCamera;
         private System.Windows.Forms.ToolStripMenuItem openCameraLiveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeCameraToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem freeRunToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem snapshotToolStripMenuItem;
         //private System.Windows.Forms.ToolStripButton toolStripButtonPort;
         private System.Windows.Forms.ToolStripButton toolStripButtonLaserDebug;
         private System.Windows.Forms.Timer systemMonitorTimer;

@@ -130,7 +130,7 @@ namespace CII.LAR.UI
 
         private void btnAppearance_Click(object sender, EventArgs e)
         {
-            DelegateClass.GetDelegate().ClickDelegateHandler?.Invoke(sender, CtrlType.LaserAlignment);
+            DelegateClass.GetDelegate().ClickDelegateHandler?.Invoke(sender, CtrlType.LaserAppreance);
         }
 
         private void SliderValueChangedHandler(object sender, EventArgs e)
@@ -232,7 +232,7 @@ namespace CII.LAR.UI
             return index;
         }
 
-        protected override void RefreshUI()
+        public override void RefreshUI()
         {
             base.RefreshUI();
             this.Title = global::CII.LAR.Properties.Resources.StrLaserCtrlTitle;

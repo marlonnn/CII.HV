@@ -177,6 +177,7 @@ namespace CII.LAR
         public EntryForm()
         {
             InitializeComponent();
+            resources = new ComponentResourceManager(typeof(EntryForm));
             this.WindowState = FormWindowState.Maximized;
             listViewItemArray = new ListViewItemArray();
 
@@ -281,9 +282,48 @@ namespace CII.LAR
             if (!string.IsNullOrEmpty(Program.SysConfig.DeviceMoniker))
                 CaptureDeviceHandler(Program.SysConfig.DeviceMoniker);
 
-
+            if (Program.SysConfig != null)
+            {
+                Program.SysConfig.PropertyChanged += SysConfig_PropertyChanged;
+            }
         }
 
+        private void SysConfig_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == Program.SysConfig.GetPropertyName(() => Program.SysConfig.UICulture))
+            {
+                RefrshUI();
+                if (BaseCtrls !=null && BaseCtrls.Count > 0)
+                {
+                    foreach (var bc in BaseCtrls)
+                    {
+                        bc.RefreshUI();
+                    }
+                }
+            }
+        }
+        protected ComponentResourceManager resources;
+        private void RefrshUI()
+        {
+            resources.ApplyResources(toolStripButtonCapture, toolStripButtonCapture.Name);
+            resources.ApplyResources(toolStripButtonVideo, toolStripButtonVideo.Name);
+            resources.ApplyResources(toolStripFiles, toolStripFiles.Name);
+            resources.ApplyResources(toolStripButtonZoomOut, toolStripButtonZoomOut.Name);
+            resources.ApplyResources(toolStripButtonZoomIn, toolStripButtonZoomIn.Name);
+
+            resources.ApplyResources(toolStripButtonLine, toolStripButtonLine.Name);
+            resources.ApplyResources(toolStripButtonRectangle, toolStripButtonRectangle.Name);
+            resources.ApplyResources(toolStripButtonElliptical, toolStripButtonElliptical.Name);
+            resources.ApplyResources(toolStripButtonLaser, toolStripButtonLaser.Name);
+            resources.ApplyResources(toolStripButtonSetting, toolStripButtonSetting.Name);
+
+            resources.ApplyResources(toolStripButtonFit, toolStripButtonFit.Name);
+            resources.ApplyResources(toolStripDropDownCamera, toolStripDropDownCamera.Name);
+            resources.ApplyResources(openCameraLiveToolStripMenuItem, openCameraLiveToolStripMenuItem.Name);
+            resources.ApplyResources(closeCameraToolStripMenuItem, closeCameraToolStripMenuItem.Name);
+            resources.ApplyResources(horizontalFlipToolStripMenuItem, horizontalFlipToolStripMenuItem.Name);
+            resources.ApplyResources(verticalFlipToolStripMenuItem, verticalFlipToolStripMenuItem.Name);
+        }
         private void OnIdle(object sender, EventArgs e)
         {
             if (this.richPictureBox.Picture != null && Program.SysConfig.LiveMode == true)

@@ -72,7 +72,7 @@ namespace CII.LAR.UI
             DelegateClass.GetDelegate().ClickDelegateHandler?.Invoke(sender, CtrlType.RulerAppearanceCtrl);
         }
 
-        protected override void RefreshUI()
+        public override void RefreshUI()
         {
             this.Title = global::CII.LAR.Properties.Resources.StrStatisticsTitle;
             resources.ApplyResources(this.columnHeader1, "columnHeader1");

@@ -681,6 +681,12 @@ namespace CII.LAR
                 VideoPropertyForm form = new VideoPropertyForm();
                 form.ShowDialog();
             }
+            else if (e.Control == true && e.KeyCode == Keys.P)
+            {
+
+                SerialPortDebugForm spd = new SerialPortDebugForm();
+                spd.ShowDialog();
+            }
         }
 
         private void openCameraLiveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -952,6 +958,7 @@ namespace CII.LAR
         }
 
         private LaserDebugCtrl laserDebugForm;
+        private SerialPortDebugForm spd;
         private void toolStripButtonLaserDebug_Click(object sender, EventArgs e)
         {
             //ShowBaseCtrl(true, CtrlType.LaserDebugCtrl);
@@ -961,8 +968,8 @@ namespace CII.LAR
             //this.LaserCheckTimer.Enabled = false;
             //laserDebugForm.ShowDialog();
 
-            SerialPortDebugForm spd = new SerialPortDebugForm();
-            spd.ShowDialog();
+            LaserDebugControl ldc = new LaserDebugControl();
+            ldc.ShowDialog();
         }
 
         private void toolStripButtonLine_Click(object sender, EventArgs e)
@@ -1168,7 +1175,6 @@ namespace CII.LAR
         }
 
         private System.Timers.Timer recordTimer;
-        private int recordCount;
 
         private void toolStripButtonVideo_Click(object sender, EventArgs e)
         {
@@ -1194,7 +1200,7 @@ namespace CII.LAR
                         {
                             recordTimer = new System.Timers.Timer(1000);
                             recordTimer.Elapsed += RecordTimer_Elapsed;
-                            recordCount = 0;
+                            this.richPictureBox.RecordCount = 0;
                             recordTimer.Start();
                         }
                     }
@@ -1218,7 +1224,7 @@ namespace CII.LAR
         
         private void RecordTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (recordCount == Program.SysConfig.RecordTime * 60)
+            if (this.richPictureBox.RecordCount == Program.SysConfig.RecordTime * 60)
             {
                 recordTimer.Stop();
                 CaptureVideo = false;
@@ -1230,7 +1236,7 @@ namespace CII.LAR
                 }
                 this.toolStripButtonVideo.Image = global::CII.LAR.Properties.Resources.video;
             }
-            recordCount++;
+            this.richPictureBox.RecordCount++;
         }
 
         private void toolStripFiles_Click(object sender, EventArgs e)

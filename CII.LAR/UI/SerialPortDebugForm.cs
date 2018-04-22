@@ -31,7 +31,6 @@ namespace CII.LAR.UI
 
         private void SerialPortDebugForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.autoSendTimer.Enabled = false;
             serialPortCom.Close();
         }
 
@@ -112,35 +111,6 @@ namespace CII.LAR.UI
             }
         }
 
-        private void autoSendTimer_Tick(object sender, EventArgs e)
-        {
-
-        }
-
-        private void autoSendcbx_CheckedChanged(object sender, EventArgs e)
-        {
-            if (autoSendcbx.Checked)
-            {
-                autoSendTimer.Enabled = true;
-                autoSendTimer.Interval = int.Parse(sendIntervalTimetbx.Text);
-                autoSendTimer.Start();
-
-                //disable send botton and textbox
-                sendIntervalTimetbx.Enabled = false;
-                sendtbx.ReadOnly = true;
-                sendbtn.Enabled = false;
-            }
-            else
-            {
-                autoSendTimer.Enabled = false;
-                autoSendTimer.Stop();
-
-                //enable send botton and textbox
-                sendIntervalTimetbx.Enabled = true;
-                sendtbx.ReadOnly = false;
-                sendbtn.Enabled = true;
-            }
-        }
 
         public void LaserOpenComEvent(object sender, SerialPortEventArgs e)
         {
@@ -153,8 +123,6 @@ namespace CII.LAR.UI
             if (e.isOpend)  //Open successfully
             {
                 laserOpenCloseSpbtn.Text = "Close";
-                sendbtn.Enabled = true;
-                autoSendcbx.Enabled = true;
 
                 laserComListCbx.Enabled = false;
                 laserBaudRateCbx.Enabled = false;
@@ -163,16 +131,10 @@ namespace CII.LAR.UI
                 laserParityCbx.Enabled = false;
                 laserHandshakingcbx.Enabled = false;
 
-                if (autoSendcbx.Checked)
-                {
-                    autoSendTimer.Start();
-                    sendtbx.ReadOnly = true;
-                }
             }
             else    //Open failed
             {
-                sendbtn.Enabled = false;
-                autoSendcbx.Enabled = false;
+
             }
         }
 

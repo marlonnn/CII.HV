@@ -324,7 +324,7 @@ namespace CII.LAR.SysClass
             this.archivePath = string.Format("{0}\\Archive", System.Environment.CurrentDirectory);
             this.Function = SystemFunction.Empty;
             this.DefaultScaleCoefficient = 4;
-            this.recordTime = 0;
+            this.recordTime = 1;
         }
 
         // set default value

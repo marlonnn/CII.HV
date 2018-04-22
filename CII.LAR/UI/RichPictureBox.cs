@@ -17,6 +17,13 @@ namespace CII.LAR.UI
     public partial class RichPictureBox : PictureBox
     {
         private static Cursor s_cursor = new Cursor(new MemoryStream((byte[])new ResourceManager(typeof(EntryForm)).GetObject("Cross")));
+
+        private int recordCount;
+        public int RecordCount
+        {
+            get { return this.recordCount; }
+            set { this.recordCount = value; }
+        }
         private bool captureVideo = false;
         public bool CaptureVideo
         {
@@ -795,7 +802,14 @@ namespace CII.LAR.UI
             get { return (Control.ModifierKeys & Keys.Control) != 0; }
         } 
         #endregion
-
+        private string GetRecordTime()
+        {
+            int minutes = this.recordCount / 60;
+            int seconds = this.recordCount % 60;
+            string sMinutes = string.Format("{0}", minutes).PadLeft(2, '0');
+            string sSeconds = string.Format("{0}", seconds).PadLeft(2, '0');
+            return string.Format("00:{0}:{1}", sMinutes, sSeconds);
+        }
         protected override void OnPaint(PaintEventArgs e)
         {
             try
@@ -848,6 +862,9 @@ namespace CII.LAR.UI
                         var size = e.Graphics.MeasureString("REC", font);
                         e.Graphics.DrawString("REC", font, sb, circle.CenterPoint.X + 30, 60 - size.Height / 2);
                         e.Graphics.FillEllipse(sb, circle.Rectangle);
+                        string time = GetRecordTime();
+                        var tSize = e.Graphics.MeasureString(time, font);
+                        e.Graphics.DrawString(time, font, sb, new PointF(circle.CenterPoint.X + 30 + size.Width, 60 - tSize.Height / 2));
                     }
                 }
             }

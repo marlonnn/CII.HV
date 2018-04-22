@@ -280,6 +280,12 @@
     <Compile Include="UI\ImageTracker.designer.cs">
       <DependentUpon>ImageTracker.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\LaserDebugControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LaserDebugControl.Designer.cs">
+      <DependentUpon>LaserDebugControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\LaserDebugCtrl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -495,6 +501,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ImageTracker.resx">
       <DependentUpon>ImageTracker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LaserDebugControl.resx">
+      <DependentUpon>LaserDebugControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LaserDebugCtrl.resx">
       <DependentUpon>LaserDebugCtrl.cs</DependentUpon>

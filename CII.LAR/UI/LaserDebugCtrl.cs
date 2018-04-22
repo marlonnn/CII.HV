@@ -15,13 +15,7 @@ namespace CII.LAR.UI
 {
     public partial class LaserDebugCtrl : Form
     {
-        private IController controller;
-        public IController Controller
-        {
-            get { return this.controller; }
-            set { this.controller = value; }
-        }
-
+        private SerialPortCommunication serialPortCom;
         public LaserDebugCtrl()
         {
             //this.CtrlType = CtrlType.LaserDebugCtrl;
@@ -32,7 +26,8 @@ namespace CII.LAR.UI
 
         private void LaserDebugCtrl_Load(object sender, EventArgs e)
         {
-            IsOpened(this.Controller.IsOpened);
+            serialPortCom = SerialPortCommunication.GetInstance();
+            IsOpened(serialPortCom.SerialPort.IsOpen);
         }
 
         /// <summary>
@@ -112,24 +107,19 @@ namespace CII.LAR.UI
         {
             if (laserOpenCloseSpbtn.Text == "Open")
             {
-                if (controller != null)
+                if (serialPortCom != null && !serialPortCom.SerialPort.IsOpen)
                 {
-                    controller.OpenLaserSerialPort(laserComListCbx.Text, laserBaudRateCbx.Text,
+                    serialPortCom.SerialPortOpen(laserComListCbx.Text, laserBaudRateCbx.Text,
                         laserDataBitsCbx.Text, laserStopBitsCbx.Text, laserParityCbx.Text, laserHandshakingcbx.Text);
                 }
             }
             else
             {
-                if (controller != null)
+                if (serialPortCom != null && serialPortCom.SerialPort.IsOpen)
                 {
-                    controller.CloseLaserSerialPort();
+                    serialPortCom.Close();
                 }
             }
-        }
-
-        public void SetController(IController controller)
-        {
-            this.controller = controller;
         }
 
         private void EnableLaserCtrl(bool enable)
@@ -214,8 +204,9 @@ namespace CII.LAR.UI
         {
             //LaserProtocolFactory.GetInstance().SendMessage(new LaserC70Request());
             var c70 = new LaserC70Request();
-            var bytes = LaserProtocolFactory.GetInstance().LaserProtocol.EnPackage(c70.Encode()[0]);
-            this.controller.SendDataToLaserCom(bytes);
+            var bytes = serialPortCom.Encode(c70);
+            if (serialPortCom != null && serialPortCom.SerialPort.IsOpen)
+                serialPortCom.SendData(bytes);
         }
     }
 }

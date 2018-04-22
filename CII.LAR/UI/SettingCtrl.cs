@@ -38,6 +38,7 @@ namespace CII.LAR.UI
             InitializeScaleCoefficient();
             this.cmbLaser.SelectedIndexChanged += new System.EventHandler(this.cmbLaser_SelectedIndexChanged);
             this.cbxScale.SelectedIndexChanged += CbxScale_SelectedIndexChanged;
+            InitializeCmbTime();
         }
 
         private void CbxScale_SelectedIndexChanged(object sender, EventArgs e)
@@ -198,6 +199,17 @@ namespace CII.LAR.UI
             }
             catch (Exception ex)
             {
+            }
+        }
+
+        private void InitializeCmbTime()
+        {
+            foreach (var item in cmbTime.Items)
+            {
+                if (Int32.Parse(item.ToString()) == Program.SysConfig.RecordTime)
+                {
+                    this.cmbTime.SelectedItem = item;
+                }
             }
         }
     }

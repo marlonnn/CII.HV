@@ -2,6 +2,7 @@ using DevComponents.DotNetBar;
 using Manina.Windows.Forms;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -112,7 +113,10 @@ namespace CII.LAR.UI
 
         private void toolStripButtonCopy_Click(object sender, EventArgs e)
         {
-
+            Clipboard.Clear();
+            StringCollection paths = new StringCollection();
+            paths.Add(fileName);
+            Clipboard.SetFileDropList(paths);
         }
 
         private void toolStripButtonAssign_Click(object sender, EventArgs e)

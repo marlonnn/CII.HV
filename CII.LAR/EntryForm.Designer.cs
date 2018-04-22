@@ -320,6 +320,7 @@ namespace CII.LAR
             this.toolStripButtonLaserDebug.Image = global::CII.LAR.Properties.Resources.backflush;
             this.toolStripButtonLaserDebug.Name = "toolStripButtonLaserDebug";
             resources.ApplyResources(this.toolStripButtonLaserDebug, "toolStripButtonLaserDebug");
+            toolStripButtonLaserDebug.Enabled = false;
             this.toolStripButtonLaserDebug.Click += new System.EventHandler(this.toolStripButtonLaserDebug_Click);
             // 
             // openCameraLive

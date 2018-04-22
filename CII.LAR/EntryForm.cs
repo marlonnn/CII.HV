@@ -1360,6 +1360,7 @@ namespace CII.LAR
                             Program.SysConfig.LaserPort = p;
                             Program.SysConfig.LaserPortConected = true;
                             this.LaserCheckTimer.Enabled = false;
+                            toolStripButtonLaserDebug.Enabled = true;
                             break;
                         }
                     }

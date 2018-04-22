@@ -32,6 +32,7 @@ namespace CII.LAR
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FilesForm));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -95,9 +96,9 @@ namespace CII.LAR
             // 
             // imageListView
             // 
-            //this.imageListView.DefaultImage = global::CII.LAR.Properties.Resources.image;
+            this.imageListView.DefaultImage = ((System.Drawing.Image)(resources.GetObject("imageListView.DefaultImage")));
             this.imageListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            //this.imageListView.ErrorImage = global::CII.LAR.Properties.Resources.exclamation;
+            this.imageListView.ErrorImage = ((System.Drawing.Image)(resources.GetObject("imageListView.ErrorImage")));
             this.imageListView.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.imageListView.Location = new System.Drawing.Point(0, 0);
             this.imageListView.Name = "imageListView";
@@ -158,6 +159,7 @@ namespace CII.LAR
             this.toolStripButtonCopy.Size = new System.Drawing.Size(23, 22);
             this.toolStripButtonCopy.Text = "toolStripButtonCopy";
             this.toolStripButtonCopy.ToolTipText = "Copy";
+            this.toolStripButtonCopy.Click += new System.EventHandler(this.toolStripButtonCopy_Click);
             // 
             // toolStripButtonPrint
             // 

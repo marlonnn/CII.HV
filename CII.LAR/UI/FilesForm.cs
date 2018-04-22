@@ -13,6 +13,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using CII.LAR.SysClass;
+using System.Drawing.Imaging;
+using System.Collections.Specialized;
 
 namespace CII.LAR
 {
@@ -200,5 +202,20 @@ namespace CII.LAR
             assignForm.Show();
         }
 
+        private void toolStripButtonCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.Clear();
+            var items = this.imageListView.Items;
+            StringCollection paths = new StringCollection();
+            foreach (var item in items)
+            {
+                if (item != null && item.Selected)
+                {
+                    string fileName = item.FileName;
+                    paths.Add(fileName);
+                }
+            }
+            Clipboard.SetFileDropList(paths);
+        }
     }
 }

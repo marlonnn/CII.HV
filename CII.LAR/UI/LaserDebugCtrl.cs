@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using CII.LAR.Protocol;
 using CII.LAR.Commond;
+using System.Threading;
 
 namespace CII.LAR.UI
 {
@@ -37,7 +38,16 @@ namespace CII.LAR.UI
             if (serialPortCom.SerialPort.IsOpen)
             {
                 CheckLaserStatus();
+                Thread.Sleep(1000);
+                CheckRedLaserCurrent();
             }
+        }
+
+        private void CheckRedLaserCurrent()
+        {
+            var c09 = new LaserC09Request();
+            var bytes = serialPortCom.Encode(c09);
+            serialPortCom.SendData(bytes);
         }
 
         private bool redLaserOpen = false;
@@ -59,6 +69,11 @@ namespace CII.LAR.UI
                         this.btn70.Text = "Closed";
                         redLaserOpen = true;
                     }
+                }
+                LaserC09Response c09r = baseResponse as LaserC09Response;
+                if (c09r != null)
+                {
+                    this.slider.Value = (int)c09r.Current;
                 }
             }
         }

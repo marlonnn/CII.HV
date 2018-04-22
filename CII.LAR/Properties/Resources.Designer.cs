@@ -409,6 +409,15 @@ namespace CII.LAR.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Keyboard Shortcut Configuration 的本地化字符串。
+        /// </summary>
+        internal static string StrShortcutTitle {
+            get {
+                return ResourceManager.GetString("StrShortcutTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Statistics Information 的本地化字符串。
         /// </summary>
         internal static string StrStatisticsTitle {

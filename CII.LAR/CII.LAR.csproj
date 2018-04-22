@@ -337,6 +337,12 @@
     <Compile Include="UI\RulerAdjustCtrl.Designer.cs">
       <DependentUpon>RulerAdjustCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ShortcutCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ShortcutCtrl.Designer.cs">
+      <DependentUpon>ShortcutCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UpDownArrowCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -522,6 +528,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ReportPageUI.resx">
       <DependentUpon>ReportPageUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ShortcutCtrl.resx">
+      <DependentUpon>ShortcutCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ShortcutCtrl.zh-CN.resx">
+      <DependentUpon>ShortcutCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UpDownArrowCtrl.resx">
       <DependentUpon>UpDownArrowCtrl.cs</DependentUpon>

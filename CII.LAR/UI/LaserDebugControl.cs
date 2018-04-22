@@ -55,9 +55,10 @@ namespace CII.LAR.UI
                 this.lblComName.Text = Program.SysConfig.LaserPort;
             this.laserStatus.Text = serialPortCom.SerialPort.IsOpen ? "Connected" : "Not connected";
             if (serialPortCom.SerialPort.IsOpen)  CheckLaserStatus();
+            CheckRedLaserCurrent();
         }
 
-        private void CheckRelLaserCurrent()
+        private void CheckRedLaserCurrent()
         {
             var c09 = new LaserC09Request();
             var bytes = serialPortCom.Encode(c09);

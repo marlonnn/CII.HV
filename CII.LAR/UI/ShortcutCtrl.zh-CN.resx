@@ -117,49 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="labelItem1Str" xml:space="preserve">
-    <value>准备就绪</value>
+  <data name="buttonSave.Text" xml:space="preserve">
+    <value>保存并退出</value>
   </data>
-  <data name="labelItemLanguageStr" xml:space="preserve">
-    <value>语言</value>
+  <data name="lblSnapshoot.Text" xml:space="preserve">
+    <value>拍照</value>
   </data>
-  <data name="StrCreateReport" xml:space="preserve">
-    <value>点击报告按钮创建技术支持请求。</value>
+  <data name="lblVideo.Text" xml:space="preserve">
+    <value>开始/停止录制</value>
   </data>
-  <data name="StrOK" xml:space="preserve">
-    <value>确认</value>
+  <data name="lblZoomIn.Text" xml:space="preserve">
+    <value>镜头放大</value>
   </data>
-  <data name="StrOutOfMemory" xml:space="preserve">
-    <value>程序内存不足，请重启程序。</value>
-  </data>
-  <data name="StrReport" xml:space="preserve">
-    <value>报告</value>
-  </data>
-  <data name="StrUnknownErrorMsg" xml:space="preserve">
-    <value>遇到未知错误，请重启程序。</value>
-  </data>
-  <data name="StrSetting" xml:space="preserve">
-    <value>设置</value>
-  </data>
-  <data name="StrStatisticsTitle" xml:space="preserve">
-    <value>统计信息</value>
-  </data>
-  <data name="StrRulerAppearanceTitle" xml:space="preserve">
-    <value>测量工具属性</value>
-  </data>
-  <data name="StrLaserCtrlTitle" xml:space="preserve">
-    <value>激光器控制</value>
-  </data>
-  <data name="StrLaserAppearanceTitle" xml:space="preserve">
-    <value>激光属性</value>
-  </data>
-  <data name="StrLaserAlignmentTitle" xml:space="preserve">
-    <value>激光目标对齐</value>
-  </data>
-  <data name="StrLaserHoleSizeCalibration" xml:space="preserve">
-    <value>激光孔径校准</value>
-  </data>
-  <data name="StrShortcutTitle" xml:space="preserve">
-    <value>键盘快捷键设置</value>
+  <data name="lblZoomOut.Text" xml:space="preserve">
+    <value>镜头缩小</value>
   </data>
 </root>

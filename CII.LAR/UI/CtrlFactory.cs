@@ -21,6 +21,7 @@ namespace CII.LAR.UI
         private LaserHoleSize laserHoleSize;
         private DebugCtrl debugCtrl;
         private ObjectLenseCtrl lenseCtrl;
+        private ShortcutCtrl shortcutCtrl;
 
         public static void InitializeCtrlFactory(RichPictureBox richPictureBox)
         {
@@ -40,6 +41,7 @@ namespace CII.LAR.UI
             laserHoleSize = new LaserHoleSize();
             debugCtrl = new DebugCtrl();
             lenseCtrl = new ObjectLenseCtrl(richPictureBox);
+            shortcutCtrl = new ShortcutCtrl();
         }
 
         public static CtrlFactory GetCtrlFactory()
@@ -90,6 +92,9 @@ namespace CII.LAR.UI
                     break;
                 case CtrlType.LenseCtrl:
                     ctrl = this.lenseCtrl as T;
+                    break;
+                case CtrlType.ShortCut:
+                    ctrl = this.shortcutCtrl as T;
                     break;
             }
             return ctrl;

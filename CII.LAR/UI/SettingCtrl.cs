@@ -25,6 +25,10 @@ namespace CII.LAR.UI
 
         public delegate void ShowObjectLenseManager();
         public ShowObjectLenseManager ShowObjectLenseManagerHandler;
+
+        public delegate void ShowShortcutManager();
+        public ShowShortcutManager ShowShortcutManagerHandler;
+
         public SettingCtrl(RichPictureBox richPictureBox) : base()
         {
             this.richPictureBox = richPictureBox;
@@ -126,6 +130,8 @@ namespace CII.LAR.UI
             resources.ApplyResources(this.lblSimulator, lblSimulator.Name);
             resources.ApplyResources(this.lense, lense.Name);
             resources.ApplyResources(this.labelItemScale, labelItemScale.Name);
+            resources.ApplyResources(this.labelItem2, labelItem2.Name);
+            resources.ApplyResources(this.btnShortcuts, btnShortcuts.Name);
             //this.itemContainer2.Refresh();
             foreach (var ctrl in this.Controls)
             {
@@ -211,6 +217,11 @@ namespace CII.LAR.UI
                     this.cmbTime.SelectedItem = item;
                 }
             }
+        }
+
+        private void btnShortcuts_Click(object sender, EventArgs e)
+        {
+            ShowShortcutManagerHandler?.Invoke();
         }
     }
 }

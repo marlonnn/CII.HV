@@ -103,6 +103,7 @@ namespace CII.LAR
         private LaserHoleSize laserHoleSize;
         private VideoChooseCtrl videoChooseCtrl;
         private ObjectLenseCtrl lenseCtrl;
+        private ShortcutCtrl shortcutCtrl;
 
         #endregion
 
@@ -354,6 +355,7 @@ namespace CII.LAR
             settingCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SettingCtrl>(CtrlType.SettingCtrl);
             settingCtrl.UpdateSimulatorImageHandler += UpdateSimulatorImageHandler;
             settingCtrl.ShowObjectLenseManagerHandler += ShowObjectLenseManagerHandler;
+            settingCtrl.ShowShortcutManagerHandler += ShowShortcutManagerHandler;
             BaseCtrls.Add(settingCtrl);
 
             statisticsCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<StatisticsCtrl>(CtrlType.StatisticsCtrl);
@@ -385,6 +387,8 @@ namespace CII.LAR
             lenseCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<ObjectLenseCtrl>(CtrlType.LenseCtrl);
             BaseCtrls.Add(lenseCtrl);
 
+            shortcutCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<ShortcutCtrl>(CtrlType.ShortCut);
+            BaseCtrls.Add(shortcutCtrl);
             //laserDebugCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserDebugCtrl>(CtrlType.LaserDebugCtrl);
             //BaseCtrls.Add(laserDebugCtrl);
         }
@@ -392,6 +396,11 @@ namespace CII.LAR
         private void ShowObjectLenseManagerHandler()
         {
             ShowBaseCtrl(true, CtrlType.LenseCtrl);
+        }
+
+        private void ShowShortcutManagerHandler()
+        {
+            ShowBaseCtrl(true, CtrlType.ShortCut);
         }
 
         private void OpenBtnClickHandler(string btnName)

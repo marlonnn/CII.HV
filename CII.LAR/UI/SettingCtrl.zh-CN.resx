@@ -123,6 +123,9 @@
   <data name="btnNew.Text" xml:space="preserve">
     <value>新建</value>
   </data>
+  <data name="btnShortcuts.Text" xml:space="preserve">
+    <value>键盘/踏板快捷键</value>
+  </data>
   <data name="btnSimulator.Text" xml:space="preserve">
     <value>开启模拟模式</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="labelItem1.Text" xml:space="preserve">
     <value>录屏时长（单位：分钟）</value>
+  </data>
+  <data name="labelItem2.Text" xml:space="preserve">
+    <value>快捷键</value>
   </data>
   <data name="labelItemCamera.Text" xml:space="preserve">
     <value>相机</value>

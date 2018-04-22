@@ -119,7 +119,8 @@ namespace CII.LAR
         LaserHoleSize,
         RulerAppearanceCtrl,
         DebugCtrl,
-        LenseCtrl
+        LenseCtrl,
+        ShortCut
     }
 
     /// <summary>

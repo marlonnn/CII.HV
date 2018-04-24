@@ -325,7 +325,42 @@ namespace CII.LAR.DrawTools
                 }
             }
         }
-        
+
+        /// <summary>
+        /// 创建新的物镜，需要动态调整刻度尺
+        /// </summary>
+        private float minorScale = 1;
+        public float MinorScale
+        {
+            get
+            {
+                if (Program.SysConfig.Lense.Factor > 5 && Program.SysConfig.Lense.Factor <= 10)
+                {
+                    this.minorScale = 10;
+                }
+                else if (Program.SysConfig.Lense.Factor > 10 && Program.SysConfig.Lense.Factor <= 25)
+                {
+                    this.minorScale = 20;
+                }
+                else if (Program.SysConfig.Lense.Factor > 25 && Program.SysConfig.Lense.Factor <= 40)
+                {
+                    this.minorScale = 25;
+                }
+                else if (Program.SysConfig.Lense.Factor > 40 && Program.SysConfig.Lense.Factor <= 55)
+                {
+                    this.minorScale = 50;
+                }
+                else if (Program.SysConfig.Lense.Factor > 55 && Program.SysConfig.Lense.Factor <= 70)
+                {
+                    this.minorScale = 100;
+                }
+                else
+                {
+                    this.minorScale = 80;
+                }
+                return this.minorScale;
+            }
+        }
         /// <summary>
         /// draw hotizontal ruler
         /// </summary>
@@ -343,11 +378,23 @@ namespace CII.LAR.DrawTools
                 g.DrawLine(pen, x1Coord, richPictureBox.Height / 2 - 10, x1Coord, richPictureBox.Height / 2);
                 g.DrawLine(pen, x1Coord + RulerStep / 2, richPictureBox.Height / 2 - 5, x1Coord + RulerStep / 2, richPictureBox.Height / 2);
 
+
                 if (x1 != 0)
                 {
-                    DrawScaledNumber(g, x1, x1Coord, richPictureBox.Height / 2 - 20, 1, true);
+                    DrawScaledNumber(g, x1 * Program.SysConfig.Lense.Factor, x1Coord, richPictureBox.Height / 2 - 20, 1, true);
                 }
                 x1 += this.rulerStep;
+                if (Program.SysConfig.Lense.Factor > 5)
+                {
+                    float step1 = RulerStep / MinorScale;
+                    for (float i = x1Coord; i <= x1Coord + RulerStep; i += step1)
+                    {
+                        g.DrawLine(pen, i, richPictureBox.Height / 2 - 10, i, richPictureBox.Height / 2);
+                        g.DrawLine(pen, i + step1 / 2, richPictureBox.Height / 2 - 5, i + step1 / 2, richPictureBox.Height / 2);
+                        double value = ((this.rulerStep / MinorScale) * ((i - x1Coord) / step1)) * Program.SysConfig.Lense.Factor + x1Coord - richPictureBox.Width / 2;
+                        if (value != 0)  DrawScaledNumber(g, value , i, richPictureBox.Height / 2 - 20, 1, true);
+                    }
+                }
 
                 //2.X < 0
                 g.DrawLine(pen, x2Coord, richPictureBox.Height / 2 - 10, x2Coord, richPictureBox.Height / 2);
@@ -355,10 +402,21 @@ namespace CII.LAR.DrawTools
 
                 if (x2 != 0)
                 {
-                    DrawScaledNumber(g, x2, x2Coord, richPictureBox.Height / 2 - 20, 1, true);
+                    DrawScaledNumber(g, x2 * Program.SysConfig.Lense.Factor, x2Coord, richPictureBox.Height / 2 - 20, 1, true);
                 }
                 x2Coord -= RulerStep;
                 x2 -= this.rulerStep;
+                if (Program.SysConfig.Lense.Factor > 5)
+                {
+                    float step2 = RulerStep / MinorScale;
+                    for (float i = x2Coord + RulerStep; i >= x2Coord; i -= step2)
+                    {
+                        g.DrawLine(pen, i, richPictureBox.Height / 2 - 10, i, richPictureBox.Height / 2);
+                        g.DrawLine(pen, i + step2 / 2, richPictureBox.Height / 2 - 5, i + step2 / 2, richPictureBox.Height / 2);
+                        double value = ((rulerStep / MinorScale) * ((x2Coord + RulerStep - i) / step2)) * Program.SysConfig.Lense.Factor + richPictureBox.Width / 2 - x2Coord - RulerStep;
+                        if (value != 0) DrawScaledNumber(g, -value, i, richPictureBox.Height / 2 - 20, 1, true);
+                    }
+                }
             }
 
             g.DrawLine(pen, 0, richPictureBox.Height / 2, richPictureBox.Width, richPictureBox.Height / 2);
@@ -383,19 +441,44 @@ namespace CII.LAR.DrawTools
 
                 if (y1 != 0)
                 {
-                    DrawScaledNumber(g, y1, richPictureBox.Width / 2 - 20, y1Coord - 2, 1, true);
+                    DrawScaledNumber(g, y1 * Program.SysConfig.Lense.Factor, richPictureBox.Width / 2 - 20, y1Coord - 2, 1, true);
                 }
                 y1 += this.rulerStep;
+                if (Program.SysConfig.Lense.Factor > 5)
+                {
+                    float step1 = RulerStep / MinorScale;
+                    for (float i = y1Coord; i <= y1Coord + RulerStep; i += step1)
+                    {
+                        g.DrawLine(pen, richPictureBox.Width / 2 - 10, i, richPictureBox.Width / 2, i);
+                        g.DrawLine(pen, richPictureBox.Width / 2 - 5, i + step1 / 2, richPictureBox.Width / 2, i + step1 / 2);
+
+                        double value = ((this.rulerStep / MinorScale) * ((i - y1Coord) / step1)) * Program.SysConfig.Lense.Factor + y1Coord - richPictureBox.Height / 2;
+                        if (value != 0) DrawScaledNumber(g, value, richPictureBox.Width / 2 - 20, i, 1, true);
+                    }
+                }
 
                 g.DrawLine(pen, richPictureBox.Width / 2 - 10, y2Coord, richPictureBox.Width / 2, y2Coord);
                 g.DrawLine(pen, richPictureBox.Width / 2 - 5, y2Coord + RulerStep / 2, richPictureBox.Width / 2, y2Coord + RulerStep / 2);
 
                 if (y2 != 0)
                 {
-                    DrawScaledNumber(g, y2, richPictureBox.Width / 2 - 20, y2Coord - 2, 1, true);
+                    DrawScaledNumber(g, y2 * Program.SysConfig.Lense.Factor, richPictureBox.Width / 2 - 20, y2Coord - 2, 1, true);
                 }
                 y2Coord -= RulerStep;
                 y2 -= this.rulerStep;
+
+                if (Program.SysConfig.Lense.Factor > 5)
+                {
+                    float step2 = RulerStep / MinorScale;
+                    for (float i = y2Coord + RulerStep; i >= y2Coord; i -= step2)
+                    {
+                        g.DrawLine(pen, richPictureBox.Width / 2 - 10, i, richPictureBox.Width / 2, i);
+                        g.DrawLine(pen, richPictureBox.Width / 2 - 5, i + step2 / 2, richPictureBox.Width / 2, i + step2 / 2);
+
+                        double value = ((rulerStep / MinorScale) * ((y2Coord + RulerStep - i) / step2)) * Program.SysConfig.Lense.Factor + richPictureBox.Height / 2 - y2Coord - RulerStep;
+                        if (value != 0) DrawScaledNumber(g, -value, richPictureBox.Width / 2 - 20, i - 2, 1, true);
+                    }
+                }
             }
             g.DrawLine(pen, richPictureBox.Width / 2, 0, richPictureBox.Width / 2, richPictureBox.Height);
         }

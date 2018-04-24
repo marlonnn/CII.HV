@@ -56,6 +56,11 @@ namespace CII.LAR.UI
                 this.richPictureBox.Invalidate();
             }
         }
+        private void ShowRuler()
+        {
+            if (!this.richPictureBox.Rulers.ShowRulers)
+                this.richPictureBox.Rulers.ShowRulers = true;
+        }
 
         private void txtAdd_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -73,8 +78,7 @@ namespace CII.LAR.UI
                         UpdateComBoxItemLense(lense);
                         //更新界面的刻度尺
                         DelegateClass.GetDelegate().UpdateLenseHandler?.Invoke(lense);
-                        if (!this.richPictureBox.Rulers.ShowRulers)
-                            this.richPictureBox.Rulers.ShowRulers = true;
+                        ShowRuler();
                         this.richPictureBox.Invalidate();
                     }
 
@@ -148,6 +152,7 @@ namespace CII.LAR.UI
         private void cmbLenses_SelectedIndexChanged(object sender, EventArgs e)
         {
             Program.SysConfig.Lense = cmbLenses.SelectedItem as Lense;
+            this.richPictureBox.Invalidate();
         }
 
         public override void RefreshUI()

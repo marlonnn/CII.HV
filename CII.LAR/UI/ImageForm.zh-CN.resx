@@ -117,37 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="$this.Text" xml:space="preserve">
-    <value>未归档文件</value>
-  </data>
   <data name="toolStripButtonAssign.Text" xml:space="preserve">
-    <value>分配</value>
-  </data>
-  <data name="toolStripButtonAssign.ToolTipText" xml:space="preserve">
     <value>分配</value>
   </data>
   <data name="toolStripButtonCopy.Text" xml:space="preserve">
     <value>复制</value>
   </data>
-  <data name="toolStripButtonCopy.ToolTipText" xml:space="preserve">
-    <value>复制</value>
-  </data>
   <data name="toolStripButtonDelete.Text" xml:space="preserve">
-    <value>删除</value>
-  </data>
-  <data name="toolStripButtonDelete.ToolTipText" xml:space="preserve">
     <value>删除</value>
   </data>
   <data name="toolStripButtonPrint.Text" xml:space="preserve">
     <value>打印</value>
   </data>
-  <data name="toolStripButtonPrint.ToolTipText" xml:space="preserve">
+  <data name="toolStripLabel1.Text" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="toolStripLabel2.Text" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="toolStripLabel3.Text" xml:space="preserve">
+    <value>分配</value>
+  </data>
+  <data name="toolStripLabel4.Text" xml:space="preserve">
     <value>打印</value>
-  </data>
-  <data name="toolStripLabelSelectByID.Text" xml:space="preserve">
-    <value>根据病人编号选择：</value>
-  </data>
-  <data name="toolStripStatusLabel.Text" xml:space="preserve">
-    <value>Ready</value>
   </data>
 </root>

@@ -101,7 +101,7 @@ namespace CII.LAR.UI
         private void toolStripButtonDelete_Click(object sender, EventArgs e)
         {
             string info = string.Format("{0}\n {1}", ImageListViewItem.Text, ImageListViewItem.DateModified);
-            var result = MessageBox.Show(info, "Are you confirm to delete the file ? " , MessageBoxButtons.OKCancel);
+            var result = MessageBox.Show(info, global::CII.LAR.Properties.Resources.StrDeleteFile, MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
                 //delete file

@@ -165,4 +165,7 @@
   <data name="StrObjectLense" xml:space="preserve">
     <value>物镜管理</value>
   </data>
+  <data name="StrDeleteFile" xml:space="preserve">
+    <value>确定删除这个文件吗？</value>
+  </data>
 </root>

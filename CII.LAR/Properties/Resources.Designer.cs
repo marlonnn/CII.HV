@@ -335,7 +335,18 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrLaserAlignmentTitle", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you confirm to delete the file ?.
+        /// </summary>
+        internal static string StrDeleteFile
+        {
+            get
+            {
+                return ResourceManager.GetString("StrDeleteFile", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   查找类似 Laser Appearance 的本地化字符串。
         /// </summary>

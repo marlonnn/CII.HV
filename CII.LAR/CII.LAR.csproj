@@ -512,6 +512,9 @@
     <EmbeddedResource Include="UI\ImageForm.resx">
       <DependentUpon>ImageForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\ImageForm.zh-CN.resx">
+      <DependentUpon>ImageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ImageTracker.resx">
       <DependentUpon>ImageTracker.cs</DependentUpon>
     </EmbeddedResource>

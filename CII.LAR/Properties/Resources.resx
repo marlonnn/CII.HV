@@ -259,4 +259,7 @@
   <data name="StrObjectLense" xml:space="preserve">
     <value>Object Lense Manager</value>
   </data>
+  <data name="StrDeleteFile" xml:space="preserve">
+    <value>Are you confirm to delete the file ?</value>
+  </data>
 </root>

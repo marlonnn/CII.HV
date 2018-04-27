@@ -448,7 +448,7 @@
     <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Fils Assign</value>
+    <value>UnAssigned Files</value>
   </data>
   <data name="&gt;&gt;toolStripStatusLabel.Name" xml:space="preserve">
     <value>toolStripStatusLabel</value>

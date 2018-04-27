@@ -492,6 +492,10 @@
     <EmbeddedResource Include="Res\LaserCtrl.zh-CN.resx" />
     <EmbeddedResource Include="UI\AssignForm.resx">
       <DependentUpon>AssignForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AssignForm.zh-CN.resx">
+      <DependentUpon>AssignForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\BaseCtrl.resx">
       <DependentUpon>BaseCtrl.cs</DependentUpon>

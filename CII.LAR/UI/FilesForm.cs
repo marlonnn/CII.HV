@@ -83,6 +83,17 @@ namespace CII.LAR
             foreach (var item in imageListView.SelectedItems)
             {
                 imageListView.Items.Remove(item);
+                if (File.Exists(item.FileName))
+                {
+                    try
+                    {
+                        File.Delete(item.FileName);
+                    }
+                    catch (Exception ex)
+                    {
+                        continue;
+                    }
+                }
             }
 
             // Resume layout logic.
@@ -100,14 +111,18 @@ namespace CII.LAR
             report.ReportPages.Capacity = imageListView.Items.Count;
             for (int i=0; i<imageListView.Items.Count; i++)
             {
-                ReportPage reportPage = new ReportPage();
-                ReportPictureItem reportItem = new ReportPictureItem();
-                string fileName = imageListView.Items[i].FileName;
-                reportItem.Picture = new Bitmap(fileName);
-                reportItem.OldImageSize = reportItem.Picture.Size;
-                reportItem.Bounds = new Rectangle(new Point(0, 0), reportItem.Picture.Size);
-                reportPage.ReportItems.Add(reportItem);
-                report.ReportPages.Add(reportPage);
+                var fileExtension = Path.GetExtension(imageListView.Items[i].FileName);
+                if (fileExtension == ".png")
+                {
+                    ReportPage reportPage = new ReportPage();
+                    ReportPictureItem reportItem = new ReportPictureItem();
+                    string fileName = imageListView.Items[i].FileName;
+                    reportItem.Picture = new Bitmap(fileName);
+                    reportItem.OldImageSize = reportItem.Picture.Size;
+                    reportItem.Bounds = new Rectangle(new Point(0, 0), reportItem.Picture.Size);
+                    reportPage.ReportItems.Add(reportItem);
+                    report.ReportPages.Add(reportPage);
+                }
             }
             reportFrom = new ReportForm(report);
             reportFrom.ShowDialog();

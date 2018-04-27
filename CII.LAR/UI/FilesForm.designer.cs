@@ -44,7 +44,7 @@ namespace CII.LAR
             this.toolStripButtonPrint = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabelSelectByID = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -64,15 +64,11 @@ namespace CII.LAR
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.imageListView);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(600, 457);
-            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.toolStripContainer1.ContentPanel, "toolStripContainer1.ContentPanel");
+            resources.ApplyResources(this.toolStripContainer1, "toolStripContainer1");
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
-            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.RightToolStripPanelVisible = false;
-            this.toolStripContainer1.Size = new System.Drawing.Size(600, 504);
-            this.toolStripContainer1.TabIndex = 0;
-            this.toolStripContainer1.Text = "toolStripContainer1";
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
@@ -80,31 +76,23 @@ namespace CII.LAR
             // 
             // statusStrip
             // 
-            this.statusStrip.Dock = System.Windows.Forms.DockStyle.None;
+            resources.ApplyResources(this.statusStrip, "statusStrip");
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 0);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(600, 22);
-            this.statusStrip.TabIndex = 2;
             // 
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(44, 17);
-            this.toolStripStatusLabel.Text = "Ready";
+            resources.ApplyResources(this.toolStripStatusLabel, "toolStripStatusLabel");
             // 
             // imageListView
             // 
             this.imageListView.DefaultImage = ((System.Drawing.Image)(resources.GetObject("imageListView.DefaultImage")));
-            this.imageListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            resources.ApplyResources(this.imageListView, "imageListView");
             this.imageListView.ErrorImage = ((System.Drawing.Image)(resources.GetObject("imageListView.ErrorImage")));
             this.imageListView.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.imageListView.Location = new System.Drawing.Point(0, 0);
             this.imageListView.Name = "imageListView";
-            this.imageListView.Size = new System.Drawing.Size(600, 457);
-            this.imageListView.TabIndex = 0;
-            this.imageListView.Text = "";
             this.imageListView.ThumbnailSize = new System.Drawing.Size(120, 200);
             this.imageListView.View = Manina.Windows.Forms.View.Pane;
             this.imageListView.ItemClick += new Manina.Windows.Forms.ItemClickEventHandler(this.imageListView_ItemClick);
@@ -113,7 +101,7 @@ namespace CII.LAR
             // 
             // toolStrip
             // 
-            this.toolStrip.Dock = System.Windows.Forms.DockStyle.None;
+            resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonDelete,
             this.toolStripButtonAssign,
@@ -121,72 +109,55 @@ namespace CII.LAR
             this.toolStripButtonPrint,
             this.toolStripSeparator1,
             this.toolStripLabelSelectByID,
-            this.toolStripComboBox1});
-            this.toolStrip.Location = new System.Drawing.Point(3, 0);
+            this.toolStripTextBox1});
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(389, 25);
-            this.toolStrip.TabIndex = 0;
-            this.toolStrip.Text = "toolStrip1";
             // 
             // toolStripButtonDelete
             // 
             this.toolStripButtonDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonDelete.Image = global::CII.LAR.Properties.Resources.delete;
-            this.toolStripButtonDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.toolStripButtonDelete, "toolStripButtonDelete");
             this.toolStripButtonDelete.Name = "toolStripButtonDelete";
-            this.toolStripButtonDelete.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonDelete.Text = "toolStripButton1";
-            this.toolStripButtonDelete.ToolTipText = "Delete";
             this.toolStripButtonDelete.Click += new System.EventHandler(this.toolStripButtonDelete_Click);
             // 
             // toolStripButtonAssign
             // 
             this.toolStripButtonAssign.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonAssign.Image = global::CII.LAR.Properties.Resources.assign;
-            this.toolStripButtonAssign.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.toolStripButtonAssign, "toolStripButtonAssign");
             this.toolStripButtonAssign.Name = "toolStripButtonAssign";
-            this.toolStripButtonAssign.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonAssign.Text = "toolStripButtonAssign";
-            this.toolStripButtonAssign.ToolTipText = "Assign";
             this.toolStripButtonAssign.Click += new System.EventHandler(this.toolStripButtonAssign_Click);
             // 
             // toolStripButtonCopy
             // 
             this.toolStripButtonCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonCopy.Image = global::CII.LAR.Properties.Resources.copy;
-            this.toolStripButtonCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.toolStripButtonCopy, "toolStripButtonCopy");
             this.toolStripButtonCopy.Name = "toolStripButtonCopy";
-            this.toolStripButtonCopy.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonCopy.Text = "toolStripButtonCopy";
-            this.toolStripButtonCopy.ToolTipText = "Copy";
             this.toolStripButtonCopy.Click += new System.EventHandler(this.toolStripButtonCopy_Click);
             // 
             // toolStripButtonPrint
             // 
             this.toolStripButtonPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonPrint.Image = global::CII.LAR.Properties.Resources.print;
-            this.toolStripButtonPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.toolStripButtonPrint, "toolStripButtonPrint");
             this.toolStripButtonPrint.Name = "toolStripButtonPrint";
-            this.toolStripButtonPrint.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonPrint.Text = "toolStripButtonPrint";
-            this.toolStripButtonPrint.ToolTipText = "Print";
             this.toolStripButtonPrint.Click += new System.EventHandler(this.toolStripButtonPrint_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // toolStripLabelSelectByID
             // 
             this.toolStripLabelSelectByID.Name = "toolStripLabelSelectByID";
-            this.toolStripLabelSelectByID.Size = new System.Drawing.Size(123, 22);
-            this.toolStripLabelSelectByID.Text = "Select Patient by ID:";
+            resources.ApplyResources(this.toolStripLabelSelectByID, "toolStripLabelSelectByID");
             // 
-            // toolStripComboBox1
+            // toolStripTextBox1
             // 
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            resources.ApplyResources(this.toolStripTextBox1, "toolStripTextBox1");
             // 
             // timerStatus
             // 
@@ -195,15 +166,12 @@ namespace CII.LAR
             // 
             // FilesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 504);
             this.Controls.Add(this.toolStripContainer1);
             this.DoubleBuffered = true;
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FilesForm";
             this.ShowIcon = false;
-            this.Text = "Fils";
             this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.BottomToolStripPanel.PerformLayout();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
@@ -228,11 +196,11 @@ namespace CII.LAR
         private System.Windows.Forms.ToolStripButton toolStripButtonPrint;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel toolStripLabelSelectByID;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private Manina.Windows.Forms.ImageListView imageListView;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.Timer timerStatus;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
     }
 }
 

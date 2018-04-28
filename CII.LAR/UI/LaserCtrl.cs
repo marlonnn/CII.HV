@@ -46,7 +46,7 @@ namespace CII.LAR.UI
             graphicsProperties = graphicsPropertiesManager.GetPropertiesByName("Circle");
             InitializeComponent();
             InitializeSlider();
-            this.sliderCtrl.Slider.Value = (int)(Program.SysConfig.LaserConfig.PulseWidth * 1000);
+            this.sliderCtrl.Slider.Value = (int)(Program.SysConfig.LaserConfig.PulseWidth * 10000);
             this.sliderCtrl.Slider.MouseUp += Slider_MouseUp;
             serialPortCom = SerialPortCommunication.GetInstance();
         }
@@ -66,7 +66,7 @@ namespace CII.LAR.UI
         private void InitializeSlider()
         {
             this.sliderCtrl.SetMinMaxValue(1, 16000);
-            this.sliderCtrl.SetValue((float)Program.SysConfig.LaserConfig.PulseWidth);
+            //this.sliderCtrl.SetValue((float)Program.SysConfig.LaserConfig.PulseWidth);
             this.btnFire.BackColor = Color.LightYellow;
             this.btnFire.Text = Res.LaserCtrl.StrFire;
             PulseValue = this.sliderCtrl.Slider.Value;

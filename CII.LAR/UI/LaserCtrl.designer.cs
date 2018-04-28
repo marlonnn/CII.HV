@@ -35,13 +35,15 @@ namespace CII.LAR.UI
             this.sliderCtrl = new CII.LAR.UI.SliderCtrl();
             this.line1 = new DevComponents.DotNetBar.Controls.Line();
             this.lblPreSet = new DevComponents.DotNetBar.LabelX();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnFire = new System.Windows.Forms.Button();
             this.line2 = new DevComponents.DotNetBar.Controls.Line();
             this.btnAlignLaser = new System.Windows.Forms.Button();
             this.btnHoleSize = new System.Windows.Forms.Button();
             this.btnAppearance = new System.Windows.Forms.Button();
             this.holesSlider = new DevComponents.DotNetBar.Controls.Slider();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // closeButton
@@ -79,13 +81,6 @@ namespace CII.LAR.UI
             this.lblPreSet.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.lblPreSet, "lblPreSet");
             this.lblPreSet.Name = "lblPreSet";
-            // 
-            // btnSave
-            // 
-            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            resources.ApplyResources(this.btnSave, "btnSave");
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnFire
             // 
@@ -136,17 +131,42 @@ namespace CII.LAR.UI
             this.holesSlider.Value = 0;
             this.holesSlider.ValueChanged += new System.EventHandler(this.holesSlider_ValueChanged);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnDelete, "btnDelete");
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // comboBoxEx1
+            // 
+            this.comboBoxEx1.DisplayMember = "Text";
+            this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx1.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBoxEx1, "comboBoxEx1");
+            this.comboBoxEx1.Name = "comboBoxEx1";
+            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            // 
+            // btnSave
+            // 
+            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnSave, "btnSave");
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // LaserCtrl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.comboBoxEx1);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.holesSlider);
             this.Controls.Add(this.btnAppearance);
             this.Controls.Add(this.btnHoleSize);
             this.Controls.Add(this.btnAlignLaser);
             this.Controls.Add(this.line2);
             this.Controls.Add(this.btnFire);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblPreSet);
             this.Controls.Add(this.sliderCtrl);
             this.Controls.Add(this.lblPulseWidth);
@@ -157,7 +177,6 @@ namespace CII.LAR.UI
             this.Controls.SetChildIndex(this.lblPulseWidth, 0);
             this.Controls.SetChildIndex(this.sliderCtrl, 0);
             this.Controls.SetChildIndex(this.lblPreSet, 0);
-            this.Controls.SetChildIndex(this.btnSave, 0);
             this.Controls.SetChildIndex(this.btnFire, 0);
             this.Controls.SetChildIndex(this.line2, 0);
             this.Controls.SetChildIndex(this.btnAlignLaser, 0);
@@ -165,6 +184,9 @@ namespace CII.LAR.UI
             this.Controls.SetChildIndex(this.btnAppearance, 0);
             this.Controls.SetChildIndex(this.closeButton, 0);
             this.Controls.SetChildIndex(this.holesSlider, 0);
+            this.Controls.SetChildIndex(this.btnSave, 0);
+            this.Controls.SetChildIndex(this.comboBoxEx1, 0);
+            this.Controls.SetChildIndex(this.btnDelete, 0);
             this.ResumeLayout(false);
 
         }
@@ -174,12 +196,14 @@ namespace CII.LAR.UI
         private SliderCtrl sliderCtrl;
         private DevComponents.DotNetBar.Controls.Line line1;
         private DevComponents.DotNetBar.LabelX lblPreSet;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnFire;
         private DevComponents.DotNetBar.Controls.Line line2;
         private System.Windows.Forms.Button btnAlignLaser;
         private System.Windows.Forms.Button btnHoleSize;
         private System.Windows.Forms.Button btnAppearance;
         private DevComponents.DotNetBar.Controls.Slider holesSlider;
+        private System.Windows.Forms.Button btnDelete;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
+        private System.Windows.Forms.Button btnSave;
     }
 }

@@ -131,7 +131,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;closeButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="lblPulseWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>73, 37</value>
@@ -156,7 +156,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPulseWidth.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="sliderCtrl.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 62</value>
@@ -177,7 +177,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;sliderCtrl.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="line1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 21</value>
@@ -201,7 +201,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;line1.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="lblPreSet.Location" type="System.Drawing.Point, System.Drawing">
     <value>41, 87</value>
@@ -225,34 +225,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPreSet.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 115</value>
-  </data>
-  <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 23</value>
-  </data>
-  <data name="btnSave.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="btnSave.Text" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="&gt;&gt;btnSave.Name" xml:space="preserve">
-    <value>btnSave</value>
-  </data>
-  <data name="&gt;&gt;btnSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnSave.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>10</value>
   </data>
   <data name="btnFire.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 153</value>
+    <value>105, 195</value>
   </data>
   <data name="btnFire.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -273,10 +249,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnFire.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="line2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 184</value>
+    <value>3, 226</value>
   </data>
   <data name="line2.Size" type="System.Drawing.Size, System.Drawing">
     <value>283, 10</value>
@@ -300,10 +276,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;line2.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>8</value>
   </data>
   <data name="btnAlignLaser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 203</value>
+    <value>58, 245</value>
   </data>
   <data name="btnAlignLaser.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 23</value>
@@ -324,10 +300,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnAlignLaser.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <data name="btnHoleSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 232</value>
+    <value>58, 274</value>
   </data>
   <data name="btnHoleSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 23</value>
@@ -348,10 +324,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnHoleSize.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="btnAppearance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 261</value>
+    <value>58, 303</value>
   </data>
   <data name="btnAppearance.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 23</value>
@@ -372,7 +348,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnAppearance.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="holesSlider.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 115</value>
@@ -393,7 +369,86 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;holesSlider.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnDelete.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 155</value>
+  </data>
+  <data name="btnDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 23</value>
+  </data>
+  <data name="btnDelete.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="btnDelete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="&gt;&gt;btnDelete.Name" xml:space="preserve">
+    <value>btnDelete</value>
+  </data>
+  <data name="&gt;&gt;btnDelete.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnDelete.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnDelete.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="comboBoxEx1.ItemHeight" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="comboBoxEx1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 155</value>
+  </data>
+  <data name="comboBoxEx1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 21</value>
+  </data>
+  <data name="comboBoxEx1.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEx1.Name" xml:space="preserve">
+    <value>comboBoxEx1</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEx1.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEx1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;comboBoxEx1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnSave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>230, 155</value>
+  </data>
+  <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 23</value>
+  </data>
+  <data name="btnSave.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="btnSave.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Name" xml:space="preserve">
+    <value>btnSave</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -402,7 +457,7 @@
     <value>6, 12</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>289, 289</value>
+    <value>289, 333</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>LaserCtrl</value>

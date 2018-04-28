@@ -85,16 +85,6 @@ namespace CII.LAR.UI
             this.holesSlider.Text = string.Format("{0}holes", holesInfo.HoleNum);
         }
 
-        /// <summary>
-        /// save preset
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-
-        }
-
         bool flashing = false;
         /// <summary>
         /// fire laser
@@ -241,6 +231,21 @@ namespace CII.LAR.UI
         private void holesSlider_ValueChanged(object sender, EventArgs e)
         {
             Program.EntryForm.UpdateHoleNumber(this.holesSlider.Value);
+        }
+
+        /// <summary>
+        /// save preset
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

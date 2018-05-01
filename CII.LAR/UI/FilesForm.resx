@@ -212,7 +212,7 @@
         XTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxS
         fNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+
         tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/
-        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALEAAACxABrSO9dQAAAP1JREFUWEfNlaEOwlAQ
+        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAALDQAACw0B7QfALAAAAP1JREFUWEfNlaEOwlAQ
         BKtwSCwejUejkTgM//8HhYVc8nIZsZcrtJNMm2c2426a53lVv5/3bw03GRDkdxfcdwOeTQXuU0BWPJoK
         2rYD7k0FbWNAML5vTQXuuwHXpgL3KSArLk0FbdsB56aCtjEgGN+npgL33YBjU4H7FJAVh6aCtu2AfVNB
         2xgQjO9dU4H7TsDSBp83BfxVJ2ApaBsDgvFNJ7aiwH03gE5sRYH7FJAVdGIrCtq2A+jEVhS0jQHB+KYT
@@ -372,6 +372,15 @@
   <data name="toolStripButtonPrint.ToolTipText" xml:space="preserve">
     <value>Print</value>
   </data>
+  <data name="tsbAssigned.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="tsbAssigned.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="tsbAssigned.Text" xml:space="preserve">
+    <value>toolStripButton1</value>
+  </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
@@ -388,7 +397,7 @@
     <value>3, 0</value>
   </data>
   <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>466, 25</value>
+    <value>489, 25</value>
   </data>
   <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -478,6 +487,12 @@
     <value>toolStripButtonPrint</value>
   </data>
   <data name="&gt;&gt;toolStripButtonPrint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tsbAssigned.Name" xml:space="preserve">
+    <value>tsbAssigned</value>
+  </data>
+  <data name="&gt;&gt;tsbAssigned.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">

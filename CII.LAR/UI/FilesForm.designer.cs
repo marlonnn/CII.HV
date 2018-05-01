@@ -42,6 +42,7 @@ namespace CII.LAR
             this.toolStripButtonAssign = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonPrint = new System.Windows.Forms.ToolStripButton();
+            this.tsbAssigned = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabelSelectByID = new System.Windows.Forms.ToolStripLabel();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
@@ -107,6 +108,7 @@ namespace CII.LAR
             this.toolStripButtonAssign,
             this.toolStripButtonCopy,
             this.toolStripButtonPrint,
+            this.tsbAssigned,
             this.toolStripSeparator1,
             this.toolStripLabelSelectByID,
             this.toolStripTextBox1});
@@ -143,6 +145,14 @@ namespace CII.LAR
             resources.ApplyResources(this.toolStripButtonPrint, "toolStripButtonPrint");
             this.toolStripButtonPrint.Name = "toolStripButtonPrint";
             this.toolStripButtonPrint.Click += new System.EventHandler(this.toolStripButtonPrint_Click);
+            // 
+            // tsbAssigned
+            // 
+            this.tsbAssigned.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbAssigned.Image = global::CII.LAR.Properties.Resources.assigned;
+            resources.ApplyResources(this.tsbAssigned, "tsbAssigned");
+            this.tsbAssigned.Name = "tsbAssigned";
+            this.tsbAssigned.Click += new System.EventHandler(this.tsbAssigned_Click);
             // 
             // toolStripSeparator1
             // 
@@ -201,6 +211,7 @@ namespace CII.LAR
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.Timer timerStatus;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.ToolStripButton tsbAssigned;
     }
 }
 

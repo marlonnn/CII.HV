@@ -73,6 +73,16 @@ namespace CII.LAR.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap assigned {
+            get {
+                object obj = ResourceManager.GetObject("assigned", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap backflush {
             get {
                 object obj = ResourceManager.GetObject("backflush", resourceCulture);
@@ -328,6 +338,15 @@ namespace CII.LAR.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Are you confirm to delete the file ? 的本地化字符串。
+        /// </summary>
+        internal static string StrDeleteFile {
+            get {
+                return ResourceManager.GetString("StrDeleteFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Laser Target Alignment 的本地化字符串。
         /// </summary>
         internal static string StrLaserAlignmentTitle {
@@ -335,18 +354,7 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrLaserAlignmentTitle", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Are you confirm to delete the file ?.
-        /// </summary>
-        internal static string StrDeleteFile
-        {
-            get
-            {
-                return ResourceManager.GetString("StrDeleteFile", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   查找类似 Laser Appearance 的本地化字符串。
         /// </summary>

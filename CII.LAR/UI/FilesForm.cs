@@ -235,5 +235,11 @@ namespace CII.LAR
                 Clipboard.SetFileDropList(paths);
             }
         }
+
+        private void tsbAssigned_Click(object sender, EventArgs e)
+        {
+            AssignedForm assignedForm = new AssignedForm();
+            assignedForm.ShowDialog();
+        }
     }
 }

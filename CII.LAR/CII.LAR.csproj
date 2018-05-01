@@ -499,6 +499,9 @@
     <EmbeddedResource Include="UI\AssignedForm.resx">
       <DependentUpon>AssignedForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\AssignedForm.zh-CN.resx">
+      <DependentUpon>AssignedForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\AssignForm.resx">
       <DependentUpon>AssignForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -731,6 +734,7 @@
     <Content Include="Reference\Newtonsoft.Json.dll" />
     <Content Include="Reference\uEyeDotNet.dll" />
     <Content Include="Resources\assign.png" />
+    <Content Include="Resources\assigned.png" />
     <Content Include="Resources\backflush.png" />
     <Content Include="Resources\camera.png" />
     <Content Include="Resources\capture.png" />

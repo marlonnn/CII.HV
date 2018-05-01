@@ -18,6 +18,12 @@ namespace CII.LAR.SysClass
     [Serializable]
     public class SysConfig
     {
+        private AllPatients allPatients;
+        public AllPatients AllPatients
+        {
+            get { return this.allPatients; }
+            set { this.allPatients = value; }
+        }
         private int recordTime;
         public int RecordTime
         {
@@ -325,6 +331,7 @@ namespace CII.LAR.SysClass
             this.Function = SystemFunction.Empty;
             this.DefaultScaleCoefficient = 4;
             this.recordTime = 1;
+            AllPatients = AllPatients.GetAllPatients();
         }
 
         // set default value

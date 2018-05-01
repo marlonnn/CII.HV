@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CII.LAR.SysClass
 {
+    [Serializable]
     public class AllPatients
     {
         public static AllPatients allPatients;

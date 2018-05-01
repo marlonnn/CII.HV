@@ -243,6 +243,12 @@
     <Compile Include="SysClass\Patient.cs" />
     <Compile Include="SysClass\SysConfig.cs" />
     <Compile Include="UI\ArrayChangedEventArgs.cs" />
+    <Compile Include="UI\AssignedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AssignedForm.Designer.cs">
+      <DependentUpon>AssignedForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\AssignForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -490,6 +496,9 @@
     <EmbeddedResource Include="Res\LaserAlignment.zh-CN.resx" />
     <EmbeddedResource Include="Res\LaserCtrl.resx" />
     <EmbeddedResource Include="Res\LaserCtrl.zh-CN.resx" />
+    <EmbeddedResource Include="UI\AssignedForm.resx">
+      <DependentUpon>AssignedForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\AssignForm.resx">
       <DependentUpon>AssignForm.cs</DependentUpon>
       <SubType>Designer</SubType>

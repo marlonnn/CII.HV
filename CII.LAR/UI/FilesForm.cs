@@ -230,7 +230,10 @@ namespace CII.LAR
                     paths.Add(fileName);
                 }
             }
-            Clipboard.SetFileDropList(paths);
+            if (paths.Count > 0)
+            {
+                Clipboard.SetFileDropList(paths);
+            }
         }
     }
 }

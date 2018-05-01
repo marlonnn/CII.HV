@@ -9,6 +9,7 @@ namespace CII.LAR.SysClass
     /// <summary>
     /// Patient
     /// </summary>
+    [Serializable]
     public class Patient
     {
         private int id;
@@ -56,7 +57,7 @@ namespace CII.LAR.SysClass
         {
             this.id = id;
             this.name = name;
-            this.folderName = string.Format("{0}_{1}", DateTime.Now.ToString("yyyyMMddHHmmss"), id);
+            this.folderName = string.Format("{0}_{1}", this.id, this.name);
         }
     }
 }

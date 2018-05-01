@@ -20,28 +20,29 @@ namespace CII.LAR.UI
     {
         private AllPatients allPatients;
 
-        private ImageListViewItem imageListViewItem;
+        private List<ImageListViewItem> imageListViewItems;
 
-        public ImageListViewItem ImageListViewItem
+        public List<ImageListViewItem> ImageListViewItems
         {
             get
             {
-                return imageListViewItem;
+                return imageListViewItems;
             }
             set
             {
-                imageListViewItem = value;
+                imageListViewItems = value;
             }
         }
         public AssignForm()
         {
             InitializeComponent();
-            allPatients = AllPatients.GetAllPatients();
+            allPatients = Program.SysConfig.AllPatients;
         }
 
-        public AssignForm(ImageListViewItem imageListViewItem) : this()
+        public AssignForm(List<ImageListViewItem> imageListViewItems) : this()
         {
-            this.imageListViewItem = imageListViewItem;
+            this.imageListViewItems = imageListViewItems;
+            allPatients = Program.SysConfig.AllPatients;
         }
 
         private bool CheckTextBoxValided(string text)
@@ -82,16 +83,42 @@ namespace CII.LAR.UI
 
         private void CheckMoveToFolder(Patient patient)
         {
-            string desFileFolder = string.Format("{0}\\{1}_{2}", imageListViewItem.FilePath,
-                DateTime.Now.ToString("yyyyMMddHHmmsss"), patient.ID);
-            if (!Directory.Exists(desFileFolder))
+            if (imageListViewItems != null && imageListViewItems.Count > 0)
             {
-                Directory.CreateDirectory(desFileFolder);
+                SuspendImageListViewHandler?.Invoke();
+                foreach (var imageListViewItem in imageListViewItems)
+                {
+                    try
+                    {
+                        string desFileFolder = string.Format("{0}\\{1}", imageListViewItem.FilePath, patient.Foldername);
+                        if (!Directory.Exists(desFileFolder))
+                        {
+                            Directory.CreateDirectory(desFileFolder);
+                        }
+
+                        string destFileName = string.Format("{0}\\{1}", desFileFolder, imageListViewItem.Text);
+
+                        File.Copy(imageListViewItem.FileName, destFileName);
+                        DeleteImageListViewiTemHandler?.Invoke(imageListViewItem);
+                        File.Delete(imageListViewItem.FileName);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                }
+                ResumeImageListViewHandler?.Invoke();
             }
-
-            string destFileName = string.Format("{0}\\{1}", desFileFolder, imageListViewItem.Text);
-
-            File.Copy(imageListViewItem.FileName, destFileName);
         }
+
+        public delegate void SuspendImageListView();
+        public SuspendImageListView SuspendImageListViewHandler;
+
+        public delegate void DeleteImageListViewiTem(ImageListViewItem item);
+        public DeleteImageListViewiTem DeleteImageListViewiTemHandler;
+
+        public delegate void ResumeImageListView();
+        public ResumeImageListView ResumeImageListViewHandler;
+        //ResumeLayout
     }
 }

@@ -43,7 +43,6 @@
             this.imageListView.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.imageListView.Name = "imageListView";
             this.imageListView.ThumbnailSize = new System.Drawing.Size(120, 200);
-            this.imageListView.View = Manina.Windows.Forms.View.Gallery;
             // 
             // listView
             // 
@@ -51,9 +50,11 @@
             this.columnHeader1,
             this.columnHeader2});
             resources.ApplyResources(this.listView, "listView");
+            this.listView.FullRowSelect = true;
             this.listView.Name = "listView";
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
             // 
             // columnHeader1
             // 

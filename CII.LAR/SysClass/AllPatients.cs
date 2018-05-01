@@ -40,7 +40,24 @@ namespace CII.LAR.SysClass
 
         public void Add(Patient patient)
         {
-            patients.Add(patient);
+            if (patient != null)
+            {
+                if (!CheckExist(patient)) patients.Add(patient);
+            }
+        }
+
+        private bool CheckExist(Patient patient)
+        {
+            bool exist = false;
+            foreach (var p in patients)
+            {
+                if (p.ID == patient.ID && p.Name == patient.Name)
+                {
+                    exist = true;
+                    break;
+                }
+            }
+            return exist; 
         }
 
         public int Count

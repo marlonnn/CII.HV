@@ -121,7 +121,9 @@ namespace CII.LAR.UI
 
         private void toolStripButtonAssign_Click(object sender, EventArgs e)
         {
-            assignForm = new AssignForm(imageListViewItem);
+            var items = new List<ImageListViewItem>();
+            items.Add(imageListViewItem);
+            assignForm = new AssignForm(items);
             if (assignForm.ShowDialog() == DialogResult.OK)
             {
                 this.isAssign = true;

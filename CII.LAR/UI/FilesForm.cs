@@ -32,7 +32,7 @@ namespace CII.LAR
             string folderName = Program.SysConfig.StorePath;
             string[] extesnsions = new string[] { ".png", ".avi" };
             var files = GetFiles(folderName, extesnsions, SearchOption.TopDirectoryOnly);
-            //this.imageListView.View = Manina.Windows.Forms.View.Gallery;
+            //this.imageListView.View = Manina.Windows.Forms.View.Thumbnails;
             foreach (var file in files)
             {
                 imageListView.Items.Add(file.ToString());
@@ -213,8 +213,39 @@ namespace CII.LAR
 
         private void toolStripButtonAssign_Click(object sender, EventArgs e)
         {
-            assignForm = new AssignForm();
+            assignForm = new AssignForm(GetSelectedImageListViewItems());
+            assignForm.SuspendImageListViewHandler += SuspendImageListViewHandler;
+            assignForm.DeleteImageListViewiTemHandler += DeleteImageListViewiTemHandler;
+            assignForm.ResumeImageListViewHandler += ResumeImageListViewHandler;
             assignForm.Show();
+        }
+
+        private void DeleteImageListViewiTemHandler(ImageListViewItem item)
+        {
+            imageListView.Items.Remove(item);
+        }
+
+        private void SuspendImageListViewHandler()
+        {
+            this.imageListView.SuspendLayout();
+        }
+
+        private void ResumeImageListViewHandler()
+        {
+            this.imageListView.ResumeLayout(true);
+        }
+
+        private List<ImageListViewItem> GetSelectedImageListViewItems()
+        {
+            var items = new List<ImageListViewItem>();
+            if (this.imageListView.SelectedItems != null && this.imageListView.SelectedItems.Count > 0)
+            {
+                foreach (var item in this.imageListView.SelectedItems)
+                {
+                    items.Add(item);
+                }
+            }
+            return items;
         }
 
         private void toolStripButtonCopy_Click(object sender, EventArgs e)

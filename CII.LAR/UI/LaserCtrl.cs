@@ -46,7 +46,7 @@ namespace CII.LAR.UI
             graphicsProperties = graphicsPropertiesManager.GetPropertiesByName("Circle");
             InitializeComponent();
             InitializeSlider();
-            this.sliderCtrl.Slider.Value = (int)(Program.SysConfig.LaserConfig.PulseWidth * 1000);
+            this.sliderCtrl.Slider.Value = (int)(Program.SysConfig.LaserConfig.PulseWidth * 10000);
             this.sliderCtrl.Slider.MouseUp += Slider_MouseUp;
             serialPortCom = SerialPortCommunication.GetInstance();
         }
@@ -66,7 +66,7 @@ namespace CII.LAR.UI
         private void InitializeSlider()
         {
             this.sliderCtrl.SetMinMaxValue(1, 16000);
-            this.sliderCtrl.SetValue((float)Program.SysConfig.LaserConfig.PulseWidth);
+            //this.sliderCtrl.SetValue((float)Program.SysConfig.LaserConfig.PulseWidth);
             this.btnFire.BackColor = Color.LightYellow;
             this.btnFire.Text = Res.LaserCtrl.StrFire;
             PulseValue = this.sliderCtrl.Slider.Value;
@@ -83,16 +83,6 @@ namespace CII.LAR.UI
             this.holesSlider.Minimum = holesInfo.MinHoleNum;
             this.holesSlider.Value = holesInfo.HoleNum;
             this.holesSlider.Text = string.Format("{0}holes", holesInfo.HoleNum);
-        }
-
-        /// <summary>
-        /// save preset
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-
         }
 
         bool flashing = false;
@@ -241,6 +231,21 @@ namespace CII.LAR.UI
         private void holesSlider_ValueChanged(object sender, EventArgs e)
         {
             Program.EntryForm.UpdateHoleNumber(this.holesSlider.Value);
+        }
+
+        /// <summary>
+        /// save preset
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -123,6 +123,9 @@
   <data name="btnAppearance.Text" xml:space="preserve">
     <value>显示</value>
   </data>
+  <data name="btnDelete.Text" xml:space="preserve">
+    <value>删除</value>
+  </data>
   <data name="btnFire.Text" xml:space="preserve">
     <value>射击</value>
   </data>

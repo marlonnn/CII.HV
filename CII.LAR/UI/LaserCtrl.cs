@@ -323,9 +323,12 @@ namespace CII.LAR.UI
             if (CheckExistPulseWidth(value))
             {
                 savedPulseWidthList.Remove(value);
+                if (savedPulseWidthList.Count == 0) this.comboBoxEx1.Items.Clear();
+                else if (deleteIndex - 1 >= 0 && deleteIndex - 1 <= savedPulseWidthList.Count - 1)
+                {
+                    RefreshSavedPulseWidthCombox(savedPulseWidthList[deleteIndex - 1]);
+                }
             }
-            if (deleteIndex - 1 >= 0 && deleteIndex - 1 <= savedPulseWidthList.Count - 1)
-                RefreshSavedPulseWidthCombox(savedPulseWidthList[deleteIndex - 1]);
         }
 
         private void RefreshSavedPulseWidthCombox(double seletedItem)

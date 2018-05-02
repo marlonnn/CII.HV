@@ -118,9 +118,13 @@ namespace CII.LAR.UI
             savedPulseWidthList = Program.SysConfig.LaserConfig.SavedPulseWidth;
             if (savedPulseWidthList != null && savedPulseWidthList.Count > 0)
             {
-                foreach (var pulseWidth in savedPulseWidthList)
+                for (int i =0; i<savedPulseWidthList.Count; i++)
                 {
-                    this.comboBoxEx1.Items.Add(pulseWidth);
+                    this.comboBoxEx1.Items.Add(savedPulseWidthList[i]);
+                    if (savedPulseWidthList[i] == Program.SysConfig.LaserConfig.PulseWidth)
+                    {
+                        this.comboBoxEx1.SelectedIndex = i;
+                    }
                 }
             }
         }

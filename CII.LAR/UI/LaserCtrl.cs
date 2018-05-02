@@ -37,6 +37,7 @@ namespace CII.LAR.UI
             set { this.pulseValue = value; }
         }
 
+        private List<double> savedPulseWidthList;
         public LaserCtrl() : base()
         {
             resources = new ComponentResourceManager(typeof(LaserCtrl));
@@ -46,9 +47,49 @@ namespace CII.LAR.UI
             graphicsProperties = graphicsPropertiesManager.GetPropertiesByName("Circle");
             InitializeComponent();
             InitializeSlider();
-            this.sliderCtrl.Slider.Value = (int)(Program.SysConfig.LaserConfig.PulseWidth * 10000);
+            this.sliderCtrl.Slider.Value = (int)(Program.SysConfig.LaserConfig.PulseWidth * 10);
             this.sliderCtrl.Slider.MouseUp += Slider_MouseUp;
             serialPortCom = SerialPortCommunication.GetInstance();
+            savedPulseWidthList = Program.SysConfig.LaserConfig.SavedPulseWidth;
+            InitializeSavedPulseWidthList();
+            this.comboBoxEx1.SelectedValueChanged += ComboBoxEx1_SelectedValueChanged;
+        }
+
+        private bool valueChangedInvoke = true;
+        private void ComboBoxEx1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (valueChangedInvoke)
+                RecalculateSliderValue();
+        }
+
+        private void RecalculateSliderValue()
+        {
+            try
+            {
+                var value = Double.Parse(this.comboBoxEx1.SelectedItem.ToString());
+                PulseValue = value;
+                this.sliderCtrl.Slider.Value = (int)(PulseValue * 10);
+                Program.SysConfig.LaserConfig.PulseWidth = PulseValue;
+                double y = CalSlopeFunction(PulseValue);
+                this.sliderCtrl.PulseHole.Text = string.Format("{0:N}us {1:N}um", PulseValue, y);
+
+                CheckPulse(PulseValue);
+
+                if (graphicsProperties != null && Program.SysConfig.LaserConfig != null)
+                {
+                    Program.SysConfig.LaserConfig.UpdatePulseWidth((float)y);
+                }
+                this.sliderCtrl.Update = false;
+                if (UpdateSliderValueHandler != null)
+                {
+                    UpdateSliderValueHandler?.Invoke((float)(PulseValue));
+                }
+
+                this.sliderCtrl.Update = true;
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         private SerialPortCommunication serialPortCom;
@@ -70,6 +111,18 @@ namespace CII.LAR.UI
             this.btnFire.BackColor = Color.LightYellow;
             this.btnFire.Text = Res.LaserCtrl.StrFire;
             PulseValue = this.sliderCtrl.Slider.Value;
+        }
+
+        private void InitializeSavedPulseWidthList()
+        {
+            savedPulseWidthList = Program.SysConfig.LaserConfig.SavedPulseWidth;
+            if (savedPulseWidthList != null && savedPulseWidthList.Count > 0)
+            {
+                foreach (var pulseWidth in savedPulseWidthList)
+                {
+                    this.comboBoxEx1.Items.Add(pulseWidth);
+                }
+            }
         }
 
         public void HolesNumberSlider(bool isShow)
@@ -133,7 +186,7 @@ namespace CII.LAR.UI
                 }
 
                 PulseValue = this.sliderCtrl.Slider.Value / 10f;
-                Program.SysConfig.LaserConfig.PulseWidth = PulseValue / 1000f;
+                Program.SysConfig.LaserConfig.PulseWidth = PulseValue;
                 double y = CalSlopeFunction(PulseValue);
                 this.sliderCtrl.PulseHole.Text = string.Format("{0:N}us {1:N}um", PulseValue, y);
 
@@ -146,7 +199,7 @@ namespace CII.LAR.UI
                 this.sliderCtrl.Update = false;
                 if (UpdateSliderValueHandler != null)
                 {
-                    UpdateSliderValueHandler?.Invoke((float)(PulseValue / 1000f));
+                    UpdateSliderValueHandler?.Invoke((float)(PulseValue));
                 }
 
                 this.sliderCtrl.Update = true;
@@ -195,17 +248,17 @@ namespace CII.LAR.UI
         private double CalSlopeFunction(HolePulsePoint p1, HolePulsePoint p2, double value)
         {
             double k = 0;
-            k = (p2.Y - p1.Y) / (p2.X - p1.X);
-            int startX = (int)(p1.X * 1000);
-            int endX = (int)(p2.X * 1000);
-            var x = value / 1000d;
-            return  k * (x - p2.X) + p2.Y;
+            double deltaX = p2.X - p1.X;
+            double deltaY = p2.Y - p1.Y;
+            k = deltaY / deltaX;
+            //var x = value;
+            return  k * (value - p2.X) + p2.Y;
         }
 
         private int GetValueIndex(double value)
         {
             int index = -1;
-            var x = value / 1000d;
+            var x = value;
             if (holePulsePoints != null && holePulsePoints.Count > 0)
             {
                 for (int i = 0; i < holePulsePoints.Count - 1; i++)
@@ -240,12 +293,77 @@ namespace CII.LAR.UI
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            SavePulseWidth(Program.SysConfig.LaserConfig.PulseWidth);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DeletePulseWidth(Double.Parse(this.comboBoxEx1.SelectedItem.ToString()));
+            }
+            catch (Exception ex)
+            {
 
+            }
+        }
+
+        private void SavePulseWidth (double value)
+        {
+            if (!CheckExistPulseWidth(value))
+            {
+                savedPulseWidthList.Add(value);
+                RefreshSavedPulseWidthCombox(value);
+            }
+        }
+
+        private void DeletePulseWidth(double value)
+        {
+            int deleteIndex = savedPulseWidthList.FindIndex(v => v == value);
+            if (CheckExistPulseWidth(value))
+            {
+                savedPulseWidthList.Remove(value);
+            }
+            if (deleteIndex - 1 >= 0 && deleteIndex - 1 <= savedPulseWidthList.Count - 1)
+                RefreshSavedPulseWidthCombox(savedPulseWidthList[deleteIndex - 1]);
+        }
+
+        private void RefreshSavedPulseWidthCombox(double seletedItem)
+        {
+            valueChangedInvoke = false;
+            this.comboBoxEx1.Items.Clear();
+            ReInitializeSavedPulseWidthList(seletedItem);
+            valueChangedInvoke = true;
+        }
+
+        private void ReInitializeSavedPulseWidthList(double seletedItem)
+        {
+            savedPulseWidthList = Program.SysConfig.LaserConfig.SavedPulseWidth;
+            if (savedPulseWidthList != null && savedPulseWidthList.Count > 0)
+            {
+                foreach (var pulseWidth in savedPulseWidthList)
+                {
+                    this.comboBoxEx1.Items.Add(pulseWidth);
+                }
+            }
+            this.comboBoxEx1.SelectedItem = seletedItem;
+        }
+
+        private bool CheckExistPulseWidth (double value)
+        {
+            bool exist = false;
+            if (savedPulseWidthList != null)
+            {
+                foreach (var pulseWidth in savedPulseWidthList)
+                {
+                    if (value == pulseWidth)
+                    {
+                        exist = true;
+                        break;
+                    }
+                }
+            }
+            return exist;
         }
     }
 }

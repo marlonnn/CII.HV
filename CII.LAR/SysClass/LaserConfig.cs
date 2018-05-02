@@ -63,6 +63,13 @@ namespace CII.LAR.SysClass
             set { this.pulseWidth = value; }
         }
 
+        private List<double> savedPulseWidth;
+        public List<double> SavedPulseWidth
+        {
+            get { return this.savedPulseWidth; }
+            set { this.savedPulseWidth = value; }
+        }
+
         private int minPulseWidth;
         public int MinPulseWidth
         {
@@ -96,6 +103,7 @@ namespace CII.LAR.SysClass
             this.FinalMatrix = Matrix<double>.Build.Dense(3, 3);
             InitializeHolePulsePoints();
             this.cof = 4934F;
+            SavedPulseWidth = new List<double>();
         }
 
         public void UpdatePulseWidth(float value)
@@ -109,8 +117,8 @@ namespace CII.LAR.SysClass
         private void InitializeHolePulsePoints()
         {
             holePulsePoints = new List<HolePulsePoint>();
-            holePulsePoints.Add(new HolePulsePoint(0.0001f, 0.01f));
-            holePulsePoints.Add(new HolePulsePoint(1.6f, 32f));
+            holePulsePoints.Add(new HolePulsePoint(0.1f, 0.01f));
+            holePulsePoints.Add(new HolePulsePoint(1600f, 32f));
         }
 
         // set default value

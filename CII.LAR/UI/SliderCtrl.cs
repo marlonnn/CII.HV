@@ -62,8 +62,8 @@ namespace CII.LAR.UI
 
         public void SetValue(float value)
         {
-            this.PulseHoleWS.Text = string.Format("{0} ms", value);
-            this.slider.Value = (int)(value * 1000);
+            this.PulseHoleWS.Text = string.Format("{0} us", value);
+            this.slider.Value = (int)(value * 10);
         }
 
         private bool update = true;
@@ -80,8 +80,8 @@ namespace CII.LAR.UI
         }
         public void UpdateValue(float value)
         {
-            this.PulseHoleWS.Text = string.Format("{0} ms", value);
-            this.slider.Value = (int)(value * 1000);
+            this.PulseHoleWS.Text = string.Format("{0} us", value);
+            this.slider.Value = (int)(value * 10);
         }
     }
 }

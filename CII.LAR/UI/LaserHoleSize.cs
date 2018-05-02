@@ -52,22 +52,27 @@ namespace CII.LAR.UI
 
         private void InitializeSlider()
         {
-            this.sliderPulse.SetMinMaxValue(5, 1600);
+            this.sliderPulse.SetMinMaxValue(1, 16000);
             this.sliderPulse.SetValue((float)Program.SysConfig.LaserConfig.PulseWidth);
-            this.sliderPulse.Slider.Value = (int)(Program.SysConfig.LaserConfig.PulseWidth * 1000);
+            //this.sliderPulse.Slider.Value = (int)(Program.SysConfig.LaserConfig.PulseWidth * 10);
             this.sliderPulse.SliderValueChangedHandler += PulseSliderValueChangedHandler;
         }
 
+        public void ReculateSiderValue()
+        {
+            this.sliderPulse.SetValue((float)Program.SysConfig.LaserConfig.PulseWidth);
+            CalXY((float)Program.SysConfig.LaserConfig.PulseWidth);
+        }
 
         private void InitializeChartSeries()
         {
-            this.chart1.ChartAreas[0].AxisX.Maximum = 1.600d;
-            this.chart1.ChartAreas[0].AxisX.Minimum = 0.005d;
-            this.chart1.ChartAreas[0].AxisX.LabelStyle.Format = "0.00";
-            this.chart1.ChartAreas[0].AxisX.Title = "ms";
+            this.chart1.ChartAreas[0].AxisX.Maximum = 1600d;
+            this.chart1.ChartAreas[0].AxisX.Minimum = 0.1d;
+            this.chart1.ChartAreas[0].AxisX.LabelStyle.Format = "0";
+            this.chart1.ChartAreas[0].AxisX.Title = "us";
 
-            this.chart1.ChartAreas[0].AxisY.Maximum = 50d;
-            this.chart1.ChartAreas[0].AxisY.Minimum = 0.1d;
+            this.chart1.ChartAreas[0].AxisY.Maximum = 33d;
+            this.chart1.ChartAreas[0].AxisY.Minimum = 0.01d;
             this.chart1.ChartAreas[0].AxisY.Title = "um";
         }
 
@@ -190,8 +195,8 @@ namespace CII.LAR.UI
         private void PulseSliderValueChangedHandler(object sender, EventArgs e)
         {
             var value = this.sliderPulse.Slider.Value;
-            var x = value / 1000f;
-            this.sliderPulse.PulseHole.Text = string.Format("{0:N} ms", x);
+            var x = value / 10f;
+            this.sliderPulse.PulseHole.Text = string.Format("{0:N} us", x);
             //this.sliderPulse.SetValue(x);
             CalXY(x);
             if (this.graphicsProperties != null)
@@ -245,20 +250,24 @@ namespace CII.LAR.UI
 
         protected override void OnVisibleChanged(EventArgs e)
         {
-            var dataPoints = this.chart1.Series[0].Points;
-            if (dataPoints != null && dataPoints.Count > 0)
+            if (this.Visible)
             {
-                for (int i = 0; i < dataPoints.Count; i++)
+                ReculateSiderValue();
+                var dataPoints = this.chart1.Series[0].Points;
+                if (dataPoints != null && dataPoints.Count > 2)
                 {
-                    if (Math.Abs(valueToFindX - dataPoints[i].XValue) < 0.01)
+                    for (int i = 1; i < dataPoints.Count - 1; i++)
                     {
-                        dataPoints[i].MarkerSize = 10;
-                        dataPoints[i].MarkerColor = Color.DarkGreen;
+                        if (Math.Abs(valueToFindX - dataPoints[i].XValue) < 0.01)
+                        {
+                            dataPoints[i].MarkerSize = 10;
+                            dataPoints[i].MarkerColor = Color.DarkGreen;
+                        }
                     }
+                    this.chart1.Invalidate();
                 }
-                this.chart1.Invalidate();
+                SaveDeleteButtonVisiable(false);
             }
-            SaveDeleteButtonVisiable(false);
         }
 
         Point? prevPosition = null;

@@ -27,6 +27,8 @@ namespace CII.LAR.UI
         public delegate void VideoKeyDown(KeyEventArgs e);
         public VideoKeyDown VideoKeyDownHandler;
 
+        public delegate void VideoKeyUp(KeyEventArgs e);
+        public VideoKeyUp VideoKeyUpHandler;
 
         /// <summary>
         /// button click delegate

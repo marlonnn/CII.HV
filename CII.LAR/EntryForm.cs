@@ -188,6 +188,7 @@ namespace CII.LAR
             this.FormClosing += EntryForm_FormClosing;
             this.FormClosed += EntryForm_FormClosed;
             this.FlipType = FlipType.Empty;
+            DelegateClass.GetDelegate().VideoKeyUpHandler += this.OnKeyUp;
             DelegateClass.GetDelegate().VideoKeyDownHandler += this.OnKeyDown;
             DelegateClass.GetDelegate().ChangeSysFunctionHandler += this.ChangeSysFunctionHandler;
             DelegateClass.GetDelegate().CheckCloseVideoHandler += this.CheckCloseVideoHandler;
@@ -689,8 +690,40 @@ namespace CII.LAR
             this.richPictureBox.RichPictureBoxMouseWheel(e);
         }
 
+        private List<Keys> pressedKeys = new List<Keys>();
+        private bool CheckExit(Keys checkKey)
+        {
+            bool exist = false;
+            foreach (var key in pressedKeys)
+            {
+                if (checkKey == key)
+                {
+                    exist = true;
+                    break;
+                }
+            }
+            return exist;
+        }
+
+        protected override void OnKeyUp(KeyEventArgs e)
+        {
+            PrintKey();
+            pressedKeys.Remove(e.KeyCode);
+        }
+
+        private void PrintKey()
+        {
+            string l = "";
+            foreach (var key in pressedKeys)
+            {
+                l += key.ToString() + " ";
+            }
+            Console.WriteLine(l);
+        }
         protected override void OnKeyDown(KeyEventArgs e)
         {
+            if (!CheckExit(e.KeyCode))
+                pressedKeys.Add(e.KeyCode);
             if (e.KeyCode == Keys.Escape && this.richPictureBox.ActiveTool != DrawToolType.Pointer)
             {
                 this.richPictureBox.ActiveTool = DrawToolType.Pointer;

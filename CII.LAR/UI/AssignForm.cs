@@ -45,6 +45,26 @@ namespace CII.LAR.UI
             allPatients = Program.SysConfig.AllPatients;
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            var suggestion = GetPatientSuggestion();
+            var source = new AutoCompleteStringCollection();
+            source.AddRange(suggestion);
+            this.textBoxPatientID.AutoCompleteCustomSource = source;
+            this.textBoxPatientID.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            this.textBoxPatientID.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            this.textBoxPatientID.Visible = true;
+        }
+
+        private string[] GetPatientSuggestion()
+        {
+            string[] suggestion = new string[allPatients.Count];
+            for (int i = 0; i< allPatients.Patients.Count; i++)
+            {
+                suggestion[i] = allPatients.Patients[i].ID.ToString();
+            }
+            return suggestion;
+        }
         private bool CheckTextBoxValided(string text)
         {
             if (string.IsNullOrEmpty(text))
@@ -119,6 +139,35 @@ namespace CII.LAR.UI
 
         public delegate void ResumeImageListView();
         public ResumeImageListView ResumeImageListViewHandler;
+
+        private void textBoxPatientID_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var id = int.Parse(this.textBoxPatientID.Text);
+                string name = TryFindPatientName(id);
+                if (name != null) this.textBoxPatientName.Text = name;
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private string TryFindPatientName(int id)
+        {
+            string name = "";
+            for (int i = 0; i < allPatients.Patients.Count; i++)
+            {
+                if (id == allPatients.Patients[i].ID)
+                {
+                    name = allPatients.Patients[i].Name;
+                    break;
+                } 
+            }
+            return name;
+        }
         //ResumeLayout
     }
 }

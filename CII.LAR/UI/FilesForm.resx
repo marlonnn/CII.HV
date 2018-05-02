@@ -379,7 +379,7 @@
     <value>23, 22</value>
   </data>
   <data name="tsbAssigned.Text" xml:space="preserve">
-    <value>toolStripButton1</value>
+    <value>Assigned Files</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>

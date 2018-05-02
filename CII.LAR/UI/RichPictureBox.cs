@@ -451,6 +451,14 @@ namespace CII.LAR.UI
             }
         }
 
+        protected override void OnKeyUp(KeyEventArgs e)
+        {
+            if (DelegateClass.GetDelegate().VideoKeyUpHandler != null)
+            {
+                DelegateClass.GetDelegate().VideoKeyUpHandler(e);
+            }
+        }
+
         #region 鼠标事件
         protected override void OnMouseDown(MouseEventArgs e)
         {

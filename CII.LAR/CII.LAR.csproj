@@ -241,6 +241,7 @@
     <Compile Include="SysClass\LaserConfig.cs" />
     <Compile Include="SysClass\Lense.cs" />
     <Compile Include="SysClass\Patient.cs" />
+    <Compile Include="SysClass\ShortcutKeys.cs" />
     <Compile Include="SysClass\SysConfig.cs" />
     <Compile Include="UI\ArrayChangedEventArgs.cs" />
     <Compile Include="UI\AssignedForm.cs">

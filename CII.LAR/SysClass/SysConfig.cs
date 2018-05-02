@@ -18,6 +18,12 @@ namespace CII.LAR.SysClass
     [Serializable]
     public class SysConfig
     {
+        private ShortcutKeys shortcutKeys;
+        public ShortcutKeys ShortcutKeys
+        {
+            get { return this.shortcutKeys; }
+            set { this.shortcutKeys = value; }
+        }
         private AllPatients allPatients;
         public AllPatients AllPatients
         {
@@ -332,6 +338,7 @@ namespace CII.LAR.SysClass
             this.DefaultScaleCoefficient = 4;
             this.recordTime = 1;
             AllPatients = AllPatients.GetAllPatients();
+            shortcutKeys = new ShortcutKeys();
         }
 
         // set default value

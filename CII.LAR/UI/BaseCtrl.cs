@@ -149,6 +149,14 @@ namespace CII.LAR.UI
             this.Location = new Point(size.Width - this.Width - 20, 30);
         }
 
+        protected override void OnKeyUp(KeyEventArgs e)
+        {
+            if (DelegateClass.GetDelegate().VideoKeyUpHandler != null)
+            {
+                DelegateClass.GetDelegate().VideoKeyUpHandler(e);
+            }
+        }
+
         protected override void OnKeyDown(KeyEventArgs e)
         {
             if (DelegateClass.GetDelegate().VideoKeyDownHandler != null)

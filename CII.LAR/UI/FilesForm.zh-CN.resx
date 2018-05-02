@@ -150,4 +150,7 @@
   <data name="toolStripStatusLabel.Text" xml:space="preserve">
     <value>Ready</value>
   </data>
+  <data name="tsbAssigned.Text" xml:space="preserve">
+    <value>已分配文件</value>
+  </data>
 </root>

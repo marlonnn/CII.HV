@@ -65,6 +65,7 @@ namespace CII.LAR.UI
             resources.ApplyResources(this.textBoxPatientID, "textBoxPatientID");
             this.textBoxPatientID.Name = "textBoxPatientID";
             this.superValidator.SetValidator1(this.textBoxPatientID, this.regularExpressionValidator1);
+            this.textBoxPatientID.TextChanged += new System.EventHandler(this.textBoxPatientID_TextChanged);
             // 
             // lblPatientName
             // 
@@ -144,7 +145,6 @@ namespace CII.LAR.UI
             this.Controls.Add(this.lblPatientName);
             this.Controls.Add(this.textBoxPatientID);
             this.Controls.Add(this.lblPatientID);
-            this.DoubleBuffered = true;
             this.Name = "AssignForm";
             this.ShowIcon = false;
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

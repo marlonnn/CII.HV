@@ -24,6 +24,8 @@ namespace CII.LAR
         private ReportForm reportFrom;
         //private VideoForm videoForm;
         private List<string> videoFiles;
+
+        private AllPatients allPatients;
         public FilesForm()
         {
             this.WindowState = FormWindowState.Maximized;
@@ -43,6 +45,54 @@ namespace CII.LAR
             }
             imageForm = new ImageForm();
             imageForm.DeleteImageItemHandler += DeleteImageItemHandler;
+            allPatients = Program.SysConfig.AllPatients;
+            this.Load += FilesForm_Load;
+        }
+
+        private void SetSelectedItem()
+        {
+            if (!string.IsNullOrEmpty(this.toolStripTextBox1.Text))
+            {
+                imageListView.SuspendLayout();
+                for (int i = 0; i < imageListView.Items.Count; i++)
+                {
+                    if (imageListView.Items[i].Text == this.toolStripTextBox1.Text)
+                    {
+                        imageListView.Items[i].Selected = true;
+                    }
+                    else
+                    {
+                        imageListView.Items[i].Selected = false;
+                    }
+                }
+                imageListView.ResumeLayout(true);
+            }
+        }
+
+        private void FilesForm_Load(object sender, EventArgs e)
+        {
+            var suggestion = GetFilesSuggestion();
+            var source = new AutoCompleteStringCollection();
+            source.AddRange(suggestion);
+            this.toolStripTextBox1.AutoCompleteCustomSource = source;
+            this.toolStripTextBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            this.toolStripTextBox1.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            this.toolStripTextBox1.Visible = true;
+        }
+
+
+        private string[] GetFilesSuggestion()
+        {
+            string folderName = Program.SysConfig.StorePath;
+            string[] extesnsions = new string[] { ".png", ".avi" };
+            var files = GetFiles(folderName, extesnsions, SearchOption.TopDirectoryOnly);
+            string[] suggestion = new string[imageListView.Items.Count];
+
+            for (int i=0; i< imageListView.Items.Count; i++)
+            {
+                suggestion[i] = imageListView.Items[i].Text;
+            }
+            return suggestion;
         }
 
         private void DeleteImageItemHandler(ImageListViewItem imageListViewItem)
@@ -271,6 +321,11 @@ namespace CII.LAR
         {
             AssignedForm assignedForm = new AssignedForm();
             assignedForm.ShowDialog();
+        }
+
+        private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            SetSelectedItem();
         }
     }
 }

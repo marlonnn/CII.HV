@@ -46,6 +46,7 @@ namespace CII.LAR.UI
                         selectLense.Factor -= 0.1;
                     }
                 }
+                UpdateObjectLensesHandler?.Invoke(selectLense);
                 try
                 {
                     selectLense.Factor = double.Parse(selectLense.Factor.ToString("0.0"));
@@ -70,29 +71,7 @@ namespace CII.LAR.UI
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                int factor = 0;
-                Int32.TryParse(txtAdd.Text, out factor);
-                if (factor != 0)
-                {
-                    Lense lense = new Lense(factor);
-                    if (Program.SysConfig.AddLense(lense))
-                    {
-                        //this.richPictureBox.ZoomNewLense(1, factor);
-                        this.rulerAdjustCtrl1.LabelValue = factor.ToString();
-                        UpdateComBoxItemLense(lense);
-                        //更新界面的刻度尺
-                        DelegateClass.GetDelegate().UpdateLenseHandler?.Invoke(lense);
-                        ShowRuler();
-                        this.richPictureBox.Invalidate();
-                    }
-
-                }
-                else
-                {
-                    //should input correct lense factor
-                    MessageBox.Show("Please input a number lense factor.", Application.ProductName, MessageBoxButtons.OK);
-                    return;
-                }
+                NewObjectLense();
             }
         }
 
@@ -169,7 +148,14 @@ namespace CII.LAR.UI
             this.Invalidate();
         }
 
+        public delegate void UpdateObjectLenses(Lense lense);
+        public UpdateObjectLenses UpdateObjectLensesHandler;
         private void btnNew_Click(object sender, EventArgs e)
+        {
+            NewObjectLense();
+        }
+
+        private void NewObjectLense()
         {
             int factor = 0;
             Int32.TryParse(txtAdd.Text, out factor);
@@ -185,6 +171,7 @@ namespace CII.LAR.UI
                     DelegateClass.GetDelegate().UpdateLenseHandler?.Invoke(lense);
                     ShowRuler();
                     this.richPictureBox.Invalidate();
+                    UpdateObjectLensesHandler?.Invoke(lense);
                 }
 
             }

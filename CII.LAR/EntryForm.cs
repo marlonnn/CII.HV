@@ -180,7 +180,6 @@ namespace CII.LAR
         public EntryForm()
         {
             InitializeComponent();
-            var v = Program.SysConfig;
             hotKeyManager = new HotKeyManager(this);
             //hotKeyManager.SetFormHandle(this);
             hotKeyManager.LocalHotKeyPressed += new LocalHotKeyEventHandler(HotKeyManager_LocalHotKeyPressed);
@@ -417,12 +416,24 @@ namespace CII.LAR
             BaseCtrls.Add(laserHoleSize);
 
             lenseCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<ObjectLenseCtrl>(CtrlType.LenseCtrl);
+            lenseCtrl.UpdateObjectLensesHandler += UpdateObjectLensesHandler;
             BaseCtrls.Add(lenseCtrl);
 
             shortcutCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<ShortcutCtrl>(CtrlType.ShortCut);
             BaseCtrls.Add(shortcutCtrl);
             //laserDebugCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserDebugCtrl>(CtrlType.LaserDebugCtrl);
             //BaseCtrls.Add(laserDebugCtrl);
+        }
+
+        private void UpdateObjectLensesHandler(Lense lense)
+        {
+            //comboBoxLense
+            if (Program.SysConfig.Lenses != null && Program.SysConfig.Lenses.Count > 0)
+            {
+                comboBoxLense.Items.Clear();
+                comboBoxLense.Items.AddRange(Program.SysConfig.Lenses.ToArray());
+                comboBoxLense.SelectedItem = lense;
+            }
         }
 
         private void ShowObjectLenseManagerHandler()

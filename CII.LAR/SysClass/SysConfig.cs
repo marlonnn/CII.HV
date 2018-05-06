@@ -346,6 +346,7 @@ namespace CII.LAR.SysClass
             this.recordTime = 1;
             AllPatients = AllPatients.GetAllPatients();
             shortcutKeys = new ShortcutKeys();
+            this.deviceMoniker = @"@device:pnp:\\?\usb#vid_eb1a&pid_2860#5&20c67efd&0&7#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global";
             //this.HotKeyManager = new HotKeyManager();
             //this.HotKeyManager.LocalHotKeyContainer = new List<LocalHotKey>();
         }

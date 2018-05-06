@@ -37,23 +37,27 @@ namespace CII.LAR.UI
             {
                 if (isUp)
                 {
-                    //this.richPictureBox.ZoomNewLense((float)selectLense.Factor, (float)(selectLense.Factor+0.1f));
                     selectLense.Factor += 0.1;
                 }
                 else
                 {
                     if (selectLense.Factor - 0.1 != 0)
                     {
-                        //this.richPictureBox.ZoomNewLense((float)selectLense.Factor, (float)(selectLense.Factor - 0.1f));
                         selectLense.Factor -= 0.1;
                     }
                 }
-                UpdateComBoxItemLense(selectLense);
-                this.txtAdd.Text = selectLense.Factor.ToString();
-                this.rulerAdjustCtrl1.LabelValue = selectLense.Factor.ToString();
-                //this.richPictureBox.Zoom = (float)selectLense.Factor;
-                //this.richPictureBox.ZoomNewLense();
-                this.richPictureBox.Invalidate();
+                try
+                {
+                    selectLense.Factor = double.Parse(selectLense.Factor.ToString("0.0"));
+                    UpdateComBoxItemLense(selectLense);
+                    this.txtAdd.Text = selectLense.Factor.ToString();
+                    this.rulerAdjustCtrl1.LabelValue = selectLense.Factor.ToString();
+                    this.richPictureBox.Invalidate();
+                }
+                catch (Exception ex)
+                {
+
+                }
             }
         }
         private void ShowRuler()

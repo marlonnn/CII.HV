@@ -816,6 +816,7 @@
     </Content>
     <Content Include="Resources\Stop.png" />
     <Content Include="Resources\um.png" />
+    <Content Include="Resources\undo.png" />
     <Content Include="Resources\unit.png" />
     <Content Include="Resources\up.png" />
     <Content Include="Resources\video.png" />

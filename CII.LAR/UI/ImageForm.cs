@@ -87,6 +87,11 @@ namespace CII.LAR.UI
             this.Load += ImageForm_Load;
         }
 
+        public ImageForm(bool toolstripVisiable) : this()
+        {
+            this.toolStrip1.Visible = toolstripVisiable;
+        }
+
         private void ImageForm_Load(object sender, EventArgs e)
         {
             //this.TitleText = this.Title;

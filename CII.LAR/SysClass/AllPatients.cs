@@ -46,6 +46,14 @@ namespace CII.LAR.SysClass
             }
         }
 
+        public void Rremove(Patient patient)
+        {
+            if (patient != null)
+            {
+                if (CheckExist(patient)) patients.Remove(patient);
+            }
+        }
+
         private bool CheckExist(Patient patient)
         {
             bool exist = false;

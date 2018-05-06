@@ -1,8 +1,10 @@
 ﻿using CII.LAR.SysClass;
 using DevComponents.DotNetBar;
+using Manina.Windows.Forms;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -20,8 +22,22 @@ namespace CII.LAR.UI
         public AssignedForm()
         {
             InitializeComponent();
+            videoFiles = new List<string>();
             allPatients = Program.SysConfig.AllPatients;
             InitializeListView();
+            imageForm = new ImageForm(false);
+            imageForm.DeleteImageItemHandler += DeleteImageItemHandler;
+        }
+
+        private void DeleteImageItemHandler(ImageListViewItem imageListViewItem)
+        {
+            imageListView.SuspendLayout();
+
+            // Remove selected items
+            imageListView.Items.Remove(imageListViewItem);
+
+            // Resume layout logic.
+            imageListView.ResumeLayout(true);
         }
 
         private void InitializeListView()
@@ -37,6 +53,46 @@ namespace CII.LAR.UI
                 //listView.Items[0].Selected = true;
                 listView.Items[0].Focused = true;
                 this.listView.Items[0].Selected = true;
+            }
+            this.listView.Invalidate();
+        }
+
+        private VideoForm videoForm;
+        private ImageForm imageForm;
+        private void imageListView_ItemDoubleClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                ImageListViewItem item = this.imageListView.Items.FocusedItem;
+                if (item != null)
+                {
+                    var fileExtension = Path.GetExtension(item.FileName);
+                    if (fileExtension == ".avi")
+                    {
+                        string fileName = item.FileName;
+                        int v = videoFiles.FindIndex(file => { return file == fileName; });
+                        videoForm = new VideoForm(videoFiles, fileName);
+                        videoForm.ShowDialog();
+                    }
+                    else if (fileExtension == ".png")
+                    {
+                        string fileName = item.FileName;
+                        imageForm.Text = item.Text;
+                        imageForm.ImageListViewItem = item;
+                        imageForm.FileName = fileName;
+                        DialogResult dr = imageForm.ShowDialog();
+                        if (dr == DialogResult.OK && imageForm.IsAssign)
+                        {
+                            DeleteImageItemHandler(item);
+                            File.Delete(item.FileName);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.GetLogger<FilesForm>().Error(ex.Message);
+                LogHelper.GetLogger<FilesForm>().Error(ex.StackTrace);
             }
         }
 
@@ -60,22 +116,31 @@ namespace CII.LAR.UI
 
             }
         }
-
+        private List<string> videoFiles;
         private void InitializeImageListView(Patient p)
         {
-            imageListView.Items.Clear();
+            //imageListView.Items.Remove();
             string folderName = Program.SysConfig.StorePath;
             string folder = string.Format("{0}\\{1}", folderName,  p.Foldername);
             string[] extesnsions = new string[] { ".png", ".avi" };
             var files = GetFiles(folder, extesnsions, SearchOption.TopDirectoryOnly);
             //this.imageListView.View = Manina.Windows.Forms.View.Thumbnails;
-            foreach (var file in files)
+            if (files != null)
             {
-                imageListView.Items.Add(file.ToString());
-            }
-            listView.Focus();
-        }
+                imageListView.Items.Clear();
+                videoFiles.Clear();
+                foreach (var file in files)
+                {
+                    imageListView.Items.Add(file.ToString());
+                    if (Path.GetExtension(file.ToString()) == ".avi")
+                    {
+                        videoFiles.Add(file.ToString());
+                    }
 
+                }
+                listView.Focus();
+            }
+        }
 
         /// <summary>
         /// Get files form directory
@@ -91,6 +156,150 @@ namespace CII.LAR.UI
                 inS => exts.Contains(System.IO.Path.GetExtension(inS),
                 StringComparer.OrdinalIgnoreCase)
                            );
+        }
+
+        private Patient FindPatient(string checkFolder)
+        {
+            Patient findPatient = null;
+            foreach (ListViewItem item in this.listView.Items)
+            {
+                Patient p = item.Tag as Patient;
+                if (p != null)
+                {
+                    string folder = string.Format("{0}\\{1}", Program.SysConfig.StorePath, p.Foldername);
+                    if (checkFolder == folder)
+                    {
+                        findPatient = p;
+                        break;
+                    }
+                }
+            }
+            return findPatient;
+
+        }
+        private void toolStripButtonDelete_Click(object sender, EventArgs e)
+        {
+            // Suspend the layout logic while we are removing items.
+            // Otherwise the control will be refreshed after each item
+            // is removed.
+            imageListView.SuspendLayout();
+            string folder = "";
+            // Remove selected items
+            foreach (var item in imageListView.SelectedItems)
+            {
+                folder = item.FilePath;
+                imageListView.Items.Remove(item);
+                if (File.Exists(item.FileName))
+                {
+                    try
+                    {
+                        File.Delete(item.FileName);
+                    }
+                    catch (Exception ex)
+                    {
+                        continue;
+                    }
+                }
+            }
+            if (imageListView.Items.Count == 0)
+            {
+                try
+                {
+                    if (Directory.Exists(folder))
+                    {
+                        Directory.Delete(folder);
+                    }
+                    Patient p = FindPatient(folder);
+                    if (p != null)
+                    {
+                        allPatients.Rremove(p);
+                        RemovePatientFormListView(p);
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            // Resume layout logic.
+            imageListView.ResumeLayout(true);
+        }
+
+        private void RemovePatientFormListView(Patient p)
+        {
+            var list = this.listView.Items;
+            ListViewItem listViewItem = null;
+            foreach (ListViewItem item in this.listView.Items)
+            {
+                var patient = item.Tag as Patient;
+                if (patient.ID == p.ID && patient.Name == p.Name)
+                {
+                    listViewItem = item;
+                }
+            }
+            if (listViewItem != null ) this.listView.Items.Remove(listViewItem);
+            this.listView.Invalidate();
+        }
+
+        private AssignForm assignForm;
+        private void toolStripButtonAssign_Click(object sender, EventArgs e)
+        {
+            assignForm = new AssignForm(GetSelectedImageListViewItems());
+            assignForm.SuspendImageListViewHandler += SuspendImageListViewHandler;
+            assignForm.DeleteImageListViewiTemHandler += DeleteImageListViewiTemHandler;
+            assignForm.ResumeImageListViewHandler += ResumeImageListViewHandler;
+            assignForm.Show();
+        }
+
+        private void DeleteImageListViewiTemHandler(ImageListViewItem item)
+        {
+            imageListView.Items.Remove(item);
+        }
+
+        private void SuspendImageListViewHandler()
+        {
+            this.imageListView.SuspendLayout();
+        }
+
+        private void ResumeImageListViewHandler()
+        {
+            this.imageListView.ResumeLayout(true);
+        }
+
+        private List<ImageListViewItem> GetSelectedImageListViewItems()
+        {
+            var items = new List<ImageListViewItem>();
+            if (this.imageListView.SelectedItems != null && this.imageListView.SelectedItems.Count > 0)
+            {
+                foreach (var item in this.imageListView.SelectedItems)
+                {
+                    items.Add(item);
+                }
+            }
+            return items;
+        }
+
+        private void toolStripButtonCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.Clear();
+            var items = this.imageListView.Items;
+            StringCollection paths = new StringCollection();
+            foreach (var item in items)
+            {
+                if (item != null && item.Selected)
+                {
+                    string fileName = item.FileName;
+                    paths.Add(fileName);
+                }
+            }
+            if (paths.Count > 0)
+            {
+                Clipboard.SetFileDropList(paths);
+            }
+        }
+
+        private void toolStripButtonPrint_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

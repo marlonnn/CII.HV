@@ -126,4 +126,16 @@
   <data name="columnHeader2.Text" xml:space="preserve">
     <value>姓名</value>
   </data>
+  <data name="toolStripButtonAssign.ToolTipText" xml:space="preserve">
+    <value>分配</value>
+  </data>
+  <data name="toolStripButtonCopy.ToolTipText" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="toolStripButtonDelete.ToolTipText" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="toolStripButtonPrint.ToolTipText" xml:space="preserve">
+    <value>打印</value>
+  </data>
 </root>

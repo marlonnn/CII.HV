@@ -36,6 +36,7 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.lblAdjustment = new DevComponents.DotNetBar.LabelX();
             this.rulerAdjustCtrl1 = new CII.LAR.UI.RulerAdjustCtrl();
+            this.btnNew = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // closeButton
@@ -95,10 +96,19 @@
             resources.ApplyResources(this.rulerAdjustCtrl1, "rulerAdjustCtrl1");
             this.rulerAdjustCtrl1.Name = "rulerAdjustCtrl1";
             // 
+            // btnNew
+            // 
+            this.btnNew.BackColor = System.Drawing.Color.Gray;
+            resources.ApplyResources(this.btnNew, "btnNew");
+            this.btnNew.Name = "btnNew";
+            this.btnNew.UseVisualStyleBackColor = false;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
             // ObjectLenseCtrl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnNew);
             this.Controls.Add(this.rulerAdjustCtrl1);
             this.Controls.Add(this.lblAdjustment);
             this.Controls.Add(this.labelX1);
@@ -116,6 +126,7 @@
             this.Controls.SetChildIndex(this.labelX1, 0);
             this.Controls.SetChildIndex(this.lblAdjustment, 0);
             this.Controls.SetChildIndex(this.rulerAdjustCtrl1, 0);
+            this.Controls.SetChildIndex(this.btnNew, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,5 +141,6 @@
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.LabelX lblAdjustment;
         private RulerAdjustCtrl rulerAdjustCtrl1;
+        private System.Windows.Forms.Button btnNew;
     }
 }

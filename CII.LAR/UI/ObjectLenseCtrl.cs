@@ -168,5 +168,32 @@ namespace CII.LAR.UI
             resources.ApplyResources(this.btnDelete, btnDelete.Name);
             this.Invalidate();
         }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            int factor = 0;
+            Int32.TryParse(txtAdd.Text, out factor);
+            if (factor != 0)
+            {
+                Lense lense = new Lense(factor);
+                if (Program.SysConfig.AddLense(lense))
+                {
+                    //this.richPictureBox.ZoomNewLense(1, factor);
+                    this.rulerAdjustCtrl1.LabelValue = factor.ToString();
+                    UpdateComBoxItemLense(lense);
+                    //更新界面的刻度尺
+                    DelegateClass.GetDelegate().UpdateLenseHandler?.Invoke(lense);
+                    ShowRuler();
+                    this.richPictureBox.Invalidate();
+                }
+
+            }
+            else
+            {
+                //should input correct lense factor
+                MessageBox.Show("Please input a number lense factor.", Application.ProductName, MessageBoxButtons.OK);
+                return;
+            }
+        }
     }
 }

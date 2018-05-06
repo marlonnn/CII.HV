@@ -120,6 +120,9 @@
   <data name="btnDelete.Text" xml:space="preserve">
     <value>删除</value>
   </data>
+  <data name="btnNew.Text" xml:space="preserve">
+    <value>新建</value>
+  </data>
   <data name="labelX1.Text" xml:space="preserve">
     <value>新建</value>
   </data>

@@ -30,18 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShortcutCtrl));
             this.lblSnapshoot = new System.Windows.Forms.Label();
-            this.txtSnap = new System.Windows.Forms.TextBox();
-            this.btnCloseSnap = new CII.LAR.UI.TransparentButton();
-            this.transparentButton1 = new CII.LAR.UI.TransparentButton();
-            this.txtZoomIn = new System.Windows.Forms.TextBox();
             this.lblZoomIn = new System.Windows.Forms.Label();
-            this.btnZoomOutClose = new CII.LAR.UI.TransparentButton();
-            this.txtZoomOut = new System.Windows.Forms.TextBox();
             this.lblZoomOut = new System.Windows.Forms.Label();
-            this.btnVideoClose = new CII.LAR.UI.TransparentButton();
-            this.txtVideo = new System.Windows.Forms.TextBox();
             this.lblVideo = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.txtTakePicture = new CII.LAR.UI.HotKeyControl();
+            this.txtZoomIn = new CII.LAR.UI.HotKeyControl();
+            this.txtZoomOut = new CII.LAR.UI.HotKeyControl();
+            this.txtStart = new CII.LAR.UI.HotKeyControl();
             this.SuspendLayout();
             // 
             // closeButton
@@ -53,59 +49,15 @@
             resources.ApplyResources(this.lblSnapshoot, "lblSnapshoot");
             this.lblSnapshoot.Name = "lblSnapshoot";
             // 
-            // txtSnap
-            // 
-            resources.ApplyResources(this.txtSnap, "txtSnap");
-            this.txtSnap.Name = "txtSnap";
-            // 
-            // btnCloseSnap
-            // 
-            this.btnCloseSnap.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.btnCloseSnap, "btnCloseSnap");
-            this.btnCloseSnap.Name = "btnCloseSnap";
-            // 
-            // transparentButton1
-            // 
-            this.transparentButton1.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.transparentButton1, "transparentButton1");
-            this.transparentButton1.Name = "transparentButton1";
-            // 
-            // txtZoomIn
-            // 
-            resources.ApplyResources(this.txtZoomIn, "txtZoomIn");
-            this.txtZoomIn.Name = "txtZoomIn";
-            // 
             // lblZoomIn
             // 
             resources.ApplyResources(this.lblZoomIn, "lblZoomIn");
             this.lblZoomIn.Name = "lblZoomIn";
             // 
-            // btnZoomOutClose
-            // 
-            this.btnZoomOutClose.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.btnZoomOutClose, "btnZoomOutClose");
-            this.btnZoomOutClose.Name = "btnZoomOutClose";
-            // 
-            // txtZoomOut
-            // 
-            resources.ApplyResources(this.txtZoomOut, "txtZoomOut");
-            this.txtZoomOut.Name = "txtZoomOut";
-            // 
             // lblZoomOut
             // 
             resources.ApplyResources(this.lblZoomOut, "lblZoomOut");
             this.lblZoomOut.Name = "lblZoomOut";
-            // 
-            // btnVideoClose
-            // 
-            this.btnVideoClose.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(this.btnVideoClose, "btnVideoClose");
-            this.btnVideoClose.Name = "btnVideoClose";
-            // 
-            // txtVideo
-            // 
-            resources.ApplyResources(this.txtVideo, "txtVideo");
-            this.txtVideo.Name = "txtVideo";
             // 
             // lblVideo
             // 
@@ -119,39 +71,55 @@
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // txtTakePicture
+            // 
+            resources.ApplyResources(this.txtTakePicture, "txtTakePicture");
+            this.txtTakePicture.Name = "txtTakePicture";
+            this.txtTakePicture.ToolTip = null;
+            // 
+            // txtZoomIn
+            // 
+            resources.ApplyResources(this.txtZoomIn, "txtZoomIn");
+            this.txtZoomIn.Name = "txtZoomIn";
+            this.txtZoomIn.ToolTip = null;
+            // 
+            // txtZoomOut
+            // 
+            resources.ApplyResources(this.txtZoomOut, "txtZoomOut");
+            this.txtZoomOut.Name = "txtZoomOut";
+            this.txtZoomOut.ToolTip = null;
+            // 
+            // txtStart
+            // 
+            resources.ApplyResources(this.txtStart, "txtStart");
+            this.txtStart.Name = "txtStart";
+            this.txtStart.ToolTip = null;
+            // 
             // ShortcutCtrl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.btnVideoClose);
-            this.Controls.Add(this.txtVideo);
-            this.Controls.Add(this.lblVideo);
-            this.Controls.Add(this.btnZoomOutClose);
+            this.Controls.Add(this.txtStart);
             this.Controls.Add(this.txtZoomOut);
-            this.Controls.Add(this.lblZoomOut);
-            this.Controls.Add(this.transparentButton1);
             this.Controls.Add(this.txtZoomIn);
+            this.Controls.Add(this.txtTakePicture);
+            this.Controls.Add(this.buttonSave);
+            this.Controls.Add(this.lblVideo);
+            this.Controls.Add(this.lblZoomOut);
             this.Controls.Add(this.lblZoomIn);
-            this.Controls.Add(this.btnCloseSnap);
-            this.Controls.Add(this.txtSnap);
             this.Controls.Add(this.lblSnapshoot);
             this.Name = "ShortcutCtrl";
             this.Title = global::CII.LAR.Properties.Resources.StrShortcutTitle;
             this.Controls.SetChildIndex(this.closeButton, 0);
             this.Controls.SetChildIndex(this.lblSnapshoot, 0);
-            this.Controls.SetChildIndex(this.txtSnap, 0);
-            this.Controls.SetChildIndex(this.btnCloseSnap, 0);
             this.Controls.SetChildIndex(this.lblZoomIn, 0);
-            this.Controls.SetChildIndex(this.txtZoomIn, 0);
-            this.Controls.SetChildIndex(this.transparentButton1, 0);
             this.Controls.SetChildIndex(this.lblZoomOut, 0);
-            this.Controls.SetChildIndex(this.txtZoomOut, 0);
-            this.Controls.SetChildIndex(this.btnZoomOutClose, 0);
             this.Controls.SetChildIndex(this.lblVideo, 0);
-            this.Controls.SetChildIndex(this.txtVideo, 0);
-            this.Controls.SetChildIndex(this.btnVideoClose, 0);
             this.Controls.SetChildIndex(this.buttonSave, 0);
+            this.Controls.SetChildIndex(this.txtTakePicture, 0);
+            this.Controls.SetChildIndex(this.txtZoomIn, 0);
+            this.Controls.SetChildIndex(this.txtZoomOut, 0);
+            this.Controls.SetChildIndex(this.txtStart, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,17 +128,13 @@
         #endregion
 
         private System.Windows.Forms.Label lblSnapshoot;
-        private System.Windows.Forms.TextBox txtSnap;
-        private TransparentButton btnCloseSnap;
-        private TransparentButton transparentButton1;
-        private System.Windows.Forms.TextBox txtZoomIn;
         private System.Windows.Forms.Label lblZoomIn;
-        private TransparentButton btnZoomOutClose;
-        private System.Windows.Forms.TextBox txtZoomOut;
         private System.Windows.Forms.Label lblZoomOut;
-        private TransparentButton btnVideoClose;
-        private System.Windows.Forms.TextBox txtVideo;
         private System.Windows.Forms.Label lblVideo;
         private System.Windows.Forms.Button buttonSave;
+        private HotKeyControl txtTakePicture;
+        private HotKeyControl txtZoomIn;
+        private HotKeyControl txtZoomOut;
+        private HotKeyControl txtStart;
     }
 }

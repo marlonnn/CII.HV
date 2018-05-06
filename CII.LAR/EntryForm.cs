@@ -12,6 +12,7 @@ using CII.LAR.Laser;
 using CII.LAR.Opertion;
 using CII.LAR.Protocol;
 using CII.LAR.SysClass;
+using CII.LAR.SysClass.Shortcuts;
 using CII.LAR.UI;
 using DevComponents.DotNetBar;
 using System;
@@ -31,6 +32,7 @@ namespace CII.LAR
 {
     public partial class EntryForm : Form
     {
+        internal HotKeyManager hotKeyManager;
         private SerialPortCommunication serialPortCom;
         //视频翻转类型
         private FlipType flipType;
@@ -178,6 +180,10 @@ namespace CII.LAR
         public EntryForm()
         {
             InitializeComponent();
+            var v = Program.SysConfig;
+            hotKeyManager = new HotKeyManager(this);
+            //hotKeyManager.SetFormHandle(this);
+            hotKeyManager.LocalHotKeyPressed += new LocalHotKeyEventHandler(HotKeyManager_LocalHotKeyPressed);
             resources = new ComponentResourceManager(typeof(EntryForm));
             this.WindowState = FormWindowState.Maximized;
             listViewItemArray = new ListViewItemArray();
@@ -199,6 +205,31 @@ namespace CII.LAR
 
             serialPortCom = SerialPortCommunication.GetInstance();
             serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
+        }
+
+        private void HotKeyManager_LocalHotKeyPressed(object sender, LocalHotKeyEventArgs e)
+        {
+            if (e.HotKey.Tag != null)
+            {
+                var keys = (string)e.HotKey.Tag;
+                switch (keys)
+                {
+                    case "takePicture":
+                        toolStripButtonCapture_Click(null, null);
+                        break;
+                    case "zoomIn":
+                        toolStripButtonZoomIn_Click(null, null);
+                        break;
+                    case "zoomOut":
+                        toolStripButtonZoomOut_Click(null, null);
+                        break;
+                    case "startRecord":
+                    case "stopRecord":
+                        toolStripButtonVideo_Click(null, null);
+                        break;
+                }
+
+            }
         }
 
         private void SerialDataReceivedHandler(LaserBaseResponse baseResponse)

@@ -241,6 +241,8 @@ namespace CII.LAR.UI
         private void btnShortcuts_Click(object sender, EventArgs e)
         {
             ShowShortcutManagerHandler?.Invoke();
+            //ShortcutsForm sf = new ShortcutsForm();
+            //sf.ShowDialog();
         }
     }
 }

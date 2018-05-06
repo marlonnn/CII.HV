@@ -7,43 +7,77 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CII.LAR.SysClass.Shortcuts;
 
 namespace CII.LAR.UI
 {
     public partial class ShortcutCtrl : BaseCtrl
     {
+        private HotKeyManager hotKeyManager;
         public ShortcutCtrl()
         {
             InitializeComponent();
             resources = new ComponentResourceManager(typeof(ShortcutCtrl));
             this.CtrlType = CtrlType.ShortCut;
+            this.Load += ShortcutCtrl_Load;
+            //this.hotKeyManager = Program.EntryForm.hotKeyManager;
+        }
+
+        private void ShortcutCtrl_Load(object sender, EventArgs e)
+        {
+            this.hotKeyManager = Program.EntryForm.hotKeyManager;
             RegisterKeyDownEvent();
         }
 
         private void RegisterKeyDownEvent()
         {
-            this.txtSnap.KeyDown += TxtSnap_KeyDown; ;
-            this.txtVideo.KeyDown += TextBox_KeyDown;
-            this.txtZoomIn.KeyDown += TextBox_KeyDown;
-            this.txtZoomOut.KeyDown += TextBox_KeyDown;
+            this.txtTakePicture.HotKeyIsSet += new HotKeyIsSetEventHandler(HotKeyIsSet);
+            this.txtZoomIn.HotKeyIsSet += new HotKeyIsSetEventHandler(HotKeyIsSet);
+            this.txtZoomOut.HotKeyIsSet += new HotKeyIsSetEventHandler(HotKeyIsSet);
+            this.txtStart.HotKeyIsSet += new HotKeyIsSetEventHandler(HotKeyIsSet);
         }
 
-        private void TxtSnap_KeyDown(object sender, KeyEventArgs e)
+        private void HotKeyIsSet(object sender, HotKeyIsSetEventArgs e)
         {
-            Program.SysConfig.ShortcutKeys.AddSnapShortKey(e.KeyCode);
-        }
-
-        private void TextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            var keyCode = e.KeyCode;
-            var keyControl = e.Control;
-            var cd = keyCode.ToString();
-            var kc = keyControl.ToString();
+            if (Program.EntryForm.hotKeyManager.HotKeyExists(e.Shortcut, HotKeyManager.CheckKey.LocalHotKey))
+            {
+                e.Cancel = true;
+                MessageBox.Show("This HotKey has already been registered");
+            }
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            Register();
             this.Visible = false;
+        }
+
+        private void Register()
+        {
+            if (!string.IsNullOrEmpty(txtTakePicture.Text) &&  txtTakePicture.Text != Keys.None.ToString())
+            {
+                LocalHotKey NewLocalHotKey = new LocalHotKey("takePicture", txtTakePicture.UserModifier, txtTakePicture.UserKey);
+                NewLocalHotKey.Tag = "takePicture";
+                hotKeyManager.AddLocalHotKey(NewLocalHotKey);
+            }
+            if (!string.IsNullOrEmpty(txtZoomIn.Text) &&  txtZoomIn.Text != Keys.None.ToString())
+            {
+                LocalHotKey NewLocalHotKey = new LocalHotKey("zoomIn", txtZoomIn.UserModifier, txtZoomIn.UserKey);
+                NewLocalHotKey.Tag = "zoomIn";
+                hotKeyManager.AddLocalHotKey(NewLocalHotKey);
+            }
+            if (!string.IsNullOrEmpty(txtZoomOut.Text) && txtZoomOut.Text != Keys.None.ToString())
+            {
+                LocalHotKey NewLocalHotKey = new LocalHotKey("zoomOut", txtZoomOut.UserModifier, txtZoomOut.UserKey);
+                NewLocalHotKey.Tag = "zoomOut";
+                hotKeyManager.AddLocalHotKey(NewLocalHotKey);
+            }
+            if (!string.IsNullOrEmpty(txtStart.Text) && txtStart.Text != Keys.None.ToString())
+            {
+                LocalHotKey NewLocalHotKey = new LocalHotKey("startRecord", txtStart.UserModifier, txtStart.UserKey);
+                NewLocalHotKey.Tag = "startRecord";
+                hotKeyManager.AddLocalHotKey(NewLocalHotKey);
+            }
         }
 
         public override void RefreshUI()
@@ -55,15 +89,6 @@ namespace CII.LAR.UI
             resources.ApplyResources(this.lblZoomIn, lblZoomIn.Name);
             resources.ApplyResources(this.lblSnapshoot, lblSnapshoot.Name);
             this.Invalidate();
-        }
-
-        protected override void OnKeyDown(KeyEventArgs e)
-        {
-            //base.OnKeyDown(e);
-            var keyCode = e.KeyCode;
-            var keyControl = e.Control;
-            var cd = keyCode.ToString();
-            var kc = keyControl.ToString();
         }
     }
 }

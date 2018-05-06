@@ -1,4 +1,5 @@
 ﻿using CII.LAR.DrawTools;
+using CII.LAR.SysClass.Shortcuts;
 using DevComponents.DotNetBar;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,12 @@ namespace CII.LAR.SysClass
     [Serializable]
     public class SysConfig
     {
+        //private HotKeyManager hotKeyManager;
+        //public HotKeyManager HotKeyManager
+        //{
+        //    get { return this.hotKeyManager; }
+        //    set { this.hotKeyManager = value; }
+        //}
         private ShortcutKeys shortcutKeys;
         public ShortcutKeys ShortcutKeys
         {
@@ -339,6 +346,8 @@ namespace CII.LAR.SysClass
             this.recordTime = 1;
             AllPatients = AllPatients.GetAllPatients();
             shortcutKeys = new ShortcutKeys();
+            //this.HotKeyManager = new HotKeyManager();
+            //this.HotKeyManager.LocalHotKeyContainer = new List<LocalHotKey>();
         }
 
         // set default value

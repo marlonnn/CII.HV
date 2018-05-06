@@ -101,6 +101,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Reference\MathNet.Numerics.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Reference\Newtonsoft.Json.dll</HintPath>
@@ -242,6 +243,14 @@
     <Compile Include="SysClass\Lense.cs" />
     <Compile Include="SysClass\Patient.cs" />
     <Compile Include="SysClass\ShortcutKeys.cs" />
+    <Compile Include="SysClass\Shortcuts\Enums and Structs.cs" />
+    <Compile Include="SysClass\Shortcuts\Event Args.cs" />
+    <Compile Include="SysClass\Shortcuts\Event Handlers.cs" />
+    <Compile Include="SysClass\Shortcuts\Exceptions.cs" />
+    <Compile Include="SysClass\Shortcuts\Global Shortcut Manager.cs" />
+    <Compile Include="SysClass\Shortcuts\Helpers.cs" />
+    <Compile Include="SysClass\Shortcuts\HotKeys.cs" />
+    <Compile Include="SysClass\Shortcuts\Win32.cs" />
     <Compile Include="SysClass\SysConfig.cs" />
     <Compile Include="UI\ArrayChangedEventArgs.cs" />
     <Compile Include="UI\AssignedForm.cs">
@@ -274,6 +283,12 @@
     </Compile>
     <Compile Include="UI\FilesForm.designer.cs">
       <DependentUpon>FilesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\HotKeyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\HotKeyControl.designer.cs">
+      <DependentUpon>HotKeyControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ImageForm.cs">
       <SubType>Form</SubType>
@@ -349,6 +364,12 @@
     </Compile>
     <Compile Include="UI\ShortcutCtrl.Designer.cs">
       <DependentUpon>ShortcutCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ShortcutsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ShortcutsForm.Designer.cs">
+      <DependentUpon>ShortcutsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UpDownArrowCtrl.cs">
       <SubType>UserControl</SubType>
@@ -522,6 +543,9 @@
     <EmbeddedResource Include="UI\FilesForm.zh-CN.resx">
       <DependentUpon>FilesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\HotKeyControl.resx">
+      <DependentUpon>HotKeyControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ImageForm.resx">
       <DependentUpon>ImageForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -560,6 +584,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ShortcutCtrl.zh-CN.resx">
       <DependentUpon>ShortcutCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ShortcutsForm.resx">
+      <DependentUpon>ShortcutsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UpDownArrowCtrl.resx">
       <DependentUpon>UpDownArrowCtrl.cs</DependentUpon>
@@ -740,6 +767,7 @@
     <Content Include="Resources\camera.png" />
     <Content Include="Resources\capture.png" />
     <Content Include="Resources\copy.png" />
+    <None Include="Resources\Del.png" />
     <Content Include="Resources\delete.png" />
     <Content Include="Resources\down.png" />
     <Content Include="Resources\edit.png" />

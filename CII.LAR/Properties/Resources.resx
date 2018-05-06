@@ -117,15 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="StrDeleteFile" xml:space="preserve">
-    <value>Are you confirm to delete the file ?</value>
+  <data name="StrLaserAppearanceTitle" xml:space="preserve">
+    <value>Laser Appearance</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="unit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\unit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="StrLaserCtrlTitle" xml:space="preserve">
-    <value>Laser Control</value>
+  <data name="Stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="assign" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\assign.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,8 +136,14 @@
   <data name="capture" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\capture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="polygon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\polygon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="StrDeleteFile" xml:space="preserve">
+    <value>Are you confirm to delete the file ?</value>
+  </data>
+  <data name="down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="assigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\assigned.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="zoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\zoom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,8 +151,8 @@
   <data name="copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="labelItemLanguageStr" xml:space="preserve">
-    <value>Language</value>
+  <data name="StrLaserCtrlTitle" xml:space="preserve">
+    <value>Laser Control</value>
   </data>
   <data name="StrReport" xml:space="preserve">
     <value>Report</value>
@@ -154,23 +160,26 @@
   <data name="setting" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\setting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="laser" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\laser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Zoom in" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Zoom in.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="idscamera1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\idscamera.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="StrUnknownErrorMsg" xml:space="preserve">
+    <value>Encountered an unknown error. Please restart the program.</value>
+  </data>
   <data name="StrLaserAlignmentTitle" xml:space="preserve">
     <value>Laser Target Alignment</value>
   </data>
-  <data name="StrLaserAppearanceTitle" xml:space="preserve">
-    <value>Laser Appearance</value>
-  </data>
-  <data name="Stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="laser" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\laser.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="StrStatisticsTitle" xml:space="preserve">
     <value>Statistics Information</value>
+  </data>
+  <data name="StrOpenSimulator" xml:space="preserve">
+    <value>Turn On Simulator</value>
   </data>
   <data name="camera" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\camera.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,6 +193,9 @@
   <data name="up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="StrCloseSimulator" xml:space="preserve">
+    <value>Close Simulator</value>
+  </data>
   <data name="StrOutOfMemory" xml:space="preserve">
     <value>Program may run out of memory, please restart the program.</value>
   </data>
@@ -193,11 +205,14 @@
   <data name="ruler" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ruler.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="polygon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\polygon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="StrRulerAppearanceTitle" xml:space="preserve">
     <value>Ruler Appearance</value>
   </data>
-  <data name="line" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="StrShortcutTitle" xml:space="preserve">
+    <value>Keyboard Shortcut Configuration</value>
   </data>
   <data name="files" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\files.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,11 +241,11 @@
   <data name="StrObjectLense" xml:space="preserve">
     <value>Object Lense Manager</value>
   </data>
-  <data name="down" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="labelItemLanguageStr" xml:space="preserve">
+    <value>Language</value>
   </data>
-  <data name="StrUnknownErrorMsg" xml:space="preserve">
-    <value>Encountered an unknown error. Please restart the program.</value>
+  <data name="line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="StrLaserHoleSizeCalibration" xml:space="preserve">
     <value>Laser Hole Size Calibration</value>
@@ -241,17 +256,11 @@
   <data name="Zoom out" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Zoom out.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="StrShortcutTitle" xml:space="preserve">
-    <value>Keyboard Shortcut Configuration</value>
-  </data>
   <data name="video" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\video.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="open" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\open.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Zoom in" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Zoom in.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="backflush" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\backflush.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -262,13 +271,7 @@
   <data name="print preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\print preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="assigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\assigned.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="StrCloseSimulator" xml:space="preserve">
-    <value>Close Simulator</value>
-  </data>
-  <data name="StrOpenSimulator" xml:space="preserve">
-    <value>Turn On Simulator</value>
+  <data name="Del" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Del.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -1295,6 +1295,8 @@ namespace CII.LAR
                         canCapture = false;
                         this.AVIwriter.Close();
                     }
+                    recordTimer.Stop();
+                    recordTimer.Dispose();
                     this.toolStripButtonVideo.Image = global::CII.LAR.Properties.Resources.video;
                 }
             }

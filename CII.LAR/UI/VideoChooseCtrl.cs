@@ -15,9 +15,6 @@ namespace CII.LAR.UI
     {
         private FilterInfoCollection videoDevices;
 
-        public delegate void CaptureDevice(string deviceMoniker);
-        public CaptureDevice CaptureDeviceHandler;
-
         public VideoChooseCtrl()
         {
             this.ShowIndex = 7;
@@ -105,7 +102,7 @@ namespace CII.LAR.UI
 
             string selectedDevice = listViewCamera.SelectedItems[0].Text;
             string deviceMoniker = GetMonikerString(selectedDevice);
-            if (deviceMoniker != "" && CaptureDeviceHandler != null)
+            if (deviceMoniker != "" && DelegateClass.GetDelegate().CaptureDeviceHandler != null)
             {
                 var videoDevice = Program.EntryForm.VideoDevice;
                 if (videoDevice != null && videoDevice.IsRunning)
@@ -113,7 +110,7 @@ namespace CII.LAR.UI
                     this.Visible = false;
                     return;
                 }
-                CaptureDeviceHandler(deviceMoniker);
+                DelegateClass.GetDelegate().CaptureDeviceHandler(deviceMoniker);
                 Program.SysConfig.DeviceMoniker = deviceMoniker;
             }
             this.Visible = false;

@@ -188,8 +188,27 @@ namespace CII.LAR.UI
 
         private void btnSimulator_Click(object sender, EventArgs e)
         {
-            richPictureBox.LoadImage(string.Format("{0}\\Resources\\Simulator\\Embryo.bmp", System.Environment.CurrentDirectory));
-            Program.SysConfig.LiveMode = false;
+            if (Program.SysConfig.LiveMode)
+            {
+                //Turn on simulator
+                Program.EntryForm.StopVideoDevice();
+                richPictureBox.LoadImage(string.Format("{0}\\Resources\\Simulator\\Embryo.bmp", System.Environment.CurrentDirectory));
+                this.btnSimulator.Text = CII.LAR.Properties.Resources.StrCloseSimulator;
+            }
+            else
+            {
+                //Close simulator
+                if (this.richPictureBox != null)
+                {
+                    this.richPictureBox.Picture = null;
+                    this.richPictureBox.GraphicsList.DeleteAll();
+                    CtrlFactory.GetCtrlFactory().GetCtrlByType<StatisticsCtrl>(CtrlType.StatisticsCtrl).StatisticsListView.Items.Clear();
+                }
+                //if (!string.IsNullOrEmpty(Program.SysConfig.DeviceMoniker))
+                //    DelegateClass.GetDelegate().CaptureDeviceHandler(Program.SysConfig.DeviceMoniker);
+                this.btnSimulator.Text = CII.LAR.Properties.Resources.StrOpenSimulator;
+            }
+            Program.SysConfig.LiveMode = !Program.SysConfig.LiveMode;
         }
 
         private void button1_Click(object sender, EventArgs e)

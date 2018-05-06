@@ -168,4 +168,10 @@
   <data name="StrDeleteFile" xml:space="preserve">
     <value>确定删除这个文件吗？</value>
   </data>
+  <data name="StrCloseSimulator" xml:space="preserve">
+    <value>关闭模拟模式</value>
+  </data>
+  <data name="StrOpenSimulator" xml:space="preserve">
+    <value>开启模拟模式</value>
+  </data>
 </root>

@@ -10,6 +10,9 @@ namespace CII.LAR.UI
 {
     public class DelegateClass
     {
+        public delegate void CaptureDevice(string deviceMoniker);
+        public CaptureDevice CaptureDeviceHandler;
+
         private static DelegateClass dc;
         public static DelegateClass GetDelegate()
         {

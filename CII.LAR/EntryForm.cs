@@ -192,6 +192,7 @@ namespace CII.LAR
             DelegateClass.GetDelegate().VideoKeyDownHandler += this.OnKeyDown;
             DelegateClass.GetDelegate().ChangeSysFunctionHandler += this.ChangeSysFunctionHandler;
             DelegateClass.GetDelegate().CheckCloseVideoHandler += this.CheckCloseVideoHandler;
+            DelegateClass.GetDelegate().CaptureDeviceHandler += this.CaptureDeviceHandler;
 
             //this.controller = new IController(this);
             InitializeControls();
@@ -378,7 +379,6 @@ namespace CII.LAR
             BaseCtrls.Add(laserAlignment);
 
             videoChooseCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<VideoChooseCtrl>(CtrlType.VideoChooseCtrl);
-            videoChooseCtrl.CaptureDeviceHandler += CaptureDeviceHandler;
 
             BaseCtrls.Add(videoChooseCtrl);
 
@@ -423,7 +423,7 @@ namespace CII.LAR
             //}
         }
 
-        private void CaptureDeviceHandler(string deviceMoniker)
+        public void CaptureDeviceHandler(string deviceMoniker)
         {
             videoDevice = new VideoCaptureDevice(deviceMoniker);
             if (videoDevice != null)
@@ -520,7 +520,7 @@ namespace CII.LAR
         /// <summary>
         /// 关闭视频设备
         /// </summary>
-        private void StopVideoDevice()
+        public void StopVideoDevice()
         {
             if (this.videoControl.VideoSource != null)
             {

@@ -329,6 +329,15 @@ namespace CII.LAR.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Close Simulator 的本地化字符串。
+        /// </summary>
+        internal static string StrCloseSimulator {
+            get {
+                return ResourceManager.GetString("StrCloseSimulator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Click Report to create a Technical Support Request. 的本地化字符串。
         /// </summary>
         internal static string StrCreateReport {
@@ -397,6 +406,15 @@ namespace CII.LAR.Properties {
         internal static string StrOK {
             get {
                 return ResourceManager.GetString("StrOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Turn On Simulator 的本地化字符串。
+        /// </summary>
+        internal static string StrOpenSimulator {
+            get {
+                return ResourceManager.GetString("StrOpenSimulator", resourceCulture);
             }
         }
         

@@ -68,6 +68,7 @@ namespace CII.LAR.UI
         private void StopPlayer()
         {
             windowsMediaPlayer.Ctlcontrols.stop();
+            windowsMediaPlayer.Dispose();
         }
     }
 }

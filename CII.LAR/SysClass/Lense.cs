@@ -25,10 +25,18 @@ namespace CII.LAR.SysClass
             get { return factor; }
             set { factor = value; }
         }
+
+        private float fineAdjustment;
+        public float FineAdjustment
+        {
+            get { return this.fineAdjustment; }
+            set { this.fineAdjustment = value; }
+        }
         public Lense(double factor)
         {
             this.factor = factor;
             this.name = string.Format("x{0}", factor);
+            this.fineAdjustment = 100;
         }
 
         public override string ToString()

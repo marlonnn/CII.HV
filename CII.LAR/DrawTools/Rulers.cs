@@ -37,7 +37,8 @@ namespace CII.LAR.DrawTools
         {
             get
             {
-                return rulerStep * (1 + ((float)Program.SysConfig.Lense.Factor % 10) / 10);
+                //return rulerStep * (1 + ((float)Program.SysConfig.Lense.Factor % 10) / 10);
+                return rulerStep * (Program.SysConfig.Lense.FineAdjustment / 100f);
             }
             set
             {

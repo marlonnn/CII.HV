@@ -110,6 +110,11 @@ namespace CII.LAR.UI
             if (result == DialogResult.OK)
             {
                 //delete file
+                if (this.pictureBox.Image != null)
+                {
+                    this.pictureBox.Image.Dispose();
+                    this.pictureBox.Image = null;
+                }
                 DeleteImageItemHandler?.Invoke(ImageListViewItem);
                 this.Close();
             }
@@ -146,6 +151,11 @@ namespace CII.LAR.UI
 
         protected override void OnClosing(CancelEventArgs e)
         {
+            if (this.pictureBox.Image != null)
+            {
+                this.pictureBox.Image.Dispose();
+                this.pictureBox.Image = null;
+            }
             base.OnClosing(e);
             this.DialogResult = DialogResult.OK;
         }

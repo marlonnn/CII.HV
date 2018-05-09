@@ -37,22 +37,21 @@ namespace CII.LAR.UI
             {
                 if (isUp)
                 {
-                    selectLense.Factor += 0.1;
+                    selectLense.FineAdjustment += 0.1f;
                 }
                 else
                 {
-                    if (selectLense.Factor - 0.1 != 0)
+                    if (selectLense.FineAdjustment - 0.1f != 0)
                     {
-                        selectLense.Factor -= 0.1;
+                        selectLense.FineAdjustment -= 0.1f;
                     }
                 }
-                UpdateObjectLensesHandler?.Invoke(selectLense);
                 try
                 {
-                    selectLense.Factor = double.Parse(selectLense.Factor.ToString("0.0"));
+                    selectLense.FineAdjustment = float.Parse(selectLense.FineAdjustment.ToString("000.0"));
                     UpdateComBoxItemLense(selectLense);
-                    this.txtAdd.Text = selectLense.Factor.ToString();
-                    this.rulerAdjustCtrl1.LabelValue = selectLense.Factor.ToString();
+                    //this.txtAdd.Text = selectLense.FineAdjustment.ToString();
+                    this.rulerAdjustCtrl1.LabelValue = selectLense.FineAdjustment.ToString();
                     this.richPictureBox.Invalidate();
                 }
                 catch (Exception ex)
@@ -80,9 +79,16 @@ namespace CII.LAR.UI
             if (Program.SysConfig.Lenses != null && Program.SysConfig.Lenses.Count > 0)
             {
                 cmbLenses.Items.Clear();
-                cmbLenses.Items.AddRange(Program.SysConfig.Lenses.ToArray());
-                cmbLenses.SelectedIndex = 0;
-                this.txtAdd.Text = Program.SysConfig.Lenses[0].Factor.ToString();
+                for (int i=0; i< Program.SysConfig.Lenses.Count; i++)
+                {
+                    cmbLenses.Items.Add(Program.SysConfig.Lenses[i]);
+                    if (Program.SysConfig.Lenses[i].Name == Program.SysConfig.Lense.Name)
+                    {
+                        cmbLenses.SelectedItem = Program.SysConfig.Lenses[i];
+                        this.txtAdd.Text = Program.SysConfig.Lenses[i].Factor.ToString();
+                        this.rulerAdjustCtrl1.LabelValue = Program.SysConfig.Lenses[i].FineAdjustment.ToString();
+                    }
+                }
             }
         }
 
@@ -135,6 +141,7 @@ namespace CII.LAR.UI
         private void cmbLenses_SelectedIndexChanged(object sender, EventArgs e)
         {
             Program.SysConfig.Lense = cmbLenses.SelectedItem as Lense;
+            this.rulerAdjustCtrl1.LabelValue = Program.SysConfig.Lense.FineAdjustment.ToString();
             this.richPictureBox.Invalidate();
         }
 
@@ -165,7 +172,7 @@ namespace CII.LAR.UI
                 if (Program.SysConfig.AddLense(lense))
                 {
                     //this.richPictureBox.ZoomNewLense(1, factor);
-                    this.rulerAdjustCtrl1.LabelValue = factor.ToString();
+                    this.rulerAdjustCtrl1.LabelValue = lense.FineAdjustment.ToString();
                     UpdateComBoxItemLense(lense);
                     //更新界面的刻度尺
                     DelegateClass.GetDelegate().UpdateLenseHandler?.Invoke(lense);

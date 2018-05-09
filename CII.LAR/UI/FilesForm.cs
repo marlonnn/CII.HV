@@ -101,7 +101,16 @@ namespace CII.LAR
 
             // Remove selected items
             imageListView.Items.Remove(imageListViewItem);
-
+            if (File.Exists(imageListViewItem.FileName))
+            {
+                try
+                {
+                    File.Delete(imageListViewItem.FileName);
+                }
+                catch (Exception ex)
+                {
+                }
+            }
             // Resume layout logic.
             imageListView.ResumeLayout(true);
         }
@@ -137,6 +146,7 @@ namespace CII.LAR
                 {
                     try
                     {
+                        new FileInfo(item.FileName).Attributes = FileAttributes.Normal;
                         File.Delete(item.FileName);
                     }
                     catch (Exception ex)

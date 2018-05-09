@@ -316,11 +316,25 @@ namespace CII.LAR
                 Clipboard.SetFileDropList(paths);
             }
         }
-
+        private AssignedForm assignedForm;
         private void tsbAssigned_Click(object sender, EventArgs e)
         {
-            AssignedForm assignedForm = new AssignedForm();
+            assignedForm = new AssignedForm();
+            assignedForm.RestoreFileHandler += RestoreFileHandler;
             assignedForm.ShowDialog();
+        }
+
+        private void RestoreFileHandler(List<string> files)
+        {
+            if (files != null &&files.Count > 0)
+            {
+                imageListView.SuspendLayout();
+                foreach (string file in files)
+                {
+                    imageListView.Items.Add(file);
+                }
+                imageListView.ResumeLayout(true);
+            }
         }
 
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)

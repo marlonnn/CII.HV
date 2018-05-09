@@ -38,7 +38,7 @@ namespace CII.LAR.UI
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonAssign = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonRestore = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonPrint = new System.Windows.Forms.ToolStripButton();
             this.toolStrip.SuspendLayout();
@@ -78,7 +78,7 @@ namespace CII.LAR.UI
             // 
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonDelete,
-            this.toolStripButtonAssign,
+            this.toolStripButtonRestore,
             this.toolStripButtonCopy,
             this.toolStripButtonPrint});
             resources.ApplyResources(this.toolStrip, "toolStrip");
@@ -92,13 +92,13 @@ namespace CII.LAR.UI
             this.toolStripButtonDelete.Name = "toolStripButtonDelete";
             this.toolStripButtonDelete.Click += new System.EventHandler(this.toolStripButtonDelete_Click);
             // 
-            // toolStripButtonAssign
+            // toolStripButtonRestore
             // 
-            this.toolStripButtonAssign.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonAssign.Image = global::CII.LAR.Properties.Resources.assign;
-            resources.ApplyResources(this.toolStripButtonAssign, "toolStripButtonAssign");
-            this.toolStripButtonAssign.Name = "toolStripButtonAssign";
-            this.toolStripButtonAssign.Click += new System.EventHandler(this.toolStripButtonAssign_Click);
+            this.toolStripButtonRestore.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonRestore.Image = global::CII.LAR.Properties.Resources.undo;
+            resources.ApplyResources(this.toolStripButtonRestore, "toolStripButtonRestore");
+            this.toolStripButtonRestore.Name = "toolStripButtonRestore";
+            this.toolStripButtonRestore.Click += new System.EventHandler(this.toolStripButtonRestore_Click);
             // 
             // toolStripButtonCopy
             // 
@@ -140,7 +140,7 @@ namespace CII.LAR.UI
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
-        private System.Windows.Forms.ToolStripButton toolStripButtonAssign;
+        private System.Windows.Forms.ToolStripButton toolStripButtonRestore;
         private System.Windows.Forms.ToolStripButton toolStripButtonCopy;
         private System.Windows.Forms.ToolStripButton toolStripButtonPrint;
     }

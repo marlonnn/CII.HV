@@ -267,17 +267,17 @@
   <data name="toolStripButtonDelete.ToolTipText" xml:space="preserve">
     <value>Delete</value>
   </data>
-  <data name="toolStripButtonAssign.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="toolStripButtonRestore.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="toolStripButtonAssign.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolStripButtonRestore.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
-  <data name="toolStripButtonAssign.Text" xml:space="preserve">
+  <data name="toolStripButtonRestore.Text" xml:space="preserve">
     <value>toolStripButtonAssign</value>
   </data>
-  <data name="toolStripButtonAssign.ToolTipText" xml:space="preserve">
-    <value>Assign</value>
+  <data name="toolStripButtonRestore.ToolTipText" xml:space="preserve">
+    <value>Restore</value>
   </data>
   <data name="toolStripButtonCopy.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -302,9 +302,6 @@
   </data>
   <data name="toolStripButtonPrint.ToolTipText" xml:space="preserve">
     <value>Print</value>
-  </data>
-  <data name="toolStripButtonPrint.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -360,10 +357,10 @@
   <data name="&gt;&gt;toolStripButtonDelete.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripButtonAssign.Name" xml:space="preserve">
-    <value>toolStripButtonAssign</value>
+  <data name="&gt;&gt;toolStripButtonRestore.Name" xml:space="preserve">
+    <value>toolStripButtonRestore</value>
   </data>
-  <data name="&gt;&gt;toolStripButtonAssign.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolStripButtonRestore.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripButtonCopy.Name" xml:space="preserve">

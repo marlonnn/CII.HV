@@ -138,4 +138,7 @@
   <data name="toolStripButtonPrint.ToolTipText" xml:space="preserve">
     <value>打印</value>
   </data>
+  <data name="toolStripButtonRestore.ToolTipText" xml:space="preserve">
+    <value>还原</value>
+  </data>
 </root>

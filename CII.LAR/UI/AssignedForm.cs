@@ -239,15 +239,58 @@ namespace CII.LAR.UI
             if (listViewItem != null ) this.listView.Items.Remove(listViewItem);
             this.listView.Invalidate();
         }
-
-        private AssignForm assignForm;
-        private void toolStripButtonAssign_Click(object sender, EventArgs e)
+        public delegate void RestoreFile(List<string> files);
+        public RestoreFile RestoreFileHandler;
+        private List<string> restoreFiles;
+        private void toolStripButtonRestore_Click(object sender, EventArgs e)
         {
-            assignForm = new AssignForm(GetSelectedImageListViewItems());
-            assignForm.SuspendImageListViewHandler += SuspendImageListViewHandler;
-            assignForm.DeleteImageListViewiTemHandler += DeleteImageListViewiTemHandler;
-            assignForm.ResumeImageListViewHandler += ResumeImageListViewHandler;
-            assignForm.Show();
+            if (imageListView.SelectedItems != null && imageListView.SelectedItems.Count > 0)
+            {
+                restoreFiles = new List<string>();
+                string folder = "";
+                imageListView.SuspendLayout();
+                foreach (var item in imageListView.SelectedItems)
+                {
+                    string destFileName = string.Format("{0}\\{1}", Program.SysConfig.StorePath, item.Text);
+                    File.Copy(item.FileName, destFileName);
+                    restoreFiles.Add(destFileName);
+                    folder = item.FilePath;
+                    imageListView.Items.Remove(item);
+                    if (File.Exists(item.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(item.FileName);
+                        }
+                        catch (Exception ex)
+                        {
+                            continue;
+                        }
+                    }
+                }
+                if (imageListView.Items.Count == 0)
+                {
+                    try
+                    {
+                        if (Directory.Exists(folder))
+                        {
+                            Directory.Delete(folder);
+                        }
+                        Patient p = FindPatient(folder);
+                        if (p != null)
+                        {
+                            allPatients.Rremove(p);
+                            RemovePatientFormListView(p);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }
+                RestoreFileHandler?.Invoke(restoreFiles);
+                // Resume layout logic.
+                imageListView.ResumeLayout(true);
+            }
         }
 
         private void DeleteImageListViewiTemHandler(ImageListViewItem item)

@@ -291,6 +291,18 @@
   <data name="toolStripButtonCopy.ToolTipText" xml:space="preserve">
     <value>Copy</value>
   </data>
+  <data name="toolStripButtonDetail.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonDetail.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="toolStripButtonDetail.Text" xml:space="preserve">
+    <value>toolStripButton1</value>
+  </data>
+  <data name="toolStripButtonDetail.ToolTipText" xml:space="preserve">
+    <value>Detail</value>
+  </data>
   <data name="toolStripButtonPrint.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -373,6 +385,12 @@
     <value>toolStripButtonPrint</value>
   </data>
   <data name="&gt;&gt;toolStripButtonPrint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonDetail.Name" xml:space="preserve">
+    <value>toolStripButtonDetail</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonDetail.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

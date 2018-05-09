@@ -118,30 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="$this.Text" xml:space="preserve">
-    <value>已分配文件</value>
+    <value>编辑详细信息</value>
   </data>
-  <data name="columnHeader1.Text" xml:space="preserve">
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="btnConfirm.Text" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="labelX1.Text" xml:space="preserve">
+    <value>评论</value>
+  </data>
+  <data name="lblPatientID.Text" xml:space="preserve">
     <value>编号</value>
   </data>
-  <data name="columnHeader2.Text" xml:space="preserve">
+  <data name="lblPatientName.Text" xml:space="preserve">
     <value>姓名</value>
-  </data>
-  <data name="toolStripButtonAssign.ToolTipText" xml:space="preserve">
-    <value>分配</value>
-  </data>
-  <data name="toolStripButtonCopy.ToolTipText" xml:space="preserve">
-    <value>复制</value>
-  </data>
-  <data name="toolStripButtonDelete.ToolTipText" xml:space="preserve">
-    <value>删除</value>
-  </data>
-  <data name="toolStripButtonDetail.ToolTipText" xml:space="preserve">
-    <value>细节</value>
-  </data>
-  <data name="toolStripButtonPrint.ToolTipText" xml:space="preserve">
-    <value>打印</value>
-  </data>
-  <data name="toolStripButtonRestore.ToolTipText" xml:space="preserve">
-    <value>还原</value>
   </data>
 </root>

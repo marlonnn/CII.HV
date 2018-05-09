@@ -371,5 +371,18 @@ namespace CII.LAR.UI
                 reportFrom.ShowDialog();
             }
         }
+
+        private void toolStripButtonDetail_Click(object sender, EventArgs e)
+        {
+            if (imageListView.SelectedItems != null && imageListView.SelectedItems.Count > 0)
+            {
+                string folder = "";
+                folder = imageListView.SelectedItems[0].FilePath;
+                Patient patient = FindPatient(folder);
+                EditPatientDetailForm epdf = new EditPatientDetailForm(patient);
+                epdf.ShowDialog();
+            }
+        }
+
     }
 }

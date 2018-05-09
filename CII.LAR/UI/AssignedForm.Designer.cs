@@ -41,6 +41,7 @@ namespace CII.LAR.UI
             this.toolStripButtonRestore = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonPrint = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonDetail = new System.Windows.Forms.ToolStripButton();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,6 +81,7 @@ namespace CII.LAR.UI
             this.toolStripButtonDelete,
             this.toolStripButtonRestore,
             this.toolStripButtonCopy,
+            this.toolStripButtonDetail,
             this.toolStripButtonPrint});
             resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.Name = "toolStrip";
@@ -116,6 +118,14 @@ namespace CII.LAR.UI
             this.toolStripButtonPrint.Name = "toolStripButtonPrint";
             this.toolStripButtonPrint.Click += new System.EventHandler(this.toolStripButtonPrint_Click);
             // 
+            // toolStripButtonDetail
+            // 
+            this.toolStripButtonDetail.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDetail.Image = global::CII.LAR.Properties.Resources.detail;
+            resources.ApplyResources(this.toolStripButtonDetail, "toolStripButtonDetail");
+            this.toolStripButtonDetail.Name = "toolStripButtonDetail";
+            this.toolStripButtonDetail.Click += new System.EventHandler(this.toolStripButtonDetail_Click);
+            // 
             // AssignedForm
             // 
             resources.ApplyResources(this, "$this");
@@ -123,6 +133,7 @@ namespace CII.LAR.UI
             this.Controls.Add(this.imageListView);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.toolStrip);
+            this.DoubleBuffered = true;
             this.Name = "AssignedForm";
             this.ShowIcon = false;
             this.toolStrip.ResumeLayout(false);
@@ -143,5 +154,6 @@ namespace CII.LAR.UI
         private System.Windows.Forms.ToolStripButton toolStripButtonRestore;
         private System.Windows.Forms.ToolStripButton toolStripButtonCopy;
         private System.Windows.Forms.ToolStripButton toolStripButtonPrint;
+        private System.Windows.Forms.ToolStripButton toolStripButtonDetail;
     }
 }

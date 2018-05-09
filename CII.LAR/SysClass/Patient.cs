@@ -53,6 +53,12 @@ namespace CII.LAR.SysClass
             }
         }
 
+        private string detail;
+        public string Detail
+        {
+            get { return this.detail; }
+            set { this.detail = value; }
+        }
         public Patient(int id, string name)
         {
             this.id = id;

@@ -1,4 +1,5 @@
-﻿using CII.LAR.SysClass;
+﻿using CII.LAR.ExpClass;
+using CII.LAR.SysClass;
 using DevComponents.DotNetBar;
 using Manina.Windows.Forms;
 using System;
@@ -342,7 +343,33 @@ namespace CII.LAR.UI
 
         private void toolStripButtonPrint_Click(object sender, EventArgs e)
         {
-
+            CreateReportFrom();
+        }
+        private ReportForm reportFrom;
+        private void CreateReportFrom()
+        {
+            if (imageListView.SelectedItems != null && imageListView.SelectedItems.Count > 0)
+            {
+                Report report = new Report();
+                report.ReportPages.Capacity = imageListView.SelectedItems.Count;
+                for (int i = 0; i < imageListView.SelectedItems.Count; i++)
+                {
+                    var fileExtension = Path.GetExtension(imageListView.SelectedItems[i].FileName);
+                    if (fileExtension == ".png")
+                    {
+                        ReportPage reportPage = new ReportPage();
+                        ReportPictureItem reportItem = new ReportPictureItem();
+                        string fileName = imageListView.SelectedItems[i].FileName;
+                        reportItem.Picture = new Bitmap(fileName);
+                        reportItem.OldImageSize = reportItem.Picture.Size;
+                        reportItem.Bounds = new Rectangle(new Point(0, 0), reportItem.Picture.Size);
+                        reportPage.ReportItems.Add(reportItem);
+                        report.ReportPages.Add(reportPage);
+                    }
+                }
+                reportFrom = new ReportForm(report);
+                reportFrom.ShowDialog();
+            }
         }
     }
 }

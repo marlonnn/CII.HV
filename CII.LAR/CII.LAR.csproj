@@ -576,6 +576,9 @@
     <EmbeddedResource Include="UI\ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\ReportForm.zh-CN.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ReportPageUI.resx">
       <DependentUpon>ReportPageUI.cs</DependentUpon>
     </EmbeddedResource>

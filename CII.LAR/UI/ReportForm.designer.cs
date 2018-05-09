@@ -29,6 +29,7 @@ namespace CII.LAR.UI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportForm));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonPrint = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonPreview = new System.Windows.Forms.ToolStripButton();
@@ -53,36 +54,29 @@ namespace CII.LAR.UI
             this.toolStripSeparator1,
             this.toolStripDropDownButtonZoom,
             this.tslPages});
-            this.toolStrip.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(901, 25);
-            this.toolStrip.TabIndex = 0;
-            this.toolStrip.Text = "toolStrip1";
             // 
             // toolStripButtonPrint
             // 
             this.toolStripButtonPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonPrint.Image = global::CII.LAR.Properties.Resources.print;
-            this.toolStripButtonPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.toolStripButtonPrint, "toolStripButtonPrint");
             this.toolStripButtonPrint.Name = "toolStripButtonPrint";
-            this.toolStripButtonPrint.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonPrint.Text = "Print";
             this.toolStripButtonPrint.Click += new System.EventHandler(this.toolStripButtonPrint_Click);
             // 
             // toolStripButtonPreview
             // 
             this.toolStripButtonPreview.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonPreview.Image = global::CII.LAR.Properties.Resources.print_preview;
-            this.toolStripButtonPreview.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.toolStripButtonPreview, "toolStripButtonPreview");
             this.toolStripButtonPreview.Name = "toolStripButtonPreview";
-            this.toolStripButtonPreview.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButtonPreview.Text = "Preview";
             this.toolStripButtonPreview.Click += new System.EventHandler(this.toolStripButtonPreview_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // toolStripDropDownButtonZoom
             // 
@@ -93,89 +87,73 @@ namespace CII.LAR.UI
             this.tsmi150,
             this.tsmi100});
             this.toolStripDropDownButtonZoom.Image = global::CII.LAR.Properties.Resources.zoom;
-            this.toolStripDropDownButtonZoom.ImageTransparentColor = System.Drawing.Color.Magenta;
+            resources.ApplyResources(this.toolStripDropDownButtonZoom, "toolStripDropDownButtonZoom");
             this.toolStripDropDownButtonZoom.Name = "toolStripDropDownButtonZoom";
-            this.toolStripDropDownButtonZoom.Size = new System.Drawing.Size(29, 22);
-            this.toolStripDropDownButtonZoom.Text = "toolStripDropDownButton1";
             // 
             // tsmi500
             // 
             this.tsmi500.Name = "tsmi500";
-            this.tsmi500.Size = new System.Drawing.Size(102, 22);
+            resources.ApplyResources(this.tsmi500, "tsmi500");
             this.tsmi500.Tag = "500";
-            this.tsmi500.Text = "500%";
             this.tsmi500.Click += new System.EventHandler(this.tssbZoom_Click);
             // 
             // tsmi200
             // 
             this.tsmi200.Name = "tsmi200";
-            this.tsmi200.Size = new System.Drawing.Size(102, 22);
+            resources.ApplyResources(this.tsmi200, "tsmi200");
             this.tsmi200.Tag = "200";
-            this.tsmi200.Text = "200%";
             this.tsmi200.Click += new System.EventHandler(this.tssbZoom_Click);
             // 
             // tsmi150
             // 
             this.tsmi150.Name = "tsmi150";
-            this.tsmi150.Size = new System.Drawing.Size(102, 22);
+            resources.ApplyResources(this.tsmi150, "tsmi150");
             this.tsmi150.Tag = "150";
-            this.tsmi150.Text = "150%";
             this.tsmi150.Click += new System.EventHandler(this.tssbZoom_Click);
             // 
             // tsmi100
             // 
             this.tsmi100.Name = "tsmi100";
-            this.tsmi100.Size = new System.Drawing.Size(102, 22);
+            resources.ApplyResources(this.tsmi100, "tsmi100");
             this.tsmi100.Tag = "100";
-            this.tsmi100.Text = "100%";
             this.tsmi100.Click += new System.EventHandler(this.tssbZoom_Click);
             // 
             // tslPages
             // 
             this.tslPages.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tslPages.Name = "tslPages";
-            this.tslPages.Size = new System.Drawing.Size(56, 22);
-            this.tslPages.Text = "Page: 1/1";
+            resources.ApplyResources(this.tslPages, "tslPages");
             // 
             // reportLayout
             // 
-            this.reportLayout.AutoScroll = true;
+            resources.ApplyResources(this.reportLayout, "reportLayout");
             this.reportLayout.CanvasColor = System.Drawing.Color.LightSlateGray;
             this.reportLayout.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.reportLayout.Controls.Add(this.pnlSpace);
-            this.reportLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportLayout.Location = new System.Drawing.Point(0, 25);
             this.reportLayout.Name = "reportLayout";
-            this.reportLayout.Size = new System.Drawing.Size(901, 584);
             this.reportLayout.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.reportLayout.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.reportLayout.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.reportLayout.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.reportLayout.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.reportLayout.Style.GradientAngle = 90;
-            this.reportLayout.TabIndex = 1;
             // 
             // pnlSpace
             // 
-            this.pnlSpace.Location = new System.Drawing.Point(12, 3);
+            resources.ApplyResources(this.pnlSpace, "pnlSpace");
             this.pnlSpace.Name = "pnlSpace";
-            this.pnlSpace.Size = new System.Drawing.Size(81, 15);
-            this.pnlSpace.TabIndex = 0;
             // 
             // ReportForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(901, 609);
             this.Controls.Add(this.reportLayout);
             this.Controls.Add(this.toolStrip);
             this.DoubleBuffered = true;
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
             this.Name = "ReportForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "Print";
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             this.reportLayout.ResumeLayout(false);

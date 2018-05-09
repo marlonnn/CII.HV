@@ -35,6 +35,7 @@ namespace CII.LAR.UI
             var selectLense = cmbLenses.SelectedItem as Lense;
             if (selectLense != null)
             {
+                ShowRuler();
                 if (isUp)
                 {
                     selectLense.FineAdjustment += 0.1f;

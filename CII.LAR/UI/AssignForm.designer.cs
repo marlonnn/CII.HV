@@ -87,7 +87,7 @@ namespace CII.LAR.UI
             this.textBoxPatientName.ForeColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.textBoxPatientName, "textBoxPatientName");
             this.textBoxPatientName.Name = "textBoxPatientName";
-            this.superValidator.SetValidator1(this.textBoxPatientName, this.requiredFieldValidator2);
+            //this.superValidator.SetValidator1(this.textBoxPatientName, this.requiredFieldValidator2);
             // 
             // btnConfirm
             // 

@@ -78,10 +78,17 @@ namespace CII.LAR.UI
         {
             try
             {
-                Patient patient = new Patient(Int32.Parse(this.textBoxPatientID.Text), this.textBoxPatientName.Text);
-                allPatients.Add(patient);
-                CheckMoveToFolder(patient);
-                this.Close();
+                this.superValidator.SetValidator1(this.textBoxPatientName, this.requiredFieldValidator2);
+                this.textBoxPatientName.CausesValidation = true;
+                if (this.superValidator.Validate(this.textBoxPatientName, true))
+                {
+                    Patient patient = new Patient(Int32.Parse(this.textBoxPatientID.Text), this.textBoxPatientName.Text);
+                    allPatients.Add(patient);
+                    CheckMoveToFolder(patient);
+                    this.Close();
+                }
+                //this.superValidator.Validate(this.textBoxPatientName,true);
+                this.superValidator.SetValidator1(this.textBoxPatientName, this.requiredFieldValidator2);
             }
             catch (Exception ex)
             {

@@ -26,8 +26,6 @@ namespace CII.LAR.UI
             videoFiles = new List<string>();
             allPatients = Program.SysConfig.AllPatients;
             InitializeListView();
-            imageForm = new ImageForm(false);
-            imageForm.DeleteImageItemHandler += DeleteImageItemHandler;
         }
 
         private void DeleteImageItemHandler(ImageListViewItem imageListViewItem)
@@ -78,6 +76,8 @@ namespace CII.LAR.UI
                     else if (fileExtension == ".png")
                     {
                         string fileName = item.FileName;
+                        imageForm = new ImageForm(false);
+                        imageForm.DeleteImageItemHandler += DeleteImageItemHandler;
                         imageForm.Text = item.Text;
                         imageForm.ImageListViewItem = item;
                         imageForm.FileName = fileName;

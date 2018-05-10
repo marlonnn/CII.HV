@@ -273,11 +273,14 @@ namespace CII.LAR
 
         private void toolStripButtonAssign_Click(object sender, EventArgs e)
         {
-            assignForm = new AssignForm(GetSelectedImageListViewItems());
-            assignForm.SuspendImageListViewHandler += SuspendImageListViewHandler;
-            assignForm.DeleteImageListViewiTemHandler += DeleteImageListViewiTemHandler;
-            assignForm.ResumeImageListViewHandler += ResumeImageListViewHandler;
-            assignForm.Show();
+            if (this.imageListView.SelectedItems != null && this.imageListView.SelectedItems.Count > 0)
+            {
+                assignForm = new AssignForm(GetSelectedImageListViewItems());
+                assignForm.SuspendImageListViewHandler += SuspendImageListViewHandler;
+                assignForm.DeleteImageListViewiTemHandler += DeleteImageListViewiTemHandler;
+                assignForm.ResumeImageListViewHandler += ResumeImageListViewHandler;
+                assignForm.Show();
+            }
         }
 
         private void DeleteImageListViewiTemHandler(ImageListViewItem item)

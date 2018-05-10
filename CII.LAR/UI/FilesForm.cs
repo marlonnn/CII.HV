@@ -43,8 +43,6 @@ namespace CII.LAR
                     videoFiles.Add(file.ToString());
                 }
             }
-            imageForm = new ImageForm();
-            imageForm.DeleteImageItemHandler += DeleteImageItemHandler;
             allPatients = Program.SysConfig.AllPatients;
             this.Load += FilesForm_Load;
         }
@@ -236,6 +234,8 @@ namespace CII.LAR
                     else if (fileExtension == ".png")
                     {
                         string fileName = item.FileName;
+                        imageForm = new ImageForm();
+                        imageForm.DeleteImageItemHandler += DeleteImageItemHandler;
                         imageForm.Text = item.Text;
                         imageForm.ImageListViewItem = item;
                         imageForm.FileName = fileName;

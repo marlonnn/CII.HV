@@ -151,6 +151,7 @@ namespace CII.LAR.UI
             this.Controls.Add(this.toolStrip);
             this.DoubleBuffered = true;
             this.KeyPreview = true;
+            this.MinimizeBox = false;
             this.Name = "ReportForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

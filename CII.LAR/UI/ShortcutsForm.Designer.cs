@@ -104,6 +104,7 @@
             this.Controls.Add(this.lblZoomIn);
             this.Controls.Add(this.lblSnapshoot);
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ShortcutsForm";
             this.ShowIcon = false;
             this.ResumeLayout(false);

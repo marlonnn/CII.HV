@@ -136,6 +136,7 @@
             this.Controls.Add(this.lblPatientID);
             this.DoubleBuffered = true;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "EditPatientDetailForm";
             this.ShowIcon = false;
             this.ResumeLayout(false);

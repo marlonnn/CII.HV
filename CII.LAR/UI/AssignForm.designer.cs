@@ -145,6 +145,8 @@ namespace CII.LAR.UI
             this.Controls.Add(this.lblPatientName);
             this.Controls.Add(this.textBoxPatientID);
             this.Controls.Add(this.lblPatientID);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AssignForm";
             this.ShowIcon = false;
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();

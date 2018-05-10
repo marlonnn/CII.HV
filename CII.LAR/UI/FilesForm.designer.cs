@@ -180,7 +180,8 @@ namespace CII.LAR
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.toolStripContainer1);
-            this.DoubleBuffered = true;
+            this.MinimizeBox = false;
+			this.DoubleBuffered = true;
             this.Name = "FilesForm";
             this.ShowIcon = false;
             this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);

@@ -133,7 +133,8 @@ namespace CII.LAR.UI
             this.Controls.Add(this.imageListView);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.toolStrip);
-            this.DoubleBuffered = true;
+            this.MinimizeBox = false;
+			this.DoubleBuffered = true;
             this.Name = "AssignedForm";
             this.ShowIcon = false;
             this.toolStrip.ResumeLayout(false);

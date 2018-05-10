@@ -146,7 +146,8 @@ namespace CII.LAR.UI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.pictureBox);
-            this.DoubleBuffered = true;
+            this.MinimizeBox = false;
+			this.DoubleBuffered = true;
             this.Name = "ImageForm";
             this.ShowIcon = false;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();

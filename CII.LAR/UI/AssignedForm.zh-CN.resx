@@ -144,4 +144,7 @@
   <data name="toolStripButtonRestore.ToolTipText" xml:space="preserve">
     <value>还原</value>
   </data>
+  <data name="toolStripLabelSelectPatient.Text" xml:space="preserve">
+    <value>根据病人编号选择：</value>
+  </data>
 </root>

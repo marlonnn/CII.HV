@@ -146,16 +146,19 @@ namespace CII.LAR.UI
                 else if (Index == 7)
                 {
                     this.btnNext.Text = Res.LaserAlignment.StrSave;
-                    //计算平均转换矩阵
-                    Coordinate.GetCoordinate().CalculateOtherMatix();
-                    Coordinate.GetCoordinate().GetFinalMatrix();
-                    var v = Program.SysConfig.LaserConfig.FinalMatrix;
-                    Console.WriteLine(" final matrix: " + v.ToString());
-                    Console.WriteLine(" final matrix Rank: " + v.Rank());
-                    string matrixJsonString = JsonFile.GetJsonTextFromConfig<Matrix<double>>(v);
-                    JsonFile.WriteMatrixConfigToLocal(matrixJsonString);
-                    //关闭红光引导光
-                    EnableRedLaser(false);
+                    if (Program.SysConfig.LiveMode)
+                    {
+                        //计算平均转换矩阵
+                        Coordinate.GetCoordinate().CalculateOtherMatix();
+                        Coordinate.GetCoordinate().GetFinalMatrix();
+                        var v = Program.SysConfig.LaserConfig.FinalMatrix;
+                        Console.WriteLine(" final matrix: " + v.ToString());
+                        Console.WriteLine(" final matrix Rank: " + v.Rank());
+                        string matrixJsonString = JsonFile.GetJsonTextFromConfig<Matrix<double>>(v);
+                        JsonFile.WriteMatrixConfigToLocal(matrixJsonString);
+                        //关闭红光引导光
+                        EnableRedLaser(false);
+                    }
                 }
                 else
                 {
@@ -167,20 +170,23 @@ namespace CII.LAR.UI
                     {
                         //开启红光引导光
                         //先检查红光是否开启，若已经开启，则不用再开启
-                        EnableRedLaser(true);
+                        if (Program.SysConfig.LiveMode)  EnableRedLaser(true);
                     }
                     if (Index >= 3 && Index <= 6)
                     {
-                        if (Index == 3)
+                        if (Program.SysConfig.LiveMode)
                         {
-                            Coordinate.GetCoordinate().CalculateFirstMatrix();
-                            var v = Coordinate.GetCoordinate().FistMatrix;
-                            Console.WriteLine(" first matrix: " + v.ToString());
-                            Console.WriteLine(" first matrix Rank: " + v.Rank());
+                            if (Index == 3)
+                            {
+                                Coordinate.GetCoordinate().CalculateFirstMatrix();
+                                var v = Coordinate.GetCoordinate().FistMatrix;
+                                Console.WriteLine(" first matrix: " + v.ToString());
+                                Console.WriteLine(" first matrix Rank: " + v.Rank());
+                            }
+                            Coordinate.GetCoordinate().CreatePresetMotorPoint(Index, this.RichPictureBox);
                         }
-                        Coordinate.GetCoordinate().CreatePresetMotorPoint(Index, this.RichPictureBox);
                     }
-                    SendAlignmentMotorPoint();
+                    if (Program.SysConfig.LiveMode)  SendAlignmentMotorPoint();
                     AlignLaser laser = Program.EntryForm.Laser as AlignLaser;
                     if (laser != null)
                     {

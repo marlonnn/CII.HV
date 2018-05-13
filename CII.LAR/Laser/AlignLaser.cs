@@ -174,28 +174,32 @@ namespace CII.LAR.Laser
                 Graphics g = e.Graphics;
                 g.CompositingQuality = CompositingQuality.HighQuality;
                 g.SmoothingMode = SmoothingMode.AntiAlias;
-                //g.ScaleTransform(this.richPictureBox.Zoom, this.richPictureBox.Zoom);
-                //g.TranslateTransform(this.richPictureBox.OffsetX, this.richPictureBox.OffsetY);
-                //Point point = Coordinate.GetCoordinate().P;
-                //if (!point.IsEmpty)
-                //{
-                //    g.DrawLine(new Pen(Color.Red, 1f),
-                //        point.X, point.Y - AlignCircle.Rectangle.Width,
-                //        point.X, point.Y + AlignCircle.Rectangle.Width);
 
-                //    g.DrawLine(new Pen(Color.Red, 1f),
-                //        point.X - AlignCircle.Rectangle.Width, point.Y,
-                //        point.X + AlignCircle.Rectangle.Width, point.Y);
-                //}
+                if (!Program.SysConfig.LiveMode)
+                {
+                    g.ScaleTransform(this.richPictureBox.Zoom, this.richPictureBox.Zoom);
+                    g.TranslateTransform(this.richPictureBox.OffsetX, this.richPictureBox.OffsetY);
+                    //Point point = Coordinate.GetCoordinate().P;
+                    //if (!point.IsEmpty)
+                    //{
+                    //    g.DrawLine(new Pen(Color.Red, 1f),
+                    //        point.X, point.Y - AlignCircle.Rectangle.Width,
+                    //        point.X, point.Y + AlignCircle.Rectangle.Width);
 
-                //g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(AlignCircle.Rectangle.X, AlignCircle.Rectangle.Y, AlignCircle.Rectangle.Width, AlignCircle.Rectangle.Height));
-                //Circle circle2 = new Circle(AlignCircle.CenterPoint,
-                //    new Size((int)(1.4 * AlignCircle.Rectangle.Width), (int)(1.4 * AlignCircle.Rectangle.Width)));
-                //Circle circle3 = new Circle(AlignCircle.CenterPoint,
-                //    new Size((int)(1.4 * circle2.Rectangle.Width), (int)(1.4 * circle2.Rectangle.Width)));
-                //g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(circle2.Rectangle.X, circle2.Rectangle.Y, circle2.Rectangle.Width, circle2.Rectangle.Height));
-                //g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(circle3.Rectangle.X, circle3.Rectangle.Y, circle3.Rectangle.Width, circle3.Rectangle.Height));
-                //g.ResetTransform();
+                    //    g.DrawLine(new Pen(Color.Red, 1f),
+                    //        point.X - AlignCircle.Rectangle.Width, point.Y,
+                    //        point.X + AlignCircle.Rectangle.Width, point.Y);
+                    //}
+
+                    //g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(AlignCircle.Rectangle.X, AlignCircle.Rectangle.Y, AlignCircle.Rectangle.Width, AlignCircle.Rectangle.Height));
+                    Circle circle2 = new Circle(AlignCircle.CenterPoint,
+                        new Size((int)(1.4 * AlignCircle.Rectangle.Width), (int)(1.4 * AlignCircle.Rectangle.Width)));
+                    Circle circle3 = new Circle(AlignCircle.CenterPoint,
+                        new Size((int)(1.4 * circle2.Rectangle.Width), (int)(1.4 * circle2.Rectangle.Width)));
+                    g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(circle2.Rectangle.X, circle2.Rectangle.Y, circle2.Rectangle.Width, circle2.Rectangle.Height));
+                    g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(circle3.Rectangle.X, circle3.Rectangle.Y, circle3.Rectangle.Width, circle3.Rectangle.Height));
+                    g.ResetTransform();
+                }
                 if (IsShowCross)
                     DrawCross(g);
             }

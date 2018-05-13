@@ -315,6 +315,18 @@
   <data name="toolStripButtonPrint.ToolTipText" xml:space="preserve">
     <value>Print</value>
   </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="toolStripLabelSelectPatient.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 22</value>
+  </data>
+  <data name="toolStripLabelSelectPatient.Text" xml:space="preserve">
+    <value>Select Patient by ID:</value>
+  </data>
+  <data name="toolStripTextBoxSelect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 25</value>
+  </data>
   <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -381,17 +393,35 @@
   <data name="&gt;&gt;toolStripButtonCopy.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toolStripButtonDetail.Name" xml:space="preserve">
+    <value>toolStripButtonDetail</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonDetail.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;toolStripButtonPrint.Name" xml:space="preserve">
     <value>toolStripButtonPrint</value>
   </data>
   <data name="&gt;&gt;toolStripButtonPrint.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripButtonDetail.Name" xml:space="preserve">
-    <value>toolStripButtonDetail</value>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
   </data>
-  <data name="&gt;&gt;toolStripButtonDetail.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripLabelSelectPatient.Name" xml:space="preserve">
+    <value>toolStripLabelSelectPatient</value>
+  </data>
+  <data name="&gt;&gt;toolStripLabelSelectPatient.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripTextBoxSelect.Name" xml:space="preserve">
+    <value>toolStripTextBoxSelect</value>
+  </data>
+  <data name="&gt;&gt;toolStripTextBoxSelect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>AssignedForm</value>

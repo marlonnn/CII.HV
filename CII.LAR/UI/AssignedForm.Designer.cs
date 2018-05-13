@@ -40,8 +40,11 @@ namespace CII.LAR.UI
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRestore = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonPrint = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDetail = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonPrint = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabelSelectPatient = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripTextBoxSelect = new System.Windows.Forms.ToolStripTextBox();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,7 +85,10 @@ namespace CII.LAR.UI
             this.toolStripButtonRestore,
             this.toolStripButtonCopy,
             this.toolStripButtonDetail,
-            this.toolStripButtonPrint});
+            this.toolStripButtonPrint,
+            this.toolStripSeparator1,
+            this.toolStripLabelSelectPatient,
+            this.toolStripTextBoxSelect});
             resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.Name = "toolStrip";
             // 
@@ -110,6 +116,14 @@ namespace CII.LAR.UI
             this.toolStripButtonCopy.Name = "toolStripButtonCopy";
             this.toolStripButtonCopy.Click += new System.EventHandler(this.toolStripButtonCopy_Click);
             // 
+            // toolStripButtonDetail
+            // 
+            this.toolStripButtonDetail.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDetail.Image = global::CII.LAR.Properties.Resources.detail;
+            resources.ApplyResources(this.toolStripButtonDetail, "toolStripButtonDetail");
+            this.toolStripButtonDetail.Name = "toolStripButtonDetail";
+            this.toolStripButtonDetail.Click += new System.EventHandler(this.toolStripButtonDetail_Click);
+            // 
             // toolStripButtonPrint
             // 
             this.toolStripButtonPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -118,13 +132,20 @@ namespace CII.LAR.UI
             this.toolStripButtonPrint.Name = "toolStripButtonPrint";
             this.toolStripButtonPrint.Click += new System.EventHandler(this.toolStripButtonPrint_Click);
             // 
-            // toolStripButtonDetail
+            // toolStripSeparator1
             // 
-            this.toolStripButtonDetail.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDetail.Image = global::CII.LAR.Properties.Resources.detail;
-            resources.ApplyResources(this.toolStripButtonDetail, "toolStripButtonDetail");
-            this.toolStripButtonDetail.Name = "toolStripButtonDetail";
-            this.toolStripButtonDetail.Click += new System.EventHandler(this.toolStripButtonDetail_Click);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
+            // toolStripLabelSelectPatient
+            // 
+            this.toolStripLabelSelectPatient.Name = "toolStripLabelSelectPatient";
+            resources.ApplyResources(this.toolStripLabelSelectPatient, "toolStripLabelSelectPatient");
+            // 
+            // toolStripTextBoxSelect
+            // 
+            this.toolStripTextBoxSelect.Name = "toolStripTextBoxSelect";
+            resources.ApplyResources(this.toolStripTextBoxSelect, "toolStripTextBoxSelect");
             // 
             // AssignedForm
             // 
@@ -134,7 +155,6 @@ namespace CII.LAR.UI
             this.Controls.Add(this.listView);
             this.Controls.Add(this.toolStrip);
             this.MinimizeBox = false;
-			this.DoubleBuffered = true;
             this.Name = "AssignedForm";
             this.ShowIcon = false;
             this.toolStrip.ResumeLayout(false);
@@ -156,5 +176,8 @@ namespace CII.LAR.UI
         private System.Windows.Forms.ToolStripButton toolStripButtonCopy;
         private System.Windows.Forms.ToolStripButton toolStripButtonPrint;
         private System.Windows.Forms.ToolStripButton toolStripButtonDetail;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabelSelectPatient;
+        private System.Windows.Forms.ToolStripTextBox toolStripTextBoxSelect;
     }
 }

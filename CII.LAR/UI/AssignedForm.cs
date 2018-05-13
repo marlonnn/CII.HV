@@ -26,6 +26,28 @@ namespace CII.LAR.UI
             videoFiles = new List<string>();
             allPatients = Program.SysConfig.AllPatients;
             InitializeListView();
+            this.Load += AssignedForm_Load;
+        }
+
+        private void AssignedForm_Load(object sender, EventArgs e)
+        {
+            string[] suggestion = GetFilesSuggestion();
+            var source = new AutoCompleteStringCollection();
+            source.AddRange(suggestion);
+            this.toolStripTextBoxSelect.AutoCompleteCustomSource = source;
+            this.toolStripTextBoxSelect.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            this.toolStripTextBoxSelect.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            this.toolStripTextBoxSelect.Visible = true;
+        }
+
+        private string[] GetFilesSuggestion()
+        {
+            string[] suggestion = new string[allPatients.Patients.Count];
+            for (int i = 0; i<allPatients.Patients.Count; i++)
+            {
+                suggestion[i] = allPatients.Patients[i].ID.ToString();
+            }
+            return suggestion;
         }
 
         private void DeleteImageItemHandler(ImageListViewItem imageListViewItem)
@@ -130,6 +152,8 @@ namespace CII.LAR.UI
             {
                 imageListView.Items.Clear();
                 videoFiles.Clear();
+                imageListView.ClearThumbnailCache();
+                imageListView.SuspendLayout();
                 foreach (var file in files)
                 {
                     imageListView.Items.Add(file.ToString());
@@ -139,6 +163,7 @@ namespace CII.LAR.UI
                     }
 
                 }
+                imageListView.ResumeLayout(true);
                 listView.Focus();
             }
         }

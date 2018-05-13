@@ -81,14 +81,19 @@ namespace CII.LAR
 
         private string[] GetFilesSuggestion()
         {
-            string folderName = Program.SysConfig.StorePath;
-            string[] extesnsions = new string[] { ".png", ".avi" };
-            var files = GetFiles(folderName, extesnsions, SearchOption.TopDirectoryOnly);
-            string[] suggestion = new string[imageListView.Items.Count];
+            //string folderName = Program.SysConfig.StorePath;
+            //string[] extesnsions = new string[] { ".png", ".avi" };
+            //var files = GetFiles(folderName, extesnsions, SearchOption.TopDirectoryOnly);
+            //string[] suggestion = new string[imageListView.Items.Count];
 
-            for (int i=0; i< imageListView.Items.Count; i++)
+            //for (int i=0; i< imageListView.Items.Count; i++)
+            //{
+            //    suggestion[i] = imageListView.Items[i].Text;
+            //}
+            string[] suggestion = new string[allPatients.Count];
+            for (int i=0; i<allPatients.Count; i++)
             {
-                suggestion[i] = imageListView.Items[i].Text;
+                suggestion[i] = allPatients.Patients[i].ID.ToString();
             }
             return suggestion;
         }
@@ -352,7 +357,42 @@ namespace CII.LAR
 
         private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
         {
-            SetSelectedItem();
+            //SetSelectedItem();
+        }
+
+        private void toolStripButtonSearch_Click(object sender, EventArgs e)
+        {
+            //SetSelectedItem();
+            Patient patient = FindPatient();
+            if (patient != null)
+            {
+                SearchForm sf = new SearchForm(patient);
+                sf.ShowDialog();
+            }
+        }
+
+        private Patient FindPatient()
+        {
+            Patient patient = null;
+            if (!string.IsNullOrEmpty(toolStripTextBox1.Text))
+            {
+                try
+                {
+                    int id = int.Parse(toolStripTextBox1.Text);
+                    for (int i =0; i<Program.SysConfig.AllPatients.Count; i++)
+                    {
+                        if (allPatients.Patients[i].ID == id)
+                        {
+                            patient = allPatients.Patients[i];
+                            break;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            return patient;
         }
     }
 }

@@ -46,6 +46,7 @@ namespace CII.LAR
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabelSelectByID = new System.Windows.Forms.ToolStripLabel();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButtonSearch = new System.Windows.Forms.ToolStripButton();
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -111,7 +112,8 @@ namespace CII.LAR
             this.tsbAssigned,
             this.toolStripSeparator1,
             this.toolStripLabelSelectByID,
-            this.toolStripTextBox1});
+            this.toolStripTextBox1,
+            this.toolStripButtonSearch});
             this.toolStrip.Name = "toolStrip";
             // 
             // toolStripButtonDelete
@@ -170,6 +172,14 @@ namespace CII.LAR
             resources.ApplyResources(this.toolStripTextBox1, "toolStripTextBox1");
             this.toolStripTextBox1.TextChanged += new System.EventHandler(this.toolStripTextBox1_TextChanged);
             // 
+            // toolStripButtonSearch
+            // 
+            this.toolStripButtonSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonSearch.Image = global::CII.LAR.Properties.Resources.search;
+            resources.ApplyResources(this.toolStripButtonSearch, "toolStripButtonSearch");
+            this.toolStripButtonSearch.Name = "toolStripButtonSearch";
+            this.toolStripButtonSearch.Click += new System.EventHandler(this.toolStripButtonSearch_Click);
+            // 
             // timerStatus
             // 
             this.timerStatus.Interval = 2000;
@@ -181,7 +191,6 @@ namespace CII.LAR
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.toolStripContainer1);
             this.MinimizeBox = false;
-			this.DoubleBuffered = true;
             this.Name = "FilesForm";
             this.ShowIcon = false;
             this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
@@ -214,6 +223,7 @@ namespace CII.LAR
         private System.Windows.Forms.Timer timerStatus;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripButton tsbAssigned;
+        private System.Windows.Forms.ToolStripButton toolStripButtonSearch;
     }
 }
 

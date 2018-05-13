@@ -194,6 +194,7 @@ namespace CII.LAR.UI
                 Program.EntryForm.StopVideoDevice();
                 richPictureBox.LoadImage(string.Format("{0}\\Resources\\Simulator\\Embryo.bmp", System.Environment.CurrentDirectory));
                 this.btnSimulator.Text = CII.LAR.Properties.Resources.StrCloseSimulator;
+                Program.SysConfig.LiveMode = false;
             }
             else
             {
@@ -204,11 +205,10 @@ namespace CII.LAR.UI
                     this.richPictureBox.GraphicsList.DeleteAll();
                     CtrlFactory.GetCtrlFactory().GetCtrlByType<StatisticsCtrl>(CtrlType.StatisticsCtrl).StatisticsListView.Items.Clear();
                 }
-                //if (!string.IsNullOrEmpty(Program.SysConfig.DeviceMoniker))
-                //    DelegateClass.GetDelegate().CaptureDeviceHandler(Program.SysConfig.DeviceMoniker);
+                if (!string.IsNullOrEmpty(Program.SysConfig.DeviceMoniker))
+                    DelegateClass.GetDelegate().CaptureDeviceHandler(Program.SysConfig.DeviceMoniker);
                 this.btnSimulator.Text = CII.LAR.Properties.Resources.StrOpenSimulator;
             }
-            Program.SysConfig.LiveMode = !Program.SysConfig.LiveMode;
         }
 
         private void button1_Click(object sender, EventArgs e)

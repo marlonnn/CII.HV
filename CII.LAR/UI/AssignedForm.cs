@@ -27,15 +27,6 @@ namespace CII.LAR.UI
             allPatients = Program.SysConfig.AllPatients;
             InitializeListView();
             this.Load += AssignedForm_Load;
-            this.toolStripTextBoxSelect.KeyDown += ToolStripTextBoxSelect_KeyDown;
-        }
-
-        private void ToolStripTextBoxSelect_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                SetSelectedItem();
-            }
         }
 
         private void AssignedForm_Load(object sender, EventArgs e)
@@ -446,6 +437,11 @@ namespace CII.LAR.UI
 
                 }
             }
+        }
+
+        private void toolStripButtonSearch_Click(object sender, EventArgs e)
+        {
+            SetSelectedItem();
         }
     }
 }

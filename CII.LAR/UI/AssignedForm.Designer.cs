@@ -45,6 +45,7 @@ namespace CII.LAR.UI
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabelSelectPatient = new System.Windows.Forms.ToolStripLabel();
             this.toolStripTextBoxSelect = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButtonSearch = new System.Windows.Forms.ToolStripButton();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,7 +89,8 @@ namespace CII.LAR.UI
             this.toolStripButtonPrint,
             this.toolStripSeparator1,
             this.toolStripLabelSelectPatient,
-            this.toolStripTextBoxSelect});
+            this.toolStripTextBoxSelect,
+            this.toolStripButtonSearch});
             resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.Name = "toolStrip";
             // 
@@ -147,6 +149,14 @@ namespace CII.LAR.UI
             this.toolStripTextBoxSelect.Name = "toolStripTextBoxSelect";
             resources.ApplyResources(this.toolStripTextBoxSelect, "toolStripTextBoxSelect");
             // 
+            // toolStripButtonSearch
+            // 
+            this.toolStripButtonSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonSearch.Image = global::CII.LAR.Properties.Resources.search;
+            resources.ApplyResources(this.toolStripButtonSearch, "toolStripButtonSearch");
+            this.toolStripButtonSearch.Name = "toolStripButtonSearch";
+            this.toolStripButtonSearch.Click += new System.EventHandler(this.toolStripButtonSearch_Click);
+            // 
             // AssignedForm
             // 
             resources.ApplyResources(this, "$this");
@@ -179,5 +189,6 @@ namespace CII.LAR.UI
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel toolStripLabelSelectPatient;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxSelect;
+        private System.Windows.Forms.ToolStripButton toolStripButtonSearch;
     }
 }

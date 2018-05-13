@@ -27,6 +27,15 @@ namespace CII.LAR.UI
             allPatients = Program.SysConfig.AllPatients;
             InitializeListView();
             this.Load += AssignedForm_Load;
+            this.toolStripTextBoxSelect.KeyDown += ToolStripTextBoxSelect_KeyDown;
+        }
+
+        private void ToolStripTextBoxSelect_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SetSelectedItem();
+            }
         }
 
         private void AssignedForm_Load(object sender, EventArgs e)
@@ -409,5 +418,34 @@ namespace CII.LAR.UI
             }
         }
 
+        private void SetSelectedItem()
+        {
+            if (!string.IsNullOrEmpty(this.toolStripTextBoxSelect.Text))
+            {
+                try
+                {
+                    Patient patient = null;
+                    int ID = int.Parse(this.toolStripTextBoxSelect.Text);
+                    for (int i=0; i< this.listView.Items.Count; i++)
+                    {
+                        Patient p = this.listView.Items[i].Tag as Patient;
+                        if (p != null && p.ID == ID)
+                        {
+                            patient = p;
+                            this.listView.Items[i].Selected = true;
+                        }
+                        else
+                        {
+                            this.listView.Items[i].Selected = false;
+                        }
+                    }
+                    if (patient != null) InitializeImageListView(patient);
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
     }
 }

@@ -41,7 +41,7 @@ namespace CII.LAR.UI
             laserHoleSize = new LaserHoleSize();
             debugCtrl = new DebugCtrl();
             lenseCtrl = new ObjectLenseCtrl(richPictureBox);
-            shortcutCtrl = new ShortcutCtrl();
+            shortcutCtrl = new ShortcutCtrl(Program.EntryForm.hotKeyManager);
         }
 
         public static CtrlFactory GetCtrlFactory()

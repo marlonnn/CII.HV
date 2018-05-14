@@ -449,7 +449,7 @@ namespace CII.LAR.SysClass.Shortcuts
             Name = info.GetString("Name");
             Key = (Keys)info.GetValue("Key", typeof(Keys));
             WhenToRaise = (RaiseLocalEvent)info.GetValue("WTR", typeof(RaiseLocalEvent));
-            Modifier = (Modifiers)info.GetValue("Modifiers", typeof(Modifiers));
+            Modifier = (Modifiers)info.GetValue("Modifier", typeof(Modifiers));
             Enabled = info.GetBoolean("Enabled");
             SuppressKeyPress = info.GetBoolean("SuppressKeyPress");
         }

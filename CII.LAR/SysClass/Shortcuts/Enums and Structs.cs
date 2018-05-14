@@ -7,6 +7,7 @@ namespace CII.LAR.SysClass.Shortcuts
     /// <summary>Defines the key to use as Modifier.
     /// </summary>
     [Flags]
+    [Serializable]
     public enum Modifiers
     {
         /// <summary>Specifies that the key should be treated as is, without any modifier.

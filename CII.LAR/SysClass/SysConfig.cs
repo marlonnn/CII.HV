@@ -19,17 +19,25 @@ namespace CII.LAR.SysClass
     [Serializable]
     public class SysConfig
     {
-        //private HotKeyManager hotKeyManager;
-        //public HotKeyManager HotKeyManager
-        //{
-        //    get { return this.hotKeyManager; }
-        //    set { this.hotKeyManager = value; }
-        //}
-        private ShortcutKeys shortcutKeys;
-        public ShortcutKeys ShortcutKeys
+        private List<LocalHotKey> localHotKeyContainer; //Will hold our LocalHotKeys.
+        public List<LocalHotKey> LocalHotKeyContainer
         {
-            get { return this.shortcutKeys; }
-            set { this.shortcutKeys = value; }
+            get { return this.localHotKeyContainer; }
+            set { this.localHotKeyContainer = value; }
+        }
+
+        private List<GlobalHotKey> globalHotKeyContainer;
+        public List<GlobalHotKey> GlobalHotKeyContainer
+        {
+            get { return this.globalHotKeyContainer; }
+            set { this.globalHotKeyContainer = value; }
+        }
+
+        private List<ChordHotKey> chordHotKeyContainer;
+        public List<ChordHotKey> ChordHotKeyContainer
+        {
+            get { return this.chordHotKeyContainer; }
+            set { this.chordHotKeyContainer = value; }
         }
         private AllPatients allPatients;
         public AllPatients AllPatients
@@ -345,8 +353,10 @@ namespace CII.LAR.SysClass
             this.DefaultScaleCoefficient = 4;
             this.recordTime = 1;
             AllPatients = AllPatients.GetAllPatients();
-            shortcutKeys = new ShortcutKeys();
             this.deviceMoniker = @"@device:pnp:\\?\usb#vid_eb1a&pid_2860#5&20c67efd&0&7#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global";
+            this.localHotKeyContainer = new List<LocalHotKey>();
+            this.globalHotKeyContainer = new List<GlobalHotKey>();
+            this.chordHotKeyContainer = new List<ChordHotKey>();
             //this.HotKeyManager = new HotKeyManager();
             //this.HotKeyManager.LocalHotKeyContainer = new List<LocalHotKey>();
         }

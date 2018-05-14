@@ -14,19 +14,51 @@ namespace CII.LAR.UI
     public partial class ShortcutCtrl : BaseCtrl
     {
         private HotKeyManager hotKeyManager;
-        public ShortcutCtrl()
+        public ShortcutCtrl(HotKeyManager hotKeyManager)
         {
             InitializeComponent();
+            this.hotKeyManager = hotKeyManager;
             resources = new ComponentResourceManager(typeof(ShortcutCtrl));
             this.CtrlType = CtrlType.ShortCut;
             this.Load += ShortcutCtrl_Load;
-            //this.hotKeyManager = Program.EntryForm.hotKeyManager;
         }
 
         private void ShortcutCtrl_Load(object sender, EventArgs e)
         {
-            this.hotKeyManager = Program.EntryForm.hotKeyManager;
+            //hotKeyManager = new HotKeyManager(Program.EntryForm);
             RegisterKeyDownEvent();
+        }
+
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            if (this.Visible)
+            {
+                InitializeShortcutKeys();
+            }
+        }
+        private void InitializeShortcutKeys()
+        {
+            foreach (var shortcutKey in Program.SysConfig.LocalHotKeyContainer)
+            {
+                if (shortcutKey != null)
+                {
+                    switch (shortcutKey.Name)
+                    {
+                        case "takePicture":
+                            this.txtTakePicture.Text = HotKeyShared.CombineShortcut(shortcutKey.Modifier, shortcutKey.Key);
+                            break;
+                        case "zoomIn":
+                            this.txtZoomIn.Text = HotKeyShared.CombineShortcut(shortcutKey.Modifier, shortcutKey.Key);
+                            break;
+                        case "zoomOut":
+                            this.txtZoomOut.Text = HotKeyShared.CombineShortcut(shortcutKey.Modifier, shortcutKey.Key);
+                            break;
+                        case "startRecord":
+                            this.txtStart.Text = HotKeyShared.CombineShortcut(shortcutKey.Modifier, shortcutKey.Key);
+                            break;
+                    }
+                }
+            }
         }
 
         private void RegisterKeyDownEvent()
@@ -39,7 +71,7 @@ namespace CII.LAR.UI
 
         private void HotKeyIsSet(object sender, HotKeyIsSetEventArgs e)
         {
-            if (Program.EntryForm.hotKeyManager.HotKeyExists(e.Shortcut, HotKeyManager.CheckKey.LocalHotKey))
+            if (hotKeyManager.HotKeyExists(e.Shortcut, HotKeyManager.CheckKey.LocalHotKey))
             {
                 e.Cancel = true;
                 MessageBox.Show("This HotKey has already been registered");
@@ -48,8 +80,18 @@ namespace CII.LAR.UI
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            UnRegister();
             Register();
             this.Visible = false;
+        }
+
+        private void UnRegister()
+        {
+            var keys = Program.SysConfig.LocalHotKeyContainer.ToList();
+            foreach (var shortkey in keys)
+            {
+                hotKeyManager.RemoveHotKey(shortkey.Name);
+            }
         }
 
         private void Register()

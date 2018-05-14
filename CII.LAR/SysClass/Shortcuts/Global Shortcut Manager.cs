@@ -56,15 +56,6 @@ namespace CII.LAR.SysClass.Shortcuts
             }
         }
 
-        private List<GlobalHotKey> GlobalHotKeyContainer = new List<GlobalHotKey>(); //Will hold our GlobalHotKeys
-        private List<LocalHotKey> localHotKeyContainer; //Will hold our LocalHotKeys.
-        public List<LocalHotKey> LocalHotKeyContainer
-        {
-            get { return this.localHotKeyContainer; }
-            set { this.localHotKeyContainer = value; }
-        }
-        private List<ChordHotKey> ChordHotKeyContainer = new List<ChordHotKey>(); //Will hold our ChordHotKeys.
-
         //Keep the previous key and modifier that started a chord.
         Keys PreChordKey;
         Modifiers PreChordModifier;
@@ -120,7 +111,6 @@ namespace CII.LAR.SysClass.Shortcuts
             this.SuppressException = false;
             this.Enabled = true;
             this.AutoDispose = false;
-            LocalHotKeyContainer = new List<LocalHotKey>();
             Application.AddMessageFilter(this); //Allow this class to receive Window messages.
         }
         /// <summary>Creates a new HotKeyManager object
@@ -141,7 +131,6 @@ namespace CII.LAR.SysClass.Shortcuts
             this.FormHandle = form.Handle;
             this.Enabled = true;
             this.AutoDispose = true;
-            LocalHotKeyContainer = new List<LocalHotKey>();
             Application.AddMessageFilter(this); //Allow this class to receive Window messages.
         }
         #endregion
@@ -179,17 +168,17 @@ namespace CII.LAR.SysClass.Shortcuts
         #region **Enumerations.
         /// <summary>Use for enumerating through all GlobalHotKeys.
         /// </summary>
-        public IEnumerable EnumerateGlobalHotKeys { get { return GlobalHotKeyContainer; } }
+        public IEnumerable EnumerateGlobalHotKeys { get { return Program.SysConfig.GlobalHotKeyContainer; } }
         /// <summary>Use for enumerating through all LocalHotKeys.
         /// </summary>
-        public IEnumerable EnumerateLocalHotKeys { get { return LocalHotKeyContainer; } }
+        public IEnumerable EnumerateLocalHotKeys { get { return Program.SysConfig.LocalHotKeyContainer; } }
         /// <summary>Use for enumerating through all ChordHotKeys.
         /// </summary>
-        public IEnumerable EnumerateChordHotKeys { get { return ChordHotKeyContainer; } }
+        public IEnumerable EnumerateChordHotKeys { get { return Program.SysConfig.ChordHotKeyContainer; } }
 
         //IEnumerator<GlobalHotKey> IEnumerable<GlobalHotKey>.GetEnumerator()
         //{
-        //    return GlobalHotKeyContainer.GetEnumerator();
+        //    return Program.SysConfig.GlobalHotKeyContainer.GetEnumerator();
         //}
 
         //IEnumerator<LocalHotKey> IEnumerable<LocalHotKey>.GetEnumerator()
@@ -226,7 +215,7 @@ namespace CII.LAR.SysClass.Shortcuts
                 {
                     if (kvPair.Enabled)
                     {
-                        UnregisterGlobalHotKey(GlobalHotKeyContainer.IndexOf(kvPair));
+                        UnregisterGlobalHotKey(Program.SysConfig.GlobalHotKeyContainer.IndexOf(kvPair));
                         RegisterGlobalHotKey(kvPair.Id, kvPair);
                     }
                 }
@@ -273,7 +262,7 @@ namespace CII.LAR.SysClass.Shortcuts
                 if (error != 0 && error != 2)
                     if (!this.SuppressException)
                     {
-                        throw new HotKeyUnregistrationFailedException("The hotkey could not be unregistered", GlobalHotKeyContainer[id], new Win32Exception(error));
+                        throw new HotKeyUnregistrationFailedException("The hotkey could not be unregistered", Program.SysConfig.GlobalHotKeyContainer[id], new Win32Exception(error));
                     }
             }
         }
@@ -314,7 +303,7 @@ namespace CII.LAR.SysClass.Shortcuts
 
                 return false;
             }
-            if (GlobalHotKeyContainer.Contains(hotKey))
+            if (Program.SysConfig.GlobalHotKeyContainer.Contains(hotKey))
             {
                 if (!this.SuppressException)
                     throw new HotKeyAlreadyRegisteredException("HotKey already registered!", hotKey);
@@ -327,7 +316,7 @@ namespace CII.LAR.SysClass.Shortcuts
                 RegisterGlobalHotKey(id, hotKey);
             hotKey.Id = id;
             hotKey.PropertyChanged += GlobalHotKeyPropertyChanged;
-            GlobalHotKeyContainer.Add(hotKey);
+            Program.SysConfig.GlobalHotKeyContainer.Add(hotKey);
             ++GlobalHotKeyCount;
             return true;
         }
@@ -353,7 +342,7 @@ namespace CII.LAR.SysClass.Shortcuts
             }
 
             //Check if a chord already has its BaseKey and BaseModifier.
-            bool ChordExits = ChordHotKeyContainer.Exists
+            bool ChordExits = Program.SysConfig.ChordHotKeyContainer.Exists
             (
                 delegate(ChordHotKey f)
                 {
@@ -361,7 +350,7 @@ namespace CII.LAR.SysClass.Shortcuts
                 }
             );
 
-            if (LocalHotKeyContainer.Contains(hotKey) || ChordExits)
+            if (Program.SysConfig.LocalHotKeyContainer.Contains(hotKey) || ChordExits)
             {
                 if (!this.SuppressException)
                     throw new HotKeyAlreadyRegisteredException("HotKey already registered!", hotKey);
@@ -369,7 +358,7 @@ namespace CII.LAR.SysClass.Shortcuts
                 return false;
             }
 
-            LocalHotKeyContainer.Add(hotKey);
+            Program.SysConfig.LocalHotKeyContainer.Add(hotKey);
             ++LocalHotKeyCount;
             return true;
         }
@@ -396,7 +385,7 @@ namespace CII.LAR.SysClass.Shortcuts
             }
 
             //Check if a LocalHotKey already has its Key and Modifier.
-            bool LocalExists = LocalHotKeyContainer.Exists
+            bool LocalExists = Program.SysConfig.LocalHotKeyContainer.Exists
             (
                 delegate(LocalHotKey f)
                 {
@@ -404,7 +393,7 @@ namespace CII.LAR.SysClass.Shortcuts
                 }
             );
 
-            if (ChordHotKeyContainer.Contains(hotKey) || LocalExists)
+            if (Program.SysConfig.ChordHotKeyContainer.Contains(hotKey) || LocalExists)
             {
                 if (!this.SuppressException)
                     throw new HotKeyAlreadyRegisteredException("HotKey already registered!", hotKey);
@@ -412,7 +401,7 @@ namespace CII.LAR.SysClass.Shortcuts
                 return false;
             }
 
-            ChordHotKeyContainer.Add(hotKey);
+            Program.SysConfig.ChordHotKeyContainer.Add(hotKey);
             ++ChordHotKeyCount;
             return true;
         }
@@ -423,7 +412,7 @@ namespace CII.LAR.SysClass.Shortcuts
         /// <returns>True if success, otherwise false</returns>
         public bool RemoveGlobalHotKey(GlobalHotKey hotKey)
         {
-            if (GlobalHotKeyContainer.Remove(hotKey) == true)
+            if (Program.SysConfig.GlobalHotKeyContainer.Remove(hotKey) == true)
             {
                 --GlobalHotKeyCount;
 
@@ -442,7 +431,7 @@ namespace CII.LAR.SysClass.Shortcuts
         /// <returns>True if success, otherwise false</returns>
         public bool RemoveLocalHotKey(LocalHotKey hotKey)
         {
-            if (LocalHotKeyContainer.Remove(hotKey) == true)
+            if (Program.SysConfig.LocalHotKeyContainer.Remove(hotKey) == true)
             { --LocalHotKeyCount; return true; }
             else { return false; }
         }
@@ -452,7 +441,7 @@ namespace CII.LAR.SysClass.Shortcuts
         /// <returns>True if success, otherwise false</returns>
         public bool RemoveChordHotKey(ChordHotKey hotKey)
         {
-            if (ChordHotKeyContainer.Remove(hotKey) == true)
+            if (Program.SysConfig.ChordHotKeyContainer.Remove(hotKey) == true)
             { --ChordHotKeyCount; return true; }
             else { return false; }
         }
@@ -462,7 +451,7 @@ namespace CII.LAR.SysClass.Shortcuts
         /// <returns>True if successful and false otherwise.</returns>
         public bool RemoveHotKey(string name)
         {
-            LocalHotKey local = LocalHotKeyContainer.Find
+            LocalHotKey local = Program.SysConfig.LocalHotKeyContainer.Find
                 (
                 delegate(LocalHotKey l)
                 {
@@ -472,7 +461,7 @@ namespace CII.LAR.SysClass.Shortcuts
 
             if (local != null) { return RemoveLocalHotKey(local); }
 
-            ChordHotKey chord = ChordHotKeyContainer.Find
+            ChordHotKey chord = Program.SysConfig.ChordHotKeyContainer.Find
                 (
                 delegate(ChordHotKey c)
                 {
@@ -482,7 +471,7 @@ namespace CII.LAR.SysClass.Shortcuts
 
             if (chord != null) { return RemoveChordHotKey(chord); }
 
-            GlobalHotKey global = GlobalHotKeyContainer.Find
+            GlobalHotKey global = Program.SysConfig.GlobalHotKeyContainer.Find
                 (
                 delegate(GlobalHotKey g)
                 {
@@ -501,7 +490,7 @@ namespace CII.LAR.SysClass.Shortcuts
         /// <returns>True if the HotKey has been registered, false otherwise.</returns>
         public bool HotKeyExists(string name)
         {
-            LocalHotKey local = LocalHotKeyContainer.Find
+            LocalHotKey local = Program.SysConfig.LocalHotKeyContainer.Find
                 (
                 delegate(LocalHotKey l)
                 {
@@ -511,7 +500,7 @@ namespace CII.LAR.SysClass.Shortcuts
 
             if (local != null) { return true; }
 
-            ChordHotKey chord = ChordHotKeyContainer.Find
+            ChordHotKey chord = Program.SysConfig.ChordHotKeyContainer.Find
                 (
                 delegate(ChordHotKey c)
                 {
@@ -521,7 +510,7 @@ namespace CII.LAR.SysClass.Shortcuts
 
             if (chord != null) { return true; }
 
-            GlobalHotKey global = GlobalHotKeyContainer.Find
+            GlobalHotKey global = Program.SysConfig.GlobalHotKeyContainer.Find
                 (
                 delegate(GlobalHotKey g)
                 {
@@ -539,7 +528,7 @@ namespace CII.LAR.SysClass.Shortcuts
         /// <returns>True if the ChordHotKey has been registered, false otherwise.</returns>
         public bool HotKeyExists(ChordHotKey chordhotkey)
         {
-            return ChordHotKeyContainer.Exists
+            return Program.SysConfig.ChordHotKeyContainer.Exists
                 (
                 delegate(ChordHotKey c)
                 {
@@ -559,7 +548,7 @@ namespace CII.LAR.SysClass.Shortcuts
             switch (ToCheck)
             {
                 case CheckKey.GlobalHotKey:
-                    return GlobalHotKeyContainer.Exists
+                    return Program.SysConfig.GlobalHotKeyContainer.Exists
                         (
                         delegate(GlobalHotKey g)
                         {
@@ -568,7 +557,7 @@ namespace CII.LAR.SysClass.Shortcuts
                     );
 
                 case CheckKey.LocalHotKey:
-                    return (LocalHotKeyContainer.Exists
+                    return (Program.SysConfig.LocalHotKeyContainer.Exists
                         (
                         delegate(LocalHotKey l)
                         {
@@ -576,7 +565,7 @@ namespace CII.LAR.SysClass.Shortcuts
                         }
                     )
                     |
-                    ChordHotKeyContainer.Exists
+                    Program.SysConfig.ChordHotKeyContainer.Exists
                     (
                     delegate(ChordHotKey c)
                     {
@@ -651,7 +640,7 @@ namespace CII.LAR.SysClass.Shortcuts
                                 return true;
                         }
 
-                        ChordHotKey ChordMain = ChordHotKeyContainer.Find
+                        ChordHotKey ChordMain = Program.SysConfig.ChordHotKeyContainer.Find
                         (
                         delegate(ChordHotKey cm)
                         {
@@ -676,7 +665,7 @@ namespace CII.LAR.SysClass.Shortcuts
                     }
 
                     //Check for a LocalHotKey.
-                    LocalHotKey KeyDownHotkey = LocalHotKeyContainer.Find
+                    LocalHotKey KeyDownHotkey = Program.SysConfig.LocalHotKeyContainer.Find
                         (
                         delegate(LocalHotKey d)
                         {
@@ -695,7 +684,7 @@ namespace CII.LAR.SysClass.Shortcuts
                     }
 
                     //Check for ChordHotKeys.
-                    ChordHotKey ChordBase = ChordHotKeyContainer.Find
+                    ChordHotKey ChordBase = Program.SysConfig.ChordHotKeyContainer.Find
                         (
                         delegate(ChordHotKey c)
                         {
@@ -726,7 +715,7 @@ namespace CII.LAR.SysClass.Shortcuts
                     if (KeyPressEvent != null)
                         KeyPressEvent(this, new HotKeyEventArgs(keyupCode, LocalModifier, RaiseLocalEvent.OnKeyDown));
 
-                    LocalHotKey KeyUpHotkey = LocalHotKeyContainer.Find
+                    LocalHotKey KeyUpHotkey = Program.SysConfig.LocalHotKeyContainer.Find
                         (
                         delegate(LocalHotKey u)
                         {
@@ -752,7 +741,7 @@ namespace CII.LAR.SysClass.Shortcuts
 
                     int Id = (int)m.WParam;
 
-                    GlobalHotKey Pressed = GlobalHotKeyContainer.Find
+                    GlobalHotKey Pressed = Program.SysConfig.GlobalHotKeyContainer.Find
                         (
                         delegate(GlobalHotKey g)
                         {
@@ -904,9 +893,9 @@ namespace CII.LAR.SysClass.Shortcuts
                 this.SuppressException = true;
             }
 
-            for (int i = GlobalHotKeyContainer.Count - 1; i >= 0; i--)
+            for (int i = Program.SysConfig.GlobalHotKeyContainer.Count - 1; i >= 0; i--)
             {
-                RemoveGlobalHotKey(GlobalHotKeyContainer[i]);
+                RemoveGlobalHotKey(Program.SysConfig.GlobalHotKeyContainer[i]);
             }
 
             //LocalHotKeyContainer.Clear();

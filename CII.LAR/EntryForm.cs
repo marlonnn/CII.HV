@@ -181,8 +181,7 @@ namespace CII.LAR
         {
             InitializeComponent();
             hotKeyManager = new HotKeyManager(this);
-            //hotKeyManager.SetFormHandle(this);
-            hotKeyManager.LocalHotKeyPressed += new LocalHotKeyEventHandler(HotKeyManager_LocalHotKeyPressed);
+            hotKeyManager.LocalHotKeyPressed += HotKeyManager_LocalHotKeyPressed;
             resources = new ComponentResourceManager(typeof(EntryForm));
             this.WindowState = FormWindowState.Maximized;
             listViewItemArray = new ListViewItemArray();
@@ -200,7 +199,6 @@ namespace CII.LAR
             DelegateClass.GetDelegate().CaptureDeviceHandler += this.CaptureDeviceHandler;
 
             //this.controller = new IController(this);
-            InitializeControls();
 
             serialPortCom = SerialPortCommunication.GetInstance();
             serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
@@ -209,10 +207,9 @@ namespace CII.LAR
 
         private void HotKeyManager_LocalHotKeyPressed(object sender, LocalHotKeyEventArgs e)
         {
-            if (e.HotKey.Tag != null)
+            if (e.HotKey.Name != null)
             {
-                var keys = (string)e.HotKey.Tag;
-                switch (keys)
+                switch (e.HotKey.Name)
                 {
                     case "takePicture":
                         toolStripButtonCapture_Click(null, null);
@@ -300,6 +297,7 @@ namespace CII.LAR
 
         private void EntryForm_Load(object sender, EventArgs e)
         {
+            InitializeControls();
             InitializeBaseCtrls();
             Application.Idle += OnIdle;
 
@@ -733,40 +731,8 @@ namespace CII.LAR
             this.richPictureBox.RichPictureBoxMouseWheel(e);
         }
 
-        private List<Keys> pressedKeys = new List<Keys>();
-        private bool CheckExit(Keys checkKey)
-        {
-            bool exist = false;
-            foreach (var key in pressedKeys)
-            {
-                if (checkKey == key)
-                {
-                    exist = true;
-                    break;
-                }
-            }
-            return exist;
-        }
-
-        protected override void OnKeyUp(KeyEventArgs e)
-        {
-            PrintKey();
-            pressedKeys.Remove(e.KeyCode);
-        }
-
-        private void PrintKey()
-        {
-            string l = "";
-            foreach (var key in pressedKeys)
-            {
-                l += key.ToString() + " ";
-            }
-            Console.WriteLine(l);
-        }
         protected override void OnKeyDown(KeyEventArgs e)
         {
-            if (!CheckExit(e.KeyCode))
-                pressedKeys.Add(e.KeyCode);
             if (e.KeyCode == Keys.Escape && this.richPictureBox.ActiveTool != DrawToolType.Pointer)
             {
                 this.richPictureBox.ActiveTool = DrawToolType.Pointer;

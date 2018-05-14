@@ -807,7 +807,7 @@ namespace CII.LAR
         /// <param name="statistics"></param>
         private void AppendItems(DrawObject drawObject, Statistics statistics)
         {
-            if (this.richPictureBox.DrawObject == null || drawObject.Name != this.richPictureBox.DrawObject.Name)
+            if (this.richPictureBox.DrawObject == null || (drawObject.Name != this.richPictureBox.DrawObject.Name && !Exist(drawObject.Name)))
             {
                 try
                 {
@@ -839,6 +839,23 @@ namespace CII.LAR
                     }
                 }
             }
+        }
+
+        private bool Exist(string name)
+        {
+            bool exist = false;
+            if (this.statisticsCtrl.StatisticsListView.Items != null && this.statisticsCtrl.StatisticsListView.Items.Count > 0)
+            {
+                foreach (ListViewItem item in this.statisticsCtrl.StatisticsListView.Items)
+                {
+                    if (item != null && item.Text == name)
+                    {
+                        exist = true;
+                        break;
+                    }
+                }
+            }
+            return exist;
         }
 
         /// <summary>

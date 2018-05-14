@@ -114,6 +114,7 @@ namespace CII.LAR.DrawTools
                         o = richPictureBox.GraphicsList[i];
                         gateIndex = htr.Index;
                         selectMode = o.Selected ? SelectionMode.Move : SelectionMode.Select;
+                        if (selectMode == SelectionMode.Select) richPictureBox.DrawObject = o;
                         break;
                     }
                 }

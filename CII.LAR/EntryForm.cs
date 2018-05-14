@@ -1004,7 +1004,7 @@ namespace CII.LAR
         {
             if (holesInfo != null)
             {
-                LaserCtrl laserCtrl = baseControls[5] as LaserCtrl;
+                LaserCtrl laserCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserCtrl>(CtrlType.LaserCtrl);
                 if (laserCtrl != null)
                 {
                     laserCtrl.UpdateHolesInfo(holesInfo);

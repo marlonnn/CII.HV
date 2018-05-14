@@ -1016,10 +1016,10 @@ namespace CII.LAR
         {
             if (baseControls != null && baseControls.Count > 0)
             {
-                LaserCtrl laserCtrl = baseControls[5] as LaserCtrl;
+                LaserCtrl laserCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserCtrl>(CtrlType.LaserCtrl);
                 if (laserCtrl != null)
                 {
-                    laserCtrl.HolesNumberSlider(isShow);
+                    laserCtrl.HolesSliderVisiable(isShow);
                 }
             }
         }

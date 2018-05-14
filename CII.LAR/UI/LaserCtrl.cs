@@ -53,6 +53,12 @@ namespace CII.LAR.UI
             savedPulseWidthList = Program.SysConfig.LaserConfig.SavedPulseWidth;
             InitializeSavedPulseWidthList();
             this.comboBoxEx1.SelectedValueChanged += ComboBoxEx1_SelectedValueChanged;
+            this.holesSlider.Visible = false;
+        }
+
+        public void HolesSliderVisiable(bool visiable)
+        {
+            this.holesSlider.Visible = visiable;
         }
 
         private bool valueChangedInvoke = true;
@@ -127,11 +133,6 @@ namespace CII.LAR.UI
                     }
                 }
             }
-        }
-
-        public void HolesNumberSlider(bool isShow)
-        {
-            this.holesSlider.Visible = isShow;
         }
 
         public void UpdateHolesInfo(HolesInfo holesInfo)

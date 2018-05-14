@@ -137,7 +137,7 @@
     <value>73, 37</value>
   </data>
   <data name="lblPulseWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 19</value>
+    <value>167, 19</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lblPulseWidth.TabIndex" type="System.Int32, mscorlib">
@@ -204,7 +204,7 @@
     <value>13</value>
   </data>
   <data name="lblPreSet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>41, 87</value>
+    <value>3, 124</value>
   </data>
   <data name="lblPreSet.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 23</value>
@@ -228,7 +228,7 @@
     <value>10</value>
   </data>
   <data name="btnFire.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 195</value>
+    <value>105, 165</value>
   </data>
   <data name="btnFire.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -252,7 +252,7 @@
     <value>9</value>
   </data>
   <data name="line2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 226</value>
+    <value>3, 196</value>
   </data>
   <data name="line2.Size" type="System.Drawing.Size, System.Drawing">
     <value>283, 10</value>
@@ -279,7 +279,7 @@
     <value>8</value>
   </data>
   <data name="btnAlignLaser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 245</value>
+    <value>58, 215</value>
   </data>
   <data name="btnAlignLaser.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 23</value>
@@ -303,7 +303,7 @@
     <value>7</value>
   </data>
   <data name="btnHoleSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 274</value>
+    <value>58, 244</value>
   </data>
   <data name="btnHoleSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 23</value>
@@ -327,7 +327,7 @@
     <value>6</value>
   </data>
   <data name="btnAppearance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 303</value>
+    <value>58, 273</value>
   </data>
   <data name="btnAppearance.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 23</value>
@@ -351,7 +351,7 @@
     <value>5</value>
   </data>
   <data name="holesSlider.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 115</value>
+    <value>3, 97</value>
   </data>
   <data name="holesSlider.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 23</value>
@@ -376,7 +376,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 155</value>
+    <value>168, 125</value>
   </data>
   <data name="btnDelete.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 23</value>
@@ -403,10 +403,10 @@
     <value>15</value>
   </data>
   <data name="comboBoxEx1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 155</value>
+    <value>58, 125</value>
   </data>
   <data name="comboBoxEx1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 21</value>
+    <value>95, 21</value>
   </data>
   <data name="comboBoxEx1.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -427,7 +427,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>230, 155</value>
+    <value>230, 125</value>
   </data>
   <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 23</value>
@@ -457,7 +457,7 @@
     <value>6, 12</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>289, 333</value>
+    <value>289, 303</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>LaserCtrl</value>

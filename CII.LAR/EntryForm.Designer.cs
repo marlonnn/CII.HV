@@ -141,6 +141,7 @@ namespace CII.LAR
             // 
             this.comboBoxLense.Name = "comboBoxLense";
             resources.ApplyResources(this.comboBoxLense, "comboBoxLense");
+            this.comboBoxLense.SelectedIndexChanged += new System.EventHandler(this.comboBoxLense_SelectedIndexChanged);
             // 
             // toolStripSeparator2
             // 

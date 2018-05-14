@@ -204,6 +204,7 @@ namespace CII.LAR
 
             serialPortCom = SerialPortCommunication.GetInstance();
             serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
+            InitializeComboBoxLense();
         }
 
         private void HotKeyManager_LocalHotKeyPressed(object sender, LocalHotKeyEventArgs e)
@@ -1451,6 +1452,42 @@ namespace CII.LAR
                         }
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// 初始化物镜
+        /// </summary>
+        private bool needUpdateComboBoxLense = true;
+        private void InitializeComboBoxLense()
+        {
+            if (Program.SysConfig.Lenses != null && Program.SysConfig.Lenses.Count > 0)
+            {
+                needUpdateComboBoxLense = false;
+                foreach (var lense in Program.SysConfig.Lenses)
+                {
+                    comboBoxLense.Items.Add(lense);
+                    if (Program.SysConfig.Lense != null && lense.Factor == Program.SysConfig.Lense.Factor)
+                    {
+                        comboBoxLense.SelectedItem = lense;
+                    }
+                }
+                needUpdateComboBoxLense = true;
+            }
+        }
+
+        /// <summary>
+        /// 切换物镜
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void comboBoxLense_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Lense lense = comboBoxLense.SelectedItem as Lense;
+            if (lense != null)
+            {
+                Program.SysConfig.Lense = lense;
+                this.richPictureBox.Invalidate();
             }
         }
     }

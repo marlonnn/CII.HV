@@ -19,12 +19,23 @@ namespace CII.LAR.DrawTools
 
         protected RichPictureBox richPictureBox;
 
+        private const double D254 = 2.54d;
         protected double UnitOfMeasureFactor
         {
             get
             {
                 return MeasureSystem.CustomUnitToMicron(1, richPictureBox.UnitOfMeasure);
             }
+        }
+
+        public double PixelToCentimeter(double pixel)
+        {
+            return pixel * D254 / Program.DpiX;
+        }
+
+        public double PixelToMillimeter(double pixel)
+        {
+            return PixelToCentimeter(pixel) * 10;
         }
 
         /// <summary>

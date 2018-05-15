@@ -247,13 +247,13 @@ namespace CII.LAR.DrawTools
 
         private string GetCircumference()
         {
-            var length = 2 * Math.Abs(rectangle.Width + rectangle.Height) / UnitOfMeasureFactor;
+            var length = PixelToMillimeter(2 * (Math.Abs(rectangle.Width) +  Math.Abs(rectangle.Height)) / UnitOfMeasureFactor);
             return string.Format("{0:F2} {1}", length, richPictureBox.UnitOfMeasure.ToString());
         }
 
         private string GetArea()
         {
-            var area = (rectangle.Width / UnitOfMeasureFactor) * (rectangle.Height / UnitOfMeasureFactor);
+            var area = PixelToMillimeter((rectangle.Width / UnitOfMeasureFactor)) * PixelToMillimeter((rectangle.Height / UnitOfMeasureFactor));
             return string.Format("{0:F2} {1}²", Math.Abs(area), richPictureBox.UnitOfMeasure.ToString());
         }
 

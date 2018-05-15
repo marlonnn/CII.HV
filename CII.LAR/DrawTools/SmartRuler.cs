@@ -36,7 +36,6 @@ namespace CII.LAR.DrawTools
             this.pictureBox = pictureBox;
             this.showRulers = true;
             font = new Font("Microsoft Sans Serif", 8.25f);
-            centimeterPixels = CentimeterToPixel(1);
         }
 
         public double MillimeterToPixel(double millimeter)
@@ -81,16 +80,18 @@ namespace CII.LAR.DrawTools
             var endX = pictureBox.Width / 2 - 10;
 
             double startYNegative = pictureBox.Height / 2;
+            centimeterPixels = CentimeterToPixel(1) * Program.SysConfig.Lense.FineAdjustment / 100f;
+            int count = 0;
             for (double i = startYPositive; i < endYPositive; i+=centimeterPixels)
             {
-                var positiveNumber = (int)((i - startYPositive) / centimeterPixels) * 10;
+                var positiveNumber = count * 10 / Program.SysConfig.Lense.Factor;
                 //draw positive major ticks
                 g.DrawLine(pen, startX, (float)i, endX, (float)i);
 
                 //draw positive minor ticks
                 g.DrawLine(pen, startX, (float)(i + centimeterPixels / 2), startX - 5, (float)(i + centimeterPixels / 2));
 
-                string pns = positiveNumber.ToString();
+                string pns = positiveNumber.ToString("F2");
                 var pSize = g.MeasureString(pns, font);
                 if (positiveNumber > 0) g.DrawString(pns, font, Brushes.Black, endX - pSize.Width, (float)(i - pSize.Height / 2));
 
@@ -100,10 +101,11 @@ namespace CII.LAR.DrawTools
                 g.DrawLine(pen, startX, (float)(startYNegative - centimeterPixels / 2), startX - 5, (float)(startYNegative - centimeterPixels / 2));
 
                 var negativeNumber = -1 * positiveNumber;
-                var nns = negativeNumber.ToString();
+                var nns = negativeNumber.ToString("F2");
                 var nSize = g.MeasureString(nns, font);
                 if (negativeNumber < 0) g.DrawString(nns, font, Brushes.Black, endX - nSize.Width, (float)(startYNegative - nSize.Height / 2));
                 startYNegative -= centimeterPixels;
+                count++;
             }
 
             g.DrawLine(pen, pictureBox.Width / 2, 0, pictureBox.Width / 2, pictureBox.Height);
@@ -117,16 +119,19 @@ namespace CII.LAR.DrawTools
             var endY = pictureBox.Height / 2 - 10;
 
             double startXNegative = pictureBox.Width / 2;
+            centimeterPixels = CentimeterToPixel(1) * Program.SysConfig.Lense.FineAdjustment / 100f;
+            int count = 0;
             for (double i= startXPositive; i < endXPositive; i+= centimeterPixels)
             {
-                var positiveNumber = (int)((i - startXPositive) / centimeterPixels) * 10;
+
+                var positiveNumber = count * 10 / Program.SysConfig.Lense.Factor;
                 //draw positive major ticks
                 g.DrawLine(pen, (float)i, startY, (float)i, endY);
 
                 //draw positive minor ticks
                 g.DrawLine(pen, (float)(i + centimeterPixels / 2), startY, (float)(i + centimeterPixels / 2), startY - 5);
 
-                string pns = positiveNumber.ToString();
+                string pns = positiveNumber.ToString("F2");
                 var pSize = g.MeasureString(pns, font);
                 if (positiveNumber > 0) g.DrawString(pns, font, Brushes.Black, (float)(i - pSize.Width / 2), endY - pSize.Height);
 
@@ -136,10 +141,11 @@ namespace CII.LAR.DrawTools
                 g.DrawLine(pen, (float)(startXNegative - centimeterPixels / 2), startY, (float)(startXNegative - centimeterPixels / 2), startY - 5);
 
                 var negativeNumber = -1 * positiveNumber;
-                var nns = negativeNumber.ToString();
+                var nns = negativeNumber.ToString("F2");
                 var nSize = g.MeasureString(nns, font);
                 if (negativeNumber < 0) g.DrawString(nns, font, Brushes.Black, (float)(startXNegative - nSize.Width / 2), endY - nSize.Height);
                 startXNegative -= centimeterPixels;
+                count++;
             }
 
             g.DrawLine(pen, 0, pictureBox.Height / 2, pictureBox.Width, pictureBox.Height / 2);

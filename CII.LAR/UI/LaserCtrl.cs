@@ -333,6 +333,10 @@ namespace CII.LAR.UI
                     this.comboBoxEx1.Items.Clear();
                     this.comboBoxEx1.Text = "";
                 }
+                if (deleteIndex == 0)
+                {
+                    RefreshSavedPulseWidthCombox(savedPulseWidthList[0]);
+                }
                 else if (deleteIndex - 1 >= 0 && deleteIndex - 1 <= savedPulseWidthList.Count - 1)
                 {
                     RefreshSavedPulseWidthCombox(savedPulseWidthList[deleteIndex - 1]);

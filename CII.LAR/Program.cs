@@ -12,6 +12,26 @@ namespace CII.LAR
 {
     static class Program
     {
+        private static double dpiFactor = 1;
+        /// <summary>
+        /// system dpi setting, default is 100%
+        /// </summary>
+        public static double DpiFactor
+        {
+            get { return dpiFactor; }
+            set { dpiFactor = value; }
+        }
+
+        private static float dpiX = 96;
+        /// <summary>
+        /// system dpiX setting, default is 96
+        /// </summary>
+        public static float DpiX
+        {
+            get { return dpiX; }
+            set { dpiX = value; }
+        }
+
         private static EntryForm entryForm;
 
         /// <summary>
@@ -52,6 +72,13 @@ namespace CII.LAR
             get { return _sysConfigOrigin; }
         }
 
+        private static void Initialize()
+        {
+            System.Drawing.Graphics g = System.Drawing.Graphics.FromHwnd(IntPtr.Zero);
+            DpiX = g.DpiX;
+            DpiFactor = g.DpiX / 96.0;
+            g.Dispose();
+        }
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -67,7 +94,7 @@ namespace CII.LAR
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-
+                Initialize();
                 _sysConfig = SysConfig.Load();
                 _sysConfigOrigin = SysConfig.Load();
 

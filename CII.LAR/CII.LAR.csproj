@@ -162,6 +162,7 @@
     <Compile Include="DrawTools\GraphicsPropertiesManager.cs" />
     <Compile Include="DrawTools\MeasureSystem.cs" />
     <Compile Include="DrawTools\Rulers.cs" />
+    <Compile Include="DrawTools\SmartRuler.cs" />
     <Compile Include="DrawTools\Statistics.cs" />
     <Compile Include="DrawTools\Tool.cs" />
     <Compile Include="DrawTools\ToolCircle.cs" />

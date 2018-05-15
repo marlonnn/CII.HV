@@ -321,8 +321,10 @@ namespace CII.LAR.UI
             InitializeTools();
             InitializeImageTracker();
             this.PictureBoxPaintedEvent += imageTracker.OnPicturePainted;
+            smartRuler = new SmartRuler(this);
         }
 
+        private SmartRuler smartRuler;
         public DebugCtrl df;
         public void LoadDebugCtrl()
         {
@@ -854,7 +856,10 @@ namespace CII.LAR.UI
                 {
                     rulers.Draw(e.Graphics);
                 }
-
+                if (smartRuler != null)
+                {
+                    smartRuler.Draw(e.Graphics);
+                }
                 if (this.CaptureVideo)
                 {
                     Color drawColor = Color.FromArgb(200, Color.Red);

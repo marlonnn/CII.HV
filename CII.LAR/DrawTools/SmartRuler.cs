@@ -34,7 +34,7 @@ namespace CII.LAR.DrawTools
         public SmartRuler(RichPictureBox pictureBox)
         {
             this.pictureBox = pictureBox;
-            this.showRulers = true;
+            this.showRulers = false;
             font = new Font("Microsoft Sans Serif", 8.25f);
         }
 
@@ -84,7 +84,7 @@ namespace CII.LAR.DrawTools
             int count = 0;
             for (double i = startYPositive; i < endYPositive; i+=centimeterPixels)
             {
-                var positiveNumber = count * 10 / Program.SysConfig.Lense.Factor;
+                var positiveNumber = count * 10 / (Program.SysConfig.Lense.Factor * pictureBox.Zoom);
                 //draw positive major ticks
                 g.DrawLine(pen, startX, (float)i, endX, (float)i);
 
@@ -124,7 +124,7 @@ namespace CII.LAR.DrawTools
             for (double i= startXPositive; i < endXPositive; i+= centimeterPixels)
             {
 
-                var positiveNumber = count * 10 / Program.SysConfig.Lense.Factor;
+                var positiveNumber = count * 10 / (Program.SysConfig.Lense.Factor * pictureBox.Zoom);
                 //draw positive major ticks
                 g.DrawLine(pen, (float)i, startY, (float)i, endY);
 

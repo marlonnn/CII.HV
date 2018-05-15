@@ -33,14 +33,14 @@ namespace CII.LAR.UI
             }
         }
 
-        private Rulers rulers;
-        public Rulers Rulers
-        {
-            get
-            {
-                return rulers;
-            }
-        }
+        //private Rulers rulers;
+        //public Rulers Rulers
+        //{
+        //    get
+        //    {
+        //        return rulers;
+        //    }
+        //}
 
         /// <summary>
         /// the new area where the Statistics control to be dragged

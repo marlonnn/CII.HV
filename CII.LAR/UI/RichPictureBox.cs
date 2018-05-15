@@ -120,8 +120,8 @@ namespace CII.LAR.UI
         }
         #endregion
 
-        private Rulers rulers;
-        public Rulers Rulers
+        private SmartRuler rulers;
+        public SmartRuler Rulers
         {
             get
             {
@@ -317,14 +317,12 @@ namespace CII.LAR.UI
             VideoSize = new Size(1280, 960);
             this.DoubleBuffered = true;
             this.GraphicsList = new GraphicsList();
-            this.rulers = new Rulers(this);
+            this.rulers = new SmartRuler(this);
             InitializeTools();
             InitializeImageTracker();
             this.PictureBoxPaintedEvent += imageTracker.OnPicturePainted;
-            smartRuler = new SmartRuler(this);
         }
 
-        private SmartRuler smartRuler;
         public DebugCtrl df;
         public void LoadDebugCtrl()
         {
@@ -855,10 +853,6 @@ namespace CII.LAR.UI
                 if (rulers != null)
                 {
                     rulers.Draw(e.Graphics);
-                }
-                if (smartRuler != null)
-                {
-                    smartRuler.Draw(e.Graphics);
                 }
                 if (this.CaptureVideo)
                 {

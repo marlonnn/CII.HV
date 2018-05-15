@@ -87,6 +87,7 @@ namespace CII.LAR.DrawTools
 
                         richPictureBox.GraphicsList.UnselectAll();
                         o.Selected = true;
+                        break;
                     }
                 }
                 else if (htr.ElementType == DrawObject.ElementType.Gate)

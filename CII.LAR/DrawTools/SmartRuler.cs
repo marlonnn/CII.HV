@@ -30,11 +30,13 @@ namespace CII.LAR.DrawTools
         }
 
         private Font font;
+        private double centimeterPixels;
         public SmartRuler(RichPictureBox pictureBox)
         {
             this.pictureBox = pictureBox;
             this.showRulers = true;
             font = new Font("Microsoft Sans Serif", 8.25f);
+            centimeterPixels = CentimeterToPixel(1);
         }
 
         public double MillimeterToPixel(double millimeter)
@@ -65,30 +67,59 @@ namespace CII.LAR.DrawTools
                 using (Pen pen = new Pen(Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Ruler").Color,
                     Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Ruler").PenWidth))
                 {
-                    //g.ResetTransform();
                     PaintXAxis(g, pen);
+                    PaintYAxis(g, pen);
                 }
             }
         }
 
-        private void PaintXAxis(Graphics g, Pen pen)
+        private void PaintYAxis(Graphics g, Pen pen)
         {
-            PaintPositiveXAxis(g, pen);
-            g.DrawLine(pen, 0, pictureBox.Height / 2, pictureBox.Width, pictureBox.Height / 2);
+            var startYPositive = pictureBox.Height / 2;
+            var endYPositive = pictureBox.Height;
+            var startX = pictureBox.Width / 2;
+            var endX = pictureBox.Width / 2 - 10;
+
+            double startYNegative = pictureBox.Height / 2;
+            for (double i = startYPositive; i < endYPositive; i+=centimeterPixels)
+            {
+                var positiveNumber = (int)((i - startYPositive) / centimeterPixels) * 10;
+                //draw positive major ticks
+                g.DrawLine(pen, startX, (float)i, endX, (float)i);
+
+                //draw positive minor ticks
+                g.DrawLine(pen, startX, (float)(i + centimeterPixels / 2), startX - 5, (float)(i + centimeterPixels / 2));
+
+                string pns = positiveNumber.ToString();
+                var pSize = g.MeasureString(pns, font);
+                if (positiveNumber > 0) g.DrawString(pns, font, Brushes.Black, endX - pSize.Width, (float)(i - pSize.Height / 2));
+
+                //draw negative major ticks
+                g.DrawLine(pen, startX, (float)startYNegative, endX, (float)startYNegative);
+                //draw negative minor ticks
+                g.DrawLine(pen, startX, (float)(startYNegative - centimeterPixels / 2), startX - 5, (float)(startYNegative - centimeterPixels / 2));
+
+                var negativeNumber = -1 * positiveNumber;
+                var nns = negativeNumber.ToString();
+                var nSize = g.MeasureString(nns, font);
+                if (negativeNumber < 0) g.DrawString(nns, font, Brushes.Black, endX - nSize.Width, (float)(startYNegative - nSize.Height / 2));
+                startYNegative -= centimeterPixels;
+            }
+
+            g.DrawLine(pen, pictureBox.Width / 2, 0, pictureBox.Width / 2, pictureBox.Height);
         }
 
-        private void PaintPositiveXAxis(Graphics g, Pen pen)
+        private void PaintXAxis(Graphics g, Pen pen)
         {
             var startXPositive = pictureBox.Width / 2;
             var endXPositive = pictureBox.Width;
             var startY = pictureBox.Height / 2;
             var endY = pictureBox.Height / 2 - 10;
-            double centimeterPixels = CentimeterToPixel(1);
 
             double startXNegative = pictureBox.Width / 2;
             for (double i= startXPositive; i < endXPositive; i+= centimeterPixels)
             {
-                var positiveNumber = (int)((i - startXPositive) / centimeterPixels);
+                var positiveNumber = (int)((i - startXPositive) / centimeterPixels) * 10;
                 //draw positive major ticks
                 g.DrawLine(pen, (float)i, startY, (float)i, endY);
 
@@ -97,12 +128,12 @@ namespace CII.LAR.DrawTools
 
                 string pns = positiveNumber.ToString();
                 var pSize = g.MeasureString(pns, font);
-                if (positiveNumber > 0) g.DrawString(pns, font, Brushes.Black, (float )(i - pSize.Width / 2), endY - pSize.Height);
+                if (positiveNumber > 0) g.DrawString(pns, font, Brushes.Black, (float)(i - pSize.Width / 2), endY - pSize.Height);
 
                 //draw negative major ticks
                 g.DrawLine(pen, (float)startXNegative, startY, (float)startXNegative, endY);
                 //draw negative minor ticks
-                g.DrawLine(pen, (float)(startXNegative - centimeterPixels / 2), startY, (float)(startXNegative - centimeterPixels / 2), endY);
+                g.DrawLine(pen, (float)(startXNegative - centimeterPixels / 2), startY, (float)(startXNegative - centimeterPixels / 2), startY - 5);
 
                 var negativeNumber = -1 * positiveNumber;
                 var nns = negativeNumber.ToString();
@@ -110,6 +141,8 @@ namespace CII.LAR.DrawTools
                 if (negativeNumber < 0) g.DrawString(nns, font, Brushes.Black, (float)(startXNegative - nSize.Width / 2), endY - nSize.Height);
                 startXNegative -= centimeterPixels;
             }
+
+            g.DrawLine(pen, 0, pictureBox.Height / 2, pictureBox.Width, pictureBox.Height / 2);
         }
     }
 }

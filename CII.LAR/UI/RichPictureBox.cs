@@ -620,7 +620,16 @@ namespace CII.LAR.UI
                     //最大放大16倍
                     if (zoom + 1 == 17) return;
                     zoom += 1;
-                    ZoomOnMouseCenter(e, oldzoom);
+                    if (zoom < 3)
+                    {
+                        Point mousePos = new Point(this.Width / 2, this.Height / 2);
+                        MouseEventArgs args = new MouseEventArgs(new MouseButtons(), 1, mousePos.X, mousePos.Y, 0);
+                        ZoomOnMouseCenter(args, oldzoom);
+                    }
+                    else
+                    {
+                        ZoomOnMouseCenter(e, oldzoom);
+                    }
                 }
             }
             else if (e.Delta < 0)
@@ -644,7 +653,16 @@ namespace CII.LAR.UI
                     else if (zoom > 1)
                     {
                         zoom -= 1;
-                        ZoomOnMouseCenter(e, oldzoom);
+                        if (zoom < 3)
+                        {
+                            Point mousePos = new Point(this.Width / 2, this.Height / 2);
+                            MouseEventArgs args = new MouseEventArgs(new MouseButtons(), 1, mousePos.X, mousePos.Y, 0);
+                            ZoomOnMouseCenter(args, oldzoom);
+                        }
+                        else
+                        {
+                            ZoomOnMouseCenter(e, oldzoom);
+                        }
                     }
                 }
             }

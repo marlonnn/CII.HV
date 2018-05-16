@@ -27,25 +27,43 @@ namespace CII.LAR.UI
             }
         }
 
-        private void InvokeInvalidate(Label lable, string value)
+        public string LabelText
         {
-            if (!IsHandleCreated)
-                return;
-            try
-            {
-                this.Invoke((MethodInvoker)delegate
-                {
-                    this.labelValue = value;
-                    lable.Text = value;
-                });
-            }
-            catch { }
+            get { return this.lblValue.Text; }
+        }
+
+        private void InvokeInvalidate(TextBox lable, string value)
+        {
+            //if (!IsHandleCreated)
+            //    return;
+            //try
+            //{
+            //    this.Invoke((MethodInvoker)delegate
+            //    {
+            //        this.labelValue = value;
+            //        lable.Text = string.Format("{0}%", value);
+            //    });
+            //}
+            //catch { }
+            this.labelValue = value;
+            lable.Text = string.Format("{0}%", value);
         }
 
         public UpDownArrowCtrl()
         {
             InitializeComponent();
             this.labelValue = "";
+            this.lblValue.KeyDown += LblValue_KeyDown;
+        }
+
+        public delegate void LabelValueKeyDown();
+        public LabelValueKeyDown LabelValueKeyDownHandler;
+        private void LblValue_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                LabelValueKeyDownHandler?.Invoke();
+            }
         }
 
         private void btnUp_Click(object sender, EventArgs e)

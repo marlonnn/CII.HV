@@ -28,6 +28,40 @@ namespace CII.LAR.UI
             InitializeLenses();
             resources = new ComponentResourceManager(typeof(ObjectLenseCtrl));
             this.rulerAdjustCtrl1.UpdownClickHandler += UpdownClickHandler;
+            this.rulerAdjustCtrl1.LabelValueKeyDownHandler += LabelValueKeyDownHandler;
+        }
+
+        private void LabelValueKeyDownHandler()
+        {
+            try
+            {
+                float value = -1;
+                var labelString = this.rulerAdjustCtrl1.LabelText;
+                if (labelString.EndsWith("%"))
+                {
+                    int index = labelString.IndexOf("%");
+                    string valueString = labelString.Substring(0, index);
+                    value = float.Parse(valueString);
+                }
+                else
+                {
+                    value = float.Parse(labelString);
+                }
+                var selectLense = cmbLenses.SelectedItem as Lense;
+                if (selectLense != null)
+                {
+                    selectLense.FineAdjustment = value;
+                    selectLense.FineAdjustment = float.Parse(selectLense.FineAdjustment.ToString("000.0"));
+                    UpdateComBoxItemLense(selectLense);
+                    //this.txtAdd.Text = selectLense.FineAdjustment.ToString();
+                    //this.rulerAdjustCtrl1.LabelValue = selectLense.FineAdjustment.ToString();
+                    this.richPictureBox.Invalidate();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void UpdownClickHandler(bool isUp)
@@ -52,7 +86,7 @@ namespace CII.LAR.UI
                     selectLense.FineAdjustment = float.Parse(selectLense.FineAdjustment.ToString("000.0"));
                     UpdateComBoxItemLense(selectLense);
                     //this.txtAdd.Text = selectLense.FineAdjustment.ToString();
-                    this.rulerAdjustCtrl1.LabelValue = selectLense.FineAdjustment.ToString();
+                    this.rulerAdjustCtrl1.LabelValue =  selectLense.FineAdjustment.ToString();
                     this.richPictureBox.Invalidate();
                 }
                 catch (Exception ex)

@@ -30,7 +30,7 @@
         {
             this.btnDown = new System.Windows.Forms.Button();
             this.btnUp = new System.Windows.Forms.Button();
-            this.lblValue = new System.Windows.Forms.Label();
+            this.lblValue = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnDown
@@ -57,11 +57,12 @@
             // 
             // lblValue
             // 
-            this.lblValue.AutoSize = true;
-            this.lblValue.Location = new System.Drawing.Point(7, 9);
+            this.lblValue.Location = new System.Drawing.Point(7, 5);
             this.lblValue.Name = "lblValue";
-            this.lblValue.Size = new System.Drawing.Size(0, 12);
+            this.lblValue.Size = new System.Drawing.Size(56, 21);
             this.lblValue.TabIndex = 1;
+            this.lblValue.Text = "100%";
+            this.lblValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // UpDownArrowCtrl
             // 
@@ -81,6 +82,6 @@
 
         private System.Windows.Forms.Button btnDown;
         private System.Windows.Forms.Button btnUp;
-        private System.Windows.Forms.Label lblValue;
+        private System.Windows.Forms.TextBox lblValue;
     }
 }

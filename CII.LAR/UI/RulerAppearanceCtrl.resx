@@ -168,7 +168,7 @@
     <value>25</value>
   </data>
   <data name="btnLaserCtrl.Text" xml:space="preserve">
-    <value>Laser Control</value>
+    <value>Back</value>
   </data>
   <data name="&gt;&gt;btnLaserCtrl.Name" xml:space="preserve">
     <value>btnLaserCtrl</value>

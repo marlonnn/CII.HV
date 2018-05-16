@@ -241,7 +241,7 @@ namespace CII.LAR.UI
             {
                 this.Visible = false;
                 this.Enabled = false;
-                Program.EntryForm.ShowBaseCtrl(true, CtrlType.SettingCtrl);
+                Program.EntryForm.ShowBaseCtrl(true, CtrlType.LaserCtrl);
             }
         }
 

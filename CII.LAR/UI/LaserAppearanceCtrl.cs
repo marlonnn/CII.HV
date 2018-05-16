@@ -47,7 +47,7 @@ namespace CII.LAR.UI
             var value = this.sliderTransparency.Value;
             if (graphicsProperties != null)
             {
-                graphicsProperties.Alpha = (0xFF / 100) * value;
+                graphicsProperties.Alpha = (int)(0xFF * (value / 100f));
             }
         }
 

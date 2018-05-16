@@ -459,6 +459,13 @@ namespace CII.LAR.UI
             }
         }
 
+        private Rectangle toolStripRectangle;
+        public Rectangle ToolStripRectangle
+        {
+            get { return this.toolStripRectangle; }
+            set { this.toolStripRectangle = value; }
+        }
+
         #region 鼠标事件
         protected override void OnMouseDown(MouseEventArgs e)
         {
@@ -510,6 +517,7 @@ namespace CII.LAR.UI
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
+            Program.EntryForm.ToolStrip.Visible = ToolStripRectangle.Contains(e.Location);
             if (!IsInLegalRegion(e.Location)) return;
             if (LaserFunction)
             {

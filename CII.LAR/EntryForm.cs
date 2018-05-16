@@ -295,8 +295,14 @@ namespace CII.LAR
             }
         }
 
+        public ToolStrip ToolStrip
+        {
+            get { return this.toolStrip1; }
+        }
         private void EntryForm_Load(object sender, EventArgs e)
         {
+            this.toolStrip1.Visible = false;
+            this.richPictureBox.ToolStripRectangle = this.toolStrip1.Bounds;
             InitializeControls();
             InitializeBaseCtrls();
             Application.Idle += OnIdle;
@@ -703,6 +709,10 @@ namespace CII.LAR
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
+            if (fullScreen != null)
+            {
+                fullScreen.ResetFullScreen();
+            }
             base.OnFormClosing(e);
         }
 

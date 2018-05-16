@@ -1473,5 +1473,10 @@ namespace CII.LAR
                 this.richPictureBox.Invalidate();
             }
         }
+
+        private void toolStripButtonDelete_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

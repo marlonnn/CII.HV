@@ -66,6 +66,7 @@ namespace CII.LAR
             this.horizontalFlipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verticalFlipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButtonLaserDebug = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
             this.openCameraLive = new System.Windows.Forms.ToolStripMenuItem();
             this.openCameraAndStop = new System.Windows.Forms.ToolStripMenuItem();
             this.closeCameraTool = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,7 +105,8 @@ namespace CII.LAR
             this.toolStripButtonLaser,
             this.toolStripButtonSetting,
             this.toolStripDropDownCamera,
-            this.toolStripButtonLaserDebug});
+            this.toolStripButtonLaserDebug,
+            this.toolStripButtonDelete});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             // 
@@ -324,6 +326,15 @@ namespace CII.LAR
             toolStripButtonLaserDebug.Enabled = false;
             this.toolStripButtonLaserDebug.Click += new System.EventHandler(this.toolStripButtonLaserDebug_Click);
             // 
+            // toolStripButtonDelete
+            // 
+            this.toolStripButtonDelete.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDelete.Image = global::CII.LAR.Properties.Resources.delete;
+            this.toolStripButtonDelete.Name = "toolStripButtonDelete";
+            resources.ApplyResources(this.toolStripButtonDelete, "toolStripButtonDelete");
+            this.toolStripButtonDelete.Click += new System.EventHandler(this.toolStripButtonDelete_Click);
+            // 
             // openCameraLive
             // 
             this.openCameraLive.Name = "openCameraLive";
@@ -453,5 +464,6 @@ namespace CII.LAR
         private System.Windows.Forms.ToolStripMenuItem horizontalFlipToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verticalFlipToolStripMenuItem;
         private System.Windows.Forms.Timer LaserCheckTimer;
+        private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
     }
 }

@@ -45,6 +45,16 @@ namespace CII.LAR.UI
             InitializeCmbTime();
         }
 
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            if (Visible)
+            {
+                updateCmbLaser = false;
+                cmbLaser.SelectedIndex = Program.EntryForm.LaserType == LaserType.SaturnFixed ? 0 : 1;
+                updateCmbLaser = true;
+            }
+        }
+
         private void CbxScale_SelectedIndexChanged(object sender, EventArgs e)
         {
             Program.SysConfig.DefaultScaleCoefficient = (int)this.cbxScale.SelectedItem;
@@ -172,18 +182,23 @@ namespace CII.LAR.UI
             }
         }
 
+        private bool updateCmbLaser = true;
+
         private void cmbLaser_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (cmbLaser.SelectedIndex)
+            if (updateCmbLaser)
             {
-                case 0:
-                    Program.EntryForm.LaserType = LaserType.SaturnFixed;
-                    break;
-                case 1:
-                    Program.EntryForm.LaserType = LaserType.SaturnActive;
-                    break;
+                switch (cmbLaser.SelectedIndex)
+                {
+                    case 0:
+                        Program.EntryForm.LaserType = LaserType.SaturnFixed;
+                        break;
+                    case 1:
+                        Program.EntryForm.LaserType = LaserType.SaturnActive;
+                        break;
+                }
+                Program.EntryForm.HolesNumberSlider(Program.EntryForm.LaserType == LaserType.SaturnActive);
             }
-            Program.EntryForm.HolesNumberSlider(Program.EntryForm.LaserType == LaserType.SaturnActive);
         }
 
         private void btnSimulator_Click(object sender, EventArgs e)

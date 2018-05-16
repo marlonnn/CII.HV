@@ -234,4 +234,7 @@
   <data name="toolStripDropDownCamera.ToolTip" xml:space="preserve">
     <value>相机</value>
   </data>
+  <data name="toolStripButtonDelete.Text" xml:space="preserve">
+    <value>关闭</value>
+  </data>
 </root>

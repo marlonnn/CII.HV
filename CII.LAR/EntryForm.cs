@@ -23,6 +23,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -32,6 +33,18 @@ namespace CII.LAR
 {
     public partial class EntryForm : Form
     {
+        internal struct LASTINPUTINFO
+        {
+            public uint cbSize;
+            public uint dwTime;
+        }
+
+        [DllImport("User32.dll")]
+        private static extern bool GetLastInputInfo(ref LASTINPUTINFO Dummy);
+        private System.Windows.Forms.Timer idleTimer;
+        private LASTINPUTINFO lastInputInfo;
+        private int totalTime = 0;
+
         internal HotKeyManager hotKeyManager;
         private SerialPortCommunication serialPortCom;
         //视频翻转类型
@@ -203,6 +216,37 @@ namespace CII.LAR
             serialPortCom = SerialPortCommunication.GetInstance();
             serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
             InitializeComboBoxLense();
+            InitializeIdleTimer();
+        }
+
+        public int GetLastInputTime()
+        {
+            int idletime = 0;
+            idletime = 0;
+            lastInputInfo.cbSize = (uint)Marshal.SizeOf(lastInputInfo);
+            lastInputInfo.dwTime = 0;
+
+            if (GetLastInputInfo(ref lastInputInfo))
+            {
+                idletime = (int)(Environment.TickCount - lastInputInfo.dwTime);
+            }
+            return idletime;
+        }
+
+        private void InitializeIdleTimer()
+        {
+            lastInputInfo = new LASTINPUTINFO();
+            idleTimer = new System.Windows.Forms.Timer();
+            idleTimer.Interval = 1000;
+            idleTimer.Enabled = true;
+            idleTimer.Tick += IdleTimer_Tick;
+        }
+
+
+        private void IdleTimer_Tick(object sender, EventArgs e)
+        {
+            totalTime = GetLastInputTime();
+            this.toolStrip1.Visible = totalTime < 2000;
         }
 
         private void HotKeyManager_LocalHotKeyPressed(object sender, LocalHotKeyEventArgs e)

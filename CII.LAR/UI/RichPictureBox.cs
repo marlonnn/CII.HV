@@ -11,6 +11,7 @@ using CII.LAR.DrawTools;
 using System.IO;
 using System.Resources;
 using CII.LAR.SysClass;
+using CII.LAR.Algorithm;
 
 namespace CII.LAR.UI
 {
@@ -18,6 +19,11 @@ namespace CII.LAR.UI
     {
         private static Cursor s_cursor = new Cursor(new MemoryStream((byte[])new ResourceManager(typeof(EntryForm)).GetObject("Cross")));
 
+        private RestrictArea restrictArea;
+        public RestrictArea RestrictArea
+        {
+            get { return this.restrictArea; }
+        }
         private int recordCount;
         public int RecordCount
         {
@@ -321,6 +327,7 @@ namespace CII.LAR.UI
             InitializeTools();
             InitializeImageTracker();
             this.PictureBoxPaintedEvent += imageTracker.OnPicturePainted;
+            this.restrictArea = new RestrictArea(this);
         }
 
         public DebugCtrl df;
@@ -898,6 +905,13 @@ namespace CII.LAR.UI
                         var tSize = e.Graphics.MeasureString(time, font);
                         e.Graphics.DrawString(time, font, sb, new PointF(circle.CenterPoint.X + 30 + size.Width, 60 - tSize.Height / 2));
                     }
+                }
+                if (this.restrictArea != null)
+                {
+                    Color drawColor = Color.FromArgb(200, Color.Red);
+
+                    using (Pen pen = new Pen(drawColor, 2f))
+                        this.restrictArea.TestDrawMotorRectangle(e.Graphics, pen);
                 }
             }
             catch (Exception ex)

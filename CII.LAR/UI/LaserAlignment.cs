@@ -156,6 +156,7 @@ namespace CII.LAR.UI
                         Console.WriteLine(" final matrix Rank: " + v.Rank());
                         string matrixJsonString = JsonFile.GetJsonTextFromConfig<Matrix<double>>(v);
                         JsonFile.WriteMatrixConfigToLocal(matrixJsonString);
+                        this.richPictureBox.RestrictArea.TransformMotorOriginalPoints();
                         //关闭红光引导光
                         EnableRedLaser(false);
                     }

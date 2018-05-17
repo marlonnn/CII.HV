@@ -26,6 +26,7 @@ namespace CII.LAR.DrawTools
 
         public override void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
+            if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
             clickCount++;
             if (clickCount % 2 == 1)
             {
@@ -40,6 +41,7 @@ namespace CII.LAR.DrawTools
 
         public override void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
+            if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
             richPictureBox.Cursor = Cursor;
 
             if (clickCount % 2 == 1)
@@ -53,6 +55,7 @@ namespace CII.LAR.DrawTools
 
         public override void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
+            if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
             if (clickCount % 2 == 0)
             {
                 endPoint = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));

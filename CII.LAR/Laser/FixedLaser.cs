@@ -72,6 +72,7 @@ namespace CII.LAR.Laser
 
         public override void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
+            if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
             Point point = e.Location;
             CenterPoint = new PointF(point.X, point.Y);
             this.richPictureBox.Invalidate();
@@ -80,11 +81,13 @@ namespace CII.LAR.Laser
 
         public override void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
+            if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
             base.OnMouseMove(richPictureBox, e);
         }
 
         public override void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
+            if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
             base.OnMouseUp(richPictureBox, e);
             Coordinate.GetCoordinate().SendAlignmentMotorPoint();
         }

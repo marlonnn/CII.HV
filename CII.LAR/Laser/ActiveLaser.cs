@@ -51,6 +51,7 @@ namespace CII.LAR.Laser
 
         public override void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
+            if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
             mouseDownPoint = e.Location;
 
             activeCircle.OnMouseDown(e.Location);
@@ -60,6 +61,7 @@ namespace CII.LAR.Laser
 
         public override void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
+            if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
             base.OnMouseMove(richPictureBox, e);
             Point mousePosNow = e.Location;
             int dx = mousePosNow.X - mouseDownPoint.X;
@@ -70,6 +72,7 @@ namespace CII.LAR.Laser
 
         public override void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
+            if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
             base.OnMouseUp(richPictureBox, e);
             activeCircle.OnMouseUp();
             this.richPictureBox.Invalidate();

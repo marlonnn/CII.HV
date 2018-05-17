@@ -1,4 +1,5 @@
-﻿using MathNet.Numerics.LinearAlgebra;
+﻿using CII.LAR.UI;
+using MathNet.Numerics.LinearAlgebra;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,7 +15,7 @@ namespace CII.LAR.Algorithm
         /// <summary>
         /// 最小限位
         /// </summary>
-        private int minLimit = 500;
+        private int minLimit = 1000;
         public int MinLimit
         {
             get { return this.minLimit; }
@@ -23,7 +24,7 @@ namespace CII.LAR.Algorithm
         /// <summary>
         /// 最大限位
         /// </summary>
-        private int maxLimit = 2500;
+        private int maxLimit = 1500;
         public int MaxLimit
         {
             get { return this.maxLimit; }
@@ -64,15 +65,15 @@ namespace CII.LAR.Algorithm
 
         private MatrixBuilder<double> mb = Matrix<double>.Build;
 
-        public RestrictArea()
+        private RichPictureBox picturebox;
+
+        public RestrictArea(RichPictureBox picturebox)
         {
+            this.picturebox = picturebox;
+
             InitializeOriginalMotorPoints();
 
-            videoPath = new GraphicsPath();
-            motorPath = new GraphicsPath();
-
-            VideoRegion = new Region();
-            MotorRegion = new Region();
+            drawRestrict = false;
         }
 
         private void InitializeOriginalMotorPoints()
@@ -80,20 +81,83 @@ namespace CII.LAR.Algorithm
             originalMotorPoints = new List<Point>();
 
             originalMotorPoints.Add(new Point(MinLimit, MinLimit));
-            originalMotorPoints.Add(new Point(0, MaxLimit));
+            originalMotorPoints.Add(new Point(MinLimit, MaxLimit));
             originalMotorPoints.Add(new Point(MaxLimit, MaxLimit));
-            originalMotorPoints.Add(new Point(MaxLimit, 0));
+            originalMotorPoints.Add(new Point(MaxLimit, MinLimit));
         }
 
-        public void TransformMotorOriginalPoints()
+        public List<Point> TransformMotorOriginalPoints()
         {
             transformedMotorPoints = new List<Point>();
-            Matrix<double> finalMatrix = Coordinate.GetCoordinate().FinalMatrix;
+            Matrix<double> finalMatrix = Program.SysConfig.LaserConfig.FinalMatrix;
             Matrix<double> Inverse = finalMatrix.Inverse();
             foreach (var originalPoint in originalMotorPoints)
             {
                 transformedMotorPoints.Add(Calculate(originalPoint, Inverse));
             }
+            CalculateRegion();
+            DrawRestrict = true;
+            return transformedMotorPoints;
+        }
+
+        private bool drawRestrict;
+        public bool DrawRestrict
+        {
+            get { return this.drawRestrict; }
+            set { this.drawRestrict = value; }
+        }
+
+        public void TestDrawMotorRectangle(Graphics g, Pen pen)
+        {
+            if (DrawRestrict && this.picturebox.Zoom == 1)
+            {
+                if (transformedMotorPoints != null && transformedMotorPoints.Count > 0)
+                {
+                    g.DrawLine(pen, transformedMotorPoints[0].X, transformedMotorPoints[0].Y, transformedMotorPoints[1].X, transformedMotorPoints[1].Y);
+                    g.DrawLine(pen, transformedMotorPoints[1].X, transformedMotorPoints[1].Y, transformedMotorPoints[2].X, transformedMotorPoints[2].Y);
+                    g.DrawLine(pen, transformedMotorPoints[2].X, transformedMotorPoints[2].Y, transformedMotorPoints[3].X, transformedMotorPoints[3].Y);
+                    g.DrawLine(pen, transformedMotorPoints[3].X, transformedMotorPoints[3].Y, transformedMotorPoints[0].X, transformedMotorPoints[0].Y);
+
+                    using (SolidBrush sb = new SolidBrush(Color.FromArgb(0xC8, 0x80, 0x80, 0x80)))
+                        g.FillRegion(sb, VideoRegion);
+                }
+            }
+        }
+
+        public void CalculateRegion()
+        {
+            videoPath = new GraphicsPath();
+            motorPath = new GraphicsPath();
+
+            videoPath.AddRectangle(new RectangleF(this.picturebox.OffsetX, this.picturebox.OffsetY, this.picturebox.RealSize.Width, this.picturebox.RealSize.Height));
+            VideoRegion = new Region(videoPath);
+
+            motorPath.AddPolygon(transformedMotorPoints.ToArray());
+            MotorRegion = new Region(motorPath);
+
+            VideoRegion.Xor(MotorRegion);
+        }
+
+        /// <summary>
+        /// 检查鼠标是否在合法区域外
+        /// </summary>
+        /// <param name="point"></param>
+        /// <returns></returns>
+        public bool CheckPointInRegion(Point point)
+        {
+            if (DrawRestrict && this.picturebox.Zoom == 1)
+            {
+                return VideoRegion.IsVisible(point);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool CheckPointInRegion(PointF point)
+        {
+            return VideoRegion.IsVisible(point);
         }
 
         private Point Calculate(Point originalPoint, Matrix<double> Inverse)
@@ -102,7 +166,7 @@ namespace CII.LAR.Algorithm
             double[,] mps = { { originalPoint.X }, { originalPoint.Y }, { 1 } };
             var motorArray = mb.DenseOfArray(mps);
 
-            Matrix<double> transformed = motorArray * Inverse;
+            Matrix<double> transformed = Inverse * motorArray;
             newPoint = new Point((int)transformed[0, 0], (int)transformed[1, 0]);
             return newPoint;
         }

@@ -216,7 +216,6 @@ namespace CII.LAR
             serialPortCom = SerialPortCommunication.GetInstance();
             serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
             InitializeComboBoxLense();
-            InitializeIdleTimer();
         }
 
         public int GetLastInputTime()
@@ -339,10 +338,6 @@ namespace CII.LAR
             }
         }
 
-        public ToolStrip ToolStrip
-        {
-            get { return this.toolStrip1; }
-        }
         private void EntryForm_Load(object sender, EventArgs e)
         {
             this.richPictureBox.ToolStripRectangle = this.toolStrip1.Bounds;
@@ -367,6 +362,8 @@ namespace CII.LAR
             {
                 Program.SysConfig.PropertyChanged += SysConfig_PropertyChanged;
             }
+
+            InitializeIdleTimer();
         }
 
         private void SysConfig_PropertyChanged(object sender, PropertyChangedEventArgs e)

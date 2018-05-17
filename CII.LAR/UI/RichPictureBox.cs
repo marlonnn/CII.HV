@@ -517,7 +517,6 @@ namespace CII.LAR.UI
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            Program.EntryForm.ToolStrip.Visible = ToolStripRectangle.Contains(e.Location);
             if (!IsInLegalRegion(e.Location)) return;
             if (LaserFunction)
             {

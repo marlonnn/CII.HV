@@ -105,7 +105,14 @@ namespace CII.LAR.UI
             if (serialPortCom != null)
             {
                 LaserC72Request c72 = new LaserC72Request(PulseValue);
-                var bytes = serialPortCom.Encode(c72);
+                var bps = c72.Encode();
+                List<byte[]> bytes = new List<byte[]>();
+                foreach (var b in bps)
+                {
+                    var data = LaserProtocolFactory.GetInstance().LaserProtocol.EnPackage(b);
+                    bytes.Add(data);
+                }
+                //var bytes = serialPortCom.Encode(c72);
                 serialPortCom.SendData(bytes);
             }
         }

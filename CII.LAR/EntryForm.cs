@@ -301,7 +301,6 @@ namespace CII.LAR
         }
         private void EntryForm_Load(object sender, EventArgs e)
         {
-            this.toolStrip1.Visible = false;
             this.richPictureBox.ToolStripRectangle = this.toolStrip1.Bounds;
             InitializeControls();
             InitializeBaseCtrls();

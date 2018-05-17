@@ -39,7 +39,7 @@ namespace CII.LAR.Commond
             LaserBasePackage bp1 = new LaserBasePackage(0x8F, 0x72, new byte[] { 0x72, 0x00 });
             bps.Add(bp1);
 
-            double digitalValue = PulseWidth /*/ interval*/;
+            double digitalValue = PulseWidth * 10 /*/ interval*/;
             byte aa = (byte)(digitalValue / 128);
             byte bb = (byte)(digitalValue % 128);
             LaserBasePackage bp2 = new LaserBasePackage(0x80, 0x72, new byte[] { aa, bb, 0x00, 0x00, 0x00, 0x00 });

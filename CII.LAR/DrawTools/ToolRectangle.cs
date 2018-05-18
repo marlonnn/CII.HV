@@ -66,7 +66,7 @@ namespace CII.LAR.DrawTools
                 {
                     //richPictureBox.GraphicsList[0].UpdateStatisticsInformation();
                     richPictureBox.GraphicsList[0].Creating = false;
-                    richPictureBox.ActiveTool = DrawToolType.Pointer;
+                    //richPictureBox.ActiveTool = DrawToolType.Pointer;
                 }
             }
         }

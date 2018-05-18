@@ -63,8 +63,9 @@ namespace CII.LAR.DrawTools
         {
             if (ShowRulers)
             {
-                using (Pen pen = new Pen(Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Ruler").Color,
-                    Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Ruler").PenWidth))
+                GraphicsProperties gp = Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Ruler");
+                using (Pen pen = new Pen(Color.FromArgb(gp.Alpha, gp.Color), gp.PenWidth))
+
                 {
                     PaintXAxis(g, pen);
                     PaintYAxis(g, pen);

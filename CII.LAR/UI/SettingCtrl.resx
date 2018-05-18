@@ -131,7 +131,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;closeButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>6</value>
   </data>
   <data name="labelItemLanguage.Text" xml:space="preserve">
     <value>Language</value>
@@ -249,7 +249,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;itemPanel2.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>9</value>
   </data>
   <data name="btnSimulator.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 39</value>
@@ -363,7 +363,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;buttonSysInfo.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>7</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -418,7 +418,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;itemPanel3.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="lblLaser.Text" xml:space="preserve">
     <value>Laser</value>
@@ -484,7 +484,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;itemPanel5.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="labelItem1.Text" xml:space="preserve">
     <value>Record screen time(Unit:mimute)</value>
@@ -601,7 +601,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;itemPanel6.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnShortcuts.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -655,6 +655,60 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;itemPanel7.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnScaleAppearance.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnScaleAppearance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="btnScaleAppearance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 23</value>
+  </data>
+  <data name="btnScaleAppearance.TabIndex" type="System.Int32, mscorlib">
+    <value>10001</value>
+  </data>
+  <data name="btnScaleAppearance.Text" xml:space="preserve">
+    <value>Scale Appearance</value>
+  </data>
+  <data name="&gt;&gt;btnScaleAppearance.Name" xml:space="preserve">
+    <value>btnScaleAppearance</value>
+  </data>
+  <data name="&gt;&gt;btnScaleAppearance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnScaleAppearance.Parent" xml:space="preserve">
+    <value>itemPanel8</value>
+  </data>
+  <data name="&gt;&gt;btnScaleAppearance.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="labelItem3.Text" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="itemPanel8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 634</value>
+  </data>
+  <data name="itemPanel8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 63</value>
+  </data>
+  <data name="itemPanel8.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="itemPanel8.Text" xml:space="preserve">
+    <value>itemPanel8</value>
+  </data>
+  <data name="&gt;&gt;itemPanel8.Name" xml:space="preserve">
+    <value>itemPanel8</value>
+  </data>
+  <data name="&gt;&gt;itemPanel8.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ItemPanel, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;itemPanel8.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;itemPanel8.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -667,7 +721,7 @@
     <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 641</value>
+    <value>216, 712</value>
   </data>
   <data name="&gt;&gt;labelItemLanguage.Name" xml:space="preserve">
     <value>labelItemLanguage</value>
@@ -944,6 +998,18 @@
   </data>
   <data name="&gt;&gt;comboItem12.Type" xml:space="preserve">
     <value>DevComponents.Editors.ComboItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;labelItem2.Name" xml:space="preserve">
+    <value>labelItem2</value>
+  </data>
+  <data name="&gt;&gt;labelItem2.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+  </data>
+  <data name="&gt;&gt;labelItem3.Name" xml:space="preserve">
+    <value>labelItem3</value>
+  </data>
+  <data name="&gt;&gt;labelItem3.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.LabelItem, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>SettingCtrl</value>

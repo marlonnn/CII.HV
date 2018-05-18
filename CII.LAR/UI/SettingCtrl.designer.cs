@@ -91,10 +91,14 @@ namespace CII.LAR.UI
             this.itemPanel7 = new DevComponents.DotNetBar.ItemPanel();
             this.btnShortcuts = new System.Windows.Forms.Button();
             this.labelItem2 = new DevComponents.DotNetBar.LabelItem();
+            this.itemPanel8 = new DevComponents.DotNetBar.ItemPanel();
+            this.btnScaleAppearance = new System.Windows.Forms.Button();
+            this.labelItem3 = new DevComponents.DotNetBar.LabelItem();
             this.itemPanel2.SuspendLayout();
             this.itemPanelCamera.SuspendLayout();
             this.itemPanel3.SuspendLayout();
             this.itemPanel7.SuspendLayout();
+            this.itemPanel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // closeButton
@@ -556,10 +560,40 @@ namespace CII.LAR.UI
             this.labelItem2.Name = "labelItem2";
             resources.ApplyResources(this.labelItem2, "labelItem2");
             // 
+            // itemPanel8
+            // 
+            // 
+            // 
+            // 
+            this.itemPanel8.BackgroundStyle.Class = "ItemPanel";
+            this.itemPanel8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.itemPanel8.ContainerControlProcessDialogKey = true;
+            this.itemPanel8.Controls.Add(this.btnScaleAppearance);
+            this.itemPanel8.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.labelItem3});
+            this.itemPanel8.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical;
+            this.itemPanel8.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
+            resources.ApplyResources(this.itemPanel8, "itemPanel8");
+            this.itemPanel8.Name = "itemPanel8";
+            // 
+            // btnScaleAppearance
+            // 
+            this.btnScaleAppearance.BackColor = System.Drawing.Color.Gray;
+            resources.ApplyResources(this.btnScaleAppearance, "btnScaleAppearance");
+            this.btnScaleAppearance.Name = "btnScaleAppearance";
+            this.btnScaleAppearance.UseVisualStyleBackColor = false;
+            this.btnScaleAppearance.Click += new System.EventHandler(this.btnScaleAppearance_Click);
+            // 
+            // labelItem3
+            // 
+            this.labelItem3.Name = "labelItem3";
+            resources.ApplyResources(this.labelItem3, "labelItem3");
+            // 
             // SettingCtrl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.itemPanel8);
             this.Controls.Add(this.itemPanel7);
             this.Controls.Add(this.itemPanel6);
             this.Controls.Add(this.itemPanel5);
@@ -582,10 +616,12 @@ namespace CII.LAR.UI
             this.Controls.SetChildIndex(this.itemPanel5, 0);
             this.Controls.SetChildIndex(this.itemPanel6, 0);
             this.Controls.SetChildIndex(this.itemPanel7, 0);
+            this.Controls.SetChildIndex(this.itemPanel8, 0);
             this.itemPanel2.ResumeLayout(false);
             this.itemPanelCamera.ResumeLayout(false);
             this.itemPanel3.ResumeLayout(false);
             this.itemPanel7.ResumeLayout(false);
+            this.itemPanel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -653,6 +689,9 @@ namespace CII.LAR.UI
         private DevComponents.DotNetBar.ItemPanel itemPanel7;
         private System.Windows.Forms.Button btnShortcuts;
         private DevComponents.DotNetBar.LabelItem labelItem2;
+        private DevComponents.DotNetBar.ItemPanel itemPanel8;
+        private System.Windows.Forms.Button btnScaleAppearance;
+        private DevComponents.DotNetBar.LabelItem labelItem3;
     }
 }
 

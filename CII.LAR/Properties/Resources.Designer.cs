@@ -474,7 +474,18 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrRulerAppearanceTitle", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   查找类似 Scale Appearance 的本地化字符串。
+        /// </summary>
+        internal static string StrScaleAppearanceTitle
+        {
+            get
+            {
+                return ResourceManager.GetString("StrScaleAppearanceTitle", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   查找类似 Setting 的本地化字符串。
         /// </summary>

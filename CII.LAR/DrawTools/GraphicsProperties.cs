@@ -205,7 +205,7 @@ namespace CII.LAR.DrawTools
                     color = Color.Yellow;
                     break;
                 case "Ruler":
-                    color = Color.Red;
+                    color = Color.Black;
                     break;
             }
             SetDefault();

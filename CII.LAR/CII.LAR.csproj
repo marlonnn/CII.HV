@@ -366,6 +366,12 @@
     <Compile Include="UI\RulerAdjustCtrl.Designer.cs">
       <DependentUpon>RulerAdjustCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ScaleAppearanceCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ScaleAppearanceCtrl.designer.cs">
+      <DependentUpon>ScaleAppearanceCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -600,6 +606,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ReportPageUI.resx">
       <DependentUpon>ReportPageUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ScaleAppearanceCtrl.resx">
+      <DependentUpon>ScaleAppearanceCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ScaleAppearanceCtrl.zh-CN.resx">
+      <DependentUpon>ScaleAppearanceCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SearchForm.resx">
       <DependentUpon>SearchForm.cs</DependentUpon>

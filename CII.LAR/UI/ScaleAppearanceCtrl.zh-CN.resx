@@ -117,82 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnDelete.Text" xml:space="preserve">
-    <value>删除</value>
+  <data name="btnLaserCtrl.Text" xml:space="preserve">
+    <value>返回</value>
   </data>
-  <data name="btnNew.Text" xml:space="preserve">
-    <value>新建</value>
+  <data name="lblRuler.Text" xml:space="preserve">
+    <value>工具</value>
   </data>
-  <data name="btnScaleAppearance.Text" xml:space="preserve">
-    <value>刻度尺显示</value>
+  <data name="lblTargerSize.Text" xml:space="preserve">
+    <value>目标尺寸</value>
   </data>
-  <data name="btnShortcuts.Text" xml:space="preserve">
-    <value>键盘/踏板快捷键</value>
+  <data name="lblThickness.Text" xml:space="preserve">
+    <value>线宽</value>
   </data>
-  <data name="btnSimulator.Text" xml:space="preserve">
-    <value>开启模拟模式</value>
+  <data name="lblTickLength.Text" xml:space="preserve">
+    <value>线长</value>
   </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>物镜管理</value>
+  <data name="lblTransparency.Text" xml:space="preserve">
+    <value>透明度</value>
   </data>
-  <data name="button2.Text" xml:space="preserve">
-    <value>刻度尺显示</value>
-  </data>
-  <data name="buttonItemSimulator.Text" xml:space="preserve">
-    <value>开启仿真模式</value>
-  </data>
-  <data name="buttonSave.Text" xml:space="preserve">
-    <value>保存</value>
-  </data>
-  <data name="buttonSelect.Text" xml:space="preserve">
-    <value>选择</value>
-  </data>
-  <data name="buttonSysInfo.Text" xml:space="preserve">
-    <value>系统信息</value>
-  </data>
-  <data name="comboItem3.Text" xml:space="preserve">
-    <value>单点射击</value>
-  </data>
-  <data name="comboItem4.Text" xml:space="preserve">
-    <value>连续射击</value>
-  </data>
-  <data name="comboItem5.Text" xml:space="preserve">
-    <value>单点射击</value>
-  </data>
-  <data name="comboItem6.Text" xml:space="preserve">
-    <value>连续射击</value>
-  </data>
-  <data name="labelItem1.Text" xml:space="preserve">
-    <value>录屏时长（单位：分钟）</value>
-  </data>
-  <data name="labelItem2.Text" xml:space="preserve">
-    <value>快捷键</value>
-  </data>
-  <data name="labelItem3.Text" xml:space="preserve">
-    <value>刻度尺</value>
-  </data>
-  <data name="labelItemCamera.Text" xml:space="preserve">
-    <value>相机</value>
-  </data>
-  <data name="labelItemLanguage.Text" xml:space="preserve">
-    <value>语言</value>
-  </data>
-  <data name="labelItemScale.Text" xml:space="preserve">
-    <value>默认放大倍数</value>
-  </data>
-  <data name="labelItemStoragePath.Text" xml:space="preserve">
-    <value>存储路径</value>
-  </data>
-  <data name="lblConnectedInfo.Text" xml:space="preserve">
-    <value>没有连接录像设备</value>
-  </data>
-  <data name="lblLaser.Text" xml:space="preserve">
-    <value>激光</value>
-  </data>
-  <data name="lblSimulator.Text" xml:space="preserve">
-    <value>模拟图像</value>
-  </data>
-  <data name="lense.Text" xml:space="preserve">
-    <value>物镜</value>
+  <data name="lblZColour.Text" xml:space="preserve">
+    <value>颜色</value>
   </data>
 </root>

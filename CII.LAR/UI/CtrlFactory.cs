@@ -15,6 +15,7 @@ namespace CII.LAR.UI
         private StatisticsCtrl statisticsCtrl;
         private LaserAppearanceCtrl laserAppearanceCtrl;
         private RulerAppearanceCtrl rulerAppearanceCtrl;
+        private ScaleAppearanceCtrl scaleAppearanceCtrl;
         private LaserCtrl laserCtrl;
         private LaserAlignment laserAlignment;
         private VideoChooseCtrl videoChooseCtrl;
@@ -42,6 +43,7 @@ namespace CII.LAR.UI
             debugCtrl = new DebugCtrl();
             lenseCtrl = new ObjectLenseCtrl(richPictureBox);
             shortcutCtrl = new ShortcutCtrl(Program.EntryForm.hotKeyManager);
+            scaleAppearanceCtrl = new ScaleAppearanceCtrl(richPictureBox);
         }
 
         public static CtrlFactory GetCtrlFactory()
@@ -74,6 +76,9 @@ namespace CII.LAR.UI
                     break;
                 case CtrlType.RulerAppearanceCtrl:
                     ctrl = rulerAppearanceCtrl as T;
+                    break;
+                case CtrlType.ScaleAppearanceCtrl:
+                    ctrl = scaleAppearanceCtrl as T;
                     break;
                 case CtrlType.LaserCtrl:
                     ctrl = this.laserCtrl as T;

@@ -118,6 +118,7 @@ namespace CII.LAR
         VideoChooseCtrl,
         LaserHoleSize,
         RulerAppearanceCtrl,
+        ScaleAppearanceCtrl,
         DebugCtrl,
         LenseCtrl,
         ShortCut

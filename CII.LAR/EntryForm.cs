@@ -113,6 +113,7 @@ namespace CII.LAR
         private StatisticsCtrl statisticsCtrl;
         private LaserAppearanceCtrl laserAppearanceCtrl;
         private RulerAppearanceCtrl rulerAppearanceCtrl;
+        private ScaleAppearanceCtrl scaleAppearanceCtrl;
         private LaserCtrl laserCtrl;
         private LaserAlignment laserAlignment;
         private LaserHoleSize laserHoleSize;
@@ -434,6 +435,7 @@ namespace CII.LAR
             settingCtrl.UpdateSimulatorImageHandler += UpdateSimulatorImageHandler;
             settingCtrl.ShowObjectLenseManagerHandler += ShowObjectLenseManagerHandler;
             settingCtrl.ShowShortcutManagerHandler += ShowShortcutManagerHandler;
+            settingCtrl.ShowScaleAppearanceCtrlHandler += ShowScaleAppearanceCtrlHandler;
             BaseCtrls.Add(settingCtrl);
 
             statisticsCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<StatisticsCtrl>(CtrlType.StatisticsCtrl);
@@ -444,6 +446,9 @@ namespace CII.LAR
 
             rulerAppearanceCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<RulerAppearanceCtrl>(CtrlType.RulerAppearanceCtrl);
             BaseCtrls.Add(rulerAppearanceCtrl);
+
+            scaleAppearanceCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<ScaleAppearanceCtrl>(CtrlType.ScaleAppearanceCtrl);
+            BaseCtrls.Add(scaleAppearanceCtrl);
 
             laserCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserCtrl>(CtrlType.LaserCtrl);
             BaseCtrls.Add(laserCtrl);
@@ -490,6 +495,11 @@ namespace CII.LAR
         private void ShowShortcutManagerHandler()
         {
             ShowBaseCtrl(true, CtrlType.ShortCut);
+        }
+
+        private void ShowScaleAppearanceCtrlHandler()
+        {
+            ShowBaseCtrl(true, CtrlType.ScaleAppearanceCtrl);
         }
 
         private void OpenBtnClickHandler(string btnName)

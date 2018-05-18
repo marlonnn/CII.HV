@@ -174,4 +174,7 @@
   <data name="StrOpenSimulator" xml:space="preserve">
     <value>开启模拟模式</value>
   </data>
+  <data name="StrScaleAppearanceTitle" xml:space="preserve">
+    <value>刻度尺属性</value>
+  </data>
 </root>

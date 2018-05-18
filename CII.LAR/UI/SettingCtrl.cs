@@ -29,6 +29,9 @@ namespace CII.LAR.UI
         public delegate void ShowShortcutManager();
         public ShowShortcutManager ShowShortcutManagerHandler;
 
+        public delegate void ShowScaleAppearanceCtrl();
+        public ShowScaleAppearanceCtrl ShowScaleAppearanceCtrlHandler;
+
         public SettingCtrl(RichPictureBox richPictureBox) : base()
         {
             this.richPictureBox = richPictureBox;
@@ -142,6 +145,8 @@ namespace CII.LAR.UI
             resources.ApplyResources(this.labelItemScale, labelItemScale.Name);
             resources.ApplyResources(this.labelItem2, labelItem2.Name);
             resources.ApplyResources(this.btnShortcuts, btnShortcuts.Name);
+            resources.ApplyResources(this.labelItem3, labelItem3.Name);
+            resources.ApplyResources(this.btnScaleAppearance, btnScaleAppearance.Name);
             //this.itemContainer2.Refresh();
             foreach (var ctrl in this.Controls)
             {
@@ -258,6 +263,11 @@ namespace CII.LAR.UI
             ShowShortcutManagerHandler?.Invoke();
             //ShortcutsForm sf = new ShortcutsForm();
             //sf.ShowDialog();
+        }
+
+        private void btnScaleAppearance_Click(object sender, EventArgs e)
+        {
+            ShowScaleAppearanceCtrlHandler?.Invoke();
         }
     }
 }

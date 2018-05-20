@@ -140,8 +140,11 @@ namespace CII.LAR.Laser
 
         private void SendMotorPointOnMouseDown()
         {
-            Coordinate.GetCoordinate().SetMotorThisPoint(Point.Ceiling((new Circle(ActiveCircle.StartPoint, ActiveCircle.InnerCircleSize)).CenterPoint));
-            Coordinate.GetCoordinate().SendAlignmentMotorPoint();
+            if (Program.SysConfig.LiveMode)
+            {
+                Coordinate.GetCoordinate().SetMotorThisPoint(Point.Ceiling((new Circle(ActiveCircle.StartPoint, ActiveCircle.InnerCircleSize)).CenterPoint));
+                Coordinate.GetCoordinate().SendAlignmentMotorPoint();
+            }
         }
 
         public void UpdateHoleNumber(int value)

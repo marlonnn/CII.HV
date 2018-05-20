@@ -908,7 +908,7 @@ namespace CII.LAR.UI
                 }
                 if (this.restrictArea != null)
                 {
-                    Color drawColor = Color.FromArgb(200, Color.Red);
+                    Color drawColor = Color.FromArgb(200, Color.Blue);
 
                     using (Pen pen = new Pen(drawColor, 2f))
                         this.restrictArea.TestDrawMotorRectangle(e.Graphics, pen);

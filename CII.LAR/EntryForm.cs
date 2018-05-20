@@ -364,8 +364,8 @@ namespace CII.LAR
                 Program.SysConfig.PropertyChanged += SysConfig_PropertyChanged;
             }
 
-            InitializeIdleTimer();
-            //this.richPictureBox.RestrictArea.TransformMotorOriginalPoints();
+            //InitializeIdleTimer();
+            this.richPictureBox.RestrictArea.TransformMotorOriginalPoints();
         }
 
         private void SysConfig_PropertyChanged(object sender, PropertyChangedEventArgs e)

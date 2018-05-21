@@ -15,7 +15,7 @@ namespace CII.LAR.Algorithm
         /// <summary>
         /// 最小限位
         /// </summary>
-        private int minLimit = 1000;
+        private int minLimit = 500;
         public int MinLimit
         {
             get { return this.minLimit; }
@@ -24,7 +24,7 @@ namespace CII.LAR.Algorithm
         /// <summary>
         /// 最大限位
         /// </summary>
-        private int maxLimit = 1500;
+        private int maxLimit = 2500;
         public int MaxLimit
         {
             get { return this.maxLimit; }
@@ -89,14 +89,18 @@ namespace CII.LAR.Algorithm
         public List<Point> TransformMotorOriginalPoints()
         {
             transformedMotorPoints = new List<Point>();
-            Matrix<double> finalMatrix = Program.SysConfig.LaserConfig.FinalMatrix;
-            Matrix<double> Inverse = finalMatrix.Inverse();
-            foreach (var originalPoint in originalMotorPoints)
+            if (Program.SysConfig.LaserConfig.FinalMatrix.Rank() != 0)
             {
-                transformedMotorPoints.Add(Calculate(originalPoint, Inverse));
+                Matrix<double> finalMatrix = Program.SysConfig.LaserConfig.FinalMatrix;
+                Matrix<double> Inverse = finalMatrix.Inverse();
+                foreach (var originalPoint in originalMotorPoints)
+                {
+                    transformedMotorPoints.Add(Calculate(originalPoint, Inverse));
+                }
+                CalculateRegion();
+                DrawRestrict = true;
             }
-            CalculateRegion();
-            DrawRestrict = true;
+            this.picturebox.Invalidate();
             return transformedMotorPoints;
         }
 
@@ -115,10 +119,10 @@ namespace CII.LAR.Algorithm
                 {
                     g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                     g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                    g.DrawLine(pen, transformedMotorPoints[0].X, transformedMotorPoints[0].Y, transformedMotorPoints[1].X, transformedMotorPoints[1].Y);
-                    g.DrawLine(pen, transformedMotorPoints[1].X, transformedMotorPoints[1].Y, transformedMotorPoints[2].X, transformedMotorPoints[2].Y);
-                    g.DrawLine(pen, transformedMotorPoints[2].X, transformedMotorPoints[2].Y, transformedMotorPoints[3].X, transformedMotorPoints[3].Y);
-                    g.DrawLine(pen, transformedMotorPoints[3].X, transformedMotorPoints[3].Y, transformedMotorPoints[0].X, transformedMotorPoints[0].Y);
+                    //g.DrawLine(pen, transformedMotorPoints[0].X, transformedMotorPoints[0].Y, transformedMotorPoints[1].X, transformedMotorPoints[1].Y);
+                    //g.DrawLine(pen, transformedMotorPoints[1].X, transformedMotorPoints[1].Y, transformedMotorPoints[2].X, transformedMotorPoints[2].Y);
+                    //g.DrawLine(pen, transformedMotorPoints[2].X, transformedMotorPoints[2].Y, transformedMotorPoints[3].X, transformedMotorPoints[3].Y);
+                    //g.DrawLine(pen, transformedMotorPoints[3].X, transformedMotorPoints[3].Y, transformedMotorPoints[0].X, transformedMotorPoints[0].Y);
 
                     using (SolidBrush sb = new SolidBrush(Color.FromArgb(0xC8, 0x80, 0x80, 0x80)))
                         g.FillRegion(sb, VideoRegion);

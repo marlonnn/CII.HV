@@ -146,7 +146,7 @@ namespace CII.LAR.UI
                 else if (Index == 7)
                 {
                     this.btnNext.Text = Res.LaserAlignment.StrSave;
-                    if (Program.SysConfig.LiveMode)
+                    //if (Program.SysConfig.LiveMode)
                     {
                         //计算平均转换矩阵
                         Coordinate.GetCoordinate().CalculateOtherMatix();
@@ -156,7 +156,6 @@ namespace CII.LAR.UI
                         Console.WriteLine(" final matrix Rank: " + v.Rank());
                         string matrixJsonString = JsonFile.GetJsonTextFromConfig<Matrix<double>>(v);
                         JsonFile.WriteMatrixConfigToLocal(matrixJsonString);
-                        this.richPictureBox.RestrictArea.TransformMotorOriginalPoints();
                         //关闭红光引导光
                         EnableRedLaser(false);
                     }
@@ -202,6 +201,7 @@ namespace CII.LAR.UI
                 this.Enabled = false;
                 this.btnNext.Text = Res.LaserAlignment.StrNext;
                 this.RichPictureBox.ZoomFit();
+                if (Index == -2) this.richPictureBox.RestrictArea.TransformMotorOriginalPoints();
             }
         }
 

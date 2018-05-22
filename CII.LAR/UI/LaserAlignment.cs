@@ -146,7 +146,7 @@ namespace CII.LAR.UI
                 else if (Index == 7)
                 {
                     this.btnNext.Text = Res.LaserAlignment.StrSave;
-                    //if (Program.SysConfig.LiveMode)
+                    if (Program.SysConfig.LiveMode)
                     {
                         //计算平均转换矩阵
                         Coordinate.GetCoordinate().CalculateOtherMatix();

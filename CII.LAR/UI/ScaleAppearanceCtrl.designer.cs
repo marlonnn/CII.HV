@@ -167,7 +167,7 @@
             this.Controls.Add(this.line1);
             this.DoubleBuffered = true;
             this.Name = "ScaleAppearanceCtrl";
-            this.Title = "Scale Appearance";
+            this.Title = global::CII.LAR.Properties.Resources.StrScaleAppearanceTitle;
             this.Controls.SetChildIndex(this.closeButton, 0);
             this.Controls.SetChildIndex(this.line1, 0);
             this.Controls.SetChildIndex(this.lblTransparency, 0);

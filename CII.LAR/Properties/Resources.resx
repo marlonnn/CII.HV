@@ -220,6 +220,9 @@
   <data name="StrRulerAppearanceTitle" xml:space="preserve">
     <value>Ruler Appearance</value>
   </data>
+  <data name="StrScaleAppearanceTitle" xml:space="preserve">
+    <value>Scale Appearance</value>
+  </data>
   <data name="StrShortcutTitle" xml:space="preserve">
     <value>Keyboard Shortcut Configuration</value>
   </data>

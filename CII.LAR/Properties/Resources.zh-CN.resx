@@ -147,6 +147,9 @@
   <data name="StrRulerAppearanceTitle" xml:space="preserve">
     <value>测量工具属性</value>
   </data>
+  <data name="StrScaleAppearanceTitle" xml:space="preserve">
+    <value>刻度尺属性</value>
+  </data>
   <data name="StrLaserCtrlTitle" xml:space="preserve">
     <value>激光器控制</value>
   </data>

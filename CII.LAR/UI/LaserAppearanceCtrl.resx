@@ -125,13 +125,13 @@
     <value>closeButton</value>
   </data>
   <data name="&gt;&gt;closeButton.Type" xml:space="preserve">
-    <value>Cii.Lar.UI.TransparentButton, Cii.Lar, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>CII.LAR.UI.TransparentButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;closeButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;closeButton.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>13</value>
   </data>
   <data name="line1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 17</value>
@@ -156,55 +156,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;line1.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="lblSowHoleSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 34</value>
-  </data>
-  <data name="lblSowHoleSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 23</value>
-  </data>
-  <data name="lblSowHoleSize.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="lblSowHoleSize.Text" xml:space="preserve">
-    <value>Show Hole Size</value>
-  </data>
-  <data name="&gt;&gt;lblSowHoleSize.Name" xml:space="preserve">
-    <value>lblSowHoleSize</value>
-  </data>
-  <data name="&gt;&gt;lblSowHoleSize.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;lblSowHoleSize.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lblSowHoleSize.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="checkBoxX1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>151, 35</value>
-  </data>
-  <data name="checkBoxX1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>22, 23</value>
-  </data>
-  <data name="checkBoxX1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;checkBoxX1.Name" xml:space="preserve">
-    <value>checkBoxX1</value>
-  </data>
-  <data name="&gt;&gt;checkBoxX1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.CheckBoxX, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;checkBoxX1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;checkBoxX1.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
   <data name="lblTransparency.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 63</value>
+    <value>3, 32</value>
   </data>
   <data name="lblTransparency.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 23</value>
@@ -228,7 +183,7 @@
     <value>11</value>
   </data>
   <data name="sliderTransparency.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 63</value>
+    <value>150, 32</value>
   </data>
   <data name="sliderTransparency.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 23</value>
@@ -249,7 +204,7 @@
     <value>10</value>
   </data>
   <data name="lblThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 92</value>
+    <value>3, 61</value>
   </data>
   <data name="lblThickness.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 23</value>
@@ -273,7 +228,7 @@
     <value>9</value>
   </data>
   <data name="sliderThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 92</value>
+    <value>150, 61</value>
   </data>
   <data name="sliderThickness.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 23</value>
@@ -294,7 +249,7 @@
     <value>8</value>
   </data>
   <data name="lblTargerSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 121</value>
+    <value>3, 90</value>
   </data>
   <data name="lblTargerSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 23</value>
@@ -318,7 +273,7 @@
     <value>7</value>
   </data>
   <data name="sliderTargetSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 121</value>
+    <value>150, 90</value>
   </data>
   <data name="sliderTargetSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 23</value>
@@ -339,7 +294,7 @@
     <value>6</value>
   </data>
   <data name="lblZoneSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 150</value>
+    <value>3, 119</value>
   </data>
   <data name="lblZoneSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 23</value>
@@ -363,7 +318,7 @@
     <value>5</value>
   </data>
   <data name="sliderZoneSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 150</value>
+    <value>150, 119</value>
   </data>
   <data name="sliderZoneSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 23</value>
@@ -384,7 +339,7 @@
     <value>4</value>
   </data>
   <data name="lblZoneColour.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 179</value>
+    <value>3, 148</value>
   </data>
   <data name="lblZoneColour.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 23</value>
@@ -408,7 +363,7 @@
     <value>3</value>
   </data>
   <data name="sliderZoneColour.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 179</value>
+    <value>150, 148</value>
   </data>
   <data name="sliderZoneColour.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 23</value>
@@ -429,7 +384,7 @@
     <value>2</value>
   </data>
   <data name="btnLaserCtrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 208</value>
+    <value>3, 177</value>
   </data>
   <data name="btnLaserCtrl.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 23</value>
@@ -438,7 +393,7 @@
     <value>14</value>
   </data>
   <data name="btnLaserCtrl.Text" xml:space="preserve">
-    <value>Laser Control</value>
+    <value>Back</value>
   </data>
   <data name="&gt;&gt;btnLaserCtrl.Name" xml:space="preserve">
     <value>btnLaserCtrl</value>
@@ -457,7 +412,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnDefault.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 208</value>
+    <value>165, 177</value>
   </data>
   <data name="btnDefault.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 23</value>
@@ -480,19 +435,19 @@
   <data name="&gt;&gt;btnDefault.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 12</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>315, 234</value>
+    <value>315, 212</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>LaserAppearanceCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Cii.Lar.UI.BaseCtrl, Cii.Lar, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>CII.LAR.UI.BaseCtrl, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

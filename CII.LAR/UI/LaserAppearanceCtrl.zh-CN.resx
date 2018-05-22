@@ -121,7 +121,7 @@
     <value>恢复默认</value>
   </data>
   <data name="btnLaserCtrl.Text" xml:space="preserve">
-    <value>激光器控制</value>
+    <value>返回</value>
   </data>
   <data name="lblSowHoleSize.Text" xml:space="preserve">
     <value>显示孔大小</value>

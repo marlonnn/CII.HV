@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LaserAppearanceCtrl));
             this.line1 = new DevComponents.DotNetBar.Controls.Line();
-            this.lblSowHoleSize = new DevComponents.DotNetBar.LabelX();
-            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.lblTransparency = new DevComponents.DotNetBar.LabelX();
             this.sliderTransparency = new DevComponents.DotNetBar.Controls.Slider();
             this.lblThickness = new DevComponents.DotNetBar.LabelX();
@@ -54,25 +52,6 @@
             // 
             resources.ApplyResources(this.line1, "line1");
             this.line1.Name = "line1";
-            // 
-            // lblSowHoleSize
-            // 
-            // 
-            // 
-            // 
-            this.lblSowHoleSize.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            resources.ApplyResources(this.lblSowHoleSize, "lblSowHoleSize");
-            this.lblSowHoleSize.Name = "lblSowHoleSize";
-            // 
-            // checkBoxX1
-            // 
-            // 
-            // 
-            // 
-            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            resources.ApplyResources(this.checkBoxX1, "checkBoxX1");
-            this.checkBoxX1.Name = "checkBoxX1";
-            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             // 
             // lblTransparency
             // 
@@ -218,15 +197,11 @@
             this.Controls.Add(this.lblThickness);
             this.Controls.Add(this.sliderTransparency);
             this.Controls.Add(this.lblTransparency);
-            this.Controls.Add(this.checkBoxX1);
-            this.Controls.Add(this.lblSowHoleSize);
             this.Controls.Add(this.line1);
             this.Name = "LaserAppearanceCtrl";
             this.Title = global::CII.LAR.Properties.Resources.StrLaserCtrlTitle;
             this.Controls.SetChildIndex(this.closeButton, 0);
             this.Controls.SetChildIndex(this.line1, 0);
-            this.Controls.SetChildIndex(this.lblSowHoleSize, 0);
-            this.Controls.SetChildIndex(this.checkBoxX1, 0);
             this.Controls.SetChildIndex(this.lblTransparency, 0);
             this.Controls.SetChildIndex(this.sliderTransparency, 0);
             this.Controls.SetChildIndex(this.lblThickness, 0);
@@ -246,8 +221,6 @@
         #endregion
 
         private DevComponents.DotNetBar.Controls.Line line1;
-        private DevComponents.DotNetBar.LabelX lblSowHoleSize;
-        private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX1;
         private DevComponents.DotNetBar.LabelX lblTransparency;
         private DevComponents.DotNetBar.Controls.Slider sliderTransparency;
         private DevComponents.DotNetBar.LabelX lblThickness;

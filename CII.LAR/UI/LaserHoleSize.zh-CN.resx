@@ -124,7 +124,7 @@
     <value>射击</value>
   </data>
   <data name="btnLaserCtrl.Text" xml:space="preserve">
-    <value>激光器控制</value>
+    <value>返回</value>
   </data>
   <data name="btnSave.Text" xml:space="preserve">
     <value>保存</value>

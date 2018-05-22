@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using CII.LAR.DrawTools;
 using CII.LAR.SysClass;
 using System.Windows.Forms.DataVisualization.Charting;
+using CII.LAR.Laser;
+using CII.LAR.Commond;
 
 namespace CII.LAR.UI
 {
@@ -31,6 +33,8 @@ namespace CII.LAR.UI
             }
         }
 
+        private SerialPortCommunication serialPortCom;
+
         public LaserHoleSize()
         {
             resources = new ComponentResourceManager(typeof(LaserHoleSize));
@@ -42,6 +46,7 @@ namespace CII.LAR.UI
             InitializeChartSeries();
             InitializeHolePulsePoints();
             this.holeSizeCtrl.UpdownClickHandler += UpdownClickHandler;
+            serialPortCom = SerialPortCommunication.GetInstance();
 
         }
 
@@ -346,6 +351,25 @@ namespace CII.LAR.UI
                     }
                     this.chart1.Invalidate();
                 }
+            }
+        }
+
+        bool flashing = false;
+
+        private void btnFire_Click(object sender, EventArgs e)
+        {
+            Program.EntryForm.Laser.Flashing = !flashing;
+
+            var fixedLaser = Program.EntryForm.Laser as FixedLaser;
+            if (fixedLaser != null)
+            {
+                if (serialPortCom != null)
+                {
+                    LaserC71Request c71 = new LaserC71Request();
+                    var bytes = serialPortCom.Encode(c71);
+                    serialPortCom.SendData(bytes);
+                }
+                //Coordinate.GetCoordinate().SendAlignmentMotorPoint();
             }
         }
     }

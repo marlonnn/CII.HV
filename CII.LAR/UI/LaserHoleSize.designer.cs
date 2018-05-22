@@ -100,6 +100,7 @@
             this.btnFire.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             resources.ApplyResources(this.btnFire, "btnFire");
             this.btnFire.Name = "btnFire";
+            this.btnFire.Click += new System.EventHandler(this.btnFire_Click);
             // 
             // btnSave
             // 

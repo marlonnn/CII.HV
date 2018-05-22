@@ -810,10 +810,10 @@ namespace CII.LAR.Laser
         private void DrawCross(Graphics g, Pen pen, Circle circle, Size size)
         {
             //draw start point cross
-            g.DrawLine(pen, circle.CenterPoint.X, circle.CenterPoint.Y - size.Width / 2,
-                circle.CenterPoint.X, circle.CenterPoint.Y + size.Width / 2);
-            g.DrawLine(pen, circle.CenterPoint.X - size.Width / 2, circle.CenterPoint.Y,
-                circle.CenterPoint.X + size.Width / 2, circle.CenterPoint.Y);
+            g.DrawLine(pen, circle.CenterPoint.X, circle.CenterPoint.Y - 10 * this.GraphicsProperties.TargetSize,
+                circle.CenterPoint.X, circle.CenterPoint.Y + 10 * this.GraphicsProperties.TargetSize);
+            g.DrawLine(pen, circle.CenterPoint.X - 10 * this.GraphicsProperties.TargetSize, circle.CenterPoint.Y,
+                circle.CenterPoint.X + 10 * this.GraphicsProperties.TargetSize, circle.CenterPoint.Y);
         }
 
         private void DrawConnectLine(Graphics g, Pen pen, Circle startCircle, Circle endCircle, CircleData circleData, bool isArc)
@@ -886,7 +886,7 @@ namespace CII.LAR.Laser
 
         private void Draw(Graphics g)
         {
-            Pen pen = new Pen(Color.Black, 1f);
+            Pen pen = new Pen(Color.Black, this.GraphicsProperties.PenWidth);
             //draw start point cross
             DrawCross(g, pen, StartCircle, crossSize);
 

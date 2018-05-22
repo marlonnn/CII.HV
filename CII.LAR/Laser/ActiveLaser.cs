@@ -41,11 +41,11 @@ namespace CII.LAR.Laser
                 this.GraphicsProperties.ExclusionSize + pulseSize);
             activeCircle.InnerCircleSize = new SizeF(pulseSize, pulseSize);
 
-            //for (int i=0; i< activeCircle.InnerCircles.Count; i++)
-            //{
-            //    activeCircle.InnerCircles[i] = new Circle(activeCircle.InnerCircles[i].CenterPoint, activeCircle.InnerCircleSize);
-            //    activeCircle.OutterCircle[i] = new Circle(activeCircle.OutterCircle[i].CenterPoint, activeCircle.OutterCircleSize);
-            //}
+            for (int i = 0; i < activeCircle.InnerCircles.Count; i++)
+            {
+                activeCircle.InnerCircles[i] = new Circle(activeCircle.InnerCircles[i].CenterPoint, activeCircle.InnerCircleSize);
+                activeCircle.OutterCircle[i] = new Circle(activeCircle.OutterCircle[i].CenterPoint, activeCircle.OutterCircleSize);
+            }
             this.richPictureBox.Invalidate();
         }
 

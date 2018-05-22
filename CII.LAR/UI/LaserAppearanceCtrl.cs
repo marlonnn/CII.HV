@@ -32,7 +32,7 @@ namespace CII.LAR.UI
 
             this.sliderTargetSize.Value = graphicsProperties.TargetSize;
             this.sliderThickness.Value = graphicsProperties.PenWidth;
-            this.sliderTransparency.Value = graphicsProperties.Alpha * (100 / 0xFF);
+            this.sliderTransparency.Value = (int)(graphicsProperties.Alpha * 100 / 255f);
             this.sliderZoneSize.Value = graphicsProperties.ExclusionSize;
             this.sliderZoneColour.Value = graphicsProperties.ColorIndex() * 10;
         }

@@ -34,7 +34,7 @@ namespace CII.LAR.UI
             invokeColorChange = false;
             this.sliderTargetSize.Value = (int)graphicsProperties.TextSize;
             this.sliderThickness.Value = graphicsProperties.PenWidth;
-            this.sliderTransparency.Value = graphicsProperties.Alpha * (100 / 0xFF);
+            this.sliderTransparency.Value = (int)((graphicsProperties.Alpha * 100) / 255f);
             //this.sliderTickLength.Value = graphicsProperties.TargetSize;
             this.sliderColour.Value = graphicsProperties.ColorIndex() * 10;
             invokeColorChange = true;
@@ -56,7 +56,7 @@ namespace CII.LAR.UI
                 var value = this.sliderTransparency.Value;
                 if (graphicsProperties != null)
                 {
-                    graphicsProperties.Alpha = (0xFF / 100) * value;
+                    graphicsProperties.Alpha = (int)((0xFF * value ) / 100f);
                     this.pictureBox.Invalidate();
                 }
             }

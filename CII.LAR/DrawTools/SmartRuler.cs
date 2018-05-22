@@ -29,13 +29,11 @@ namespace CII.LAR.DrawTools
             }
         }
 
-        private Font font;
         private double centimeterPixels;
         public SmartRuler(RichPictureBox pictureBox)
         {
             this.pictureBox = pictureBox;
             this.showRulers = false;
-            font = new Font("Microsoft Sans Serif", 8.25f);
         }
 
         public double MillimeterToPixel(double millimeter)
@@ -67,13 +65,13 @@ namespace CII.LAR.DrawTools
                 using (Pen pen = new Pen(Color.FromArgb(gp.Alpha, gp.Color), gp.PenWidth))
 
                 {
-                    PaintXAxis(g, pen);
-                    PaintYAxis(g, pen);
+                    PaintXAxis(g, pen, gp);
+                    PaintYAxis(g, pen, gp);
                 }
             }
         }
 
-        private void PaintYAxis(Graphics g, Pen pen)
+        private void PaintYAxis(Graphics g, Pen pen, GraphicsProperties gp)
         {
             var startYPositive = pictureBox.Height / 2;
             var endYPositive = pictureBox.Height;
@@ -93,8 +91,13 @@ namespace CII.LAR.DrawTools
                 g.DrawLine(pen, startX, (float)(i + centimeterPixels / 2), startX - 5, (float)(i + centimeterPixels / 2));
 
                 string pns = positiveNumber.ToString("F2");
+                Font font = new Font("Microsoft Sans Serif", 8.25f + gp.PenWidth / 10f);
                 var pSize = g.MeasureString(pns, font);
-                if (positiveNumber > 0) g.DrawString(pns, font, Brushes.Black, endX - pSize.Width, (float)(i - pSize.Height / 2));
+                if (positiveNumber > 0)
+                {
+                    using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
+                        g.DrawString(pns, font, sb, endX - pSize.Width, (float)(i - pSize.Height / 2));
+                }
 
                 //draw negative major ticks
                 g.DrawLine(pen, startX, (float)startYNegative, endX, (float)startYNegative);
@@ -104,15 +107,20 @@ namespace CII.LAR.DrawTools
                 var negativeNumber = -1 * positiveNumber;
                 var nns = negativeNumber.ToString("F2");
                 var nSize = g.MeasureString(nns, font);
-                if (negativeNumber < 0) g.DrawString(nns, font, Brushes.Black, endX - nSize.Width, (float)(startYNegative - nSize.Height / 2));
+                if (negativeNumber < 0)
+                {
+                    using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
+                        g.DrawString(nns, font, sb, endX - nSize.Width, (float)(startYNegative - nSize.Height / 2));
+                }
                 startYNegative -= centimeterPixels;
                 count++;
+                font.Dispose();
             }
 
             g.DrawLine(pen, pictureBox.Width / 2, 0, pictureBox.Width / 2, pictureBox.Height);
         }
 
-        private void PaintXAxis(Graphics g, Pen pen)
+        private void PaintXAxis(Graphics g, Pen pen, GraphicsProperties gp)
         {
             var startXPositive = pictureBox.Width / 2;
             var endXPositive = pictureBox.Width;
@@ -132,9 +140,14 @@ namespace CII.LAR.DrawTools
                 //draw positive minor ticks
                 g.DrawLine(pen, (float)(i + centimeterPixels / 2), startY, (float)(i + centimeterPixels / 2), startY - 5);
 
+                Font font = new Font("Microsoft Sans Serif", 8.25f + gp.PenWidth / 10f);
                 string pns = positiveNumber.ToString("F2");
                 var pSize = g.MeasureString(pns, font);
-                if (positiveNumber > 0) g.DrawString(pns, font, Brushes.Black, (float)(i - pSize.Width / 2), endY - pSize.Height);
+                if (positiveNumber > 0)
+                {
+                    using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
+                        g.DrawString(pns, font, sb, (float)(i - pSize.Width / 2), endY - pSize.Height);
+                }
 
                 //draw negative major ticks
                 g.DrawLine(pen, (float)startXNegative, startY, (float)startXNegative, endY);
@@ -144,9 +157,14 @@ namespace CII.LAR.DrawTools
                 var negativeNumber = -1 * positiveNumber;
                 var nns = negativeNumber.ToString("F2");
                 var nSize = g.MeasureString(nns, font);
-                if (negativeNumber < 0) g.DrawString(nns, font, Brushes.Black, (float)(startXNegative - nSize.Width / 2), endY - nSize.Height);
+                if (negativeNumber < 0)
+                {
+                    using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
+                        g.DrawString(nns, font, sb, (float)(startXNegative - nSize.Width / 2), endY - nSize.Height);
+                } 
                 startXNegative -= centimeterPixels;
                 count++;
+                font.Dispose();
             }
 
             g.DrawLine(pen, 0, pictureBox.Height / 2, pictureBox.Width, pictureBox.Height / 2);

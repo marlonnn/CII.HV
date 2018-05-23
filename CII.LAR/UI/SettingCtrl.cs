@@ -147,6 +147,9 @@ namespace CII.LAR.UI
             resources.ApplyResources(this.btnShortcuts, btnShortcuts.Name);
             resources.ApplyResources(this.labelItem3, labelItem3.Name);
             resources.ApplyResources(this.btnScaleAppearance, btnScaleAppearance.Name);
+            resources.ApplyResources(this.comboItem5, "comboItem5");
+            resources.ApplyResources(this.comboItem6, "comboItem6");
+            this.cmbLaser.Refresh();
             //this.itemContainer2.Refresh();
             foreach (var ctrl in this.Controls)
             {

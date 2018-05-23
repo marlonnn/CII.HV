@@ -453,12 +453,6 @@
   <data name="comboItem6.Text" xml:space="preserve">
     <value>Saturn Active</value>
   </data>
-  <data name="comboItem3.Text" xml:space="preserve">
-    <value>Saturn Fixed</value>
-  </data>
-  <data name="comboItem4.Text" xml:space="preserve">
-    <value>Saturn Active</value>
-  </data>
   <data name="labelItemScale.Text" xml:space="preserve">
     <value>Default scale coefficient</value>
   </data>

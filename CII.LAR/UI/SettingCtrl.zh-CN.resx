@@ -150,12 +150,6 @@
   <data name="buttonSysInfo.Text" xml:space="preserve">
     <value>系统信息</value>
   </data>
-  <data name="comboItem3.Text" xml:space="preserve">
-    <value>单点射击</value>
-  </data>
-  <data name="comboItem4.Text" xml:space="preserve">
-    <value>连续射击</value>
-  </data>
   <data name="comboItem5.Text" xml:space="preserve">
     <value>单点射击</value>
   </data>

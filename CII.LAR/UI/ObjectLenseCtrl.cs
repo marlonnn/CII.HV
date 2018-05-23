@@ -187,6 +187,7 @@ namespace CII.LAR.UI
             resources.ApplyResources(this.lblAdjustment, lblAdjustment.Name);
             resources.ApplyResources(this.lblCurrentLense, lblCurrentLense.Name);
             resources.ApplyResources(this.btnDelete, btnDelete.Name);
+            resources.ApplyResources(this.btnNew, btnNew.Name);
             this.Invalidate();
         }
 

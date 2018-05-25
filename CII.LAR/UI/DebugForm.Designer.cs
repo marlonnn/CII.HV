@@ -46,6 +46,8 @@
             this.lblMousePosition = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.lblMatrix = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblLaserStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // closeButton
@@ -208,10 +210,30 @@
             this.lblMatrix.Size = new System.Drawing.Size(214, 112);
             this.lblMatrix.TabIndex = 18;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 22);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(95, 12);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "激光器连接状态:";
+            // 
+            // lblLaserStatus
+            // 
+            this.lblLaserStatus.AutoSize = true;
+            this.lblLaserStatus.Location = new System.Drawing.Point(98, 22);
+            this.lblLaserStatus.Name = "lblLaserStatus";
+            this.lblLaserStatus.Size = new System.Drawing.Size(29, 12);
+            this.lblLaserStatus.TabIndex = 20;
+            this.lblLaserStatus.Text = "断开";
+            // 
             // DebugCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblLaserStatus);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.lblMatrix);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.lblMousePosition);
@@ -252,6 +274,8 @@
             this.Controls.SetChildIndex(this.label9, 0);
             this.Controls.SetChildIndex(this.lblMatrix, 0);
             this.Controls.SetChildIndex(this.closeButton, 0);
+            this.Controls.SetChildIndex(this.label10, 0);
+            this.Controls.SetChildIndex(this.lblLaserStatus, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,5 +301,7 @@
         private System.Windows.Forms.Label lblMousePosition;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblMatrix;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblLaserStatus;
     }
 }

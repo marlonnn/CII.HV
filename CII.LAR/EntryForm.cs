@@ -1256,6 +1256,7 @@ namespace CII.LAR
                         LogHelper.GetLogger<EntryForm>().Error(string.Format("电机1当前步数： {0}， 电机2当前步数： {1}", monitorData.Motor1Steps, monitorData.Motor2Steps));
                         //Entry.Log(string.Format("电机1当前步数： {0}， 电机2当前步数： {1}", monitorData.Motor1Steps, monitorData.Motor2Steps));
                         this.richPictureBox.df.UpdateResponseCode(Coordinate.GetCoordinate().ResponseCode);
+                        this.richPictureBox.df.UpdateLaserStatus();
                     }
 
                 }
@@ -1474,25 +1475,45 @@ namespace CII.LAR
         {
             if (serialPortCom != null)
             {
-                var ports = SerialPortHelper.GetHelper().GetPorts();
-                if (ports != null && ports.Count() > 0)
+                if (Program.SysConfig.LaserPortConected)
                 {
-                    foreach (var p in ports)
+                    //若激光器连接，则每隔2s发送消息
+                    LaserC01Request c01R = new LaserC01Request();
+                    byte[] c01Bytes = serialPortCom.Encode(c01R);
+                    serialPortCom.SendData(c01Bytes);
+                    Thread.Sleep(200);
+                    if (serialPortCom.FinalData != null)
                     {
-                        if (Program.SysConfig.MotorPort != null && Program.SysConfig.MotorPort == p) continue;
-                        if (serialPortCom.SerialPort.IsOpen) serialPortCom.Close();
-                        serialPortCom.SerialPortOpen(p, "9600", "8", "One", "None", "None");
-                        LaserC01Request c01R = new LaserC01Request();
-                        byte[] c01Bytes = serialPortCom.Encode(c01R);
-                        serialPortCom.SendData(c01Bytes);
-                        Thread.Sleep(100);
-                        if (serialPortCom.FinalData != null)
+                        //连接状态
+                    }
+                    else
+                    {
+                        //断开连接，需要尝试重连
+                        Program.SysConfig.LaserPortConected = false;
+                    }
+                }
+                else
+                {
+                    var ports = SerialPortHelper.GetHelper().GetPorts();
+                    if (ports != null && ports.Count() > 0)
+                    {
+                        foreach (var p in ports)
                         {
-                            Program.SysConfig.LaserPort = p;
-                            Program.SysConfig.LaserPortConected = true;
-                            this.LaserCheckTimer.Enabled = false;
-                            toolStripButtonLaserDebug.Enabled = true;
-                            break;
+                            if (Program.SysConfig.MotorPort != null && Program.SysConfig.MotorPort == p) continue;
+                            if (serialPortCom.SerialPort.IsOpen) serialPortCom.Close();
+                            serialPortCom.SerialPortOpen(p, "9600", "8", "One", "None", "None");
+                            LaserC01Request c01R = new LaserC01Request();
+                            byte[] c01Bytes = serialPortCom.Encode(c01R);
+                            serialPortCom.SendData(c01Bytes);
+                            Thread.Sleep(100);
+                            if (serialPortCom.FinalData != null)
+                            {
+                                Program.SysConfig.LaserPort = p;
+                                Program.SysConfig.LaserPortConected = true;
+                                //this.LaserCheckTimer.Enabled = false;
+                                toolStripButtonLaserDebug.Enabled = true;
+                                break;
+                            }
                         }
                     }
                 }

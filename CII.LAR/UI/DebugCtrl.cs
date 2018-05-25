@@ -40,6 +40,11 @@ namespace CII.LAR.UI
             this.motor2Origination.Text = oy.ToString();
         }
 
+        public void UpdateLaserStatus()
+        {
+            this.lblLaserStatus.Text = Program.SysConfig.LaserPortConected ? "已连接" : "断开";
+        }
+
         protected override void closeButton_Click(object sender, EventArgs e)
         {
             this.Visible = false;

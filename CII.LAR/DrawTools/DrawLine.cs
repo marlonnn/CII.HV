@@ -215,10 +215,49 @@ namespace CII.LAR.DrawTools
 
         public override HitTestResult HitTestForSelection(RichPictureBox richPictureBox, Point point)
         {
-            Rectangle rect = new Rectangle(Point.Ceiling(startDataPoint), new Size((int)(endDataPoint.X - startDataPoint.X), 1));
-            rect.Inflate(0, this.SelectionHitTestWidth);
+            //Rectangle rect = new Rectangle(Point.Ceiling(startDataPoint), new Size((int)(Math.Abs(endDataPoint.X - startDataPoint.X)), 1));
+            //rect.Inflate(0, this.SelectionHitTestWidth);
+            Rectangle rect = CalculateTwoPointRectangle();
             return rect.Contains(point) ? new HitTestResult(ElementType.Gate, 0) : new HitTestResult(ElementType.Nothing, -1);
         }
 
+        /// <summary>
+        /// 计算出由起点和终点组成的矩形区域
+        /// 是否选中直线的标准为鼠标按下点是否在矩形区域
+        /// </summary>
+        /// <returns></returns>
+        private Rectangle CalculateTwoPointRectangle()
+        {
+            Rectangle rectangle = Rectangle.Empty;
+            if (startDataPoint.X <= endDataPoint.X)
+            {
+                if (startDataPoint.Y <= endDataPoint.Y)
+                {
+                    int height = (int)(Math.Abs(endDataPoint.Y - startDataPoint.Y));
+                    rectangle = new Rectangle(Point.Ceiling(startDataPoint), 
+                        new Size((int)(Math.Abs(endDataPoint.X - startDataPoint.X)), height == 0 ? 4 : height));
+                }
+                else
+                {
+                    rectangle = Rectangle.Ceiling(new RectangleF(new PointF(startDataPoint.X, endDataPoint.Y), 
+                        new SizeF(Math.Abs(endDataPoint.X - startDataPoint.X), Math.Abs(endDataPoint.Y - startDataPoint.Y))));
+                }
+            }
+            else
+            {
+                if (startDataPoint.Y <= endDataPoint.Y)
+                {
+                    int height = (int)(Math.Abs(endDataPoint.Y - startDataPoint.Y));
+                    RectangleF rectF = new RectangleF(new PointF(endDataPoint.X, startDataPoint.Y), new Size((int)(Math.Abs(endDataPoint.X - startDataPoint.X)), height == 0 ? 4 : height));
+                    rectangle = Rectangle.Ceiling(rectF);
+                }
+                else
+                {
+                    RectangleF rectF = new RectangleF(endDataPoint, new SizeF(Math.Abs(endDataPoint.X - startDataPoint.X), Math.Abs(endDataPoint.Y - startDataPoint.Y)));
+                    rectangle = Rectangle.Ceiling(rectF);
+                }
+            }
+            return rectangle;
+        }
     }
 }

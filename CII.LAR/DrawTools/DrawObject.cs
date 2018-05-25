@@ -15,6 +15,11 @@ namespace CII.LAR.DrawTools
     /// </summary>
     public abstract class DrawObject
     {
+        public virtual int GateCount
+        {
+            get { return 1; }
+        }
+
         public ObjectType ObjectType;
 
         protected RichPictureBox richPictureBox;
@@ -292,7 +297,7 @@ namespace CII.LAR.DrawTools
             }
             else
             {
-                for (int i = 0; i < richPictureBox.GraphicsList.Count; i++)
+                for (int i = 0; i < GateCount; i++)
                 {
                     PointF dataPoint = point;
                     if (HitTest(i, dataPoint))

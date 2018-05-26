@@ -93,14 +93,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\DotNetBar for Windows Forms\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.Utils.v17.1, Version=17.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Reference\DevExpress.Utils.v17.1.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.XtraEditors.v17.1, Version=17.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Reference\DevExpress.XtraEditors.v17.1.dll</HintPath>
-    </Reference>
     <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Reference\log4net.dll</HintPath>
@@ -134,12 +126,6 @@
   <ItemGroup>
     <Compile Include="Algorithm\Coordinate.cs" />
     <Compile Include="Algorithm\RestrictArea.cs" />
-    <Compile Include="BaseXtraForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="BaseXtraForm.Designer.cs">
-      <DependentUpon>BaseXtraForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="ByteHelper.cs" />
     <Compile Include="Commond\LaserC0C.cs" />
     <Compile Include="Commond\LaserC00.cs" />
@@ -208,12 +194,6 @@
     <Compile Include="Laser\FixedLaser.cs" />
     <Compile Include="Laser\HolesInfo.cs" />
     <Compile Include="LogHelper.cs" />
-    <Compile Include="MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="MessageBoxManager.cs" />
     <Compile Include="MiniDump.cs" />
     <Compile Include="MsgQueue\ConcurrentQueue.cs" />
@@ -536,17 +516,11 @@
       <DependentUpon>VideoPropertyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Util.cs" />
-    <EmbeddedResource Include="BaseXtraForm.resx">
-      <DependentUpon>BaseXtraForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="EntryForm.resx">
       <DependentUpon>EntryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EntryForm.zh-CN.resx">
       <DependentUpon>EntryForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -820,8 +794,6 @@
     <Content Include="DrawTools\Rectangle.cur" />
     <Content Include="Reference\AForge.Video.VFW.dll" />
     <Content Include="Reference\AForge.Video.VFW.xml" />
-    <Content Include="Reference\DevExpress.Utils.v17.1.dll" />
-    <Content Include="Reference\DevExpress.XtraEditors.v17.1.dll" />
     <Content Include="Reference\log4net.dll" />
     <Content Include="Reference\MathNet.Numerics.dll" />
     <Content Include="Reference\Newtonsoft.Json.dll" />

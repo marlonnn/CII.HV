@@ -1,3 +1,0 @@
-[Key]
-Name=sdms[S]
-Str=2VC3-E04V-LZ5A

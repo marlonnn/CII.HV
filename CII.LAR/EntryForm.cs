@@ -1485,6 +1485,7 @@ namespace CII.LAR
                     if (serialPortCom.FinalData != null)
                     {
                         //连接状态
+                        Program.SysConfig.LaserPortConected = true;
                     }
                     else
                     {
@@ -1513,6 +1514,10 @@ namespace CII.LAR
                                 //this.LaserCheckTimer.Enabled = false;
                                 toolStripButtonLaserDebug.Enabled = true;
                                 break;
+                            }
+                            else
+                            {
+                                Program.SysConfig.LaserPortConected = false;
                             }
                         }
                     }

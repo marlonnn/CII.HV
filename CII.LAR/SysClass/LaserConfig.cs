@@ -16,6 +16,13 @@ namespace CII.LAR.SysClass
     [Serializable]
     public class LaserConfig
     {
+        [NonSerialized]
+        private bool isAlignment;
+        public bool IsAlignment
+        {
+            get { return this.isAlignment; }
+            set { this.isAlignment = false; }
+        }
         /// <summary>
         /// LD对应电流设定系数
         /// </summary>
@@ -104,6 +111,7 @@ namespace CII.LAR.SysClass
             InitializeHolePulsePoints();
             this.cof = 4934F;
             SavedPulseWidth = new List<double>();
+            this.isAlignment = false;
         }
 
         public void UpdatePulseWidth(float value)

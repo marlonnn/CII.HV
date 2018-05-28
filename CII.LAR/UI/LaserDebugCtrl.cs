@@ -25,6 +25,7 @@ namespace CII.LAR.UI
             this.Load += LaserDebugCtrl_Load;
             this.FormClosing += LaserDebugCtrl_FormClosing;
             serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
+            this.txtCompensationFactor.Text = Program.SysConfig.CompensationFactor.ToString();
         }
 
         private void LaserDebugCtrl_FormClosing(object sender, FormClosingEventArgs e)
@@ -282,6 +283,20 @@ namespace CII.LAR.UI
             redLaserOpen = !redLaserOpen;
             SendEnableLaserData();
             this.btn70.Text = redLaserOpen ? "Closed" : "Open";
+        }
+
+        private void txtCompensationFactor_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var value = float.Parse(this.txtCompensationFactor.Text);
+                if (value <= 0) return;
+                Program.SysConfig.CompensationFactor = value;
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

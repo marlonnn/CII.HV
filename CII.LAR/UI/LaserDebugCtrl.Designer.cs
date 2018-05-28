@@ -47,8 +47,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn70 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCompensationFactor = new System.Windows.Forms.TextBox();
             this.groupBoxLaser.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // slider
@@ -258,11 +262,40 @@
             this.btn70.UseVisualStyleBackColor = true;
             this.btn70.Click += new System.EventHandler(this.btn70_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtCompensationFactor);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Location = new System.Drawing.Point(5, 453);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(317, 73);
+            this.groupBox2.TabIndex = 35;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Motor";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(131, 12);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Compensation Factor: ";
+            // 
+            // txtCompensationFactor
+            // 
+            this.txtCompensationFactor.Location = new System.Drawing.Point(131, 34);
+            this.txtCompensationFactor.Name = "txtCompensationFactor";
+            this.txtCompensationFactor.Size = new System.Drawing.Size(100, 21);
+            this.txtCompensationFactor.TabIndex = 1;
+            this.txtCompensationFactor.TextChanged += new System.EventHandler(this.txtCompensationFactor_TextChanged);
+            // 
             // LaserDebugCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(329, 450);
+            this.ClientSize = new System.Drawing.Size(329, 538);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxLaser);
             this.Name = "LaserDebugCtrl";
@@ -271,6 +304,8 @@
             this.groupBoxLaser.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -296,5 +331,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btn70;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtCompensationFactor;
     }
 }

@@ -19,6 +19,17 @@ namespace CII.LAR.SysClass
     [Serializable]
     public class SysConfig
     {
+        /// <summary>
+        /// 电机补偿系数
+        /// 默认为 1.01
+        /// </summary>
+        private float compensationFactor;
+        public float CompensationFactor
+        {
+            get { return this.compensationFactor; }
+            set { this.compensationFactor = value; }
+        }
+
         private List<LocalHotKey> localHotKeyContainer; //Will hold our LocalHotKeys.
         public List<LocalHotKey> LocalHotKeyContainer
         {
@@ -357,8 +368,7 @@ namespace CII.LAR.SysClass
             this.localHotKeyContainer = new List<LocalHotKey>();
             this.globalHotKeyContainer = new List<GlobalHotKey>();
             this.chordHotKeyContainer = new List<ChordHotKey>();
-            //this.HotKeyManager = new HotKeyManager();
-            //this.HotKeyManager.LocalHotKeyContainer = new List<LocalHotKey>();
+            this.compensationFactor = 1.01f;
         }
 
         // set default value

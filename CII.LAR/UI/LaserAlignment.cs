@@ -321,6 +321,7 @@ namespace CII.LAR.UI
             {
                 Program.EntryForm.LaserType = LaserType.SaturnFixed;
             }
+            Program.SysConfig.LaserConfig.IsAlignment = this.Visible;
         }
 
         public override void InitializeLocation(Size size)

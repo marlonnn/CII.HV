@@ -20,19 +20,45 @@ namespace CII.LAR.Algorithm
     public class Coordinate
     {
         //上一点,电机坐标系
-        private Point lastPoint = Point.Empty;
-        public Point LastPoint
+        private PointF lastPoint = Point.Empty;
+        public PointF LastPoint
         {
-            get { return this.lastPoint; }
-            set { this.lastPoint = value; }
+            get
+            {
+                return Program.SysConfig.LaserConfig.IsAlignment ?  this.lastPoint : new PointF(this.lastPoint.X * Program.SysConfig.CompensationFactor, this.lastPoint.Y * Program.SysConfig.CompensationFactor);
+            }
+            set
+            {
+                if (Program.SysConfig.LaserConfig.IsAlignment)
+                {
+                    this.lastPoint = value;
+                }
+                else
+                {
+                    this.lastPoint = new PointF(value.X / Program.SysConfig.CompensationFactor, value.Y / Program.SysConfig.CompensationFactor);
+                }
+            }
         }
 
         //当前点，电机坐标系
-        private Point thisPoint;
-        public Point ThisPoint
+        private PointF thisPoint;
+        public PointF ThisPoint
         {
-            get { return this.thisPoint; }
-            set { this.thisPoint = value; }
+            get
+            {
+                return Program.SysConfig.LaserConfig.IsAlignment ? this.thisPoint : new PointF(this.thisPoint.X * Program.SysConfig.CompensationFactor, this.thisPoint.Y * Program.SysConfig.CompensationFactor);
+            }
+            set
+            {
+                if (Program.SysConfig.LaserConfig.IsAlignment)
+                {
+                    this.thisPoint = value;
+                }
+                else
+                {
+                    this.thisPoint = new PointF(value.X / Program.SysConfig.CompensationFactor, value.Y / Program.SysConfig.CompensationFactor);
+                }
+            }
         }
 
         private bool motionComplete = false;
@@ -123,13 +149,13 @@ namespace CII.LAR.Algorithm
             {
                 if (Program.SysConfig.LiveMode)
                 {
-                    int x = ThisPoint.X - LastPoint.X;
-                    int y = ThisPoint.Y - LastPoint.Y;
+                    int x = (int)(ThisPoint.X - LastPoint.X);
+                    int y = (int)(ThisPoint.Y - LastPoint.Y);
                     byte ox = x > 0 ? (byte)0x01 : (byte)0x00;
                     byte oy = y > 0 ? (byte)0x01 : (byte)0x00;
                     var code = LARCommandHelper.GetInstance().SetMotorSteps(0x01, ox, Math.Abs(x), 0x01, oy, Math.Abs(y));
                     ResponseCode = code.GetResponseCode();
-                    Console.WriteLine("Response code: " + ResponseCode + "last point: " + lastPoint.ToString());
+                    //Console.WriteLine("Response code: " + ResponseCode + "last point: " + LastPoint.ToString());
                     if (MoveStepHandler != null)
                     {
                         MoveStepHandler(x, ox, y, oy);
@@ -150,11 +176,14 @@ namespace CII.LAR.Algorithm
             //this.LastPoint = this.ThisPoint;
             if (Program.SysConfig.LiveMode)
             {
-                var screenArray = mb.DenseOfArray(new double[,] { { p.X }, { p.Y }, { 1 } });
-                if (Program.SysConfig.LaserConfig.FinalMatrix.Rank() != 0)
+                if (MotionComplete)
                 {
-                    var temp = Program.SysConfig.LaserConfig.FinalMatrix * screenArray;
-                    this.ThisPoint = new Point((int)temp[0, 0], (int)temp[1, 0]);
+                    var screenArray = mb.DenseOfArray(new double[,] { { p.X }, { p.Y }, { 1 } });
+                    if (Program.SysConfig.LaserConfig.FinalMatrix.Rank() != 0)
+                    {
+                        var temp = Program.SysConfig.LaserConfig.FinalMatrix * screenArray;
+                        this.ThisPoint = new Point((int)temp[0, 0], (int)temp[1, 0]);
+                    }
                 }
             }
         }
@@ -166,7 +195,7 @@ namespace CII.LAR.Algorithm
             if (Program.SysConfig.LaserConfig.FinalMatrix.Rank() != 0)
             {
                 var temp = Program.SysConfig.LaserConfig.FinalMatrix * screenArray;
-                this.lastPoint = new Point((int)temp[0, 0], (int)temp[1, 0]);
+                this.LastPoint = new Point((int)temp[0, 0], (int)temp[1, 0]);
             }
         }
 

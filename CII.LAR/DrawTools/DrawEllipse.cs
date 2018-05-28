@@ -261,8 +261,8 @@ namespace CII.LAR.DrawTools
         /// <returns></returns>
         private string GetCircumference()
         {
-            var length = PixelToMillimeter((2 * Math.PI * (ellipseForDraw.Rectangle.Height / 2) + 
-                4 * (ellipseForDraw.Rectangle.Width / 2 - ellipseForDraw.Rectangle.Height / 2)) / UnitOfMeasureFactor);
+            var length = (2 * Math.PI * (ellipseForDraw.Rectangle.Height / 2) + 
+                4 * (ellipseForDraw.Rectangle.Width / 2 - ellipseForDraw.Rectangle.Height / 2)) / UnitOfMeasureFactor;
             return string.Format("{0:F2} {1}", length, richPictureBox.UnitOfMeasure.ToString());
         }
 
@@ -273,7 +273,7 @@ namespace CII.LAR.DrawTools
         /// <returns></returns>
         private string GetArea()
         {
-            var area = Math.PI * PixelToMillimeter((ellipseForDraw.Rectangle.Width / (2 * UnitOfMeasureFactor))) * PixelToMillimeter((ellipseForDraw.Rectangle.Height / (2 * UnitOfMeasureFactor)));
+            var area = Math.PI * (ellipseForDraw.Rectangle.Width / (2 * UnitOfMeasureFactor)) * (ellipseForDraw.Rectangle.Height / (2 * UnitOfMeasureFactor));
             return string.Format("{0:F2} {1}²", area, richPictureBox.UnitOfMeasure.ToString());
         }
 

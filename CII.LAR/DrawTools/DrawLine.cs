@@ -203,8 +203,8 @@ namespace CII.LAR.DrawTools
 
         private string GetCircumference(PointF startPoint, PointF endPoint)
         {
-            double x = PixelToMillimeter(System.Math.Abs(endPoint.X - startPoint.X));
-            double y = PixelToMillimeter(System.Math.Abs(endPoint.Y - startPoint.Y));
+            float x = System.Math.Abs(endPoint.X - startPoint.X);
+            float y = System.Math.Abs(endPoint.Y - startPoint.Y);
             return string.Format("{0:F2} {1}", Math.Sqrt(x * x + y * y) / UnitOfMeasureFactor, richPictureBox.UnitOfMeasure.ToString());
         }
 

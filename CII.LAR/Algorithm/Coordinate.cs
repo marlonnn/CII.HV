@@ -149,16 +149,19 @@ namespace CII.LAR.Algorithm
             {
                 if (Program.SysConfig.LiveMode)
                 {
-                    int x = (int)(ThisPoint.X - LastPoint.X);
-                    int y = (int)(ThisPoint.Y - LastPoint.Y);
-                    byte ox = x > 0 ? (byte)0x01 : (byte)0x00;
-                    byte oy = y > 0 ? (byte)0x01 : (byte)0x00;
-                    var code = LARCommandHelper.GetInstance().SetMotorSteps(0x01, ox, Math.Abs(x), 0x01, oy, Math.Abs(y));
-                    ResponseCode = code.GetResponseCode();
-                    //Console.WriteLine("Response code: " + ResponseCode + "last point: " + LastPoint.ToString());
-                    if (MoveStepHandler != null)
+                    if (MotionComplete)
                     {
-                        MoveStepHandler(x, ox, y, oy);
+                        float x = ThisPoint.X - LastPoint.X;
+                        float y = ThisPoint.Y - LastPoint.Y;
+                        byte ox = x > 0 ? (byte)0x01 : (byte)0x00;
+                        byte oy = y > 0 ? (byte)0x01 : (byte)0x00;
+                        var code = LARCommandHelper.GetInstance().SetMotorSteps(0x01, ox, Math.Abs((int)x), 0x01, oy, Math.Abs((int)y));
+                        ResponseCode = code.GetResponseCode();
+                        //Console.WriteLine("Response code: " + ResponseCode + "last point: " + LastPoint.ToString());
+                        if (MoveStepHandler != null)
+                        {
+                            MoveStepHandler((int)x, ox, (int)y, oy);
+                        }
                     }
                 }
             }
@@ -191,11 +194,17 @@ namespace CII.LAR.Algorithm
         public void SetMotorLastPoint(Point p)
         {
             //this.LastPoint = this.ThisPoint;
-            var screenArray = mb.DenseOfArray(new double[,] { { p.X }, { p.Y }, { 1 } });
-            if (Program.SysConfig.LaserConfig.FinalMatrix.Rank() != 0)
+            if (Program.SysConfig.LiveMode)
             {
-                var temp = Program.SysConfig.LaserConfig.FinalMatrix * screenArray;
-                this.LastPoint = new Point((int)temp[0, 0], (int)temp[1, 0]);
+                var screenArray = mb.DenseOfArray(new double[,] { { p.X }, { p.Y }, { 1 } });
+                if (Program.SysConfig.LaserConfig.FinalMatrix.Rank() != 0)
+                {
+                    if (MotionComplete)
+                    {
+                        var temp = Program.SysConfig.LaserConfig.FinalMatrix * screenArray;
+                        this.LastPoint = new Point((int)temp[0, 0], (int)temp[1, 0]);
+                    }
+                }
             }
         }
 

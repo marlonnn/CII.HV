@@ -46,7 +46,8 @@ namespace CII.LAR.UI
         private Dictionary<string, FilterInfo> filterInfoDic;
         private void AddFilterInfo(FilterInfo filterInfo)
         {
-            filterInfoDic.Add(filterInfo.Name, filterInfo);
+            if (!filterInfoDic.ContainsKey(filterInfo.Name))
+                filterInfoDic.Add(filterInfo.Name, filterInfo);
         }
 
         public void EnumerateVideoDevices()
@@ -71,13 +72,14 @@ namespace CII.LAR.UI
             }
             else
             {
-                if (!filterInfoDic.ContainsKey("No DirectShow devices found"))
+                FilterInfo fileInfo = new FilterInfo("No DirectShow devices found");
+                if (!filterInfoDic.ContainsKey(fileInfo.Name))
                 {
                     ListViewItem item = new ListViewItem();
                     item.Text = "No DirectShow devices found";
                     //item.SubItems.Add("No DirectShow devices found");
                     listViewCamera.Items.Add(item);
-                    AddFilterInfo(new FilterInfo("No DirectShow devices found"));
+                    AddFilterInfo(fileInfo);
                 }
             }
             if (listViewCamera.SelectedItems != null)

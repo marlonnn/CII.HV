@@ -16,6 +16,16 @@ namespace CII.LAR.DrawTools
     /// </summary>
     public class DrawLine : DrawObject
     {
+        public struct Vector2D
+        {
+            public double X;
+            public double Y;
+            public Vector2D(double x, double y)
+            {
+                this.X = x;
+                this.Y = y;
+            }
+        }
         protected PointF startDataPoint;
         protected PointF endDataPoint;
         private GraphicsPath areaPath = null;
@@ -215,49 +225,113 @@ namespace CII.LAR.DrawTools
 
         public override HitTestResult HitTestForSelection(RichPictureBox richPictureBox, Point point)
         {
-            //Rectangle rect = new Rectangle(Point.Ceiling(startDataPoint), new Size((int)(Math.Abs(endDataPoint.X - startDataPoint.X)), 1));
-            //rect.Inflate(0, this.SelectionHitTestWidth);
-            Rectangle rect = CalculateTwoPointRectangle();
-            return rect.Contains(point) ? new HitTestResult(ElementType.Gate, 0) : new HitTestResult(ElementType.Nothing, -1);
+            return HitTestLine(startDataPoint, endDataPoint, point, 10) ? new HitTestResult(ElementType.Gate, 0) : new HitTestResult(ElementType.Nothing, -1);
+        }
+
+        #region MSDN Hit Test Lines and Curves 详情见：(https://msdn.microsoft.com/en-us/library/ms969920.aspx)
+        /// <summary>
+        /// 判断鼠标点是否在直线上
+        /// </summary>
+        /// <param name="pt0">起点</param>
+        /// <param name="pt1">终点</param>
+        /// <param name="ptMouse">鼠标垫</param>
+        /// <param name="nWidth">直线宽度</param>
+        /// <returns></returns>
+        private bool HitTestLine(PointF pt0, PointF pt1, Point ptMouse, int nWidth)
+        {
+            Vector2D tt0, tt1;
+            double dist;
+            int nHalfWidth;
+            //
+            //Get the half width of the line to adjust for hit testing of wide lines.
+            //
+            nHalfWidth = (nWidth / 2 < 1) ? 1 : nWidth / 2;
+            //
+            //Convert the line into a vector using the two endpoints.
+            //
+            tt0 = Point2Vector2D(pt0, pt1);
+            //
+            //Convert the line from the left endpoint to the mouse point into a vector.
+            //
+            tt1 = Point2Vector2D(pt0, ptMouse);
+            //
+            //Obtain the distance of the point from the line.
+            //
+            dist = GetLengthOfNormal(tt1, tt0);
+            //
+            //Return TRUE if the distance of the point from the line is within the width 
+            //of the line
+            //
+            return (dist >= -nHalfWidth && dist <= nHalfWidth);
         }
 
         /// <summary>
-        /// 计算出由起点和终点组成的矩形区域
-        /// 是否选中直线的标准为鼠标按下点是否在矩形区域
+        /// 两点转换为向量
         /// </summary>
+        /// <param name="p0"></param>
+        /// <param name="p1"></param>
         /// <returns></returns>
-        private Rectangle CalculateTwoPointRectangle()
+        private Vector2D Point2Vector2D(PointF p0, PointF p1)
         {
-            Rectangle rectangle = Rectangle.Empty;
-            if (startDataPoint.X <= endDataPoint.X)
-            {
-                if (startDataPoint.Y <= endDataPoint.Y)
-                {
-                    int height = (int)(Math.Abs(endDataPoint.Y - startDataPoint.Y));
-                    rectangle = new Rectangle(Point.Ceiling(startDataPoint), 
-                        new Size((int)(Math.Abs(endDataPoint.X - startDataPoint.X)), height == 0 ? 4 : height));
-                }
-                else
-                {
-                    rectangle = Rectangle.Ceiling(new RectangleF(new PointF(startDataPoint.X, endDataPoint.Y), 
-                        new SizeF(Math.Abs(endDataPoint.X - startDataPoint.X), Math.Abs(endDataPoint.Y - startDataPoint.Y))));
-                }
-            }
-            else
-            {
-                if (startDataPoint.Y <= endDataPoint.Y)
-                {
-                    int height = (int)(Math.Abs(endDataPoint.Y - startDataPoint.Y));
-                    RectangleF rectF = new RectangleF(new PointF(endDataPoint.X, startDataPoint.Y), new Size((int)(Math.Abs(endDataPoint.X - startDataPoint.X)), height == 0 ? 4 : height));
-                    rectangle = Rectangle.Ceiling(rectF);
-                }
-                else
-                {
-                    RectangleF rectF = new RectangleF(endDataPoint, new SizeF(Math.Abs(endDataPoint.X - startDataPoint.X), Math.Abs(endDataPoint.Y - startDataPoint.Y)));
-                    rectangle = Rectangle.Ceiling(rectF);
-                }
-            }
-            return rectangle;
+            return new Vector2D(p1.X - p0.X, p1.Y - p0.Y);
         }
+
+        /// <summary>
+        /// 获取垂直向量分量长度
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        private double GetLengthOfNormal(Vector2D a, Vector2D b)
+        {
+            Vector2D c, vNormal;
+            //
+            //Obtain projection vector.
+            //
+            //c = ((a * b)/(|b|^2))*b
+            //
+            c.X = b.X * (DotProduct(a, b) / DotProduct(b, b));
+            c.Y = b.Y * (DotProduct(a, b) / DotProduct(b, b));
+            //
+            //Obtain perpendicular projection : e = a - c
+            //
+            vNormal = SubtractVetors(a, c);
+            return VectorMagnitude(vNormal);
+        }
+
+        /// <summary>
+        /// 向量点乘
+        /// </summary>
+        /// <param name="v0"></param>
+        /// <param name="v1"></param>
+        /// <returns></returns>
+        private double DotProduct(Vector2D v0, Vector2D v1)
+        {
+            double dotProd = 0.0d;
+            dotProd = v0.X * v1.X + v0.Y * v1.Y;
+            return dotProd;
+        }
+
+        /// <summary>
+        /// 向量分解
+        /// </summary>
+        /// <param name="v0"></param>
+        /// <param name="v1"></param>
+        /// <returns></returns>
+        private Vector2D SubtractVetors(Vector2D v0, Vector2D v1)
+        {
+            return new Vector2D(v0.X - v1.X, v0.Y - v1.Y);
+        }
+
+        private double VectorMagnitude(Vector2D v0)
+        {
+            return Math.Sqrt(VectorSquared(v0));
+        }
+
+        private double VectorSquared(Vector2D v0)
+        {
+            return v0.X * v0.X + v0.Y * v0.Y;
+        } 
+        #endregion
     }
 }

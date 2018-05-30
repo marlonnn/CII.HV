@@ -71,13 +71,33 @@ namespace CII.LAR.UI
 
         private void HotKeyIsSet(object sender, HotKeyIsSetEventArgs e)
         {
-            if (hotKeyManager.HotKeyExists(e.Shortcut, HotKeyManager.CheckKey.LocalHotKey))
+            if (hotKeyManager.HotKeyExists(e.Shortcut, HotKeyManager.CheckKey.LocalHotKey) || CheckHotKeyExist())
             {
                 e.Cancel = true;
                 MessageBox.Show("This HotKey has already been registered");
             }
         }
 
+        /// <summary>
+        /// 检查界面上输入的快捷键是否重复
+        /// </summary>
+        /// <returns></returns>
+        private bool CheckHotKeyExist()
+        {
+            List<string> keys = new List<string>();
+            for (int i=0; i< this.Controls.Count; i++)
+            {
+                var hotkeyCtrl = this.Controls[i] as HotKeyControl;
+                if (hotkeyCtrl != null)
+                {
+                    if (!string.IsNullOrEmpty(hotkeyCtrl.Text))
+                    {
+                        keys.Add(hotkeyCtrl.Text);
+                    }
+                }
+            }
+            return keys.GroupBy(n => n).Any(c => c.Count() > 1);
+        }
         private void buttonSave_Click(object sender, EventArgs e)
         {
             UnRegister();

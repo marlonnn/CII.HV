@@ -132,6 +132,11 @@ namespace CII.LAR.UI
             base.RefreshUI();
             this.Title = global::CII.LAR.Properties.Resources.StrRulerAppearanceTitle;
             resources.ApplyResources(this.btnLaserCtrl, btnLaserCtrl.Name);
+
+            resources.ApplyResources(this.comboItem1, "comboItem1");
+            resources.ApplyResources(this.comboItem2, "comboItem2");
+            resources.ApplyResources(this.comboItem3, "comboItem3");
+
             this.Invalidate();
         }
     }

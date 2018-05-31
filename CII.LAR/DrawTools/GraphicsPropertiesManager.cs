@@ -54,12 +54,15 @@ namespace CII.LAR.DrawTools
             switch (name)
             {
                 case "Line":
+                case "直线":
                     propertie = properties[0];
                     break;
                 case "Rectangle":
+                case "矩形":
                     propertie = properties[1];
                     break;
                 case "Ellipse":
+                case "椭圆":
                     propertie = properties[2];
                     break;
                 case "Polygon":

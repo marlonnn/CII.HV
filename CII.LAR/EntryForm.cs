@@ -1477,28 +1477,29 @@ namespace CII.LAR
             {
                 if (Program.SysConfig.LaserPortConected)
                 {
-                    //若激光器连接，则每隔2s发送消息
-                    LaserC01Request c01R = new LaserC01Request();
-                    byte[] c01Bytes = serialPortCom.Encode(c01R);
-                    if (serialPortCom.SerialPort.IsOpen)
-                    {
-                        serialPortCom.SendData(c01Bytes);
-                        Thread.Sleep(200);
-                        if (serialPortCom.FinalData != null)
-                        {
-                            //连接状态
-                            Program.SysConfig.LaserPortConected = true;
-                        }
-                        else
-                        {
-                            //断开连接，需要尝试重连
-                            Program.SysConfig.LaserPortConected = false;
-                        }
-                    }
-                    else
-                    {
-                        Program.SysConfig.LaserPortConected = false;
-                    }
+                    Program.SysConfig.LaserPortConected = serialPortCom.SerialPort.IsOpen;
+                    ////若激光器连接，则每隔2s发送消息
+                    //LaserC01Request c01R = new LaserC01Request();
+                    //byte[] c01Bytes = serialPortCom.Encode(c01R);
+                    //if (serialPortCom.SerialPort.IsOpen)
+                    //{
+                    //    serialPortCom.SendData(c01Bytes);
+                    //    Thread.Sleep(200);
+                    //    if (serialPortCom.FinalData != null)
+                    //    {
+                    //        //连接状态
+                    //        Program.SysConfig.LaserPortConected = true;
+                    //    }
+                    //    else
+                    //    {
+                    //        //断开连接，需要尝试重连
+                    //        Program.SysConfig.LaserPortConected = false;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    Program.SysConfig.LaserPortConected = false;
+                    //}
                 }
                 else
                 {

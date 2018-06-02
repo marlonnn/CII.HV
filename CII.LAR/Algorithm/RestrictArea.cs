@@ -92,7 +92,13 @@ namespace CII.LAR.Algorithm
             if (Program.SysConfig.LaserConfig.FinalMatrix.Rank() != 0)
             {
                 Matrix<double> finalMatrix = Program.SysConfig.LaserConfig.FinalMatrix;
-                Matrix<double> Inverse = finalMatrix.Inverse();
+                double[,] p = { 
+                    { finalMatrix[0, 0], finalMatrix[0, 1], finalMatrix[0, 2] },
+                    { finalMatrix[1, 0], finalMatrix[1, 1], finalMatrix[1, 2] },
+                    { finalMatrix[2, 0], finalMatrix[2, 1], finalMatrix[2, 2] }};
+                MatrixBuilder<double> mb = Matrix<double>.Build;
+                var newMatrix = mb.DenseOfArray(p);
+                Matrix<double> Inverse = newMatrix.Inverse();
                 foreach (var originalPoint in originalMotorPoints)
                 {
                     transformedMotorPoints.Add(Calculate(originalPoint, Inverse));
@@ -117,15 +123,16 @@ namespace CII.LAR.Algorithm
             {
                 if (transformedMotorPoints != null && transformedMotorPoints.Count > 0)
                 {
-                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                    g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+                    g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Low;
                     //g.DrawLine(pen, transformedMotorPoints[0].X, transformedMotorPoints[0].Y, transformedMotorPoints[1].X, transformedMotorPoints[1].Y);
                     //g.DrawLine(pen, transformedMotorPoints[1].X, transformedMotorPoints[1].Y, transformedMotorPoints[2].X, transformedMotorPoints[2].Y);
                     //g.DrawLine(pen, transformedMotorPoints[2].X, transformedMotorPoints[2].Y, transformedMotorPoints[3].X, transformedMotorPoints[3].Y);
                     //g.DrawLine(pen, transformedMotorPoints[3].X, transformedMotorPoints[3].Y, transformedMotorPoints[0].X, transformedMotorPoints[0].Y);
-
-                    using (SolidBrush sb = new SolidBrush(Color.FromArgb(0xC8, 0x80, 0x80, 0x80)))
-                        g.FillRegion(sb, VideoRegion);
+                    //SolidBrush sb = new SolidBrush(Color.FromArgb(0xC8, 0x80, 0x80, 0x80));
+                    SolidBrush sb = new SolidBrush(Color.Gray);
+                    g.FillRegion(sb, VideoRegion);
+                    sb.Dispose();
                 }
             }
         }
@@ -142,6 +149,7 @@ namespace CII.LAR.Algorithm
             MotorRegion = new Region(motorPath);
 
             VideoRegion.Xor(MotorRegion);
+            VideoRegion = VideoRegion.Clone();
         }
 
         /// <summary>

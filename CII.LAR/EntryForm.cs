@@ -1248,15 +1248,12 @@ namespace CII.LAR
                     {
                         this.LaserCheckTimer.Enabled = true;
                     }
+                    Coordinate.GetCoordinate().LastPoint = new Point(monitorData.Motor1Steps, monitorData.Motor2Steps);
                     Coordinate.GetCoordinate().MotionComplete = monitorData.Motor1Status == 0x08 && monitorData.Motor2Status == 0x08;
-                    if (Coordinate.GetCoordinate().MotionComplete)
-                    {
-                        Coordinate.GetCoordinate().LastPoint = new Point(monitorData.Motor1Steps, monitorData.Motor2Steps);
-                    }
                     if (this.richPictureBox.df != null)
                     {
                         this.richPictureBox.df.UpdateSteps(monitorData.Motor1Steps, monitorData.Motor2Steps);
-                        //LogHelper.GetLogger<EntryForm>().Error(string.Format("电机1当前步数： {0}， 电机2当前步数： {1}", monitorData.Motor1Steps, monitorData.Motor2Steps));
+                        LogHelper.GetLogger<EntryForm>().Error(string.Format("电机1当前步数： {0}， 电机2当前步数： {1}", monitorData.Motor1Steps, monitorData.Motor2Steps));
                         //Entry.Log(string.Format("电机1当前步数： {0}， 电机2当前步数： {1}", monitorData.Motor1Steps, monitorData.Motor2Steps));
                         this.richPictureBox.df.UpdateResponseCode(Coordinate.GetCoordinate().ResponseCode);
                         this.richPictureBox.df.UpdateLaserStatus();
@@ -1483,16 +1480,23 @@ namespace CII.LAR
                     //若激光器连接，则每隔2s发送消息
                     LaserC01Request c01R = new LaserC01Request();
                     byte[] c01Bytes = serialPortCom.Encode(c01R);
-                    serialPortCom.SendData(c01Bytes);
-                    Thread.Sleep(200);
-                    if (serialPortCom.FinalData != null)
+                    if (serialPortCom.SerialPort.IsOpen)
                     {
-                        //连接状态
-                        Program.SysConfig.LaserPortConected = true;
+                        serialPortCom.SendData(c01Bytes);
+                        Thread.Sleep(200);
+                        if (serialPortCom.FinalData != null)
+                        {
+                            //连接状态
+                            Program.SysConfig.LaserPortConected = true;
+                        }
+                        else
+                        {
+                            //断开连接，需要尝试重连
+                            Program.SysConfig.LaserPortConected = false;
+                        }
                     }
                     else
                     {
-                        //断开连接，需要尝试重连
                         Program.SysConfig.LaserPortConected = false;
                     }
                 }

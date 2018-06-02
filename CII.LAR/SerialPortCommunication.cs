@@ -232,7 +232,7 @@ namespace CII.LAR
                 {
                     if (buffer == null)
                     {
-                        if (rawData[0] == 0x80)
+                        if (rawData.Length > 0 && rawData[0] == 0x80)
                         {
                             buffer = rawData;
                         }

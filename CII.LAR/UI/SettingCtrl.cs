@@ -1,3 +1,4 @@
+using AForge.Video.DirectShow;
 using CII.LAR.SysClass;
 using DevComponents.DotNetBar;
 using DevComponents.Editors;
@@ -228,8 +229,12 @@ namespace CII.LAR.UI
                     this.richPictureBox.GraphicsList.DeleteAll();
                     CtrlFactory.GetCtrlFactory().GetCtrlByType<StatisticsCtrl>(CtrlType.StatisticsCtrl).StatisticsListView.Items.Clear();
                 }
-                if (!string.IsNullOrEmpty(Program.SysConfig.DeviceMoniker))
-                    DelegateClass.GetDelegate().CaptureDeviceHandler(Program.SysConfig.DeviceMoniker);
+                if (!string.IsNullOrEmpty(Program.SysConfig.DeviceName))
+                {
+                    FilterInfo fileInfo = Program.SysConfig.EnumerateVideoDevices();
+                    DelegateClass.GetDelegate().CaptureDeviceHandler(fileInfo.MonikerString);
+
+                }
                 this.btnSimulator.Text = CII.LAR.Properties.Resources.StrOpenSimulator;
             }
         }

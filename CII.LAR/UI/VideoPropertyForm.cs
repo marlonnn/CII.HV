@@ -16,7 +16,7 @@ namespace CII.LAR.UI
         public VideoPropertyForm()
         {
             InitializeComponent();
-            TestCamera(Program.SysConfig.DeviceMoniker);
+            //TestCamera(Program.SysConfig.DeviceMoniker);
         }
 
         private void TestCamera(string deviceMoniker)

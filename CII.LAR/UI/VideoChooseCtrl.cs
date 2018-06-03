@@ -26,7 +26,7 @@ namespace CII.LAR.UI
 
         private void SelectDevice()
         {
-            string selectedDevice = GetDeviceName(Program.SysConfig.DeviceMoniker);
+            string selectedDevice = Program.SysConfig.DeviceName;
             if (!string.IsNullOrEmpty(selectedDevice))
             {
                 if (listViewCamera.Items != null || listViewCamera.Items.Count > 0)
@@ -104,6 +104,7 @@ namespace CII.LAR.UI
 
             string selectedDevice = listViewCamera.SelectedItems[0].Text;
             string deviceMoniker = GetMonikerString(selectedDevice);
+            FilterInfo filterInfo = GetFilterInfo(selectedDevice);
             if (deviceMoniker != "" && DelegateClass.GetDelegate().CaptureDeviceHandler != null)
             {
                 var videoDevice = Program.EntryForm.VideoDevice;
@@ -113,7 +114,7 @@ namespace CII.LAR.UI
                     return;
                 }
                 DelegateClass.GetDelegate().CaptureDeviceHandler(deviceMoniker);
-                Program.SysConfig.DeviceMoniker = deviceMoniker;
+                Program.SysConfig.DeviceName = filterInfo.Name;
             }
             this.Visible = false;
         }
@@ -133,24 +134,39 @@ namespace CII.LAR.UI
             return deviceMoniker;
         }
 
-        private string GetDeviceName(string deviceMoniker)
+        private FilterInfo GetFilterInfo(string filterInfoName)
         {
-            if (string.IsNullOrEmpty(deviceMoniker)) return null;
-            string deviceName = "";
-            if (this.videoDevices != null && this.videoDevices.Count > 0)
+            FilterInfo fInfo = null;
+            foreach (var device in this.videoDevices)
             {
-                foreach (var device in this.videoDevices)
+                var filterInfo = device as FilterInfo;
+                if (filterInfo != null && filterInfo.Name == filterInfoName)
                 {
-                    var filterInfo = device as FilterInfo;
-                    if (filterInfo != null && filterInfo.MonikerString == deviceMoniker)
-                    {
-                        deviceName = filterInfo.Name;
-                        break;
-                    }
+                    fInfo = filterInfo;
+                    break;
                 }
             }
-            return deviceName;
+            return fInfo;
         }
+
+        //private string GetDeviceName(string deviceMoniker)
+        //{
+        //    if (string.IsNullOrEmpty(deviceMoniker)) return null;
+        //    string deviceName = "";
+        //    if (this.videoDevices != null && this.videoDevices.Count > 0)
+        //    {
+        //        foreach (var device in this.videoDevices)
+        //        {
+        //            var filterInfo = device as FilterInfo;
+        //            if (filterInfo != null && filterInfo.MonikerString == deviceMoniker)
+        //            {
+        //                deviceName = filterInfo.Name;
+        //                break;
+        //            }
+        //        }
+        //    }
+        //    return deviceName;
+        //}
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {

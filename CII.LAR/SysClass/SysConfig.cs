@@ -1,4 +1,5 @@
-﻿using CII.LAR.DrawTools;
+﻿using AForge.Video.DirectShow;
+using CII.LAR.DrawTools;
 using CII.LAR.SysClass.Shortcuts;
 using DevComponents.DotNetBar;
 using System;
@@ -82,13 +83,12 @@ namespace CII.LAR.SysClass
             get { return this.motorPort; }
             set { this.motorPort = value; }
         }
-        private string deviceMoniker;
-        public string DeviceMoniker
+        private string deviceName;
+        public string DeviceName
         {
-            get { return deviceMoniker; }
-            set { this.deviceMoniker = value; }
+            get { return deviceName; }
+            set { this.deviceName = value; }
         }
-
         [NonSerialized]
         private static string filePath = Application.StartupPath + "\\LConfig";
 
@@ -324,6 +324,28 @@ namespace CII.LAR.SysClass
             }
         }
 
+        public FilterInfo EnumerateVideoDevices()
+        {
+            FilterInfo fileInfo = null;
+            var videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            if (videoDevices != null && videoDevices.Count > 0)
+            {
+                foreach (var device in videoDevices)
+                {
+                    FilterInfo filterInfo = device as FilterInfo;
+                    if (filterInfo != null)
+                    {
+                        if (filterInfo.Name == Program.SysConfig.DeviceName)
+                        {
+                            fileInfo = filterInfo;
+                            break;
+                        }
+                    }
+                }
+            }
+            return fileInfo;
+        }
+
         [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -364,7 +386,8 @@ namespace CII.LAR.SysClass
             this.DefaultScaleCoefficient = 4;
             this.recordTime = 1;
             AllPatients = AllPatients.GetAllPatients();
-            this.deviceMoniker = @"@device:pnp:\\?\usb#vid_eb1a&pid_2860#5&20c67efd&0&7#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global";
+            //this.deviceMoniker = @"@device:pnp:\\?\usb#vid_eb1a&pid_2860#5&20c67efd&0&7#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global";
+            this.deviceName = "USB 2860 Video";
             this.localHotKeyContainer = new List<LocalHotKey>();
             this.globalHotKeyContainer = new List<GlobalHotKey>();
             this.chordHotKeyContainer = new List<ChordHotKey>();

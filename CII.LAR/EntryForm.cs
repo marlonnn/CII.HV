@@ -356,8 +356,8 @@ namespace CII.LAR
             LaserType = LaserType.SaturnFixed;
 
             Coordinate.GetCoordinate().MoveStepHandler += MoveStepHandler;
-            if (!string.IsNullOrEmpty(Program.SysConfig.DeviceMoniker))
-                CaptureDeviceHandler(Program.SysConfig.DeviceMoniker);
+            if (!string.IsNullOrEmpty(Program.SysConfig.DeviceName))
+                InitializeDefaultDevice();
 
             if (Program.SysConfig != null)
             {
@@ -519,6 +519,37 @@ namespace CII.LAR
             //        this.systemMonitorTimer.Enabled = true;
             //        break;
             //}
+        }
+
+        private FilterInfo EnumerateVideoDevices()
+        {
+            FilterInfo fileInfo = null;
+            var videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            if (videoDevices != null && videoDevices.Count > 0)
+            {
+                foreach (var device in videoDevices)
+                {
+                    FilterInfo filterInfo = device as FilterInfo;
+                    if (filterInfo != null)
+                    {
+                        if (filterInfo.Name == Program.SysConfig.DeviceName)
+                        {
+                            fileInfo = filterInfo;
+                            break;
+                        }
+                    }
+                }
+            }
+            return fileInfo;
+        }
+
+        private void InitializeDefaultDevice()
+        {
+            FilterInfo fileInfo = EnumerateVideoDevices();
+            if (fileInfo != null)
+            {
+                CaptureDeviceHandler(fileInfo.MonikerString);
+            }
         }
 
         public void CaptureDeviceHandler(string deviceMoniker)

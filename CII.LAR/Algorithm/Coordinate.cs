@@ -213,17 +213,33 @@ namespace CII.LAR.Algorithm
         /// </summary>
         /// <param name="index"></param>
         /// <param name="pictureBoxSize"></param>
-        public void CreatePresetMotorPoint(int index, RichPictureBox richPictureBox)
+        public void CreatePresetMotorPoint(int index, RichPictureBox richPictureBox, int thisAttempt = 0)
         {
             //屏幕坐标
-            Point psp = CreatePresetScreenPoint(index, richPictureBox);
+            Point psp = CreatePresetScreenPoint(index, richPictureBox, thisAttempt);
             P = psp;
 
             //转换矩阵变化为电机坐标
             Point pmp = ChangeScreenPointToMotorPoint(psp);
-            AddMotorPoint(index, pmp);
+            if (CheckLegalofMotorPoint(pmp, richPictureBox))
+            {
+                attempt = 0;
+                AddMotorPoint(index, pmp);
+            }
+            else
+            {
+                attempt++;
+                CreatePresetMotorPoint(index, richPictureBox, attempt);
+            }
         }
 
+        private bool CheckLegalofMotorPoint(Point point, RichPictureBox richPictureBox)
+        {
+            return point.X >= richPictureBox.RestrictArea.MinLimit && point.X <= richPictureBox.RestrictArea.MaxLimit &&
+                point.Y >= richPictureBox.RestrictArea.MinLimit && point.Y <= richPictureBox.RestrictArea.MaxLimit;
+        }
+
+        private int attempt = 0;
         public Point P;
 
         /// <summary>
@@ -232,7 +248,7 @@ namespace CII.LAR.Algorithm
         /// <param name="index"></param>
         /// <param name="pictureBoxSize"></param>
         /// <returns></returns>
-        private Point CreatePresetScreenPoint(int index, RichPictureBox richPictureBox)
+        private Point CreatePresetScreenPoint(int index, RichPictureBox richPictureBox, int thisAttempt = 0)
         {
             Point psp = Point.Empty;
             Rectangle bounds = new Rectangle(0, 0, richPictureBox.RealSize.Width, richPictureBox.RealSize.Height);
@@ -241,16 +257,16 @@ namespace CII.LAR.Algorithm
             switch (index)
             {
                 case 3:
-                    psp = new Point(offSetX + bounds.Width -200, offsetY + bounds.Height / 2);
+                    psp = new Point(offSetX + bounds.Width -200 - thisAttempt * 50, offsetY + bounds.Height / 2);
                     break;
                 case 4:
-                    psp = new Point(offSetX + bounds.Width / 2, offsetY + bounds.Height - 200);
+                    psp = new Point(offSetX + bounds.Width / 2, offsetY + bounds.Height - 200 - thisAttempt * 50);
                     break;
                 case 5:
-                    psp = new Point(offSetX + 200, offsetY + bounds.Height / 2);
+                    psp = new Point(offSetX + 200 + thisAttempt * 50, offsetY + bounds.Height / 2);
                     break;
                 case 6:
-                    psp = new Point(offSetX + bounds.Width / 2, offsetY + 200);
+                    psp = new Point(offSetX + bounds.Width / 2, offsetY + 200 + thisAttempt * 50);
                     break;
             }
             //check point in legal region

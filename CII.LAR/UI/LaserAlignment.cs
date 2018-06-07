@@ -127,9 +127,14 @@ namespace CII.LAR.UI
 
         private void EnableRedLaser(bool enable)
         {
-            LaserC01Request c01 = new LaserC01Request();
-            byte[] c01Bytes = serialPortCom.Encode(c01);
-            serialPortCom.SendData(c01Bytes);
+            //LaserC01Request c01 = new LaserC01Request();
+            //byte[] c01Bytes = serialPortCom.Encode(c01);
+            //serialPortCom.SendData(c01Bytes);
+            //enableRedLaser = enable;
+
+            var c70 = new LaserC70Request();
+            var bytes = serialPortCom.Encode(c70);
+            serialPortCom.SendData(bytes);
             enableRedLaser = enable;
         }
 

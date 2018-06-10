@@ -269,6 +269,16 @@ namespace CII.LAR.Properties {
         }
         
         /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] PingFang_Medium {
+            get {
+                object obj = ResourceManager.GetObject("PingFang_Medium", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
         internal static System.Drawing.Bitmap polygon {
@@ -315,6 +325,26 @@ namespace CII.LAR.Properties {
             get {
                 object obj = ResourceManager.GetObject("rectangular", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] Roboto_Medium {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_Medium", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Byte[] 类型的本地化资源。
+        /// </summary>
+        internal static byte[] Roboto_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_Regular", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -474,18 +504,16 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrRulerAppearanceTitle", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Scale Appearance 的本地化字符串。
         /// </summary>
-        internal static string StrScaleAppearanceTitle
-        {
-            get
-            {
+        internal static string StrScaleAppearanceTitle {
+            get {
                 return ResourceManager.GetString("StrScaleAppearanceTitle", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Setting 的本地化字符串。
         /// </summary>

@@ -127,6 +127,12 @@
     <Compile Include="Algorithm\Coordinate.cs" />
     <Compile Include="Algorithm\RestrictArea.cs" />
     <Compile Include="ByteHelper.cs" />
+    <Compile Include="ChildForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChildForm.Designer.cs">
+      <DependentUpon>ChildForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Commond\LaserC0C.cs" />
     <Compile Include="Commond\LaserC00.cs" />
     <Compile Include="Commond\LaserC0B.cs" />
@@ -194,6 +200,12 @@
     <Compile Include="Laser\FixedLaser.cs" />
     <Compile Include="Laser\HolesInfo.cs" />
     <Compile Include="LogHelper.cs" />
+    <Compile Include="MaterialSkin\ColorScheme.cs" />
+    <Compile Include="MaterialSkin\IMaterialControl.cs" />
+    <Compile Include="MaterialSkin\MaterialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\MaterialSkinManager.cs" />
     <Compile Include="MessageBoxManager.cs" />
     <Compile Include="MiniDump.cs" />
     <Compile Include="MsgQueue\ConcurrentQueue.cs" />
@@ -516,6 +528,9 @@
       <DependentUpon>VideoPropertyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Util.cs" />
+    <EmbeddedResource Include="ChildForm.resx">
+      <DependentUpon>ChildForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EntryForm.resx">
       <DependentUpon>EntryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -729,6 +744,9 @@
     <None Include="Resources\LogView.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\PingFang Medium.ttf" />
+    <None Include="Resources\Roboto-Medium.ttf" />
+    <None Include="Resources\Roboto-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

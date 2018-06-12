@@ -144,6 +144,9 @@
   <data name="toolStripButtonPrint.ToolTipText" xml:space="preserve">
     <value>打印</value>
   </data>
+  <data name="toolStripButtonSearch.Text" xml:space="preserve">
+    <value>搜索</value>
+  </data>
   <data name="toolStripLabelSelectByID.Text" xml:space="preserve">
     <value>根据病人编号选择：</value>
   </data>

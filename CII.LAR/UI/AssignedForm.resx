@@ -334,7 +334,7 @@
     <value>23, 22</value>
   </data>
   <data name="toolStripButtonSearch.Text" xml:space="preserve">
-    <value>toolStripButton1</value>
+    <value>Search</value>
   </data>
   <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>

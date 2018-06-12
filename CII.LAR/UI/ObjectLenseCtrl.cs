@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CII.LAR.SysClass;
+using CII.LAR.Properties;
 
 namespace CII.LAR.UI
 {
@@ -221,7 +222,7 @@ namespace CII.LAR.UI
             else
             {
                 //should input correct lense factor
-                MessageBox.Show("Please input a number lense factor.", Application.ProductName, MessageBoxButtons.OK);
+                MessageBox.Show(Resources.StrLenseFactorInputError, Application.ProductName, MessageBoxButtons.OK);
                 return;
             }
         }

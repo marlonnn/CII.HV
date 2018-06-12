@@ -452,6 +452,15 @@ namespace CII.LAR.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Please input a number lense factor. 的本地化字符串。
+        /// </summary>
+        internal static string StrLenseFactorInputError {
+            get {
+                return ResourceManager.GetString("StrLenseFactorInputError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Object Lense Manager 的本地化字符串。
         /// </summary>
         internal static string StrObjectLense {

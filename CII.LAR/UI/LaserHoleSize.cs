@@ -12,6 +12,7 @@ using CII.LAR.SysClass;
 using System.Windows.Forms.DataVisualization.Charting;
 using CII.LAR.Laser;
 using CII.LAR.Commond;
+using CII.LAR.Protocol;
 
 namespace CII.LAR.UI
 {
@@ -61,6 +62,24 @@ namespace CII.LAR.UI
             this.sliderPulse.SetValue((float)Program.SysConfig.LaserConfig.PulseWidth);
             //this.sliderPulse.Slider.Value = (int)(Program.SysConfig.LaserConfig.PulseWidth * 10);
             this.sliderPulse.SliderValueChangedHandler += PulseSliderValueChangedHandler;
+            this.sliderPulse.Slider.MouseUp += Slider_MouseUp;
+        }
+
+        private void Slider_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (serialPortCom != null)
+            {
+                LaserC72Request c72 = new LaserC72Request(this.sliderPulse.Slider.Value / 10f);
+                var bps = c72.Encode();
+                List<byte[]> bytes = new List<byte[]>();
+                foreach (var b in bps)
+                {
+                    var data = LaserProtocolFactory.GetInstance().LaserProtocol.EnPackage(b);
+                    bytes.Add(data);
+                }
+                //var bytes = serialPortCom.Encode(c72);
+                serialPortCom.SendData(bytes);
+            }
         }
 
         public void ReculateSiderValue()

@@ -54,11 +54,13 @@ namespace CII.LAR.UI
             InitializeSavedPulseWidthList();
             this.comboBoxEx1.SelectedValueChanged += ComboBoxEx1_SelectedValueChanged;
             this.holesSlider.Visible = false;
+            this.lblHoleNumber.Visible = false;
         }
 
         public void HolesSliderVisiable(bool visiable)
         {
             this.holesSlider.Visible = visiable;
+            this.lblHoleNumber.Visible = visiable;
         }
 
         private bool valueChangedInvoke = true;

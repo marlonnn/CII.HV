@@ -135,6 +135,9 @@
   <data name="btnSave.Text" xml:space="preserve">
     <value>保存</value>
   </data>
+  <data name="lblHoleNumber.Text" xml:space="preserve">
+    <value>孔数</value>
+  </data>
   <data name="lblPreSet.Text" xml:space="preserve">
     <value>预设</value>
   </data>

@@ -44,6 +44,7 @@ namespace CII.LAR.UI
             this.btnDelete = new System.Windows.Forms.Button();
             this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.btnSave = new System.Windows.Forms.Button();
+            this.lblHoleNumber = new DevComponents.DotNetBar.LabelX();
             this.SuspendLayout();
             // 
             // closeButton
@@ -154,10 +155,20 @@ namespace CII.LAR.UI
             this.btnSave.Name = "btnSave";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // lblHoleNumber
+            // 
+            // 
+            // 
+            // 
+            this.lblHoleNumber.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            resources.ApplyResources(this.lblHoleNumber, "lblHoleNumber");
+            this.lblHoleNumber.Name = "lblHoleNumber";
+            // 
             // LaserCtrl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblHoleNumber);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.comboBoxEx1);
             this.Controls.Add(this.btnSave);
@@ -187,6 +198,7 @@ namespace CII.LAR.UI
             this.Controls.SetChildIndex(this.btnSave, 0);
             this.Controls.SetChildIndex(this.comboBoxEx1, 0);
             this.Controls.SetChildIndex(this.btnDelete, 0);
+            this.Controls.SetChildIndex(this.lblHoleNumber, 0);
             this.ResumeLayout(false);
 
         }
@@ -205,5 +217,6 @@ namespace CII.LAR.UI
         private System.Windows.Forms.Button btnDelete;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
         private System.Windows.Forms.Button btnSave;
+        private DevComponents.DotNetBar.LabelX lblHoleNumber;
     }
 }

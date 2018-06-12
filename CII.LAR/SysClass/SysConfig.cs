@@ -259,10 +259,10 @@ namespace CII.LAR.SysClass
             }
             set
             {
-                if (uiCulture == value) // compare after previous check
-                {
-                    return;
-                }
+                //if (uiCulture == value) // compare after previous check
+                //{
+                //    return;
+                //}
                 uiCulture = value;
 
                 System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(uiCulture);

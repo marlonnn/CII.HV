@@ -41,7 +41,6 @@ namespace CII.LAR.UI
             InitializeComponent();
             resources = new ComponentResourceManager(typeof(SettingCtrl));
             this.textBoxItemStoragePath.Text = Program.SysConfig.StorePath;
-            UpdateComboLanguage();
             InitializeLaserType();
             InitializeScaleCoefficient();
             this.cmbLaser.SelectedIndexChanged += new System.EventHandler(this.cmbLaser_SelectedIndexChanged);
@@ -78,11 +77,11 @@ namespace CII.LAR.UI
         /// </summary>
         private void UpdateComboLanguage()
         {
-            foreach (ComboItem item in comboBoxItemLanguage.Items)
+            for (int i=0; i< comboBoxItemLanguage.Items.Count; i++)
             {
-                if (item.Value.ToString() == Program.SysConfig.UICulture)
+                if (((ComboItem)(comboBoxItemLanguage.Items[i])).Value.ToString() == Program.SysConfig.UICulture)
                 {
-                    comboBoxItemLanguage.SelectedItem = item;
+                    comboBoxItemLanguage.SelectedIndex = i;
                     break;
                 }
             }
@@ -176,9 +175,9 @@ namespace CII.LAR.UI
             this.Invalidate();
         }
 
-        private void SettingCtrl_Load(object sender, EventArgs e)
+        public void SettingCtrl_Load(object sender, EventArgs e)
         {
-
+            UpdateComboLanguage();
         }
 
         private void cmbImage_SelectedIndexChanged(object sender, EventArgs e)

@@ -366,6 +366,7 @@ namespace CII.LAR
 
             //InitializeIdleTimer();
             this.richPictureBox.RestrictArea.TransformMotorOriginalPoints();
+            settingCtrl.SettingCtrl_Load(null, null);
         }
 
         private void SysConfig_PropertyChanged(object sender, PropertyChangedEventArgs e)

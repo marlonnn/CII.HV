@@ -253,10 +253,10 @@
     <value>3</value>
   </data>
   <data name="lblAdjustment.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 87</value>
+    <value>13, 87</value>
   </data>
   <data name="lblAdjustment.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 26</value>
+    <value>72, 26</value>
   </data>
   <data name="lblAdjustment.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -277,7 +277,7 @@
     <value>2</value>
   </data>
   <data name="rulerAdjustCtrl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 87</value>
+    <value>75, 87</value>
   </data>
   <data name="rulerAdjustCtrl1.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 38</value>

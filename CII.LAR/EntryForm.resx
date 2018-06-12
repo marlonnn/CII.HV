@@ -166,6 +166,9 @@
   <data name="toolStripButtonFit.Text" xml:space="preserve">
     <value>Zoom Fit</value>
   </data>
+  <data name="toolStripButtonFit.ToolTipText" xml:space="preserve">
+    <value>Zoom Fit</value>
+  </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>

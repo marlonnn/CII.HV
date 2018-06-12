@@ -399,6 +399,8 @@ namespace CII.LAR
             resources.ApplyResources(toolStripButtonSetting, toolStripButtonSetting.Name);
 
             resources.ApplyResources(toolStripButtonFit, toolStripButtonFit.Name);
+            resources.ApplyResources(toolStripButtonScale, toolStripButtonScale.Name);
+            resources.ApplyResources(toolStripButtonMove, toolStripButtonMove.Name);
             resources.ApplyResources(toolStripDropDownCamera, toolStripDropDownCamera.Name);
             resources.ApplyResources(openCameraLiveToolStripMenuItem, openCameraLiveToolStripMenuItem.Name);
             resources.ApplyResources(closeCameraToolStripMenuItem, closeCameraToolStripMenuItem.Name);

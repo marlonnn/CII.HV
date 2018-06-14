@@ -243,10 +243,10 @@ namespace CII.LAR.MaterialSkin
 
         private MaterialSkinManager()
         {
-            ROBOTO_MEDIUM_12 = new Font(LoadFont(Resources.Roboto_Medium), 12f);
-            ROBOTO_MEDIUM_10 = new Font(LoadFont(Resources.Roboto_Medium), 10f);
-            ROBOTO_REGULAR_11 = new Font(LoadFont(Resources.Roboto_Regular), 11f);
-            ROBOTO_MEDIUM_11 = new Font(LoadFont(Resources.Roboto_Medium), 11f);
+            ROBOTO_MEDIUM_12 = new Font(LoadFont(Resources.PingFang_Medium), 12f);
+            ROBOTO_MEDIUM_10 = new Font(LoadFont(Resources.PingFang_Medium), 10f);
+            ROBOTO_REGULAR_11 = new Font(LoadFont(Resources.PingFang_Medium), 11f);
+            ROBOTO_MEDIUM_11 = new Font(LoadFont(Resources.PingFang_Medium), 11f);
 
             PINGFANG_MEDIUM_16 = new Font(LoadFont(Resources.PingFang_Medium), 16f);
             PINGFANG_MEDIUM_12 = new Font(LoadFont(Resources.PingFang_Medium), 12f);

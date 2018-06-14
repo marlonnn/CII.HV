@@ -17,5 +17,11 @@ namespace CII.LAR
         {
             InitializeComponent();
         }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            this.panel1.Size = new Size(this.panel1.Size.Width, this.Height - 32);
+        }
     }
 }

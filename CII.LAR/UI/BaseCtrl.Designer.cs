@@ -47,7 +47,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gray;
+            this.BackColor = System.Drawing.Color.FromArgb(0x28, 0x2C, 0x35);
             this.Controls.Add(this.closeButton);
             this.Name = "BaseCtrl";
             this.Size = new System.Drawing.Size(150, 138);

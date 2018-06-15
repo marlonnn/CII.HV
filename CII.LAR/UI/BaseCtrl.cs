@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using CII.LAR.SysClass;
+using System.Drawing.Text;
+using CII.LAR.MaterialSkin;
 
 namespace CII.LAR.UI
 {
@@ -16,8 +18,15 @@ namespace CII.LAR.UI
     /// Custom base control
     /// Author: Zhong Wen 2017/08/05
     /// </summary>
-    public partial class BaseCtrl : UserControl
+    public partial class BaseCtrl : UserControl, IMaterialControl
     {
+        [Browsable(false)]
+        public int Depth { get; set; }
+        [Browsable(false)]
+        public MaterialSkinManager SkinManager => MaterialSkinManager.Instance;
+        [Browsable(false)]
+        public MouseState MouseState { get; set; }
+
         public delegate void VideoKeyDown(KeyEventArgs e);
         public VideoKeyDown VideoKeyDownHandler;
 
@@ -29,9 +38,7 @@ namespace CII.LAR.UI
         /// <summary>
         /// title font
         /// </summary>
-        protected Font font = new System.Drawing.Font("Times New Roman", 9.75F,
-            ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold))),
-            System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        protected Font font;
 
         /// <summary>
         /// title of this contrl
@@ -73,10 +80,25 @@ namespace CII.LAR.UI
             }
         }
 
+        private Rectangle _statusBarBounds;
+        private const int STATUS_BAR_HEIGHT = 20;
+        private const int STATUS_BAR_BUTTON_WIDTH = STATUS_BAR_HEIGHT;
+        private Rectangle _xButtonBounds;
         public BaseCtrl()
         {
             InitializeComponent();
             this.Load += BaseCtrl_Load;
+            _statusBarBounds = new Rectangle(0, 0, Width, STATUS_BAR_HEIGHT);
+            this.font = SkinManager.PINGFANG_MEDIUM_10;
+            this.closeButton.Location = new Point(this.Width - this.closeButton.Width, (int)((STATUS_BAR_HEIGHT - this.closeButton.Size.Height) / 2f));
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            this.closeButton.Location = new Point(this.Width - this.closeButton.Width, (int)((STATUS_BAR_HEIGHT - this.closeButton.Size.Height) / 2f));
+            _statusBarBounds = new Rectangle(0, 0, Width, STATUS_BAR_HEIGHT);
+            _xButtonBounds = new Rectangle((Width - SkinManager.FORM_PADDING / 2) - STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
         }
 
         private void BaseCtrl_Load(object sender, EventArgs e)
@@ -131,13 +153,19 @@ namespace CII.LAR.UI
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
+            var g = e.Graphics;
+            g.TextRenderingHint = TextRenderingHint.AntiAlias;
 
-            Rectangle borderRect = this.ClientRectangle;
-            borderRect.Width -= 1;
-            borderRect.Height -= 1;
-            e.Graphics.DrawRectangle(Pens.Navy, borderRect);
+            //g.Clear(SkinManager.GetApplicationBackgroundColor());
+            //1C1F26
+            //1A1E25
+            using (SolidBrush sb = new SolidBrush(Color.FromArgb(0x1A, 0x1E, 0x25)))
+                g.FillRectangle(sb, _statusBarBounds);
 
-            e.Graphics.DrawString(Title, font, Brushes.Navy, 3, 3);
+            //ADB8D0
+            SizeF size = g.MeasureString(Title, font);
+            using (SolidBrush sb = new SolidBrush(Color.FromArgb(0xAD, 0xB8, 0xD0)))
+                e.Graphics.DrawString(Title, font, sb, 0, (_statusBarBounds.Height - size.Height) / 2f);
         }
 
         /// <summary>

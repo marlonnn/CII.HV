@@ -208,6 +208,12 @@
     <Compile Include="MaterialSkin\MaterialForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MaterialSkin\MaterialGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\MaterialLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MaterialSkin\MaterialSkinManager.cs" />
     <Compile Include="MaterialSkin\MaterialToolStrip.cs">
       <SubType>Component</SubType>
@@ -400,6 +406,9 @@
     </Compile>
     <Compile Include="UI\SearchForm.Designer.cs">
       <DependentUpon>SearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SettingControl.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UI\ShortcutCtrl.cs">
       <SubType>UserControl</SubType>
@@ -636,6 +645,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SearchForm.resx">
       <DependentUpon>SearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SettingControl.resx">
+      <DependentUpon>SettingControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ShortcutCtrl.resx">
       <DependentUpon>ShortcutCtrl.cs</DependentUpon>

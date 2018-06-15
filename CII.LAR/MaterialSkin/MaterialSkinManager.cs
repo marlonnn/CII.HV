@@ -122,6 +122,12 @@ namespace CII.LAR.MaterialSkin
         public readonly Color ACTION_BAR_TEXT_SECONDARY = Color.FromArgb(153, 255, 255, 255);
         public readonly Brush ACTION_BAR_TEXT_SECONDARY_BRUSH = new SolidBrush(Color.FromArgb(153, 255, 255, 255));
 
+        public Color GetLabelTextColor()
+        {
+            //ADB8D0
+            return Color.FromArgb(0xAD, 0xB8, 0xD0);
+        }
+
         public Color GetPrimaryTextColor()
         {
             return Theme == Themes.LIGHT ? PRIMARY_TEXT_BLACK : PRIMARY_TEXT_WHITE;
@@ -233,6 +239,8 @@ namespace CII.LAR.MaterialSkin
         public Font ROBOTO_MEDIUM_11;
         public Font ROBOTO_MEDIUM_10;
 
+        public Font PINGFANG_MEDIUM_9;
+        public Font PINGFANG_MEDIUM_10;
         public Font PINGFANG_MEDIUM_12;
         public Font PINGFANG_MEDIUM_16;
         //Other constants
@@ -248,8 +256,10 @@ namespace CII.LAR.MaterialSkin
             ROBOTO_REGULAR_11 = new Font(LoadFont(Resources.PingFang_Medium), 11f);
             ROBOTO_MEDIUM_11 = new Font(LoadFont(Resources.PingFang_Medium), 11f);
 
-            PINGFANG_MEDIUM_16 = new Font(LoadFont(Resources.PingFang_Medium), 16f);
+            PINGFANG_MEDIUM_9 = new Font(LoadFont(Resources.PingFang_Medium), 9f);
+            PINGFANG_MEDIUM_10 = new Font(LoadFont(Resources.PingFang_Medium), 10f);
             PINGFANG_MEDIUM_12 = new Font(LoadFont(Resources.PingFang_Medium), 12f);
+            PINGFANG_MEDIUM_16 = new Font(LoadFont(Resources.PingFang_Medium), 16f);
             Theme = Themes.LIGHT;
             ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }

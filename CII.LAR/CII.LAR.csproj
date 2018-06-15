@@ -205,6 +205,12 @@
     <Compile Include="MaterialSkin\ColorScheme.cs" />
     <Compile Include="MaterialSkin\DrawHelper.cs" />
     <Compile Include="MaterialSkin\IMaterialControl.cs" />
+    <Compile Include="MaterialSkin\MaterialComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\MaterialFlatButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MaterialSkin\MaterialForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +218,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MaterialSkin\MaterialLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\MaterialRoundButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MaterialSkin\MaterialSkinManager.cs" />

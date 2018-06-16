@@ -346,7 +346,7 @@ namespace CII.LAR
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ChildForm";
-            this.Text = "LAR-100 控制系统";
+            this.Text = "LAR-100";
             this.materialToolStrip1.ResumeLayout(false);
             this.materialToolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);

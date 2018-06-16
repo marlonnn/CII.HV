@@ -32,26 +32,26 @@ namespace CII.LAR
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChildForm));
             this.materialToolStrip1 = new CII.LAR.MaterialSkin.MaterialToolStrip();
-            this.toolStripButton9 = new CII.LAR.MaterialSkin.MaterialToolStripButton();
-            this.toolStripButton10 = new CII.LAR.MaterialSkin.MaterialToolStripButton();
-            this.toolStripButton11 = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnScreenShort = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnVideo = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnFiles = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.materialToolStrip4 = new CII.LAR.MaterialSkin.MaterialToolStrip();
-            this.materialToolStripButton7 = new CII.LAR.MaterialSkin.MaterialToolStripButton();
-            this.materialToolStripButton8 = new CII.LAR.MaterialSkin.MaterialToolStripButton();
-            this.materialToolStripButton9 = new CII.LAR.MaterialSkin.MaterialToolStripButton();
-            this.materialToolStripButton10 = new CII.LAR.MaterialSkin.MaterialToolStripButton();
-            this.materialToolStripButton11 = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnLaser = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnSetting = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnCamera = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnDebug = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnAbout = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.materialToolStrip3 = new CII.LAR.MaterialSkin.MaterialToolStrip();
-            this.materialToolStripButton4 = new CII.LAR.MaterialSkin.MaterialToolStripButton();
-            this.materialToolStripButton5 = new CII.LAR.MaterialSkin.MaterialToolStripButton();
-            this.materialToolStripButton6 = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnZoomIn = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnZoomOut = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnFit = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.materialToolStrip2 = new CII.LAR.MaterialSkin.MaterialToolStrip();
-            this.materialToolStripButton1 = new CII.LAR.MaterialSkin.MaterialToolStripButton();
-            this.materialToolStripButton2 = new CII.LAR.MaterialSkin.MaterialToolStripButton();
-            this.materialToolStripButton3 = new CII.LAR.MaterialSkin.MaterialToolStripButton();
-            this.toolStripButton1 = new CII.LAR.MaterialSkin.MaterialToolStripButton();
-            this.toolStripButton2 = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnMeasure = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnLine = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnRectangle = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnEllipse = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnHand = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.materialToolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.materialToolStrip4.SuspendLayout();
@@ -65,9 +65,9 @@ namespace CII.LAR
             this.materialToolStrip1.Depth = 0;
             this.materialToolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.materialToolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton9,
-            this.toolStripButton10,
-            this.toolStripButton11});
+            this.toolstripBtnScreenShort,
+            this.toolstripBtnVideo,
+            this.toolstripBtnFiles});
             this.materialToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.materialToolStrip1.Location = new System.Drawing.Point(1, 15);
             this.materialToolStrip1.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
@@ -76,38 +76,41 @@ namespace CII.LAR
             this.materialToolStrip1.TabIndex = 1;
             this.materialToolStrip1.Text = "materialToolStrip1";
             // 
-            // toolStripButton9
+            // toolstripBtnScreenShort
             // 
-            this.toolStripButton9.AutoSize = false;
-            this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton9.Image = global::CII.LAR.Properties.Resources.camera;
-            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton9.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
-            this.toolStripButton9.Name = "toolStripButton9";
-            this.toolStripButton9.Size = new System.Drawing.Size(35, 35);
-            this.toolStripButton9.Text = "toolStripButton9";
+            this.toolstripBtnScreenShort.AutoSize = false;
+            this.toolstripBtnScreenShort.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripBtnScreenShort.Image = global::CII.LAR.Properties.Resources.camera;
+            this.toolstripBtnScreenShort.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolstripBtnScreenShort.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            this.toolstripBtnScreenShort.Name = "toolstripBtnScreenShort";
+            this.toolstripBtnScreenShort.Size = new System.Drawing.Size(35, 35);
+            this.toolstripBtnScreenShort.Text = "Screen Shot";
+            this.toolstripBtnScreenShort.Click += new System.EventHandler(this.toolstripBtnScreenShort_Click);
             // 
-            // toolStripButton10
+            // toolstripBtnVideo
             // 
-            this.toolStripButton10.AutoSize = false;
-            this.toolStripButton10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton10.Image = global::CII.LAR.Properties.Resources.video;
-            this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton10.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
-            this.toolStripButton10.Name = "toolStripButton10";
-            this.toolStripButton10.Size = new System.Drawing.Size(35, 35);
-            this.toolStripButton10.Text = "toolStripButton10";
+            this.toolstripBtnVideo.AutoSize = false;
+            this.toolstripBtnVideo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripBtnVideo.Image = global::CII.LAR.Properties.Resources.video;
+            this.toolstripBtnVideo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolstripBtnVideo.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            this.toolstripBtnVideo.Name = "toolstripBtnVideo";
+            this.toolstripBtnVideo.Size = new System.Drawing.Size(35, 35);
+            this.toolstripBtnVideo.Text = "Video";
+            this.toolstripBtnVideo.Click += new System.EventHandler(this.toolstripBtnVideo_Click);
             // 
-            // toolStripButton11
+            // toolstripBtnFiles
             // 
-            this.toolStripButton11.AutoSize = false;
-            this.toolStripButton11.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton11.Image = global::CII.LAR.Properties.Resources.files;
-            this.toolStripButton11.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton11.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
-            this.toolStripButton11.Name = "toolStripButton11";
-            this.toolStripButton11.Size = new System.Drawing.Size(35, 35);
-            this.toolStripButton11.Text = "toolStripButton11";
+            this.toolstripBtnFiles.AutoSize = false;
+            this.toolstripBtnFiles.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripBtnFiles.Image = global::CII.LAR.Properties.Resources.files;
+            this.toolstripBtnFiles.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolstripBtnFiles.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            this.toolstripBtnFiles.Name = "toolstripBtnFiles";
+            this.toolstripBtnFiles.Size = new System.Drawing.Size(35, 35);
+            this.toolstripBtnFiles.Text = "Files";
+            this.toolstripBtnFiles.Click += new System.EventHandler(this.toolstripBtnFiles_Click);
             // 
             // panel1
             // 
@@ -129,11 +132,11 @@ namespace CII.LAR
             this.materialToolStrip4.Depth = 0;
             this.materialToolStrip4.Dock = System.Windows.Forms.DockStyle.None;
             this.materialToolStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.materialToolStripButton7,
-            this.materialToolStripButton8,
-            this.materialToolStripButton9,
-            this.materialToolStripButton10,
-            this.materialToolStripButton11});
+            this.toolstripBtnLaser,
+            this.toolstripBtnSetting,
+            this.toolstripBtnCamera,
+            this.toolstripBtnDebug,
+            this.toolstripBtnAbout});
             this.materialToolStrip4.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.materialToolStrip4.Location = new System.Drawing.Point(1, 509);
             this.materialToolStrip4.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
@@ -142,60 +145,65 @@ namespace CII.LAR
             this.materialToolStrip4.TabIndex = 4;
             this.materialToolStrip4.Text = "materialToolStrip4";
             // 
-            // materialToolStripButton7
+            // toolstripBtnLaser
             // 
-            this.materialToolStripButton7.AutoSize = false;
-            this.materialToolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.materialToolStripButton7.Image = global::CII.LAR.Properties.Resources.laser;
-            this.materialToolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.materialToolStripButton7.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
-            this.materialToolStripButton7.Name = "materialToolStripButton7";
-            this.materialToolStripButton7.Size = new System.Drawing.Size(35, 35);
-            this.materialToolStripButton7.Text = "toolStripButton9";
+            this.toolstripBtnLaser.AutoSize = false;
+            this.toolstripBtnLaser.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripBtnLaser.Image = global::CII.LAR.Properties.Resources.laser;
+            this.toolstripBtnLaser.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolstripBtnLaser.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            this.toolstripBtnLaser.Name = "toolstripBtnLaser";
+            this.toolstripBtnLaser.Size = new System.Drawing.Size(35, 35);
+            this.toolstripBtnLaser.Text = "Laser";
+            this.toolstripBtnLaser.Click += new System.EventHandler(this.toolstripBtnLaser_Click);
             // 
-            // materialToolStripButton8
+            // toolstripBtnSetting
             // 
-            this.materialToolStripButton8.AutoSize = false;
-            this.materialToolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.materialToolStripButton8.Image = global::CII.LAR.Properties.Resources.setting;
-            this.materialToolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.materialToolStripButton8.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
-            this.materialToolStripButton8.Name = "materialToolStripButton8";
-            this.materialToolStripButton8.Size = new System.Drawing.Size(35, 35);
-            this.materialToolStripButton8.Text = "toolStripButton10";
+            this.toolstripBtnSetting.AutoSize = false;
+            this.toolstripBtnSetting.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripBtnSetting.Image = global::CII.LAR.Properties.Resources.setting;
+            this.toolstripBtnSetting.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolstripBtnSetting.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            this.toolstripBtnSetting.Name = "toolstripBtnSetting";
+            this.toolstripBtnSetting.Size = new System.Drawing.Size(35, 35);
+            this.toolstripBtnSetting.Text = "Setting";
+            this.toolstripBtnSetting.Click += new System.EventHandler(this.toolstripBtnSetting_Click);
             // 
-            // materialToolStripButton9
+            // toolstripBtnCamera
             // 
-            this.materialToolStripButton9.AutoSize = false;
-            this.materialToolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.materialToolStripButton9.Image = global::CII.LAR.Properties.Resources.idscamera;
-            this.materialToolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.materialToolStripButton9.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
-            this.materialToolStripButton9.Name = "materialToolStripButton9";
-            this.materialToolStripButton9.Size = new System.Drawing.Size(35, 35);
-            this.materialToolStripButton9.Text = "toolStripButton11";
+            this.toolstripBtnCamera.AutoSize = false;
+            this.toolstripBtnCamera.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripBtnCamera.Image = global::CII.LAR.Properties.Resources.idscamera;
+            this.toolstripBtnCamera.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolstripBtnCamera.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            this.toolstripBtnCamera.Name = "toolstripBtnCamera";
+            this.toolstripBtnCamera.Size = new System.Drawing.Size(35, 35);
+            this.toolstripBtnCamera.Text = "Camera";
+            this.toolstripBtnCamera.Click += new System.EventHandler(this.toolstripBtnCamera_Click);
             // 
-            // materialToolStripButton10
+            // toolstripBtnDebug
             // 
-            this.materialToolStripButton10.AutoSize = false;
-            this.materialToolStripButton10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.materialToolStripButton10.Image = global::CII.LAR.Properties.Resources.backflush;
-            this.materialToolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.materialToolStripButton10.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
-            this.materialToolStripButton10.Name = "materialToolStripButton10";
-            this.materialToolStripButton10.Size = new System.Drawing.Size(35, 35);
-            this.materialToolStripButton10.Text = "toolStripButton1";
+            this.toolstripBtnDebug.AutoSize = false;
+            this.toolstripBtnDebug.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripBtnDebug.Image = global::CII.LAR.Properties.Resources.backflush;
+            this.toolstripBtnDebug.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolstripBtnDebug.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            this.toolstripBtnDebug.Name = "toolstripBtnDebug";
+            this.toolstripBtnDebug.Size = new System.Drawing.Size(35, 35);
+            this.toolstripBtnDebug.Text = "Debug";
+            this.toolstripBtnDebug.Click += new System.EventHandler(this.toolstripBtnDebug_Click);
             // 
-            // materialToolStripButton11
+            // toolstripBtnAbout
             // 
-            this.materialToolStripButton11.AutoSize = false;
-            this.materialToolStripButton11.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.materialToolStripButton11.Image = global::CII.LAR.Properties.Resources.about;
-            this.materialToolStripButton11.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.materialToolStripButton11.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
-            this.materialToolStripButton11.Name = "materialToolStripButton11";
-            this.materialToolStripButton11.Size = new System.Drawing.Size(35, 35);
-            this.materialToolStripButton11.Text = "toolStripButton2";
+            this.toolstripBtnAbout.AutoSize = false;
+            this.toolstripBtnAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripBtnAbout.Image = global::CII.LAR.Properties.Resources.about;
+            this.toolstripBtnAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolstripBtnAbout.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            this.toolstripBtnAbout.Name = "toolstripBtnAbout";
+            this.toolstripBtnAbout.Size = new System.Drawing.Size(35, 35);
+            this.toolstripBtnAbout.Text = "About";
+            this.toolstripBtnAbout.Click += new System.EventHandler(this.toolstripBtnAbout_Click);
             // 
             // materialToolStrip3
             // 
@@ -203,9 +211,9 @@ namespace CII.LAR
             this.materialToolStrip3.Depth = 0;
             this.materialToolStrip3.Dock = System.Windows.Forms.DockStyle.None;
             this.materialToolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.materialToolStripButton4,
-            this.materialToolStripButton5,
-            this.materialToolStripButton6});
+            this.toolstripBtnZoomIn,
+            this.toolstripBtnZoomOut,
+            this.toolstripBtnFit});
             this.materialToolStrip3.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.materialToolStrip3.Location = new System.Drawing.Point(1, 371);
             this.materialToolStrip3.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
@@ -214,38 +222,41 @@ namespace CII.LAR
             this.materialToolStrip3.TabIndex = 4;
             this.materialToolStrip3.Text = "materialToolStrip3";
             // 
-            // materialToolStripButton4
+            // toolstripBtnZoomIn
             // 
-            this.materialToolStripButton4.AutoSize = false;
-            this.materialToolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.materialToolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("materialToolStripButton4.Image")));
-            this.materialToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.materialToolStripButton4.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
-            this.materialToolStripButton4.Name = "materialToolStripButton4";
-            this.materialToolStripButton4.Size = new System.Drawing.Size(35, 35);
-            this.materialToolStripButton4.Text = "toolStripButton9";
+            this.toolstripBtnZoomIn.AutoSize = false;
+            this.toolstripBtnZoomIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripBtnZoomIn.Image = ((System.Drawing.Image)(resources.GetObject("toolstripBtnZoomIn.Image")));
+            this.toolstripBtnZoomIn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolstripBtnZoomIn.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            this.toolstripBtnZoomIn.Name = "toolstripBtnZoomIn";
+            this.toolstripBtnZoomIn.Size = new System.Drawing.Size(35, 35);
+            this.toolstripBtnZoomIn.Text = "Zoom In";
+            this.toolstripBtnZoomIn.Click += new System.EventHandler(this.toolstripBtnZoomIn_Click);
             // 
-            // materialToolStripButton5
+            // toolstripBtnZoomOut
             // 
-            this.materialToolStripButton5.AutoSize = false;
-            this.materialToolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.materialToolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("materialToolStripButton5.Image")));
-            this.materialToolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.materialToolStripButton5.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
-            this.materialToolStripButton5.Name = "materialToolStripButton5";
-            this.materialToolStripButton5.Size = new System.Drawing.Size(35, 35);
-            this.materialToolStripButton5.Text = "toolStripButton10";
+            this.toolstripBtnZoomOut.AutoSize = false;
+            this.toolstripBtnZoomOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripBtnZoomOut.Image = ((System.Drawing.Image)(resources.GetObject("toolstripBtnZoomOut.Image")));
+            this.toolstripBtnZoomOut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolstripBtnZoomOut.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            this.toolstripBtnZoomOut.Name = "toolstripBtnZoomOut";
+            this.toolstripBtnZoomOut.Size = new System.Drawing.Size(35, 35);
+            this.toolstripBtnZoomOut.Text = "Zoom Out";
+            this.toolstripBtnZoomOut.Click += new System.EventHandler(this.toolstripBtnZoomOut_Click);
             // 
-            // materialToolStripButton6
+            // toolstripBtnFit
             // 
-            this.materialToolStripButton6.AutoSize = false;
-            this.materialToolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.materialToolStripButton6.Image = global::CII.LAR.Properties.Resources.zoomFit;
-            this.materialToolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.materialToolStripButton6.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
-            this.materialToolStripButton6.Name = "materialToolStripButton6";
-            this.materialToolStripButton6.Size = new System.Drawing.Size(35, 35);
-            this.materialToolStripButton6.Text = "toolStripButton11";
+            this.toolstripBtnFit.AutoSize = false;
+            this.toolstripBtnFit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripBtnFit.Image = global::CII.LAR.Properties.Resources.zoomFit;
+            this.toolstripBtnFit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolstripBtnFit.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            this.toolstripBtnFit.Name = "toolstripBtnFit";
+            this.toolstripBtnFit.Size = new System.Drawing.Size(35, 35);
+            this.toolstripBtnFit.Text = "Zoom Fit";
+            this.toolstripBtnFit.Click += new System.EventHandler(this.toolstripBtnFit_Click);
             // 
             // materialToolStrip2
             // 
@@ -253,11 +264,11 @@ namespace CII.LAR
             this.materialToolStrip2.Depth = 0;
             this.materialToolStrip2.Dock = System.Windows.Forms.DockStyle.None;
             this.materialToolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.materialToolStripButton1,
-            this.materialToolStripButton2,
-            this.materialToolStripButton3,
-            this.toolStripButton1,
-            this.toolStripButton2});
+            this.toolstripBtnMeasure,
+            this.toolstripBtnLine,
+            this.toolstripBtnRectangle,
+            this.toolstripBtnEllipse,
+            this.toolstripBtnHand});
             this.materialToolStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.materialToolStrip2.Location = new System.Drawing.Point(1, 155);
             this.materialToolStrip2.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
@@ -266,60 +277,65 @@ namespace CII.LAR
             this.materialToolStrip2.TabIndex = 3;
             this.materialToolStrip2.Text = "materialToolStrip2";
             // 
-            // materialToolStripButton1
+            // toolstripBtnMeasure
             // 
-            this.materialToolStripButton1.AutoSize = false;
-            this.materialToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.materialToolStripButton1.Image = global::CII.LAR.Properties.Resources.ruler;
-            this.materialToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.materialToolStripButton1.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
-            this.materialToolStripButton1.Name = "materialToolStripButton1";
-            this.materialToolStripButton1.Size = new System.Drawing.Size(35, 35);
-            this.materialToolStripButton1.Text = "toolStripButton9";
+            this.toolstripBtnMeasure.AutoSize = false;
+            this.toolstripBtnMeasure.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripBtnMeasure.Image = global::CII.LAR.Properties.Resources.ruler;
+            this.toolstripBtnMeasure.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolstripBtnMeasure.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            this.toolstripBtnMeasure.Name = "toolstripBtnMeasure";
+            this.toolstripBtnMeasure.Size = new System.Drawing.Size(35, 35);
+            this.toolstripBtnMeasure.Text = "Measure";
+            this.toolstripBtnMeasure.Click += new System.EventHandler(this.toolstripBtnMeasure_Click);
             // 
-            // materialToolStripButton2
+            // toolstripBtnLine
             // 
-            this.materialToolStripButton2.AutoSize = false;
-            this.materialToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.materialToolStripButton2.Image = global::CII.LAR.Properties.Resources.line;
-            this.materialToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.materialToolStripButton2.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
-            this.materialToolStripButton2.Name = "materialToolStripButton2";
-            this.materialToolStripButton2.Size = new System.Drawing.Size(35, 35);
-            this.materialToolStripButton2.Text = "toolStripButton10";
+            this.toolstripBtnLine.AutoSize = false;
+            this.toolstripBtnLine.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripBtnLine.Image = global::CII.LAR.Properties.Resources.line;
+            this.toolstripBtnLine.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolstripBtnLine.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            this.toolstripBtnLine.Name = "toolstripBtnLine";
+            this.toolstripBtnLine.Size = new System.Drawing.Size(35, 35);
+            this.toolstripBtnLine.Text = "Line";
+            this.toolstripBtnLine.Click += new System.EventHandler(this.toolstripBtnLine_Click);
             // 
-            // materialToolStripButton3
+            // toolstripBtnRectangle
             // 
-            this.materialToolStripButton3.AutoSize = false;
-            this.materialToolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.materialToolStripButton3.Image = global::CII.LAR.Properties.Resources.rectangular;
-            this.materialToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.materialToolStripButton3.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
-            this.materialToolStripButton3.Name = "materialToolStripButton3";
-            this.materialToolStripButton3.Size = new System.Drawing.Size(35, 35);
-            this.materialToolStripButton3.Text = "toolStripButton11";
+            this.toolstripBtnRectangle.AutoSize = false;
+            this.toolstripBtnRectangle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripBtnRectangle.Image = global::CII.LAR.Properties.Resources.rectangular;
+            this.toolstripBtnRectangle.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolstripBtnRectangle.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            this.toolstripBtnRectangle.Name = "toolstripBtnRectangle";
+            this.toolstripBtnRectangle.Size = new System.Drawing.Size(35, 35);
+            this.toolstripBtnRectangle.Text = "Rectangle";
+            this.toolstripBtnRectangle.Click += new System.EventHandler(this.toolstripBtnRectangle_Click);
             // 
-            // toolStripButton1
+            // toolstripBtnEllipse
             // 
-            this.toolStripButton1.AutoSize = false;
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::CII.LAR.Properties.Resources.elliptical;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(35, 35);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolstripBtnEllipse.AutoSize = false;
+            this.toolstripBtnEllipse.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripBtnEllipse.Image = global::CII.LAR.Properties.Resources.elliptical;
+            this.toolstripBtnEllipse.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolstripBtnEllipse.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            this.toolstripBtnEllipse.Name = "toolstripBtnEllipse";
+            this.toolstripBtnEllipse.Size = new System.Drawing.Size(35, 35);
+            this.toolstripBtnEllipse.Text = "Ellipse";
+            this.toolstripBtnEllipse.Click += new System.EventHandler(this.toolstripBtnEllipse_Click);
             // 
-            // toolStripButton2
+            // toolstripBtnHand
             // 
-            this.toolStripButton2.AutoSize = false;
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::CII.LAR.Properties.Resources.hand;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(35, 35);
-            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolstripBtnHand.AutoSize = false;
+            this.toolstripBtnHand.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripBtnHand.Image = global::CII.LAR.Properties.Resources.hand;
+            this.toolstripBtnHand.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolstripBtnHand.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            this.toolstripBtnHand.Name = "toolstripBtnHand";
+            this.toolstripBtnHand.Size = new System.Drawing.Size(35, 35);
+            this.toolstripBtnHand.Text = "Hand";
+            this.toolstripBtnHand.Click += new System.EventHandler(this.toolstripBtnHand_Click);
             // 
             // ChildForm
             // 
@@ -346,25 +362,25 @@ namespace CII.LAR
 
         #endregion
         private MaterialSkin.MaterialToolStrip materialToolStrip1;
-        private MaterialToolStripButton toolStripButton9;
-        private MaterialToolStripButton toolStripButton10;
-        private MaterialToolStripButton toolStripButton11;
+        private MaterialToolStripButton toolstripBtnScreenShort;
+        private MaterialToolStripButton toolstripBtnVideo;
+        private MaterialToolStripButton toolstripBtnFiles;
         private System.Windows.Forms.Panel panel1;
         private MaterialToolStrip materialToolStrip2;
-        private MaterialToolStripButton materialToolStripButton1;
-        private MaterialToolStripButton materialToolStripButton2;
-        private MaterialToolStripButton materialToolStripButton3;
-        private CII.LAR.MaterialSkin.MaterialToolStripButton toolStripButton1;
-        private CII.LAR.MaterialSkin.MaterialToolStripButton toolStripButton2;
+        private MaterialToolStripButton toolstripBtnMeasure;
+        private MaterialToolStripButton toolstripBtnLine;
+        private MaterialToolStripButton toolstripBtnRectangle;
+        private CII.LAR.MaterialSkin.MaterialToolStripButton toolstripBtnEllipse;
+        private CII.LAR.MaterialSkin.MaterialToolStripButton toolstripBtnHand;
         private MaterialToolStrip materialToolStrip3;
-        private MaterialToolStripButton materialToolStripButton4;
-        private MaterialToolStripButton materialToolStripButton5;
-        private MaterialToolStripButton materialToolStripButton6;
+        private MaterialToolStripButton toolstripBtnZoomIn;
+        private MaterialToolStripButton toolstripBtnZoomOut;
+        private MaterialToolStripButton toolstripBtnFit;
         private MaterialToolStrip materialToolStrip4;
-        private MaterialToolStripButton materialToolStripButton7;
-        private MaterialToolStripButton materialToolStripButton8;
-        private MaterialToolStripButton materialToolStripButton9;
-        private MaterialToolStripButton materialToolStripButton10;
-        private MaterialToolStripButton materialToolStripButton11;
+        private MaterialToolStripButton toolstripBtnLaser;
+        private MaterialToolStripButton toolstripBtnSetting;
+        private MaterialToolStripButton toolstripBtnCamera;
+        private MaterialToolStripButton toolstripBtnDebug;
+        private MaterialToolStripButton toolstripBtnAbout;
     }
 }

@@ -46,7 +46,7 @@ namespace CII.LAR.UI
             //}
             //catch { }
             this.labelValue = value;
-            lable.Text = string.Format("{0}%", value);
+            lable.Text = string.Format("{0}", value);
         }
 
         public UpDownArrowCtrl()

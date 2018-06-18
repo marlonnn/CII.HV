@@ -552,7 +552,18 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrShortcutTitle", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   查找类似 Keyboard Shortcut Configuration 的本地化字符串。
+        /// </summary>
+        internal static string StrShortcutExist
+        {
+            get
+            {
+                return ResourceManager.GetString("StrShortcutExist", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   查找类似 Statistics Information 的本地化字符串。
         /// </summary>

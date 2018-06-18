@@ -74,7 +74,7 @@ namespace CII.LAR.UI
             if (hotKeyManager.HotKeyExists(e.Shortcut, HotKeyManager.CheckKey.LocalHotKey) || CheckHotKeyExist())
             {
                 e.Cancel = true;
-                MessageBox.Show("This HotKey has already been registered");
+                MessageBox.Show(Properties.Resources.StrShortcutExist);
             }
         }
 

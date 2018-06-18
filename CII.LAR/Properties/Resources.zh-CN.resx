@@ -180,4 +180,7 @@
   <data name="StrLenseFactorInputError" xml:space="preserve">
     <value>物镜倍数为数字，请正确输入数字。</value>
   </data>
+  <data name="StrShortcutExist" xml:space="preserve">
+    <value>这个快键键已经存在</value>
+  </data>
 </root>

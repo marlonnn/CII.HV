@@ -882,9 +882,12 @@ namespace CII.LAR.UI
                 {
                     GraphicsList.Draw(e.Graphics, this);
                 }
-                if (rulers != null)
+                if (this.restrictArea != null)
                 {
-                    rulers.Draw(e.Graphics);
+                    Color drawColor = Color.FromArgb(200, Color.Blue);
+
+                    using (Pen pen = new Pen(drawColor, 2f))
+                        this.restrictArea.TestDrawMotorRectangle(e.Graphics, pen);
                 }
                 if (this.CaptureVideo)
                 {
@@ -906,12 +909,9 @@ namespace CII.LAR.UI
                         e.Graphics.DrawString(time, font, sb, new PointF(circle.CenterPoint.X + 30 + size.Width, 60 - tSize.Height / 2));
                     }
                 }
-                if (this.restrictArea != null)
+                if (rulers != null)
                 {
-                    Color drawColor = Color.FromArgb(200, Color.Blue);
-
-                    using (Pen pen = new Pen(drawColor, 2f))
-                        this.restrictArea.TestDrawMotorRectangle(e.Graphics, pen);
+                    rulers.Draw(e.Graphics);
                 }
             }
             catch (Exception ex)

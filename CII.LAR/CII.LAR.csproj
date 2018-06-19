@@ -224,6 +224,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MaterialSkin\MaterialSkinManager.cs" />
+    <Compile Include="MaterialSkin\MaterialTextBox.cs" />
     <Compile Include="MaterialSkin\MaterialToolStrip.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -291,6 +292,12 @@
     <Compile Include="SysClass\Shortcuts\HotKeys.cs" />
     <Compile Include="SysClass\Shortcuts\Win32.cs" />
     <Compile Include="SysClass\SysConfig.cs" />
+    <Compile Include="TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ArrayChangedEventArgs.cs" />
     <Compile Include="UI\AssignedForm.cs">
       <SubType>Form</SubType>
@@ -557,6 +564,7 @@
       <DependentUpon>VideoPropertyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Util.cs" />
+    <Compile Include="Win32.cs" />
     <EmbeddedResource Include="ChildForm.resx">
       <DependentUpon>ChildForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -576,6 +584,9 @@
     <EmbeddedResource Include="Res\LaserAlignment.zh-CN.resx" />
     <EmbeddedResource Include="Res\LaserCtrl.resx" />
     <EmbeddedResource Include="Res\LaserCtrl.zh-CN.resx" />
+    <EmbeddedResource Include="TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\AssignedForm.resx">
       <DependentUpon>AssignedForm.cs</DependentUpon>
     </EmbeddedResource>

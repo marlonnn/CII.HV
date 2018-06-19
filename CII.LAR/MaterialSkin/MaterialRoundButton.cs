@@ -96,7 +96,7 @@ namespace CII.LAR.MaterialSkin
 
             using (SolidBrush sb = new SolidBrush(SkinManager.GetLabelTextColor()))
                 g.DrawString(
-                    Text.ToUpper(),
+                    Text,
                     SkinManager.PINGFANG_MEDIUM_10, sb,
                     textRect,
                     new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center }

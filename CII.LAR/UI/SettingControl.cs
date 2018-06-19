@@ -20,6 +20,15 @@ namespace CII.LAR.UI
         private MaterialSkin.MaterialGroupBox materialGroupBox1;
         private MaterialSkin.MaterialTextBox materialTextBox1;
         private MaterialSkin.MaterialGroupBox materialGroupBox2;
+        private MaterialSkin.MaterialRoundButton materialRoundButton1;
+        private MaterialSkin.MaterialGroupBox materialGroupBox3;
+        private MaterialSkin.MaterialComboBox materialComboBox1;
+        private MaterialSkin.MaterialGroupBox materialGroupBox4;
+        private MaterialSkin.MaterialComboBox materialComboBox2;
+        private MaterialSkin.MaterialGroupBox materialGroupBox5;
+        private MaterialSkin.MaterialRoundButton btnShortcuts;
+        private MaterialSkin.MaterialGroupBox materialGroupBox6;
+        private MaterialSkin.MaterialRoundButton materialRoundButton2;
         private MaterialSkin.MaterialGroupBox gropBoxSystemInfo;
 
         private void InitializeComponent()
@@ -38,10 +47,24 @@ namespace CII.LAR.UI
             this.materialGroupBox1 = new CII.LAR.MaterialSkin.MaterialGroupBox();
             this.materialTextBox1 = new CII.LAR.MaterialSkin.MaterialTextBox();
             this.materialGroupBox2 = new CII.LAR.MaterialSkin.MaterialGroupBox();
+            this.materialRoundButton1 = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.materialGroupBox3 = new CII.LAR.MaterialSkin.MaterialGroupBox();
+            this.materialComboBox1 = new CII.LAR.MaterialSkin.MaterialComboBox();
+            this.materialGroupBox4 = new CII.LAR.MaterialSkin.MaterialGroupBox();
+            this.materialComboBox2 = new CII.LAR.MaterialSkin.MaterialComboBox();
+            this.materialGroupBox5 = new CII.LAR.MaterialSkin.MaterialGroupBox();
+            this.btnShortcuts = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.materialGroupBox6 = new CII.LAR.MaterialSkin.MaterialGroupBox();
+            this.materialRoundButton2 = new CII.LAR.MaterialSkin.MaterialRoundButton();
             this.gropBoxSystemInfo.SuspendLayout();
             this.groupBoxLaser.SuspendLayout();
             this.groupBoxLanguage.SuspendLayout();
             this.materialGroupBox1.SuspendLayout();
+            this.materialGroupBox2.SuspendLayout();
+            this.materialGroupBox3.SuspendLayout();
+            this.materialGroupBox4.SuspendLayout();
+            this.materialGroupBox5.SuspendLayout();
+            this.materialGroupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // closeButton
@@ -176,6 +199,7 @@ namespace CII.LAR.UI
             // 
             // materialGroupBox2
             // 
+            this.materialGroupBox2.Controls.Add(this.materialRoundButton1);
             this.materialGroupBox2.Depth = 0;
             resources.ApplyResources(this.materialGroupBox2, "materialGroupBox2");
             this.materialGroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
@@ -183,9 +207,108 @@ namespace CII.LAR.UI
             this.materialGroupBox2.Name = "materialGroupBox2";
             this.materialGroupBox2.TabStop = false;
             // 
+            // materialRoundButton1
+            // 
+            resources.ApplyResources(this.materialRoundButton1, "materialRoundButton1");
+            this.materialRoundButton1.Depth = 0;
+            this.materialRoundButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.materialRoundButton1.Icon = null;
+            this.materialRoundButton1.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.materialRoundButton1.Name = "materialRoundButton1";
+            this.materialRoundButton1.Primary = false;
+            this.materialRoundButton1.UseVisualStyleBackColor = true;
+            // 
+            // materialGroupBox3
+            // 
+            this.materialGroupBox3.Controls.Add(this.materialComboBox1);
+            this.materialGroupBox3.Depth = 0;
+            resources.ApplyResources(this.materialGroupBox3, "materialGroupBox3");
+            this.materialGroupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.materialGroupBox3.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.materialGroupBox3.Name = "materialGroupBox3";
+            this.materialGroupBox3.TabStop = false;
+            // 
+            // materialComboBox1
+            // 
+            this.materialComboBox1.Depth = 0;
+            this.materialComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.materialComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.materialComboBox1.FormattingEnabled = true;
+            this.materialComboBox1.HighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
+            resources.ApplyResources(this.materialComboBox1, "materialComboBox1");
+            this.materialComboBox1.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.materialComboBox1.Name = "materialComboBox1";
+            // 
+            // materialGroupBox4
+            // 
+            this.materialGroupBox4.Controls.Add(this.materialComboBox2);
+            this.materialGroupBox4.Depth = 0;
+            resources.ApplyResources(this.materialGroupBox4, "materialGroupBox4");
+            this.materialGroupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.materialGroupBox4.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.materialGroupBox4.Name = "materialGroupBox4";
+            this.materialGroupBox4.TabStop = false;
+            // 
+            // materialComboBox2
+            // 
+            this.materialComboBox2.Depth = 0;
+            this.materialComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.materialComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.materialComboBox2.FormattingEnabled = true;
+            this.materialComboBox2.HighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
+            resources.ApplyResources(this.materialComboBox2, "materialComboBox2");
+            this.materialComboBox2.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.materialComboBox2.Name = "materialComboBox2";
+            // 
+            // materialGroupBox5
+            // 
+            this.materialGroupBox5.Controls.Add(this.btnShortcuts);
+            this.materialGroupBox5.Depth = 0;
+            resources.ApplyResources(this.materialGroupBox5, "materialGroupBox5");
+            this.materialGroupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.materialGroupBox5.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.materialGroupBox5.Name = "materialGroupBox5";
+            this.materialGroupBox5.TabStop = false;
+            // 
+            // btnShortcuts
+            // 
+            resources.ApplyResources(this.btnShortcuts, "btnShortcuts");
+            this.btnShortcuts.Depth = 0;
+            this.btnShortcuts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.btnShortcuts.Icon = null;
+            this.btnShortcuts.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.btnShortcuts.Name = "btnShortcuts";
+            this.btnShortcuts.Primary = false;
+            this.btnShortcuts.UseVisualStyleBackColor = true;
+            // 
+            // materialGroupBox6
+            // 
+            this.materialGroupBox6.Controls.Add(this.materialRoundButton2);
+            this.materialGroupBox6.Depth = 0;
+            resources.ApplyResources(this.materialGroupBox6, "materialGroupBox6");
+            this.materialGroupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.materialGroupBox6.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.materialGroupBox6.Name = "materialGroupBox6";
+            this.materialGroupBox6.TabStop = false;
+            // 
+            // materialRoundButton2
+            // 
+            resources.ApplyResources(this.materialRoundButton2, "materialRoundButton2");
+            this.materialRoundButton2.Depth = 0;
+            this.materialRoundButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.materialRoundButton2.Icon = null;
+            this.materialRoundButton2.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.materialRoundButton2.Name = "materialRoundButton2";
+            this.materialRoundButton2.Primary = false;
+            this.materialRoundButton2.UseVisualStyleBackColor = true;
+            // 
             // SettingControl
             // 
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.materialGroupBox6);
+            this.Controls.Add(this.materialGroupBox5);
+            this.Controls.Add(this.materialGroupBox4);
+            this.Controls.Add(this.materialGroupBox3);
             this.Controls.Add(this.materialGroupBox2);
             this.Controls.Add(this.materialGroupBox1);
             this.Controls.Add(this.groupBoxLanguage);
@@ -198,12 +321,21 @@ namespace CII.LAR.UI
             this.Controls.SetChildIndex(this.materialGroupBox1, 0);
             this.Controls.SetChildIndex(this.materialGroupBox2, 0);
             this.Controls.SetChildIndex(this.closeButton, 0);
+            this.Controls.SetChildIndex(this.materialGroupBox3, 0);
+            this.Controls.SetChildIndex(this.materialGroupBox4, 0);
+            this.Controls.SetChildIndex(this.materialGroupBox5, 0);
+            this.Controls.SetChildIndex(this.materialGroupBox6, 0);
             this.gropBoxSystemInfo.ResumeLayout(false);
             this.gropBoxSystemInfo.PerformLayout();
             this.groupBoxLaser.ResumeLayout(false);
             this.groupBoxLanguage.ResumeLayout(false);
             this.materialGroupBox1.ResumeLayout(false);
             this.materialGroupBox1.PerformLayout();
+            this.materialGroupBox2.ResumeLayout(false);
+            this.materialGroupBox3.ResumeLayout(false);
+            this.materialGroupBox4.ResumeLayout(false);
+            this.materialGroupBox5.ResumeLayout(false);
+            this.materialGroupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

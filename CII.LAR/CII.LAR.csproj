@@ -426,6 +426,9 @@
     <Compile Include="UI\SettingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="UI\SettingControl.designer.cs">
+      <DependentUpon>SettingControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ShortcutCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>

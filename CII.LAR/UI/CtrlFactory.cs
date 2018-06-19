@@ -10,6 +10,7 @@ namespace CII.LAR.UI
     {
         private static CtrlFactory ctrlFactory;
 
+        private SettingControl setingControl;
         private SettingCtrl settingCtrl;
         private SerialPortCtrl serialPortCtrl;
         private StatisticsCtrl statisticsCtrl;
@@ -31,6 +32,7 @@ namespace CII.LAR.UI
 
         public CtrlFactory(RichPictureBox richPictureBox)
         {
+            setingControl = new SettingControl();
             settingCtrl = new SettingCtrl(richPictureBox);
             serialPortCtrl = new SerialPortCtrl();
             statisticsCtrl = new StatisticsCtrl();
@@ -63,7 +65,8 @@ namespace CII.LAR.UI
             switch (ctrlType)
             {
                 case CtrlType.SettingCtrl:
-                    ctrl = this.settingCtrl as T;
+                    ctrl = this.setingControl as T;
+                    //ctrl = this.settingCtrl as T;
                     break;
                 case CtrlType.SerialPort:
                     ctrl = this.serialPortCtrl as T;

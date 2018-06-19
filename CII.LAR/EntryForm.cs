@@ -109,6 +109,7 @@ namespace CII.LAR
         }
 
         private SettingCtrl settingCtrl;
+        private SettingControl settingControl;
         private SerialPortCtrl serialPortCtrl;
         private StatisticsCtrl statisticsCtrl;
         private LaserAppearanceCtrl laserAppearanceCtrl;
@@ -366,7 +367,7 @@ namespace CII.LAR
 
             //InitializeIdleTimer();
             this.richPictureBox.RestrictArea.TransformMotorOriginalPoints();
-            settingCtrl.SettingCtrl_Load(null, null);
+            //settingCtrl.SettingCtrl_Load(null, null);
         }
 
         private void SysConfig_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -434,12 +435,15 @@ namespace CII.LAR
             CtrlFactory.InitializeCtrlFactory(this.richPictureBox);
             BaseCtrls = new List<BaseCtrl>();
 
-            settingCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SettingCtrl>(CtrlType.SettingCtrl);
-            settingCtrl.UpdateSimulatorImageHandler += UpdateSimulatorImageHandler;
-            settingCtrl.ShowObjectLenseManagerHandler += ShowObjectLenseManagerHandler;
-            settingCtrl.ShowShortcutManagerHandler += ShowShortcutManagerHandler;
-            settingCtrl.ShowScaleAppearanceCtrlHandler += ShowScaleAppearanceCtrlHandler;
-            BaseCtrls.Add(settingCtrl);
+            settingControl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SettingControl>(CtrlType.SettingCtrl);
+            BaseCtrls.Add(settingControl);
+
+            //settingCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SettingCtrl>(CtrlType.SettingCtrl);
+            //settingCtrl.UpdateSimulatorImageHandler += UpdateSimulatorImageHandler;
+            //settingCtrl.ShowObjectLenseManagerHandler += ShowObjectLenseManagerHandler;
+            //settingCtrl.ShowShortcutManagerHandler += ShowShortcutManagerHandler;
+            //settingCtrl.ShowScaleAppearanceCtrlHandler += ShowScaleAppearanceCtrlHandler;
+            //BaseCtrls.Add(settingCtrl);
 
             statisticsCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<StatisticsCtrl>(CtrlType.StatisticsCtrl);
             BaseCtrls.Add(statisticsCtrl);

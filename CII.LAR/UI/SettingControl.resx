@@ -133,100 +133,13 @@
   <data name="&gt;&gt;closeButton.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;cmbImage.Name" xml:space="preserve">
-    <value>cmbImage</value>
-  </data>
-  <data name="&gt;&gt;cmbImage.Type" xml:space="preserve">
-    <value>CII.LAR.MaterialSkin.MaterialComboBox, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmbImage.Parent" xml:space="preserve">
-    <value>gropBoxSystemInfo</value>
-  </data>
-  <data name="&gt;&gt;cmbImage.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;materialLabel3.Name" xml:space="preserve">
-    <value>materialLabel3</value>
-  </data>
-  <data name="&gt;&gt;materialLabel3.Type" xml:space="preserve">
-    <value>CII.LAR.MaterialSkin.MaterialLabel, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialLabel3.Parent" xml:space="preserve">
-    <value>gropBoxSystemInfo</value>
-  </data>
-  <data name="&gt;&gt;materialLabel3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;btnSimulator.Name" xml:space="preserve">
-    <value>btnSimulator</value>
-  </data>
-  <data name="&gt;&gt;btnSimulator.Type" xml:space="preserve">
-    <value>CII.LAR.MaterialSkin.MaterialRoundButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnSimulator.Parent" xml:space="preserve">
-    <value>gropBoxSystemInfo</value>
-  </data>
-  <data name="&gt;&gt;btnSimulator.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;lblCameraStatus.Name" xml:space="preserve">
-    <value>lblCameraStatus</value>
-  </data>
-  <data name="&gt;&gt;lblCameraStatus.Type" xml:space="preserve">
-    <value>CII.LAR.MaterialSkin.MaterialLabel, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;lblCameraStatus.Parent" xml:space="preserve">
-    <value>gropBoxSystemInfo</value>
-  </data>
-  <data name="&gt;&gt;lblCameraStatus.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;lblCamera.Name" xml:space="preserve">
-    <value>lblCamera</value>
-  </data>
-  <data name="&gt;&gt;lblCamera.Type" xml:space="preserve">
-    <value>CII.LAR.MaterialSkin.MaterialLabel, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;lblCamera.Parent" xml:space="preserve">
-    <value>gropBoxSystemInfo</value>
-  </data>
-  <data name="&gt;&gt;lblCamera.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="gropBoxSystemInfo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="gropBoxSystemInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 33</value>
-  </data>
-  <data name="gropBoxSystemInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 159</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="gropBoxSystemInfo.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="gropBoxSystemInfo.Text" xml:space="preserve">
-    <value>System Information</value>
-  </data>
-  <data name="&gt;&gt;gropBoxSystemInfo.Name" xml:space="preserve">
-    <value>gropBoxSystemInfo</value>
-  </data>
-  <data name="&gt;&gt;gropBoxSystemInfo.Type" xml:space="preserve">
-    <value>CII.LAR.MaterialSkin.MaterialGroupBox, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;gropBoxSystemInfo.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;gropBoxSystemInfo.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
   <data name="cmbImage.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 91</value>
   </data>
   <data name="cmbImage.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 22</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cmbImage.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
@@ -372,6 +285,42 @@
   <data name="&gt;&gt;lblCamera.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="gropBoxSystemInfo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="gropBoxSystemInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 33</value>
+  </data>
+  <data name="gropBoxSystemInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 159</value>
+  </data>
+  <data name="gropBoxSystemInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="gropBoxSystemInfo.Text" xml:space="preserve">
+    <value>System Information</value>
+  </data>
+  <data name="&gt;&gt;gropBoxSystemInfo.Name" xml:space="preserve">
+    <value>gropBoxSystemInfo</value>
+  </data>
+  <data name="&gt;&gt;gropBoxSystemInfo.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialGroupBox, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;gropBoxSystemInfo.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;gropBoxSystemInfo.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="cmbLaser.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 29</value>
+  </data>
+  <data name="cmbLaser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
+  </data>
+  <data name="cmbLaser.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
   <data name="&gt;&gt;cmbLaser.Name" xml:space="preserve">
     <value>cmbLaser</value>
   </data>
@@ -411,26 +360,14 @@
   <data name="&gt;&gt;groupBoxLaser.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="cmbLaser.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="comboBoxItemLanguage.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 29</value>
   </data>
-  <data name="cmbLaser.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="comboBoxItemLanguage.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 22</value>
   </data>
-  <data name="cmbLaser.TabIndex" type="System.Int32, mscorlib">
+  <data name="comboBoxItemLanguage.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="&gt;&gt;cmbLaser.Name" xml:space="preserve">
-    <value>cmbLaser</value>
-  </data>
-  <data name="&gt;&gt;cmbLaser.Type" xml:space="preserve">
-    <value>CII.LAR.MaterialSkin.MaterialComboBox, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;cmbLaser.Parent" xml:space="preserve">
-    <value>groupBoxLaser</value>
-  </data>
-  <data name="&gt;&gt;cmbLaser.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;comboBoxItemLanguage.Name" xml:space="preserve">
     <value>comboBoxItemLanguage</value>
@@ -471,26 +408,20 @@
   <data name="&gt;&gt;groupBoxLanguage.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="comboBoxItemLanguage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 29</value>
+  <data name="materialTextBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
-  <data name="comboBoxItemLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
+  <data name="materialTextBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 31</value>
   </data>
-  <data name="comboBoxItemLanguage.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="materialTextBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 21</value>
   </data>
-  <data name="&gt;&gt;comboBoxItemLanguage.Name" xml:space="preserve">
-    <value>comboBoxItemLanguage</value>
+  <data name="materialTextBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="&gt;&gt;comboBoxItemLanguage.Type" xml:space="preserve">
-    <value>CII.LAR.MaterialSkin.MaterialComboBox, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;comboBoxItemLanguage.Parent" xml:space="preserve">
-    <value>groupBoxLanguage</value>
-  </data>
-  <data name="&gt;&gt;comboBoxItemLanguage.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="materialTextBox1.Text" xml:space="preserve">
+    <value>test</value>
   </data>
   <data name="&gt;&gt;materialTextBox1.Name" xml:space="preserve">
     <value>materialTextBox1</value>
@@ -531,32 +462,29 @@
   <data name="&gt;&gt;materialGroupBox1.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="materialTextBox1.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="materialRoundButton1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="materialRoundButton1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
-  <data name="materialTextBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 31</value>
+  <data name="materialRoundButton1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="materialTextBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 21</value>
+  <data name="materialRoundButton1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 28</value>
   </data>
-  <data name="materialTextBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="materialRoundButton1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
   </data>
-  <data name="materialTextBox1.Text" xml:space="preserve">
-    <value>test</value>
+  <data name="materialRoundButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 23</value>
   </data>
-  <data name="&gt;&gt;materialTextBox1.Name" xml:space="preserve">
-    <value>materialTextBox1</value>
+  <data name="materialRoundButton1.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
-  <data name="&gt;&gt;materialTextBox1.Type" xml:space="preserve">
-    <value>CII.LAR.MaterialSkin.MaterialTextBox, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox1.Parent" xml:space="preserve">
-    <value>materialGroupBox1</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="materialRoundButton1.Text" xml:space="preserve">
+    <value>Object Lense Manager</value>
   </data>
   <data name="&gt;&gt;materialRoundButton1.Name" xml:space="preserve">
     <value>materialRoundButton1</value>
@@ -597,41 +525,14 @@
   <data name="&gt;&gt;materialGroupBox2.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="materialRoundButton1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="materialComboBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 29</value>
   </data>
-  <data name="materialRoundButton1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
+  <data name="materialComboBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
   </data>
-  <data name="materialRoundButton1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="materialRoundButton1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 28</value>
-  </data>
-  <data name="materialRoundButton1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 6, 4, 6</value>
-  </data>
-  <data name="materialRoundButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 23</value>
-  </data>
-  <data name="materialRoundButton1.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="materialRoundButton1.Text" xml:space="preserve">
-    <value>Object Lense Manager</value>
-  </data>
-  <data name="&gt;&gt;materialRoundButton1.Name" xml:space="preserve">
-    <value>materialRoundButton1</value>
-  </data>
-  <data name="&gt;&gt;materialRoundButton1.Type" xml:space="preserve">
-    <value>CII.LAR.MaterialSkin.MaterialRoundButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialRoundButton1.Parent" xml:space="preserve">
-    <value>materialGroupBox2</value>
-  </data>
-  <data name="&gt;&gt;materialRoundButton1.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="materialComboBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;materialComboBox1.Name" xml:space="preserve">
     <value>materialComboBox1</value>
@@ -672,26 +573,14 @@
   <data name="&gt;&gt;materialGroupBox3.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="materialComboBox1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="materialComboBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 29</value>
   </data>
-  <data name="materialComboBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="materialComboBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 22</value>
   </data>
-  <data name="materialComboBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="materialComboBox2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox1.Name" xml:space="preserve">
-    <value>materialComboBox1</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox1.Type" xml:space="preserve">
-    <value>CII.LAR.MaterialSkin.MaterialComboBox, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox1.Parent" xml:space="preserve">
-    <value>materialGroupBox3</value>
-  </data>
-  <data name="&gt;&gt;materialComboBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;materialComboBox2.Name" xml:space="preserve">
     <value>materialComboBox2</value>
@@ -732,26 +621,29 @@
   <data name="&gt;&gt;materialGroupBox4.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="materialComboBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 29</value>
+  <data name="btnShortcuts.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
-  <data name="materialComboBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
+  <data name="btnShortcuts.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
-  <data name="materialComboBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="btnShortcuts.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;materialComboBox2.Name" xml:space="preserve">
-    <value>materialComboBox2</value>
+  <data name="btnShortcuts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 28</value>
   </data>
-  <data name="&gt;&gt;materialComboBox2.Type" xml:space="preserve">
-    <value>CII.LAR.MaterialSkin.MaterialComboBox, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="btnShortcuts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
   </data>
-  <data name="&gt;&gt;materialComboBox2.Parent" xml:space="preserve">
-    <value>materialGroupBox4</value>
+  <data name="btnShortcuts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 23</value>
   </data>
-  <data name="&gt;&gt;materialComboBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="btnShortcuts.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="btnShortcuts.Text" xml:space="preserve">
+    <value>Keyboard/Footpedal shortcuts</value>
   </data>
   <data name="&gt;&gt;btnShortcuts.Name" xml:space="preserve">
     <value>btnShortcuts</value>
@@ -791,42 +683,6 @@
   </data>
   <data name="&gt;&gt;materialGroupBox5.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="btnShortcuts.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="btnShortcuts.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="btnShortcuts.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnShortcuts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 28</value>
-  </data>
-  <data name="btnShortcuts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 6, 4, 6</value>
-  </data>
-  <data name="btnShortcuts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 23</value>
-  </data>
-  <data name="btnShortcuts.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="btnShortcuts.Text" xml:space="preserve">
-    <value>Keyboard/Footpedal shortcuts</value>
-  </data>
-  <data name="&gt;&gt;btnShortcuts.Name" xml:space="preserve">
-    <value>btnShortcuts</value>
-  </data>
-  <data name="&gt;&gt;btnShortcuts.Type" xml:space="preserve">
-    <value>CII.LAR.MaterialSkin.MaterialRoundButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnShortcuts.Parent" xml:space="preserve">
-    <value>materialGroupBox5</value>
-  </data>
-  <data name="&gt;&gt;btnShortcuts.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="materialRoundButton2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>

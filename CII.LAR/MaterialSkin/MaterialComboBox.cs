@@ -9,6 +9,10 @@ using System.Windows.Forms;
 
 namespace CII.LAR.MaterialSkin
 {
+    /// <summary>
+    /// 自定义Material风格ComboBox
+    /// Zhong Wen 2018/06/20
+    /// </summary>
     public class MaterialComboBox: ComboBox , IMaterialControl
     {
         [Browsable(false)]
@@ -24,8 +28,6 @@ namespace CII.LAR.MaterialSkin
             DrawMode = DrawMode.OwnerDrawFixed;
             DropDownStyle = ComboBoxStyle.DropDownList;
             this.Font = SkinManager.PINGFANG_MEDIUM_9;
-            //CAD1E0
-            this.HighlightColor = Color.FromArgb(0xCA, 0xD1, 0xE0);
             this.DrawItem += ColoredComboBox_DrawItem;
             this.ForeColor = Color.White;
         }
@@ -55,28 +57,35 @@ namespace CII.LAR.MaterialSkin
                 return;
 
             ComboBox combo = sender as ComboBox;
+            SizeF size = e.Graphics.MeasureString(combo.Items[e.Index].ToString(), this.Font);
+
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
-                using (SolidBrush sb = new SolidBrush(HighlightColor))
+                using (SolidBrush sb = new SolidBrush(SkinManager.ComboBoxHighlightColor))
                 {
                     e.Graphics.FillRectangle(sb, e.Bounds);
+                }
+                //1A1E25
+                using (SolidBrush sb = new SolidBrush(SkinManager.ComboBoxItemSelectFontColor))
+                {
+                    e.Graphics.DrawString(combo.Items[e.Index].ToString(), this.Font, sb, new PointF(e.Bounds.X, e.Bounds.Y + (e.Bounds.Height - size.Height) / 2f));
                 }
             }
             else
             {
                 using (SolidBrush sb = new SolidBrush(Color.FromArgb(0x1A, 0x1E, 0x25)))
                     e.Graphics.FillRectangle(sb, e.Bounds);
+
+                using (SolidBrush sb = new SolidBrush(SkinManager.FontColor))
+                {
+                    e.Graphics.DrawString(combo.Items[e.Index].ToString(), this.Font, sb, new PointF(e.Bounds.X, e.Bounds.Y + (e.Bounds.Height - size.Height) / 2f));
+                }
             }
-            SizeF size = e.Graphics.MeasureString(combo.Items[e.Index].ToString(), this.Font);
-            using (SolidBrush sb = new SolidBrush(combo.ForeColor))
-            {
-                e.Graphics.DrawString(combo.Items[e.Index].ToString(), this.Font, sb, new PointF(e.Bounds.X, e.Bounds.Y + (e.Bounds.Height - size.Height) / 2f));
-            }
+
 
         }
 
         public const int BorderWidth = 2;
-        public Color HighlightColor { get; set; }
         private void PaintComboBoxItem(DrawItemEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -119,12 +128,10 @@ namespace CII.LAR.MaterialSkin
         {
             Graphics g = this.CreateGraphics();
             //1A1E25
-            //using (Pen p = new Pen(Color.FromArgb(0x1A, 0x1E, 0x25)))
-            //{
-            //    g.FillRectangle(BorderBrush, this.ClientRectangle);
-            //    //var gp = DrawHelper.DrawRoundRect(this.ClientRectangle, 3);
-            //    //g.FillPath(BorderBrush, gp);
-            //}
+            using (Pen p = new Pen(Color.FromArgb(0x1A, 0x1E, 0x25)))
+            {
+                g.FillRectangle(BorderBrush, this.ClientRectangle);
+            }
 
             //CAD1E0 
             //using (Pen boardPen = new Pen(Color.FromArgb(0xCA, 0xD1, 0xE0)))
@@ -157,6 +164,11 @@ namespace CII.LAR.MaterialSkin
             //Draw the arrow
             g.FillPath(ArrowBrush, pth);
 
+            SizeF size = g.MeasureString(this.Text, this.Font);
+            //Font color : DBE2F1
+            using (SolidBrush sb = new SolidBrush(SkinManager.FontColor))
+                g.DrawString(this.Text, this.Font, sb, new PointF(0, (this.Height - size.Height) / 2f));
+            ArrowBrush.Dispose();
         }
     }
 }

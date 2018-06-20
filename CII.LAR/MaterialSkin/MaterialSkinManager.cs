@@ -49,6 +49,26 @@ namespace CII.LAR.MaterialSkin
         }
 
         //Constant color values
+        private Color fontColor = Color.FromArgb(0xDB, 0xE2, 0xF1);
+        //默认字体颜色
+        public Color FontColor
+        {
+            get { return this.fontColor; }
+        }
+
+        //默认ComboBox选中字体颜色
+        private Color comboBoxItemSelectFontColor = Color.FromArgb(0x1A, 0x1E, 0x25);
+        public Color ComboBoxItemSelectFontColor
+        {
+            get { return this.comboBoxItemSelectFontColor; }
+        }
+
+        //默认ComboBox选中颜色
+        private Color comboBoxHighlightColor = Color.FromArgb(0xCA, 0xD1, 0xE0);
+        public Color ComboBoxHighlightColor
+        {
+            get { return this.comboBoxHighlightColor; }
+        }
         private static readonly Color PRIMARY_TEXT_BLACK = Color.FromArgb(222, 0, 0, 0);
         private static readonly Brush PRIMARY_TEXT_BLACK_BRUSH = new SolidBrush(PRIMARY_TEXT_BLACK);
         public static Color SECONDARY_TEXT_BLACK = Color.FromArgb(138, 0, 0, 0);

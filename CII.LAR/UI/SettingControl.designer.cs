@@ -80,7 +80,6 @@
             this.cmbImage.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbImage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbImage.FormattingEnabled = true;
-            this.cmbImage.HighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
             resources.ApplyResources(this.cmbImage, "cmbImage");
             this.cmbImage.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.cmbImage.Name = "cmbImage";
@@ -138,7 +137,6 @@
             this.cmbLaser.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbLaser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLaser.FormattingEnabled = true;
-            this.cmbLaser.HighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
             this.cmbLaser.Items.AddRange(new object[] {
             resources.GetString("cmbLaser.Items"),
             resources.GetString("cmbLaser.Items1")});
@@ -162,7 +160,6 @@
             this.comboBoxItemLanguage.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxItemLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxItemLanguage.FormattingEnabled = true;
-            this.comboBoxItemLanguage.HighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
             this.comboBoxItemLanguage.Items.AddRange(new object[] {
             resources.GetString("comboBoxItemLanguage.Items"),
             resources.GetString("comboBoxItemLanguage.Items1")});
@@ -233,7 +230,6 @@
             this.cbxScale.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbxScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxScale.FormattingEnabled = true;
-            this.cbxScale.HighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
             this.cbxScale.Items.AddRange(new object[] {
             resources.GetString("cbxScale.Items"),
             resources.GetString("cbxScale.Items1"),
@@ -261,7 +257,6 @@
             this.cmbTime.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTime.FormattingEnabled = true;
-            this.cmbTime.HighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
             this.cmbTime.Items.AddRange(new object[] {
             resources.GetString("cmbTime.Items"),
             resources.GetString("cmbTime.Items1"),

@@ -39,7 +39,6 @@
             this.materialComboBox1.Font = new System.Drawing.Font("PingFang SC Medium", 9F);
             this.materialComboBox1.ForeColor = System.Drawing.Color.White;
             this.materialComboBox1.FormattingEnabled = true;
-            this.materialComboBox1.HighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
             this.materialComboBox1.ItemHeight = 18;
             this.materialComboBox1.Items.AddRange(new object[] {
             "28.8x",

@@ -367,7 +367,7 @@ namespace CII.LAR
 
             //InitializeIdleTimer();
             this.richPictureBox.RestrictArea.TransformMotorOriginalPoints();
-            //settingCtrl.SettingCtrl_Load(null, null);
+            settingControl.SettingControl_Load(null, null);
         }
 
         private void SysConfig_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -436,6 +436,10 @@ namespace CII.LAR
             BaseCtrls = new List<BaseCtrl>();
 
             settingControl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SettingControl>(CtrlType.SettingCtrl);
+            settingControl.UpdateSimulatorImageHandler += UpdateSimulatorImageHandler;
+            settingControl.ShowObjectLenseManagerHandler += ShowObjectLenseManagerHandler;
+            settingControl.ShowShortcutManagerHandler += ShowShortcutManagerHandler;
+            settingControl.ShowScaleAppearanceCtrlHandler += ShowScaleAppearanceCtrlHandler;
             BaseCtrls.Add(settingControl);
 
             //settingCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SettingCtrl>(CtrlType.SettingCtrl);

@@ -117,4 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnScaleAppearance.Text" xml:space="preserve">
+    <value>刻度尺显示</value>
+  </data>
+  <data name="btnShortcuts.Text" xml:space="preserve">
+    <value>键盘/踏板快捷键</value>
+  </data>
+  <data name="btnSimulator.Text" xml:space="preserve">
+    <value>开启模拟模式</value>
+  </data>
+  <data name="gropBoxSystemInfo.Text" xml:space="preserve">
+    <value>系统信息</value>
+  </data>
+  <data name="groupBoxCoefficient.Text" xml:space="preserve">
+    <value>默认放大倍数</value>
+  </data>
+  <data name="groupBoxLanguage.Text" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="groupBoxLaser.Text" xml:space="preserve">
+    <value>激光器</value>
+  </data>
+  <data name="groupBoxObjectLense.Text" xml:space="preserve">
+    <value>物镜</value>
+  </data>
+  <data name="groupBoxScale.Text" xml:space="preserve">
+    <value>刻度尺</value>
+  </data>
+  <data name="groupBoxShortcuts.Text" xml:space="preserve">
+    <value>快捷键</value>
+  </data>
+  <data name="groupBoxStoragePath.Text" xml:space="preserve">
+    <value>存储路径</value>
+  </data>
+  <data name="groupBoxTime.Text" xml:space="preserve">
+    <value>录屏时长（单位：分钟）</value>
+  </data>
+  <data name="lblCamera.Text" xml:space="preserve">
+    <value>相机：</value>
+  </data>
+  <data name="lblCameraStatus.Text" xml:space="preserve">
+    <value>没有连接录像设备</value>
+  </data>
+  <data name="lblSimulatorImage.Text" xml:space="preserve">
+    <value>模拟图像：</value>
+  </data>
+  <data name="materialRoundButton1.Text" xml:space="preserve">
+    <value>物镜管理</value>
+  </data>
 </root>

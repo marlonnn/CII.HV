@@ -672,6 +672,9 @@
     <EmbeddedResource Include="UI\SettingControl.resx">
       <DependentUpon>SettingControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\SettingControl.zh-CN.resx">
+      <DependentUpon>SettingControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\ShortcutCtrl.resx">
       <DependentUpon>ShortcutCtrl.cs</DependentUpon>
     </EmbeddedResource>

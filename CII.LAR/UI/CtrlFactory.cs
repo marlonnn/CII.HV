@@ -32,7 +32,7 @@ namespace CII.LAR.UI
 
         public CtrlFactory(RichPictureBox richPictureBox)
         {
-            setingControl = new SettingControl();
+            setingControl = new SettingControl(richPictureBox);
             settingCtrl = new SettingCtrl(richPictureBox);
             serialPortCtrl = new SerialPortCtrl();
             statisticsCtrl = new StatisticsCtrl();

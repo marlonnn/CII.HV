@@ -28,59 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.materialTextBox1 = new CII.LAR.MaterialSkin.MaterialTextBox();
+            this.materialComboBox1 = new CII.LAR.MaterialSkin.MaterialComboBox();
             this.SuspendLayout();
             // 
-            // openFileDialog1
+            // materialComboBox1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.Black;
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(92, 175);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(129, 21);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "21222";
-            // 
-            // materialTextBox1
-            // 
-            this.materialTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.materialTextBox1.CustomAutoSize = true;
-            this.materialTextBox1.Depth = 0;
-            this.materialTextBox1.EmptyTextTip = null;
-            this.materialTextBox1.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.materialTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.materialTextBox1.ForeColor = System.Drawing.Color.White;
-            this.materialTextBox1.Location = new System.Drawing.Point(92, 125);
-            this.materialTextBox1.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
-            this.materialTextBox1.Name = "materialTextBox1";
-            this.materialTextBox1.Radius = 3;
-            this.materialTextBox1.Size = new System.Drawing.Size(100, 21);
-            this.materialTextBox1.TabIndex = 2;
+            this.materialComboBox1.Depth = 0;
+            this.materialComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.materialComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.materialComboBox1.Font = new System.Drawing.Font("PingFang SC Medium", 9F);
+            this.materialComboBox1.ForeColor = System.Drawing.Color.White;
+            this.materialComboBox1.FormattingEnabled = true;
+            this.materialComboBox1.HighlightColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
+            this.materialComboBox1.ItemHeight = 18;
+            this.materialComboBox1.Items.AddRange(new object[] {
+            "28.8x",
+            "38.8x",
+            "48.8x",
+            "58.8x"});
+            this.materialComboBox1.Location = new System.Drawing.Point(48, 61);
+            this.materialComboBox1.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.materialComboBox1.Name = "materialComboBox1";
+            this.materialComboBox1.Size = new System.Drawing.Size(112, 24);
+            this.materialComboBox1.TabIndex = 0;
             // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.materialTextBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.materialComboBox1);
             this.Name = "TestForm";
             this.Text = "TestForm";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.TextBox textBox1;
-        private MaterialSkin.MaterialTextBox materialTextBox1;
+        private MaterialSkin.MaterialComboBox materialComboBox1;
     }
 }

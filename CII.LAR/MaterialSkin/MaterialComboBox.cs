@@ -20,11 +20,24 @@ namespace CII.LAR.MaterialSkin
 
         public MaterialComboBox()
         {
+            SetStyles();
             DrawMode = DrawMode.OwnerDrawFixed;
             DropDownStyle = ComboBoxStyle.DropDownList;
+            this.Font = SkinManager.PINGFANG_MEDIUM_9;
             //CAD1E0
             this.HighlightColor = Color.FromArgb(0xCA, 0xD1, 0xE0);
             this.DrawItem += ColoredComboBox_DrawItem;
+            this.ForeColor = Color.White;
+        }
+
+        private void SetStyles()
+        {
+            // TextBox由系统绘制，不能设置 ControlStyles.UserPaint样式
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.ResizeRedraw, true);
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            UpdateStyles();
         }
 
         public void ColoredComboBox_DrawItem(object sender, DrawItemEventArgs e)
@@ -33,7 +46,7 @@ namespace CII.LAR.MaterialSkin
             //if ((e.State & DrawItemState.ComboBoxEdit) != DrawItemState.ComboBoxEdit)
             //    e.DrawBackground();
             Graphics g = e.Graphics;
-            //if (e.Index >= 0 /*&& e.Index < colorDics.Count*/)  //if index is -1 do nothing
+            if (e.Index >= 0 /*&& e.Index < colorDics.Count*/)  //if index is -1 do nothing
             {
                 PaintComboBoxItem(e);
             }
@@ -43,17 +56,23 @@ namespace CII.LAR.MaterialSkin
 
             ComboBox combo = sender as ComboBox;
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
-                e.Graphics.FillRectangle(new SolidBrush(HighlightColor),
-                                         e.Bounds);
-            //else
-            //    e.Graphics.FillRectangle(new SolidBrush(combo.BackColor),
-            //                             e.Bounds);
+            {
+                using (SolidBrush sb = new SolidBrush(HighlightColor))
+                {
+                    e.Graphics.FillRectangle(sb, e.Bounds);
+                }
+            }
+            else
+            {
+                using (SolidBrush sb = new SolidBrush(Color.FromArgb(0x1A, 0x1E, 0x25)))
+                    e.Graphics.FillRectangle(sb, e.Bounds);
+            }
+            SizeF size = e.Graphics.MeasureString(combo.Items[e.Index].ToString(), this.Font);
+            using (SolidBrush sb = new SolidBrush(combo.ForeColor))
+            {
+                e.Graphics.DrawString(combo.Items[e.Index].ToString(), this.Font, sb, new PointF(e.Bounds.X, e.Bounds.Y + (e.Bounds.Height - size.Height) / 2f));
+            }
 
-            //e.Graphics.DrawString(combo.Items[e.Index].ToString(), e.Font,
-            //                      new SolidBrush(combo.ForeColor),
-            //                      new Point(e.Bounds.X, e.Bounds.Y));
-
-            e.DrawFocusRectangle();
         }
 
         public const int BorderWidth = 2;
@@ -68,7 +87,8 @@ namespace CII.LAR.MaterialSkin
                 e.Bounds.Width,
                 e.Bounds.Height);
 
-            using (SolidBrush sb = new SolidBrush(Color.Gray))
+            //1A1E25
+            using (SolidBrush sb = new SolidBrush(Color.FromArgb(0x1A, 0x1E, 0x25)))
             {
                 g.FillRectangle(sb, rectangle.X, rectangle.Y, this.ClientRectangle.Width, rectangle.Height);
             }
@@ -93,21 +113,25 @@ namespace CII.LAR.MaterialSkin
             }
         }
         private Brush BorderBrush = new SolidBrush(Color.FromArgb(0x1A, 0x1E, 0x25));
-        private Brush ArrowBrush = new SolidBrush(SystemColors.ControlText);
-        private Brush DropButtonBrush = new SolidBrush(SystemColors.Control);
+        private Brush ArrowBrush = new SolidBrush(Color.White);
+        private Brush DropButtonBrush = new SolidBrush(Color.Red);
         private void RePaint()
         {
             Graphics g = this.CreateGraphics();
             //1A1E25
-            using (Pen p = new Pen(Color.FromArgb(0x1A, 0x1E, 0x25)))
-                g.FillRectangle(BorderBrush, this.ClientRectangle);
+            //using (Pen p = new Pen(Color.FromArgb(0x1A, 0x1E, 0x25)))
+            //{
+            //    g.FillRectangle(BorderBrush, this.ClientRectangle);
+            //    //var gp = DrawHelper.DrawRoundRect(this.ClientRectangle, 3);
+            //    //g.FillPath(BorderBrush, gp);
+            //}
 
             //CAD1E0 
-            using (Pen boardPen = new Pen(Color.FromArgb(0xCA, 0xD1, 0xE0)))
-                g.DrawRectangle(boardPen, new Rectangle(1, 1, this.ClientRectangle.Width - 2, this.ClientRectangle.Height - 2));
-                //Draw the background of the dropdown button
-                //Rectangle rect = new Rectangle(this.Width - 17, 0, 17, this.Height);
-                //g.FillRectangle(DropButtonBrush, rect);
+            //using (Pen boardPen = new Pen(Color.FromArgb(0xCA, 0xD1, 0xE0)))
+            //    g.DrawRectangle(boardPen, new Rectangle(1, 1, this.ClientRectangle.Width - 2, this.ClientRectangle.Height - 2));
+            //Draw the background of the dropdown button
+            //Rectangle rect = new Rectangle(this.Width - 17, 0, 17, this.Height);
+            //g.FillRectangle(DropButtonBrush, rect);
 
 
             //Create the path for the arrow
@@ -123,11 +147,11 @@ namespace CII.LAR.MaterialSkin
             //Determine the arrow's color.
             if (this.DroppedDown)
             {
-                ArrowBrush = new SolidBrush(SystemColors.HighlightText);
+                ArrowBrush = new SolidBrush(Color.White);
             }
             else
             {
-                ArrowBrush = new SolidBrush(SystemColors.ControlText);
+                ArrowBrush = new SolidBrush(Color.White);
             }
 
             //Draw the arrow

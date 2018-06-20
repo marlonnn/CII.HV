@@ -70,7 +70,8 @@ namespace CII.LAR.MaterialSkin
             //this.Font = _defaultFont;
             this.Font = SkinManager.PINGFANG_MEDIUM_9;
             //this.AutoSize = true;
-            this.BorderStyle = BorderStyle.None;
+            this.BorderStyle = BorderStyle.FixedSingle;
+            this.ForeColor = Color.White;
             this.BackColor = Color.FromArgb(0x24, 0x28, 0x30);
         }
 

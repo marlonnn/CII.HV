@@ -133,11 +133,14 @@
   <data name="&gt;&gt;closeButton.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="cmbImage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
+  </data>
   <data name="cmbImage.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 91</value>
   </data>
   <data name="cmbImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
+    <value>198, 25</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cmbImage.TabIndex" type="System.Int32, mscorlib">
@@ -312,6 +315,9 @@
   <data name="&gt;&gt;gropBoxSystemInfo.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="cmbLaser.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
+  </data>
   <data name="cmbLaser.Items" xml:space="preserve">
     <value>Saturn Fixed</value>
   </data>
@@ -322,7 +328,7 @@
     <value>9, 29</value>
   </data>
   <data name="cmbLaser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
+    <value>198, 25</value>
   </data>
   <data name="cmbLaser.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -366,6 +372,9 @@
   <data name="&gt;&gt;groupBoxLaser.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="comboBoxItemLanguage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
+  </data>
   <data name="comboBoxItemLanguage.Items" xml:space="preserve">
     <value>English</value>
   </data>
@@ -376,7 +385,7 @@
     <value>9, 29</value>
   </data>
   <data name="comboBoxItemLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
+    <value>198, 25</value>
   </data>
   <data name="comboBoxItemLanguage.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -431,9 +440,6 @@
   </data>
   <data name="textBoxItemStoragePath.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="textBoxItemStoragePath.Text" xml:space="preserve">
-    <value>test</value>
   </data>
   <data name="&gt;&gt;textBoxItemStoragePath.Name" xml:space="preserve">
     <value>textBoxItemStoragePath</value>
@@ -537,6 +543,9 @@
   <data name="&gt;&gt;groupBoxObjectLense.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="cbxScale.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
+  </data>
   <data name="cbxScale.Items" xml:space="preserve">
     <value>10</value>
   </data>
@@ -559,7 +568,7 @@
     <value>9, 29</value>
   </data>
   <data name="cbxScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
+    <value>198, 25</value>
   </data>
   <data name="cbxScale.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -603,6 +612,9 @@
   <data name="&gt;&gt;groupBoxCoefficient.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="cmbTime.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
+  </data>
   <data name="cmbTime.Items" xml:space="preserve">
     <value>1</value>
   </data>
@@ -637,7 +649,7 @@
     <value>9, 29</value>
   </data>
   <data name="cmbTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 22</value>
+    <value>198, 25</value>
   </data>
   <data name="cmbTime.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>

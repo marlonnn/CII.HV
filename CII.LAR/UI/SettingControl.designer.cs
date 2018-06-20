@@ -79,8 +79,9 @@
             this.cmbImage.Depth = 0;
             this.cmbImage.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbImage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbImage.FormattingEnabled = true;
             resources.ApplyResources(this.cmbImage, "cmbImage");
+            this.cmbImage.ForeColor = System.Drawing.Color.White;
+            this.cmbImage.FormattingEnabled = true;
             this.cmbImage.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.cmbImage.Name = "cmbImage";
             this.cmbImage.SelectedIndexChanged += new System.EventHandler(this.cmbImage_SelectedIndexChanged);
@@ -136,11 +137,12 @@
             this.cmbLaser.Depth = 0;
             this.cmbLaser.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbLaser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cmbLaser, "cmbLaser");
+            this.cmbLaser.ForeColor = System.Drawing.Color.White;
             this.cmbLaser.FormattingEnabled = true;
             this.cmbLaser.Items.AddRange(new object[] {
             resources.GetString("cmbLaser.Items"),
             resources.GetString("cmbLaser.Items1")});
-            resources.ApplyResources(this.cmbLaser, "cmbLaser");
             this.cmbLaser.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.cmbLaser.Name = "cmbLaser";
             // 
@@ -159,11 +161,12 @@
             this.comboBoxItemLanguage.Depth = 0;
             this.comboBoxItemLanguage.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxItemLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxItemLanguage, "comboBoxItemLanguage");
+            this.comboBoxItemLanguage.ForeColor = System.Drawing.Color.White;
             this.comboBoxItemLanguage.FormattingEnabled = true;
             this.comboBoxItemLanguage.Items.AddRange(new object[] {
             resources.GetString("comboBoxItemLanguage.Items"),
             resources.GetString("comboBoxItemLanguage.Items1")});
-            resources.ApplyResources(this.comboBoxItemLanguage, "comboBoxItemLanguage");
             this.comboBoxItemLanguage.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.comboBoxItemLanguage.Name = "comboBoxItemLanguage";
             this.comboBoxItemLanguage.SelectedIndexChanged += new System.EventHandler(this.ComboBoxItemLanguage_SelectedIndexChanged);
@@ -229,6 +232,8 @@
             this.cbxScale.Depth = 0;
             this.cbxScale.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbxScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cbxScale, "cbxScale");
+            this.cbxScale.ForeColor = System.Drawing.Color.White;
             this.cbxScale.FormattingEnabled = true;
             this.cbxScale.Items.AddRange(new object[] {
             resources.GetString("cbxScale.Items"),
@@ -237,7 +242,6 @@
             resources.GetString("cbxScale.Items3"),
             resources.GetString("cbxScale.Items4"),
             resources.GetString("cbxScale.Items5")});
-            resources.ApplyResources(this.cbxScale, "cbxScale");
             this.cbxScale.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.cbxScale.Name = "cbxScale";
             // 
@@ -256,6 +260,8 @@
             this.cmbTime.Depth = 0;
             this.cmbTime.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cmbTime, "cmbTime");
+            this.cmbTime.ForeColor = System.Drawing.Color.White;
             this.cmbTime.FormattingEnabled = true;
             this.cmbTime.Items.AddRange(new object[] {
             resources.GetString("cmbTime.Items"),
@@ -268,7 +274,6 @@
             resources.GetString("cmbTime.Items7"),
             resources.GetString("cmbTime.Items8"),
             resources.GetString("cmbTime.Items9")});
-            resources.ApplyResources(this.cmbTime, "cmbTime");
             this.cmbTime.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.cmbTime.Name = "cmbTime";
             this.cmbTime.SelectedIndexChanged += new System.EventHandler(this.cmbTime_SelectedIndexChanged);

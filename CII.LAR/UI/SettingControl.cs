@@ -131,45 +131,23 @@ namespace CII.LAR.UI
         {
 
             this.Title = global::CII.LAR.Properties.Resources.StrSetting;
-            resources.ApplyResources(this.groupBoxLanguage, groupBoxLanguage.Name);
-            resources.ApplyResources(this.groupBoxStoragePath, groupBoxStoragePath.Name);
-            resources.ApplyResources(this.groupBoxObjectLense, groupBoxObjectLense.Name);
-            //resources.ApplyResources(this.labelItem1, labelItem1.Name);
-            resources.ApplyResources(this.lblCamera, lblCamera.Name);
-            //resources.ApplyResources(this.conne, lblConnectedInfo.Name);
-            //resources.ApplyResources(this.lblLaser, lblLaser.Name);
-            //resources.ApplyResources(this.lblSimulator, lblSimulator.Name);
-            //resources.ApplyResources(this.lense, lense.Name);
-            //resources.ApplyResources(this.labelItemScale, labelItemScale.Name);
-            //resources.ApplyResources(this.labelItem2, labelItem2.Name);
-            resources.ApplyResources(this.btnShortcuts, btnShortcuts.Name);
-            //resources.ApplyResources(this.labelItem3, labelItem3.Name);
-            resources.ApplyResources(this.btnScaleAppearance, btnScaleAppearance.Name);
-            //resources.ApplyResources(this.comboItem5, "comboItem5");
-            //resources.ApplyResources(this.comboItem6, "comboItem6");
-            //this.cmbLaser.Refresh();
-            ////this.itemContainer2.Refresh();
-            //foreach (var ctrl in this.Controls)
-            //{
-            //    Button btnX = ctrl as Button;
-            //    if (btnX != null)
-            //    {
-            //        resources.ApplyResources(btnX, btnX.Name);
-            //    }
 
-            //    ItemPanel itemPanel = ctrl as ItemPanel;
-            //    if (itemPanel != null)
-            //    {
-            //        foreach (var itemCtrl in itemPanel.Controls)
-            //        {
-            //            Button subBtnX = itemCtrl as Button;
-            //            if (subBtnX != null)
-            //            {
-            //                resources.ApplyResources(subBtnX, subBtnX.Name);
-            //            }
-            //        }
-            //    }
-            //}
+            foreach (var ctrl in this.Controls)
+            {
+                MaterialGroupBox mgb = ctrl as MaterialGroupBox;
+                if (mgb != null)
+                {
+                    resources.ApplyResources(mgb, mgb.Name);
+                    foreach (var subCtrl in mgb.Controls)
+                    {
+                        MaterialLabel mlbl = subCtrl as MaterialLabel;
+                        if (mlbl != null) resources.ApplyResources(mlbl, mlbl.Name);
+                        MaterialRoundButton mrb = subCtrl as MaterialRoundButton;
+                        if (mrb != null) resources.ApplyResources(mrb, mrb.Name);
+                    }
+                }
+            }
+            //this.cmbLaser.Refresh();
             this.Invalidate();
         }
 

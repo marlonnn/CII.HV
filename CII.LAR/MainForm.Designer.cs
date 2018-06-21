@@ -2,7 +2,7 @@
 
 namespace CII.LAR
 {
-    partial class ChildForm
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace CII.LAR
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChildForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.materialToolStrip1 = new CII.LAR.MaterialSkin.MaterialToolStrip();
             this.toolstripBtnScreenShort = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.toolstripBtnVideo = new CII.LAR.MaterialSkin.MaterialToolStripButton();

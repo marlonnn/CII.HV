@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace CII.LAR
 {
-    public partial class ChildForm : MaterialForm
+    public partial class MainForm : MaterialForm
     {
-        public ChildForm()
+        public MainForm()
         {
             InitializeComponent();
         }

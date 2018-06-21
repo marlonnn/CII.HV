@@ -127,11 +127,11 @@
     <Compile Include="Algorithm\Coordinate.cs" />
     <Compile Include="Algorithm\RestrictArea.cs" />
     <Compile Include="ByteHelper.cs" />
-    <Compile Include="ChildForm.cs">
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChildForm.Designer.cs">
-      <DependentUpon>ChildForm.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Commond\LaserC0C.cs" />
     <Compile Include="Commond\LaserC00.cs" />
@@ -568,8 +568,8 @@
     </Compile>
     <Compile Include="Util.cs" />
     <Compile Include="Win32.cs" />
-    <EmbeddedResource Include="ChildForm.resx">
-      <DependentUpon>ChildForm.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EntryForm.resx">
       <DependentUpon>EntryForm.cs</DependentUpon>

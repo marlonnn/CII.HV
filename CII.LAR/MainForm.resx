@@ -120,84 +120,433 @@
   <metadata name="materialToolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>232, 17</value>
   </metadata>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="materialToolStrip1.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="materialToolStrip1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolstripBtnScreenShort.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="toolstripBtnScreenShort.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolstripBtnScreenShort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="toolstripBtnScreenShort.Text" xml:space="preserve">
+    <value>Screen Shot</value>
+  </data>
+  <data name="toolstripBtnVideo.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolstripBtnVideo.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolstripBtnVideo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="toolstripBtnVideo.Text" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="toolstripBtnFiles.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolstripBtnFiles.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolstripBtnFiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="toolstripBtnFiles.Text" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="materialToolStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 15</value>
+  </data>
+  <data name="materialToolStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 143</value>
+  </data>
+  <data name="materialToolStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="materialToolStrip1.Text" xml:space="preserve">
+    <value>materialToolStrip1</value>
+  </data>
+  <data name="&gt;&gt;materialToolStrip1.Name" xml:space="preserve">
+    <value>materialToolStrip1</value>
+  </data>
+  <data name="&gt;&gt;materialToolStrip1.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStrip, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialToolStrip1.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;materialToolStrip1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <metadata name="materialToolStrip4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>688, 17</value>
   </metadata>
+  <data name="materialToolStrip4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
+  <data name="materialToolStrip4.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="materialToolStrip4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolstripBtnLaser.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolstripBtnLaser.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolstripBtnLaser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="toolstripBtnLaser.Text" xml:space="preserve">
+    <value>Laser</value>
+  </data>
+  <data name="toolstripBtnSetting.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolstripBtnSetting.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolstripBtnSetting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="toolstripBtnSetting.Text" xml:space="preserve">
+    <value>Setting</value>
+  </data>
+  <data name="toolstripBtnCamera.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolstripBtnCamera.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolstripBtnCamera.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="toolstripBtnCamera.Text" xml:space="preserve">
+    <value>Camera</value>
+  </data>
+  <data name="toolstripBtnDebug.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolstripBtnDebug.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolstripBtnDebug.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="toolstripBtnDebug.Text" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="toolstripBtnAbout.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolstripBtnAbout.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolstripBtnAbout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="toolstripBtnAbout.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="materialToolStrip4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 509</value>
+  </data>
+  <data name="materialToolStrip4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 219</value>
+  </data>
+  <data name="materialToolStrip4.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="materialToolStrip4.Text" xml:space="preserve">
+    <value>materialToolStrip4</value>
+  </data>
+  <data name="&gt;&gt;materialToolStrip4.Name" xml:space="preserve">
+    <value>materialToolStrip4</value>
+  </data>
+  <data name="&gt;&gt;materialToolStrip4.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStrip, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialToolStrip4.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;materialToolStrip4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="materialToolStrip3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>536, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="materialToolStrip3.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="materialToolStrip3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolstripBtnZoomIn.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="toolstripBtnZoomIn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
+        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
+        SUVORK5CYII=
 </value>
+  </data>
+  <data name="toolstripBtnZoomIn.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolstripBtnZoomIn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="toolstripBtnZoomIn.Text" xml:space="preserve">
+    <value>Zoom In</value>
+  </data>
+  <data name="toolstripBtnZoomOut.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="toolstripBtnZoomOut.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAZzSURBVHhe7VpNiBxFFF4T/wUFD+IfoqAH8eIfERT8Rw/i
+        H0gU/Dl40EtQwVyTFbOKuXgyaAQ9ZA9qnO6Z3XW3u2Y2jAFdJSZ0dc/sxqyKmrBBVAxRsoomju/rfSvV
+        NTWZ6Z7u3l4yHzx2mfe66uvX9apevaqhAQYYIFdUqvsvtUXwlO3INy1XTpZc/wD9/ZlkseTIf0iOlIR3
+        0HLkZ5bw3yu78uVKNbi51Wqt4SZWL8r1/VdaQm6il5yjF24lETjIcv0dlVpw76pzykR19hrblTtLjvev
+        6eWSSsn1vqWR8jg55DTuqpigr38ROWAbDe+/TS+Smjjyq4rbuIu7LRaI4EbL8f5oI60JOeqw7fi76P9R
+        kq121X+xLILn6PdhesHtJeFPWK7n9ziaJj+pNy9mCiuLmZmD59iu/4GBpCqzFOev225zXa/DGi8IB5FD
+        pigk/jK0GYrteoesaf9GfmxlMDF94DIMUxNBlhq9zE1snhi12ncXUNiNlFx5zNAHZNGuBuvZPF9UavIG
+        DHMDKcz0ni0a97FpasASXBLyXerjuN4nhPhsZtN8gJFgckIY18J/JetZHSFGzl7Q+w9FBM+zWbbAnGAK
+        h3DYCv8xNsscYYLmyj06D6xYFCZ3sFl2ME2M+DoIFTbJDfX692eT8z808Pl1TMir2Cx9UCcb2zqlkbAS
+        TlhGvd46nZfjCC/6rdFsNs9ks/SAZEnPE3hOyC0cOsF1mxcSv29UbhDkKGySHiget+kdYWJk9YrDrjau
+        JU5HVX40Wn+Z+nL+fDbpH9g7YBKKdEJLZNFyftsNNqgcIZRwvcbq/mE73sdtHWSQJ/SLvXtbZ2BjpvIM
+        5zBaYdgkObCVNuT9NVYXDsgwNa4UwnKE1clBjWzSG04jbc4KCFcKh30Rzo78se8wprlAL6rMsqqwoA3e
+        Sxrn1pho3Mbq+EBs6Q2mOvlkBCRT7bzlMKvjAzXG9gab61hdaKCmEeHueLtZFR9caFWcIA8XbcnsBOK7
+        ReWOZJBV8UENTKqNIZVlVeGB2qbKHZJ4GeWSu9rYKKsKj4rwb9e4t/Abq+OBHsa5g9rYVlZ1BIqqlHf8
+        RKsNzipSFxrifyLd5+46YsxtXq1xb9k1/2FWxwM6jTTUwyaGMrkZ9ZmsZGzX7HXcpRHjexfO1Z/B5M/q
+        eAi/gNIQiqms6giarb9Wn8lKug1zmtTX6hlxuSqfZnU8kCOOqA31shbbrv+q+kwWgqNBVMq4SyNMORA5
+        4n5Wx0N4Fqk25sjtrOoILK9lIR8kpz2bhRCPZ6zdc5dwdx2Bc9MId5KyaF7P6nigfcbnakM4fGFV4WFV
+        /YdU7qH04EAjbCHfjzbm+awqPNprE94JlPVYHQ84mlcbCyefpF7NGZbjj0e5S49V8WGOs+4rx0qDl85F
+        jXvXHKgjaOJbo68cNCqmWF1YWCJ4VOUcipB3szoZcElDbRAHsjiLZHUhQTxx0q5wlsf6Lu3jporaKKTI
+        NYkwtdYKzai5sjo5wvDIqiCaASjX2KlyhWCuY3V/MG1pcSrN6sIARSOdJ6UAVVb3D2SLNNz0g9/jRapW
+        oZRPIfuFxrFVrjXuZJN0gO213gmtKAtFCRG+NxHhl1khiRqPVKzCzly5B6fSbLIioKXxBZ0Xlv3xWvMK
+        NkkXuNdEw++Q3imO5hOnr33CqgYPEIf2GzRCPsEm2QAXt6gjPWsLhyFOpdksF/BIMF0jyqekaDxWI8Ey
+        i1NpNssM4RmnYU5YFgrXd9g0e1Bnm00kSI5i5weybJoqsFKZVgddiF/XumZqwMUtPYtblqXREazH0svm
+        fQEZoylZOpnk6gxc3MKFDBMRCH29fTiLTHKnCbvIshs8Qu2MdnL4kvg7Sq7/tkmXqzPwkrizZCISlfAY
+        bgtmdBRf8ZWFkOfRqFmLfASp8FKZL9jA9YS2SVkVGnW/YdQxDYTrWya7XJ2B3R3K/ScbHZ3EcP+iB/Gm
+        rbp/OXf/P/DSJvtcnQHgzhJ2p9iYmQj1K9g7dKstFMYZQFhOF3KECPygE0ogCJGP4lw+L5QzAKwaZbdx
+        KxEYplHyKcX17yaCUfFOYJKlr/9GuerfMzU/fxY31zPQb+GcoSOcGHFIG5bcgydxFIfDF1xchS7NHKTw
+        zsgTA2coGDhDwcAZjC4TaPLLZqsRnZyBLJVNTh2YnFFy5ByrTz0gHDAS4ISKkLfwzwMMMEAnDA39B1O3
+        r9MrxZM5AAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="toolstripBtnZoomOut.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolstripBtnZoomOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="toolstripBtnZoomOut.Text" xml:space="preserve">
+    <value>Zoom Out</value>
+  </data>
+  <data name="toolstripBtnFit.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolstripBtnFit.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolstripBtnFit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="toolstripBtnFit.Text" xml:space="preserve">
+    <value>Zoom Fit</value>
+  </data>
+  <data name="materialToolStrip3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 371</value>
+  </data>
+  <data name="materialToolStrip3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 140</value>
+  </data>
+  <data name="materialToolStrip3.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="materialToolStrip3.Text" xml:space="preserve">
+    <value>materialToolStrip3</value>
+  </data>
+  <data name="&gt;&gt;materialToolStrip3.Name" xml:space="preserve">
+    <value>materialToolStrip3</value>
+  </data>
+  <data name="&gt;&gt;materialToolStrip3.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStrip, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialToolStrip3.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;materialToolStrip3.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="materialToolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>384, 17</value>
   </metadata>
+  <data name="materialToolStrip2.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="materialToolStrip2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolstripBtnMeasure.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolstripBtnMeasure.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolstripBtnMeasure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="toolstripBtnMeasure.Text" xml:space="preserve">
+    <value>Measure</value>
+  </data>
+  <data name="toolstripBtnLine.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolstripBtnLine.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolstripBtnLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="toolstripBtnLine.Text" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="toolstripBtnRectangle.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolstripBtnRectangle.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolstripBtnRectangle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="toolstripBtnRectangle.Text" xml:space="preserve">
+    <value>Rectangle</value>
+  </data>
+  <data name="toolstripBtnEllipse.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolstripBtnEllipse.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolstripBtnEllipse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="toolstripBtnEllipse.Text" xml:space="preserve">
+    <value>Ellipse</value>
+  </data>
+  <data name="toolstripBtnHand.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolstripBtnHand.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolstripBtnHand.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 35</value>
+  </data>
+  <data name="toolstripBtnHand.Text" xml:space="preserve">
+    <value>Hand</value>
+  </data>
+  <data name="materialToolStrip2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 155</value>
+  </data>
+  <data name="materialToolStrip2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 219</value>
+  </data>
+  <data name="materialToolStrip2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="materialToolStrip2.Text" xml:space="preserve">
+    <value>materialToolStrip2</value>
+  </data>
+  <data name="&gt;&gt;materialToolStrip2.Name" xml:space="preserve">
+    <value>materialToolStrip2</value>
+  </data>
+  <data name="&gt;&gt;materialToolStrip2.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStrip, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialToolStrip2.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;materialToolStrip2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 32</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 711</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 12</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>787, 758</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAgAEBAQAAEABAAoAQAAhgAAADAwAAABAAgAqA4AAK4BAAAgIAAAAQAIAKgIAABWEAAAEBAAAAEA
@@ -942,5 +1291,110 @@
         AADMvK0CvamVGca1pFPFs6JyxbOicsa2pVO+qpcZzr+wAgAAAAAAAAAAAAAAAAAAAADwDwAA4AcAAMAD
         AACAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAAwAMAAOAHAADwDwAA
 </value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>LAR-100</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnScreenShort.Name" xml:space="preserve">
+    <value>toolstripBtnScreenShort</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnScreenShort.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnVideo.Name" xml:space="preserve">
+    <value>toolstripBtnVideo</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnVideo.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnFiles.Name" xml:space="preserve">
+    <value>toolstripBtnFiles</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnFiles.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnLaser.Name" xml:space="preserve">
+    <value>toolstripBtnLaser</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnLaser.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnSetting.Name" xml:space="preserve">
+    <value>toolstripBtnSetting</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnSetting.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnCamera.Name" xml:space="preserve">
+    <value>toolstripBtnCamera</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnCamera.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnDebug.Name" xml:space="preserve">
+    <value>toolstripBtnDebug</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnDebug.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnAbout.Name" xml:space="preserve">
+    <value>toolstripBtnAbout</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnAbout.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnZoomIn.Name" xml:space="preserve">
+    <value>toolstripBtnZoomIn</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnZoomIn.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnZoomOut.Name" xml:space="preserve">
+    <value>toolstripBtnZoomOut</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnZoomOut.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnFit.Name" xml:space="preserve">
+    <value>toolstripBtnFit</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnFit.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnMeasure.Name" xml:space="preserve">
+    <value>toolstripBtnMeasure</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnMeasure.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnLine.Name" xml:space="preserve">
+    <value>toolstripBtnLine</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnLine.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnRectangle.Name" xml:space="preserve">
+    <value>toolstripBtnRectangle</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnRectangle.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnEllipse.Name" xml:space="preserve">
+    <value>toolstripBtnEllipse</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnEllipse.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnHand.Name" xml:space="preserve">
+    <value>toolstripBtnHand</value>
+  </data>
+  <data name="&gt;&gt;toolstripBtnHand.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>MainForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialForm, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

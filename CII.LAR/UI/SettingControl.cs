@@ -249,5 +249,19 @@ namespace CII.LAR.UI
         {
             ShowScaleAppearanceCtrlHandler?.Invoke();
         }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+                if (result == DialogResult.OK &&
+                    !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    Program.SysConfig.StorePath = fbd.SelectedPath;
+                    this.textBoxItemStoragePath.Text = Program.SysConfig.StorePath;
+                }
+            }
+        }
     }
 }

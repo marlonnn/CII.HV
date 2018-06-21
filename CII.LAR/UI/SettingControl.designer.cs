@@ -45,6 +45,7 @@
             this.btnShortcuts = new CII.LAR.MaterialSkin.MaterialRoundButton();
             this.groupBoxScale = new CII.LAR.MaterialSkin.MaterialGroupBox();
             this.btnScaleAppearance = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.btnSelect = new CII.LAR.MaterialSkin.MaterialFlatButton();
             this.gropBoxSystemInfo.SuspendLayout();
             this.groupBoxLaser.SuspendLayout();
             this.groupBoxLanguage.SuspendLayout();
@@ -173,6 +174,7 @@
             // 
             // groupBoxStoragePath
             // 
+            this.groupBoxStoragePath.Controls.Add(this.btnSelect);
             this.groupBoxStoragePath.Controls.Add(this.textBoxItemStoragePath);
             this.groupBoxStoragePath.Depth = 0;
             resources.ApplyResources(this.groupBoxStoragePath, "groupBoxStoragePath");
@@ -322,6 +324,17 @@
             this.btnScaleAppearance.UseVisualStyleBackColor = true;
             this.btnScaleAppearance.Click += new System.EventHandler(this.btnScaleAppearance_Click);
             // 
+            // btnSelect
+            // 
+            resources.ApplyResources(this.btnSelect, "btnSelect");
+            this.btnSelect.Depth = 0;
+            this.btnSelect.Icon = null;
+            this.btnSelect.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Primary = false;
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
             // SettingControl
             // 
             resources.ApplyResources(this, "$this");
@@ -383,5 +396,6 @@
         private MaterialSkin.MaterialGroupBox groupBoxScale;
         private MaterialSkin.MaterialRoundButton btnScaleAppearance;
         private MaterialSkin.MaterialGroupBox gropBoxSystemInfo;
+        private MaterialSkin.MaterialFlatButton btnSelect;
     }
 }

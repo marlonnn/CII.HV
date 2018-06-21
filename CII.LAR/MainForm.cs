@@ -24,6 +24,7 @@ namespace CII.LAR
             this.panel1.Size = new Size(this.panel1.Size.Width, this.Height - 32);
         }
 
+        #region ToolStrip button click
         private void toolstripBtnScreenShort_Click(object sender, EventArgs e)
         {
 
@@ -101,6 +102,7 @@ namespace CII.LAR
         private void toolstripBtnAbout_Click(object sender, EventArgs e)
         {
 
-        }
+        } 
+        #endregion
     }
 }

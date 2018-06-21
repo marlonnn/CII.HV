@@ -328,6 +328,7 @@ namespace CII.LAR.UI
             InitializeImageTracker();
             this.PictureBoxPaintedEvent += imageTracker.OnPicturePainted;
             this.restrictArea = new RestrictArea(this);
+            this.BackColor = Color.FromArgb(0x28, 0x2C, 0x35);
         }
 
         public DebugCtrl df;

@@ -265,7 +265,7 @@ namespace CII.LAR.MaterialSkin
         public Font PINGFANG_MEDIUM_12;
         public Font PINGFANG_MEDIUM_16;
         //Other constants
-        public int FORM_PADDING = 14;
+        public int FORM_PADDING = 10;
 
         [DllImport("gdi32.dll")]
         private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont, IntPtr pvd, [In] ref uint pcFonts);

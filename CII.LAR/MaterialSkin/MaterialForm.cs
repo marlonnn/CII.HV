@@ -480,6 +480,31 @@ namespace CII.LAR.MaterialSkin
             _actionBarBounds = new Rectangle(0, STATUS_BAR_HEIGHT, Width, ACTION_BAR_HEIGHT);
         }
 
+        [Description("Paint icon?"), Category("MaterialForm"), DefaultValue("false")]
+        private bool drawIcon;
+        public bool DrawIcon
+        {
+            get { return this.drawIcon; }
+            set
+            {
+                if (value != this.drawIcon)
+                {
+                    this.drawIcon = value;
+                    InvokeInvalidate(value);
+                    Invalidate();
+                }
+            }
+        }
+        private void InvokeInvalidate(bool value)
+        {
+            if (!IsHandleCreated)
+                return;
+            try
+            {
+                this.Invoke((MethodInvoker)delegate { this.drawIcon = value; });
+            }
+            catch { }
+        }
         protected override void OnPaint(PaintEventArgs e)
         {
             var g = e.Graphics;
@@ -571,10 +596,17 @@ namespace CII.LAR.MaterialSkin
                 }
             }
 
+            //Form Icon
+            if (DrawIcon && Icon != null)
+            {
+                var iconRect = new Rectangle(8, 4, 24, 24);
+                g.DrawImage(Icon.ToBitmap(), iconRect);
+            }
+
             //Form title
 
             g.DrawString(Text, SkinManager.PINGFANG_MEDIUM_16, SkinManager.ColorScheme.TextBrush, 
-                new Rectangle(SkinManager.FORM_PADDING, 0, Width, STATUS_BAR_HEIGHT), 
+                new Rectangle(DrawIcon ? SkinManager.FORM_PADDING + 32 : SkinManager.FORM_PADDING, 0, Width, STATUS_BAR_HEIGHT), 
                 new StringFormat { LineAlignment = StringAlignment.Center });
         }
     }

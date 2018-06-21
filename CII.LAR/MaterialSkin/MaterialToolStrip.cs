@@ -66,6 +66,8 @@ namespace CII.LAR.MaterialSkin
                             Region r2 = new Region(bounds);
                             r2.Xor(r1);
                             g.FillRegion(sb, r2);
+                            r1.Dispose();
+                            r2.Dispose();
                             //g.FillRectangle(sb, mtsb.Bounds);
                         }
                     }

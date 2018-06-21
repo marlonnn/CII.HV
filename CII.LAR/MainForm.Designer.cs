@@ -52,11 +52,13 @@ namespace CII.LAR
             this.toolstripBtnRectangle = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.toolstripBtnEllipse = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.toolstripBtnHand = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.richPictureBox = new CII.LAR.UI.RichPictureBox();
             this.materialToolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.materialToolStrip4.SuspendLayout();
             this.materialToolStrip3.SuspendLayout();
             this.materialToolStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.richPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // materialToolStrip1
@@ -263,12 +265,32 @@ namespace CII.LAR
             this.toolstripBtnHand.Name = "toolstripBtnHand";
             this.toolstripBtnHand.Click += new System.EventHandler(this.toolstripBtnHand_Click);
             // 
+            // richPictureBox
+            // 
+            resources.ApplyResources(this.richPictureBox, "richPictureBox");
+            this.richPictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
+            this.richPictureBox.CaptureVideo = false;
+            this.richPictureBox.DrawObject = null;
+            this.richPictureBox.LaserFunction = false;
+            this.richPictureBox.Name = "richPictureBox";
+            this.richPictureBox.OffsetX = 0;
+            this.richPictureBox.OffsetY = 0;
+            this.richPictureBox.Picture = null;
+            this.richPictureBox.RecordCount = 0;
+            this.richPictureBox.TabStop = false;
+            this.richPictureBox.ToolStripRectangle = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.richPictureBox.UnitOfMeasure = CII.LAR.enUniMis.mm;
+            this.richPictureBox.VideoSize = new System.Drawing.Size(1280, 960);
+            this.richPictureBox.Zoom = 1F;
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.richPictureBox);
+            this.DrawIcon = true;
             this.Name = "MainForm";
             this.materialToolStrip1.ResumeLayout(false);
             this.materialToolStrip1.PerformLayout();
@@ -279,6 +301,7 @@ namespace CII.LAR
             this.materialToolStrip3.PerformLayout();
             this.materialToolStrip2.ResumeLayout(false);
             this.materialToolStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.richPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -305,5 +328,6 @@ namespace CII.LAR
         private MaterialToolStripButton toolstripBtnCamera;
         private MaterialToolStripButton toolstripBtnDebug;
         private MaterialToolStripButton toolstripBtnAbout;
+        private UI.RichPictureBox richPictureBox;
     }
 }

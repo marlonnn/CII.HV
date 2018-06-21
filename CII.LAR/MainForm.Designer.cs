@@ -30,6 +30,7 @@ namespace CII.LAR
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.materialToolStrip1 = new CII.LAR.MaterialSkin.MaterialToolStrip();
             this.toolstripBtnScreenShort = new CII.LAR.MaterialSkin.MaterialToolStripButton();
@@ -53,6 +54,9 @@ namespace CII.LAR
             this.toolstripBtnEllipse = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.toolstripBtnHand = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.richPictureBox = new CII.LAR.UI.RichPictureBox();
+            this.videoControl = new CII.LAR.UI.VideoControl();
+            this.systemMonitorTimer = new System.Windows.Forms.Timer(this.components);
+            this.LaserCheckTimer = new System.Windows.Forms.Timer(this.components);
             this.materialToolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.materialToolStrip4.SuspendLayout();
@@ -283,6 +287,21 @@ namespace CII.LAR
             this.richPictureBox.VideoSize = new System.Drawing.Size(1280, 960);
             this.richPictureBox.Zoom = 1F;
             // 
+            // systemMonitorTimer
+            // 
+            this.systemMonitorTimer.Interval = 1000;
+            this.systemMonitorTimer.Tick += new System.EventHandler(this.systemMonitorTimer_Tick);
+            // LaserCheckTimer
+            // 
+            this.LaserCheckTimer.Interval = 2000;
+            this.LaserCheckTimer.Tick += new System.EventHandler(this.LaserCheckTimer_Tick);
+            // 
+            // videoControl
+            // 
+            resources.ApplyResources(this.videoControl, "videoControl");
+            this.videoControl.Name = "videoControl";
+            this.videoControl.VideoSource = null;
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -292,6 +311,7 @@ namespace CII.LAR
             this.Controls.Add(this.richPictureBox);
             this.DrawIcon = true;
             this.Name = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.materialToolStrip1.ResumeLayout(false);
             this.materialToolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -329,5 +349,8 @@ namespace CII.LAR
         private MaterialToolStripButton toolstripBtnDebug;
         private MaterialToolStripButton toolstripBtnAbout;
         private UI.RichPictureBox richPictureBox;
+        private System.Windows.Forms.Timer systemMonitorTimer;
+        private System.Windows.Forms.Timer LaserCheckTimer;
+        private UI.VideoControl videoControl;
     }
 }

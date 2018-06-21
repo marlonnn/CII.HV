@@ -134,13 +134,25 @@
     <value>4</value>
   </data>
   <data name="cmbImage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>PingFang SC Medium, 9pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="cmbImage.Items" xml:space="preserve">
+    <value>Embyro</value>
+  </data>
+  <data name="cmbImage.Items1" xml:space="preserve">
+    <value>Sperm</value>
+  </data>
+  <data name="cmbImage.Items2" xml:space="preserve">
+    <value>Embyro 8 Cell</value>
+  </data>
+  <data name="cmbImage.Items3" xml:space="preserve">
+    <value>Egg</value>
   </data>
   <data name="cmbImage.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 91</value>
   </data>
   <data name="cmbImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 25</value>
+    <value>198, 22</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cmbImage.TabIndex" type="System.Int32, mscorlib">
@@ -316,7 +328,7 @@
     <value>9</value>
   </data>
   <data name="cmbLaser.Font" type="System.Drawing.Font, System.Drawing">
-    <value>PingFang SC Medium, 9pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="cmbLaser.Items" xml:space="preserve">
     <value>Saturn Fixed</value>
@@ -328,7 +340,7 @@
     <value>9, 29</value>
   </data>
   <data name="cmbLaser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 25</value>
+    <value>198, 22</value>
   </data>
   <data name="cmbLaser.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -373,7 +385,7 @@
     <value>8</value>
   </data>
   <data name="comboBoxItemLanguage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>PingFang SC Medium, 9pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="comboBoxItemLanguage.Items" xml:space="preserve">
     <value>English</value>
@@ -385,7 +397,7 @@
     <value>9, 29</value>
   </data>
   <data name="comboBoxItemLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 25</value>
+    <value>198, 22</value>
   </data>
   <data name="comboBoxItemLanguage.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -429,6 +441,36 @@
   <data name="&gt;&gt;groupBoxLanguage.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="btnSelect.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnSelect.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 32</value>
+  </data>
+  <data name="btnSelect.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
+  </data>
+  <data name="btnSelect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 19</value>
+  </data>
+  <data name="btnSelect.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="btnSelect.Text" xml:space="preserve">
+    <value>···</value>
+  </data>
+  <data name="&gt;&gt;btnSelect.Name" xml:space="preserve">
+    <value>btnSelect</value>
+  </data>
+  <data name="&gt;&gt;btnSelect.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialFlatButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnSelect.Parent" xml:space="preserve">
+    <value>groupBoxStoragePath</value>
+  </data>
+  <data name="&gt;&gt;btnSelect.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="textBoxItemStoragePath.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
@@ -451,7 +493,7 @@
     <value>groupBoxStoragePath</value>
   </data>
   <data name="&gt;&gt;textBoxItemStoragePath.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="groupBoxStoragePath.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -544,7 +586,7 @@
     <value>5</value>
   </data>
   <data name="cbxScale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>PingFang SC Medium, 9pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="cbxScale.Items" xml:space="preserve">
     <value>10</value>
@@ -568,7 +610,7 @@
     <value>9, 29</value>
   </data>
   <data name="cbxScale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 25</value>
+    <value>198, 22</value>
   </data>
   <data name="cbxScale.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -613,7 +655,7 @@
     <value>3</value>
   </data>
   <data name="cmbTime.Font" type="System.Drawing.Font, System.Drawing">
-    <value>PingFang SC Medium, 9pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="cmbTime.Items" xml:space="preserve">
     <value>1</value>
@@ -649,7 +691,7 @@
     <value>9, 29</value>
   </data>
   <data name="cmbTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 25</value>
+    <value>198, 22</value>
   </data>
   <data name="cmbTime.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -727,36 +769,6 @@
     <value>groupBoxShortcuts</value>
   </data>
   <data name="&gt;&gt;btnShortcuts.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="btnSelect.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="btnSelect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 32</value>
-  </data>
-  <data name="btnSelect.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 6, 4, 6</value>
-  </data>
-  <data name="btnSelect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 19</value>
-  </data>
-  <data name="btnSelect.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="btnSelect.Text" xml:space="preserve">
-    <value>···</value>
-  </data>
-  <data name="&gt;&gt;btnSelect.Name" xml:space="preserve">
-    <value>btnSelect</value>
-  </data>
-  <data name="&gt;&gt;btnSelect.Type" xml:space="preserve">
-    <value>CII.LAR.MaterialSkin.MaterialFlatButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;btnSelect.Parent" xml:space="preserve">
-    <value>groupBoxStoragePath</value>
-  </data>
-  <data name="&gt;&gt;btnSelect.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="groupBoxShortcuts.Font" type="System.Drawing.Font, System.Drawing">

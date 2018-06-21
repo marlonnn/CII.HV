@@ -23,7 +23,7 @@ namespace CII.LAR.DrawTools
         private const int minDistance = 15 * 15;
 
         private static Cursor s_cursor = new Cursor(
-            new MemoryStream((byte[])new ResourceManager(typeof(EntryForm)).GetObject("Pencil")));
+            new MemoryStream((byte[])new ResourceManager(typeof(MainForm)).GetObject("Pencil")));
         public ToolPolygon()
         {
             Cursor = s_cursor;

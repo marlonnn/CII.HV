@@ -13,7 +13,7 @@ namespace CII.LAR.DrawTools
 {
     public class ToolLine: ToolObject
     {
-        private static Cursor s_cursor = new Cursor(new MemoryStream((byte[])new ResourceManager(typeof(EntryForm)).GetObject("Line")));
+        private static Cursor s_cursor = new Cursor(new MemoryStream((byte[])new ResourceManager(typeof(MainForm)).GetObject("Line")));
 
         public ToolLine()
         {

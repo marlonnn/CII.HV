@@ -13,7 +13,7 @@ namespace CII.LAR.DrawTools
 {
     public class ToolRectangle : ToolObject
     {
-        private static Cursor s_cursor = new Cursor(new MemoryStream((byte[])new ResourceManager(typeof(EntryForm)).GetObject("Rectangle")));
+        private static Cursor s_cursor = new Cursor(new MemoryStream((byte[])new ResourceManager(typeof(MainForm)).GetObject("Rectangle")));
 
         public ToolRectangle()
         {

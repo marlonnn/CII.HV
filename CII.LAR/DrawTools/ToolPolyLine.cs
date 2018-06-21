@@ -16,7 +16,7 @@ namespace CII.LAR.DrawTools
         private DrawPolyLine newPolyLine;
 
         private static Cursor s_cursor = new Cursor(
-            new MemoryStream((byte[])new ResourceManager(typeof(EntryForm)).GetObject("Pencil")));
+            new MemoryStream((byte[])new ResourceManager(typeof(MainForm)).GetObject("Pencil")));
 
         /// <summary>
         /// used for double click to end drawing polygon gate when in Continuous mode

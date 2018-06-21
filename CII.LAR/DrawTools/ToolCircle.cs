@@ -18,7 +18,7 @@ namespace CII.LAR.DrawTools
     public class ToolCircle : ToolObject
     {
         private static Cursor s_cursor = new Cursor(
-            new MemoryStream((byte[])new ResourceManager(typeof(EntryForm)).GetObject("Cross")));
+            new MemoryStream((byte[])new ResourceManager(typeof(MainForm)).GetObject("Cross")));
 
         public ToolCircle()
         {

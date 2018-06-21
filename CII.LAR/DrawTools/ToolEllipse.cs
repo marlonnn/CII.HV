@@ -17,7 +17,7 @@ namespace CII.LAR.DrawTools
     /// </summary>
     public class ToolEllipse : ToolObject
     {
-        private static Cursor s_cursor = new Cursor(new MemoryStream((byte[])new ResourceManager(typeof(EntryForm)).GetObject("Ellipse")));
+        private static Cursor s_cursor = new Cursor(new MemoryStream((byte[])new ResourceManager(typeof(MainForm)).GetObject("Ellipse")));
 
         public ToolEllipse()
         {

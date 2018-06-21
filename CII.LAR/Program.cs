@@ -32,12 +32,12 @@ namespace CII.LAR
             set { dpiX = value; }
         }
 
-        private static EntryForm entryForm;
+        private static MainForm entryForm;
 
         /// <summary>
         /// The reference of program main form
         /// </summary>
-        public static EntryForm EntryForm
+        public static MainForm EntryForm
         {
             get { return entryForm; }
         }
@@ -93,11 +93,11 @@ namespace CII.LAR
                 _sysConfig = SysConfig.Load();
                 _sysConfigOrigin = SysConfig.Load();
 
-                entryForm = new EntryForm();
+                entryForm = new MainForm();
 
                 expManager = new ExpManager();
 
-                Application.Run(new MainForm());
+                Application.Run(entryForm);
             }
             catch (Exception ex)
             {

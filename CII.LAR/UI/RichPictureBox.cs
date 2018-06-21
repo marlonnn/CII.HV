@@ -17,7 +17,7 @@ namespace CII.LAR.UI
 {
     public partial class RichPictureBox : PictureBox
     {
-        private static Cursor s_cursor = new Cursor(new MemoryStream((byte[])new ResourceManager(typeof(EntryForm)).GetObject("Cross")));
+        private static Cursor s_cursor = new Cursor(new MemoryStream((byte[])new ResourceManager(typeof(MainForm)).GetObject("Cross")));
 
         private RestrictArea restrictArea;
         public RestrictArea RestrictArea

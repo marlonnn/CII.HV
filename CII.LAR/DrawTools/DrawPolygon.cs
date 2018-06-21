@@ -19,7 +19,7 @@ namespace CII.LAR.DrawTools
     /// </summary>
     public class DrawPolygon : DrawLine
     {
-        protected static System.Resources.ResourceManager resourceManager = new System.Resources.ResourceManager(typeof(EntryForm));
+        protected static System.Resources.ResourceManager resourceManager = new System.Resources.ResourceManager(typeof(MainForm));
 
         protected static Cursor handleCursor = new Cursor(new System.IO.MemoryStream((byte[])resourceManager.GetObject("PolyHandle")));
         protected PointFList pointArray;

@@ -196,7 +196,7 @@ namespace CII.LAR
             InitializeComponent();
             hotKeyManager = new HotKeyManager(this);
             hotKeyManager.LocalHotKeyPressed += HotKeyManager_LocalHotKeyPressed;
-            resources = new ComponentResourceManager(typeof(EntryForm));
+            resources = new ComponentResourceManager(typeof(MainForm));
             listViewItemArray = new ListViewItemArray();
 
             //this.SizeChanged += EntryForm_SizeChanged;
@@ -213,6 +213,35 @@ namespace CII.LAR
             serialPortCom = SerialPortCommunication.GetInstance();
             serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
             InitializeComboBoxLense();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            InitializeControls();
+            InitializeBaseCtrls();
+            Application.Idle += OnIdle;
+
+            //fullScreen = new FullScreen(this);
+            //fullScreen.ShowFullScreen();
+
+            LoadDebugCtrl();
+
+            this.systemMonitorTimer.Enabled = true;
+            this.LaserFactory = LaserFactory.GetInstance(this.richPictureBox);
+            LaserType = LaserType.SaturnFixed;
+
+            Coordinate.GetCoordinate().MoveStepHandler += MoveStepHandler;
+            if (!string.IsNullOrEmpty(Program.SysConfig.DeviceName))
+                InitializeDefaultDevice();
+
+            if (Program.SysConfig != null)
+            {
+                Program.SysConfig.PropertyChanged += SysConfig_PropertyChanged;
+            }
+
+            //InitializeIdleTimer();
+            this.richPictureBox.RestrictArea.TransformMotorOriginalPoints();
+            settingControl.SettingControl_Load(null, null);
         }
 
         public int GetLastInputTime()
@@ -529,35 +558,6 @@ namespace CII.LAR
             this.richPictureBox.LaserFunction = false;
             this.richPictureBox.ActiveTool = toolType;
             ShowBaseCtrl(true, CtrlType.StatisticsCtrl);
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            InitializeControls();
-            InitializeBaseCtrls();
-            Application.Idle += OnIdle;
-
-            fullScreen = new FullScreen(this);
-            fullScreen.ShowFullScreen();
-
-            LoadDebugCtrl();
-
-            this.systemMonitorTimer.Enabled = true;
-            this.LaserFactory = LaserFactory.GetInstance(this.richPictureBox);
-            LaserType = LaserType.SaturnFixed;
-
-            Coordinate.GetCoordinate().MoveStepHandler += MoveStepHandler;
-            if (!string.IsNullOrEmpty(Program.SysConfig.DeviceName))
-                InitializeDefaultDevice();
-
-            if (Program.SysConfig != null)
-            {
-                Program.SysConfig.PropertyChanged += SysConfig_PropertyChanged;
-            }
-
-            //InitializeIdleTimer();
-            this.richPictureBox.RestrictArea.TransformMotorOriginalPoints();
-            settingControl.SettingControl_Load(null, null);
         }
 
         private void OnIdle(object sender, EventArgs e)
@@ -921,11 +921,11 @@ namespace CII.LAR
             }
             if (e.KeyCode == Keys.Escape)
             {
-                fullScreen.ResetFullScreen();
+                //fullScreen.ResetFullScreen();
             }
             else if (e.KeyCode == Keys.F)
             {
-                fullScreen.ShowFullScreen();
+                //fullScreen.ShowFullScreen();
                 if (this.richPictureBox != null && this.richPictureBox.Picture != null)
                 {
                     this.richPictureBox.ZoomFit();
@@ -995,8 +995,8 @@ namespace CII.LAR
                 }
                 catch (Exception ee)
                 {
-                    LogHelper.GetLogger<EntryForm>().Error(ee.Message);
-                    LogHelper.GetLogger<EntryForm>().Error(ee.StackTrace);
+                    LogHelper.GetLogger<MainForm>().Error(ee.Message);
+                    LogHelper.GetLogger<MainForm>().Error(ee.StackTrace);
                 }
             }
             else if (this.richPictureBox.DrawObject != null && drawObject.Name == this.richPictureBox.DrawObject.Name)
@@ -1259,7 +1259,7 @@ namespace CII.LAR
             }
             catch (Exception e)
             {
-                LogHelper.GetLogger<EntryForm>().Error(
+                LogHelper.GetLogger<MainForm>().Error(
                     string.Format("打开日志异常，异常消息Message： {0}, StackTrace: {1}", e.Message, e.StackTrace));
             }
         }
@@ -1289,7 +1289,7 @@ namespace CII.LAR
                     if (this.richPictureBox.df != null)
                     {
                         this.richPictureBox.df.UpdateSteps(monitorData.Motor1Steps, monitorData.Motor2Steps);
-                        LogHelper.GetLogger<EntryForm>().Error(string.Format("电机1当前步数： {0}， 电机2当前步数： {1}", monitorData.Motor1Steps, monitorData.Motor2Steps));
+                        LogHelper.GetLogger<MainForm>().Error(string.Format("电机1当前步数： {0}， 电机2当前步数： {1}", monitorData.Motor1Steps, monitorData.Motor2Steps));
                         //Entry.Log(string.Format("电机1当前步数： {0}， 电机2当前步数： {1}", monitorData.Motor1Steps, monitorData.Motor2Steps));
                         this.richPictureBox.df.UpdateResponseCode(Coordinate.GetCoordinate().ResponseCode);
                         this.richPictureBox.df.UpdateLaserStatus();

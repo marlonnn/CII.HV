@@ -34,6 +34,7 @@
             this.groupBoxLanguage = new CII.LAR.MaterialSkin.MaterialGroupBox();
             this.comboBoxItemLanguage = new CII.LAR.MaterialSkin.MaterialComboBox();
             this.groupBoxStoragePath = new CII.LAR.MaterialSkin.MaterialGroupBox();
+            this.btnSelect = new CII.LAR.MaterialSkin.MaterialFlatButton();
             this.textBoxItemStoragePath = new CII.LAR.MaterialSkin.MaterialTextBox();
             this.groupBoxObjectLense = new CII.LAR.MaterialSkin.MaterialGroupBox();
             this.materialRoundButton1 = new CII.LAR.MaterialSkin.MaterialRoundButton();
@@ -45,7 +46,6 @@
             this.btnShortcuts = new CII.LAR.MaterialSkin.MaterialRoundButton();
             this.groupBoxScale = new CII.LAR.MaterialSkin.MaterialGroupBox();
             this.btnScaleAppearance = new CII.LAR.MaterialSkin.MaterialRoundButton();
-            this.btnSelect = new CII.LAR.MaterialSkin.MaterialFlatButton();
             this.gropBoxSystemInfo.SuspendLayout();
             this.groupBoxLaser.SuspendLayout();
             this.groupBoxLanguage.SuspendLayout();
@@ -83,6 +83,11 @@
             resources.ApplyResources(this.cmbImage, "cmbImage");
             this.cmbImage.ForeColor = System.Drawing.Color.White;
             this.cmbImage.FormattingEnabled = true;
+            this.cmbImage.Items.AddRange(new object[] {
+            resources.GetString("cmbImage.Items"),
+            resources.GetString("cmbImage.Items1"),
+            resources.GetString("cmbImage.Items2"),
+            resources.GetString("cmbImage.Items3")});
             this.cmbImage.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.cmbImage.Name = "cmbImage";
             this.cmbImage.SelectedIndexChanged += new System.EventHandler(this.cmbImage_SelectedIndexChanged);
@@ -182,6 +187,17 @@
             this.groupBoxStoragePath.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.groupBoxStoragePath.Name = "groupBoxStoragePath";
             this.groupBoxStoragePath.TabStop = false;
+            // 
+            // btnSelect
+            // 
+            resources.ApplyResources(this.btnSelect, "btnSelect");
+            this.btnSelect.Depth = 0;
+            this.btnSelect.Icon = null;
+            this.btnSelect.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Primary = false;
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // textBoxItemStoragePath
             // 
@@ -323,17 +339,6 @@
             this.btnScaleAppearance.Primary = false;
             this.btnScaleAppearance.UseVisualStyleBackColor = true;
             this.btnScaleAppearance.Click += new System.EventHandler(this.btnScaleAppearance_Click);
-            // 
-            // btnSelect
-            // 
-            resources.ApplyResources(this.btnSelect, "btnSelect");
-            this.btnSelect.Depth = 0;
-            this.btnSelect.Icon = null;
-            this.btnSelect.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Primary = false;
-            this.btnSelect.UseVisualStyleBackColor = true;
-            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // SettingControl
             // 

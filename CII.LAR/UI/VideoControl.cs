@@ -16,7 +16,7 @@ namespace CII.LAR.UI
 {
     public partial class VideoControl : VideoSourcePlayer
     {
-        private static Cursor s_cursor = new Cursor(new MemoryStream((byte[])new ResourceManager(typeof(EntryForm)).GetObject("Cross")));
+        private static Cursor s_cursor = new Cursor(new MemoryStream((byte[])new ResourceManager(typeof(MainForm)).GetObject("Cross")));
         private bool mousePressed;
         private Point lastBaseCtrlMousePos;//记录鼠标指针的坐标
 

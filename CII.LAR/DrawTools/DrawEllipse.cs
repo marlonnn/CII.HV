@@ -17,7 +17,7 @@ namespace CII.LAR.DrawTools
     public class DrawEllipse : DrawObject
     {
         [NonSerialized]
-        protected static System.Resources.ResourceManager resourceManager = new System.Resources.ResourceManager(typeof(EntryForm));
+        protected static System.Resources.ResourceManager resourceManager = new System.Resources.ResourceManager(typeof(MainForm));
         [NonSerialized]
         protected static Cursor handleCursor = new Cursor(new System.IO.MemoryStream((byte[])resourceManager.GetObject("PolyHandle")));
 

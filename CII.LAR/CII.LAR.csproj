@@ -181,12 +181,6 @@
     <Compile Include="DrawTools\ToolPolygon.cs" />
     <Compile Include="DrawTools\ToolPolyLine.cs" />
     <Compile Include="DrawTools\ToolRectangle.cs" />
-    <Compile Include="EntryForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EntryForm.Designer.cs">
-      <DependentUpon>EntryForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="ExpManager.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="IController.cs" />
@@ -570,12 +564,6 @@
     <Compile Include="Win32.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EntryForm.resx">
-      <DependentUpon>EntryForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EntryForm.zh-CN.resx">
-      <DependentUpon>EntryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.zh-CN.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

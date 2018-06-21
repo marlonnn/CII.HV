@@ -194,6 +194,7 @@ namespace CII.LAR
         public MainForm()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
             hotKeyManager = new HotKeyManager(this);
             hotKeyManager.LocalHotKeyPressed += HotKeyManager_LocalHotKeyPressed;
             resources = new ComponentResourceManager(typeof(MainForm));
@@ -499,6 +500,50 @@ namespace CII.LAR
 
         private void toolstripBtnCamera_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void openCameraLiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowBaseCtrl(true, CtrlType.VideoChooseCtrl);
+            this.videoChooseCtrl.EnumerateVideoDevices();
+        }
+
+        private void closeCameraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StopVideoDevice();
+        }
+
+        private bool flipHorizontal;
+        private bool flipVertical;
+        private void horizontalFlipToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            flipHorizontal = !flipHorizontal;
+            this.horizontalFlipToolStripMenuItem.Checked = flipHorizontal;
+            if (flipHorizontal)
+            {
+                this.FlipType = FlipType.Horizontal;
+                this.verticalFlipToolStripMenuItem.Checked = false;
+            }
+            else
+            {
+                this.FlipType = FlipType.Empty;
+            }
+        }
+
+        private void verticalFlipToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            flipVertical = !flipVertical;
+            this.verticalFlipToolStripMenuItem.Checked = flipVertical;
+            if (flipVertical)
+            {
+                this.FlipType = FlipType.Vertical;
+                this.horizontalFlipToolStripMenuItem.Checked = false;
+            }
+            else
+            {
+                this.FlipType = FlipType.Empty;
+            }
 
         }
 
@@ -1247,6 +1292,15 @@ namespace CII.LAR
                     {
                         ToolStripItem tsi = subItem as ToolStripItem;
                         if (tsi != null) resources.ApplyResources(tsi, tsi.Name);
+                        ToolStripDropDownButton tsdd = subItem as ToolStripDropDownButton;
+                        if (tsdd != null)
+                        {
+                            foreach (var item in tsdd.DropDownItems)
+                            {
+                                ToolStripMenuItem tsmi = item as ToolStripMenuItem;
+                                if (tsmi != null) resources.ApplyResources(tsmi, tsmi.Name);
+                            }
+                        }
                     }
                 }
             }

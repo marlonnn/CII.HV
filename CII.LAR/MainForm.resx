@@ -1356,7 +1356,7 @@
     <value>toolstripBtnCamera</value>
   </data>
   <data name="&gt;&gt;toolstripBtnCamera.Type" xml:space="preserve">
-    <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolstripBtnDebug.Name" xml:space="preserve">
     <value>toolstripBtnDebug</value>
@@ -1417,6 +1417,72 @@
   </data>
   <data name="&gt;&gt;toolstripBtnHand.Type" xml:space="preserve">
     <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="openCameraLiveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="openCameraLiveToolStripMenuItem.Text" xml:space="preserve">
+    <value>Open camera live</value>
+  </data>
+  <data name="openCameraLiveToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Open camera live</value>
+  </data>
+  <data name="closeCameraToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="closeCameraToolStripMenuItem.Text" xml:space="preserve">
+    <value>Close camera live</value>
+  </data>
+  <data name="closeCameraToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Close camera live</value>
+  </data>
+  <data name="horizontalFlipToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
+  </data>
+  <data name="horizontalFlipToolStripMenuItem.Text" xml:space="preserve">
+    <value>Horizontal flip</value>
+  </data>
+  <data name="verticalFlipToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 22</value>
+  </data>
+  <data name="verticalFlipToolStripMenuItem.Text" xml:space="preserve">
+    <value>Vertical flip</value>
+  </data>
+  <data name="&gt;&gt;openCameraLiveToolStripMenuItem.Name" xml:space="preserve">
+    <value>openCameraLiveToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;openCameraLiveToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;closeCameraToolStripMenuItem.Name" xml:space="preserve">
+    <value>closeCameraToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;closeCameraToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;horizontalFlipToolStripMenuItem.Name" xml:space="preserve">
+    <value>horizontalFlipToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;horizontalFlipToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;verticalFlipToolStripMenuItem.Name" xml:space="preserve">
+    <value>verticalFlipToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;verticalFlipToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;horizontalFlipToolStripMenuItem.Name" xml:space="preserve">
+    <value>horizontalFlipToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;horizontalFlipToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;verticalFlipToolStripMenuItem.Name" xml:space="preserve">
+    <value>verticalFlipToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;verticalFlipToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="videoControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>

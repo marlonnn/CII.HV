@@ -40,7 +40,11 @@ namespace CII.LAR
             this.materialToolStrip4 = new CII.LAR.MaterialSkin.MaterialToolStrip();
             this.toolstripBtnLaser = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.toolstripBtnSetting = new CII.LAR.MaterialSkin.MaterialToolStripButton();
-            this.toolstripBtnCamera = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnCamera = new System.Windows.Forms.ToolStripDropDownButton();
+            this.openCameraLiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeCameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.horizontalFlipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verticalFlipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolstripBtnDebug = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.toolstripBtnAbout = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.materialToolStrip3 = new CII.LAR.MaterialSkin.MaterialToolStrip();
@@ -150,10 +154,39 @@ namespace CII.LAR
             // 
             resources.ApplyResources(this.toolstripBtnCamera, "toolstripBtnCamera");
             this.toolstripBtnCamera.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripBtnCamera.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openCameraLiveToolStripMenuItem,
+            this.closeCameraToolStripMenuItem,
+            this.horizontalFlipToolStripMenuItem,
+            this.verticalFlipToolStripMenuItem});
             this.toolstripBtnCamera.Image = global::CII.LAR.Properties.Resources.idscamera;
-            this.toolstripBtnCamera.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            //this.toolstripBtnCamera.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
             this.toolstripBtnCamera.Name = "toolstripBtnCamera";
             this.toolstripBtnCamera.Click += new System.EventHandler(this.toolstripBtnCamera_Click);
+            // 
+            // openCameraLiveToolStripMenuItem
+            // 
+            this.openCameraLiveToolStripMenuItem.Name = "openCameraLiveToolStripMenuItem";
+            resources.ApplyResources(this.openCameraLiveToolStripMenuItem, "openCameraLiveToolStripMenuItem");
+            this.openCameraLiveToolStripMenuItem.Click += new System.EventHandler(this.openCameraLiveToolStripMenuItem_Click);
+            // 
+            // closeCameraToolStripMenuItem
+            // 
+            this.closeCameraToolStripMenuItem.Name = "closeCameraToolStripMenuItem";
+            resources.ApplyResources(this.closeCameraToolStripMenuItem, "closeCameraToolStripMenuItem");
+            this.closeCameraToolStripMenuItem.Click += new System.EventHandler(this.closeCameraToolStripMenuItem_Click);
+            // 
+            // horizontalFlipToolStripMenuItem
+            // 
+            this.horizontalFlipToolStripMenuItem.Name = "horizontalFlipToolStripMenuItem";
+            resources.ApplyResources(this.horizontalFlipToolStripMenuItem, "horizontalFlipToolStripMenuItem");
+            this.horizontalFlipToolStripMenuItem.Click += new System.EventHandler(this.horizontalFlipToolStripMenuItem_Click);
+            // 
+            // verticalFlipToolStripMenuItem
+            // 
+            this.verticalFlipToolStripMenuItem.Name = "verticalFlipToolStripMenuItem";
+            resources.ApplyResources(this.verticalFlipToolStripMenuItem, "verticalFlipToolStripMenuItem");
+            this.verticalFlipToolStripMenuItem.Click += new System.EventHandler(this.verticalFlipToolStripMenuItem_Click);
             // 
             // toolstripBtnDebug
             // 
@@ -345,7 +378,11 @@ namespace CII.LAR
         private MaterialToolStrip materialToolStrip4;
         private MaterialToolStripButton toolstripBtnLaser;
         private MaterialToolStripButton toolstripBtnSetting;
-        private MaterialToolStripButton toolstripBtnCamera;
+        private System.Windows.Forms.ToolStripDropDownButton toolstripBtnCamera;
+        private System.Windows.Forms.ToolStripMenuItem openCameraLiveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closeCameraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem horizontalFlipToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verticalFlipToolStripMenuItem;
         private MaterialToolStripButton toolstripBtnDebug;
         private MaterialToolStripButton toolstripBtnAbout;
         private UI.RichPictureBox richPictureBox;

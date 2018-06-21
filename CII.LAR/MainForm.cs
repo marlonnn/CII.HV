@@ -1226,12 +1226,19 @@ namespace CII.LAR
             if (e.PropertyName == Program.SysConfig.GetPropertyName(() => Program.SysConfig.UICulture))
             {
                 RefreshUI();
+                if (BaseCtrls != null && BaseCtrls.Count > 0)
+                {
+                    foreach (var bc in BaseCtrls)
+                    {
+                        bc.RefreshUI();
+                    }
+                }
             }
         }
 
         private void RefreshUI()
         {
-            foreach (var ctrls in this.Controls)
+            foreach (var ctrls in this.panel1.Controls)
             {
                 MaterialToolStrip mtsp = ctrls as MaterialToolStrip;
                 if (mtsp != null)

@@ -85,7 +85,7 @@ namespace CII.LAR.MaterialSkin
 
             //Hover
             Color c = SkinManager.GetFlatButtonHoverBackgroundColor();
-            using (Brush b = new SolidBrush(Color.FromArgb((int)(_hoverAnimationManager.GetProgress() * c.A), c.RemoveAlpha())))
+            using (Brush b = new SolidBrush(/*Color.FromArgb((int)(_hoverAnimationManager.GetProgress() * c.A), c.RemoveAlpha())*/c))
                 g.FillRectangle(b, ClientRectangle);
 
             //Ripple
@@ -137,13 +137,11 @@ namespace CII.LAR.MaterialSkin
                 textRect.X += 8 + 24 + 4;
             }
 
-            using (SolidBrush sb = new SolidBrush(SkinManager.GetLabelTextColor()))
-                g.DrawString(
-                    Text.ToUpper(),
-                    SkinManager.PINGFANG_MEDIUM_10, sb,
-                    textRect,
-                    new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center }
-                    );
+            using (SolidBrush sb = new SolidBrush(SkinManager.FontColor))
+            using (StringFormat sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
+            {
+                g.DrawString(Text.ToUpper(), SkinManager.PINGFANG_MEDIUM_10, sb, textRect, sf );
+            }
         }
 
         private Size GetPreferredSize()

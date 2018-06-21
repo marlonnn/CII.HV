@@ -95,12 +95,10 @@ namespace CII.LAR.MaterialSkin
             }
 
             using (SolidBrush sb = new SolidBrush(SkinManager.GetLabelTextColor()))
-                g.DrawString(
-                    Text,
-                    SkinManager.PINGFANG_MEDIUM_10, sb,
-                    textRect,
-                    new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center }
-                    );
+            using (StringFormat sf = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
+            {
+                g.DrawString(Text, SkinManager.PINGFANG_MEDIUM_10, sb, textRect, sf );
+            }
         }
     }
 }

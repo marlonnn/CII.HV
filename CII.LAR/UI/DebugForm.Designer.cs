@@ -1,4 +1,6 @@
-﻿namespace CII.LAR.UI
+﻿using CII.LAR.MaterialSkin;
+
+namespace CII.LAR.UI
 {
     partial class DebugCtrl
     {
@@ -28,26 +30,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.m1Steps = new System.Windows.Forms.Label();
-            this.m2Steps = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.responseCode = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.motor1Steps = new System.Windows.Forms.Label();
-            this.motor1Origination = new System.Windows.Forms.Label();
-            this.motor2Steps = new System.Windows.Forms.Label();
-            this.motor2Origination = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblMousePosition = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lblMatrix = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lblLaserStatus = new System.Windows.Forms.Label();
+            this.label1 = new MaterialLabel();
+            this.label2 = new MaterialLabel();
+            this.m1Steps = new MaterialLabel();
+            this.m2Steps = new MaterialLabel();
+            this.label3 = new MaterialLabel();
+            this.responseCode = new MaterialLabel();
+            this.label4 = new MaterialLabel();
+            this.label5 = new MaterialLabel();
+            this.label6 = new MaterialLabel();
+            this.label7 = new MaterialLabel();
+            this.motor1Steps = new MaterialLabel();
+            this.motor1Origination = new MaterialLabel();
+            this.motor2Steps = new MaterialLabel();
+            this.motor2Origination = new MaterialLabel();
+            this.label8 = new MaterialLabel();
+            this.lblMousePosition = new MaterialLabel();
+            this.label9 = new MaterialLabel();
+            this.lblMatrix = new MaterialLabel();
+            this.label10 = new MaterialLabel();
+            this.lblLaserStatus = new MaterialLabel();
             this.SuspendLayout();
             // 
             // closeButton
@@ -283,25 +285,25 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label m1Steps;
-        private System.Windows.Forms.Label m2Steps;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label responseCode;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label motor1Steps;
-        private System.Windows.Forms.Label motor1Origination;
-        private System.Windows.Forms.Label motor2Steps;
-        private System.Windows.Forms.Label motor2Origination;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label lblMousePosition;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label lblMatrix;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lblLaserStatus;
+        private MaterialLabel label1;
+        private MaterialLabel label2;
+        private MaterialLabel m1Steps;
+        private MaterialLabel m2Steps;
+        private MaterialLabel label3;
+        private MaterialLabel responseCode;
+        private MaterialLabel label4;
+        private MaterialLabel label5;
+        private MaterialLabel label6;
+        private MaterialLabel label7;
+        private MaterialLabel motor1Steps;
+        private MaterialLabel motor1Origination;
+        private MaterialLabel motor2Steps;
+        private MaterialLabel motor2Origination;
+        private MaterialLabel label8;
+        private MaterialLabel lblMousePosition;
+        private MaterialLabel label9;
+        private MaterialLabel lblMatrix;
+        private MaterialLabel label10;
+        private MaterialLabel lblLaserStatus;
     }
 }

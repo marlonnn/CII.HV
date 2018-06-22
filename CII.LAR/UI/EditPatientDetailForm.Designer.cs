@@ -1,4 +1,6 @@
-﻿namespace CII.LAR.UI
+﻿using CII.LAR.MaterialSkin;
+
+namespace CII.LAR.UI
 {
     partial class EditPatientDetailForm
     {
@@ -29,98 +31,105 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditPatientDetailForm));
-            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
-            this.btnConfirm = new DevComponents.DotNetBar.ButtonX();
-            this.textBoxPatientName = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.lblPatientName = new DevComponents.DotNetBar.LabelX();
-            this.textBoxPatientID = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.lblPatientID = new DevComponents.DotNetBar.LabelX();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxComments = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.btnCancel = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.btnConfirm = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.textBoxPatientName = new CII.LAR.MaterialSkin.MaterialTextBox();
+            this.lblPatientName = new CII.LAR.MaterialSkin.MaterialLabel();
+            this.textBoxPatientID = new CII.LAR.MaterialSkin.MaterialTextBox();
+            this.lblPatientID = new CII.LAR.MaterialSkin.MaterialLabel();
+            this.labelX1 = new CII.LAR.MaterialSkin.MaterialLabel();
+            this.textBoxComments = new CII.LAR.MaterialSkin.MaterialTextBox();
             this.SuspendLayout();
             // 
             // btnCancel
             // 
             this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             resources.ApplyResources(this.btnCancel, "btnCancel");
+            this.btnCancel.Depth = 0;
+            this.btnCancel.Icon = null;
+            this.btnCancel.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCancel.Primary = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnConfirm
             // 
             this.btnConfirm.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnConfirm.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             resources.ApplyResources(this.btnConfirm, "btnConfirm");
+            this.btnConfirm.Depth = 0;
+            this.btnConfirm.Icon = null;
+            this.btnConfirm.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnConfirm.Primary = false;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // textBoxPatientName
             // 
             this.textBoxPatientName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            // 
-            // 
-            // 
-            this.textBoxPatientName.Border.Class = "TextBoxBorder";
-            this.textBoxPatientName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxPatientName.ForeColor = System.Drawing.Color.Black;
+            this.textBoxPatientName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxPatientName.CustomAutoSize = true;
+            this.textBoxPatientName.Depth = 0;
+            this.textBoxPatientName.EmptyTextTip = null;
+            this.textBoxPatientName.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             resources.ApplyResources(this.textBoxPatientName, "textBoxPatientName");
+            this.textBoxPatientName.ForeColor = System.Drawing.Color.Black;
+            this.textBoxPatientName.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.textBoxPatientName.Name = "textBoxPatientName";
+            this.textBoxPatientName.Radius = 3;
             this.textBoxPatientName.ReadOnly = true;
             // 
             // lblPatientName
             // 
-            // 
-            // 
-            // 
-            this.lblPatientName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblPatientName.Depth = 0;
             resources.ApplyResources(this.lblPatientName, "lblPatientName");
+            this.lblPatientName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.lblPatientName.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.lblPatientName.Name = "lblPatientName";
             // 
             // textBoxPatientID
             // 
             this.textBoxPatientID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            // 
-            // 
-            // 
-            this.textBoxPatientID.Border.Class = "TextBoxBorder";
-            this.textBoxPatientID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxPatientID.ForeColor = System.Drawing.Color.Black;
+            this.textBoxPatientID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxPatientID.CustomAutoSize = true;
+            this.textBoxPatientID.Depth = 0;
+            this.textBoxPatientID.EmptyTextTip = null;
+            this.textBoxPatientID.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             resources.ApplyResources(this.textBoxPatientID, "textBoxPatientID");
+            this.textBoxPatientID.ForeColor = System.Drawing.Color.Black;
+            this.textBoxPatientID.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.textBoxPatientID.Name = "textBoxPatientID";
+            this.textBoxPatientID.Radius = 3;
             this.textBoxPatientID.ReadOnly = true;
             // 
             // lblPatientID
             // 
-            // 
-            // 
-            // 
-            this.lblPatientID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblPatientID.Depth = 0;
             resources.ApplyResources(this.lblPatientID, "lblPatientID");
+            this.lblPatientID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.lblPatientID.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.lblPatientID.Name = "lblPatientID";
             // 
             // labelX1
             // 
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Depth = 0;
             resources.ApplyResources(this.labelX1, "labelX1");
+            this.labelX1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.labelX1.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.labelX1.Name = "labelX1";
             // 
             // textBoxComments
             // 
             this.textBoxComments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            // 
-            // 
-            // 
-            this.textBoxComments.Border.Class = "TextBoxBorder";
-            this.textBoxComments.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxComments.ForeColor = System.Drawing.Color.Black;
+            this.textBoxComments.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxComments.CustomAutoSize = true;
+            this.textBoxComments.Depth = 0;
+            this.textBoxComments.EmptyTextTip = null;
+            this.textBoxComments.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             resources.ApplyResources(this.textBoxComments, "textBoxComments");
+            this.textBoxComments.ForeColor = System.Drawing.Color.Black;
+            this.textBoxComments.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.textBoxComments.Name = "textBoxComments";
+            this.textBoxComments.Radius = 3;
             // 
             // EditPatientDetailForm
             // 
@@ -134,24 +143,24 @@
             this.Controls.Add(this.lblPatientName);
             this.Controls.Add(this.textBoxPatientID);
             this.Controls.Add(this.lblPatientID);
-            this.DoubleBuffered = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EditPatientDetailForm";
             this.ShowIcon = false;
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private DevComponents.DotNetBar.ButtonX btnCancel;
-        private DevComponents.DotNetBar.ButtonX btnConfirm;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxPatientName;
-        private DevComponents.DotNetBar.LabelX lblPatientName;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxPatientID;
-        private DevComponents.DotNetBar.LabelX lblPatientID;
-        private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxComments;
+        private MaterialRoundButton btnCancel;
+        private MaterialRoundButton btnConfirm;
+        private MaterialTextBox textBoxPatientName;
+        private MaterialLabel lblPatientName;
+        private MaterialTextBox textBoxPatientID;
+        private MaterialLabel lblPatientID;
+        private MaterialLabel labelX1;
+        private MaterialTextBox textBoxComments;
     }
 }

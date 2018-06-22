@@ -1,4 +1,5 @@
-﻿using CII.LAR.SysClass;
+﻿using CII.LAR.MaterialSkin;
+using CII.LAR.SysClass;
 using DevComponents.DotNetBar;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace CII.LAR.UI
 {
-    public partial class EditPatientDetailForm : Office2007Form
+    public partial class EditPatientDetailForm : MaterialForm
     {
         private Patient patient;
         public EditPatientDetailForm()

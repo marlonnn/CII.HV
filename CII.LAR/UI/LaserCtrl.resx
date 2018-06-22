@@ -131,7 +131,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;closeButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="lblPulseWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>73, 37</value>
@@ -156,7 +156,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPulseWidth.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="sliderCtrl.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 62</value>
@@ -177,31 +177,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;sliderCtrl.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="line1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
-  </data>
-  <data name="line1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>286, 10</value>
-  </data>
-  <data name="line1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="line1.Text" xml:space="preserve">
-    <value>line1</value>
-  </data>
-  <data name="&gt;&gt;line1.Name" xml:space="preserve">
-    <value>line1</value>
-  </data>
-  <data name="&gt;&gt;line1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;line1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;line1.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>12</value>
   </data>
   <data name="lblPreSet.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 124</value>
@@ -225,7 +201,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lblPreSet.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="btnFire.Location" type="System.Drawing.Point, System.Drawing">
     <value>105, 165</value>
@@ -249,7 +225,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnFire.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="line2.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 196</value>
@@ -276,7 +252,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;line2.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="btnAlignLaser.Location" type="System.Drawing.Point, System.Drawing">
     <value>58, 215</value>
@@ -300,7 +276,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnAlignLaser.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="btnHoleSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>58, 244</value>
@@ -324,7 +300,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnHoleSize.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="btnAppearance.Location" type="System.Drawing.Point, System.Drawing">
     <value>58, 273</value>
@@ -348,7 +324,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnAppearance.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="holesSlider.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 97</value>
@@ -369,7 +345,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;holesSlider.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -397,7 +373,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnDelete.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="comboBoxEx1.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
@@ -421,7 +397,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;comboBoxEx1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnSave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -448,7 +424,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="lblHoleNumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>159, 96</value>

@@ -134,8 +134,8 @@ namespace CII.LAR.MaterialSkin
             }
 
             //CAD1E0 
-            //using (Pen boardPen = new Pen(Color.FromArgb(0xCA, 0xD1, 0xE0)))
-            //    g.DrawRectangle(boardPen, new Rectangle(1, 1, this.ClientRectangle.Width - 2, this.ClientRectangle.Height - 2));
+            using (Pen boardPen = new Pen(SkinManager.FontColor))
+                g.DrawRectangle(boardPen, new Rectangle(1, 1, this.ClientRectangle.Width - 2, this.ClientRectangle.Height - 2));
             //Draw the background of the dropdown button
             //Rectangle rect = new Rectangle(this.Width - 17, 0, 17, this.Height);
             //g.FillRectangle(DropButtonBrush, rect);

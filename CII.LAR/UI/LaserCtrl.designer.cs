@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CII.LAR.MaterialSkin;
+using System;
 
 namespace CII.LAR.UI
 {
@@ -31,20 +32,19 @@ namespace CII.LAR.UI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LaserCtrl));
-            this.lblPulseWidth = new DevComponents.DotNetBar.LabelX();
+            this.lblPulseWidth = new MaterialLabel();
             this.sliderCtrl = new CII.LAR.UI.SliderCtrl();
-            this.line1 = new DevComponents.DotNetBar.Controls.Line();
-            this.lblPreSet = new DevComponents.DotNetBar.LabelX();
-            this.btnFire = new System.Windows.Forms.Button();
+            this.lblPreSet = new MaterialLabel();
+            this.btnFire = new MaterialRoundButton();
             this.line2 = new DevComponents.DotNetBar.Controls.Line();
-            this.btnAlignLaser = new System.Windows.Forms.Button();
-            this.btnHoleSize = new System.Windows.Forms.Button();
-            this.btnAppearance = new System.Windows.Forms.Button();
+            this.btnAlignLaser = new MaterialRoundButton();
+            this.btnHoleSize = new MaterialRoundButton();
+            this.btnAppearance = new MaterialRoundButton();
             this.holesSlider = new DevComponents.DotNetBar.Controls.Slider();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.comboBoxEx1 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.lblHoleNumber = new DevComponents.DotNetBar.LabelX();
+            this.btnDelete = new MaterialRoundButton();
+            this.comboBoxEx1 = new MaterialComboBox();
+            this.btnSave = new MaterialRoundButton();
+            this.lblHoleNumber = new MaterialLabel();
             this.SuspendLayout();
             // 
             // closeButton
@@ -53,12 +53,6 @@ namespace CII.LAR.UI
             // 
             // lblPulseWidth
             // 
-            this.lblPulseWidth.BackColor = System.Drawing.Color.Gray;
-            // 
-            // 
-            // 
-            this.lblPulseWidth.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lblPulseWidth.ForeColor = System.Drawing.SystemColors.ControlText;
             resources.ApplyResources(this.lblPulseWidth, "lblPulseWidth");
             this.lblPulseWidth.Name = "lblPulseWidth";
             // 
@@ -68,18 +62,11 @@ namespace CII.LAR.UI
             this.sliderCtrl.Name = "sliderCtrl";
             this.sliderCtrl.SliderValueChangedHandler += SliderValueChangedHandler;
             // 
-            // line1
-            // 
-            this.line1.ForeColor = System.Drawing.SystemColors.ControlText;
-            resources.ApplyResources(this.line1, "line1");
-            this.line1.Name = "line1";
-            // 
             // lblPreSet
             // 
             // 
             // 
             // 
-            this.lblPreSet.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.lblPreSet, "lblPreSet");
             this.lblPreSet.Name = "lblPreSet";
             // 
@@ -146,7 +133,6 @@ namespace CII.LAR.UI
             this.comboBoxEx1.FormattingEnabled = true;
             resources.ApplyResources(this.comboBoxEx1, "comboBoxEx1");
             this.comboBoxEx1.Name = "comboBoxEx1";
-            this.comboBoxEx1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             // 
             // btnSave
             // 
@@ -160,7 +146,6 @@ namespace CII.LAR.UI
             // 
             // 
             // 
-            this.lblHoleNumber.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.lblHoleNumber, "lblHoleNumber");
             this.lblHoleNumber.Name = "lblHoleNumber";
             // 
@@ -181,10 +166,8 @@ namespace CII.LAR.UI
             this.Controls.Add(this.lblPreSet);
             this.Controls.Add(this.sliderCtrl);
             this.Controls.Add(this.lblPulseWidth);
-            this.Controls.Add(this.line1);
             this.Name = "LaserCtrl";
             this.Title = global::CII.LAR.Properties.Resources.StrLaserCtrlTitle;
-            this.Controls.SetChildIndex(this.line1, 0);
             this.Controls.SetChildIndex(this.lblPulseWidth, 0);
             this.Controls.SetChildIndex(this.sliderCtrl, 0);
             this.Controls.SetChildIndex(this.lblPreSet, 0);
@@ -204,19 +187,18 @@ namespace CII.LAR.UI
         }
 
         #endregion
-        private DevComponents.DotNetBar.LabelX lblPulseWidth;
+        private MaterialLabel lblPulseWidth;
         private SliderCtrl sliderCtrl;
-        private DevComponents.DotNetBar.Controls.Line line1;
-        private DevComponents.DotNetBar.LabelX lblPreSet;
-        private System.Windows.Forms.Button btnFire;
+        private MaterialLabel lblPreSet;
+        private MaterialRoundButton btnFire;
         private DevComponents.DotNetBar.Controls.Line line2;
-        private System.Windows.Forms.Button btnAlignLaser;
-        private System.Windows.Forms.Button btnHoleSize;
-        private System.Windows.Forms.Button btnAppearance;
+        private MaterialRoundButton btnAlignLaser;
+        private MaterialRoundButton btnHoleSize;
+        private MaterialRoundButton btnAppearance;
         private DevComponents.DotNetBar.Controls.Slider holesSlider;
-        private System.Windows.Forms.Button btnDelete;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxEx1;
-        private System.Windows.Forms.Button btnSave;
-        private DevComponents.DotNetBar.LabelX lblHoleNumber;
+        private MaterialRoundButton btnDelete;
+        private MaterialComboBox comboBoxEx1;
+        private MaterialRoundButton btnSave;
+        private MaterialLabel lblHoleNumber;
     }
 }

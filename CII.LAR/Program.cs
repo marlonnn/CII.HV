@@ -97,7 +97,7 @@ namespace CII.LAR
 
                 expManager = new ExpManager();
 
-                Application.Run(new TestForm());
+                Application.Run(entryForm);
             }
             catch (Exception ex)
             {

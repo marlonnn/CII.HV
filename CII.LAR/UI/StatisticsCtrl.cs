@@ -34,7 +34,7 @@ namespace CII.LAR.UI
             }
         }
 
-        public Button BtnAppearance
+        public MaterialSkin.MaterialRoundButton BtnAppearance
         {
             get
             {

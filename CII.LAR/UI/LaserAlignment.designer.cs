@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using CII.LAR.MaterialSkin;
+using System.Windows.Forms;
 
 namespace CII.LAR.UI
 {
@@ -31,9 +32,9 @@ namespace CII.LAR.UI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LaserAlignment));
-            this.btnBack = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.lblInfo = new System.Windows.Forms.Label();
+            this.btnBack = new MaterialRoundButton();
+            this.btnNext = new MaterialRoundButton();
+            this.lblInfo = new MaterialLabel();
             this.SuspendLayout();
             // 
             // closeButton
@@ -77,8 +78,8 @@ namespace CII.LAR.UI
 
         #endregion
 
-        private Button btnBack;
-        private Button btnNext;
-        private Label lblInfo;
+        private MaterialRoundButton btnBack;
+        private MaterialRoundButton btnNext;
+        private MaterialLabel lblInfo;
     }
 }

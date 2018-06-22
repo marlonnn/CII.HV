@@ -1,4 +1,6 @@
-﻿namespace CII.LAR.UI
+﻿using CII.LAR.MaterialSkin;
+
+namespace CII.LAR.UI
 {
     partial class LaserHoleSize
     {
@@ -32,13 +34,13 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnLaserCtrl = new System.Windows.Forms.Button();
-            this.lblAdjustPulse = new DevComponents.DotNetBar.LabelX();
-            this.lblAdjustHole = new DevComponents.DotNetBar.LabelX();
+            this.btnLaserCtrl = new MaterialRoundButton();
+            this.lblAdjustPulse = new MaterialLabel();
+            this.lblAdjustHole = new MaterialLabel();
             this.sliderPulse = new CII.LAR.UI.SliderCtrl();
-            this.btnFire = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnFire = new MaterialRoundButton();
+            this.btnSave = new MaterialRoundButton();
+            this.btnDelete = new MaterialRoundButton();
             this.holeSizeCtrl = new CII.LAR.UI.HoleSizeCtrl();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -76,7 +78,6 @@
             // 
             // 
             // 
-            this.lblAdjustPulse.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.lblAdjustPulse, "lblAdjustPulse");
             this.lblAdjustPulse.Name = "lblAdjustPulse";
             // 
@@ -85,7 +86,6 @@
             // 
             // 
             // 
-            this.lblAdjustHole.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.lblAdjustHole, "lblAdjustHole");
             this.lblAdjustHole.Name = "lblAdjustHole";
             // 
@@ -154,13 +154,13 @@
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.Button btnLaserCtrl;
-        private DevComponents.DotNetBar.LabelX lblAdjustPulse;
-        private DevComponents.DotNetBar.LabelX lblAdjustHole;
+        private MaterialRoundButton btnLaserCtrl;
+        private MaterialLabel lblAdjustPulse;
+        private MaterialLabel lblAdjustHole;
         private SliderCtrl sliderPulse;
-        private System.Windows.Forms.Button btnFire;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnDelete;
+        private MaterialRoundButton btnFire;
+        private MaterialRoundButton btnSave;
+        private MaterialRoundButton btnDelete;
         private HoleSizeCtrl holeSizeCtrl;
     }
 }

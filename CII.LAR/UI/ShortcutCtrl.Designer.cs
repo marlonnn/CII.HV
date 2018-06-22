@@ -1,4 +1,6 @@
-﻿namespace CII.LAR.UI
+﻿using CII.LAR.MaterialSkin;
+
+namespace CII.LAR.UI
 {
     partial class ShortcutCtrl
     {
@@ -29,11 +31,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShortcutCtrl));
-            this.lblSnapshoot = new System.Windows.Forms.Label();
-            this.lblZoomIn = new System.Windows.Forms.Label();
-            this.lblZoomOut = new System.Windows.Forms.Label();
-            this.lblVideo = new System.Windows.Forms.Label();
-            this.buttonSave = new System.Windows.Forms.Button();
+            this.lblSnapshoot = new MaterialLabel();
+            this.lblZoomIn = new MaterialLabel();
+            this.lblZoomOut = new MaterialLabel();
+            this.lblVideo = new MaterialLabel();
+            this.buttonSave = new MaterialRoundButton();
             this.txtTakePicture = new CII.LAR.UI.HotKeyControl();
             this.txtZoomIn = new CII.LAR.UI.HotKeyControl();
             this.txtZoomOut = new CII.LAR.UI.HotKeyControl();
@@ -127,11 +129,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblSnapshoot;
-        private System.Windows.Forms.Label lblZoomIn;
-        private System.Windows.Forms.Label lblZoomOut;
-        private System.Windows.Forms.Label lblVideo;
-        private System.Windows.Forms.Button buttonSave;
+        private MaterialLabel lblSnapshoot;
+        private MaterialLabel lblZoomIn;
+        private MaterialLabel lblZoomOut;
+        private MaterialLabel lblVideo;
+        private MaterialRoundButton buttonSave;
         private HotKeyControl txtTakePicture;
         private HotKeyControl txtZoomIn;
         private HotKeyControl txtZoomOut;

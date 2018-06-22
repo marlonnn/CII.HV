@@ -1,4 +1,6 @@
-﻿namespace CII.LAR.UI
+﻿using CII.LAR.MaterialSkin;
+
+namespace CII.LAR.UI
 {
     partial class VideoChooseCtrl
     {
@@ -31,8 +33,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VideoChooseCtrl));
             this.listViewCamera = new System.Windows.Forms.ListView();
             this.columnHeaderAvailable = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonOk = new System.Windows.Forms.Button();
+            this.buttonCancel = new MaterialRoundButton();
+            this.buttonOk = new MaterialRoundButton();
             this.SuspendLayout();
             // 
             // closeButton
@@ -89,7 +91,7 @@
 
         private System.Windows.Forms.ListView listViewCamera;
         private System.Windows.Forms.ColumnHeader columnHeaderAvailable;
-        private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.Button buttonOk;
+        private MaterialRoundButton buttonCancel;
+        private MaterialRoundButton buttonOk;
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace CII.LAR.UI
+﻿using CII.LAR.MaterialSkin;
+
+namespace CII.LAR.UI
 {
     partial class LaserAppearanceCtrl
     {
@@ -29,36 +31,29 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LaserAppearanceCtrl));
-            this.line1 = new DevComponents.DotNetBar.Controls.Line();
-            this.lblTransparency = new DevComponents.DotNetBar.LabelX();
+            this.lblTransparency = new MaterialLabel();
             this.sliderTransparency = new DevComponents.DotNetBar.Controls.Slider();
-            this.lblThickness = new DevComponents.DotNetBar.LabelX();
+            this.lblThickness = new MaterialLabel();
             this.sliderThickness = new DevComponents.DotNetBar.Controls.Slider();
-            this.lblTargerSize = new DevComponents.DotNetBar.LabelX();
+            this.lblTargerSize = new MaterialLabel();
             this.sliderTargetSize = new DevComponents.DotNetBar.Controls.Slider();
-            this.lblZoneSize = new DevComponents.DotNetBar.LabelX();
+            this.lblZoneSize = new MaterialLabel();
             this.sliderZoneSize = new DevComponents.DotNetBar.Controls.Slider();
-            this.lblZoneColour = new DevComponents.DotNetBar.LabelX();
+            this.lblZoneColour = new MaterialLabel();
             this.sliderZoneColour = new DevComponents.DotNetBar.Controls.Slider();
-            this.btnLaserCtrl = new System.Windows.Forms.Button();
-            this.btnDefault = new System.Windows.Forms.Button();
+            this.btnLaserCtrl = new MaterialRoundButton();
+            this.btnDefault = new MaterialRoundButton();
             this.SuspendLayout();
             // 
             // closeButton
             // 
             resources.ApplyResources(this.closeButton, "closeButton");
             // 
-            // line1
-            // 
-            resources.ApplyResources(this.line1, "line1");
-            this.line1.Name = "line1";
-            // 
             // lblTransparency
             // 
             // 
             // 
             // 
-            this.lblTransparency.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.lblTransparency, "lblTransparency");
             this.lblTransparency.Name = "lblTransparency";
             // 
@@ -80,7 +75,6 @@
             // 
             // 
             // 
-            this.lblThickness.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.lblThickness, "lblThickness");
             this.lblThickness.Name = "lblThickness";
             // 
@@ -103,7 +97,6 @@
             // 
             // 
             // 
-            this.lblTargerSize.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.lblTargerSize, "lblTargerSize");
             this.lblTargerSize.Name = "lblTargerSize";
             // 
@@ -127,7 +120,6 @@
             // 
             // 
             // 
-            this.lblZoneSize.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.lblZoneSize, "lblZoneSize");
             this.lblZoneSize.Name = "lblZoneSize";
             // 
@@ -150,7 +142,6 @@
             // 
             // 
             // 
-            this.lblZoneColour.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.lblZoneColour, "lblZoneColour");
             this.lblZoneColour.Name = "lblZoneColour";
             // 
@@ -197,11 +188,9 @@
             this.Controls.Add(this.lblThickness);
             this.Controls.Add(this.sliderTransparency);
             this.Controls.Add(this.lblTransparency);
-            this.Controls.Add(this.line1);
             this.Name = "LaserAppearanceCtrl";
             this.Title = global::CII.LAR.Properties.Resources.StrLaserCtrlTitle;
             this.Controls.SetChildIndex(this.closeButton, 0);
-            this.Controls.SetChildIndex(this.line1, 0);
             this.Controls.SetChildIndex(this.lblTransparency, 0);
             this.Controls.SetChildIndex(this.sliderTransparency, 0);
             this.Controls.SetChildIndex(this.lblThickness, 0);
@@ -220,18 +209,17 @@
 
         #endregion
 
-        private DevComponents.DotNetBar.Controls.Line line1;
-        private DevComponents.DotNetBar.LabelX lblTransparency;
+        private MaterialLabel lblTransparency;
         private DevComponents.DotNetBar.Controls.Slider sliderTransparency;
-        private DevComponents.DotNetBar.LabelX lblThickness;
-        private DevComponents.DotNetBar.LabelX lblZoneColour;
+        private MaterialLabel lblThickness;
+        private MaterialLabel lblZoneColour;
         private DevComponents.DotNetBar.Controls.Slider sliderThickness;
-        private DevComponents.DotNetBar.LabelX lblTargerSize;
+        private MaterialLabel lblTargerSize;
         private DevComponents.DotNetBar.Controls.Slider sliderTargetSize;
-        private DevComponents.DotNetBar.LabelX lblZoneSize;
+        private MaterialLabel lblZoneSize;
         private DevComponents.DotNetBar.Controls.Slider sliderZoneSize;
         private DevComponents.DotNetBar.Controls.Slider sliderZoneColour;
-        private System.Windows.Forms.Button btnLaserCtrl;
-        private System.Windows.Forms.Button btnDefault;
+        private MaterialRoundButton btnLaserCtrl;
+        private MaterialRoundButton btnDefault;
     }
 }

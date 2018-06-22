@@ -1,4 +1,6 @@
-﻿namespace CII.LAR.UI
+﻿using CII.LAR.MaterialSkin;
+
+namespace CII.LAR.UI
 {
     partial class ScaleAppearanceCtrl
     {
@@ -29,26 +31,20 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScaleAppearanceCtrl));
-            this.line1 = new DevComponents.DotNetBar.Controls.Line();
-            this.btnLaserCtrl = new System.Windows.Forms.Button();
+            this.btnLaserCtrl = new MaterialRoundButton();
             this.sliderColour = new DevComponents.DotNetBar.Controls.Slider();
-            this.lblZColour = new DevComponents.DotNetBar.LabelX();
+            this.lblZColour = new MaterialLabel();
             this.sliderTargetSize = new DevComponents.DotNetBar.Controls.Slider();
-            this.lblTargerSize = new DevComponents.DotNetBar.LabelX();
+            this.lblTargerSize = new MaterialLabel();
             this.sliderThickness = new DevComponents.DotNetBar.Controls.Slider();
-            this.lblThickness = new DevComponents.DotNetBar.LabelX();
+            this.lblThickness = new MaterialLabel();
             this.sliderTransparency = new DevComponents.DotNetBar.Controls.Slider();
-            this.lblTransparency = new DevComponents.DotNetBar.LabelX();
+            this.lblTransparency = new MaterialLabel();
             this.SuspendLayout();
             // 
             // closeButton
             // 
             resources.ApplyResources(this.closeButton, "closeButton");
-            // 
-            // line1
-            // 
-            resources.ApplyResources(this.line1, "line1");
-            this.line1.Name = "line1";
             // 
             // btnLaserCtrl
             // 
@@ -77,7 +73,6 @@
             // 
             // 
             // 
-            this.lblZColour.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.lblZColour, "lblZColour");
             this.lblZColour.Name = "lblZColour";
             // 
@@ -101,7 +96,6 @@
             // 
             // 
             // 
-            this.lblTargerSize.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.lblTargerSize, "lblTargerSize");
             this.lblTargerSize.Name = "lblTargerSize";
             // 
@@ -125,7 +119,6 @@
             // 
             // 
             // 
-            this.lblThickness.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.lblThickness, "lblThickness");
             this.lblThickness.Name = "lblThickness";
             // 
@@ -147,7 +140,6 @@
             // 
             // 
             // 
-            this.lblTransparency.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.lblTransparency, "lblTransparency");
             this.lblTransparency.Name = "lblTransparency";
             // 
@@ -164,12 +156,10 @@
             this.Controls.Add(this.lblThickness);
             this.Controls.Add(this.sliderTransparency);
             this.Controls.Add(this.lblTransparency);
-            this.Controls.Add(this.line1);
             this.DoubleBuffered = true;
             this.Name = "ScaleAppearanceCtrl";
             this.Title = global::CII.LAR.Properties.Resources.StrScaleAppearanceTitle;
             this.Controls.SetChildIndex(this.closeButton, 0);
-            this.Controls.SetChildIndex(this.line1, 0);
             this.Controls.SetChildIndex(this.lblTransparency, 0);
             this.Controls.SetChildIndex(this.sliderTransparency, 0);
             this.Controls.SetChildIndex(this.lblThickness, 0);
@@ -185,15 +175,14 @@
 
         #endregion
 
-        private DevComponents.DotNetBar.Controls.Line line1;
-        private System.Windows.Forms.Button btnLaserCtrl;
+        private MaterialRoundButton btnLaserCtrl;
         private DevComponents.DotNetBar.Controls.Slider sliderColour;
-        private DevComponents.DotNetBar.LabelX lblZColour;
+        private MaterialLabel lblZColour;
         private DevComponents.DotNetBar.Controls.Slider sliderTargetSize;
-        private DevComponents.DotNetBar.LabelX lblTargerSize;
+        private MaterialLabel lblTargerSize;
         private DevComponents.DotNetBar.Controls.Slider sliderThickness;
-        private DevComponents.DotNetBar.LabelX lblThickness;
+        private MaterialLabel lblThickness;
         private DevComponents.DotNetBar.Controls.Slider sliderTransparency;
-        private DevComponents.DotNetBar.LabelX lblTransparency;
+        private MaterialLabel lblTransparency;
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace CII.LAR.UI
+﻿using CII.LAR.MaterialSkin;
+
+namespace CII.LAR.UI
 {
     partial class ObjectLenseCtrl
     {
@@ -29,14 +31,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ObjectLenseCtrl));
-            this.cmbLenses = new System.Windows.Forms.ComboBox();
-            this.lblCurrentLense = new DevComponents.DotNetBar.LabelX();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.txtAdd = new System.Windows.Forms.TextBox();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.lblAdjustment = new DevComponents.DotNetBar.LabelX();
+            this.cmbLenses = new MaterialComboBox();
+            this.lblCurrentLense = new MaterialLabel();
+            this.btnDelete = new MaterialRoundButton();
+            this.txtAdd = new MaterialTextBox();
+            this.labelX1 = new MaterialLabel();
+            this.lblAdjustment = new MaterialLabel();
             this.rulerAdjustCtrl1 = new CII.LAR.UI.RulerAdjustCtrl();
-            this.btnNew = new System.Windows.Forms.Button();
+            this.btnNew = new MaterialRoundButton();
             this.SuspendLayout();
             // 
             // closeButton
@@ -55,7 +57,6 @@
             // 
             // 
             // 
-            this.lblCurrentLense.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.lblCurrentLense, "lblCurrentLense");
             this.lblCurrentLense.Name = "lblCurrentLense";
             // 
@@ -78,7 +79,6 @@
             // 
             // 
             // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.labelX1, "labelX1");
             this.labelX1.Name = "labelX1";
             // 
@@ -87,7 +87,6 @@
             // 
             // 
             // 
-            this.lblAdjustment.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.lblAdjustment, "lblAdjustment");
             this.lblAdjustment.Name = "lblAdjustment";
             // 
@@ -134,13 +133,13 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cmbLenses;
-        private DevComponents.DotNetBar.LabelX lblCurrentLense;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.TextBox txtAdd;
-        private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.LabelX lblAdjustment;
+        private MaterialComboBox cmbLenses;
+        private MaterialLabel lblCurrentLense;
+        private MaterialRoundButton btnDelete;
+        private MaterialTextBox txtAdd;
+        private MaterialLabel labelX1;
+        private MaterialLabel lblAdjustment;
         private RulerAdjustCtrl rulerAdjustCtrl1;
-        private System.Windows.Forms.Button btnNew;
+        private MaterialRoundButton btnNew;
     }
 }

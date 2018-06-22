@@ -19,9 +19,6 @@ namespace CII.LAR.UI
         public delegate void UpdateTimerState(bool enable);
         public UpdateTimerState UpdateTimerStatesHandler;
 
-        public delegate void UpdateSimulatorImage(int selectIndex);
-        public UpdateSimulatorImage UpdateSimulatorImageHandler;
-
         public delegate void ShowObjectLenseManager();
         public ShowObjectLenseManager ShowObjectLenseManagerHandler;
 
@@ -143,25 +140,30 @@ namespace CII.LAR.UI
                         MaterialLabel mlbl = subCtrl as MaterialLabel;
                         if (mlbl != null) resources.ApplyResources(mlbl, mlbl.Name);
                         MaterialRoundButton mrb = subCtrl as MaterialRoundButton;
-                        if (mrb != null) resources.ApplyResources(mrb, mrb.Name);
+                        if (mrb != null)
+                        {
+                            if (mrb.Name == "btnSimulator")
+                                continue;
+                            resources.ApplyResources(mrb, mrb.Name);
+                        }
                     }
                 }
             }
-            //this.cmbLaser.Refresh();
+            this.btnSimulator.Text = simulatorOpen ?  CII.LAR.Properties.Resources.StrCloseSimulator : CII.LAR.Properties.Resources.StrOpenSimulator;
             this.Invalidate();
         }
 
         private void cmbImage_SelectedIndexChanged(object sender, EventArgs e)
         {
             //change simulator image
-            if (UpdateSimulatorImageHandler != null)
+            if (updateCmbImage)
             {
-                UpdateSimulatorImageHandler(cmbImage.SelectedIndex);
-                Program.SysConfig.LiveMode = false;
+                StartSimulator(GetSimulatorFileName(cmbImage.SelectedIndex));
             }
         }
 
         private bool updateCmbLaser = true;
+        private bool updateCmbImage = true;
 
         public void SettingControl_Load(object sender, EventArgs e)
         {
@@ -184,31 +186,82 @@ namespace CII.LAR.UI
                 Program.EntryForm.HolesNumberSlider(Program.EntryForm.LaserType == LaserType.SaturnActive);
             }
         }
+
+        private string GetSimulatorFileName(int selectIndex)
+        {
+            string fileName = "";
+            switch (selectIndex)
+            {
+                case 0:
+                    fileName = string.Format("{0}\\Resources\\Simulator\\Embryo.bmp", System.Environment.CurrentDirectory);
+                    break;
+                case 1:
+                    fileName = string.Format("{0}\\Resources\\Simulator\\Sperm.bmp", System.Environment.CurrentDirectory);
+                    break;
+                case 2:
+                    fileName = string.Format("{0}\\Resources\\Simulator\\Embryo 8 Cell.bmp", System.Environment.CurrentDirectory);
+                    break;
+                case 3:
+                    fileName = string.Format("{0}\\Resources\\Simulator\\egg.bmp", System.Environment.CurrentDirectory);
+                    break;
+                default:
+                    fileName = string.Format("{0}\\Resources\\Simulator\\Embryo.bmp", System.Environment.CurrentDirectory);
+                    break;
+            }
+            return fileName;
+        }
+
+        private bool simulatorOpen = false;
+        private void StartSimulator(string fileName)
+        {
+            Program.EntryForm.StopVideoDevice();
+            richPictureBox.LoadImage(fileName);
+            this.btnSimulator.Text = CII.LAR.Properties.Resources.StrCloseSimulator;
+            Program.SysConfig.LiveMode = false;
+            simulatorOpen = true;
+        }
+
         private void btnSimulator_Click(object sender, EventArgs e)
         {
-            if (Program.SysConfig.LiveMode)
+            if (this.btnSimulator.Text == CII.LAR.Properties.Resources.StrOpenSimulator)
             {
                 //Turn on simulator
-                Program.EntryForm.StopVideoDevice();
-                richPictureBox.LoadImage(string.Format("{0}\\Resources\\Simulator\\Embryo.bmp", System.Environment.CurrentDirectory));
-                this.btnSimulator.Text = CII.LAR.Properties.Resources.StrCloseSimulator;
-                Program.SysConfig.LiveMode = false;
+                updateCmbImage = false;
+                int fileIndex = 0;
+                if (cmbImage.SelectedIndex < 0)
+                {
+                    cmbImage.SelectedIndex = 0;
+                }
+                else
+                {
+                    fileIndex = cmbImage.SelectedIndex;
+
+                }
+                StartSimulator(GetSimulatorFileName(fileIndex));
+                updateCmbImage = true;
             }
-            else
+            else if (this.btnSimulator.Text == CII.LAR.Properties.Resources.StrCloseSimulator)
             {
                 //Close simulator
                 if (this.richPictureBox != null)
                 {
+                    updateCmbImage = false;
                     this.richPictureBox.Picture = null;
                     this.richPictureBox.GraphicsList.DeleteAll();
                     CtrlFactory.GetCtrlFactory().GetCtrlByType<StatisticsCtrl>(CtrlType.StatisticsCtrl).StatisticsListView.Items.Clear();
+                    cmbImage.SelectedIndex = -1;
+                    updateCmbImage = true;
                 }
                 if (!string.IsNullOrEmpty(Program.SysConfig.DeviceName))
                 {
                     FilterInfo fileInfo = Program.SysConfig.EnumerateVideoDevices();
-                    DelegateClass.GetDelegate().CaptureDeviceHandler(fileInfo.MonikerString);
+                    if (fileInfo != null)
+                    {
+                        DelegateClass.GetDelegate().CaptureDeviceHandler(fileInfo.MonikerString);
+                    }
 
                 }
+                simulatorOpen = false;
                 this.btnSimulator.Text = CII.LAR.Properties.Resources.StrOpenSimulator;
             }
         }

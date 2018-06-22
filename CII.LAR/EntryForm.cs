@@ -436,7 +436,6 @@ namespace CII.LAR
             BaseCtrls = new List<BaseCtrl>();
 
             settingControl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SettingControl>(CtrlType.SettingCtrl);
-            settingControl.UpdateSimulatorImageHandler += UpdateSimulatorImageHandler;
             settingControl.ShowObjectLenseManagerHandler += ShowObjectLenseManagerHandler;
             settingControl.ShowShortcutManagerHandler += ShowShortcutManagerHandler;
             settingControl.ShowScaleAppearanceCtrlHandler += ShowScaleAppearanceCtrlHandler;
@@ -712,30 +711,6 @@ namespace CII.LAR
         private void ClickDelegateHandler(object sender, CtrlType type)
         {
             ShowBaseCtrl(true, GetBascCtrl(type));
-        }
-
-        private void UpdateSimulatorImageHandler(int selectIndex)
-        {
-            string fileName = "";
-            switch (selectIndex)
-            {
-                case 0:
-                    fileName = string.Format("{0}\\Resources\\Simulator\\Embryo.bmp", System.Environment.CurrentDirectory);
-                    break;
-                case 1:
-                    fileName = string.Format("{0}\\Resources\\Simulator\\Sperm.bmp", System.Environment.CurrentDirectory);
-                    break;
-                case 2:
-                    fileName = string.Format("{0}\\Resources\\Simulator\\Embryo 8 Cell.bmp", System.Environment.CurrentDirectory);
-                    break;
-                case 3:
-                    fileName = string.Format("{0}\\Resources\\Simulator\\egg.bmp", System.Environment.CurrentDirectory);
-                    break;
-                default:
-                    fileName = string.Format("{0}\\Resources\\Simulator\\egg.bmp", System.Environment.CurrentDirectory);
-                    break;
-            }
-            this.richPictureBox.LoadImage(fileName);
         }
 
         /// <summary>

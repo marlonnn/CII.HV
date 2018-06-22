@@ -231,6 +231,9 @@
     <Compile Include="MaterialSkin\MaterialToolStripButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="MaterialSkin\MaterialToolStripMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MaterialSkin\MaterialToolStripRenderer.cs" />
     <Compile Include="MessageBoxManager.cs" />
     <Compile Include="MiniDump.cs" />

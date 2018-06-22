@@ -32,7 +32,7 @@ namespace CII.LAR.UI
             }
         }
 
-        public LabelX PulseHole
+        public MaterialSkin.MaterialLabel PulseHole
         {
             get
             {

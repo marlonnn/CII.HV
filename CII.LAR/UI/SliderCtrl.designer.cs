@@ -1,4 +1,6 @@
-﻿namespace CII.LAR.UI
+﻿using CII.LAR.MaterialSkin;
+
+namespace CII.LAR.UI
 {
     partial class SliderCtrl
     {
@@ -29,7 +31,7 @@
         private void InitializeComponent()
         {
             this.slider = new DevComponents.DotNetBar.Controls.Slider();
-            this.PulseHoleWS = new DevComponents.DotNetBar.LabelX();
+            this.PulseHoleWS = new MaterialLabel();
             this.SuspendLayout();
             // 
             // slider
@@ -54,7 +56,6 @@
             // 
             // 
             // 
-            this.PulseHoleWS.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.PulseHoleWS.Location = new System.Drawing.Point(154, 3);
             this.PulseHoleWS.Name = "PulseHoleWS";
             this.PulseHoleWS.Size = new System.Drawing.Size(130, 16);
@@ -76,6 +77,6 @@
         #endregion
 
         private DevComponents.DotNetBar.Controls.Slider slider;
-        private DevComponents.DotNetBar.LabelX PulseHoleWS;
+        private MaterialLabel PulseHoleWS;
     }
 }

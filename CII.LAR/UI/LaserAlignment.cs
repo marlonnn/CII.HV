@@ -123,6 +123,9 @@ namespace CII.LAR.UI
         {
             this.lblInfo.Text = Res.LaserAlignment.StrPreSet0;
             Program.EntryForm.LaserType = LaserType.Alignment;
+            this.lblInfo.Size = new Size(467, 93);
+            this.btnBack.Location = new Point(4, 121);
+            this.btnNext.Location = new Point(410, 121);
         }
 
         private void EnableRedLaser(bool enable)

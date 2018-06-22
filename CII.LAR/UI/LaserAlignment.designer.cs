@@ -32,9 +32,9 @@ namespace CII.LAR.UI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LaserAlignment));
-            this.btnBack = new MaterialRoundButton();
-            this.btnNext = new MaterialRoundButton();
-            this.lblInfo = new MaterialLabel();
+            this.btnBack = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.btnNext = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.lblInfo = new CII.LAR.MaterialSkin.MaterialLabel();
             this.SuspendLayout();
             // 
             // closeButton
@@ -44,34 +44,45 @@ namespace CII.LAR.UI
             // btnBack
             // 
             resources.ApplyResources(this.btnBack, "btnBack");
+            this.btnBack.Depth = 0;
+            this.btnBack.Icon = null;
+            this.btnBack.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnBack.Name = "btnBack";
+            this.btnBack.Primary = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnNext
             // 
             resources.ApplyResources(this.btnNext, "btnNext");
+            this.btnNext.Depth = 0;
+            this.btnNext.Icon = null;
+            this.btnNext.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnNext.Name = "btnNext";
+            this.btnNext.Primary = false;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // lblInfo
             // 
+            this.lblInfo.Depth = 0;
             resources.ApplyResources(this.lblInfo, "lblInfo");
+            this.lblInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.lblInfo.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.lblInfo.Name = "lblInfo";
             // 
             // LaserAlignment
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.lblInfo);
             this.Name = "LaserAlignment";
             this.Title = global::CII.LAR.Properties.Resources.StrLaserCtrlTitle;
             this.VisibleChanged += new System.EventHandler(this.LaserAlignment_VisibleChanged);
             this.Controls.SetChildIndex(this.closeButton, 0);
+            this.Controls.SetChildIndex(this.lblInfo, 0);
             this.Controls.SetChildIndex(this.btnBack, 0);
             this.Controls.SetChildIndex(this.btnNext, 0);
-            this.Controls.SetChildIndex(this.lblInfo, 0);
             this.ResumeLayout(false);
 
         }

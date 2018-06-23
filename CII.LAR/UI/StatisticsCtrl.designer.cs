@@ -37,7 +37,7 @@ namespace CII.LAR.UI
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnAppearance = new MaterialRoundButton();
+            this.btnAppearance = new CII.LAR.MaterialSkin.MaterialRoundButton();
             this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,14 +83,18 @@ namespace CII.LAR.UI
             // 
             this.btnAppearance.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             resources.ApplyResources(this.btnAppearance, "btnAppearance");
+            this.btnAppearance.Depth = 0;
+            this.btnAppearance.Icon = null;
+            this.btnAppearance.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnAppearance.Name = "btnAppearance";
+            this.btnAppearance.Primary = false;
             this.btnAppearance.Click += new System.EventHandler(this.btnAppearance_Click);
             // 
             // StatisticsCtrl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gray;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.Controls.Add(this.btnAppearance);
             this.Controls.Add(this.panel);
             this.Name = "StatisticsCtrl";

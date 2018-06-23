@@ -120,6 +120,15 @@
   <data name="btnLaserCtrl.Text" xml:space="preserve">
     <value>返回</value>
   </data>
+  <data name="cmboxRuler.Items" xml:space="preserve">
+    <value>直线</value>
+  </data>
+  <data name="cmboxRuler.Items1" xml:space="preserve">
+    <value>矩形</value>
+  </data>
+  <data name="cmboxRuler.Items2" xml:space="preserve">
+    <value>椭圆</value>
+  </data>
   <data name="comboItem1.Text" xml:space="preserve">
     <value>直线</value>
   </data>

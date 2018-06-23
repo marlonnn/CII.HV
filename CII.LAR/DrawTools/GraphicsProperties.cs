@@ -239,7 +239,7 @@ namespace CII.LAR.DrawTools
 
         public int ColorIndex()
         {
-            int index = 0;
+            int index = 1;
             for (int i=0; i<ColorSets.Length; i++)
             {
                 if (this.color == ColorSets[i])

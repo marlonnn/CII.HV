@@ -25,6 +25,7 @@ namespace CII.LAR.UI
             this.ShowIndex = 4;
             this.CtrlType = CtrlType.RulerAppearanceCtrl;
             InitializeComponent();
+            this.InitializeThumbCustomShape();
         }
 
         private void SetSliderValue()
@@ -32,7 +33,7 @@ namespace CII.LAR.UI
             invokeColorChange = false;
             this.sliderTargetSize.Value = (int)graphicsProperties.TextSize;
             this.sliderThickness.Value = graphicsProperties.PenWidth;
-            this.sliderTransparency.Value = graphicsProperties.Alpha * (100 / 0xFF);
+            this.sliderTransparency.Value = (int)(graphicsProperties.Alpha * 100 / 255f);
             //this.sliderTickLength.Value = graphicsProperties.TargetSize;
             this.sliderColour.Value = graphicsProperties.ColorIndex() * 10;
             invokeColorChange = true;
@@ -69,7 +70,7 @@ namespace CII.LAR.UI
             var value = this.sliderTransparency.Value;
             if (graphicsProperties != null)
             {
-                graphicsProperties.Alpha = (0xFF / 100) * value;
+                graphicsProperties.Alpha = (int)(0xFF * value / 100f);
             }
         }
 
@@ -99,7 +100,7 @@ namespace CII.LAR.UI
         {
             if (invokeColorChange)
             {
-                var value = this.sliderColour.Value / 10;
+                var value = (int)(this.sliderColour.Value / 10f);
                 if (graphicsProperties != null)
                 {
                     graphicsProperties.ChangeColor(value);
@@ -133,10 +134,14 @@ namespace CII.LAR.UI
             this.Title = global::CII.LAR.Properties.Resources.StrRulerAppearanceTitle;
             resources.ApplyResources(this.btnLaserCtrl, btnLaserCtrl.Name);
 
-            resources.ApplyResources(this.comboItem1, "comboItem1");
-            resources.ApplyResources(this.comboItem2, "comboItem2");
-            resources.ApplyResources(this.comboItem3, "comboItem3");
-
+            //resources.ApplyResources(cmboxRuler.Items, "cmboxRuler.Items");
+            //resources.ApplyResources(this.comboItem2, "comboItem2");
+            //resources.ApplyResources(this.comboItem3, "comboItem3");
+            this.cmboxRuler.Items.Clear();
+            this.cmboxRuler.Items.AddRange(new object[] {
+            resources.GetString("cmboxRuler.Items"),
+            resources.GetString("cmboxRuler.Items1"),
+            resources.GetString("cmboxRuler.Items2")});
             this.Invalidate();
         }
     }

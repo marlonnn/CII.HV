@@ -39,14 +39,6 @@ namespace CII.LAR.UI
             this.sliderTransparency.Value = (int)(graphicsProperties.Alpha * 100 / 255f);
             this.sliderZoneSize.Value = graphicsProperties.ExclusionSize;
             this.sliderZoneColour.Value = graphicsProperties.ColorIndex() * 10;
-            //GraphicsPath gp2 = new GraphicsPath();
-            //Size s = new Size(sliderTransparency.ThumbSize, sliderTransparency.Height * 9 / 10);
-            //gp2.AddEllipse(new RectangleF((0 + sliderTransparency.Height) / 2f, (0 + sliderTransparency.Height) / 2f, 16, 16));
-            //sliderTransparency.ThumbCustomShape = gp2;
-            //sliderTargetSize.ThumbCustomShape = gp2;
-            //sliderThickness.ThumbCustomShape = gp2;
-            //sliderZoneColour.ThumbCustomShape = gp2;
-            //sliderZoneSize.ThumbCustomShape = gp2;
             this.InitializeThumbCustomShape();
         }
 

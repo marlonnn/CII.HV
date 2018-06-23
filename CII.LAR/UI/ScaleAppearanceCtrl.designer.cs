@@ -31,15 +31,15 @@ namespace CII.LAR.UI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScaleAppearanceCtrl));
-            this.btnLaserCtrl = new MaterialRoundButton();
-            this.sliderColour = new DevComponents.DotNetBar.Controls.Slider();
-            this.lblZColour = new MaterialLabel();
-            this.sliderTargetSize = new DevComponents.DotNetBar.Controls.Slider();
-            this.lblTargerSize = new MaterialLabel();
-            this.sliderThickness = new DevComponents.DotNetBar.Controls.Slider();
-            this.lblThickness = new MaterialLabel();
-            this.sliderTransparency = new DevComponents.DotNetBar.Controls.Slider();
-            this.lblTransparency = new MaterialLabel();
+            this.btnLaserCtrl = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.sliderColour = new CII.LAR.MaterialSkin.MaterialSlider();
+            this.lblZColour = new CII.LAR.MaterialSkin.MaterialLabel();
+            this.sliderTargetSize = new CII.LAR.MaterialSkin.MaterialSlider();
+            this.lblTargerSize = new CII.LAR.MaterialSkin.MaterialLabel();
+            this.sliderThickness = new CII.LAR.MaterialSkin.MaterialSlider();
+            this.lblThickness = new CII.LAR.MaterialSkin.MaterialLabel();
+            this.sliderTransparency = new CII.LAR.MaterialSkin.MaterialSlider();
+            this.lblTransparency = new CII.LAR.MaterialSkin.MaterialLabel();
             this.SuspendLayout();
             // 
             // closeButton
@@ -50,97 +50,132 @@ namespace CII.LAR.UI
             // 
             this.btnLaserCtrl.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             resources.ApplyResources(this.btnLaserCtrl, "btnLaserCtrl");
+            this.btnLaserCtrl.Depth = 0;
+            this.btnLaserCtrl.Icon = null;
+            this.btnLaserCtrl.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnLaserCtrl.Name = "btnLaserCtrl";
+            this.btnLaserCtrl.Primary = false;
             this.btnLaserCtrl.Click += new System.EventHandler(this.btnLaserCtrl_Click);
             // 
             // sliderColour
             // 
-            // 
-            // 
-            // 
-            this.sliderColour.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.sliderColour.LabelVisible = false;
+            this.sliderColour.BackColor = System.Drawing.Color.Transparent;
+            this.sliderColour.BarInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
+            this.sliderColour.BarOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
+            this.sliderColour.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderColour.Depth = 0;
+            this.sliderColour.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
+            this.sliderColour.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
+            this.sliderColour.LargeChange = ((uint)(5u));
             resources.ApplyResources(this.sliderColour, "sliderColour");
+            this.sliderColour.Maximum = 100;
             this.sliderColour.Minimum = 1;
+            this.sliderColour.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.sliderColour.Name = "sliderColour";
-            this.sliderColour.Step = 10;
-            this.sliderColour.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.sliderColour.Value = 0;
+            this.sliderColour.SmallChange = ((uint)(1u));
+            this.sliderColour.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
+            this.sliderColour.ThumbOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
+            this.sliderColour.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderColour.ThumbSize = 6;
+            this.sliderColour.Value = 20;
             this.sliderColour.ValueChanged += new System.EventHandler(this.sliderColour_ValueChanged);
             // 
             // lblZColour
             // 
-            // 
-            // 
-            // 
+            this.lblZColour.Depth = 0;
             resources.ApplyResources(this.lblZColour, "lblZColour");
+            this.lblZColour.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.lblZColour.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.lblZColour.Name = "lblZColour";
             // 
             // sliderTargetSize
             // 
-            // 
-            // 
-            // 
-            this.sliderTargetSize.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.sliderTargetSize.LabelVisible = false;
+            this.sliderTargetSize.BackColor = System.Drawing.Color.Transparent;
+            this.sliderTargetSize.BarInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
+            this.sliderTargetSize.BarOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
+            this.sliderTargetSize.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderTargetSize.Depth = 0;
+            this.sliderTargetSize.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
+            this.sliderTargetSize.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
+            this.sliderTargetSize.LargeChange = ((uint)(5u));
             resources.ApplyResources(this.sliderTargetSize, "sliderTargetSize");
             this.sliderTargetSize.Maximum = 20;
             this.sliderTargetSize.Minimum = 8;
+            this.sliderTargetSize.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.sliderTargetSize.Name = "sliderTargetSize";
-            this.sliderTargetSize.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.sliderTargetSize.SmallChange = ((uint)(1u));
+            this.sliderTargetSize.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
+            this.sliderTargetSize.ThumbOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
+            this.sliderTargetSize.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderTargetSize.ThumbSize = 6;
             this.sliderTargetSize.Value = 9;
             this.sliderTargetSize.ValueChanged += new System.EventHandler(this.sliderTargetSize_ValueChanged);
             // 
             // lblTargerSize
             // 
-            // 
-            // 
-            // 
+            this.lblTargerSize.Depth = 0;
             resources.ApplyResources(this.lblTargerSize, "lblTargerSize");
+            this.lblTargerSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.lblTargerSize.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.lblTargerSize.Name = "lblTargerSize";
             // 
             // sliderThickness
             // 
-            // 
-            // 
-            // 
-            this.sliderThickness.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.sliderThickness.LabelVisible = false;
+            this.sliderThickness.BackColor = System.Drawing.Color.Transparent;
+            this.sliderThickness.BarInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
+            this.sliderThickness.BarOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
+            this.sliderThickness.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderThickness.Depth = 0;
+            this.sliderThickness.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
+            this.sliderThickness.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
+            this.sliderThickness.LargeChange = ((uint)(5u));
             resources.ApplyResources(this.sliderThickness, "sliderThickness");
             this.sliderThickness.Maximum = 10;
             this.sliderThickness.Minimum = 1;
+            this.sliderThickness.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.sliderThickness.Name = "sliderThickness";
-            this.sliderThickness.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.sliderThickness.SmallChange = ((uint)(1u));
+            this.sliderThickness.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
+            this.sliderThickness.ThumbOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
+            this.sliderThickness.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderThickness.ThumbSize = 6;
             this.sliderThickness.Value = 1;
             this.sliderThickness.ValueChanged += new System.EventHandler(this.sliderThickness_ValueChanged);
             // 
             // lblThickness
             // 
-            // 
-            // 
-            // 
+            this.lblThickness.Depth = 0;
             resources.ApplyResources(this.lblThickness, "lblThickness");
+            this.lblThickness.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.lblThickness.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.lblThickness.Name = "lblThickness";
             // 
             // sliderTransparency
             // 
-            // 
-            // 
-            // 
-            this.sliderTransparency.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.sliderTransparency.LabelVisible = false;
+            this.sliderTransparency.BackColor = System.Drawing.Color.Transparent;
+            this.sliderTransparency.BarInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
+            this.sliderTransparency.BarOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
+            this.sliderTransparency.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderTransparency.Depth = 0;
+            this.sliderTransparency.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
+            this.sliderTransparency.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
+            this.sliderTransparency.LargeChange = ((uint)(5u));
             resources.ApplyResources(this.sliderTransparency, "sliderTransparency");
+            this.sliderTransparency.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.sliderTransparency.Name = "sliderTransparency";
-            this.sliderTransparency.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.sliderTransparency.Value = 0;
+            this.sliderTransparency.SmallChange = ((uint)(1u));
+            this.sliderTransparency.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
+            this.sliderTransparency.ThumbOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
+            this.sliderTransparency.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
+            this.sliderTransparency.ThumbSize = 6;
             this.sliderTransparency.ValueChanged += new System.EventHandler(this.sliderTransparency_ValueChanged);
             // 
             // lblTransparency
             // 
-            // 
-            // 
-            // 
+            this.lblTransparency.Depth = 0;
             resources.ApplyResources(this.lblTransparency, "lblTransparency");
+            this.lblTransparency.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.lblTransparency.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.lblTransparency.Name = "lblTransparency";
             // 
             // ScaleAppearanceCtrl
@@ -176,13 +211,13 @@ namespace CII.LAR.UI
         #endregion
 
         private MaterialRoundButton btnLaserCtrl;
-        private DevComponents.DotNetBar.Controls.Slider sliderColour;
+        private MaterialSlider sliderColour;
         private MaterialLabel lblZColour;
-        private DevComponents.DotNetBar.Controls.Slider sliderTargetSize;
+        private MaterialSlider sliderTargetSize;
         private MaterialLabel lblTargerSize;
-        private DevComponents.DotNetBar.Controls.Slider sliderThickness;
+        private MaterialSlider sliderThickness;
         private MaterialLabel lblThickness;
-        private DevComponents.DotNetBar.Controls.Slider sliderTransparency;
+        private MaterialSlider sliderTransparency;
         private MaterialLabel lblTransparency;
     }
 }

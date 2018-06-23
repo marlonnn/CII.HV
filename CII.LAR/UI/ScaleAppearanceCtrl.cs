@@ -26,6 +26,7 @@ namespace CII.LAR.UI
             this.CtrlType = CtrlType.ScaleAppearanceCtrl;
             InitializeComponent();
             this.graphicsProperties = graphicsPropertiesManager.GetPropertiesByName("Ruler");
+            this.InitializeThumbCustomShape();
             SetSliderValue();
         }
 

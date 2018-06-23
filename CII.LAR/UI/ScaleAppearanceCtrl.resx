@@ -131,39 +131,25 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;closeButton.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="line1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 20</value>
-  </data>
-  <data name="line1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>309, 10</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="line1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="line1.Text" xml:space="preserve">
-    <value>line1</value>
-  </data>
-  <data name="&gt;&gt;line1.Name" xml:space="preserve">
-    <value>line1</value>
-  </data>
-  <data name="&gt;&gt;line1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;line1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;line1.ZOrder" xml:space="preserve">
     <value>9</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnLaserCtrl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnLaserCtrl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="btnLaserCtrl.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 125</value>
   </data>
+  <data name="btnLaserCtrl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
+  </data>
   <data name="btnLaserCtrl.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 23</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnLaserCtrl.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
   </data>
@@ -174,7 +160,7 @@
     <value>btnLaserCtrl</value>
   </data>
   <data name="&gt;&gt;btnLaserCtrl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>CII.LAR.MaterialSkin.MaterialRoundButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnLaserCtrl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -186,7 +172,7 @@
     <value>129, 96</value>
   </data>
   <data name="sliderColour.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 23</value>
+    <value>150, 15</value>
   </data>
   <data name="sliderColour.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -195,13 +181,16 @@
     <value>sliderColour</value>
   </data>
   <data name="&gt;&gt;sliderColour.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Slider, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>CII.LAR.MaterialSkin.MaterialSlider, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;sliderColour.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;sliderColour.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="lblZColour.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="lblZColour.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 96</value>
@@ -219,7 +208,7 @@
     <value>lblZColour</value>
   </data>
   <data name="&gt;&gt;lblZColour.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>CII.LAR.MaterialSkin.MaterialLabel, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblZColour.Parent" xml:space="preserve">
     <value>$this</value>
@@ -243,13 +232,16 @@
     <value>sliderTargetSize</value>
   </data>
   <data name="&gt;&gt;sliderTargetSize.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Slider, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>CII.LAR.MaterialSkin.MaterialSlider, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;sliderTargetSize.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;sliderTargetSize.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="lblTargerSize.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="lblTargerSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 96</value>
@@ -270,7 +262,7 @@
     <value>lblTargerSize</value>
   </data>
   <data name="&gt;&gt;lblTargerSize.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>CII.LAR.MaterialSkin.MaterialLabel, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblTargerSize.Parent" xml:space="preserve">
     <value>$this</value>
@@ -282,7 +274,7 @@
     <value>129, 67</value>
   </data>
   <data name="sliderThickness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 23</value>
+    <value>150, 15</value>
   </data>
   <data name="sliderThickness.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -291,13 +283,16 @@
     <value>sliderThickness</value>
   </data>
   <data name="&gt;&gt;sliderThickness.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Slider, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>CII.LAR.MaterialSkin.MaterialSlider, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;sliderThickness.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;sliderThickness.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="lblThickness.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="lblThickness.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 67</value>
@@ -315,7 +310,7 @@
     <value>lblThickness</value>
   </data>
   <data name="&gt;&gt;lblThickness.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>CII.LAR.MaterialSkin.MaterialLabel, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblThickness.Parent" xml:space="preserve">
     <value>$this</value>
@@ -327,7 +322,7 @@
     <value>129, 38</value>
   </data>
   <data name="sliderTransparency.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 23</value>
+    <value>150, 15</value>
   </data>
   <data name="sliderTransparency.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -336,13 +331,19 @@
     <value>sliderTransparency</value>
   </data>
   <data name="&gt;&gt;sliderTransparency.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Slider, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>CII.LAR.MaterialSkin.MaterialSlider, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;sliderTransparency.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;sliderTransparency.ZOrder" xml:space="preserve">
     <value>7</value>
+  </data>
+  <data name="lblTransparency.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="lblTransparency.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lblTransparency.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 38</value>
@@ -360,7 +361,7 @@
     <value>lblTransparency</value>
   </data>
   <data name="&gt;&gt;lblTransparency.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>CII.LAR.MaterialSkin.MaterialLabel, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblTransparency.Parent" xml:space="preserve">
     <value>$this</value>

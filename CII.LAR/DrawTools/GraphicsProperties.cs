@@ -239,7 +239,7 @@ namespace CII.LAR.DrawTools
 
         public int ColorIndex()
         {
-            int index = 1;
+            int index = 0;
             for (int i=0; i<ColorSets.Length; i++)
             {
                 if (this.color == ColorSets[i])
@@ -248,7 +248,7 @@ namespace CII.LAR.DrawTools
                     break;
                 }
             }
-            return index;
+            return index + 1;
         }
 
         // set default value

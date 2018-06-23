@@ -35,7 +35,8 @@
             // 
             // btnDown
             // 
-            this.btnDown.BackColor = System.Drawing.Color.Transparent;
+            this.btnDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
+            this.btnDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDown.Image = global::CII.LAR.Properties.Resources.down;
             this.btnDown.Location = new System.Drawing.Point(69, 15);
             this.btnDown.Name = "btnDown";
@@ -46,7 +47,8 @@
             // 
             // btnUp
             // 
-            this.btnUp.BackColor = System.Drawing.Color.Transparent;
+            this.btnUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
+            this.btnUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUp.Image = global::CII.LAR.Properties.Resources.up;
             this.btnUp.Location = new System.Drawing.Point(69, 0);
             this.btnUp.Name = "btnUp";
@@ -68,6 +70,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.Controls.Add(this.lblValue);
             this.Controls.Add(this.btnDown);
             this.Controls.Add(this.btnUp);

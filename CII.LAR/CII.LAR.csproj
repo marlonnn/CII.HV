@@ -879,6 +879,8 @@
     <Content Include="Reference\Newtonsoft.Json.dll" />
     <Content Include="Reference\uEyeDotNet.dll" />
     <None Include="Resources\about.png" />
+    <Content Include="Resources\arrowDown.png" />
+    <Content Include="Resources\arrowUp.png" />
     <Content Include="Resources\assign.png" />
     <Content Include="Resources\assigned.png" />
     <Content Include="Resources\backflush.png" />

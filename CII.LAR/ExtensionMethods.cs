@@ -1,5 +1,9 @@
-﻿using System;
+﻿using CII.LAR.MaterialSkin;
+using CII.LAR.UI;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -82,6 +86,20 @@ namespace CII.LAR
 
                 }
                 return new byte[] { };
+            }
+        }
+
+        public static void InitializeThumbCustomShape(this BaseCtrl baseCtrl)
+        {
+            foreach (var ctrl in baseCtrl.Controls)
+            {
+                MaterialSlider ms = ctrl as MaterialSlider;
+                if (ms != null)
+                {
+                    GraphicsPath gp2 = new GraphicsPath();
+                    gp2.AddEllipse(new RectangleF((0 + ms.Height) / 2f, (0 + ms.Height) / 2f, 10, 10));
+                    ms.ThumbCustomShape = gp2;
+                }
             }
         }
     }

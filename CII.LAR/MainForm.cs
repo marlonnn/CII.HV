@@ -1125,7 +1125,7 @@ namespace CII.LAR
             this.toolstripBtnLine.Enabled = Enabled;
             this.toolstripBtnRectangle.Enabled = Enabled;
             this.toolstripBtnEllipse.Enabled = Enabled;
-            this.toolstripBtnLaser.Enabled = Enabled;
+            //this.toolstripBtnLaser.Enabled = Enabled;
         }
 
         #region 鼠标点击拖动BaseCtrl
@@ -1211,7 +1211,8 @@ namespace CII.LAR
         public void HolesInfoChangeHandler(HolesInfo holesInfo)
         {
             if (holesInfo != null)
-            {
+            if (holesInfo != null)
+                {
                 LaserCtrl laserCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserCtrl>(CtrlType.LaserCtrl);
                 if (laserCtrl != null)
                 {

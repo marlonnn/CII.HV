@@ -8,6 +8,8 @@ namespace CII.LAR.MaterialSkin
 {
     /// <summary>
     /// Encapsulates control that visualy displays certain integer value and allows user to change it within desired range. It imitates <see cref="System.Windows.Forms.TrackBar"/> as far as mouse usage is concerned.
+    /// 
+    /// https://www.codeproject.com/articles/17395/owner-drawn-trackbar-slider
     /// </summary>
     [ToolboxBitmap(typeof(TrackBar))]
     [DefaultEvent("Scroll"), DefaultProperty("BarInnerColor")]
@@ -719,10 +721,10 @@ namespace CII.LAR.MaterialSkin
                             e.Graphics.FillRectangle(lgbElapsed, elapsedRect);
                     }
                     //draw bar band                    
-                    using (Pen barPen = new Pen(barPenColorPaint, 0.5f))
-                    {
-                        e.Graphics.DrawRectangle(barPen, barRect);
-                    }
+                    //using (Pen barPen = new Pen(barPenColorPaint, 0.5f))
+                    //{
+                    //    e.Graphics.DrawRectangle(barPen, barRect);
+                    //}
                 }
 
                 //draw thumb

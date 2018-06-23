@@ -230,6 +230,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MaterialSkin\MaterialSkinManager.cs" />
+    <Compile Include="MaterialSkin\MaterialSlider.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MaterialSkin\MaterialTextBox.cs" />
     <Compile Include="MaterialSkin\MaterialToolStrip.cs">
       <SubType>Component</SubType>

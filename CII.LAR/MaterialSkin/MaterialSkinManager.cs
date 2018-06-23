@@ -69,6 +69,20 @@ namespace CII.LAR.MaterialSkin
         {
             get { return this.comboBoxHighlightColor; }
         }
+
+        //默认Material slider bar颜色
+        private Color sliderBarColor = Color.FromArgb(0x49, 0x50, 0x5F);
+        public Color SliderBarColor
+        {
+            get { return this.sliderBarColor; }
+        }
+
+        //默认Material slider thumb颜色
+        private Color thumbColor = Color.FromArgb(0xCA, 0xD1, 0xE0);
+        public Color ThumbColor
+        {
+            get { return this.thumbColor; }
+        }
         private static readonly Color PRIMARY_TEXT_BLACK = Color.FromArgb(222, 0, 0, 0);
         private static readonly Brush PRIMARY_TEXT_BLACK_BRUSH = new SolidBrush(PRIMARY_TEXT_BLACK);
         public static Color SECONDARY_TEXT_BLACK = Color.FromArgb(138, 0, 0, 0);

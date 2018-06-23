@@ -661,5 +661,25 @@ namespace CII.LAR.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        /// <summary>
+        ///   查找类似 Camera choose 的本地化字符串。
+        /// </summary>
+        internal static string StrVideoChooseTitle
+        {
+            get
+            {
+                return ResourceManager.GetString("StrVideoChooseTitle", resourceCulture);
+            }
+        }
+		        /// <summary>
+        ///   查找类似 Camera Available 的本地化字符串。
+        /// </summary>
+        internal static string StrVideoAvailable
+        {
+            get
+            {
+                return ResourceManager.GetString("StrVideoAvailable", resourceCulture);
+            }
+        }
     }
 }

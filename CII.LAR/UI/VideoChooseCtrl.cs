@@ -20,6 +20,7 @@ namespace CII.LAR.UI
             this.ShowIndex = 7;
             this.CtrlType = CtrlType.VideoChooseCtrl;
             InitializeComponent();
+            resources = new ComponentResourceManager(typeof(VideoChooseCtrl));
             listViewCamera.FullRowSelect = true;
             filterInfoDic = new Dictionary<string, FilterInfo>();
         }
@@ -149,6 +150,14 @@ namespace CII.LAR.UI
             return fInfo;
         }
 
+        public override void RefreshUI()
+        {
+            this.Title = global::CII.LAR.Properties.Resources.StrVideoChooseTitle;
+            resources.ApplyResources(columnHeaderAvailable, columnHeaderAvailable.Text);
+            columnHeaderAvailable.Text = global::CII.LAR.Properties.Resources.StrVideoAvailable;
+            resources.ApplyResources(this.buttonCancel, this.buttonCancel.Name);
+            resources.ApplyResources(this.buttonOk, this.buttonOk.Name);
+        }
         //private string GetDeviceName(string deviceMoniker)
         //{
         //    if (string.IsNullOrEmpty(deviceMoniker)) return null;

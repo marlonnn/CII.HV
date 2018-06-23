@@ -183,4 +183,10 @@
   <data name="StrShortcutExist" xml:space="preserve">
     <value>这个快键键已经存在</value>
   </data>
+  <data name="StrVideoChooseTitle" xml:space="preserve">
+    <value>相机选择</value>
+  </data>
+  <data name="StrVideoAvailable" xml:space="preserve">
+    <value>可用相机</value>
+  </data>
 </root>

@@ -123,4 +123,7 @@
   <data name="buttonOk.Text" xml:space="preserve">
     <value>确定</value>
   </data>
+  <data name="columnHeaderAvailable.Text" xml:space="preserve">
+    <value>相机设备</value>
+  </data>
 </root>

@@ -78,7 +78,7 @@ namespace CII.LAR.UI
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.listViewCamera);
             this.Name = "VideoChooseCtrl";
-            this.Title = "Camera choose";
+            this.Title = global::CII.LAR.Properties.Resources.StrVideoChooseTitle;
             this.Controls.SetChildIndex(this.listViewCamera, 0);
             this.Controls.SetChildIndex(this.buttonOk, 0);
             this.Controls.SetChildIndex(this.buttonCancel, 0);

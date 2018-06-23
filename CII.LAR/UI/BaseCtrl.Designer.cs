@@ -39,7 +39,7 @@
             this.closeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeButton.Location = new System.Drawing.Point(0, 0);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(16, 15);
+            this.closeButton.Size = new System.Drawing.Size(12, 12);
             this.closeButton.TabIndex = 0;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
@@ -47,7 +47,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(0x28, 0x2C, 0x35);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.Controls.Add(this.closeButton);
             this.Name = "BaseCtrl";
             this.Size = new System.Drawing.Size(150, 138);

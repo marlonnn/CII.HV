@@ -32,29 +32,25 @@ namespace CII.LAR.UI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LaserCtrl));
-            this.lblPulseWidth = new MaterialLabel();
             this.sliderCtrl = new CII.LAR.UI.SliderCtrl();
-            this.lblPreSet = new MaterialLabel();
-            this.btnFire = new MaterialRoundButton();
-            this.line2 = new DevComponents.DotNetBar.Controls.Line();
-            this.btnAlignLaser = new MaterialRoundButton();
-            this.btnHoleSize = new MaterialRoundButton();
-            this.btnAppearance = new MaterialRoundButton();
+            this.btnFire = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.btnAlignLaser = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.btnHoleSize = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.btnAppearance = new CII.LAR.MaterialSkin.MaterialRoundButton();
             this.holesSlider = new DevComponents.DotNetBar.Controls.Slider();
-            this.btnDelete = new MaterialRoundButton();
-            this.comboBoxEx1 = new MaterialComboBox();
-            this.btnSave = new MaterialRoundButton();
-            this.lblHoleNumber = new MaterialLabel();
+            this.btnDelete = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.comboBoxEx1 = new CII.LAR.MaterialSkin.MaterialComboBox();
+            this.btnSave = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.lblHoleNumber = new CII.LAR.MaterialSkin.MaterialLabel();
+            this.materialGroupBox1 = new CII.LAR.MaterialSkin.MaterialGroupBox();
+            this.materialGroupBox2 = new CII.LAR.MaterialSkin.MaterialGroupBox();
+            this.materialGroupBox1.SuspendLayout();
+            this.materialGroupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // closeButton
             // 
             resources.ApplyResources(this.closeButton, "closeButton");
-            // 
-            // lblPulseWidth
-            // 
-            resources.ApplyResources(this.lblPulseWidth, "lblPulseWidth");
-            this.lblPulseWidth.Name = "lblPulseWidth";
             // 
             // sliderCtrl
             // 
@@ -62,48 +58,50 @@ namespace CII.LAR.UI
             this.sliderCtrl.Name = "sliderCtrl";
             this.sliderCtrl.SliderValueChangedHandler += SliderValueChangedHandler;
             // 
-            // lblPreSet
-            // 
-            // 
-            // 
-            // 
-            resources.ApplyResources(this.lblPreSet, "lblPreSet");
-            this.lblPreSet.Name = "lblPreSet";
-            // 
             // btnFire
             // 
             this.btnFire.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnFire.BackColor = System.Drawing.Color.LightYellow;
             resources.ApplyResources(this.btnFire, "btnFire");
+            this.btnFire.BackColor = System.Drawing.Color.LightYellow;
+            this.btnFire.Depth = 0;
+            this.btnFire.Icon = null;
+            this.btnFire.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnFire.Name = "btnFire";
+            this.btnFire.Primary = false;
             this.btnFire.UseVisualStyleBackColor = false;
             this.btnFire.Click += new System.EventHandler(this.btnFire_Click);
-            // 
-            // line2
-            // 
-            this.line2.ForeColor = System.Drawing.SystemColors.ControlText;
-            resources.ApplyResources(this.line2, "line2");
-            this.line2.Name = "line2";
             // 
             // btnAlignLaser
             // 
             this.btnAlignLaser.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             resources.ApplyResources(this.btnAlignLaser, "btnAlignLaser");
+            this.btnAlignLaser.Depth = 0;
+            this.btnAlignLaser.Icon = null;
+            this.btnAlignLaser.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnAlignLaser.Name = "btnAlignLaser";
+            this.btnAlignLaser.Primary = false;
             this.btnAlignLaser.Click += new System.EventHandler(this.btnAlignLaser_Click);
             // 
             // btnHoleSize
             // 
             this.btnHoleSize.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             resources.ApplyResources(this.btnHoleSize, "btnHoleSize");
+            this.btnHoleSize.Depth = 0;
+            this.btnHoleSize.Icon = null;
+            this.btnHoleSize.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnHoleSize.Name = "btnHoleSize";
+            this.btnHoleSize.Primary = false;
             this.btnHoleSize.Click += new System.EventHandler(this.btnHoleSize_Click);
             // 
             // btnAppearance
             // 
             this.btnAppearance.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             resources.ApplyResources(this.btnAppearance, "btnAppearance");
+            this.btnAppearance.Depth = 0;
+            this.btnAppearance.Icon = null;
+            this.btnAppearance.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnAppearance.Name = "btnAppearance";
+            this.btnAppearance.Primary = false;
             this.btnAppearance.Click += new System.EventHandler(this.btnAppearance_Click);
             // 
             // holesSlider
@@ -123,75 +121,96 @@ namespace CII.LAR.UI
             // 
             this.btnDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             resources.ApplyResources(this.btnDelete, "btnDelete");
+            this.btnDelete.Depth = 0;
+            this.btnDelete.Icon = null;
+            this.btnDelete.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Primary = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // comboBoxEx1
             // 
+            this.comboBoxEx1.Depth = 0;
             this.comboBoxEx1.DisplayMember = "Text";
             this.comboBoxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx1.FormattingEnabled = true;
+            this.comboBoxEx1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(this.comboBoxEx1, "comboBoxEx1");
+            this.comboBoxEx1.ForeColor = System.Drawing.Color.White;
+            this.comboBoxEx1.FormattingEnabled = true;
+            this.comboBoxEx1.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.comboBoxEx1.Name = "comboBoxEx1";
             // 
             // btnSave
             // 
             this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             resources.ApplyResources(this.btnSave, "btnSave");
+            this.btnSave.Depth = 0;
+            this.btnSave.Icon = null;
+            this.btnSave.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnSave.Name = "btnSave";
+            this.btnSave.Primary = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblHoleNumber
             // 
-            // 
-            // 
-            // 
+            this.lblHoleNumber.Depth = 0;
             resources.ApplyResources(this.lblHoleNumber, "lblHoleNumber");
+            this.lblHoleNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.lblHoleNumber.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.lblHoleNumber.Name = "lblHoleNumber";
+            // 
+            // materialGroupBox1
+            // 
+            this.materialGroupBox1.Controls.Add(this.sliderCtrl);
+            this.materialGroupBox1.Controls.Add(this.lblHoleNumber);
+            this.materialGroupBox1.Controls.Add(this.holesSlider);
+            this.materialGroupBox1.Depth = 0;
+            resources.ApplyResources(this.materialGroupBox1, "materialGroupBox1");
+            this.materialGroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.materialGroupBox1.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.materialGroupBox1.Name = "materialGroupBox1";
+            this.materialGroupBox1.TabStop = false;
+            // 
+            // materialGroupBox2
+            // 
+            this.materialGroupBox2.Controls.Add(this.btnDelete);
+            this.materialGroupBox2.Controls.Add(this.btnSave);
+            this.materialGroupBox2.Controls.Add(this.comboBoxEx1);
+            this.materialGroupBox2.Depth = 0;
+            resources.ApplyResources(this.materialGroupBox2, "materialGroupBox2");
+            this.materialGroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.materialGroupBox2.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.materialGroupBox2.Name = "materialGroupBox2";
+            this.materialGroupBox2.TabStop = false;
             // 
             // LaserCtrl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lblHoleNumber);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.comboBoxEx1);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.holesSlider);
+            this.Controls.Add(this.materialGroupBox2);
             this.Controls.Add(this.btnAppearance);
             this.Controls.Add(this.btnHoleSize);
             this.Controls.Add(this.btnAlignLaser);
-            this.Controls.Add(this.line2);
             this.Controls.Add(this.btnFire);
-            this.Controls.Add(this.lblPreSet);
-            this.Controls.Add(this.sliderCtrl);
-            this.Controls.Add(this.lblPulseWidth);
+            this.Controls.Add(this.materialGroupBox1);
             this.Name = "LaserCtrl";
             this.Title = global::CII.LAR.Properties.Resources.StrLaserCtrlTitle;
-            this.Controls.SetChildIndex(this.lblPulseWidth, 0);
-            this.Controls.SetChildIndex(this.sliderCtrl, 0);
-            this.Controls.SetChildIndex(this.lblPreSet, 0);
+            this.Controls.SetChildIndex(this.materialGroupBox1, 0);
             this.Controls.SetChildIndex(this.btnFire, 0);
-            this.Controls.SetChildIndex(this.line2, 0);
             this.Controls.SetChildIndex(this.btnAlignLaser, 0);
             this.Controls.SetChildIndex(this.btnHoleSize, 0);
             this.Controls.SetChildIndex(this.btnAppearance, 0);
+            this.Controls.SetChildIndex(this.materialGroupBox2, 0);
             this.Controls.SetChildIndex(this.closeButton, 0);
-            this.Controls.SetChildIndex(this.holesSlider, 0);
-            this.Controls.SetChildIndex(this.btnSave, 0);
-            this.Controls.SetChildIndex(this.comboBoxEx1, 0);
-            this.Controls.SetChildIndex(this.btnDelete, 0);
-            this.Controls.SetChildIndex(this.lblHoleNumber, 0);
+            this.materialGroupBox1.ResumeLayout(false);
+            this.materialGroupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private MaterialLabel lblPulseWidth;
         private SliderCtrl sliderCtrl;
-        private MaterialLabel lblPreSet;
         private MaterialRoundButton btnFire;
-        private DevComponents.DotNetBar.Controls.Line line2;
         private MaterialRoundButton btnAlignLaser;
         private MaterialRoundButton btnHoleSize;
         private MaterialRoundButton btnAppearance;
@@ -200,5 +219,7 @@ namespace CII.LAR.UI
         private MaterialComboBox comboBoxEx1;
         private MaterialRoundButton btnSave;
         private MaterialLabel lblHoleNumber;
+        private MaterialGroupBox materialGroupBox1;
+        private MaterialGroupBox materialGroupBox2;
     }
 }

@@ -122,20 +122,33 @@ namespace CII.LAR.UI
             if (resources == null) return;
             foreach (var item in this.Controls)
             {
-                Button btnX = item as Button;
-                if (btnX != null)
+                MaterialGroupBox mgb = item as MaterialGroupBox;
+                if (mgb != null)
                 {
-                    resources.ApplyResources(btnX, btnX.Name);
+                    resources.ApplyResources(mgb, mgb.Name);
+                    foreach (var subItem in mgb.Controls)
+                    {
+                        MaterialRoundButton subMrb = subItem as MaterialRoundButton;
+                        if (subMrb != null)
+                        {
+                            resources.ApplyResources(subMrb, subMrb.Name);
+                        }
+                        MaterialLabel SubMl = subItem as MaterialLabel;
+                        if (SubMl != null)
+                        {
+                            resources.ApplyResources(SubMl, SubMl.Name);
+                        }
+                    }
                 }
-                LabelX lblX = item as LabelX;
-                if (lblX != null)
+                MaterialRoundButton mrb = item as MaterialRoundButton;
+                if (mrb != null)
                 {
-                    resources.ApplyResources(lblX, lblX.Name);
+                    resources.ApplyResources(mrb, mrb.Name);
                 }
-                Label lbl = item as Label;
-                if (lbl != null)
+                MaterialLabel ml = item as MaterialLabel;
+                if (ml != null)
                 {
-                    resources.ApplyResources(lbl, lbl.Name);
+                    resources.ApplyResources(ml, ml.Name);
                 }
             }
         }

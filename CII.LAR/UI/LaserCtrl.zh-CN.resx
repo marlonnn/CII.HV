@@ -138,10 +138,10 @@
   <data name="lblHoleNumber.Text" xml:space="preserve">
     <value>孔数</value>
   </data>
-  <data name="lblPreSet.Text" xml:space="preserve">
-    <value>预设</value>
-  </data>
-  <data name="lblPulseWidth.Text" xml:space="preserve">
+  <data name="materialGroupBox1.Text" xml:space="preserve">
     <value>脉冲宽度 / 孔径尺寸</value>
+  </data>
+  <data name="materialGroupBox2.Text" xml:space="preserve">
+    <value>预设</value>
   </data>
 </root>

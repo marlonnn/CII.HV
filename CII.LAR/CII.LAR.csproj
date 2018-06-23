@@ -203,6 +203,12 @@
     <Compile Include="MaterialSkin\AnimationManager.cs" />
     <Compile Include="MaterialSkin\Animations.cs" />
     <Compile Include="MaterialSkin\ColorScheme.cs" />
+    <Compile Include="MaterialSkin\ColorSlider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\ColorSlider.designer.cs">
+      <DependentUpon>ColorSlider.cs</DependentUpon>
+    </Compile>
     <Compile Include="MaterialSkin\DrawHelper.cs" />
     <Compile Include="MaterialSkin\IMaterialControl.cs" />
     <Compile Include="MaterialSkin\MaterialComboBox.cs">
@@ -584,6 +590,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.zh-CN.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialSkin\ColorSlider.resx">
+      <DependentUpon>ColorSlider.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

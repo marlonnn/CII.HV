@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="closeButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>270, 3</value>
+    <value>469, 2</value>
   </data>
   <data name="&gt;&gt;closeButton.Name" xml:space="preserve">
     <value>closeButton</value>
@@ -131,39 +131,19 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;closeButton.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="lblPulseWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>73, 37</value>
-  </data>
-  <data name="lblPulseWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 19</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblPulseWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="lblPulseWidth.Text" xml:space="preserve">
-    <value>Pulse Width / Hole Size</value>
-  </data>
-  <data name="&gt;&gt;lblPulseWidth.Name" xml:space="preserve">
-    <value>lblPulseWidth</value>
-  </data>
-  <data name="&gt;&gt;lblPulseWidth.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;lblPulseWidth.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lblPulseWidth.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>0</value>
   </data>
   <data name="sliderCtrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 62</value>
+    <value>9, 38</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="sliderCtrl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="sliderCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>283, 19</value>
+    <value>330, 27</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="sliderCtrl.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
@@ -174,40 +154,25 @@
     <value>CII.LAR.UI.SliderCtrl, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;sliderCtrl.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>materialGroupBox1</value>
   </data>
   <data name="&gt;&gt;sliderCtrl.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>0</value>
   </data>
-  <data name="lblPreSet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 124</value>
+  <data name="btnFire.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
-  <data name="lblPreSet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 23</value>
-  </data>
-  <data name="lblPreSet.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="lblPreSet.Text" xml:space="preserve">
-    <value>Preset</value>
-  </data>
-  <data name="&gt;&gt;lblPreSet.Name" xml:space="preserve">
-    <value>lblPreSet</value>
-  </data>
-  <data name="&gt;&gt;lblPreSet.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;lblPreSet.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;lblPreSet.ZOrder" xml:space="preserve">
-    <value>11</value>
+  <data name="btnFire.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
   </data>
   <data name="btnFire.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 165</value>
+    <value>333, 164</value>
+  </data>
+  <data name="btnFire.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
   </data>
   <data name="btnFire.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>148, 23</value>
   </data>
   <data name="btnFire.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -219,46 +184,28 @@
     <value>btnFire</value>
   </data>
   <data name="&gt;&gt;btnFire.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>CII.LAR.MaterialSkin.MaterialRoundButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnFire.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnFire.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>5</value>
   </data>
-  <data name="line2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 196</value>
+  <data name="btnAlignLaser.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
-  <data name="line2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>283, 10</value>
-  </data>
-  <data name="line2.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="line2.Text" xml:space="preserve">
-    <value>line2</value>
-  </data>
-  <data name="line2.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;line2.Name" xml:space="preserve">
-    <value>line2</value>
-  </data>
-  <data name="&gt;&gt;line2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
-  </data>
-  <data name="&gt;&gt;line2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;line2.ZOrder" xml:space="preserve">
-    <value>9</value>
+  <data name="btnAlignLaser.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
   </data>
   <data name="btnAlignLaser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 215</value>
+    <value>333, 26</value>
+  </data>
+  <data name="btnAlignLaser.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
   </data>
   <data name="btnAlignLaser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 23</value>
+    <value>148, 23</value>
   </data>
   <data name="btnAlignLaser.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -270,19 +217,28 @@
     <value>btnAlignLaser</value>
   </data>
   <data name="&gt;&gt;btnAlignLaser.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>CII.LAR.MaterialSkin.MaterialRoundButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnAlignLaser.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnAlignLaser.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>4</value>
+  </data>
+  <data name="btnHoleSize.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnHoleSize.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
   </data>
   <data name="btnHoleSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 244</value>
+    <value>333, 63</value>
+  </data>
+  <data name="btnHoleSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
   </data>
   <data name="btnHoleSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 23</value>
+    <value>148, 23</value>
   </data>
   <data name="btnHoleSize.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -294,19 +250,28 @@
     <value>btnHoleSize</value>
   </data>
   <data name="&gt;&gt;btnHoleSize.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>CII.LAR.MaterialSkin.MaterialRoundButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnHoleSize.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnHoleSize.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>3</value>
+  </data>
+  <data name="btnAppearance.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnAppearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
   </data>
   <data name="btnAppearance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 273</value>
+    <value>333, 98</value>
+  </data>
+  <data name="btnAppearance.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
   </data>
   <data name="btnAppearance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 23</value>
+    <value>148, 23</value>
   </data>
   <data name="btnAppearance.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -318,19 +283,19 @@
     <value>btnAppearance</value>
   </data>
   <data name="&gt;&gt;btnAppearance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>CII.LAR.MaterialSkin.MaterialRoundButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnAppearance.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnAppearance.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>2</value>
   </data>
   <data name="holesSlider.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 97</value>
+    <value>8, 70</value>
   </data>
   <data name="holesSlider.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 23</value>
+    <value>214, 23</value>
   </data>
   <data name="holesSlider.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -342,17 +307,25 @@
     <value>DevComponents.DotNetBar.Controls.Slider, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
   </data>
   <data name="&gt;&gt;holesSlider.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>materialGroupBox1</value>
   </data>
   <data name="&gt;&gt;holesSlider.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnDelete.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnDelete.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
+  </data>
   <data name="btnDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 125</value>
+    <value>195, 39</value>
+  </data>
+  <data name="btnDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
   </data>
   <data name="btnDelete.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 23</value>
@@ -367,22 +340,25 @@
     <value>btnDelete</value>
   </data>
   <data name="&gt;&gt;btnDelete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>CII.LAR.MaterialSkin.MaterialRoundButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnDelete.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>materialGroupBox2</value>
   </data>
   <data name="&gt;&gt;btnDelete.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
+  </data>
+  <data name="comboBoxEx1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
   </data>
   <data name="comboBoxEx1.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
   <data name="comboBoxEx1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 125</value>
+    <value>9, 39</value>
   </data>
   <data name="comboBoxEx1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 21</value>
+    <value>171, 21</value>
   </data>
   <data name="comboBoxEx1.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -391,19 +367,28 @@
     <value>comboBoxEx1</value>
   </data>
   <data name="&gt;&gt;comboBoxEx1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.ComboBoxEx, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>CII.LAR.MaterialSkin.MaterialComboBox, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;comboBoxEx1.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>materialGroupBox2</value>
   </data>
   <data name="&gt;&gt;comboBoxEx1.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="btnSave.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnSave.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
   </data>
   <data name="btnSave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>230, 125</value>
+    <value>257, 39</value>
+  </data>
+  <data name="btnSave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
   </data>
   <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 23</value>
@@ -418,16 +403,19 @@
     <value>btnSave</value>
   </data>
   <data name="&gt;&gt;btnSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>CII.LAR.MaterialSkin.MaterialRoundButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnSave.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>materialGroupBox2</value>
   </data>
   <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
+  </data>
+  <data name="lblHoleNumber.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
   </data>
   <data name="lblHoleNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>159, 96</value>
+    <value>192, 70</value>
   </data>
   <data name="lblHoleNumber.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -442,13 +430,67 @@
     <value>lblHoleNumber</value>
   </data>
   <data name="&gt;&gt;lblHoleNumber.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>CII.LAR.MaterialSkin.MaterialLabel, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblHoleNumber.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>materialGroupBox1</value>
   </data>
   <data name="&gt;&gt;lblHoleNumber.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
+  </data>
+  <data name="materialGroupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
+  </data>
+  <data name="materialGroupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 21</value>
+  </data>
+  <data name="materialGroupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 100</value>
+  </data>
+  <data name="materialGroupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="materialGroupBox1.Text" xml:space="preserve">
+    <value>Pulse Width / Hole Size</value>
+  </data>
+  <data name="&gt;&gt;materialGroupBox1.Name" xml:space="preserve">
+    <value>materialGroupBox1</value>
+  </data>
+  <data name="&gt;&gt;materialGroupBox1.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialGroupBox, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialGroupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;materialGroupBox1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="materialGroupBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
+  </data>
+  <data name="materialGroupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 127</value>
+  </data>
+  <data name="materialGroupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 78</value>
+  </data>
+  <data name="materialGroupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="materialGroupBox2.Text" xml:space="preserve">
+    <value>Preset</value>
+  </data>
+  <data name="&gt;&gt;materialGroupBox2.Name" xml:space="preserve">
+    <value>materialGroupBox2</value>
+  </data>
+  <data name="&gt;&gt;materialGroupBox2.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialGroupBox, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialGroupBox2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;materialGroupBox2.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -457,7 +499,7 @@
     <value>6, 12</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>289, 303</value>
+    <value>485, 212</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>LaserCtrl</value>

@@ -1,3 +1,4 @@
+using CII.LAR.MaterialSkin;
 using CII.LAR.SysClass;
 using DevComponents.DotNetBar;
 using Manina.Windows.Forms;
@@ -16,7 +17,7 @@ namespace CII.LAR.UI
     /// Assign form
     /// Author: Zhong Wen 2017/08/17
     /// </summary>
-    public partial class AssignForm : Office2007Form
+    public partial class AssignForm : MaterialForm
     {
         private AllPatients allPatients;
 

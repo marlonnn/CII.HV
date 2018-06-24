@@ -1,3 +1,5 @@
+using CII.LAR.MaterialSkin;
+
 namespace CII.LAR.UI
 {
     partial class AssignForm
@@ -30,13 +32,13 @@ namespace CII.LAR.UI
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AssignForm));
-            this.lblPatientID = new DevComponents.DotNetBar.LabelX();
+            this.lblPatientID = new MaterialLabel();
             this.textBoxPatientID = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.lblPatientName = new DevComponents.DotNetBar.LabelX();
+            this.lblPatientName = new MaterialLabel();
             this.textBoxPatientName = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.btnConfirm = new DevComponents.DotNetBar.ButtonX();
-            this.btnCancel = new DevComponents.DotNetBar.ButtonX();
-            this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator(resources.GetString("textBoxPatientName.Validator1"));
+            this.btnConfirm = new MaterialRoundButton();
+            this.btnCancel = new MaterialRoundButton();
+            this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Patient name should not empty.");
             this.regularExpressionValidator1 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter = new DevComponents.DotNetBar.Validator.Highlighter();
@@ -49,7 +51,6 @@ namespace CII.LAR.UI
             // 
             // 
             // 
-            this.lblPatientID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.lblPatientID, "lblPatientID");
             this.lblPatientID.Name = "lblPatientID";
             // 
@@ -72,7 +73,6 @@ namespace CII.LAR.UI
             // 
             // 
             // 
-            this.lblPatientName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             resources.ApplyResources(this.lblPatientName, "lblPatientName");
             this.lblPatientName.Name = "lblPatientName";
             // 
@@ -87,24 +87,19 @@ namespace CII.LAR.UI
             this.textBoxPatientName.ForeColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.textBoxPatientName, "textBoxPatientName");
             this.textBoxPatientName.Name = "textBoxPatientName";
-            //this.superValidator.SetValidator1(this.textBoxPatientName, this.requiredFieldValidator2);
             // 
             // btnConfirm
             // 
             this.btnConfirm.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnConfirm.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             resources.ApplyResources(this.btnConfirm, "btnConfirm");
             this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // btnCancel
             // 
             this.btnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             resources.ApplyResources(this.btnCancel, "btnCancel");
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // requiredFieldValidator2
@@ -160,12 +155,12 @@ namespace CII.LAR.UI
         private DevComponents.DotNetBar.Validator.Highlighter highlighter;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private DevComponents.DotNetBar.Validator.SuperValidator superValidator;
-        private DevComponents.DotNetBar.LabelX lblPatientID;
+        private MaterialLabel lblPatientID;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxPatientID;
-        private DevComponents.DotNetBar.LabelX lblPatientName;
+        private MaterialLabel lblPatientName;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxPatientName;
-        private DevComponents.DotNetBar.ButtonX btnConfirm;
-        private DevComponents.DotNetBar.ButtonX btnCancel;
+        private MaterialRoundButton btnConfirm;
+        private MaterialRoundButton btnCancel;
     }
 }
 

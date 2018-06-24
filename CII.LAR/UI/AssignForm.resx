@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lblPatientID.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+    <value>12, 45</value>
   </data>
   <data name="lblPatientID.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -144,7 +144,7 @@
     <value>5</value>
   </data>
   <data name="textBoxPatientID.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 12</value>
+    <value>130, 45</value>
   </data>
   <data name="textBoxPatientID.Size" type="System.Drawing.Size, System.Drawing">
     <value>223, 22</value>
@@ -162,10 +162,10 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>377, 143</value>
+    <value>377, 178</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>278, 109</value>
+    <value>278, 142</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -189,7 +189,7 @@
     <value>0</value>
   </data>
   <data name="btnConfirm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>175, 109</value>
+    <value>175, 142</value>
   </data>
   <data name="btnConfirm.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -213,19 +213,13 @@
     <value>1</value>
   </data>
   <data name="textBoxPatientName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 62</value>
+    <value>130, 95</value>
   </data>
   <data name="textBoxPatientName.Size" type="System.Drawing.Size, System.Drawing">
     <value>223, 22</value>
   </data>
   <data name="textBoxPatientName.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
-  </data>
-  <data name="textBoxPatientName.Validator1" xml:space="preserve">
-    <value>Patient name should not empty.</value>
-  </data>
-  <data name="requiredFieldValidator2.ErrorMessage" xml:space="preserve">
-    <value>Patient name should not empty.</value>
   </data>
   <data name="&gt;&gt;textBoxPatientName.Name" xml:space="preserve">
     <value>textBoxPatientName</value>
@@ -240,7 +234,7 @@
     <value>2</value>
   </data>
   <data name="lblPatientName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 62</value>
+    <value>12, 95</value>
   </data>
   <data name="lblPatientName.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -303,7 +297,7 @@
     <value>AssignForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Office2007Form, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>CII.LAR.MaterialSkin.MaterialForm, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <metadata name="errorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -325,5 +319,8 @@
   </data>
   <data name="&gt;&gt;textBoxPatientID.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="requiredFieldValidator2.ErrorMessage" xml:space="preserve">
+    <value>Patient name should not empty.</value>
   </data>
 </root>

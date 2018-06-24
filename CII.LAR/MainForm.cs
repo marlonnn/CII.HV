@@ -584,7 +584,7 @@ namespace CII.LAR
         }
         private void ShowToastNotification()
         {
-            ToastNotification.Show(this, "Screenshot success",
+            ToastNotification.Show(this, Properties.Resources.StrScreenshotSuccess,
                 global::CII.LAR.Properties.Resources.capture, 1000, eToastGlowColor.Blue,
                 eToastPosition.MiddleCenter);
         }

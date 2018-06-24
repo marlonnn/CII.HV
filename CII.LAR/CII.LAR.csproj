@@ -611,7 +611,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.zh-CN.resx" />
+    <EmbeddedResource Include="Properties\Resources.zh-CN.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Res\LaserAlignment.resx" />
     <EmbeddedResource Include="Res\LaserAlignment.zh-CN.resx" />
     <EmbeddedResource Include="Res\LaserCtrl.resx" />

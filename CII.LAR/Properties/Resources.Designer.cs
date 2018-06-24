@@ -671,7 +671,7 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrVideoChooseTitle", resourceCulture);
             }
         }
-		        /// <summary>
+		/// <summary>
         ///   查找类似 Camera Available 的本地化字符串。
         /// </summary>
         internal static string StrVideoAvailable
@@ -679,6 +679,17 @@ namespace CII.LAR.Properties {
             get
             {
                 return ResourceManager.GetString("StrVideoAvailable", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 Screenshot success 的本地化字符串。
+        /// </summary>
+        internal static string StrScreenshotSuccess
+        {
+            get
+            {
+                return ResourceManager.GetString("StrScreenshotSuccess", resourceCulture);
             }
         }
     }

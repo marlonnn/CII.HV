@@ -301,7 +301,10 @@
   <data name="StrVideoChooseTitle" xml:space="preserve">
     <value>Camera choose</value>
   </data>
-    <data name="StrVideoAvailable" xml:space="preserve">
+  <data name="StrVideoAvailable" xml:space="preserve">
     <value>Available Camera</value>
+  </data>
+  <data name="StrScreenshotSuccess" xml:space="preserve">
+    <value>Screenshot success</value>
   </data>
 </root>

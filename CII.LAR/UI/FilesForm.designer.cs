@@ -1,5 +1,7 @@
 using System;
 using Manina.Windows.Forms;
+using CII.LAR.MaterialSkin;
+using System.Windows.Forms;
 
 namespace CII.LAR
 {
@@ -33,150 +35,111 @@ namespace CII.LAR
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FilesForm));
-            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.imageListView = new Manina.Windows.Forms.ImageListView();
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonAssign = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonPrint = new System.Windows.Forms.ToolStripButton();
-            this.tsbAssigned = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabelSelectByID = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripButtonSearch = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip = new CII.LAR.MaterialSkin.MaterialToolStrip();
+            this.toolStripButtonDelete = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolStripButtonAssign = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolStripButtonCopy = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolStripButtonPrint = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.tsbAssigned = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolStripLabelSelectByID = new CII.LAR.MaterialSkin.MaterialToolStripLabel();
+            this.toolStripTextBox1 = new CII.LAR.MaterialSkin.MaterialToolStripTextBox();
+            this.toolStripButtonSearch = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
-            this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
-            this.toolStripContainer1.ContentPanel.SuspendLayout();
-            this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
-            this.toolStripContainer1.SuspendLayout();
-            this.statusStrip.SuspendLayout();
+            this.imageListView = new Manina.Windows.Forms.ImageListView();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // toolStripContainer1
-            // 
-            // 
-            // toolStripContainer1.BottomToolStripPanel
-            // 
-            this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.statusStrip);
-            // 
-            // toolStripContainer1.ContentPanel
-            // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.imageListView);
-            resources.ApplyResources(this.toolStripContainer1.ContentPanel, "toolStripContainer1.ContentPanel");
-            resources.ApplyResources(this.toolStripContainer1, "toolStripContainer1");
-            this.toolStripContainer1.LeftToolStripPanelVisible = false;
-            this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.RightToolStripPanelVisible = false;
-            // 
-            // toolStripContainer1.TopToolStripPanel
-            // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip);
-            // 
-            // statusStrip
-            // 
-            resources.ApplyResources(this.statusStrip, "statusStrip");
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel});
-            this.statusStrip.Name = "statusStrip";
-            // 
-            // toolStripStatusLabel
-            // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            resources.ApplyResources(this.toolStripStatusLabel, "toolStripStatusLabel");
-            // 
-            // imageListView
-            // 
-            this.imageListView.DefaultImage = ((System.Drawing.Image)(resources.GetObject("imageListView.DefaultImage")));
-            resources.ApplyResources(this.imageListView, "imageListView");
-            this.imageListView.ErrorImage = ((System.Drawing.Image)(resources.GetObject("imageListView.ErrorImage")));
-            this.imageListView.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.imageListView.Name = "imageListView";
-            this.imageListView.ThumbnailSize = new System.Drawing.Size(120, 200);
-            this.imageListView.View = Manina.Windows.Forms.View.Pane;
-            this.imageListView.ItemClick += new Manina.Windows.Forms.ItemClickEventHandler(this.imageListView_ItemClick);
-            this.imageListView.ItemDoubleClick += new Manina.Windows.Forms.ItemDoubleClickEventHandler(this.imageListView_ItemDoubleClick);
-            this.imageListView.SelectionChanged += new System.EventHandler(this.imageListView_SelectionChanged);
             // 
             // toolStrip
             // 
             resources.ApplyResources(this.toolStrip, "toolStrip");
+            this.toolStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(36)))), ((int)(((byte)(42)))));
+            this.toolStrip.Depth = 0;
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonDelete,
             this.toolStripButtonAssign,
             this.toolStripButtonCopy,
             this.toolStripButtonPrint,
             this.tsbAssigned,
-            this.toolStripSeparator1,
             this.toolStripLabelSelectByID,
             this.toolStripTextBox1,
             this.toolStripButtonSearch});
+            this.toolStrip.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.toolStrip.Name = "toolStrip";
             // 
             // toolStripButtonDelete
             // 
+            resources.ApplyResources(this.toolStripButtonDelete, "toolStripButtonDelete");
             this.toolStripButtonDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonDelete.Image = global::CII.LAR.Properties.Resources.delete;
-            resources.ApplyResources(this.toolStripButtonDelete, "toolStripButtonDelete");
+            this.toolStripButtonDelete.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
             this.toolStripButtonDelete.Name = "toolStripButtonDelete";
             this.toolStripButtonDelete.Click += new System.EventHandler(this.toolStripButtonDelete_Click);
             // 
             // toolStripButtonAssign
             // 
+            resources.ApplyResources(this.toolStripButtonAssign, "toolStripButtonAssign");
             this.toolStripButtonAssign.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonAssign.Image = global::CII.LAR.Properties.Resources.assign;
-            resources.ApplyResources(this.toolStripButtonAssign, "toolStripButtonAssign");
+            this.toolStripButtonAssign.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
             this.toolStripButtonAssign.Name = "toolStripButtonAssign";
             this.toolStripButtonAssign.Click += new System.EventHandler(this.toolStripButtonAssign_Click);
             // 
             // toolStripButtonCopy
             // 
+            resources.ApplyResources(this.toolStripButtonCopy, "toolStripButtonCopy");
             this.toolStripButtonCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonCopy.Image = global::CII.LAR.Properties.Resources.copy;
-            resources.ApplyResources(this.toolStripButtonCopy, "toolStripButtonCopy");
+            this.toolStripButtonCopy.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
             this.toolStripButtonCopy.Name = "toolStripButtonCopy";
             this.toolStripButtonCopy.Click += new System.EventHandler(this.toolStripButtonCopy_Click);
             // 
             // toolStripButtonPrint
             // 
+            resources.ApplyResources(this.toolStripButtonPrint, "toolStripButtonPrint");
             this.toolStripButtonPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonPrint.Image = global::CII.LAR.Properties.Resources.print;
-            resources.ApplyResources(this.toolStripButtonPrint, "toolStripButtonPrint");
+            this.toolStripButtonPrint.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
             this.toolStripButtonPrint.Name = "toolStripButtonPrint";
             this.toolStripButtonPrint.Click += new System.EventHandler(this.toolStripButtonPrint_Click);
             // 
             // tsbAssigned
             // 
+            resources.ApplyResources(this.tsbAssigned, "tsbAssigned");
             this.tsbAssigned.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbAssigned.Image = global::CII.LAR.Properties.Resources.assigned;
-            resources.ApplyResources(this.tsbAssigned, "tsbAssigned");
+            this.tsbAssigned.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
             this.tsbAssigned.Name = "tsbAssigned";
             this.tsbAssigned.Click += new System.EventHandler(this.tsbAssigned_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
-            // 
             // toolStripLabelSelectByID
             // 
-            this.toolStripLabelSelectByID.Name = "toolStripLabelSelectByID";
             resources.ApplyResources(this.toolStripLabelSelectByID, "toolStripLabelSelectByID");
+            this.toolStripLabelSelectByID.Depth = 0;
+            this.toolStripLabelSelectByID.ForeColor = System.Drawing.Color.White;
+            this.toolStripLabelSelectByID.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.toolStripLabelSelectByID.Name = "toolStripLabelSelectByID";
             // 
             // toolStripTextBox1
             // 
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(40)))), ((int)(((byte)(48)))));
+            this.toolStripTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.toolStripTextBox1.CustomAutoSize = true;
+            this.toolStripTextBox1.Depth = 0;
+            this.toolStripTextBox1.EmptyTextTip = null;
+            this.toolStripTextBox1.EmptyTextTipColor = System.Drawing.Color.DarkGray;
             resources.ApplyResources(this.toolStripTextBox1, "toolStripTextBox1");
+            this.toolStripTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.toolStripTextBox1.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Radius = 3;
             this.toolStripTextBox1.TextChanged += new System.EventHandler(this.toolStripTextBox1_TextChanged);
             // 
             // toolStripButtonSearch
             // 
+            resources.ApplyResources(this.toolStripButtonSearch, "toolStripButtonSearch");
             this.toolStripButtonSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonSearch.Image = global::CII.LAR.Properties.Resources.search;
-            resources.ApplyResources(this.toolStripButtonSearch, "toolStripButtonSearch");
+            this.toolStripButtonSearch.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
             this.toolStripButtonSearch.Name = "toolStripButtonSearch";
             this.toolStripButtonSearch.Click += new System.EventHandler(this.toolStripButtonSearch_Click);
             // 
@@ -185,23 +148,27 @@ namespace CII.LAR
             this.timerStatus.Interval = 2000;
             this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
             // 
+            // imageListView
+            // 
+            resources.ApplyResources(this.imageListView, "imageListView");
+            this.imageListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
+            this.imageListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.imageListView.DefaultImage = global::CII.LAR.Properties.Resources.video;
+            this.imageListView.ErrorImage = ((System.Drawing.Image)(resources.GetObject("imageListView.ErrorImage")));
+            this.imageListView.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.imageListView.Name = "imageListView";
+            this.imageListView.ThumbnailSize = new System.Drawing.Size(120, 200);
+            this.imageListView.View = Manina.Windows.Forms.View.Pane;
+            // 
             // FilesForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.toolStripContainer1);
+            this.Controls.Add(this.imageListView);
+            this.Controls.Add(this.toolStrip);
             this.MinimizeBox = false;
             this.Name = "FilesForm";
             this.ShowIcon = false;
-            this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
-            this.toolStripContainer1.BottomToolStripPanel.PerformLayout();
-            this.toolStripContainer1.ContentPanel.ResumeLayout(false);
-            this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
-            this.toolStripContainer1.TopToolStripPanel.PerformLayout();
-            this.toolStripContainer1.ResumeLayout(false);
-            this.toolStripContainer1.PerformLayout();
-            this.statusStrip.ResumeLayout(false);
-            this.statusStrip.PerformLayout();
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -209,21 +176,17 @@ namespace CII.LAR
         }
 
         #endregion
-        private System.Windows.Forms.ToolStripContainer toolStripContainer1;
-        private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
-        private System.Windows.Forms.ToolStripButton toolStripButtonAssign;
-        private System.Windows.Forms.ToolStripButton toolStripButtonCopy;
-        private System.Windows.Forms.ToolStripButton toolStripButtonPrint;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripLabel toolStripLabelSelectByID;
-        private Manina.Windows.Forms.ImageListView imageListView;
-        private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        private MaterialToolStrip toolStrip;
+        private MaterialToolStripButton toolStripButtonDelete;
+        private MaterialToolStripButton toolStripButtonAssign;
+        private MaterialToolStripButton toolStripButtonCopy;
+        private MaterialToolStripButton toolStripButtonPrint;
+        private MaterialToolStripLabel toolStripLabelSelectByID;
         private System.Windows.Forms.Timer timerStatus;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
-        private System.Windows.Forms.ToolStripButton tsbAssigned;
-        private System.Windows.Forms.ToolStripButton toolStripButtonSearch;
+        private MaterialToolStripTextBox toolStripTextBox1;
+        private MaterialToolStripButton tsbAssigned;
+        private MaterialToolStripButton toolStripButtonSearch;
+        private ImageListView imageListView;
     }
 }
 

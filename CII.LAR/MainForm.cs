@@ -243,6 +243,7 @@ namespace CII.LAR
             //InitializeIdleTimer();
             this.richPictureBox.RestrictArea.TransformMotorOriginalPoints();
             settingControl.SettingControl_Load(null, null);
+            this.LaserCheckTimer.Enabled = true;
         }
 
         public int GetLastInputTime()
@@ -616,6 +617,10 @@ namespace CII.LAR
                 bool enable = (this.richPictureBox.Zoom == 1 && this.richPictureBox.Picture != null);
                 EnableDrawTools(enable);
                 if (!enable) this.richPictureBox.ActiveTool = DrawToolType.Pointer;
+            }
+            if (this.richPictureBox.df != null)
+            {
+                this.richPictureBox.df.UpdateLaserStatus();
             }
         }
 
@@ -1317,10 +1322,10 @@ namespace CII.LAR
                     {
                         this.systemMonitorTimer.Interval = 300;
                     }
-                    if (!Program.SysConfig.LaserPortConected && this.LaserCheckTimer.Enabled == false)
-                    {
-                        this.LaserCheckTimer.Enabled = true;
-                    }
+                    //if (!Program.SysConfig.LaserPortConected && this.LaserCheckTimer.Enabled == false)
+                    //{
+                    //    this.LaserCheckTimer.Enabled = true;
+                    //}
                     Coordinate.GetCoordinate().LastPoint = new Point(monitorData.Motor1Steps, monitorData.Motor2Steps);
                     Coordinate.GetCoordinate().MotionComplete = monitorData.Motor1Status == 0x08 && monitorData.Motor2Status == 0x08;
                     if (this.richPictureBox.df != null)
@@ -1329,7 +1334,7 @@ namespace CII.LAR
                         LogHelper.GetLogger<MainForm>().Error(string.Format("电机1当前步数： {0}， 电机2当前步数： {1}", monitorData.Motor1Steps, monitorData.Motor2Steps));
                         //Entry.Log(string.Format("电机1当前步数： {0}， 电机2当前步数： {1}", monitorData.Motor1Steps, monitorData.Motor2Steps));
                         this.richPictureBox.df.UpdateResponseCode(Coordinate.GetCoordinate().ResponseCode);
-                        this.richPictureBox.df.UpdateLaserStatus();
+                        //this.richPictureBox.df.UpdateLaserStatus();
                     }
 
                 }
@@ -1350,35 +1355,6 @@ namespace CII.LAR
                             this.systemMonitorTimer.Interval = 1000;
                         }
                     }
-                    //1.查看串口是否存在，不存在则弹出一个对话框
-                    //2.遍历串口，尝试连接
-                    //3.连接成功则保存串口到本地，失败则继续尝试
-                    //if (SerialPortHelper.GetHelper().WaringCheckSystem())
-                    //{
-                    //    //弹对话框，跳转到手动配置界面
-                    //    this.systemMonitorTimer.Enabled = false;
-                    //    autoCheckMotorPort = false;
-                    //    msgShowTime++;
-                    //    if (msgShowTime == 1)
-                    //    {
-                    //        if (MessageBox.Show("自动配置串口失败，请检查本地串口是否正确，点击确定将跳转到手动配置界面", "激光破膜仪", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                    //        {
-                    //            //手动配置界面
-                    //            msgShowTime = 0;
-                    //            ShowBaseCtrl(true, CtrlType.SerialPort);
-                    //        }
-                    //        else
-                    //        {
-                    //            //退出系统
-                    //            fullScreen.ResetFullScreen();
-                    //            this.Close();
-                    //        }
-                    //    }
-                    //}
-                    //else if (autoCheckMotorPort)
-                    //{
-                    //    SerialPortHelper.GetHelper().CheckPort();
-                    //}
                 }
             }
         }
@@ -1389,29 +1365,29 @@ namespace CII.LAR
             {
                 if (Program.SysConfig.LaserPortConected)
                 {
-                    Program.SysConfig.LaserPortConected = serialPortCom.SerialPort.IsOpen;
-                    ////若激光器连接，则每隔2s发送消息
-                    //LaserC01Request c01R = new LaserC01Request();
-                    //byte[] c01Bytes = serialPortCom.Encode(c01R);
-                    //if (serialPortCom.SerialPort.IsOpen)
-                    //{
-                    //    serialPortCom.SendData(c01Bytes);
-                    //    Thread.Sleep(200);
-                    //    if (serialPortCom.FinalData != null)
-                    //    {
-                    //        //连接状态
-                    //        Program.SysConfig.LaserPortConected = true;
-                    //    }
-                    //    else
-                    //    {
-                    //        //断开连接，需要尝试重连
-                    //        Program.SysConfig.LaserPortConected = false;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    Program.SysConfig.LaserPortConected = false;
-                    //}
+                    //Program.SysConfig.LaserPortConected = serialPortCom.SerialPort.IsOpen;
+                    //若激光器连接，则每隔2s发送消息
+                    LaserC01Request c01R = new LaserC01Request();
+                    byte[] c01Bytes = serialPortCom.Encode(c01R);
+                    if (serialPortCom.SerialPort.IsOpen)
+                    {
+                        serialPortCom.SendData(c01Bytes);
+                        Thread.Sleep(200);
+                        if (serialPortCom.FinalData != null)
+                        {
+                            //连接状态
+                            Program.SysConfig.LaserPortConected = true;
+                        }
+                        else
+                        {
+                            //断开连接，需要尝试重连
+                            Program.SysConfig.LaserPortConected = false;
+                        }
+                    }
+                    else
+                    {
+                        Program.SysConfig.LaserPortConected = false;
+                    }
                 }
                 else
                 {

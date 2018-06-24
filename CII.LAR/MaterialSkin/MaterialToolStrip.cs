@@ -82,6 +82,14 @@ namespace CII.LAR.MaterialSkin
                     PointF Location = new PointF(subCtrl.Bounds.Location.X + 7.5f, subCtrl.Bounds.Location.Y + 7.5f);
                     g.DrawImage(subCtrl.Image, new RectangleF(Location, new SizeF(20, 20)));
                 }
+
+                MaterialToolStripLabel mtsl = subCtrl as MaterialToolStripLabel;
+                if (mtsl != null)
+                {
+                    SizeF size = e.Graphics.MeasureString(mtsl.Text, this.Font);
+                    using (var sb = new SolidBrush(SkinManager.GetLabelTextColor()))
+                        e.Graphics.DrawString(mtsl.Text, this.Font, sb, new PointF(mtsl.Bounds.X + (mtsl.Width - size.Width) / 2f, (mtsl.Height - size.Height) / 2f));
+                }
             }
         }
 

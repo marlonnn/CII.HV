@@ -15,10 +15,11 @@ using System.Windows.Forms;
 using CII.LAR.SysClass;
 using System.Drawing.Imaging;
 using System.Collections.Specialized;
+using CII.LAR.MaterialSkin;
 
 namespace CII.LAR
 {
-    public partial class FilesForm : Office2007Form
+    public partial class FilesForm : MaterialForm
     {
         private AssignForm assignForm;
         private ReportForm reportFrom;
@@ -28,7 +29,7 @@ namespace CII.LAR
         private AllPatients allPatients;
         public FilesForm()
         {
-            this.WindowState = FormWindowState.Maximized;
+            //this.WindowState = FormWindowState.Maximized;
             InitializeComponent();
             videoFiles = new List<string>();
             string folderName = Program.SysConfig.StorePath;
@@ -215,7 +216,7 @@ namespace CII.LAR
 
         private void UpdateStatus(string text)
         {
-            toolStripStatusLabel.Text = text;
+            //toolStripStatusLabel.Text = text;
         }
 
         private ImageForm imageForm;

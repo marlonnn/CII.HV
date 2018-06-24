@@ -34,8 +34,8 @@
             // 
             // imageListView
             // 
-            this.imageListView.DefaultImage = ((System.Drawing.Image)(resources.GetObject("imageListView.DefaultImage")));
             resources.ApplyResources(this.imageListView, "imageListView");
+            this.imageListView.DefaultImage = global::CII.LAR.Properties.Resources.video;
             this.imageListView.ErrorImage = ((System.Drawing.Image)(resources.GetObject("imageListView.ErrorImage")));
             this.imageListView.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.imageListView.Name = "imageListView";

@@ -1,4 +1,5 @@
-﻿using CII.LAR.SysClass;
+﻿using CII.LAR.MaterialSkin;
+using CII.LAR.SysClass;
 using DevComponents.DotNetBar;
 using Manina.Windows.Forms;
 using System;
@@ -15,7 +16,7 @@ using System.Windows.Forms;
 
 namespace CII.LAR.UI
 {
-    public partial class SearchForm : Office2007Form
+    public partial class SearchForm : MaterialForm
     {
         private Patient patient;
         public SearchForm()

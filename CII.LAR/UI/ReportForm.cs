@@ -1,4 +1,5 @@
 using CII.LAR.ExpClass;
+using CII.LAR.MaterialSkin;
 using DevComponents.DotNetBar;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace CII.LAR.UI
 {
-    public partial class ReportForm : Office2007Form
+    public partial class ReportForm : MaterialForm
     {
         private Report report;
         public Report Report

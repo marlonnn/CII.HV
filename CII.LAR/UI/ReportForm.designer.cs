@@ -1,3 +1,5 @@
+using CII.LAR.MaterialSkin;
+
 namespace CII.LAR.UI
 {
     partial class ReportForm
@@ -30,7 +32,7 @@ namespace CII.LAR.UI
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportForm));
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStrip = new CII.LAR.MaterialSkin.MaterialToolStrip();
             this.toolStripButtonPrint = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonPreview = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -48,28 +50,30 @@ namespace CII.LAR.UI
             // 
             // toolStrip
             // 
+            resources.ApplyResources(this.toolStrip, "toolStrip");
+            this.toolStrip.Depth = 0;
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonPrint,
             this.toolStripButtonPreview,
             this.toolStripSeparator1,
             this.toolStripDropDownButtonZoom,
             this.tslPages});
-            resources.ApplyResources(this.toolStrip, "toolStrip");
+            this.toolStrip.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.toolStrip.Name = "toolStrip";
             // 
             // toolStripButtonPrint
             // 
+            resources.ApplyResources(this.toolStripButtonPrint, "toolStripButtonPrint");
             this.toolStripButtonPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonPrint.Image = global::CII.LAR.Properties.Resources.print;
-            resources.ApplyResources(this.toolStripButtonPrint, "toolStripButtonPrint");
             this.toolStripButtonPrint.Name = "toolStripButtonPrint";
             this.toolStripButtonPrint.Click += new System.EventHandler(this.toolStripButtonPrint_Click);
             // 
             // toolStripButtonPreview
             // 
+            resources.ApplyResources(this.toolStripButtonPreview, "toolStripButtonPreview");
             this.toolStripButtonPreview.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonPreview.Image = global::CII.LAR.Properties.Resources.print_preview;
-            resources.ApplyResources(this.toolStripButtonPreview, "toolStripButtonPreview");
             this.toolStripButtonPreview.Name = "toolStripButtonPreview";
             this.toolStripButtonPreview.Click += new System.EventHandler(this.toolStripButtonPreview_Click);
             // 
@@ -80,6 +84,7 @@ namespace CII.LAR.UI
             // 
             // toolStripDropDownButtonZoom
             // 
+            resources.ApplyResources(this.toolStripDropDownButtonZoom, "toolStripDropDownButtonZoom");
             this.toolStripDropDownButtonZoom.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripDropDownButtonZoom.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmi500,
@@ -87,11 +92,11 @@ namespace CII.LAR.UI
             this.tsmi150,
             this.tsmi100});
             this.toolStripDropDownButtonZoom.Image = global::CII.LAR.Properties.Resources.zoom;
-            resources.ApplyResources(this.toolStripDropDownButtonZoom, "toolStripDropDownButtonZoom");
             this.toolStripDropDownButtonZoom.Name = "toolStripDropDownButtonZoom";
             // 
             // tsmi500
             // 
+            this.tsmi500.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.tsmi500.Name = "tsmi500";
             resources.ApplyResources(this.tsmi500, "tsmi500");
             this.tsmi500.Tag = "500";
@@ -99,6 +104,7 @@ namespace CII.LAR.UI
             // 
             // tsmi200
             // 
+            this.tsmi200.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.tsmi200.Name = "tsmi200";
             resources.ApplyResources(this.tsmi200, "tsmi200");
             this.tsmi200.Tag = "200";
@@ -106,6 +112,7 @@ namespace CII.LAR.UI
             // 
             // tsmi150
             // 
+            this.tsmi150.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.tsmi150.Name = "tsmi150";
             resources.ApplyResources(this.tsmi150, "tsmi150");
             this.tsmi150.Tag = "150";
@@ -113,6 +120,7 @@ namespace CII.LAR.UI
             // 
             // tsmi100
             // 
+            this.tsmi100.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.tsmi100.Name = "tsmi100";
             resources.ApplyResources(this.tsmi100, "tsmi100");
             this.tsmi100.Tag = "100";
@@ -149,7 +157,6 @@ namespace CII.LAR.UI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.reportLayout);
             this.Controls.Add(this.toolStrip);
-            this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.MinimizeBox = false;
             this.Name = "ReportForm";
@@ -159,13 +166,12 @@ namespace CII.LAR.UI
             this.toolStrip.PerformLayout();
             this.reportLayout.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip toolStrip;
+        private MaterialToolStrip toolStrip;
         private System.Windows.Forms.ToolStripButton toolStripButtonPrint;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonZoom;

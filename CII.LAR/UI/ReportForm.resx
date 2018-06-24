@@ -117,30 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="toolStrip.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="toolStrip.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolStripButtonPrint.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="toolStripButtonPrint.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonPrint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>35, 35</value>
   </data>
   <data name="toolStripButtonPrint.Text" xml:space="preserve">
     <value>Print</value>
+  </data>
+  <data name="toolStripButtonPreview.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="toolStripButtonPreview.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+    <value>35, 35</value>
   </data>
   <data name="toolStripButtonPreview.Text" xml:space="preserve">
     <value>Preview</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
+    <value>6, 48</value>
+  </data>
+  <data name="toolStripDropDownButtonZoom.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="tsmi500.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 22</value>
@@ -170,7 +190,7 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripDropDownButtonZoom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 22</value>
+    <value>35, 35</value>
   </data>
   <data name="toolStripDropDownButtonZoom.Text" xml:space="preserve">
     <value>toolStripDropDownButton1</value>
@@ -179,18 +199,17 @@
     <value>Zoom</value>
   </data>
   <data name="tslPages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 22</value>
+    <value>63, 45</value>
   </data>
   <data name="tslPages.Text" xml:space="preserve">
     <value>Page: 1/1</value>
   </data>
   <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>0, 32</value>
   </data>
   <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>901, 25</value>
+    <value>901, 48</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -201,13 +220,16 @@
     <value>toolStrip</value>
   </data>
   <data name="&gt;&gt;toolStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>CII.LAR.MaterialSkin.MaterialToolStrip, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;toolStrip.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="reportLayout.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="reportLayout.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -233,15 +255,11 @@
   <data name="&gt;&gt;pnlSpace.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="reportLayout.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
   <data name="reportLayout.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
+    <value>0, 80</value>
   </data>
   <data name="reportLayout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>901, 584</value>
+    <value>901, 529</value>
   </data>
   <data name="reportLayout.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -258,9 +276,9 @@
   <data name="&gt;&gt;reportLayout.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
@@ -331,6 +349,6 @@
     <value>ReportForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Office2007Form, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>CII.LAR.MaterialSkin.MaterialForm, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

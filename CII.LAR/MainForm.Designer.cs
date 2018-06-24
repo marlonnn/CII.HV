@@ -41,10 +41,10 @@ namespace CII.LAR
             this.toolstripBtnLaser = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.toolstripBtnSetting = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.toolstripBtnCamera = new System.Windows.Forms.ToolStripDropDownButton();
-            this.openCameraLiveToolStripMenuItem = new MaterialToolStripMenuItem();
-            this.closeCameraToolStripMenuItem = new MaterialToolStripMenuItem();
-            this.horizontalFlipToolStripMenuItem = new MaterialToolStripMenuItem();
-            this.verticalFlipToolStripMenuItem = new MaterialToolStripMenuItem();
+            this.openCameraLiveToolStripMenuItem = new CII.LAR.MaterialSkin.MaterialToolStripMenuItem();
+            this.closeCameraToolStripMenuItem = new CII.LAR.MaterialSkin.MaterialToolStripMenuItem();
+            this.horizontalFlipToolStripMenuItem = new CII.LAR.MaterialSkin.MaterialToolStripMenuItem();
+            this.verticalFlipToolStripMenuItem = new CII.LAR.MaterialSkin.MaterialToolStripMenuItem();
             this.toolstripBtnDebug = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.toolstripBtnAbout = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.materialToolStrip3 = new CII.LAR.MaterialSkin.MaterialToolStrip();
@@ -160,32 +160,47 @@ namespace CII.LAR
             this.horizontalFlipToolStripMenuItem,
             this.verticalFlipToolStripMenuItem});
             this.toolstripBtnCamera.Image = global::CII.LAR.Properties.Resources.idscamera;
-            //this.toolstripBtnCamera.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
             this.toolstripBtnCamera.Name = "toolstripBtnCamera";
             this.toolstripBtnCamera.Click += new System.EventHandler(this.toolstripBtnCamera_Click);
             // 
             // openCameraLiveToolStripMenuItem
             // 
-            this.openCameraLiveToolStripMenuItem.Name = "openCameraLiveToolStripMenuItem";
+            this.openCameraLiveToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
+            this.openCameraLiveToolStripMenuItem.Depth = 0;
             resources.ApplyResources(this.openCameraLiveToolStripMenuItem, "openCameraLiveToolStripMenuItem");
+            this.openCameraLiveToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(226)))), ((int)(((byte)(241)))));
+            this.openCameraLiveToolStripMenuItem.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.openCameraLiveToolStripMenuItem.Name = "openCameraLiveToolStripMenuItem";
             this.openCameraLiveToolStripMenuItem.Click += new System.EventHandler(this.openCameraLiveToolStripMenuItem_Click);
             // 
             // closeCameraToolStripMenuItem
             // 
-            this.closeCameraToolStripMenuItem.Name = "closeCameraToolStripMenuItem";
+            this.closeCameraToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
+            this.closeCameraToolStripMenuItem.Depth = 0;
             resources.ApplyResources(this.closeCameraToolStripMenuItem, "closeCameraToolStripMenuItem");
+            this.closeCameraToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(226)))), ((int)(((byte)(241)))));
+            this.closeCameraToolStripMenuItem.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.closeCameraToolStripMenuItem.Name = "closeCameraToolStripMenuItem";
             this.closeCameraToolStripMenuItem.Click += new System.EventHandler(this.closeCameraToolStripMenuItem_Click);
             // 
             // horizontalFlipToolStripMenuItem
             // 
-            this.horizontalFlipToolStripMenuItem.Name = "horizontalFlipToolStripMenuItem";
+            this.horizontalFlipToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
+            this.horizontalFlipToolStripMenuItem.Depth = 0;
             resources.ApplyResources(this.horizontalFlipToolStripMenuItem, "horizontalFlipToolStripMenuItem");
+            this.horizontalFlipToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(226)))), ((int)(((byte)(241)))));
+            this.horizontalFlipToolStripMenuItem.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.horizontalFlipToolStripMenuItem.Name = "horizontalFlipToolStripMenuItem";
             this.horizontalFlipToolStripMenuItem.Click += new System.EventHandler(this.horizontalFlipToolStripMenuItem_Click);
             // 
             // verticalFlipToolStripMenuItem
             // 
-            this.verticalFlipToolStripMenuItem.Name = "verticalFlipToolStripMenuItem";
+            this.verticalFlipToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
+            this.verticalFlipToolStripMenuItem.Depth = 0;
             resources.ApplyResources(this.verticalFlipToolStripMenuItem, "verticalFlipToolStripMenuItem");
+            this.verticalFlipToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(226)))), ((int)(((byte)(241)))));
+            this.verticalFlipToolStripMenuItem.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.verticalFlipToolStripMenuItem.Name = "verticalFlipToolStripMenuItem";
             this.verticalFlipToolStripMenuItem.Click += new System.EventHandler(this.verticalFlipToolStripMenuItem_Click);
             // 
             // toolstripBtnDebug
@@ -320,20 +335,26 @@ namespace CII.LAR
             this.richPictureBox.VideoSize = new System.Drawing.Size(1280, 960);
             this.richPictureBox.Zoom = 1F;
             // 
+            // videoControl
+            // 
+            this.videoControl.DrawObject = null;
+            this.videoControl.LaserFunction = false;
+            resources.ApplyResources(this.videoControl, "videoControl");
+            this.videoControl.Name = "videoControl";
+            this.videoControl.UnitOfMeasure = CII.LAR.enUniMis.mm;
+            this.videoControl.VideoSize = new System.Drawing.Size(0, 0);
+            this.videoControl.VideoSource = null;
+            this.videoControl.Zoom = 1F;
+            // 
             // systemMonitorTimer
             // 
             this.systemMonitorTimer.Interval = 1000;
             this.systemMonitorTimer.Tick += new System.EventHandler(this.systemMonitorTimer_Tick);
+            // 
             // LaserCheckTimer
             // 
             this.LaserCheckTimer.Interval = 2000;
             this.LaserCheckTimer.Tick += new System.EventHandler(this.LaserCheckTimer_Tick);
-            // 
-            // videoControl
-            // 
-            resources.ApplyResources(this.videoControl, "videoControl");
-            this.videoControl.Name = "videoControl";
-            this.videoControl.VideoSource = null;
             // 
             // MainForm
             // 

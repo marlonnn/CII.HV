@@ -166,7 +166,7 @@
     <value>Files</value>
   </data>
   <data name="materialToolStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 15</value>
+    <value>1, 0</value>
   </data>
   <data name="materialToolStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 143</value>
@@ -262,7 +262,7 @@
     <value>About</value>
   </data>
   <data name="materialToolStrip4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 509</value>
+    <value>1, 494</value>
   </data>
   <data name="materialToolStrip4.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 219</value>
@@ -401,7 +401,7 @@
     <value>Zoom Fit</value>
   </data>
   <data name="materialToolStrip3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 371</value>
+    <value>1, 356</value>
   </data>
   <data name="materialToolStrip3.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 140</value>
@@ -494,7 +494,7 @@
     <value>Hand</value>
   </data>
   <data name="materialToolStrip2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 155</value>
+    <value>1, 140</value>
   </data>
   <data name="materialToolStrip2.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 219</value>

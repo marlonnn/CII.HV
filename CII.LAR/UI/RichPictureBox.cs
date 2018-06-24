@@ -900,14 +900,14 @@ namespace CII.LAR.UI
                     {
                         e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                         e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                        Circle circle = new Circle(new PointF(50, 60), new SizeF(40, 40));
+                        Circle circle = new Circle(new PointF(98, 60), new SizeF(40, 40));
                         //e.Graphics.DrawEllipse(pen, circle.Rectangle);
                         var size = e.Graphics.MeasureString("REC", font);
-                        e.Graphics.DrawString("REC", font, sb, circle.CenterPoint.X + 30, 60 - size.Height / 2);
+                        e.Graphics.DrawString("REC", font, sb, circle.CenterPoint.X + 30 + 48, 60 - size.Height / 2);
                         e.Graphics.FillEllipse(sb, circle.Rectangle);
                         string time = GetRecordTime();
                         var tSize = e.Graphics.MeasureString(time, font);
-                        e.Graphics.DrawString(time, font, sb, new PointF(circle.CenterPoint.X + 30 + size.Width, 60 - tSize.Height / 2));
+                        e.Graphics.DrawString(time, font, sb, new PointF(circle.CenterPoint.X + 30 + size.Width + 48, 60 - tSize.Height / 2));
                     }
                 }
                 if (rulers != null)

@@ -335,7 +335,7 @@ namespace CII.LAR.UI
         public void LoadDebugCtrl()
         {
             df = CtrlFactory.GetCtrlFactory().GetCtrlByType<DebugCtrl>(CtrlType.DebugCtrl);
-            df.Location = new Point(10, this.Height - df.Height);
+            df.Location = new Point(48, this.Height - df.Height);
             this.Controls.Add(df);
         }
 

@@ -48,6 +48,7 @@ namespace CII.LAR.UI
             {
                 updateCmbLaser = false;
                 cmbLaser.SelectedIndex = Program.EntryForm.LaserType == LaserType.SaturnFixed ? 0 : 1;
+                this.lblCameraStatus.Text = string.IsNullOrEmpty(Program.SysConfig.DeviceName) ? Properties.Resources.StrVideoNoAvailable : Program.SysConfig.DeviceName;
                 updateCmbLaser = true;
             }
         }

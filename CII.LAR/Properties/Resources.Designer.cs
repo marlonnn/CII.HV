@@ -683,6 +683,16 @@ namespace CII.LAR.Properties {
         }
 
         /// <summary>
+        ///   查找类似 No Camera Available 的本地化字符串。
+        /// </summary>
+        internal static string StrVideoNoAvailable
+        {
+            get
+            {
+                return ResourceManager.GetString("StrVideoNoAvailable", resourceCulture);
+            }
+        }
+        /// <summary>
         ///   查找类似 Screenshot success 的本地化字符串。
         /// </summary>
         internal static string StrScreenshotSuccess

@@ -159,6 +159,7 @@ namespace CII.LAR
             this.imageListView.Name = "imageListView";
             this.imageListView.ThumbnailSize = new System.Drawing.Size(120, 200);
             this.imageListView.View = Manina.Windows.Forms.View.Pane;
+            this.imageListView.ItemDoubleClick += imageListView_ItemDoubleClick;
             // 
             // FilesForm
             // 

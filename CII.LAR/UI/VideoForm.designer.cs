@@ -35,12 +35,14 @@ namespace CII.LAR.UI
             // 
             // windowsMediaPlayer
             // 
-            this.windowsMediaPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.windowsMediaPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.windowsMediaPlayer.Enabled = true;
-            this.windowsMediaPlayer.Location = new System.Drawing.Point(0, 0);
+            this.windowsMediaPlayer.Location = new System.Drawing.Point(0, 32);
             this.windowsMediaPlayer.Name = "windowsMediaPlayer";
             this.windowsMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("windowsMediaPlayer.OcxState")));
-            this.windowsMediaPlayer.Size = new System.Drawing.Size(726, 560);
+            this.windowsMediaPlayer.Size = new System.Drawing.Size(726, 528);
             this.windowsMediaPlayer.TabIndex = 0;
             // 
             // VideoForm

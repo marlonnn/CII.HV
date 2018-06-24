@@ -1,3 +1,4 @@
+using CII.LAR.MaterialSkin;
 using DevComponents.DotNetBar;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CII.LAR.UI
 {
-    public partial class VideoForm : Office2007Form
+    public partial class VideoForm : MaterialForm
     {
         private int startIndex = 0;
         private List<string> videoFiles;

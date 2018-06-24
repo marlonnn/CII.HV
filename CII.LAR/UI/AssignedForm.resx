@@ -229,7 +229,7 @@
     <value>Name</value>
   </data>
   <data name="columnHeader2.Width" type="System.Int32, mscorlib">
-    <value>100</value>
+    <value>150</value>
   </data>
   <data name="listView.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 75</value>
@@ -370,7 +370,7 @@
     <value>Search</value>
   </data>
   <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
+    <value>0, 30</value>
   </data>
   <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>826, 47</value>

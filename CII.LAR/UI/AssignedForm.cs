@@ -10,6 +10,8 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -28,6 +30,106 @@ namespace CII.LAR.UI
             allPatients = Program.SysConfig.AllPatients;
             InitializeListView();
             this.Load += AssignedForm_Load;
+            //this.listView.OwnerDraw = true;
+            //listView.DrawItem += new DrawListViewItemEventHandler(listView_DrawItem);
+            //listView.DrawSubItem += new DrawListViewSubItemEventHandler(listView_DrawSubItem);
+            //listView.DrawColumnHeader += new DrawListViewColumnHeaderEventHandler(listView_DrawColumnHeader);
+            //// Add a handler for the MouseUp event so an item can be 
+            //// selected by clicking anywhere along its width.
+            //listView.MouseUp += new MouseEventHandler(listView_MouseUp);
+        }
+
+        private void listView_MouseUp(object sender, MouseEventArgs e)
+        {
+            //ListViewItem clickedItem = listView.GetItemAt(5, e.Y);
+            //if (clickedItem != null)
+            //{
+            //    clickedItem.Selected = true;
+            //    clickedItem.Focused = true;
+            //}
+        }
+
+        private void listView_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        {
+            TextFormatFlags flags = TextFormatFlags.Left;
+
+            using (StringFormat sf = new StringFormat())
+            {
+                // Store the column text alignment, letting it default
+                // to Left if it has not been set to Center or Right.
+                switch (e.Header.TextAlign)
+                {
+                    case HorizontalAlignment.Center:
+                        sf.Alignment = StringAlignment.Center;
+                        flags = TextFormatFlags.HorizontalCenter;
+                        break;
+                    case HorizontalAlignment.Right:
+                        sf.Alignment = StringAlignment.Far;
+                        flags = TextFormatFlags.Right;
+                        break;
+                }
+
+                // Draw the text and background for a subitem with a 
+                // negative value. 
+                double subItemValue;
+                if (e.ColumnIndex > 0 && Double.TryParse(
+                    e.SubItem.Text, NumberStyles.Currency,
+                    NumberFormatInfo.CurrentInfo, out subItemValue) &&
+                    subItemValue < 0)
+                {
+                    // Unless the item is selected, draw the standard 
+                    // background to make it stand out from the gradient.
+                    if ((e.ItemState & ListViewItemStates.Selected) == 0)
+                    {
+                        e.DrawBackground();
+                    }
+
+                    // Draw the subitem text in red to highlight it. 
+                    e.Graphics.DrawString(e.SubItem.Text,
+                        listView.Font, Brushes.Red, e.Bounds, sf);
+
+                    return;
+                }
+
+                // Draw normal text for a subitem with a nonnegative 
+                // or nonnumerical value.
+                e.DrawText(flags);
+            }
+        }
+
+        private void listView_DrawItem(object sender, DrawListViewItemEventArgs e)
+        {
+            if ((e.State & ListViewItemStates.Selected) != 0)
+            {
+                // Draw the background and focus rectangle for a selected item.
+                e.Graphics.FillRectangle(Brushes.Maroon, e.Bounds);
+                e.DrawFocusRectangle();
+            }
+            else
+            {
+                // Draw the background for an unselected item.
+                using (LinearGradientBrush brush =
+                    new LinearGradientBrush(e.Bounds, Color.Orange,
+                    Color.Maroon, LinearGradientMode.Horizontal))
+                {
+                    e.Graphics.FillRectangle(brush, e.Bounds);
+                }
+            }
+
+            // Draw the item text for views other than the Details view.
+            if (listView.View != System.Windows.Forms.View.Details)
+            {
+                e.DrawText();
+            }
+        }
+
+        private void listView_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
+        {
+            using (var sb = new SolidBrush(Color.FromArgb(109, 116, 131)))
+            {
+                e.Graphics.FillRectangle(sb, e.Bounds);
+                e.DrawText();
+            }
         }
 
         private void AssignedForm_Load(object sender, EventArgs e)

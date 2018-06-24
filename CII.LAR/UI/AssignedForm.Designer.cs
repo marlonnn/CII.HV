@@ -54,7 +54,7 @@ namespace CII.LAR.UI
             // 
             resources.ApplyResources(this.imageListView, "imageListView");
             this.imageListView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(223)))), ((int)(((byte)(238)))));
-            this.imageListView.DefaultImage = ((System.Drawing.Image)(resources.GetObject("imageListView.DefaultImage")));
+            this.imageListView.DefaultImage = global::CII.LAR.Properties.Resources.video;
             this.imageListView.ErrorImage = ((System.Drawing.Image)(resources.GetObject("imageListView.ErrorImage")));
             this.imageListView.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.imageListView.Name = "imageListView";

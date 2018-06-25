@@ -194,7 +194,7 @@ namespace CII.LAR
         public MainForm()
         {
             InitializeComponent();
-            //this.WindowState = FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Maximized;
             hotKeyManager = new HotKeyManager(this);
             hotKeyManager.LocalHotKeyPressed += HotKeyManager_LocalHotKeyPressed;
             resources = new ComponentResourceManager(typeof(MainForm));
@@ -752,14 +752,14 @@ namespace CII.LAR
             {
                 Program.SysConfig.LiveMode = true;
                 Size videoSize = this.richPictureBox.RealSize;
-                int offsetX = (this.Width - videoSize.Width) / 2;
-                int offsetY = (this.Height - videoSize.Height) / 2;
+                int offsetX = (this.richPictureBox.Width - videoSize.Width) / 2;
+                int offsetY = (this.richPictureBox.Height - videoSize.Height) / 2;
                 this.richPictureBox.SetOffset(offsetX, offsetY);
                 this.videoControl.Bounds = new Rectangle(0, 0, videoSize.Width, videoSize.Height);
                 this.videoControl.VideoSource = videoDevice;
                 this.videoControl.VideoSource.NewFrame += new NewFrameEventHandler(VideoSource_NewFrame);
                 this.videoControl.Start();
-
+                this.richPictureBox.Zoom = 1;
             }
         }
 

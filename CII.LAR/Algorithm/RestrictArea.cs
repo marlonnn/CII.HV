@@ -46,7 +46,7 @@ namespace CII.LAR.Algorithm
             set { this.videoBounds = value; }
         }
 
-        private GraphicsPath videoPath;
+        //private GraphicsPath videoPath;
         private GraphicsPath motorPath;
 
         private Region videoRegion;
@@ -54,6 +54,13 @@ namespace CII.LAR.Algorithm
         {
             get { return this.videoRegion; }
             private set { this.videoRegion = value; }
+        }
+
+        private Region finalValidRegion;
+        public Region FinalValidRegion
+        {
+            get { return this.finalValidRegion; }
+            private set { this.finalValidRegion = value; }
         }
 
         private Region motorRegion;
@@ -131,7 +138,7 @@ namespace CII.LAR.Algorithm
                     //g.DrawLine(pen, transformedMotorPoints[3].X, transformedMotorPoints[3].Y, transformedMotorPoints[0].X, transformedMotorPoints[0].Y);
                     //SolidBrush sb = new SolidBrush(Color.FromArgb(0xC8, 0x80, 0x80, 0x80));
                     SolidBrush sb = new SolidBrush(Color.Gray);
-                    g.FillRegion(sb, VideoRegion);
+                    g.FillRegion(sb, FinalValidRegion);
                     sb.Dispose();
                 }
             }
@@ -139,17 +146,27 @@ namespace CII.LAR.Algorithm
 
         public void CalculateRegion()
         {
-            videoPath = new GraphicsPath();
+            //videoPath = new GraphicsPath();
             motorPath = new GraphicsPath();
 
-            videoPath.AddRectangle(new RectangleF(this.picturebox.OffsetX, this.picturebox.OffsetY, this.picturebox.RealSize.Width, this.picturebox.RealSize.Height));
-            VideoRegion = new Region(videoPath);
+            //videoPath.AddRectangle(new RectangleF(this.picturebox.OffsetX, this.picturebox.OffsetY, this.picturebox.RealSize.Width, this.picturebox.RealSize.Height));
+            //VideoRegion = new Region(videoPath);
 
             motorPath.AddPolygon(transformedMotorPoints.ToArray());
             MotorRegion = new Region(motorPath);
 
-            VideoRegion.Xor(MotorRegion);
-            VideoRegion = VideoRegion.Clone();
+            Region videoRegion = GetVideoRegion();
+            videoRegion.Xor(MotorRegion);
+
+            Region tempRegion = GetVideoRegion();
+            tempRegion.Exclude(videoRegion);
+
+            FinalValidRegion = GetVideoRegion();
+
+            FinalValidRegion.Exclude(tempRegion);
+            videoRegion.Dispose();
+            tempRegion.Dispose();
+            motorPath.Dispose();
         }
 
         /// <summary>
@@ -185,9 +202,13 @@ namespace CII.LAR.Algorithm
             return newPoint;
         }
 
-        public void VideoBoundsToRegion()
+        public Region GetVideoRegion()
         {
-            videoPath.AddRectangle(videoBounds);
+            var videoPath = new GraphicsPath();
+            videoPath.AddRectangle(new RectangleF(this.picturebox.OffsetX, this.picturebox.OffsetY, this.picturebox.RealSize.Width, this.picturebox.RealSize.Height));
+            VideoRegion = new Region(videoPath);
+            videoPath.Dispose();
+            return VideoRegion;
         }
 
         public void MotorBoundsToRegion()

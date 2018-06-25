@@ -16,6 +16,292 @@ namespace CII.LAR.DrawTools
     /// </summary>
     public class DrawLine : DrawObject
     {
+        public struct SEGMENT
+        {
+
+            #region "Members"
+            public int X0;
+            public int Y0;
+            public int X1;
+            public int Y1;
+            public System.Drawing.Point P0
+            {
+                get { return new System.Drawing.Point(X0, Y0); }
+                set
+                {
+                    X0 = value.X;
+                    Y0 = value.Y;
+                }
+            }
+            public System.Drawing.Point P1
+            {
+                get { return new System.Drawing.Point(X1, Y1); }
+                set
+                {
+                    X1 = value.X;
+                    Y1 = value.Y;
+                }
+            }
+            #endregion
+
+            #region "Constructors"
+            public SEGMENT(SEGMENT aSEGMENT)
+            {
+                X0 = Y0 = X1 = Y1 = 0;
+                try
+                {
+                    this.X0 = aSEGMENT.X0;
+                    this.Y0 = aSEGMENT.Y0;
+                    this.X1 = aSEGMENT.X1;
+                    this.Y1 = aSEGMENT.Y1;
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.GetLogger<SEGMENT>().Error(ex.Message);
+                    LogHelper.GetLogger<SEGMENT>().Error(ex.StackTrace);
+                }
+            }
+            public SEGMENT(int X0, int Y0, int X1, int Y1)
+            {
+                this.X0 = this.Y0 = this.X1 = this.Y1 = 0;
+                try
+                {
+                    this.X0 = X0;
+                    this.Y0 = Y0;
+                    this.X1 = X1;
+                    this.Y1 = Y1;
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.GetLogger<SEGMENT>().Error(ex.Message);
+                    LogHelper.GetLogger<SEGMENT>().Error(ex.StackTrace);
+                }
+            }
+            public SEGMENT(Point P0, Point P1)
+            {
+                X0 = Y0 = X1 = Y1 = 0;
+                try
+                {
+                    this.X0 = P0.X;
+                    this.Y0 = P0.Y;
+                    this.X1 = P1.X;
+                    this.Y1 = P1.Y;
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.GetLogger<SEGMENT>().Error(ex.Message);
+                    LogHelper.GetLogger<SEGMENT>().Error(ex.StackTrace);
+                }
+            }
+            #endregion
+
+            #region "Member functions"
+            public bool ContainsX(int XQuote)
+            {
+                //(Valido se P1 a sinistra di P0)
+                if ((XQuote >= P0.X) && (XQuote <= P1.X))
+                {
+                    return true;
+                }
+                else
+                {
+                    //(Valido se P0 a sinistra di P1)
+                    if ((XQuote >= P1.X) && (XQuote <= P0.X))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            public System.Drawing.Point MediumPoint()
+            {
+                try
+                {
+                    System.Drawing.Point retVal = default(System.Drawing.Point);
+                    retVal.X = (this.X0 + this.X1) / 2;
+                    retVal.Y = (this.Y0 + this.Y1) / 2;
+                    return retVal;
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.GetLogger<SEGMENT>().Error(ex.Message);
+                    LogHelper.GetLogger<SEGMENT>().Error(ex.StackTrace);
+                    return Point.Empty;
+                }
+            }
+            public static double SegmentModule(System.Drawing.Point P0, System.Drawing.Point P1)
+            {
+                try
+                {
+                    return System.Math.Sqrt(System.Math.Pow(P1.X - P0.X, 2) + System.Math.Pow(P1.Y - P0.Y, 2));
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.GetLogger<SEGMENT>().Error(ex.Message);
+                    LogHelper.GetLogger<SEGMENT>().Error(ex.StackTrace);
+                    return 0;
+                }
+            }
+            public double SegmentModule()
+            {
+                try
+                {
+                    return System.Math.Sqrt(System.Math.Pow(X1 - X0, 2) + System.Math.Pow(Y1 - Y0, 2));
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.GetLogger<SEGMENT>().Error(ex.Message);
+                    LogHelper.GetLogger<SEGMENT>().Error(ex.StackTrace);
+                    return 0;
+                }
+            }
+            /// <summary>
+            /// Ritorna la direzione (angolo in radianti) del segmento ...
+            /// </summary>
+            /// <returns></returns>
+            /// <remarks></remarks>
+            public double SegmentDirection()
+            {
+                try
+                {
+                    double dblHyp = 0;
+                    double dblSin = 0;
+                    double RefX = 0;
+                    double RefY = 0;
+                    //Traslo il segmento in modo che parta dall'origine ...
+                    RefX = X1 - X0;
+                    RefY = -(Y1 - Y0);
+                    //Memo: in Windows l'asse Y � invertito ...
+                    //Riporto a sistema di coordinate standard per
+                    //applicare formule trigonometriche ...
+
+                    if ((RefY == 0))
+                    {
+                        //Segmento orizzontale ...
+                        if ((RefX > 0))
+                        {
+                            //Angolo nullo ...
+                            return 0;
+                        }
+                        else
+                        {
+                            //Angolo piatto ...
+                            return System.Math.PI;
+                        }
+                    }
+
+                    if ((RefX == 0))
+                    {
+                        //Segmento verticale ...
+                        if ((RefY > 0))
+                        {
+                            return System.Math.PI / 2;
+                        }
+                        else
+                        {
+                            return -System.Math.PI / 2;
+                        }
+                    }
+
+                    //Se sono arrivato fino a qui, l'angolo non � un multiplo di Pi/2 ...
+                    if ((RefX > 0))
+                    {
+                        if ((RefY > 0))
+                        {
+                            //Primo quadrante ....
+                            dblHyp = System.Math.Sqrt((RefX * RefX + RefY * RefY));
+                            //Ipotenusa ...
+                            dblSin = RefY / dblHyp;
+                            return System.Math.Atan(dblSin / System.Math.Sqrt(-dblSin * dblSin + 1));
+                        }
+                        else
+                        {
+                            //Quarto quadrante ...
+                            RefY = -RefY;
+                            dblHyp = System.Math.Sqrt((RefX * RefX + RefY * RefY));
+                            //Ipotenusa ...
+                            dblSin = RefY / dblHyp;
+                            return (2 * System.Math.PI) - System.Math.Atan(dblSin / System.Math.Sqrt(-dblSin * dblSin + 1));
+                        }
+                    }
+                    else
+                    {
+                        if ((RefY > 0))
+                        {
+                            //Secondo quadrante ...
+                            RefX = -RefX;
+                            dblHyp = System.Math.Sqrt((RefX * RefX + RefY * RefY));
+                            //Ipotenusa ...
+                            dblSin = Convert.ToDouble(RefY) / dblHyp;
+                            return -System.Math.Atan(dblSin / System.Math.Sqrt(-dblSin * dblSin + 1)) + System.Math.PI;
+                        }
+                        else
+                        {
+                            //Terzo quadrante ...
+                            RefX = -RefX;
+                            RefY = -RefY;
+                            dblHyp = System.Math.Sqrt((RefX * RefX + RefY * RefY));
+                            //Ipotenusa ...
+                            dblSin = RefY / dblHyp;
+                            return System.Math.Atan(dblSin / System.Math.Sqrt(-dblSin * dblSin + 1)) + System.Math.PI;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.GetLogger<SEGMENT>().Error(ex.Message);
+                    LogHelper.GetLogger<SEGMENT>().Error(ex.StackTrace);
+                    return 0;
+                }
+            }
+            #endregion
+
+            #region "Operators"
+
+            public override int GetHashCode()
+            {
+                return base.GetHashCode();
+            }
+
+            public override bool Equals(object obj)
+            {
+                if (obj == null)
+                    return false;
+
+                if (GetType() != obj.GetType())
+                    return false;
+                SEGMENT g = (SEGMENT)obj;
+                if (this.GetHashCode() == g.GetHashCode())
+                    return true;
+                else
+                    return false;
+            }
+
+            public static bool operator ==(SEGMENT S1, SEGMENT S2)
+            {
+                if ((S1.X0 == S2.X0) && (S1.X1 == S2.X1) && (S1.Y0 == S2.Y0) && (S1.Y1 == S2.Y1))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            public static bool operator !=(SEGMENT S1, SEGMENT S2)
+            {
+                if ((S1.X0 != S2.X0) | (S1.X1 != S2.X1) | (S1.Y0 != S2.Y0) | (S1.Y1 != S2.Y1))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            #endregion
+        }
+
         public struct Vector2D
         {
             public double X;
@@ -98,6 +384,77 @@ namespace CII.LAR.DrawTools
             font.Dispose();
         }
 
+        private double CvRadToDeg(double RadAngle)
+        {
+            //espresso in gradi, 0-360
+            return RadAngle * (180 / (System.Math.Atan(1) * 4));
+        }
+        private float _length;
+        private float LineLength(Point p1, Point p2, float ScaleFactor = 1)
+        {
+            Rectangle r = NormalizeRect(p1, p2);
+            _length = (float)(Math.Sqrt(Math.Pow(r.Width, 2) + Math.Pow(r.Height, 2)) / ScaleFactor);
+            return _length;
+        }
+        private Rectangle NormalizeRect(Point p1, Point p2)
+        {
+            Rectangle r = new Rectangle();
+            if (p1.X < p2.X)
+            {
+                r.X = p1.X;
+                r.Width = p2.X - p1.X;
+            }
+            else
+            {
+                r.X = p2.X;
+                r.Width = p1.X - p2.X;
+            }
+            if (p1.Y < p2.Y)
+            {
+                r.Y = p1.Y;
+                r.Height = p2.Y - p1.Y;
+            }
+            else
+            {
+                r.Y = p2.Y;
+                r.Height = p1.Y - p2.Y;
+            }
+            return r;
+        }
+
+        public static string strCutDecimals(double Value, int DesiredDecDigits)
+        {
+            // ERROR: Not supported in C#: OnErrorStatement
+
+            return Convert.ToString(CutDecimals(Value, DesiredDecDigits));
+        }
+        public static double CutDecimals(double Value, int DesiredDecDigits)
+        {
+            double functionReturnValue = 0;
+            try
+            {
+                if ((Value == double.NegativeInfinity || Value == double.PositiveInfinity))
+                {
+                    return Value;
+                }
+                if (DesiredDecDigits > 5)
+                {
+                    DesiredDecDigits = 5;
+                }
+                functionReturnValue = Convert.ToInt32(Value * Math.Pow(10, DesiredDecDigits)) / (Math.Pow(10, DesiredDecDigits));
+            }
+            catch (Exception ex)
+            {
+                functionReturnValue = Value;
+            }
+            return functionReturnValue;
+        }
+
+        private float Angle(Point p1, Point p2)
+        {
+            float _angle = (float)(Math.Atan((p1.Y - p2.Y) / (p1.X - p2.X)) * (180 / Math.PI));
+            return _angle;
+        }
         /// <summary>
         /// draw line graphic
         /// </summary>
@@ -107,6 +464,12 @@ namespace CII.LAR.DrawTools
         {
             g.SmoothingMode = SmoothingMode.AntiAlias;
 
+            double CurrentAngle = new SEGMENT((int)startDataPoint.X, (int)startDataPoint.Y, (int)endDataPoint.X, (int)endDataPoint.Y).SegmentDirection();
+            CurrentAngle = CvRadToDeg(CurrentAngle);
+            if (CurrentAngle > 180)
+            {
+                CurrentAngle = CurrentAngle - 360;
+            }
             using (Pen pen = new Pen(Color.FromArgb(GraphicsProperties.Alpha, GraphicsProperties.Color), GraphicsProperties.PenWidth))
             {
                 if (IsMoving)
@@ -116,6 +479,38 @@ namespace CII.LAR.DrawTools
                 }
                 g.DrawLine(pen, startDataPoint.X + MovingOffset.X, startDataPoint.Y + MovingOffset.Y, 
                     endDataPoint.X + MovingOffset.X, endDataPoint.Y + MovingOffset.Y);
+                int OriginCrossArmLength = 20;
+                Point midPoint = new Point();
+                PointF origin = new PointF(startDataPoint.X + MovingOffset.X, startDataPoint.Y + MovingOffset.Y);
+                PointF last = new PointF(endDataPoint.X + MovingOffset.X, endDataPoint.Y + MovingOffset.Y);
+                midPoint.X = Math.Min((int)origin.X, (int)last.X) + ((Math.Max((int)origin.X, (int)last.X) - Math.Min((int)origin.X, (int)endDataPoint.X)) / 2);
+                midPoint.Y = Math.Min((int)origin.Y, (int)last.Y) + ((Math.Max((int)origin.Y, (int)last.Y) - Math.Min((int)origin.Y, (int)endDataPoint.Y)) / 2);
+                g.DrawLine(pen, origin.X - OriginCrossArmLength, origin.Y, origin.X + OriginCrossArmLength, origin.Y);
+                g.DrawLine(pen, origin.X, origin.Y - OriginCrossArmLength, origin.X, origin.Y + OriginCrossArmLength);
+                g.DrawArc(pen, origin.X - OriginCrossArmLength, origin.Y - OriginCrossArmLength, 2 * OriginCrossArmLength, 2 * OriginCrossArmLength, 0, Convert.ToInt32(-CurrentAngle));
+                using (System.Drawing.Drawing2D.Matrix mx = new System.Drawing.Drawing2D.Matrix())
+                using (StringFormat sf = new StringFormat())
+                {
+                    string lineLength = (LineLength(Point.Ceiling(origin), Point.Ceiling(last))).ToString("F2");
+                    string ls = strCutDecimals(CurrentAngle, 1);
+                    SizeF l = g.MeasureString(ls, this.richPictureBox.Font, richPictureBox.ClientSize, sf);
+                    sf.LineAlignment = StringAlignment.Center;
+                    sf.Alignment = StringAlignment.Center;
+                    //mx.Translate(midPoint.X, midPoint.Y);
+                    //mx.Rotate(Angle(Point.Ceiling(origin), Point.Ceiling(last)));
+                    //g.Transform = mx;
+                    //Rectangle rt = new Rectangle(0, 0, (int)l.Width, (int)l.Height);
+                    //rt.Inflate(3, 3);
+                    //rt.Offset(-(int)(l.Width / 2), -(int)(l.Height / 2));
+                    //using (SolidBrush backBrush = new SolidBrush(Color.FromArgb(GraphicsProperties.Alpha, GraphicsProperties.Color)))
+                    //{
+                    //    g.FillEllipse(backBrush, rt);
+                    //}
+                    using (SolidBrush foreBrush = new SolidBrush(Color.FromArgb(GraphicsProperties.Alpha, GraphicsProperties.Color)))
+                    {
+                        g.DrawString(ls, richPictureBox.Font, foreBrush, midPoint.X, midPoint.Y, sf);
+                    }
+                }
             }
         }
 

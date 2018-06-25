@@ -194,7 +194,7 @@ namespace CII.LAR
         public MainForm()
         {
             InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
+            //this.WindowState = FormWindowState.Maximized;
             hotKeyManager = new HotKeyManager(this);
             hotKeyManager.LocalHotKeyPressed += HotKeyManager_LocalHotKeyPressed;
             resources = new ComponentResourceManager(typeof(MainForm));

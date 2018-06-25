@@ -30,61 +30,67 @@ namespace CII.LAR
         /// </summary>
         private void InitializeComponent()
         {
-            this.colorSlider1 = new CII.LAR.MaterialSkin.ColorSlider();
-            this.materialSlider2 = new CII.LAR.MaterialSkin.MaterialSlider();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestForm));
+            this.materialToolStrip1 = new CII.LAR.MaterialSkin.MaterialToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.materialToolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // colorSlider1
+            // materialToolStrip1
             // 
-            this.colorSlider1.BackColor = System.Drawing.Color.Transparent;
-            this.colorSlider1.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-            this.colorSlider1.LargeChange = ((uint)(5u));
-            this.colorSlider1.Location = new System.Drawing.Point(67, 95);
-            this.colorSlider1.Name = "colorSlider1";
-            this.colorSlider1.Size = new System.Drawing.Size(200, 30);
-            this.colorSlider1.SmallChange = ((uint)(1u));
-            this.colorSlider1.TabIndex = 0;
-            this.colorSlider1.Text = "colorSlider1";
-            this.colorSlider1.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
+            this.materialToolStrip1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.materialToolStrip1.AutoSize = false;
+            this.materialToolStrip1.Depth = 0;
+            this.materialToolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.materialToolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripButton2});
+            this.materialToolStrip1.Location = new System.Drawing.Point(9, 40);
+            this.materialToolStrip1.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.materialToolStrip1.Name = "materialToolStrip1";
+            this.materialToolStrip1.Size = new System.Drawing.Size(111, 47);
+            this.materialToolStrip1.TabIndex = 0;
+            this.materialToolStrip1.Text = "materialToolStrip1";
             // 
-            // materialSlider2
+            // toolStripButton1
             // 
-            this.materialSlider2.BackColor = System.Drawing.Color.Transparent;
-            this.materialSlider2.BarInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
-            this.materialSlider2.BarOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
-            this.materialSlider2.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-            this.materialSlider2.Depth = 0;
-            this.materialSlider2.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
-            this.materialSlider2.ElapsedOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(95)))));
-            this.materialSlider2.LargeChange = ((uint)(5u));
-            this.materialSlider2.Location = new System.Drawing.Point(87, 60);
-            this.materialSlider2.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
-            this.materialSlider2.Name = "materialSlider2";
-            this.materialSlider2.Size = new System.Drawing.Size(150, 20);
-            this.materialSlider2.SmallChange = ((uint)(1u));
-            this.materialSlider2.TabIndex = 2;
-            this.materialSlider2.Text = "materialSlider2";
-            this.materialSlider2.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
-            this.materialSlider2.ThumbOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(202)))), ((int)(((byte)(209)))), ((int)(((byte)(224)))));
-            this.materialSlider2.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
-            this.materialSlider2.ThumbSize = 6;
+            this.toolStripButton1.AutoSize = false;
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(35, 35);
+            this.toolStripButton1.Text = "toolStripButton1";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.AutoSize = false;
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(35, 35);
+            this.toolStripButton2.Text = "toolStripButton2";
             // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.materialSlider2);
-            this.Controls.Add(this.colorSlider1);
+            this.Controls.Add(this.materialToolStrip1);
             this.Name = "TestForm";
             this.Text = "···";
+            this.materialToolStrip1.ResumeLayout(false);
+            this.materialToolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private ColorSlider colorSlider1;
-        private MaterialSlider materialSlider2;
+        private MaterialToolStrip materialToolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }

@@ -215,6 +215,14 @@ namespace CII.LAR
             serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
             InitializeComboBoxLense();
             this.materialTitleBar1.CloseHandler += CloseHandler;
+            this.materialTitleBar1.MinHandler += MinHandler;
+            this.materialTitleBar1.Icon = this.Icon;
+            this.materialTitleBar1.Text = this.Text;
+        }
+
+        private void MinHandler(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void CloseHandler(object sender, EventArgs e)
@@ -1291,6 +1299,7 @@ namespace CII.LAR
                     }
                 }
             }
+            this.materialTitleBar1.Text = this.Text;
         }
 
         private void viewLog(string[] logname)

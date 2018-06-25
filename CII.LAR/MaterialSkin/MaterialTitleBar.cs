@@ -28,14 +28,14 @@ namespace CII.LAR.MaterialSkin
         private Rectangle _statusBarBounds;
         private Rectangle _actionBarBounds;
         private MaterialToolButton btnClose;
-        private MaterialToolButton materialToolButton1;
+        private MaterialToolButton btnMin;
 
         public bool MaximizeBox { get; set; }
         public bool MinimizeBox { get; set; }
 
-        private Image icon;
-        [Description("Icon"), Category("MaterialTitleBar"), DefaultValue(typeof(Image), "null")]
-        public Image Icon
+        private Icon icon;
+        [Description("Icon"), Category("MaterialTitleBar"), DefaultValue(typeof(Icon), "null")]
+        public Icon Icon
         {
             get { return this.icon; }
             set
@@ -50,7 +50,7 @@ namespace CII.LAR.MaterialSkin
         }
 
 
-        private void InvokeInvalidate(Image value)
+        private void InvokeInvalidate(Icon value)
         {
             if (!IsHandleCreated)
                 return;
@@ -63,9 +63,27 @@ namespace CII.LAR.MaterialSkin
 
         private void InitializeComponent()
         {
+            this.btnMin = new CII.LAR.MaterialSkin.MaterialToolButton();
             this.btnClose = new CII.LAR.MaterialSkin.MaterialToolButton();
-            this.materialToolButton1 = new CII.LAR.MaterialSkin.MaterialToolButton();
             this.SuspendLayout();
+            // 
+            // btnMin
+            // 
+            this.btnMin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMin.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnMin.BtnType = CII.LAR.MaterialSkin.ButtonType.Min;
+            this.btnMin.Depth = 0;
+            this.btnMin.Icon = null;
+            this.btnMin.Location = new System.Drawing.Point(453, 4);
+            this.btnMin.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnMin.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.btnMin.Name = "btnMin";
+            this.btnMin.Primary = false;
+            this.btnMin.Size = new System.Drawing.Size(22, 22);
+            this.btnMin.TabIndex = 1;
+            this.btnMin.UseVisualStyleBackColor = true;
+            this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
             // 
             // btnClose
             // 
@@ -85,27 +103,10 @@ namespace CII.LAR.MaterialSkin
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // materialToolButton1
-            // 
-            this.materialToolButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialToolButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialToolButton1.BtnType = CII.LAR.MaterialSkin.ButtonType.Min;
-            this.materialToolButton1.Depth = 0;
-            this.materialToolButton1.Icon = null;
-            this.materialToolButton1.Location = new System.Drawing.Point(453, 4);
-            this.materialToolButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialToolButton1.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
-            this.materialToolButton1.Name = "materialToolButton1";
-            this.materialToolButton1.Primary = false;
-            this.materialToolButton1.Size = new System.Drawing.Size(22, 22);
-            this.materialToolButton1.TabIndex = 1;
-            this.materialToolButton1.UseVisualStyleBackColor = true;
-            // 
             // MaterialTitleBar
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
-            this.Controls.Add(this.materialToolButton1);
+            this.Controls.Add(this.btnMin);
             this.Controls.Add(this.btnClose);
             this.Name = "MaterialTitleBar";
             this.Size = new System.Drawing.Size(500, 32);
@@ -195,7 +196,7 @@ namespace CII.LAR.MaterialSkin
                 if (Icon != null)
                 {
                     var iconRect = new Rectangle(8, 4, 24, 24);
-                    g.DrawImage(Icon, iconRect);
+                    g.DrawImage(Icon.ToBitmap(), iconRect);
                 }
 
                 //Form title
@@ -207,9 +208,15 @@ namespace CII.LAR.MaterialSkin
         }
 
         public EventHandler CloseHandler;
+        public EventHandler MinHandler;
         private void btnClose_Click(object sender, EventArgs e)
         {
             CloseHandler?.Invoke(sender, e);
+        }
+
+        private void btnMin_Click(object sender, EventArgs e)
+        {
+            MinHandler?.Invoke(sender, e);
         }
     }
 }

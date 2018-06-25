@@ -61,6 +61,7 @@ namespace CII.LAR
             this.videoControl = new CII.LAR.UI.VideoControl();
             this.systemMonitorTimer = new System.Windows.Forms.Timer(this.components);
             this.LaserCheckTimer = new System.Windows.Forms.Timer(this.components);
+            this.materialTitleBar1 = new CII.LAR.MaterialSkin.MaterialTitleBar();
             this.materialToolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.materialToolStrip4.SuspendLayout();
@@ -319,9 +320,9 @@ namespace CII.LAR
             // 
             // richPictureBox
             // 
-            resources.ApplyResources(this.richPictureBox, "richPictureBox");
             this.richPictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.richPictureBox.CaptureVideo = false;
+            resources.ApplyResources(this.richPictureBox, "richPictureBox");
             this.richPictureBox.DrawObject = null;
             this.richPictureBox.LaserFunction = false;
             this.richPictureBox.Name = "richPictureBox";
@@ -356,11 +357,22 @@ namespace CII.LAR
             this.LaserCheckTimer.Interval = 2000;
             this.LaserCheckTimer.Tick += new System.EventHandler(this.LaserCheckTimer_Tick);
             // 
+            // materialTitleBar1
+            // 
+            this.materialTitleBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
+            this.materialTitleBar1.Depth = 0;
+            resources.ApplyResources(this.materialTitleBar1, "materialTitleBar1");
+            this.materialTitleBar1.MaximizeBox = true;
+            this.materialTitleBar1.MinimizeBox = true;
+            this.materialTitleBar1.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.materialTitleBar1.Name = "materialTitleBar1";
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.materialTitleBar1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.richPictureBox);
             this.DrawIcon = true;
@@ -410,5 +422,6 @@ namespace CII.LAR
         private System.Windows.Forms.Timer systemMonitorTimer;
         private System.Windows.Forms.Timer LaserCheckTimer;
         private UI.VideoControl videoControl;
+        private MaterialTitleBar materialTitleBar1;
     }
 }

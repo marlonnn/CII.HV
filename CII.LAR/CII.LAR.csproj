@@ -234,6 +234,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MaterialSkin\MaterialTextBox.cs" />
+    <Compile Include="MaterialSkin\MaterialTitleBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\MaterialToolButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MaterialSkin\MaterialToolStrip.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -605,6 +611,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MaterialSkin\ColorSlider.resx">
       <DependentUpon>ColorSlider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialSkin\MaterialTitleBar.resx">
+      <DependentUpon>MaterialTitleBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -536,10 +536,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
-  <data name="richPictureBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="richPictureBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="richPictureBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -548,7 +548,7 @@
     <value>0, 32</value>
   </data>
   <data name="richPictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>787, 726</value>
+    <value>787, 758</value>
   </data>
   <data name="richPictureBox.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -567,6 +567,30 @@
   </data>
   <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="materialTitleBar1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="materialTitleBar1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="materialTitleBar1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>787, 32</value>
+  </data>
+  <data name="materialTitleBar1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;materialTitleBar1.Name" xml:space="preserve">
+    <value>materialTitleBar1</value>
+  </data>
+  <data name="&gt;&gt;materialTitleBar1.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialTitleBar, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialTitleBar1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;materialTitleBar1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 12</value>

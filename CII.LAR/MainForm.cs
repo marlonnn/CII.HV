@@ -214,6 +214,12 @@ namespace CII.LAR
             serialPortCom = SerialPortCommunication.GetInstance();
             serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
             InitializeComboBoxLense();
+            this.materialTitleBar1.CloseHandler += CloseHandler;
+        }
+
+        private void CloseHandler(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void MainForm_Load(object sender, EventArgs e)

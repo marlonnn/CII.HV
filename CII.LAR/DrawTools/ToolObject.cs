@@ -15,8 +15,6 @@ namespace CII.LAR.DrawTools
     /// </summary>
     public abstract class ToolObject : Tool
     {
-        protected int clickCount;
-
         protected DrawObject drawObject;
 
         private Cursor cursor;

@@ -15,6 +15,13 @@ namespace CII.LAR.DrawTools
     /// </summary>
     public class Tool
     {
+        protected int clickCount;
+
+        public int ClickCount
+        {
+            get { return this.clickCount; }
+        }
+
         protected Point endPoint = new Point(0, 0);
         protected Point lastPoint = new Point(0, 0);
         protected Point startPoint = new Point(0, 0);

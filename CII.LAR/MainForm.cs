@@ -1088,6 +1088,9 @@ namespace CII.LAR
         /// <param name="e"></param>
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+            var index = (int)this.richPictureBox.ActiveTool;
+            var tool = this.richPictureBox.Tools[index];
+            if (tool.ClickCount % 2 != 0) return;
             TransparentButton deleteButton = sender as TransparentButton;
             if (deleteButton != null)
             {

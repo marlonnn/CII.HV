@@ -19,19 +19,9 @@ namespace CII.LAR.MaterialSkin
         [Browsable(false)]
         public MouseState MouseState { get; set; }
 
-        private const int STATUS_BAR_HEIGHT = 32;
-        private const int STATUS_BAR_BUTTON_WIDTH = STATUS_BAR_HEIGHT;
-        private const int ACTION_BAR_HEIGHT = 40;
-        private Rectangle _minButtonBounds;
-        private Rectangle _maxButtonBounds;
-        private Rectangle _xButtonBounds;
-        private Rectangle _statusBarBounds;
-        private Rectangle _actionBarBounds;
         private MaterialToolButton btnClose;
         private MaterialToolButton btnMin;
-
-        public bool MaximizeBox { get; set; }
-        public bool MinimizeBox { get; set; }
+        private MaterialToolButton btnMax;
 
         private Icon icon;
         [Description("Icon"), Category("MaterialTitleBar"), DefaultValue(typeof(Icon), "null")]
@@ -64,6 +54,7 @@ namespace CII.LAR.MaterialSkin
         private void InitializeComponent()
         {
             this.btnMin = new CII.LAR.MaterialSkin.MaterialToolButton();
+            this.btnMax = new CII.LAR.MaterialSkin.MaterialToolButton();
             this.btnClose = new CII.LAR.MaterialSkin.MaterialToolButton();
             this.SuspendLayout();
             // 
@@ -75,7 +66,7 @@ namespace CII.LAR.MaterialSkin
             this.btnMin.BtnType = CII.LAR.MaterialSkin.ButtonType.Min;
             this.btnMin.Depth = 0;
             this.btnMin.Icon = null;
-            this.btnMin.Location = new System.Drawing.Point(453, 4);
+            this.btnMin.Location = new System.Drawing.Point(450, 4);
             this.btnMin.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnMin.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnMin.Name = "btnMin";
@@ -84,6 +75,24 @@ namespace CII.LAR.MaterialSkin
             this.btnMin.TabIndex = 1;
             this.btnMin.UseVisualStyleBackColor = true;
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
+            // 
+            // btnMax
+            // 
+            this.btnMax.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMax.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnMax.BtnType = CII.LAR.MaterialSkin.ButtonType.Max;
+            this.btnMax.Depth = 0;
+            this.btnMax.Icon = null;
+            this.btnMax.Location = new System.Drawing.Point(450, 4);
+            this.btnMax.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnMax.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.btnMax.Name = "btnMax";
+            this.btnMax.Primary = false;
+            this.btnMax.Size = new System.Drawing.Size(22, 22);
+            this.btnMax.TabIndex = 1;
+            this.btnMax.UseVisualStyleBackColor = true;
+            this.btnMax.Click += new System.EventHandler(this.btnMax_Click);
             // 
             // btnClose
             // 
@@ -107,6 +116,7 @@ namespace CII.LAR.MaterialSkin
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.Controls.Add(this.btnMin);
+            //this.Controls.Add(this.btnMax);
             this.Controls.Add(this.btnClose);
             this.Name = "MaterialTitleBar";
             this.Size = new System.Drawing.Size(500, 32);
@@ -117,20 +127,12 @@ namespace CII.LAR.MaterialSkin
         public MaterialTitleBar()
         {
             InitializeComponent();
-            _statusBarBounds = new Rectangle(0, 0, Width, STATUS_BAR_HEIGHT);
-            MaximizeBox = true;
-            MinimizeBox = true;
+            //_statusBarBounds = new Rectangle(0, 0, Width, STATUS_BAR_HEIGHT);
         }
 
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-
-            _minButtonBounds = new Rectangle((Width - SkinManager.FORM_PADDING / 2) - 3 * STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
-            _maxButtonBounds = new Rectangle((Width - SkinManager.FORM_PADDING / 2) - 2 * STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
-            _xButtonBounds = new Rectangle((Width - SkinManager.FORM_PADDING / 2) - STATUS_BAR_BUTTON_WIDTH, 0, STATUS_BAR_BUTTON_WIDTH, STATUS_BAR_HEIGHT);
-            _statusBarBounds = new Rectangle(0, 0, Width, STATUS_BAR_HEIGHT);
-            _actionBarBounds = new Rectangle(0, STATUS_BAR_HEIGHT, Width, ACTION_BAR_HEIGHT);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -139,79 +141,28 @@ namespace CII.LAR.MaterialSkin
             var g = e.Graphics;
             g.TextRenderingHint = TextRenderingHint.AntiAlias;
 
-            g.Clear(SkinManager.GetApplicationBackgroundColor());
-            g.FillRectangle(SkinManager.ColorScheme.DarkPrimaryBrush, _statusBarBounds);
+            //g.Clear(SkinManager.GetApplicationBackgroundColor());
+            //g.FillRectangle(SkinManager.ColorScheme.DarkPrimaryBrush, _statusBarBounds);
 
-            bool showMin = MinimizeBox;
-            bool showMax = MaximizeBox;
-
-            using (var formButtonsPen = new Pen(SkinManager.ACTION_BAR_TEXT_SECONDARY, 2))
+            if (Icon != null)
             {
-                //// Minimize button.
-                //if (showMin)
-                //{
-                //    int x = showMax ? _minButtonBounds.X : _maxButtonBounds.X;
-                //    int y = showMax ? _minButtonBounds.Y : _maxButtonBounds.Y;
-
-                //    g.DrawLine(
-                //        formButtonsPen,
-                //        x + (int)(_minButtonBounds.Width * 0.33),
-                //        y + (int)(_minButtonBounds.Height * 0.66),
-                //        x + (int)(_minButtonBounds.Width * 0.66),
-                //        y + (int)(_minButtonBounds.Height * 0.66)
-                //   );
-                //}
-
-                //// Maximize button
-                //if (showMax)
-                //{
-                //    g.DrawRectangle(
-                //        formButtonsPen,
-                //        _maxButtonBounds.X + (int)(_maxButtonBounds.Width * 0.33),
-                //        _maxButtonBounds.Y + (int)(_maxButtonBounds.Height * 0.36),
-                //        (int)(_maxButtonBounds.Width * 0.39),
-                //        (int)(_maxButtonBounds.Height * 0.31)
-                //   );
-                //}
-
-                //// Close button
-                ////if (ControlBox)
-                //{
-                //    g.DrawLine(
-                //        formButtonsPen,
-                //        _xButtonBounds.X + (int)(_xButtonBounds.Width * 0.33),
-                //        _xButtonBounds.Y + (int)(_xButtonBounds.Height * 0.33),
-                //        _xButtonBounds.X + (int)(_xButtonBounds.Width * 0.66),
-                //        _xButtonBounds.Y + (int)(_xButtonBounds.Height * 0.66)
-                //   );
-
-                //    g.DrawLine(
-                //        formButtonsPen,
-                //        _xButtonBounds.X + (int)(_xButtonBounds.Width * 0.66),
-                //        _xButtonBounds.Y + (int)(_xButtonBounds.Height * 0.33),
-                //        _xButtonBounds.X + (int)(_xButtonBounds.Width * 0.33),
-                //        _xButtonBounds.Y + (int)(_xButtonBounds.Height * 0.66));
-                //}
-
-                if (Icon != null)
-                {
-                    var iconRect = new Rectangle(8, 4, 24, 24);
-                    g.DrawImage(Icon.ToBitmap(), iconRect);
-                }
-
-                //Form title
-
-                g.DrawString(Text, SkinManager.PINGFANG_MEDIUM_16, SkinManager.ColorScheme.TextBrush,
-                    new Rectangle(SkinManager.FORM_PADDING + 32, 0, Width, STATUS_BAR_HEIGHT),
-                    new StringFormat { LineAlignment = StringAlignment.Center });
+                var iconRect = new Rectangle(8, 4, 24, 24);
+                g.DrawImage(Icon.ToBitmap(), iconRect);
             }
+
         }
 
+        public EventHandler MaxHandler;
         public EventHandler CloseHandler;
         public EventHandler MinHandler;
         private void btnClose_Click(object sender, EventArgs e)
         {
             CloseHandler?.Invoke(sender, e);
+        }
+
+        private void btnMax_Click(object sender, EventArgs e)
+        {
+            MaxHandler?.Invoke(sender, e);
         }
 
         private void btnMin_Click(object sender, EventArgs e)

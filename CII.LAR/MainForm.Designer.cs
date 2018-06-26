@@ -362,8 +362,6 @@ namespace CII.LAR
             this.materialTitleBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.materialTitleBar1.Depth = 0;
             resources.ApplyResources(this.materialTitleBar1, "materialTitleBar1");
-            this.materialTitleBar1.MaximizeBox = true;
-            this.materialTitleBar1.MinimizeBox = true;
             this.materialTitleBar1.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.materialTitleBar1.Name = "materialTitleBar1";
             // 

@@ -1,5 +1,6 @@
 ﻿using CII.LAR.MaterialSkin;
 using CII.LAR.UI;
+using DevComponents.DotNetBar;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,6 +11,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CII.LAR
 {
@@ -101,6 +103,12 @@ namespace CII.LAR
                     ms.ThumbCustomShape = gp2;
                 }
             }
+        }
+
+        public static void ShowToastNotification(this Control parent, string message, Image image)
+        {
+            ToastNotification.Show(parent, message, image, 1000, 
+                eToastGlowColor.Blue, eToastPosition.MiddleCenter);
         }
     }
 }

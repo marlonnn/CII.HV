@@ -210,6 +210,8 @@ namespace CII.LAR.UI
                 this.btnNext.Text = Res.LaserAlignment.StrNext;
                 this.RichPictureBox.ZoomFit();
                 if (Index == -2) this.richPictureBox.RestrictArea.TransformMotorOriginalPoints();
+                this.richPictureBox.ShowToastNotification(Properties.Resources.StrCalibrationSuccess, global::CII.LAR.Properties.Resources.warn);
+
             }
         }
 

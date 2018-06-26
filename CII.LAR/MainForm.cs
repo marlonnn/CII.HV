@@ -382,7 +382,7 @@ namespace CII.LAR
                     Bitmap bitmap = new Bitmap(this.videoControl.Bounds.Width, this.videoControl.Bounds.Height);
                     this.videoControl.DrawToBitmap(bitmap, new Rectangle(0, 0, bitmap.Width, bitmap.Height));
                     bitmap.Save(fileName, ImageFormat.Png);
-                    ShowToastNotification();
+                    this.ShowToastNotification(Properties.Resources.StrScreenshotSuccess, global::CII.LAR.Properties.Resources.capture);
                 }
             }
         }
@@ -595,12 +595,6 @@ namespace CII.LAR
                 this.toolstripBtnVideo.Image = global::CII.LAR.Properties.Resources.video;
             }
             this.richPictureBox.RecordCount++;
-        }
-        private void ShowToastNotification()
-        {
-            ToastNotification.Show(this, Properties.Resources.StrScreenshotSuccess,
-                global::CII.LAR.Properties.Resources.capture, 1000, eToastGlowColor.Blue,
-                eToastPosition.MiddleCenter);
         }
 
         private bool CheckStorePath(string filePath)

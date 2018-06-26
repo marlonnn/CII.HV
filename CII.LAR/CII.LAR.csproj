@@ -964,6 +964,7 @@
     <Content Include="Resources\up.png" />
     <Content Include="Resources\video.png" />
     <Content Include="Resources\view.png" />
+    <Content Include="Resources\warn.png" />
     <Content Include="Resources\Zoom in.png" />
     <Content Include="Resources\Zoom out.png" />
     <Content Include="Resources\Zoom-32.png" />

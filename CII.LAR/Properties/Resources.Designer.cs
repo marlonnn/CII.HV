@@ -702,5 +702,27 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrScreenshotSuccess", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 Calibration success 的本地化字符串。
+        /// </summary>
+        internal static string StrCalibrationSuccess
+        {
+            get
+            {
+                return ResourceManager.GetString("StrCalibrationSuccess", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap warn
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("warn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

@@ -34,13 +34,13 @@ namespace CII.LAR.UI
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnLaserCtrl = new MaterialRoundButton();
-            this.lblAdjustPulse = new MaterialLabel();
-            this.lblAdjustHole = new MaterialLabel();
+            this.btnLaserCtrl = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.lblAdjustPulse = new CII.LAR.MaterialSkin.MaterialLabel();
+            this.lblAdjustHole = new CII.LAR.MaterialSkin.MaterialLabel();
             this.sliderPulse = new CII.LAR.UI.SliderCtrl();
-            this.btnFire = new MaterialRoundButton();
-            this.btnSave = new MaterialRoundButton();
-            this.btnDelete = new MaterialRoundButton();
+            this.btnFire = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.btnSave = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.btnDelete = new CII.LAR.MaterialSkin.MaterialRoundButton();
             this.holeSizeCtrl = new CII.LAR.UI.HoleSizeCtrl();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -58,9 +58,9 @@ namespace CII.LAR.UI
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.MarkerColor = System.Drawing.Color.DarkGreen;
             series1.MarkerSize = 10;
             series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series1.MarkerColor = System.Drawing.Color.DarkGreen;
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
             this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
@@ -70,23 +70,27 @@ namespace CII.LAR.UI
             // 
             this.btnLaserCtrl.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             resources.ApplyResources(this.btnLaserCtrl, "btnLaserCtrl");
+            this.btnLaserCtrl.Depth = 0;
+            this.btnLaserCtrl.Icon = null;
+            this.btnLaserCtrl.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnLaserCtrl.Name = "btnLaserCtrl";
+            this.btnLaserCtrl.Primary = false;
             this.btnLaserCtrl.Click += new System.EventHandler(this.btnLaserCtrl_Click);
             // 
             // lblAdjustPulse
             // 
-            // 
-            // 
-            // 
+            this.lblAdjustPulse.Depth = 0;
             resources.ApplyResources(this.lblAdjustPulse, "lblAdjustPulse");
+            this.lblAdjustPulse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.lblAdjustPulse.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.lblAdjustPulse.Name = "lblAdjustPulse";
             // 
             // lblAdjustHole
             // 
-            // 
-            // 
-            // 
+            this.lblAdjustHole.Depth = 0;
             resources.ApplyResources(this.lblAdjustHole, "lblAdjustHole");
+            this.lblAdjustHole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.lblAdjustHole.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.lblAdjustHole.Name = "lblAdjustHole";
             // 
             // sliderPulse
@@ -99,24 +103,37 @@ namespace CII.LAR.UI
             // 
             this.btnFire.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             resources.ApplyResources(this.btnFire, "btnFire");
+            this.btnFire.Depth = 0;
+            this.btnFire.Icon = null;
+            this.btnFire.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnFire.Name = "btnFire";
+            this.btnFire.Primary = false;
             this.btnFire.Click += new System.EventHandler(this.btnFire_Click);
             // 
             // btnSave
             // 
             this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             resources.ApplyResources(this.btnSave, "btnSave");
+            this.btnSave.Depth = 0;
+            this.btnSave.Icon = null;
+            this.btnSave.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnSave.Name = "btnSave";
+            this.btnSave.Primary = false;
             // 
             // btnDelete
             // 
             this.btnDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             resources.ApplyResources(this.btnDelete, "btnDelete");
+            this.btnDelete.Depth = 0;
+            this.btnDelete.Icon = null;
+            this.btnDelete.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Primary = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // holeSizeCtrl
             // 
+            this.holeSizeCtrl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
             this.holeSizeCtrl.HoleSize = 0D;
             resources.ApplyResources(this.holeSizeCtrl, "holeSizeCtrl");
             this.holeSizeCtrl.Name = "holeSizeCtrl";

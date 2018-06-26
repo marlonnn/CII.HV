@@ -102,8 +102,10 @@ namespace CII.LAR.UI
 
         private void UpdownClickHandler(bool isUp)
         {
+            var value = isUp ? CurrentPoint.Y + 0.2f : CurrentPoint.Y - 0.2f;
+            if (value < 0) return;
             SaveDeleteButtonVisiable(true);
-            CurrentPoint = new HolePulsePoint(CurrentPoint.X, isUp ? CurrentPoint.Y + 0.2f : CurrentPoint.Y - 0.2f);
+            CurrentPoint = new HolePulsePoint(CurrentPoint.X, value);
             if (CheckPoint(CurrentPoint))
             {
                 UpdatePoint(CurrentPoint);

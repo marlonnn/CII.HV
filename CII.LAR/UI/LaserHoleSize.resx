@@ -159,11 +159,20 @@
     <value>9</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnLaserCtrl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnLaserCtrl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
+  </data>
   <data name="btnLaserCtrl.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnLaserCtrl.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 404</value>
+  </data>
+  <data name="btnLaserCtrl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
   </data>
   <data name="btnLaserCtrl.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 21</value>
@@ -178,13 +187,16 @@
     <value>btnLaserCtrl</value>
   </data>
   <data name="&gt;&gt;btnLaserCtrl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>CII.LAR.MaterialSkin.MaterialRoundButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnLaserCtrl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnLaserCtrl.ZOrder" xml:space="preserve">
     <value>8</value>
+  </data>
+  <data name="lblAdjustPulse.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
   </data>
   <data name="lblAdjustPulse.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 314</value>
@@ -202,7 +214,7 @@
     <value>lblAdjustPulse</value>
   </data>
   <data name="&gt;&gt;lblAdjustPulse.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>CII.LAR.MaterialSkin.MaterialLabel, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblAdjustPulse.Parent" xml:space="preserve">
     <value>$this</value>
@@ -210,8 +222,11 @@
   <data name="&gt;&gt;lblAdjustPulse.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="lblAdjustHole.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
+  </data>
   <data name="lblAdjustHole.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 343</value>
+    <value>3, 345</value>
   </data>
   <data name="lblAdjustHole.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 23</value>
@@ -226,7 +241,7 @@
     <value>lblAdjustHole</value>
   </data>
   <data name="&gt;&gt;lblAdjustHole.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>CII.LAR.MaterialSkin.MaterialLabel, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblAdjustHole.Parent" xml:space="preserve">
     <value>$this</value>
@@ -255,11 +270,20 @@
   <data name="&gt;&gt;sliderPulse.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="btnFire.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnFire.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
+  </data>
   <data name="btnFire.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnFire.Location" type="System.Drawing.Point, System.Drawing">
     <value>283, 404</value>
+  </data>
+  <data name="btnFire.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
   </data>
   <data name="btnFire.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 21</value>
@@ -274,7 +298,7 @@
     <value>btnFire</value>
   </data>
   <data name="&gt;&gt;btnFire.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>CII.LAR.MaterialSkin.MaterialRoundButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnFire.Parent" xml:space="preserve">
     <value>$this</value>
@@ -282,11 +306,20 @@
   <data name="&gt;&gt;btnFire.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="btnSave.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnSave.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
+  </data>
   <data name="btnSave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 376</value>
+  </data>
+  <data name="btnSave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
   </data>
   <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 21</value>
@@ -304,7 +337,7 @@
     <value>btnSave</value>
   </data>
   <data name="&gt;&gt;btnSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>CII.LAR.MaterialSkin.MaterialRoundButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnSave.Parent" xml:space="preserve">
     <value>$this</value>
@@ -312,11 +345,20 @@
   <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="btnDelete.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnDelete.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
+  </data>
   <data name="btnDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="btnDelete.Location" type="System.Drawing.Point, System.Drawing">
     <value>122, 375</value>
+  </data>
+  <data name="btnDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
   </data>
   <data name="btnDelete.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 21</value>
@@ -334,7 +376,7 @@
     <value>btnDelete</value>
   </data>
   <data name="&gt;&gt;btnDelete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>CII.LAR.MaterialSkin.MaterialRoundButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnDelete.Parent" xml:space="preserve">
     <value>$this</value>

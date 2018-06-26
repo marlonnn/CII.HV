@@ -149,9 +149,14 @@ namespace CII.LAR.MaterialSkin
                 var iconRect = new Rectangle(8, 4, 24, 24);
                 g.DrawImage(Icon.ToBitmap(), iconRect);
             }
+            //Form title
 
+            g.DrawString(Text, SkinManager.PINGFANG_MEDIUM_16, SkinManager.ColorScheme.TextBrush,
+                new Rectangle(SkinManager.FORM_PADDING + 32, 0, Width, STATUS_BAR_HEIGHT),
+                new StringFormat { LineAlignment = StringAlignment.Center });
         }
 
+        private const int STATUS_BAR_HEIGHT = 32;
         public EventHandler MaxHandler;
         public EventHandler CloseHandler;
         public EventHandler MinHandler;

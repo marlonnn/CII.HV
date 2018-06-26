@@ -74,6 +74,7 @@ namespace CII.LAR.UI
 
         public override void RefreshUI()
         {
+            base.RefreshUI();
             this.Title = global::CII.LAR.Properties.Resources.StrStatisticsTitle;
             resources.ApplyResources(this.columnHeader1, "columnHeader1");
             resources.ApplyResources(this.columnHeader2, "columnHeader2");

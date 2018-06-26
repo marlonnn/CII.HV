@@ -508,7 +508,7 @@ namespace CII.LAR.DrawTools
                     //}
                     using (SolidBrush foreBrush = new SolidBrush(Color.FromArgb(GraphicsProperties.Alpha, GraphicsProperties.Color)))
                     {
-                        g.DrawString(ls, richPictureBox.Font, foreBrush, midPoint.X, midPoint.Y, sf);
+                        g.DrawString(ls + "°", richPictureBox.Font, foreBrush, midPoint.X, midPoint.Y, sf);
                     }
                 }
             }

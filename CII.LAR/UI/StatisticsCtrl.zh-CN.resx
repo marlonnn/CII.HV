@@ -129,4 +129,31 @@
   <data name="columnHeader3.Text" xml:space="preserve">
     <value>面积</value>
   </data>
+  <data name="lblCircumference.Text" xml:space="preserve">
+    <value>周长 :</value>
+  </data>
+  <data name="materialGroupBox1.Text" xml:space="preserve">
+    <value>最小值</value>
+  </data>
+  <data name="materialGroupBox2.Text" xml:space="preserve">
+    <value>最大值</value>
+  </data>
+  <data name="materialGroupBox3.Text" xml:space="preserve">
+    <value>平均值</value>
+  </data>
+  <data name="materialLabel11.Text" xml:space="preserve">
+    <value>周长 :</value>
+  </data>
+  <data name="materialLabel3.Text" xml:space="preserve">
+    <value>面积 :</value>
+  </data>
+  <data name="materialLabel5.Text" xml:space="preserve">
+    <value>面积 :</value>
+  </data>
+  <data name="materialLabel7.Text" xml:space="preserve">
+    <value>周长 : </value>
+  </data>
+  <data name="materialLabel9.Text" xml:space="preserve">
+    <value>面积 : </value>
+  </data>
 </root>

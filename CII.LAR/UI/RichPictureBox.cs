@@ -888,7 +888,16 @@ namespace CII.LAR.UI
                     Color drawColor = Color.FromArgb(200, Color.Blue);
 
                     using (Pen pen = new Pen(drawColor, 2f))
-                        this.restrictArea.TestDrawMotorRectangle(e.Graphics, pen);
+                    {
+                        //模拟模式不需要绘制限制区域
+                        if (Program.SysConfig.LiveMode)
+                        {
+                            //激光校准不需要绘制限制区域
+                            var laserAlignment = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment);
+                            if (laserAlignment != null && !laserAlignment.Visible)
+                                this.restrictArea.TestDrawMotorRectangle(e.Graphics, pen);
+                        }
+                    }
                 }
                 if (this.CaptureVideo)
                 {

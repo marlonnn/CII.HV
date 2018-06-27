@@ -1,4 +1,4 @@
-using CII.LAR.SysClass;
+﻿using CII.LAR.SysClass;
 using DevComponents.DotNetBar;
 using System;
 using System.Collections.Generic;
@@ -46,12 +46,14 @@ namespace CII.LAR.UI
             }
         }
 
-        public StatisticsCtrl() : base()
+        private RichPictureBox richPictureBox;
+        public StatisticsCtrl(RichPictureBox richPictureBox) : base()
         {
             this.ShowIndex = 2;
             this.CtrlType = CtrlType.StatisticsCtrl;
             InitializeComponent();
             resources = new ComponentResourceManager(typeof(StatisticsCtrl));
+            this.richPictureBox = richPictureBox;
         }
 
 
@@ -81,6 +83,16 @@ namespace CII.LAR.UI
             resources.ApplyResources(this.columnHeader3, "columnHeader3");
             resources.ApplyResources(btnAppearance, btnAppearance.Name);
             this.Invalidate();
+        }
+
+        public void CalculateStatiscsInformation(double minCir, double maxCir, double aveCir, double minArea, double maxArea, double aveArea)
+        {
+            this.lblMinCir.Text = string.Format("{0:F2}  {1}", minCir, richPictureBox.UnitOfMeasure.ToString());
+            this.lblMaxCir.Text = string.Format("{0:F2}  {1}", aveCir, richPictureBox.UnitOfMeasure.ToString());
+            this.lblAveCir.Text = string.Format("{0:F2}  {1}", aveCir, richPictureBox.UnitOfMeasure.ToString());
+            this.lblMinArea.Text = string.Format("{0:F2} {1}²", minArea, richPictureBox.UnitOfMeasure.ToString());
+            this.lblMaxArea.Text = string.Format("{0:F2} {1}²", maxArea, richPictureBox.UnitOfMeasure.ToString());
+            this.lblAveArea.Text = string.Format("{0:F2} {1}²", aveArea, richPictureBox.UnitOfMeasure.ToString());
         }
     }
 }

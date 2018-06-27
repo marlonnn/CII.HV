@@ -35,7 +35,7 @@ namespace CII.LAR.UI
             setingControl = new SettingControl(richPictureBox);
             settingCtrl = new SettingCtrl(richPictureBox);
             serialPortCtrl = new SerialPortCtrl();
-            statisticsCtrl = new StatisticsCtrl();
+            statisticsCtrl = new StatisticsCtrl(richPictureBox);
             laserAppearanceCtrl = new LaserAppearanceCtrl(richPictureBox);
             rulerAppearanceCtrl = new RulerAppearanceCtrl(richPictureBox);
             laserCtrl = new LaserCtrl();

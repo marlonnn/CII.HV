@@ -1043,6 +1043,52 @@ namespace CII.LAR
                     }
                 }
             }
+            CalculateStatisticsInformation();
+        }
+
+        private void CalculateStatisticsInformation()
+        {
+            if (this.statisticsCtrl.StatisticsListView.Items !=null && this.statisticsCtrl.StatisticsListView.Items.Count > 0)
+            {
+                double minCir = 0, maxCir = 0, aveCir = 0;
+                double minArea = 0, maxArea = 0, aveArea = 0;
+                List<double> circumferences = new List<double>();
+                List<double> areas = new List<double>();
+                foreach (ListViewItem item in this.statisticsCtrl.StatisticsListView.Items)
+                {
+                    if (item != null)
+                    {
+                        var cir = item.SubItems[1].Text;
+                        if (!string.IsNullOrEmpty(cir) && cir != "null")
+                        {
+                            int indexOf = cir.IndexOf(" mm");
+                            var c = cir.Substring(0, indexOf);
+                            circumferences.Add(Double.Parse(c));
+                        }
+                        var area = item.SubItems[2].Text;
+                        if (!string.IsNullOrEmpty(area) && area != "null")
+                        {
+                            int indexOf = area.IndexOf(" mm²");
+                            var a = area.Substring(0, indexOf);
+                            areas.Add(Double.Parse(a));
+                        }
+                    }
+                }
+                if (circumferences.Count > 0)
+                {
+                    minCir = circumferences.Min();
+                    maxCir = circumferences.Max();
+                    aveCir = circumferences.Average();
+                }
+                if (areas.Count > 0)
+                {
+                    minArea = areas.Min();
+                    maxArea = areas.Max();
+                    aveArea = areas.Average();
+                }
+                statisticsCtrl.CalculateStatiscsInformation(minCir, maxCir, aveCir, minArea, maxArea, aveArea);
+            }
+
         }
 
         private bool Exist(string name)
@@ -1114,6 +1160,7 @@ namespace CII.LAR
                 this.richPictureBox.GraphicsList.DeleteDrawObject(drawObject);
                 this.richPictureBox.Invalidate();
                 EnableAppearanceButton();
+                CalculateStatisticsInformation();
             }
         }
 

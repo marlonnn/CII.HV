@@ -44,6 +44,7 @@ namespace CII.LAR.UI
             this.lblHoleNumber = new CII.LAR.MaterialSkin.MaterialLabel();
             this.materialGroupBox1 = new CII.LAR.MaterialSkin.MaterialGroupBox();
             this.materialGroupBox2 = new CII.LAR.MaterialSkin.MaterialGroupBox();
+            this.btnStop = new CII.LAR.MaterialSkin.MaterialRoundButton();
             this.materialGroupBox1.SuspendLayout();
             this.materialGroupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -183,10 +184,24 @@ namespace CII.LAR.UI
             this.materialGroupBox2.Name = "materialGroupBox2";
             this.materialGroupBox2.TabStop = false;
             // 
+            // btnStop
+            // 
+            this.btnStop.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnStop, "btnStop");
+            this.btnStop.BackColor = System.Drawing.Color.LightYellow;
+            this.btnStop.Depth = 0;
+            this.btnStop.Icon = null;
+            this.btnStop.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Primary = false;
+            this.btnStop.UseVisualStyleBackColor = false;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
             // LaserCtrl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnStop);
             this.Controls.Add(this.materialGroupBox2);
             this.Controls.Add(this.btnAppearance);
             this.Controls.Add(this.btnHoleSize);
@@ -202,6 +217,7 @@ namespace CII.LAR.UI
             this.Controls.SetChildIndex(this.btnAppearance, 0);
             this.Controls.SetChildIndex(this.materialGroupBox2, 0);
             this.Controls.SetChildIndex(this.closeButton, 0);
+            this.Controls.SetChildIndex(this.btnStop, 0);
             this.materialGroupBox1.ResumeLayout(false);
             this.materialGroupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -221,5 +237,6 @@ namespace CII.LAR.UI
         private MaterialLabel lblHoleNumber;
         private MaterialGroupBox materialGroupBox1;
         private MaterialGroupBox materialGroupBox2;
+        private MaterialRoundButton btnStop;
     }
 }

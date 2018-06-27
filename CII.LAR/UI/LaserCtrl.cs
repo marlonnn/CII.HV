@@ -390,5 +390,10 @@ namespace CII.LAR.UI
             }
             return exist;
         }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            Program.EntryForm.Laser.Flashing = false;
+        }
     }
 }

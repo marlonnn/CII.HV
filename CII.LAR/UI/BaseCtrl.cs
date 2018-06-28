@@ -173,7 +173,11 @@ namespace CII.LAR.UI
             //1C1F26
             //1A1E25
             using (SolidBrush sb = new SolidBrush(Color.FromArgb(0x1A, 0x1E, 0x25)))
+            {
                 g.FillRectangle(sb, _statusBarBounds);
+                using (Pen pen = new Pen(Color.FromArgb(0x1A, 0x1E, 0x25), 1.0f))
+                    g.DrawRectangle(pen, new Rectangle(1, 1, this.Width - 2, this.Height - 2));
+            }
 
             //ADB8D0
             SizeF size = g.MeasureString(Title, font);

@@ -198,4 +198,7 @@
   <data name="StrCalibrationSuccess" xml:space="preserve">
     <value>校准保存成功</value>
   </data>
+  <data name="StrZoomRate" xml:space="preserve">
+    <value>放大倍数: </value>
+  </data>
 </root>

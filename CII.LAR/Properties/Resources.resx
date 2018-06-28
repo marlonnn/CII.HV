@@ -313,6 +313,9 @@
   <data name="StrCalibrationSuccess" xml:space="preserve">
     <value>Calibration save success</value>
   </data>
+  <data name="StrZoomRate" xml:space="preserve">
+    <value>Zoom Rate: </value>
+  </data>
   <data name="warn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\warn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

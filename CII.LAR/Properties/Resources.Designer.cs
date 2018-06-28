@@ -713,6 +713,7 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrCalibrationSuccess", resourceCulture);
             }
         }
+
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
@@ -722,6 +723,17 @@ namespace CII.LAR.Properties {
             {
                 object obj = ResourceManager.GetObject("warn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 Zoom Rate 的本地化字符串。
+        /// </summary>
+        internal static string StrZoomRate
+        {
+            get
+            {
+                return ResourceManager.GetString("StrZoomRate", resourceCulture);
             }
         }
     }

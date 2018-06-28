@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CII.LAR.MaterialSkin;
+using System.Drawing.Drawing2D;
 
 namespace CII.LAR.UI
 {
@@ -147,13 +148,14 @@ namespace CII.LAR.UI
             float yPosScale = (float)showingRect.Y / (float)pictureBoxRect.Height;
             highlightingRect = new Rectangle((int)(this.pictureDestRect.X + this.pictureDestRect.Width * xPosScale),
             (int)(this.pictureDestRect.Y + this.pictureDestRect.Height * yPosScale),
-            (int)(this.pictureDestRect.Width * widthScale),
-            (int)(this.pictureDestRect.Height * heightScale));
+            (int)(this.pictureDestRect.Width * (1 / richPictureBox.Zoom)),
+            (int)(this.pictureDestRect.Height * (1 / richPictureBox.Zoom)));
 
             regionToInvalidate.Union(highlightingRect); // Also redraw the part now highlighted.
 
             // Redraw only old and new highlighted rectangles
             picturePanel.Invalidate(regionToInvalidate);
+            regionToInvalidate.Dispose();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -175,7 +177,9 @@ namespace CII.LAR.UI
             // draw zoom rate text
 
             using (SolidBrush sb = new SolidBrush(Color.FromArgb(0xAD, 0xB8, 0xD0)))
-                e.Graphics.DrawString("Zoom rate:" + (int)ScalePercent + "%", this.Font, sb, 3, 3);
+            {
+                e.Graphics.DrawString(string.Format("{0}{1}%", Properties.Resources.StrZoomRate, (int)ScalePercent), this.Font, sb, 3, 3);
+            }
         }
 
         protected override void OnKeyDown(KeyEventArgs e)
@@ -247,6 +251,11 @@ namespace CII.LAR.UI
                     highlightRegion.Exclude(highlightingRect);
                 }
                 e.Graphics.FillRegion(tranparentBrush, highlightRegion);
+                using (Pen pen = new Pen(Color.White, 1f))
+                {
+                    e.Graphics.DrawRectangle(pen, highlightingRect);
+                }
+                highlightRegion.Dispose();
             }
         }
 

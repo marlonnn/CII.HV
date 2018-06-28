@@ -83,6 +83,35 @@ namespace CII.LAR.MaterialSkin
         {
             get { return this.thumbColor; }
         }
+
+        //默认BaseCtrl标题栏颜色
+        private Color baseCtrlTitleColor = Color.FromArgb(0x1A, 0x1E, 0x25);
+        public Color BaseCtrlTitleColor
+        {
+            get { return this.baseCtrlTitleColor; }
+        }
+
+        //默认BaseCtrl标题栏字体颜色
+        private Color baseCtrlTitleTextColor = Color.FromArgb(0xAD, 0xB8, 0xD0);
+        public Color BaseCtrlTitleTextColor
+        {
+            get { return this.baseCtrlTitleTextColor; }
+        }
+
+        //默认Material GroupBox边框颜色
+        private Color groupBoxBorderColor = Color.FromArgb(0x1C, 0x1F, 0x26);
+        public Color GroupBoxBorderColor
+        {
+            get { return this.groupBoxBorderColor; }
+        }
+
+
+        //默认Material Round Button边框颜色
+        private Color roundButtonBorderColor = Color.FromArgb(0xCA, 0xD1, 0xE0);
+        public Color RoundButtonBorderColor
+        {
+            get { return this.roundButtonBorderColor; }
+        }
         private static readonly Color PRIMARY_TEXT_BLACK = Color.FromArgb(222, 0, 0, 0);
         private static readonly Brush PRIMARY_TEXT_BLACK_BRUSH = new SolidBrush(PRIMARY_TEXT_BLACK);
         public static Color SECONDARY_TEXT_BLACK = Color.FromArgb(138, 0, 0, 0);

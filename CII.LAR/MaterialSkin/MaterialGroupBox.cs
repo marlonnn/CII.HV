@@ -31,7 +31,7 @@ namespace CII.LAR.MaterialSkin
             // Clear text and border
             g.Clear(this.BackColor);
             Brush textBrush = new SolidBrush(this.ForeColor);
-            Pen borderPen = new Pen(Color.FromArgb(0x1C, 0x1F, 0x26), 1.5F);
+            Pen borderPen = new Pen(SkinManager.GroupBoxBorderColor, 1.5F);
             SizeF strSize = g.MeasureString(this.Text, this.Font);
             Rectangle rect = new Rectangle(this.ClientRectangle.X,
                                            this.ClientRectangle.Y + (int)(strSize.Height / 2),

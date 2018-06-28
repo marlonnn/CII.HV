@@ -169,19 +169,16 @@ namespace CII.LAR.UI
             var g = e.Graphics;
             g.TextRenderingHint = TextRenderingHint.AntiAlias;
 
-            //g.Clear(SkinManager.GetApplicationBackgroundColor());
-            //1C1F26
-            //1A1E25
-            using (SolidBrush sb = new SolidBrush(Color.FromArgb(0x1A, 0x1E, 0x25)))
+            using (SolidBrush sb = new SolidBrush(SkinManager.BaseCtrlTitleColor))
             {
                 g.FillRectangle(sb, _statusBarBounds);
-                using (Pen pen = new Pen(Color.FromArgb(0x1A, 0x1E, 0x25), 1.0f))
+                using (Pen pen = new Pen(SkinManager.BaseCtrlTitleColor, 1.0f))
                     g.DrawRectangle(pen, new Rectangle(1, 1, this.Width - 2, this.Height - 2));
             }
 
             //ADB8D0
             SizeF size = g.MeasureString(Title, font);
-            using (SolidBrush sb = new SolidBrush(Color.FromArgb(0xAD, 0xB8, 0xD0)))
+            using (SolidBrush sb = new SolidBrush(SkinManager.BaseCtrlTitleTextColor))
                 e.Graphics.DrawString(Title, font, sb, 0, (_statusBarBounds.Height - size.Height) / 2f);
         }
 

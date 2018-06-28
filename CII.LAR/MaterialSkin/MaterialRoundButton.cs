@@ -31,23 +31,23 @@ namespace CII.LAR.MaterialSkin
             //    g.FillRectangle(b, ClientRectangle);
 
             //Ripple
-            //if (_animationManager.IsAnimating())
-            //{
-            //    g.SmoothingMode = SmoothingMode.AntiAlias;
+            if (_animationManager.IsAnimating())
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
 
-            //    for (var i = 0; i < _animationManager.GetAnimationCount(); i++)
-            //    {
-            //        var animationValue = _animationManager.GetProgress(i);
-            //        var animationSource = _animationManager.GetSource(i);
+                for (var i = 0; i < _animationManager.GetAnimationCount(); i++)
+                {
+                    var animationValue = _animationManager.GetProgress(i);
+                    var animationSource = _animationManager.GetSource(i);
 
-            //        using (Brush rippleBrush = new SolidBrush(Color.FromArgb((int)(101 - (animationValue * 100)), Color.Black)))
-            //        {
-            //            var rippleSize = (int)(animationValue * Width * 2);
-            //            g.FillEllipse(rippleBrush, new Rectangle(animationSource.X - rippleSize / 2, animationSource.Y - rippleSize / 2, rippleSize, rippleSize));
-            //        }
-            //    }
-            //    g.SmoothingMode = SmoothingMode.None;
-            //}
+                    using (Brush rippleBrush = new SolidBrush(Color.FromArgb((int)(101 - (animationValue * 100)), Color.Black)))
+                    {
+                        var rippleSize = (int)(animationValue * Width * 2);
+                        g.FillEllipse(rippleBrush, new Rectangle(animationSource.X - rippleSize / 2, animationSource.Y - rippleSize / 2, rippleSize, rippleSize));
+                    }
+                }
+                g.SmoothingMode = SmoothingMode.None;
+            }
 
             g.SmoothingMode = SmoothingMode.AntiAlias;
 
@@ -56,7 +56,7 @@ namespace CII.LAR.MaterialSkin
             gp.AddLine(new Point(this.ClientRectangle.X + Bounds.Height / 2, this.ClientRectangle.Y), new Point(this.ClientRectangle.X + Bounds.Width - Bounds.Height / 2, this.ClientRectangle.Y));
             gp.AddArc(this.ClientRectangle.X + Bounds.Width - Bounds.Height, this.ClientRectangle.Y, Bounds.Height - 1, Bounds.Height - 1, 270, 180);
             gp.CloseAllFigures();
-            using (Pen pen = new Pen(Color.FromArgb(0xCA, 0xD1, 0xE0), 1.5f))
+            using (Pen pen = new Pen(SkinManager.RoundButtonBorderColor, 1.5f))
                 g.DrawPath(pen, gp);
 
             using (Brush b = new SolidBrush(Color.FromArgb((int)(_hoverAnimationManager.GetProgress() * c.A), c.RemoveAlpha())))

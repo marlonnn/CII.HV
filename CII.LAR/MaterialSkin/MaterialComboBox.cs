@@ -73,7 +73,7 @@ namespace CII.LAR.MaterialSkin
             }
             else
             {
-                using (SolidBrush sb = new SolidBrush(Color.FromArgb(0x1A, 0x1E, 0x25)))
+                using (SolidBrush sb = new SolidBrush(SkinManager.ComboBoxItemSelectFontColor))
                     e.Graphics.FillRectangle(sb, e.Bounds);
 
                 using (SolidBrush sb = new SolidBrush(SkinManager.FontColor))
@@ -97,7 +97,7 @@ namespace CII.LAR.MaterialSkin
                 e.Bounds.Height);
 
             //1A1E25
-            using (SolidBrush sb = new SolidBrush(Color.FromArgb(0x1A, 0x1E, 0x25)))
+            using (SolidBrush sb = new SolidBrush(SkinManager.ComboBoxItemSelectFontColor))
             {
                 g.FillRectangle(sb, rectangle.X, rectangle.Y, this.ClientRectangle.Width, rectangle.Height);
             }
@@ -121,14 +121,14 @@ namespace CII.LAR.MaterialSkin
                 RePaint();
             }
         }
-        private Brush BorderBrush = new SolidBrush(Color.FromArgb(0x1A, 0x1E, 0x25));
         private Brush ArrowBrush = new SolidBrush(Color.White);
         private Brush DropButtonBrush = new SolidBrush(Color.Red);
         private void RePaint()
         {
             Graphics g = this.CreateGraphics();
             //1A1E25
-            using (Pen p = new Pen(Color.FromArgb(0x1A, 0x1E, 0x25)))
+            using (Pen p = new Pen(SkinManager.ComboBoxItemSelectFontColor))
+            using (Brush BorderBrush = new SolidBrush(SkinManager.ComboBoxItemSelectFontColor))
             {
                 g.FillRectangle(BorderBrush, this.ClientRectangle);
             }

@@ -369,7 +369,7 @@ namespace CII.LAR.UI
         private void InitializeImageTracker()
         {
             this.imageTracker = new ImageTracker(this);
-            this.imageTracker.Location = new System.Drawing.Point(5, 30);
+            this.imageTracker.Location = new System.Drawing.Point(48, 30);
             this.imageTracker.Size = new System.Drawing.Size(137, 152);
             this.imageTracker.TabIndex = 1;
             //this.imageTracker.ScalePercent = 0;

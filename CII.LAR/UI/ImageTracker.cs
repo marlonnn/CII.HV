@@ -7,11 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CII.LAR.MaterialSkin;
 
 namespace CII.LAR.UI
 {
-    public partial class ImageTracker : UserControl
+    public partial class ImageTracker : UserControl, IMaterialControl
     {
+        [Browsable(false)]
+        public int Depth { get; set; }
+        [Browsable(false)]
+        public MaterialSkinManager SkinManager => MaterialSkinManager.Instance;
+        [Browsable(false)]
+        public MouseState MouseState { get; set; }
+
         /// <summary>
         /// indicate if is the highlight rectangle dragging
         /// </summary>
@@ -117,6 +125,7 @@ namespace CII.LAR.UI
         {
             InitializeComponent();
             this.richPictureBox = richPictureBox;
+            this.Font = SkinManager.PINGFANG_MEDIUM_9;
         }
 
         public void OnPicturePainted(Rectangle showingRect, Rectangle pictureBoxRect)
@@ -151,13 +160,22 @@ namespace CII.LAR.UI
         {
             base.OnPaint(e);
             // draw control border
-            Rectangle borderRect = this.ClientRectangle;
-            borderRect.Width -= 1;
-            borderRect.Height -= 1;
-            e.Graphics.DrawRectangle(Pens.Navy, borderRect);
+            //Rectangle borderRect = this.ClientRectangle;
+            //borderRect.Width -= 1;
+            //borderRect.Height -= 1;
+            //e.Graphics.DrawRectangle(Pens.Navy, borderRect);
+
+            using (SolidBrush sb = new SolidBrush(Color.FromArgb(0x1A, 0x1E, 0x25)))
+            {
+                e.Graphics.FillRectangle(sb, new Rectangle(0, 0, Width, 20));
+                using (Pen pen = new Pen(Color.FromArgb(0x1A, 0x1E, 0x25), 1.0f))
+                    e.Graphics.DrawRectangle(pen, new Rectangle(1, 1, this.Width - 2, this.Height - 2));
+            }
 
             // draw zoom rate text
-            e.Graphics.DrawString("Zoom rate:" + (int)ScalePercent + "%", zoomRateFont, Brushes.Navy, 3, 3);
+
+            using (SolidBrush sb = new SolidBrush(Color.FromArgb(0xAD, 0xB8, 0xD0)))
+                e.Graphics.DrawString("Zoom rate:" + (int)ScalePercent + "%", this.Font, sb, 3, 3);
         }
 
         protected override void OnKeyDown(KeyEventArgs e)

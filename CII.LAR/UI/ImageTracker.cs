@@ -167,7 +167,7 @@ namespace CII.LAR.UI
 
             using (SolidBrush sb = new SolidBrush(Color.FromArgb(0x1A, 0x1E, 0x25)))
             {
-                e.Graphics.FillRectangle(sb, new Rectangle(0, 0, Width, 20));
+                e.Graphics.FillRectangle(sb, new Rectangle(0, 0, Width, 20)); 
                 using (Pen pen = new Pen(Color.FromArgb(0x1A, 0x1E, 0x25), 1.0f))
                     e.Graphics.DrawRectangle(pen, new Rectangle(1, 1, this.Width - 2, this.Height - 2));
             }

@@ -826,6 +826,7 @@ namespace CII.LAR.UI
             this.OffsetY = (this.Height - this.Image.Height) / 2 + 25;
             this.zoom = 1;
             this.imageTracker.ScalePercent = zoom * 100;
+            this.ImageTracker.Picture = this.Picture;
             this.Invalidate();
         }
 

@@ -31,23 +31,23 @@ namespace CII.LAR.MaterialSkin
             //    g.FillRectangle(b, ClientRectangle);
 
             //Ripple
-            if (_animationManager.IsAnimating())
-            {
-                g.SmoothingMode = SmoothingMode.AntiAlias;
+            //if (_animationManager.IsAnimating())
+            //{
+            //    g.SmoothingMode = SmoothingMode.AntiAlias;
 
-                for (var i = 0; i < _animationManager.GetAnimationCount(); i++)
-                {
-                    var animationValue = _animationManager.GetProgress(i);
-                    var animationSource = _animationManager.GetSource(i);
+            //    for (var i = 0; i < _animationManager.GetAnimationCount(); i++)
+            //    {
+            //        var animationValue = _animationManager.GetProgress(i);
+            //        var animationSource = _animationManager.GetSource(i);
 
-                    using (Brush rippleBrush = new SolidBrush(Color.FromArgb((int)(101 - (animationValue * 100)), Color.Black)))
-                    {
-                        var rippleSize = (int)(animationValue * Width * 2);
-                        g.FillEllipse(rippleBrush, new Rectangle(animationSource.X - rippleSize / 2, animationSource.Y - rippleSize / 2, rippleSize, rippleSize));
-                    }
-                }
-                g.SmoothingMode = SmoothingMode.None;
-            }
+            //        using (Brush rippleBrush = new SolidBrush(Color.FromArgb((int)(101 - (animationValue * 100)), Color.Black)))
+            //        {
+            //            var rippleSize = (int)(animationValue * Width * 2);
+            //            g.FillEllipse(rippleBrush, new Rectangle(animationSource.X - rippleSize / 2, animationSource.Y - rippleSize / 2, rippleSize, rippleSize));
+            //        }
+            //    }
+            //    g.SmoothingMode = SmoothingMode.None;
+            //}
 
             g.SmoothingMode = SmoothingMode.AntiAlias;
 

@@ -280,7 +280,10 @@ namespace CII.LAR.MaterialSkin
             using (Pen borderPen = new Pen(Color.LightGray))
             {
                 //g.DrawRectangle(borderPen, new Rectangle(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 1));
-                g.DrawPath(borderPen, DrawHelper.DrawRoundRect(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 1, _radius));
+                using (var gp = DrawHelper.DrawRoundRect(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 1, _radius))
+                {
+                    g.DrawPath(borderPen, gp);
+                } 
             }
         }
 
@@ -297,8 +300,7 @@ namespace CII.LAR.MaterialSkin
                 //drawRect.Inflate(-1, -1);
                 //highLightPen.Color = ColorTable.HighLighInnertColor;
                 //g.DrawRectangle(highLightPen, drawRect);
-
-                g.DrawPath(new Pen(ColorTable.HighLighInnertColor), DrawHelper.DrawRoundRect(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 1, _radius));
+                //g.DrawPath(highLightPen,  DrawHelper.DrawRoundRect(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 1, _radius));
             }
         }
 
@@ -307,7 +309,10 @@ namespace CII.LAR.MaterialSkin
             using (Pen focusedBorderPen = new Pen(ColorTable.HighLighInnertColor))
             {
                 //g.DrawRectangle(focusedBorderPen,new Rectangle(ClientRectangle.X,ClientRectangle.Y,ClientRectangle.Width - 1, ClientRectangle.Height - 1));
-                g.DrawPath(focusedBorderPen, DrawHelper.DrawRoundRect(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 1, _radius));
+                using (var gp = DrawHelper.DrawRoundRect(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 1, _radius))
+                {
+                    g.DrawPath(focusedBorderPen, gp);
+                }
             }
         }
 
@@ -325,7 +330,10 @@ namespace CII.LAR.MaterialSkin
             using (Pen disabledPen = new Pen(SystemColors.ControlDark))
             {
                 //g.DrawRectangle(disabledPen,new Rectangle( ClientRectangle.X,ClientRectangle.Y, ClientRectangle.Width - 1,ClientRectangle.Height - 1));
-                g.DrawPath(disabledPen, DrawHelper.DrawRoundRect(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 1, _radius));
+                using (var gp = DrawHelper.DrawRoundRect(ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width - 1, ClientRectangle.Height - 1, _radius))
+                {
+                    g.DrawPath(disabledPen, gp);
+                }
             }
         }
 
@@ -361,6 +369,7 @@ namespace CII.LAR.MaterialSkin
             Rectangle rect = new Rectangle(0, 0, width, height);
             FormPath = GetRoundedRectPath(rect, _radius);
             this.Region = new Region(FormPath);
+            FormPath.Dispose();
         }
 
         private GraphicsPath GetRoundedRectPath(Rectangle rect, int radius)

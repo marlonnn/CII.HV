@@ -53,7 +53,7 @@ namespace CII.LAR.MaterialSkin
             g.DrawLine(borderPen, new Point(rect.X + this.Padding.Left + (int)(strSize.Width), rect.Y), new Point(rect.X + rect.Width, rect.Y));
 
             borderPen.Dispose();
-
+            textBrush.Dispose();
         }
     }
 }

@@ -950,6 +950,7 @@ namespace CII.LAR
         {
             if (e.KeyCode == Keys.Escape && this.richPictureBox.ActiveTool != DrawToolType.Pointer)
             {
+                this.richPictureBox.LaserFunction = false;
                 this.richPictureBox.ActiveTool = DrawToolType.Pointer;
             }
             if (e.KeyCode == Keys.Escape)

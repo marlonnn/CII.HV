@@ -116,7 +116,7 @@ namespace CII.LAR.SysClass
 
         public void UpdatePulseWidth(float value)
         {
-            if (value != Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Circle").PulseSize)
+            //if (value != Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Circle").PulseSize)
             {
                 if (value < 0.5) return;
                 Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Circle").PulseSize = value;

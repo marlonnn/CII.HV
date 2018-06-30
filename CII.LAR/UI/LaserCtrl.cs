@@ -57,6 +57,29 @@ namespace CII.LAR.UI
             this.lblHoleNumber.Visible = false;
         }
 
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            if (this.Visible)
+            {
+                var laserHoleSize = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserHoleSize>(CtrlType.LaserHoleSize);
+                if (laserHoleSize != null)
+                {
+                    if (laserHoleSize.CurrentPoint != null)
+                    {
+                        double y = CalXY(laserHoleSize.CurrentPoint.X);
+                        this.sliderCtrl.Slider.Value = (int)laserHoleSize.CurrentPoint.X * 10;
+                        this.sliderCtrl.PulseHole.Text = string.Format("{0:N}us {1:N}um", laserHoleSize.CurrentPoint.X, y);
+                        CheckPulse(PulseValue);
+
+                        if (graphicsProperties != null && Program.SysConfig.LaserConfig != null)
+                        {
+                            Program.SysConfig.LaserConfig.UpdatePulseWidth((float)y);
+                        }
+                    }
+                }
+            }
+        }
+
         public void HolesSliderVisiable(bool visiable)
         {
             this.holesSlider.Visible = visiable;
@@ -78,7 +101,8 @@ namespace CII.LAR.UI
                 PulseValue = value;
                 this.sliderCtrl.Slider.Value = (int)(PulseValue * 10);
                 Program.SysConfig.LaserConfig.PulseWidth = PulseValue;
-                double y = CalSlopeFunction(PulseValue);
+                //double y = CalSlopeFunction(PulseValue);
+                double y = CalXY((float)PulseValue);
                 this.sliderCtrl.PulseHole.Text = string.Format("{0:N}us {1:N}um", PulseValue, y);
 
                 CheckPulse(PulseValue);
@@ -201,7 +225,7 @@ namespace CII.LAR.UI
 
                 PulseValue = this.sliderCtrl.Slider.Value / 10f;
                 Program.SysConfig.LaserConfig.PulseWidth = PulseValue;
-                double y = CalSlopeFunction(PulseValue);
+                double y = CalXY((float)PulseValue);
                 this.sliderCtrl.PulseHole.Text = string.Format("{0:N}us {1:N}um", PulseValue, y);
 
                 CheckPulse(PulseValue);
@@ -221,6 +245,34 @@ namespace CII.LAR.UI
             catch (Exception ex)
             {
             }
+        }
+
+        private double CalXY(float value)
+        {
+            double y = 0;
+            int count = Program.SysConfig.LaserConfig.HolePulsePoints.Count;
+            var x = value;
+            if (x == Program.SysConfig.LaserConfig.HolePulsePoints[0].X)
+            {
+                y = Program.SysConfig.LaserConfig.HolePulsePoints[0].Y;
+            }
+            else if (x == Program.SysConfig.LaserConfig.HolePulsePoints[count - 1].X)
+            {
+                y = Program.SysConfig.LaserConfig.HolePulsePoints[count - 1].Y;
+            }
+            else if (x > Program.SysConfig.LaserConfig.HolePulsePoints[0].X && x < Program.SysConfig.LaserConfig.HolePulsePoints[count - 1].X)
+            {
+                for (int i = 0; i < Program.SysConfig.LaserConfig.HolePulsePoints.Count; i++)
+                {
+                    if (x > Program.SysConfig.LaserConfig.HolePulsePoints[i].X && x < Program.SysConfig.LaserConfig.HolePulsePoints[i + 1].X)
+                    {
+                        double k = (Program.SysConfig.LaserConfig.HolePulsePoints[i + 1].Y - Program.SysConfig.LaserConfig.HolePulsePoints[i].Y) / (Program.SysConfig.LaserConfig.HolePulsePoints[i + 1].X - Program.SysConfig.LaserConfig.HolePulsePoints[i].X);
+                        y = k * (value - Program.SysConfig.LaserConfig.HolePulsePoints[i].X) + Program.SysConfig.LaserConfig.HolePulsePoints[i].Y;
+                        break;
+                    }
+                }
+            }
+            return y;
         }
 
         public void UpdatePulseWidthSlider(float value)

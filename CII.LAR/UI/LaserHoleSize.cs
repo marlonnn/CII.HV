@@ -102,11 +102,13 @@ namespace CII.LAR.UI
 
         private void UpdownClickHandler(bool isUp)
         {
+            bool exist = CheckPoint(CurrentPoint);
             var value = isUp ? CurrentPoint.Y + 0.2f : CurrentPoint.Y - 0.2f;
-            if (value < 0) return;
+            //if (value < 0) return;
+            if (!CheckPointValidate(new HolePulsePoint(CurrentPoint.X, value), exist)) return;
             SaveDeleteButtonVisiable(true);
             CurrentPoint = new HolePulsePoint(CurrentPoint.X, value);
-            if (CheckPoint(CurrentPoint))
+            if (exist)
             {
                 UpdatePoint(CurrentPoint);
             }
@@ -118,6 +120,49 @@ namespace CII.LAR.UI
             {
                 Program.SysConfig.LaserConfig.UpdatePulseWidth(CurrentPoint.Y);
             }
+        }
+
+        /// <summary>
+        /// 验证微调点的有效性
+        /// </summary>
+        /// <param name="point"></param>
+        /// <param name="exist"></param>
+        /// <returns></returns>
+        private bool CheckPointValidate(HolePulsePoint point, bool exist)
+        {
+            bool validate = false;
+            if (exist)
+            {
+                if (Program.SysConfig.LaserConfig.HolePulsePoints != null && Program.SysConfig.LaserConfig.HolePulsePoints.Count > 0)
+                {
+                    int index = Program.SysConfig.LaserConfig.HolePulsePoints.FindIndex(p => p.X == point.X);
+                    if ( index > 0 && index < Program.SysConfig.LaserConfig.HolePulsePoints.Count - 1)
+                    {
+                        if (point.Y > Program.SysConfig.LaserConfig.HolePulsePoints[index - 1].Y && point.Y < Program.SysConfig.LaserConfig.HolePulsePoints[index + 1].Y)
+                        {
+                            validate = true;
+                        }
+                    }
+                    else
+                    {
+                        validate = point.Y > 0.01 && point.Y < 33;
+                    }
+                }
+            }
+            else
+            {
+                if (Program.SysConfig.LaserConfig.HolePulsePoints != null && Program.SysConfig.LaserConfig.HolePulsePoints.Count > 0)
+                {
+                    for (int i = 0; i < Program.SysConfig.LaserConfig.HolePulsePoints.Count; i++)
+                    {
+                        if (point.X > Program.SysConfig.LaserConfig.HolePulsePoints[i].X && point.X < Program.SysConfig.LaserConfig.HolePulsePoints[i + 1].X)
+                        {
+                            validate = point.Y > Program.SysConfig.LaserConfig.HolePulsePoints[i].Y && point.Y < Program.SysConfig.LaserConfig.HolePulsePoints[i + 1].Y;
+                        }
+                    }
+                }
+            }
+            return validate;
         }
 
         private void RemovePoint(HolePulsePoint point)
@@ -162,13 +207,16 @@ namespace CII.LAR.UI
         private bool CheckPoint(HolePulsePoint point)
         {
             bool exist = false;
-            if (Program.SysConfig.LaserConfig.HolePulsePoints != null && Program.SysConfig.LaserConfig.HolePulsePoints.Count > 0)
+            if (point != null)
             {
-                for (int i=0; i< Program.SysConfig.LaserConfig.HolePulsePoints.Count; i++)
+                if (Program.SysConfig.LaserConfig.HolePulsePoints != null && Program.SysConfig.LaserConfig.HolePulsePoints.Count > 0)
                 {
-                    if (Program.SysConfig.LaserConfig.HolePulsePoints[i].X == point.X)
+                    for (int i = 0; i < Program.SysConfig.LaserConfig.HolePulsePoints.Count; i++)
                     {
-                        exist = true;
+                        if (Program.SysConfig.LaserConfig.HolePulsePoints[i].X == point.X)
+                        {
+                            exist = true;
+                        }
                     }
                 }
             }
@@ -234,21 +282,41 @@ namespace CII.LAR.UI
             this.sliderPulse.Update = true;
             SaveDeleteButtonVisiable(CheckPoint(x));
         }
-
         public void UpdatePulseWidthSlider(float value)
         {
             this.sliderPulse.UpdateValue(value);
         }
 
+        /// <summary>
+        /// 根据分段函数来计算，怕了吧~
+        /// </summary>
+        /// <param name="value"></param>
         private void CalXY(float value)
         {
-            for (int i = 0; i < Program.SysConfig.LaserConfig.HolePulsePoints.Count - 1; i++)
+            double y = 0;
+            int count = Program.SysConfig.LaserConfig.HolePulsePoints.Count;
+            var x = value;
+            if (x == Program.SysConfig.LaserConfig.HolePulsePoints[0].X)
             {
-                var x = value;
-                double k = (Program.SysConfig.LaserConfig.HolePulsePoints[i + 1].Y - Program.SysConfig.LaserConfig.HolePulsePoints[i].Y) / (Program.SysConfig.LaserConfig.HolePulsePoints[i + 1].X - Program.SysConfig.LaserConfig.HolePulsePoints[i].X);
-                var y = k * (value - Program.SysConfig.LaserConfig.HolePulsePoints[i].X) + Program.SysConfig.LaserConfig.HolePulsePoints[i].Y;
-                CurrentPoint = new HolePulsePoint(x, (float)y);
+                y = Program.SysConfig.LaserConfig.HolePulsePoints[0].Y;
             }
+            else if (x == Program.SysConfig.LaserConfig.HolePulsePoints[count - 1].X)
+            {
+                y = Program.SysConfig.LaserConfig.HolePulsePoints[count - 1].Y;
+            }
+            else if (x > Program.SysConfig.LaserConfig.HolePulsePoints[0].X && x < Program.SysConfig.LaserConfig.HolePulsePoints[count - 1].X)
+            {
+                for (int i = 0; i < Program.SysConfig.LaserConfig.HolePulsePoints.Count; i++)
+                {
+                    if (x > Program.SysConfig.LaserConfig.HolePulsePoints[i].X && x < Program.SysConfig.LaserConfig.HolePulsePoints[i + 1].X)
+                    {
+                        double k = (Program.SysConfig.LaserConfig.HolePulsePoints[i + 1].Y - Program.SysConfig.LaserConfig.HolePulsePoints[i].Y) / (Program.SysConfig.LaserConfig.HolePulsePoints[i + 1].X - Program.SysConfig.LaserConfig.HolePulsePoints[i].X);
+                        y = k * (value - Program.SysConfig.LaserConfig.HolePulsePoints[i].X) + Program.SysConfig.LaserConfig.HolePulsePoints[i].Y;
+                        break;
+                    }
+                }
+            }
+            CurrentPoint = new HolePulsePoint(x, (float)y);
         }
 
         private void SaveDeleteButtonVisiable(bool isVisiable)
@@ -270,8 +338,24 @@ namespace CII.LAR.UI
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            int index = Program.SysConfig.LaserConfig.HolePulsePoints.FindIndex(p => p.X == CurrentPoint.X);
+            if (index == 0 || index == Program.SysConfig.LaserConfig.HolePulsePoints.Count - 1)
+            {
+                return;
+            }
             RemovePoint(CurrentPoint);
             SaveDeleteButtonVisiable(false);
+            this.sliderPulse.SetValue(CurrentPoint.X);
+            this.sliderPulse.PulseHole.Text = string.Format("{0:N} us", CurrentPoint.X);
+            //this.sliderPulse.SetValue(x);
+            CalXY(CurrentPoint.X);
+            if (this.graphicsProperties != null)
+            {
+                Program.SysConfig.LaserConfig.UpdatePulseWidth(CurrentPoint.Y);
+            }
+            this.sliderPulse.Update = false;
+            UpdateSliderValueHandler?.Invoke(CurrentPoint.X);
+            this.sliderPulse.Update = true;
         }
 
         protected override void OnVisibleChanged(EventArgs e)
@@ -362,7 +446,19 @@ namespace CII.LAR.UI
                             dataPoints[i].MarkerColor = Color.Red;
                             dataPoints[i].MarkerSize = 10;
                             CurrentPoint = new HolePulsePoint((float)dataPoints[i].XValue, (float)dataPoints[i].YValues[0]);
-                            SaveDeleteButtonVisiable(true);
+                            int index = Program.SysConfig.LaserConfig.HolePulsePoints.FindIndex(p => p.X == CurrentPoint.X);
+                            if (index != 0 &&  index != Program.SysConfig.LaserConfig.HolePulsePoints.Count - 1)
+                            {
+                                SaveDeleteButtonVisiable(true);
+                            }
+                            this.sliderPulse.Update = false;
+                            this.sliderPulse.SetValue(CurrentPoint.X);
+                            if (this.graphicsProperties != null)
+                            {
+                                Program.SysConfig.LaserConfig.UpdatePulseWidth(CurrentPoint.Y);
+                            }
+                            UpdateSliderValueHandler?.Invoke(CurrentPoint.X);
+                            this.sliderPulse.Update = true;
                         }
                         else
                         {

@@ -48,6 +48,7 @@ namespace CII.LAR.UI
                 {
                     value = float.Parse(labelString);
                 }
+                if (value == 0) return;
                 var selectLense = cmbLenses.SelectedItem as Lense;
                 if (selectLense != null)
                 {

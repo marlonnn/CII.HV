@@ -391,7 +391,7 @@ namespace CII.LAR.SysClass
             this.localHotKeyContainer = new List<LocalHotKey>();
             this.globalHotKeyContainer = new List<GlobalHotKey>();
             this.chordHotKeyContainer = new List<ChordHotKey>();
-            this.compensationFactor = 1.01f;
+            this.compensationFactor = 1.0f;
         }
 
         // set default value

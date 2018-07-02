@@ -130,14 +130,14 @@ namespace CII.LAR.Algorithm
             {
                 if (transformedMotorPoints != null && transformedMotorPoints.Count > 0)
                 {
-                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                     g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Low;
                     //g.DrawLine(pen, transformedMotorPoints[0].X, transformedMotorPoints[0].Y, transformedMotorPoints[1].X, transformedMotorPoints[1].Y);
                     //g.DrawLine(pen, transformedMotorPoints[1].X, transformedMotorPoints[1].Y, transformedMotorPoints[2].X, transformedMotorPoints[2].Y);
                     //g.DrawLine(pen, transformedMotorPoints[2].X, transformedMotorPoints[2].Y, transformedMotorPoints[3].X, transformedMotorPoints[3].Y);
                     //g.DrawLine(pen, transformedMotorPoints[3].X, transformedMotorPoints[3].Y, transformedMotorPoints[0].X, transformedMotorPoints[0].Y);
                     //SolidBrush sb = new SolidBrush(Color.FromArgb(0xC8, 0x80, 0x80, 0x80));
-                    SolidBrush sb = new SolidBrush(Color.Gray);
+                    SolidBrush sb = new SolidBrush(Color.FromArgb(200, 0x1C, 0x1F, 0x26));
                     g.FillRegion(sb, FinalValidRegion);
                     sb.Dispose();
                 }

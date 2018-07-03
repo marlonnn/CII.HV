@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
@@ -12,6 +13,32 @@ namespace CII.LAR.MaterialSkin
 {
     public class MaterialRoundButton : MaterialFlatButton
     {
+        private bool warning;
+        [Description("Is waring mode?"), Category("MaterialRoundButton"), DefaultValue("false")]
+        public bool Warning
+        {
+            get { return this.warning; }
+            set
+            {
+                if (value != this.warning)
+                {
+                    this.warning = value;
+                    InvokeInvalidate(value);
+                    Invalidate();
+                }
+            }
+        }
+
+        private void InvokeInvalidate(bool value)
+        {
+            if (!IsHandleCreated)
+                return;
+            try
+            {
+                this.Invoke((MethodInvoker)delegate { this.warning = value; });
+            }
+            catch { }
+        }
         public MaterialRoundButton()
         {
             //this.ForeColor = SkinManager.GetLabelTextColor();
@@ -24,11 +51,25 @@ namespace CII.LAR.MaterialSkin
             g.TextRenderingHint = TextRenderingHint.AntiAlias;
 
             g.Clear(Parent.BackColor);
-
-            //Hover
-            Color c = SkinManager.GetFlatButtonHoverBackgroundColor();
+                        //Hover
+            Color c = Warning ? SkinManager.WaringColor : SkinManager.GetFlatButtonHoverBackgroundColor();
             //using (Brush b = new SolidBrush(Color.FromArgb((int)(_hoverAnimationManager.GetProgress() * c.A), c.RemoveAlpha())))
             //    g.FillRectangle(b, ClientRectangle);
+
+
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+
+            GraphicsPath gp = new GraphicsPath();
+            gp.AddArc(this.ClientRectangle.X, this.ClientRectangle.Y, Bounds.Height - 1, Bounds.Height - 1, 90, 180);
+            gp.AddLine(new Point(this.ClientRectangle.X + Bounds.Height / 2, this.ClientRectangle.Y), new Point(this.ClientRectangle.X + Bounds.Width - Bounds.Height / 2, this.ClientRectangle.Y));
+            gp.AddArc(this.ClientRectangle.X + Bounds.Width - Bounds.Height, this.ClientRectangle.Y, Bounds.Height - 1, Bounds.Height - 1, 270, 180);
+            gp.CloseAllFigures();
+            using (Pen pen = new Pen(SkinManager.RoundButtonBorderColor, 1.5f))
+                g.DrawPath(pen, gp);
+
+            using (Brush b = new SolidBrush(c/*Color.FromArgb((int)(_hoverAnimationManager.GetProgress() * c.A), c.RemoveAlpha())*/))
+                g.FillPath(b, gp);
+            gp.Dispose();
 
             //Ripple
             if (_animationManager.IsAnimating())
@@ -48,21 +89,6 @@ namespace CII.LAR.MaterialSkin
                 }
                 g.SmoothingMode = SmoothingMode.None;
             }
-
-            g.SmoothingMode = SmoothingMode.AntiAlias;
-
-            GraphicsPath gp = new GraphicsPath();
-            gp.AddArc(this.ClientRectangle.X, this.ClientRectangle.Y, Bounds.Height - 1, Bounds.Height - 1, 90, 180);
-            gp.AddLine(new Point(this.ClientRectangle.X + Bounds.Height / 2, this.ClientRectangle.Y), new Point(this.ClientRectangle.X + Bounds.Width - Bounds.Height / 2, this.ClientRectangle.Y));
-            gp.AddArc(this.ClientRectangle.X + Bounds.Width - Bounds.Height, this.ClientRectangle.Y, Bounds.Height - 1, Bounds.Height - 1, 270, 180);
-            gp.CloseAllFigures();
-            using (Pen pen = new Pen(SkinManager.RoundButtonBorderColor, 1.5f))
-                g.DrawPath(pen, gp);
-
-            using (Brush b = new SolidBrush(Color.FromArgb((int)(_hoverAnimationManager.GetProgress() * c.A), c.RemoveAlpha())))
-                g.FillPath(b, gp);
-            gp.Dispose();
-
             //Icon
             var iconRect = new Rectangle(8, 6, 24, 24);
 

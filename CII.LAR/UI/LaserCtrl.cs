@@ -284,17 +284,20 @@ namespace CII.LAR.UI
         {
             if (value > Program.SysConfig.LaserConfig.MaxPulseWidth)
             {
-                this.btnFire.BackColor = Color.LightSalmon;
+                //this.btnFire.BackColor = Color.LightSalmon;
+                this.btnFire.Warning = true;
                 this.btnFire.Text = Res.LaserCtrl.StrBigPulse;
             }
             else if (value < Program.SysConfig.LaserConfig.MinPulseWidth)
             {
-                this.btnFire.BackColor = Color.LightSalmon;
+                //this.btnFire.BackColor = Color.LightSalmon;
+                this.btnFire.Warning = true;
                 this.btnFire.Text = Res.LaserCtrl.StrSmallPulse;
             }
             else
             {
-                this.btnFire.BackColor = Color.LightYellow;
+                //this.btnFire.BackColor = Color.LightYellow;
+                this.btnFire.Warning = false;
                 this.btnFire.Text = Res.LaserCtrl.StrFire;
             }
             this.btnFire.Invalidate();

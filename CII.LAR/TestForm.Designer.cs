@@ -30,67 +30,60 @@ namespace CII.LAR
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestForm));
-            this.materialToolStrip1 = new CII.LAR.MaterialSkin.MaterialToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.materialToolStrip1.SuspendLayout();
+            this.materialRoundButton1 = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.materialRoundButton2 = new CII.LAR.MaterialSkin.MaterialRoundButton();
             this.SuspendLayout();
             // 
-            // materialToolStrip1
+            // materialRoundButton1
             // 
-            this.materialToolStrip1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.materialToolStrip1.AutoSize = false;
-            this.materialToolStrip1.Depth = 0;
-            this.materialToolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.materialToolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2});
-            this.materialToolStrip1.Location = new System.Drawing.Point(9, 40);
-            this.materialToolStrip1.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
-            this.materialToolStrip1.Name = "materialToolStrip1";
-            this.materialToolStrip1.Size = new System.Drawing.Size(111, 47);
-            this.materialToolStrip1.TabIndex = 0;
-            this.materialToolStrip1.Text = "materialToolStrip1";
+            this.materialRoundButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialRoundButton1.Depth = 0;
+            this.materialRoundButton1.Font = new System.Drawing.Font("PingFang SC Medium", 9F);
+            this.materialRoundButton1.Icon = null;
+            this.materialRoundButton1.Location = new System.Drawing.Point(124, 67);
+            this.materialRoundButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialRoundButton1.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.materialRoundButton1.Name = "materialRoundButton1";
+            this.materialRoundButton1.Primary = false;
+            this.materialRoundButton1.Size = new System.Drawing.Size(75, 23);
+            this.materialRoundButton1.TabIndex = 0;
+            this.materialRoundButton1.Text = "materialRoundButton1";
+            this.materialRoundButton1.UseVisualStyleBackColor = true;
+            this.materialRoundButton1.Warning = false;
             // 
-            // toolStripButton1
+            // materialRoundButton2
             // 
-            this.toolStripButton1.AutoSize = false;
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(35, 35);
-            this.toolStripButton1.Text = "toolStripButton1";
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.AutoSize = false;
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(35, 35);
-            this.toolStripButton2.Text = "toolStripButton2";
+            this.materialRoundButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialRoundButton2.Depth = 0;
+            this.materialRoundButton2.Font = new System.Drawing.Font("PingFang SC Medium", 9F);
+            this.materialRoundButton2.Icon = null;
+            this.materialRoundButton2.Location = new System.Drawing.Point(139, 143);
+            this.materialRoundButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialRoundButton2.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.materialRoundButton2.Name = "materialRoundButton2";
+            this.materialRoundButton2.Primary = false;
+            this.materialRoundButton2.Size = new System.Drawing.Size(75, 23);
+            this.materialRoundButton2.TabIndex = 1;
+            this.materialRoundButton2.Text = "materialRoundButton2";
+            this.materialRoundButton2.UseVisualStyleBackColor = true;
+            this.materialRoundButton2.Warning = true;
             // 
             // TestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.materialToolStrip1);
+            this.Controls.Add(this.materialRoundButton2);
+            this.Controls.Add(this.materialRoundButton1);
             this.Name = "TestForm";
             this.Text = "···";
-            this.materialToolStrip1.ResumeLayout(false);
-            this.materialToolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private MaterialToolStrip materialToolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private MaterialRoundButton materialRoundButton1;
+        private MaterialRoundButton materialRoundButton2;
     }
 }

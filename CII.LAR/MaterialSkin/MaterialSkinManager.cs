@@ -48,6 +48,11 @@ namespace CII.LAR.MaterialSkin
             DARK
         }
 
+        private Color waringColor = Color.FromArgb(0xFF, 0x66, 0x00);
+        public Color WaringColor
+        {
+            get { return this.waringColor; }
+        }
         //Constant color values
         private Color fontColor = Color.FromArgb(0xDB, 0xE2, 0xF1);
         //默认字体颜色

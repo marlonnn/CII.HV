@@ -89,6 +89,34 @@ namespace CII.LAR.SysClass
             get { return this.maxPulseWidth; }
         }
 
+        //脉宽最小值
+        private float minPulseWidthLimit;
+        public float MinPulseWidthLimit
+        {
+            get { return this.minPulseWidthLimit; }
+        }
+
+        //脉宽最大值
+        private float maxPulseWidthLimit;
+        public float MaxPulseWidthLimit
+        {
+            get { return this.maxPulseWidthLimit; }
+        }
+
+        //激光孔径最小值
+        private float minHoleLimit;
+        public float MinHoleLimit
+        {
+            get { return this.minHoleLimit; }
+        }
+
+        //激光孔径最大值
+        private float maxHoleLimit;
+        public float MaxHoleLimit
+        {
+            get { return this.maxHoleLimit; }
+        }
+
         private List<HolePulsePoint> holePulsePoints;
 
         public List<HolePulsePoint> HolePulsePoints
@@ -105,6 +133,10 @@ namespace CII.LAR.SysClass
         {
             this.minPulseWidth = 12;
             this.maxPulseWidth = 800;
+            this.minPulseWidthLimit = 0.1f;
+            this.maxPulseWidthLimit = 1500f;
+            this.minHoleLimit = 0.01f;
+            this.maxHoleLimit = 32f;
             pulseSizeRatio = 2;
             pulseWidth = 0.5f;
             this.FinalMatrix = Matrix<double>.Build.Dense(3, 3);
@@ -126,8 +158,8 @@ namespace CII.LAR.SysClass
         private void InitializeHolePulsePoints()
         {
             holePulsePoints = new List<HolePulsePoint>();
-            holePulsePoints.Add(new HolePulsePoint(0.1f, 0.01f));
-            holePulsePoints.Add(new HolePulsePoint(1600f, 32f));
+            holePulsePoints.Add(new HolePulsePoint(this.minPulseWidthLimit, this.minHoleLimit));
+            holePulsePoints.Add(new HolePulsePoint(this.maxPulseWidthLimit, this.maxHoleLimit));
         }
 
         // set default value

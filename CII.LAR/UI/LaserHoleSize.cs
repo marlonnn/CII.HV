@@ -58,7 +58,7 @@ namespace CII.LAR.UI
 
         private void InitializeSlider()
         {
-            this.sliderPulse.SetMinMaxValue(1, 16000);
+            this.sliderPulse.SetMinMaxValue((int)(Program.SysConfig.LaserConfig.MinPulseWidthLimit * 10), (int)(Program.SysConfig.LaserConfig.MaxPulseWidthLimit * 10));
             this.sliderPulse.SetValue((float)Program.SysConfig.LaserConfig.PulseWidth);
             //this.sliderPulse.Slider.Value = (int)(Program.SysConfig.LaserConfig.PulseWidth * 10);
             this.sliderPulse.SliderValueChangedHandler += PulseSliderValueChangedHandler;
@@ -90,13 +90,14 @@ namespace CII.LAR.UI
 
         private void InitializeChartSeries()
         {
-            this.chart1.ChartAreas[0].AxisX.Maximum = 1600d;
-            this.chart1.ChartAreas[0].AxisX.Minimum = 0.1d;
+            this.chart1.ChartAreas[0].AxisX.Maximum = Program.SysConfig.LaserConfig.MaxPulseWidthLimit;
+            this.chart1.ChartAreas[0].AxisX.Minimum = Program.SysConfig.LaserConfig.MinPulseWidthLimit;
             this.chart1.ChartAreas[0].AxisX.LabelStyle.Format = "0";
             this.chart1.ChartAreas[0].AxisX.Title = "us";
 
-            this.chart1.ChartAreas[0].AxisY.Maximum = 33d;
-            this.chart1.ChartAreas[0].AxisY.Minimum = 0.01d;
+            this.chart1.ChartAreas[0].AxisY.Maximum = Program.SysConfig.LaserConfig.MaxHoleLimit;
+            this.chart1.ChartAreas[0].AxisY.Minimum = Program.SysConfig.LaserConfig.MinHoleLimit;
+            this.chart1.ChartAreas[0].AxisY.LabelStyle.Format = "##.#";
             this.chart1.ChartAreas[0].AxisY.Title = "um";
         }
 

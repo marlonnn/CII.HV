@@ -145,7 +145,7 @@ namespace CII.LAR.UI
 
         private void InitializeSlider()
         {
-            this.sliderCtrl.SetMinMaxValue(1, 16000);
+            this.sliderCtrl.SetMinMaxValue((int)(Program.SysConfig.LaserConfig.MinPulseWidthLimit * 10), (int)(Program.SysConfig.LaserConfig.MaxPulseWidthLimit * 10));
             //this.sliderCtrl.SetValue((float)Program.SysConfig.LaserConfig.PulseWidth);
             this.btnFire.BackColor = Color.LightYellow;
             this.btnFire.Text = Res.LaserCtrl.StrFire;

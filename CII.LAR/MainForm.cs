@@ -293,6 +293,9 @@ namespace CII.LAR
                     case "stopRecord":
                         toolstripBtnVideo_Click(null, null);
                         break;
+                    case "fireLaser":
+                        laserCtrl.btnFire_Click(null, null);
+                        break;
                 }
 
             }
@@ -953,19 +956,20 @@ namespace CII.LAR
                 this.richPictureBox.LaserFunction = false;
                 this.richPictureBox.ActiveTool = DrawToolType.Pointer;
             }
-            if (e.KeyCode == Keys.Escape)
-            {
-                //fullScreen.ResetFullScreen();
-            }
-            else if (e.KeyCode == Keys.F)
-            {
-                //fullScreen.ShowFullScreen();
-                if (this.richPictureBox != null && this.richPictureBox.Picture != null)
-                {
-                    this.richPictureBox.ZoomFit();
-                }
-            }
-            else if (e.Control == true && e.KeyCode == Keys.F7)
+            //if (e.KeyCode == Keys.Escape)
+            //{
+            //    //fullScreen.ResetFullScreen();
+            //}
+            //else if (e.KeyCode == Keys.F)
+            //{
+            //    //fullScreen.ShowFullScreen();
+            //    if (this.richPictureBox != null && this.richPictureBox.Picture != null)
+            //    {
+            //        this.richPictureBox.ZoomFit();
+            //    }
+            //}
+            //else 
+            if (e.Control == true && e.KeyCode == Keys.F7)
             {
                 viewLog(new string[] { "SerialPort.log" });
             }
@@ -975,25 +979,25 @@ namespace CII.LAR
             //    debugForm.Controller = this.controller;
             //    debugForm.ShowDialog();
             //}
-            else if (e.Control == true && e.KeyCode == Keys.A)
-            {
-                this.richPictureBox.DebugCtrlVisiable();
-            }
-            else if (e.Control == true && e.KeyCode == Keys.O)
-            {
-                ShowBaseCtrl(true, CtrlType.LenseCtrl);
-            }
-            else if (e.Control == true && e.KeyCode == Keys.V)
-            {
-                VideoPropertyForm form = new VideoPropertyForm();
-                form.ShowDialog();
-            }
-            else if (e.Control == true && e.KeyCode == Keys.P)
-            {
+            //else if (e.Control == true && e.KeyCode == Keys.A)
+            //{
+            //    this.richPictureBox.DebugCtrlVisiable();
+            //}
+            //else if (e.Control == true && e.KeyCode == Keys.O)
+            //{
+            //    ShowBaseCtrl(true, CtrlType.LenseCtrl);
+            //}
+            //else if (e.Control == true && e.KeyCode == Keys.V)
+            //{
+            //    VideoPropertyForm form = new VideoPropertyForm();
+            //    form.ShowDialog();
+            //}
+            //else if (e.Control == true && e.KeyCode == Keys.P)
+            //{
 
-                SerialPortDebugForm spd = new SerialPortDebugForm();
-                spd.ShowDialog();
-            }
+            //    SerialPortDebugForm spd = new SerialPortDebugForm();
+            //    spd.ShowDialog();
+            //}
         }
 
         /// <summary>

@@ -182,20 +182,23 @@ namespace CII.LAR.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnFire_Click(object sender, EventArgs e)
+        public void btnFire_Click(object sender, EventArgs e)
         {
-            Program.EntryForm.Laser.Flashing = !flashing;
-
-            var fixedLaser = Program.EntryForm.Laser as FixedLaser;
-            if (fixedLaser != null)
+            if (Program.EntryForm.Laser != null)
             {
-                if (serialPortCom != null)
+                Program.EntryForm.Laser.Flashing = !flashing;
+
+                var fixedLaser = Program.EntryForm.Laser as FixedLaser;
+                if (fixedLaser != null)
                 {
-                    LaserC71Request c71 = new LaserC71Request();
-                    var bytes = serialPortCom.Encode(c71);
-                    serialPortCom.SendData(bytes);
+                    if (serialPortCom != null)
+                    {
+                        LaserC71Request c71 = new LaserC71Request();
+                        var bytes = serialPortCom.Encode(c71);
+                        serialPortCom.SendData(bytes);
+                    }
+                    //Coordinate.GetCoordinate().SendAlignmentMotorPoint();
                 }
-                //Coordinate.GetCoordinate().SendAlignmentMotorPoint();
             }
         }
 

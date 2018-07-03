@@ -31,15 +31,17 @@ namespace CII.LAR.UI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShortcutCtrl));
-            this.lblSnapshoot = new MaterialLabel();
-            this.lblZoomIn = new MaterialLabel();
-            this.lblZoomOut = new MaterialLabel();
-            this.lblVideo = new MaterialLabel();
-            this.buttonSave = new MaterialRoundButton();
+            this.lblSnapshoot = new CII.LAR.MaterialSkin.MaterialLabel();
+            this.lblZoomIn = new CII.LAR.MaterialSkin.MaterialLabel();
+            this.lblZoomOut = new CII.LAR.MaterialSkin.MaterialLabel();
+            this.lblVideo = new CII.LAR.MaterialSkin.MaterialLabel();
+            this.buttonSave = new CII.LAR.MaterialSkin.MaterialRoundButton();
             this.txtTakePicture = new CII.LAR.UI.HotKeyControl();
             this.txtZoomIn = new CII.LAR.UI.HotKeyControl();
             this.txtZoomOut = new CII.LAR.UI.HotKeyControl();
             this.txtStart = new CII.LAR.UI.HotKeyControl();
+            this.txtFire = new CII.LAR.UI.HotKeyControl();
+            this.lblFire = new CII.LAR.MaterialSkin.MaterialLabel();
             this.SuspendLayout();
             // 
             // closeButton
@@ -49,28 +51,45 @@ namespace CII.LAR.UI
             // lblSnapshoot
             // 
             resources.ApplyResources(this.lblSnapshoot, "lblSnapshoot");
+            this.lblSnapshoot.Depth = 0;
+            this.lblSnapshoot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.lblSnapshoot.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.lblSnapshoot.Name = "lblSnapshoot";
             // 
             // lblZoomIn
             // 
             resources.ApplyResources(this.lblZoomIn, "lblZoomIn");
+            this.lblZoomIn.Depth = 0;
+            this.lblZoomIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.lblZoomIn.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.lblZoomIn.Name = "lblZoomIn";
             // 
             // lblZoomOut
             // 
             resources.ApplyResources(this.lblZoomOut, "lblZoomOut");
+            this.lblZoomOut.Depth = 0;
+            this.lblZoomOut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.lblZoomOut.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.lblZoomOut.Name = "lblZoomOut";
             // 
             // lblVideo
             // 
             resources.ApplyResources(this.lblVideo, "lblVideo");
+            this.lblVideo.Depth = 0;
+            this.lblVideo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.lblVideo.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.lblVideo.Name = "lblVideo";
             // 
             // buttonSave
             // 
             this.buttonSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             resources.ApplyResources(this.buttonSave, "buttonSave");
+            this.buttonSave.Depth = 0;
+            this.buttonSave.Icon = null;
+            this.buttonSave.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Primary = false;
+            this.buttonSave.Warning = false;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // txtTakePicture
@@ -97,10 +116,26 @@ namespace CII.LAR.UI
             this.txtStart.Name = "txtStart";
             this.txtStart.ToolTip = null;
             // 
+            // txtFire
+            // 
+            resources.ApplyResources(this.txtFire, "txtFire");
+            this.txtFire.Name = "txtFire";
+            this.txtFire.ToolTip = null;
+            // 
+            // lblFire
+            // 
+            resources.ApplyResources(this.lblFire, "lblFire");
+            this.lblFire.Depth = 0;
+            this.lblFire.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.lblFire.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.lblFire.Name = "lblFire";
+            // 
             // ShortcutCtrl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtFire);
+            this.Controls.Add(this.lblFire);
             this.Controls.Add(this.txtStart);
             this.Controls.Add(this.txtZoomOut);
             this.Controls.Add(this.txtZoomIn);
@@ -122,6 +157,8 @@ namespace CII.LAR.UI
             this.Controls.SetChildIndex(this.txtZoomIn, 0);
             this.Controls.SetChildIndex(this.txtZoomOut, 0);
             this.Controls.SetChildIndex(this.txtStart, 0);
+            this.Controls.SetChildIndex(this.lblFire, 0);
+            this.Controls.SetChildIndex(this.txtFire, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,5 +175,7 @@ namespace CII.LAR.UI
         private HotKeyControl txtZoomIn;
         private HotKeyControl txtZoomOut;
         private HotKeyControl txtStart;
+        private HotKeyControl txtFire;
+        private MaterialLabel lblFire;
     }
 }

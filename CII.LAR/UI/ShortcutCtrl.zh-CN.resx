@@ -120,6 +120,9 @@
   <data name="buttonSave.Text" xml:space="preserve">
     <value>保存并退出</value>
   </data>
+  <data name="lblFire.Text" xml:space="preserve">
+    <value>激光射击</value>
+  </data>
   <data name="lblSnapshoot.Text" xml:space="preserve">
     <value>拍照</value>
   </data>

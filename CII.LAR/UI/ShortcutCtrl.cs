@@ -56,6 +56,9 @@ namespace CII.LAR.UI
                         case "startRecord":
                             this.txtStart.Text = HotKeyShared.CombineShortcut(shortcutKey.Modifier, shortcutKey.Key);
                             break;
+                        case "fireLaser":
+                            this.txtFire.Text = HotKeyShared.CombineShortcut(shortcutKey.Modifier, shortcutKey.Key);
+                            break;
                     }
                 }
             }
@@ -67,6 +70,7 @@ namespace CII.LAR.UI
             this.txtZoomIn.HotKeyIsSet += new HotKeyIsSetEventHandler(HotKeyIsSet);
             this.txtZoomOut.HotKeyIsSet += new HotKeyIsSetEventHandler(HotKeyIsSet);
             this.txtStart.HotKeyIsSet += new HotKeyIsSetEventHandler(HotKeyIsSet);
+            this.txtFire.HotKeyIsSet += new HotKeyIsSetEventHandler(HotKeyIsSet);
         }
 
         private void HotKeyIsSet(object sender, HotKeyIsSetEventArgs e)
@@ -140,16 +144,23 @@ namespace CII.LAR.UI
                 NewLocalHotKey.Tag = "startRecord";
                 hotKeyManager.AddLocalHotKey(NewLocalHotKey);
             }
+            if (!string.IsNullOrEmpty(txtFire.Text) && txtFire.Text != Keys.None.ToString())
+            {
+                LocalHotKey NewLocalHotKey = new LocalHotKey("fireLaser", txtFire.UserModifier, txtFire.UserKey);
+                NewLocalHotKey.Tag = "fireLaser";
+                hotKeyManager.AddLocalHotKey(NewLocalHotKey);
+            }
         }
 
         public override void RefreshUI()
         {
+            base.RefreshUI();
             this.Title = global::CII.LAR.Properties.Resources.StrShortcutTitle;
-            resources.ApplyResources(this.buttonSave, buttonSave.Name);
-            resources.ApplyResources(this.lblVideo, lblVideo.Name);
-            resources.ApplyResources(this.lblZoomOut, lblZoomOut.Name);
-            resources.ApplyResources(this.lblZoomIn, lblZoomIn.Name);
-            resources.ApplyResources(this.lblSnapshoot, lblSnapshoot.Name);
+            //resources.ApplyResources(this.buttonSave, buttonSave.Name);
+            //resources.ApplyResources(this.lblVideo, lblVideo.Name);
+            //resources.ApplyResources(this.lblZoomOut, lblZoomOut.Name);
+            //resources.ApplyResources(this.lblZoomIn, lblZoomIn.Name);
+            //resources.ApplyResources(this.lblSnapshoot, lblSnapshoot.Name);
             this.Invalidate();
         }
     }

@@ -149,6 +149,9 @@ namespace CII.LAR.UI
                 helper.AlignmentInfo(index, index < 0);
                 if (Index == -1)
                 {
+                    //开启红光引导光
+                    //先检查红光是否开启，若已经开启，则不用再开启
+                    if (Program.SysConfig.LiveMode) EnableRedLaser(true);
                     this.btnNext.Text = Res.LaserAlignment.StrAlignLaser;
                 }
                 else if (Index == 7)
@@ -174,12 +177,6 @@ namespace CII.LAR.UI
                 }
                 if (Index > -1 && Index < 7)
                 {
-                    if(Index == 0)
-                    {
-                        //开启红光引导光
-                        //先检查红光是否开启，若已经开启，则不用再开启
-                        if (Program.SysConfig.LiveMode)  EnableRedLaser(true);
-                    }
                     if (Index >= 3 && Index <= 6)
                     {
                         if (Program.SysConfig.LiveMode)

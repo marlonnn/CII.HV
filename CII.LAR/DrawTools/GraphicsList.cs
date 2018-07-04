@@ -160,7 +160,8 @@ namespace CII.LAR.DrawTools
         /// <param name="drawObject"></param>
         public void DeleteDrawObject(DrawObject drawObject)
         {
-            graphicsList.Remove(drawObject);
+            var removeItem = graphicsList.Find(item => item.Name == drawObject.Name);
+            var success = graphicsList.Remove(removeItem);
         }
 
         public void DeleteAll()

@@ -24,6 +24,7 @@ namespace CII.LAR.DrawTools
         public override void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
+            richPictureBox.DrawObject = null;
             clickCount++;
             if (clickCount % 2 == 1)
             {

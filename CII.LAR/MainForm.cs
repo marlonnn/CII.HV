@@ -1072,14 +1072,14 @@ namespace CII.LAR
                             var cir = item.SubItems[1].Text;
                             if (!string.IsNullOrEmpty(cir) && cir != "null")
                             {
-                                int indexOf = cir.IndexOf(" mm");
+                                int indexOf = cir.IndexOf(" um");
                                 var c = cir.Substring(0, indexOf);
                                 circumferences.Add(Double.Parse(c));
                             }
                             var area = item.SubItems[2].Text;
                             if (!string.IsNullOrEmpty(area) && area != "null")
                             {
-                                int indexOf = area.IndexOf(" mm²");
+                                int indexOf = area.IndexOf(" um²");
                                 var a = area.Substring(0, indexOf);
                                 areas.Add(Double.Parse(a));
                             }

@@ -19,6 +19,20 @@ namespace CII.LAR.UI
     {
         private static Cursor s_cursor = new Cursor(new MemoryStream((byte[])new ResourceManager(typeof(MainForm)).GetObject("Cross")));
 
+        /// <summary>
+        /// 数码放大倍数=物镜倍数*{25.4*屏幕尺寸（英寸）/CCD对角线的长度}*适配器的放大倍数，
+        /// 如果系统放大倍数，还需要乘以系统放大倍数
+        /// 　1）物镜倍数指的是您现在使用的显微镜的物镜镜头的倍数，如20倍；
+        /// 　2）适配器的放大倍数：指的显微镜与成像设备连接部分的放大倍数，通常为1倍，也有0.35、0.5、0.63倍的； 
+        /// 　3）25.4*屏幕尺寸（英寸）：这里是把屏幕尺寸换算成毫米计算，1英寸=25.4mm； 
+        /// 　4）CCD对角线的长度：指的是CCD的芯片尺寸，常有的是1/3英寸、1/2英寸、2/3英寸的，相对应的长度分别为6mm；8mm；11mm，这个是行业内统一规范的
+        /// </summary>
+        public double DigitalMagnification
+        {
+            //1600 -> image size is 1280*960
+            get { return (Program.SysConfig.Lense.Factor * this.PixelToMillimeter(1600) / Program.SysConfig.CCD.Length) * this.Zoom; }
+        }
+
         private RestrictArea restrictArea;
         public RestrictArea RestrictArea
         {
@@ -143,7 +157,7 @@ namespace CII.LAR.UI
         #region Measure tool
         public event OnMeasureUnitChangedEventHandler OnMeasureUnitChanged;
         public delegate void OnMeasureUnitChangedEventHandler(enUniMis unit);
-        public const enUniMis DefaultUnitOfMeasure = enUniMis.mm;
+        public const enUniMis DefaultUnitOfMeasure = enUniMis.um;
         private enUniMis myUnitOfMeasure = DefaultUnitOfMeasure;
 
         public enUniMis UnitOfMeasure
@@ -609,7 +623,7 @@ namespace CII.LAR.UI
         }
         protected override void OnMouseWheel(MouseEventArgs e)
         {
-            if (this.Picture == null) return;
+            //if (this.Picture == null) return;
             float oldzoom = zoom;
 
             if (e.Delta > 0)

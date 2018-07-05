@@ -17,6 +17,48 @@ namespace CII.LAR
 {
     public static class ExtensionMethods
     {
+        private static double D254 = 2.54d;
+
+        public static double MicronToPixel(this RichPictureBox picture, double micron)
+        {
+            return MillimeterToPixel(picture, micron / 1000);
+        }
+
+        public static double MillimeterToPixel(this RichPictureBox picture, double millimeter)
+        {
+            return CentimeterToPixel(picture, millimeter / 10);
+        }
+
+        public static double CentimeterToPixel(this RichPictureBox picture, double centimeter)
+        {
+            return centimeter * Program.DpiX / D254;
+        }
+
+        public static double PixelToCentimeter(this RichPictureBox picture, double pixel)
+        {
+            return pixel * D254 / Program.DpiX;
+        }
+
+        public static double PixelToMillimeter(this RichPictureBox picture, double pixel)
+        {
+            return PixelToCentimeter(picture, pixel) * 10;
+        }
+
+        public static double PixelToMicron(this RichPictureBox picture, double pixel)
+        {
+            return PixelToMillimeter(picture, pixel) * 1000;
+        }
+
+        public static double MicronToMicroscope(this RichPictureBox pictureBox, double micron)
+        {
+            return micron / pictureBox.DigitalMagnification;
+        }
+
+        public static double PixelToMicroscope(this RichPictureBox pictureBox, double pixel)
+        {
+            return PixelToMicron(pictureBox, pixel) / pictureBox.DigitalMagnification;
+        }
+
         /// <summary>
         /// Deserialize object from file
         /// </summary>

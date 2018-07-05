@@ -384,7 +384,7 @@ namespace CII.LAR
             this.richPictureBox.OffsetX = 0;
             this.richPictureBox.OffsetY = 0;
             this.richPictureBox.TabStop = false;
-            this.richPictureBox.UnitOfMeasure = enUniMis.mm;
+            this.richPictureBox.UnitOfMeasure = enUniMis.um;
             this.richPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			// 
             // horizontalFlipToolStripMenuItem

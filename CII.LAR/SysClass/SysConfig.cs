@@ -20,6 +20,11 @@ namespace CII.LAR.SysClass
     [Serializable]
     public class SysConfig
     {
+        private CCD ccd;
+        public CCD CCD
+        {
+            get { return this.ccd; }
+        }
         /// <summary>
         /// 电机补偿系数
         /// 默认为 1.01
@@ -376,6 +381,7 @@ namespace CII.LAR.SysClass
 
         private void SetDefault()
         {
+            this.ccd = new CCD();
             this.graphicsPropertiesManager = new GraphicsPropertiesManager();
             this.Lense = new Lense(1);
             this.lenses = new List<Lense>();

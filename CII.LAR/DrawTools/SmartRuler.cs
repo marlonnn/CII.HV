@@ -29,33 +29,12 @@ namespace CII.LAR.DrawTools
             }
         }
 
-        private double centimeterPixels;
+        private double micronPixels;
         public SmartRuler(RichPictureBox pictureBox)
         {
             this.pictureBox = pictureBox;
             this.showRulers = false;
         }
-
-        public double MillimeterToPixel(double millimeter)
-        {
-            return CentimeterToPixel(millimeter / 10);
-        }
-
-        public double CentimeterToPixel(double centimeter)
-        {
-            return centimeter * Program.DpiX / D254;
-        }
-
-        public double PixelToCentimeter(double pixel)
-        {
-            return pixel * D254 / Program.DpiX;
-        }
-
-        public double PixelToMillimeter(double pixel)
-        {
-            return PixelToCentimeter(pixel) * 10;
-        }
-
 
         public void Draw(Graphics g)
         {
@@ -79,16 +58,18 @@ namespace CII.LAR.DrawTools
             var endX = pictureBox.Width / 2 - 10;
 
             double startYNegative = pictureBox.Height / 2;
-            centimeterPixels = CentimeterToPixel(1) * Program.SysConfig.Lense.FineAdjustment / 100f;
+            //micronPixels = CentimeterToPixel(1) * Program.SysConfig.Lense.FineAdjustment / 100f;
             int count = 0;
-            for (double i = startYPositive; i < endYPositive; i+=centimeterPixels)
+            var baseMicron = (100 / Program.SysConfig.Lense.Factor ) * pictureBox.DigitalMagnification;
+            micronPixels = pictureBox.MicronToPixel(baseMicron) * Program.SysConfig.Lense.FineAdjustment / 100f;
+            for (double i = startYPositive; i < endYPositive; i+=micronPixels)
             {
-                var positiveNumber = count * 10 / (Program.SysConfig.Lense.Factor * pictureBox.Zoom);
+                var positiveNumber = count * 100 / Program.SysConfig.Lense.Factor/* / (Program.SysConfig.Lense.Factor * pictureBox.Zoom)*/;
                 //draw positive major ticks
                 g.DrawLine(pen, startX, (float)i, endX, (float)i);
 
                 //draw positive minor ticks
-                g.DrawLine(pen, startX, (float)(i + centimeterPixels / 2), startX - 5, (float)(i + centimeterPixels / 2));
+                g.DrawLine(pen, startX, (float)(i + micronPixels / 2), startX - 5, (float)(i + micronPixels / 2));
 
                 string pns = positiveNumber.ToString("F2");
                 Font font = new Font("Microsoft Sans Serif", 8.25f + gp.PenWidth / 10f);
@@ -102,7 +83,7 @@ namespace CII.LAR.DrawTools
                 //draw negative major ticks
                 g.DrawLine(pen, startX, (float)startYNegative, endX, (float)startYNegative);
                 //draw negative minor ticks
-                g.DrawLine(pen, startX, (float)(startYNegative - centimeterPixels / 2), startX - 5, (float)(startYNegative - centimeterPixels / 2));
+                g.DrawLine(pen, startX, (float)(startYNegative - micronPixels / 2), startX - 5, (float)(startYNegative - micronPixels / 2));
 
                 var negativeNumber = -1 * positiveNumber;
                 var nns = negativeNumber.ToString("F2");
@@ -112,7 +93,7 @@ namespace CII.LAR.DrawTools
                     using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
                         g.DrawString(nns, font, sb, endX - nSize.Width, (float)(startYNegative - nSize.Height / 2));
                 }
-                startYNegative -= centimeterPixels;
+                startYNegative -= micronPixels;
                 count++;
                 font.Dispose();
             }
@@ -128,17 +109,19 @@ namespace CII.LAR.DrawTools
             var endY = pictureBox.Height / 2 - 10;
 
             double startXNegative = pictureBox.Width / 2;
-            centimeterPixels = CentimeterToPixel(1) * Program.SysConfig.Lense.FineAdjustment / 100f;
+            //micronPixels = CentimeterToPixel(1) * Program.SysConfig.Lense.FineAdjustment / 100f;
             int count = 0;
-            for (double i= startXPositive; i < endXPositive; i+= centimeterPixels)
+            var baseMicron = (100 / Program.SysConfig.Lense.Factor ) * pictureBox.DigitalMagnification;
+            micronPixels = pictureBox.MicronToPixel(baseMicron) * Program.SysConfig.Lense.FineAdjustment / 100f;
+            for (double i= startXPositive; i < endXPositive; i+= micronPixels)
             {
 
-                var positiveNumber = count * 10 / (Program.SysConfig.Lense.Factor * pictureBox.Zoom);
+                var positiveNumber = count * 100 / Program.SysConfig.Lense.Factor/* / (Program.SysConfig.Lense.Factor * pictureBox.Zoom)*/;
                 //draw positive major ticks
                 g.DrawLine(pen, (float)i, startY, (float)i, endY);
 
                 //draw positive minor ticks
-                g.DrawLine(pen, (float)(i + centimeterPixels / 2), startY, (float)(i + centimeterPixels / 2), startY - 5);
+                g.DrawLine(pen, (float)(i + micronPixels / 2), startY, (float)(i + micronPixels / 2), startY - 5);
 
                 Font font = new Font("Microsoft Sans Serif", 8.25f + gp.PenWidth / 10f);
                 string pns = positiveNumber.ToString("F2");
@@ -152,7 +135,7 @@ namespace CII.LAR.DrawTools
                 //draw negative major ticks
                 g.DrawLine(pen, (float)startXNegative, startY, (float)startXNegative, endY);
                 //draw negative minor ticks
-                g.DrawLine(pen, (float)(startXNegative - centimeterPixels / 2), startY, (float)(startXNegative - centimeterPixels / 2), startY - 5);
+                g.DrawLine(pen, (float)(startXNegative - micronPixels / 2), startY, (float)(startXNegative - micronPixels / 2), startY - 5);
 
                 var negativeNumber = -1 * positiveNumber;
                 var nns = negativeNumber.ToString("F2");
@@ -162,7 +145,7 @@ namespace CII.LAR.DrawTools
                     using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
                         g.DrawString(nns, font, sb, (float)(startXNegative - nSize.Width / 2), endY - nSize.Height);
                 } 
-                startXNegative -= centimeterPixels;
+                startXNegative -= micronPixels;
                 count++;
                 font.Dispose();
             }

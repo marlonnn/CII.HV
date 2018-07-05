@@ -332,7 +332,7 @@ namespace CII.LAR
             this.richPictureBox.RecordCount = 0;
             this.richPictureBox.TabStop = false;
             this.richPictureBox.ToolStripRectangle = new System.Drawing.Rectangle(0, 0, 0, 0);
-            this.richPictureBox.UnitOfMeasure = CII.LAR.enUniMis.mm;
+            this.richPictureBox.UnitOfMeasure = CII.LAR.enUniMis.um;
             this.richPictureBox.VideoSize = new System.Drawing.Size(1280, 960);
             this.richPictureBox.Zoom = 1F;
             // 

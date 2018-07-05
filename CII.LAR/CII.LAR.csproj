@@ -301,6 +301,7 @@
     <Compile Include="SerialPortHelper.cs" />
     <Compile Include="SerialPortModel.cs" />
     <Compile Include="SysClass\AllPatients.cs" />
+    <Compile Include="SysClass\CCD.cs" />
     <Compile Include="SysClass\CustomAttrs.cs" />
     <Compile Include="SysClass\FullScreen.cs" />
     <Compile Include="SysClass\HandleTaskBar.cs" />

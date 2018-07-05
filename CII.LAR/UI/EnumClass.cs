@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace CII.LAR
 {
+    public enum CCDType
+    {
+        OneForth,
+        OneThird,
+        OneSecond,
+        TwoThird
+    }
+
     public enum PanDirection
     {
         None,

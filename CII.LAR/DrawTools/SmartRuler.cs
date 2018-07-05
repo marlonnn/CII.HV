@@ -42,8 +42,10 @@ namespace CII.LAR.DrawTools
             {
                 GraphicsProperties gp = Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Ruler");
                 using (Pen pen = new Pen(Color.FromArgb(gp.Alpha, gp.Color), gp.PenWidth))
-
                 {
+                    var baseMicron = (100 / Program.SysConfig.Lense.Factor) * pictureBox.DigitalMagnification;
+                    micronPixels = pictureBox.MicronToPixel(baseMicron) * Program.SysConfig.Lense.FineAdjustment / 100f;
+
                     PaintXAxis(g, pen, gp);
                     PaintYAxis(g, pen, gp);
                 }
@@ -60,8 +62,7 @@ namespace CII.LAR.DrawTools
             double startYNegative = pictureBox.Height / 2;
             //micronPixels = CentimeterToPixel(1) * Program.SysConfig.Lense.FineAdjustment / 100f;
             int count = 0;
-            var baseMicron = (100 / Program.SysConfig.Lense.Factor ) * pictureBox.DigitalMagnification;
-            micronPixels = pictureBox.MicronToPixel(baseMicron) * Program.SysConfig.Lense.FineAdjustment / 100f;
+
             for (double i = startYPositive; i < endYPositive; i+=micronPixels)
             {
                 var positiveNumber = count * 100 / Program.SysConfig.Lense.Factor/* / (Program.SysConfig.Lense.Factor * pictureBox.Zoom)*/;
@@ -111,8 +112,6 @@ namespace CII.LAR.DrawTools
             double startXNegative = pictureBox.Width / 2;
             //micronPixels = CentimeterToPixel(1) * Program.SysConfig.Lense.FineAdjustment / 100f;
             int count = 0;
-            var baseMicron = (100 / Program.SysConfig.Lense.Factor ) * pictureBox.DigitalMagnification;
-            micronPixels = pictureBox.MicronToPixel(baseMicron) * Program.SysConfig.Lense.FineAdjustment / 100f;
             for (double i= startXPositive; i < endXPositive; i+= micronPixels)
             {
 

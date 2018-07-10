@@ -242,7 +242,8 @@ namespace CII.LAR.DrawTools
             int index = 0;
             for (int i=0; i<ColorSets.Length; i++)
             {
-                if (this.color == ColorSets[i])
+                Color c = Color.FromArgb(this.color.R, this.color.G, this.color.B);
+                if (c == Color.FromArgb(ColorSets[i].R, ColorSets[i].G, ColorSets[i].B))
                 {
                     index = i;
                     break;

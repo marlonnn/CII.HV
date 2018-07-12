@@ -84,6 +84,7 @@ namespace CII.LAR.UI
         {
             this.holesSlider.Visible = visiable;
             this.lblHoleNumber.Visible = visiable;
+            if (visiable) this.lblHoleNumber.Text = this.holesSlider.Value.ToString();
         }
 
         private bool valueChangedInvoke = true;
@@ -356,6 +357,7 @@ namespace CII.LAR.UI
         private void holesSlider_ValueChanged(object sender, EventArgs e)
         {
             Program.EntryForm.UpdateHoleNumber(this.holesSlider.Value);
+            this.lblHoleNumber.Text = this.holesSlider.Value.ToString();
         }
 
         /// <summary>

@@ -157,7 +157,7 @@
     <value>materialGroupBox1</value>
   </data>
   <data name="&gt;&gt;sliderCtrl.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="btnFire.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -436,7 +436,7 @@
     <value>materialGroupBox1</value>
   </data>
   <data name="&gt;&gt;lblHoleNumber.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="materialGroupBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>PingFang SC Medium, 9pt</value>

@@ -116,6 +116,7 @@ namespace CII.LAR.UI
             this.holesSlider.Name = "holesSlider";
             this.holesSlider.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.holesSlider.Value = 0;
+            this.holesSlider.LabelVisible = false;
             this.holesSlider.ValueChanged += new System.EventHandler(this.holesSlider_ValueChanged);
             // 
             // btnDelete
@@ -162,8 +163,8 @@ namespace CII.LAR.UI
             // 
             // materialGroupBox1
             // 
-            this.materialGroupBox1.Controls.Add(this.sliderCtrl);
             this.materialGroupBox1.Controls.Add(this.lblHoleNumber);
+            this.materialGroupBox1.Controls.Add(this.sliderCtrl);
             this.materialGroupBox1.Controls.Add(this.holesSlider);
             this.materialGroupBox1.Depth = 0;
             resources.ApplyResources(this.materialGroupBox1, "materialGroupBox1");

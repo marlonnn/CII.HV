@@ -137,7 +137,7 @@ namespace CII.LAR.DrawTools
                         j++;
                         double positiveNumber = positiveStartNumber + (positiveEndNumber - positiveStartNumber) / count * j;
 
-                        string pns = positiveNumber.ToString("F2");
+                        string pns = positiveNumber.ToString("F1");
                         var pSize = g.MeasureString(pns, font);
                         if (positiveNumber > 0)
                         {
@@ -182,7 +182,7 @@ namespace CII.LAR.DrawTools
 
 
                         var negativeNumber = -1 * positiveNumber;
-                        var nns = negativeNumber.ToString("F2");
+                        var nns = negativeNumber.ToString("F1");
                         var nSize = g.MeasureString(nns, font);
                         if (negativeNumber < 0)
                         {
@@ -222,7 +222,7 @@ namespace CII.LAR.DrawTools
                 //draw positive minor ticks
                 //g.DrawLine(pen, startX, (float)(i + micronPixels / 2), startX - 5, (float)(i + micronPixels / 2));
 
-                string pns = positiveNumber.ToString("F2");
+                string pns = positiveNumber.ToString("F1");
                 var pSize = g.MeasureString(pns, font);
                 if (positiveNumber > 0)
                 {
@@ -236,7 +236,7 @@ namespace CII.LAR.DrawTools
                 //g.DrawLine(pen, startX, (float)(startYNegative - micronPixels / 2), startX - 5, (float)(startYNegative - micronPixels / 2));
 
                 var negativeNumber = -1 * positiveNumber;
-                var nns = negativeNumber.ToString("F2");
+                var nns = negativeNumber.ToString("F1");
                 var nSize = g.MeasureString(nns, font);
                 if (negativeNumber < 0)
                 {
@@ -281,7 +281,7 @@ namespace CII.LAR.DrawTools
                         g.DrawLine(pen, (float)i, startY, (float)i, endY);
                         j++;
                         double positiveNumber = positiveStartNumber + (positiveEndNumber - positiveStartNumber) / count * j;
-                        string pns = positiveNumber.ToString("F2");
+                        string pns = positiveNumber.ToString("F1");
                         var pSize = g.MeasureString(pns, font);
                         if (positiveNumber > 0)
                         {
@@ -326,7 +326,7 @@ namespace CII.LAR.DrawTools
 
 
                         var negativeNumber = -1 * positiveNumber;
-                        var nns = negativeNumber.ToString("F2");
+                        var nns = negativeNumber.ToString("F1");
                         var nSize = g.MeasureString(nns, font);
                         if (negativeNumber < 0)
                         {
@@ -393,7 +393,7 @@ namespace CII.LAR.DrawTools
                     PaintXDividePositiveAxis(g, pen, font, gp, count, i - micronPixels, i, startY, endY);
                 //draw positive minor ticks
                 //g.DrawLine(pen, (float)(i + micronPixels / 2), startY, (float)(i + micronPixels / 2), startY - 5);
-                string pns = positiveNumber.ToString("F2");
+                string pns = positiveNumber.ToString("F1");
                 var pSize = g.MeasureString(pns, font);
                 if (positiveNumber > 0)
                 {
@@ -407,12 +407,12 @@ namespace CII.LAR.DrawTools
                 //g.DrawLine(pen, (float)(startXNegative - micronPixels / 2), startY, (float)(startXNegative - micronPixels / 2), startY - 5);
 
                 var negativeNumber = -1 * positiveNumber;
-                var nns = negativeNumber.ToString("F2");
+                var nns = negativeNumber.ToString("F1");
                 var nSize = g.MeasureString(nns, font);
                 if (negativeNumber < 0)
                 {
                     using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
-                        g.DrawString(nns, font, sb, (float)(startXNegative - nSize.Width / 2), endY - nSize.Height);
+                        g.DrawString(nns, font, sb, (float)(startXNegative - nSize.Width / 2f), endY - nSize.Height);
                 }
                 //if (i != startXNegative)
                 startXNegative -= micronPixels;

@@ -639,6 +639,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\AboutControl.resx">
       <DependentUpon>AboutControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AboutControl.zh-CN.resx">
+      <DependentUpon>AboutControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\AssignedForm.resx">
       <DependentUpon>AssignedForm.cs</DependentUpon>
@@ -767,6 +772,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LaserCtrl.resx">
       <DependentUpon>LaserCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LaserCtrl.zh-CN.resx">
       <DependentUpon>LaserCtrl.cs</DependentUpon>

@@ -455,6 +455,17 @@ namespace CII.LAR.Properties {
         }
 
         /// <summary>
+        ///   查找类似 About 的本地化字符串。
+        /// </summary>
+        internal static string StrAboutCtrlTitle
+        {
+            get
+            {
+                return ResourceManager.GetString("StrAboutCtrlTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   查找类似 company 的本地化字符串。
         /// </summary>
         internal static System.Drawing.Bitmap company

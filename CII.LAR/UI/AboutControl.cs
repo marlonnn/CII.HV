@@ -14,7 +14,19 @@ namespace CII.LAR.UI
     {
         public AboutControl()
         {
+            resources = new ComponentResourceManager(typeof(AboutControl));
             InitializeComponent();
+        }
+
+        private void materialRoundButton1_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+        }
+
+        public override void RefreshUI()
+        {
+            base.RefreshUI();
+            this.Title = global::CII.LAR.Properties.Resources.StrAboutCtrlTitle;
         }
     }
 }

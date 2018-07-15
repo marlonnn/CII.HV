@@ -120,6 +120,7 @@ namespace CII.LAR
         private VideoChooseCtrl videoChooseCtrl;
         private ObjectLenseCtrl lenseCtrl;
         private ShortcutCtrl shortcutCtrl;
+        private AboutControl aboutCtrl;
 
         #endregion
 
@@ -577,7 +578,7 @@ namespace CII.LAR
 
         private void toolstripBtnAbout_Click(object sender, EventArgs e)
         {
-
+            ShowBaseCtrl(true, CtrlType.AboutCtrl);
         }
         #endregion
 
@@ -695,6 +696,9 @@ namespace CII.LAR
 
             shortcutCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<ShortcutCtrl>(CtrlType.ShortCut);
             BaseCtrls.Add(shortcutCtrl);
+
+            aboutCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<AboutControl>(CtrlType.AboutCtrl);
+            BaseCtrls.Add(aboutCtrl);
             //laserDebugCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserDebugCtrl>(CtrlType.LaserDebugCtrl);
             //BaseCtrls.Add(laserDebugCtrl);
         }

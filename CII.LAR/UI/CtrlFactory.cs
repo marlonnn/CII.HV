@@ -24,7 +24,7 @@ namespace CII.LAR.UI
         private DebugCtrl debugCtrl;
         private ObjectLenseCtrl lenseCtrl;
         private ShortcutCtrl shortcutCtrl;
-
+        private AboutControl aboutCtrl;
         public static void InitializeCtrlFactory(RichPictureBox richPictureBox)
         {
             ctrlFactory = new CtrlFactory(richPictureBox);
@@ -46,6 +46,7 @@ namespace CII.LAR.UI
             lenseCtrl = new ObjectLenseCtrl(richPictureBox);
             shortcutCtrl = new ShortcutCtrl(Program.EntryForm.hotKeyManager);
             scaleAppearanceCtrl = new ScaleAppearanceCtrl(richPictureBox);
+            aboutCtrl = new AboutControl();
         }
 
         public static CtrlFactory GetCtrlFactory()
@@ -64,6 +65,9 @@ namespace CII.LAR.UI
             T ctrl = null;
             switch (ctrlType)
             {
+                case CtrlType.AboutCtrl:
+                    ctrl = this.aboutCtrl as T;
+                    break;
                 case CtrlType.SettingCtrl:
                     ctrl = this.setingControl as T;
                     //ctrl = this.settingCtrl as T;

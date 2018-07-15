@@ -117,6 +117,7 @@ namespace CII.LAR
     /// </summary>
     public enum CtrlType
     {
+        AboutCtrl,
         SettingCtrl,
         SerialPort,
         StatisticsCtrl,

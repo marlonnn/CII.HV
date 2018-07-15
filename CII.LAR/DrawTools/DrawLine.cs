@@ -506,9 +506,10 @@ namespace CII.LAR.DrawTools
                     //{
                     //    g.FillEllipse(backBrush, rt);
                     //}
-                    using (SolidBrush foreBrush = new SolidBrush(Color.FromArgb(GraphicsProperties.Alpha, GraphicsProperties.Color)))
+                    using (SolidBrush brush = new SolidBrush(Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Text").Color))
+                    using (Font font = new Font("Microsoft Sans Serif", GraphicsProperties.TextSize))
                     {
-                        g.DrawString(ls + "°", richPictureBox.Font, foreBrush, midPoint.X, midPoint.Y, sf);
+                        g.DrawString(ls + "°", font, brush, midPoint.X - 30, midPoint.Y, sf);
                     }
                 }
             }

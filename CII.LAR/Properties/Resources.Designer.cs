@@ -453,7 +453,19 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrLaserCtrlTitle", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   查找类似 company 的本地化字符串。
+        /// </summary>
+        internal static System.Drawing.Bitmap company
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("company", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
         /// <summary>
         ///   查找类似 Laser Hole Size Calibration 的本地化字符串。
         /// </summary>

@@ -48,11 +48,14 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn70 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtCompensationFactor = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chbLocation = new System.Windows.Forms.CheckBox();
             this.groupBoxLaser.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // slider
@@ -273,6 +276,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Motor";
             // 
+            // txtCompensationFactor
+            // 
+            this.txtCompensationFactor.Location = new System.Drawing.Point(131, 34);
+            this.txtCompensationFactor.Name = "txtCompensationFactor";
+            this.txtCompensationFactor.Size = new System.Drawing.Size(100, 21);
+            this.txtCompensationFactor.TabIndex = 1;
+            this.txtCompensationFactor.TextChanged += new System.EventHandler(this.txtCompensationFactor_TextChanged);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -282,19 +293,32 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Compensation Factor: ";
             // 
-            // txtCompensationFactor
+            // groupBox3
             // 
-            this.txtCompensationFactor.Location = new System.Drawing.Point(131, 34);
-            this.txtCompensationFactor.Name = "txtCompensationFactor";
-            this.txtCompensationFactor.Size = new System.Drawing.Size(100, 21);
-            this.txtCompensationFactor.TabIndex = 1;
-            this.txtCompensationFactor.TextChanged += new System.EventHandler(this.txtCompensationFactor_TextChanged);
+            this.groupBox3.Controls.Add(this.chbLocation);
+            this.groupBox3.Location = new System.Drawing.Point(5, 534);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(317, 50);
+            this.groupBox3.TabIndex = 36;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Accurary";
+            // 
+            // chbLocation
+            // 
+            this.chbLocation.AutoSize = true;
+            this.chbLocation.Location = new System.Drawing.Point(12, 28);
+            this.chbLocation.Name = "chbLocation";
+            this.chbLocation.Size = new System.Drawing.Size(168, 16);
+            this.chbLocation.TabIndex = 0;
+            this.chbLocation.Text = "Screenshot with location";
+            this.chbLocation.UseVisualStyleBackColor = true;
             // 
             // LaserDebugCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(329, 538);
+            this.ClientSize = new System.Drawing.Size(329, 619);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxLaser);
@@ -306,6 +330,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -334,5 +360,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCompensationFactor;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox chbLocation;
     }
 }

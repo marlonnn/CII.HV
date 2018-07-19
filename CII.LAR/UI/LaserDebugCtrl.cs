@@ -26,6 +26,8 @@ namespace CII.LAR.UI
             this.FormClosing += LaserDebugCtrl_FormClosing;
             serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
             this.txtCompensationFactor.Text = Program.SysConfig.CompensationFactor.ToString();
+            this.chbLocation.Checked = Program.SysConfig.ScreenshotWithLocation;
+            this.chbLocation.CheckedChanged += new System.EventHandler(this.chbLocation_CheckedChanged);
         }
 
         private void LaserDebugCtrl_FormClosing(object sender, FormClosingEventArgs e)
@@ -297,6 +299,11 @@ namespace CII.LAR.UI
             {
 
             }
+        }
+
+        private void chbLocation_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.SysConfig.ScreenshotWithLocation = this.chbLocation.Checked;
         }
     }
 }

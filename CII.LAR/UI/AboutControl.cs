@@ -16,6 +16,7 @@ namespace CII.LAR.UI
         {
             resources = new ComponentResourceManager(typeof(AboutControl));
             InitializeComponent();
+            this.materialLabel4.Text = CII.Library.Xml.ConstConfig.GetValue("Version");
         }
 
         private void materialRoundButton1_Click(object sender, EventArgs e)

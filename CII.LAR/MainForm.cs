@@ -378,15 +378,36 @@ namespace CII.LAR
         #region ToolStrip button click
         private void toolstripBtnScreenShort_Click(object sender, EventArgs e)
         {
-            if (videoFrame != null)
+            if (CheckStorePath(Program.SysConfig.StorePath))
             {
                 string fileName = string.Format(@"{0}\{1}.png", Program.SysConfig.StorePath, DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff"));
-                if (CheckStorePath(Program.SysConfig.StorePath))
+
+                if (Program.SysConfig.ScreenshotWithLocation)
+                {
+                    FixedLaser laser = Program.EntryForm.Laser as FixedLaser;
+                    if (laser != null)
+                    {
+                        string folder = Program.SysConfig.StorePath + "\\Accuracy";
+                        if (!Directory.Exists(folder))
+                        {
+                            Directory.CreateDirectory(folder);
+                        }
+                        PointF centerPoint = laser.CenterPoint;
+                        fileName = string.Format(@"{0}\{1}_{2}_{3}.png", folder, DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff"), centerPoint.X, centerPoint.Y);
+                    }
+                }
+                if (videoFrame != null)
                 {
                     Bitmap bitmap = new Bitmap(this.videoControl.Bounds.Width, this.videoControl.Bounds.Height);
                     this.videoControl.DrawToBitmap(bitmap, new Rectangle(0, 0, bitmap.Width, bitmap.Height));
                     bitmap.Save(fileName, ImageFormat.Png);
                     this.ShowToastNotification(Properties.Resources.StrScreenshotSuccess, global::CII.LAR.Properties.Resources.capture);
+                }
+                else if (this.richPictureBox.Image != null)
+                {
+                    this.richPictureBox.Image.Save(fileName);
+                    this.ShowToastNotification(Properties.Resources.StrScreenshotSuccess, global::CII.LAR.Properties.Resources.capture);
+
                 }
             }
         }
@@ -605,7 +626,7 @@ namespace CII.LAR
         {
             if (!Directory.Exists(filePath))
             {
-                File.Create(filePath);
+                Directory.CreateDirectory(filePath);
             }
             return true;
         }

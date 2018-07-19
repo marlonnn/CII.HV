@@ -20,6 +20,13 @@ namespace CII.LAR.SysClass
     [Serializable]
     public class SysConfig
     {
+        [NonSerialized]
+        private bool screenshotWithLocation;
+        public bool ScreenshotWithLocation
+        {
+            get { return this.screenshotWithLocation; }
+            set { this.screenshotWithLocation = value; }
+        }
         private CCD ccd;
         public CCD CCD
         {
@@ -367,7 +374,7 @@ namespace CII.LAR.SysClass
         /// </summary>
         public static bool ChineseEdition
         {
-            get { return s_chineseEdition ?? (bool)(s_chineseEdition = File.Exists(Application.StartupPath + "\\zh-CN\\Cii.Lar.resources.dll")); }
+            get { return s_chineseEdition ?? (bool)(s_chineseEdition = File.Exists(Application.StartupPath + "\\zh-CN\\CII.LAR.resources.dll")); }
         }
 
         private static bool? s_chineseEdition;
@@ -398,6 +405,7 @@ namespace CII.LAR.SysClass
             this.globalHotKeyContainer = new List<GlobalHotKey>();
             this.chordHotKeyContainer = new List<ChordHotKey>();
             this.compensationFactor = 1.0f;
+            this.screenshotWithLocation = false;
         }
 
         // set default value

@@ -49,11 +49,69 @@ namespace CII.LAR.UI
             lable.Text = string.Format("{0}", value);
         }
 
+        private Timer timer;
+        private bool isUpLongPress;
         public UpDownArrowCtrl()
         {
             InitializeComponent();
             this.labelValue = "";
             this.lblValue.KeyDown += LblValue_KeyDown;
+            this.btnDown.MouseDown += BtnDown_MouseDown;
+            this.btnUp.MouseUp += BtnUp_MouseUp;
+            this.btnDown.MouseUp += BtnDown_MouseUp;
+            this.btnUp.MouseDown += BtnUp_MouseDown;
+            isUpLongPress = true;
+            timer = new Timer();
+            timer.Enabled = false;
+            timer.Tick += Timer_Tick;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if (isUpLongPress)
+            {
+                UpClick(null, null);
+            }
+            else
+            {
+                DownClick(null, null);
+            }
+        }
+
+        private void BtnUp_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (!timer.Enabled)
+            {
+                isUpLongPress = true;
+                timer.Interval = 100;
+                timer.Enabled = true;
+            }
+        }
+
+        private void BtnDown_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (timer.Enabled)
+            {
+                timer.Enabled = false;
+            }
+        }
+
+        private void BtnUp_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (timer.Enabled)
+            {
+                timer.Enabled = false;
+            }
+        }
+
+        private void BtnDown_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (!timer.Enabled)
+            {
+                isUpLongPress = false;
+                timer.Interval = 100;
+                timer.Enabled = true;
+            }
         }
 
         public delegate void LabelValueKeyDown();

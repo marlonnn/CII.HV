@@ -204,4 +204,10 @@
   <data name="StrAboutCtrlTitle" xml:space="preserve">
     <value>关于</value>
   </data>
+  <data name="StrWarning" xml:space="preserve">
+    <value>提示</value>
+  </data>
+  <data name="StrProgramExit" xml:space="preserve">
+    <value>程序已经在运行！</value>
+  </data>
 </root>

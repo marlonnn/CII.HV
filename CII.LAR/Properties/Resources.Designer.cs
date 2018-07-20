@@ -759,5 +759,27 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrZoomRate", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 Waring 的本地化字符串。
+        /// </summary>
+        internal static string StrWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("StrWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 Program Exist 的本地化字符串。
+        /// </summary>
+        internal static string StrProgramExit
+        {
+            get
+            {
+                return ResourceManager.GetString("StrProgramExit", resourceCulture);
+            }
+        }
     }
 }

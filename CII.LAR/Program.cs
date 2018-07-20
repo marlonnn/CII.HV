@@ -6,6 +6,7 @@ using CII.Library.CIINet.Commands;
 using CII.Library.CIINet.Manager;
 using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace CII.LAR
@@ -79,6 +80,7 @@ namespace CII.LAR
             DpiFactor = g.DpiX / 96.0;
             g.Dispose();
         }
+        private static Mutex mutex;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -89,15 +91,25 @@ namespace CII.LAR
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Initialize();
-                _sysConfig = SysConfig.Load();
-                _sysConfigOrigin = SysConfig.Load();
 
-                entryForm = new MainForm();
+                mutex = new Mutex(true, "OnlyRun");
+                if (mutex.WaitOne(0, false))
+                {
+                    Initialize();
+                    _sysConfig = SysConfig.Load();
+                    _sysConfigOrigin = SysConfig.Load();
 
-                expManager = new ExpManager();
+                    entryForm = new MainForm();
 
-                Application.Run(entryForm);
+                    expManager = new ExpManager();
+
+                    Application.Run(entryForm);
+                }
+                else
+                {
+                    MessageBox.Show(Properties.Resources.StrProgramExit, Properties.Resources.StrWarning, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Application.Exit();
+                }
             }
             catch (Exception ex)
             {

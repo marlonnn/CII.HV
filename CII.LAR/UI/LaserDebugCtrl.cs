@@ -42,7 +42,7 @@ namespace CII.LAR.UI
             {
                 CheckLaserStatus();
                 Thread.Sleep(1000);
-                CheckRedLaserCurrent();
+                //CheckRedLaserCurrent();
             }
         }
 
@@ -61,23 +61,35 @@ namespace CII.LAR.UI
                 LaserC01Response c01r = baseResponse as LaserC01Response;
                 if (c01r != null)
                 {
-                    if (c01r.Flag == 1920)
+                    if (c01r.Flag == 1152)
                     {
                         //红光关闭，则强制开启
-                        this.btn70.Text = "Open";
+                        UpdateBtnText("Open");
                         redLaserOpen = false;
                     }
-                    else if (c01r.Flag == 1664)
+                    else if (c01r.Flag == 1408)
                     {
-                        this.btn70.Text = "Closed";
+                        UpdateBtnText("Closed");
                         redLaserOpen = true;
                     }
                 }
-                LaserC09Response c09r = baseResponse as LaserC09Response;
-                if (c09r != null)
-                {
-                    this.slider.Value = (int)c09r.Current;
-                }
+                //LaserC09Response c09r = baseResponse as LaserC09Response;
+                //if (c09r != null)
+                //{
+                //    this.slider.Value = (int)c09r.Current;
+                //}
+            }
+        }
+
+        private void UpdateBtnText(string text)
+        {
+            if (this.InvokeRequired)
+            {
+                Invoke(new Action<string>(UpdateBtnText), text);
+            }
+            else
+            {
+                this.btn70.Text = text;
             }
         }
 

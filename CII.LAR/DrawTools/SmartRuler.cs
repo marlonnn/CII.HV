@@ -226,8 +226,19 @@ namespace CII.LAR.DrawTools
                 var pSize = g.MeasureString(pns, font);
                 if (positiveNumber > 0)
                 {
-                    using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
-                        g.DrawString(pns, font, sb, endX - pSize.Width, (float)(i - pSize.Height / 2));
+                    if (micronPixels < 80)
+                    {
+                        if (count % 2 == 0)
+                        {
+                            using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
+                                g.DrawString(pns, font, sb, endX - pSize.Width, (float)(i - pSize.Height / 2));
+                        }
+                    }
+                    else
+                    {
+                        using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
+                            g.DrawString(pns, font, sb, endX - pSize.Width, (float)(i - pSize.Height / 2));
+                    }
                 }
 
                 //draw negative major ticks
@@ -240,8 +251,19 @@ namespace CII.LAR.DrawTools
                 var nSize = g.MeasureString(nns, font);
                 if (negativeNumber < 0)
                 {
-                    using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
-                        g.DrawString(nns, font, sb, endX - nSize.Width, (float)(startYNegative - nSize.Height / 2));
+                    if (micronPixels < 80)
+                    {
+                        if (count % 2 == 0)
+                        {
+                            using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
+                                g.DrawString(nns, font, sb, endX - nSize.Width, (float)(startYNegative - nSize.Height / 2));
+                        }
+                    }
+                    else
+                    {
+                        using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
+                            g.DrawString(nns, font, sb, endX - nSize.Width, (float)(startYNegative - nSize.Height / 2));
+                    }
                 }
                 startYNegative -= micronPixels;
                 PaintYDivideNegativeAxis(g, pen, font, gp, count, startX, endX, (float)startYNegative, (float)(startYNegative + micronPixels));
@@ -397,8 +419,19 @@ namespace CII.LAR.DrawTools
                 var pSize = g.MeasureString(pns, font);
                 if (positiveNumber > 0)
                 {
-                    using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
-                        g.DrawString(pns, font, sb, (float)(i - pSize.Width / 2), endY - pSize.Height);
+                    if (micronPixels < 80)
+                    {
+                        if (count % 2 == 0)
+                        {
+                            using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
+                                g.DrawString(pns, font, sb, (float)(i - pSize.Width / 2), endY - pSize.Height);
+                        }
+                    }
+                    else
+                    {
+                        using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
+                            g.DrawString(pns, font, sb, (float)(i - pSize.Width / 2), endY - pSize.Height);
+                    }
                 }
 
                 //draw negative major ticks
@@ -411,8 +444,19 @@ namespace CII.LAR.DrawTools
                 var nSize = g.MeasureString(nns, font);
                 if (negativeNumber < 0)
                 {
-                    using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
-                        g.DrawString(nns, font, sb, (float)(startXNegative - nSize.Width / 2f), endY - nSize.Height);
+                    if (micronPixels < 80)
+                    {
+                        if (count % 2 == 0)
+                        {
+                            using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
+                                g.DrawString(nns, font, sb, (float)(startXNegative - nSize.Width / 2f), endY - nSize.Height);
+                        }
+                    }
+                    else
+                    {
+                        using (SolidBrush sb = new SolidBrush(Color.FromArgb(gp.Alpha, gp.Color)))
+                            g.DrawString(nns, font, sb, (float)(startXNegative - nSize.Width / 2f), endY - nSize.Height);
+                    }
                 }
                 //if (i != startXNegative)
                 startXNegative -= micronPixels;

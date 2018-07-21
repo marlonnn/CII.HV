@@ -1,5 +1,7 @@
 ﻿using AForge.Video.DirectShow;
+using CII.LAR.Commond;
 using CII.LAR.MaterialSkin;
+using CII.LAR.Protocol;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,6 +42,8 @@ namespace CII.LAR.UI
             this.cmbLaser.SelectedIndexChanged += new System.EventHandler(this.cmbLaser_SelectedIndexChanged);
             this.cbxScale.SelectedIndexChanged += CbxScale_SelectedIndexChanged;
             InitializeCmbTime();
+            serialPortCom = SerialPortCommunication.GetInstance();
+            serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
         }
 
         protected override void OnVisibleChanged(EventArgs e)
@@ -50,6 +54,27 @@ namespace CII.LAR.UI
                 cmbLaser.SelectedIndex = Program.EntryForm.LaserType == LaserType.SaturnFixed ? 0 : 1;
                 this.lblCameraStatus.Text = string.IsNullOrEmpty(Program.SysConfig.DeviceName) ? Properties.Resources.StrVideoNoAvailable : Program.SysConfig.DeviceName;
                 updateCmbLaser = true;
+                CheckLaserInfo();
+            }
+        }
+
+        private SerialPortCommunication serialPortCom;
+        private void CheckLaserInfo()
+        {
+            LaserC00Request c00 = new LaserC00Request();
+            var bytes = serialPortCom.Encode(c00);
+            serialPortCom.SendData(bytes);
+        }
+
+        private void SerialDataReceivedHandler(LaserBaseResponse baseResponse)
+        {
+            if (baseResponse != null)
+            {
+                LaserC00Response c00r = baseResponse as LaserC00Response;
+                if (c00r != null)
+                {
+                    var s = c00r.ToString();
+                }
             }
         }
 

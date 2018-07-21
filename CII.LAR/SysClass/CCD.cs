@@ -28,7 +28,7 @@ namespace CII.LAR.SysClass
 
         private void SetDefault()
         {
-            this.ccdType = CCDType.OneForth;
+            this.ccdType = CCDType.OneSecond;
         }
 
         /// <summary>

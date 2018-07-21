@@ -13,6 +13,7 @@ using CII.LAR.Commond;
 using CII.LAR.Algorithm;
 using CII.LAR.SysClass;
 using MathNet.Numerics.LinearAlgebra;
+using System.Threading;
 
 namespace CII.LAR.UI
 {
@@ -141,6 +142,27 @@ namespace CII.LAR.UI
             enableRedLaser = enable;
         }
 
+        private void CheckandEnableLaserStatus()
+        {
+            LaserC01Request c01 = new LaserC01Request();
+            var bytes = serialPortCom.Encode(c01);
+            serialPortCom.SendData(bytes);
+            Thread.Sleep(200);
+            if (serialPortCom.FinalData != null)
+            {
+                var data = serialPortCom.FinalData;
+                if (data.Length == 6)
+                {
+                    var flag = data[1] * 128 + data[2];
+                    if (flag == 1408)
+                    {
+                        EnableRedLaser(true);
+                    }
+                }
+            }
+        }
+
+
         private void btnNext_Click(object sender, EventArgs e)
         {
             if (Index != 7)
@@ -151,7 +173,7 @@ namespace CII.LAR.UI
                 {
                     //开启红光引导光
                     //先检查红光是否开启，若已经开启，则不用再开启
-                    if (Program.SysConfig.LiveMode) EnableRedLaser(true);
+                    if (Program.SysConfig.LiveMode) CheckandEnableLaserStatus();
                     this.btnNext.Text = Res.LaserAlignment.StrAlignLaser;
                 }
                 else if (Index == 7)
@@ -327,8 +349,31 @@ namespace CII.LAR.UI
             else
             {
                 Program.EntryForm.LaserType = LaserType.SaturnFixed;
+                //关闭红光
+                //EnableRedLaser(false);
+                CheckLaserStatus();
             }
             Program.SysConfig.LaserConfig.IsAlignment = this.Visible;
+        }
+
+        private void CheckLaserStatus()
+        {
+            LaserC01Request c01 = new LaserC01Request();
+            var bytes = serialPortCom.Encode(c01);
+            serialPortCom.SendData(bytes);
+            Thread.Sleep(200);
+            if (serialPortCom.FinalData != null)
+            {
+                var data = serialPortCom.FinalData;
+                if (data.Length == 6)
+                {
+                    var flag = data[1] * 128 + data[2];
+                    if (flag == 1152)
+                    {
+                        EnableRedLaser(false);
+                    }
+                }
+            }
         }
 
         public override void InitializeLocation(Size size)

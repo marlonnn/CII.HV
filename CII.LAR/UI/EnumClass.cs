@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CII.LAR
 {
-    public enum CCDType
+    public enum CCDType : int
     {
         OneForth,
         OneThird,

@@ -129,6 +129,9 @@
   <data name="lblAdjustment.Text" xml:space="preserve">
     <value>调整</value>
   </data>
+  <data name="lblCameraType.Text" xml:space="preserve">
+    <value>相机类型</value>
+  </data>
   <data name="lblCurrentLense.Text" xml:space="preserve">
     <value>物镜</value>
   </data>

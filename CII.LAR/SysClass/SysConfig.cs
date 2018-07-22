@@ -31,6 +31,7 @@ namespace CII.LAR.SysClass
         public CCD CCD
         {
             get { return this.ccd; }
+            set { this.ccd = value; }
         }
         /// <summary>
         /// 电机补偿系数

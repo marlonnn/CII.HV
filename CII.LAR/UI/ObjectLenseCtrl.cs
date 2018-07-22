@@ -31,6 +31,8 @@ namespace CII.LAR.UI
             resources = new ComponentResourceManager(typeof(ObjectLenseCtrl));
             this.rulerAdjustCtrl1.UpdownClickHandler += UpdownClickHandler;
             this.rulerAdjustCtrl1.LabelValueKeyDownHandler += LabelValueKeyDownHandler;
+            this.cmbCameraType.SelectedIndex = (int)Program.SysConfig.CCD.CType;
+            this.cmbCameraType.SelectedIndexChanged += new System.EventHandler(this.cmbCameraType_SelectedIndexChanged);
         }
 
         private void LabelValueKeyDownHandler()
@@ -230,5 +232,33 @@ namespace CII.LAR.UI
             }
         }
 
+        private void cmbCameraType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Program.SysConfig.CCD.CType = GetCCDType(cmbCameraType.SelectedIndex);
+        }
+
+        private CCDType GetCCDType(int index)
+        {
+            CCDType type = CCDType.OneThird;
+            switch (index)
+            {
+                case 0:
+                    type = CCDType.OneForth;
+                    break;
+                case 1:
+                    type = CCDType.OneThird;
+                    break;
+                case 2:
+                    type = CCDType.OneSecond;
+                    break;
+                case 3:
+                    type = CCDType.TwoThird;
+                    break;
+                default:
+                    type = CCDType.OneThird;
+                    break;
+            }
+            return type;
+        }
     }
 }

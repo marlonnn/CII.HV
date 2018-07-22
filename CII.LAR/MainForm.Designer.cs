@@ -52,7 +52,7 @@ namespace CII.LAR
             this.toolstripBtnZoomOut = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.toolstripBtnFit = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.materialToolStrip2 = new CII.LAR.MaterialSkin.MaterialToolStrip();
-            this.toolstripBtnMeasure = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnMeasure = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolstripBtnLine = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.toolstripBtnRectangle = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.toolstripBtnEllipse = new CII.LAR.MaterialSkin.MaterialToolStripButton();
@@ -278,7 +278,7 @@ namespace CII.LAR
             resources.ApplyResources(this.toolstripBtnMeasure, "toolstripBtnMeasure");
             this.toolstripBtnMeasure.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolstripBtnMeasure.Image = global::CII.LAR.Properties.Resources.ruler;
-            this.toolstripBtnMeasure.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            //this.toolstripBtnMeasure.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
             this.toolstripBtnMeasure.Name = "toolstripBtnMeasure";
             this.toolstripBtnMeasure.Click += new System.EventHandler(this.toolstripBtnMeasure_Click);
             // 
@@ -397,7 +397,7 @@ namespace CII.LAR
         private MaterialToolStripButton toolstripBtnFiles;
         private System.Windows.Forms.Panel panel1;
         private MaterialToolStrip materialToolStrip2;
-        private MaterialToolStripButton toolstripBtnMeasure;
+        private System.Windows.Forms.ToolStripDropDownButton toolstripBtnMeasure;
         private MaterialToolStripButton toolstripBtnLine;
         private MaterialToolStripButton toolstripBtnRectangle;
         private CII.LAR.MaterialSkin.MaterialToolStripButton toolstripBtnEllipse;

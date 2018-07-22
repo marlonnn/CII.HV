@@ -781,5 +781,16 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrProgramExit", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 Hide Ruler的本地化字符串。
+        /// </summary>
+        internal static string StrHideRuler
+        {
+            get
+            {
+                return ResourceManager.GetString("StrHideRuler", resourceCulture);
+            }
+        }
     }
 }

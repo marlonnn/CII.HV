@@ -210,4 +210,7 @@
   <data name="StrProgramExit" xml:space="preserve">
     <value>程序已经在运行！</value>
   </data>
+  <data name="StrHideRuler" xml:space="preserve">
+    <value>隐藏刻度尺</value>
+  </data>
 </root>

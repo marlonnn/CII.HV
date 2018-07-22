@@ -1416,7 +1416,7 @@
     <value>toolstripBtnMeasure</value>
   </data>
   <data name="&gt;&gt;toolstripBtnMeasure.Type" xml:space="preserve">
-    <value>CII.LAR.MaterialSkin.MaterialToolStripButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolstripBtnLine.Name" xml:space="preserve">
     <value>toolstripBtnLine</value>

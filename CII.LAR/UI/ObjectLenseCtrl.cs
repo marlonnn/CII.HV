@@ -20,6 +20,7 @@ namespace CII.LAR.UI
     /// </summary>
     public partial class ObjectLenseCtrl : BaseCtrl
     {
+        public EventHandler LenseChangeHandler;
         private RichPictureBox richPictureBox;
         public ObjectLenseCtrl(RichPictureBox richPictureBox)
         {
@@ -144,7 +145,7 @@ namespace CII.LAR.UI
             if (lense != null && lense.Factor != 1)
             {
                 int index = Program.SysConfig.Lenses.FindIndex(l => (l.Name == lense.Name));
-                Program.SysConfig.DeleteLense(lense.Name);
+                if (Program.SysConfig.DeleteLense(lense.Name)) LenseChangeHandler?.Invoke(null, null);
                 cmbLenses.Items.Clear();
                 cmbLenses.Items.AddRange(Program.SysConfig.Lenses.ToArray());
                 int currentIndex = FindSelectedIndex(index);
@@ -209,6 +210,7 @@ namespace CII.LAR.UI
                 Lense lense = new Lense(factor);
                 if (Program.SysConfig.AddLense(lense))
                 {
+                    LenseChangeHandler?.Invoke(null, null);
                     //this.richPictureBox.ZoomNewLense(1, factor);
                     this.rulerAdjustCtrl1.LabelValue = lense.FineAdjustment.ToString();
                     UpdateComBoxItemLense(lense);
@@ -227,5 +229,6 @@ namespace CII.LAR.UI
                 return;
             }
         }
+
     }
 }

@@ -327,13 +327,15 @@ namespace CII.LAR.SysClass
             }
         }
 
-        public void DeleteLense(string lense)
+        public bool DeleteLense(string lense)
         {
             var item = Lenses.Find(l => (l.Name == lense));
             if (item != null)
             {
                 Lenses.Remove(item);
+                return true;
             }
+            return false;
         }
 
         public FilterInfo EnumerateVideoDevices()

@@ -259,6 +259,7 @@ namespace CII.LAR
             this.richPictureBox.RestrictArea.TransformMotorOriginalPoints();
             settingControl.SettingControl_Load(null, null);
             this.LaserCheckTimer.Enabled = true;
+            CreateMeasureItems();
         }
 
         public int GetLastInputTime()
@@ -468,7 +469,89 @@ namespace CII.LAR
 
         private void toolstripBtnMeasure_Click(object sender, EventArgs e)
         {
-            this.richPictureBox.Rulers.ShowRulers = !this.richPictureBox.Rulers.ShowRulers;
+            //CreateMeasureItems();
+        }
+
+        private void CreateMeasureItems()
+        {
+            var lenses = Program.SysConfig.Lenses;
+            if (lenses != null && lenses.Count > 0)
+            {
+                //ToolStripItem[] toolstripItem = new ToolStripItem[lenses.Count + 1];
+                this.toolstripBtnMeasure.DropDownItems.Clear();
+                MaterialToolStripMenuItem itemOne = new MaterialToolStripMenuItem();
+                itemOne.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
+                itemOne.Depth = 0;
+                itemOne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(226)))), ((int)(((byte)(241)))));
+                itemOne.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+                itemOne.Name = "lenseItemOne";
+                Lense lense = new Lense(1);
+                itemOne.Text = lense.Name;
+                itemOne.Tag = lense;
+                itemOne.Click += new System.EventHandler(this.MeasureItem_Click);
+                this.toolstripBtnMeasure.DropDownItems.Add(itemOne);
+                for (int i=0; i< lenses.Count; i++)
+                {
+                    MaterialToolStripMenuItem item = new MaterialToolStripMenuItem();
+                    item.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
+                    item.Depth = 0;
+                    item.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(226)))), ((int)(((byte)(241)))));
+                    item.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+                    item.Name = "lenseItem" + i;
+                    item.Text = lenses[i].Name;
+                    item.Tag = lenses[i];
+                    item.Click += new System.EventHandler(this.MeasureItem_Click);
+                    this.toolstripBtnMeasure.DropDownItems.Add(item);
+                }
+                MaterialToolStripMenuItem itemHide = new MaterialToolStripMenuItem();
+                itemHide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
+                itemHide.Depth = 0;
+                itemHide.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(226)))), ((int)(((byte)(241)))));
+                itemHide.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+                itemHide.Name = "lenseItemHide";
+                itemHide.Text = Properties.Resources.StrHideRuler;
+                itemHide.Click += new System.EventHandler(this.MeasureItem_Click);
+                this.toolstripBtnMeasure.DropDownItems.Add(itemHide);
+            }
+            else
+            {
+                this.toolstripBtnMeasure.DropDownItems.Clear();
+                MaterialToolStripMenuItem itemOne = new MaterialToolStripMenuItem();
+                itemOne.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
+                itemOne.Depth = 0;
+                itemOne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(226)))), ((int)(((byte)(241)))));
+                itemOne.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+                itemOne.Name = "lenseItemOne";
+                Lense lense = new Lense(1);
+                itemOne.Text = lense.Name;
+                itemOne.Tag = lense;
+                itemOne.Click += new System.EventHandler(this.MeasureItem_Click);
+                this.toolstripBtnMeasure.DropDownItems.Add(itemOne);
+
+                MaterialToolStripMenuItem itemHide = new MaterialToolStripMenuItem();
+                itemHide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
+                itemHide.Depth = 0;
+                itemHide.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(226)))), ((int)(((byte)(241)))));
+                itemHide.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+                itemHide.Name = "lenseItemHide";
+                itemHide.Text = Properties.Resources.StrHideRuler;
+                itemHide.Click += new System.EventHandler(this.MeasureItem_Click);
+                this.toolstripBtnMeasure.DropDownItems.Add(itemHide);
+            }
+        }
+
+        private void MeasureItem_Click(object sender, EventArgs e)
+        {
+            var lense = (sender as MaterialToolStripMenuItem).Tag as Lense;
+            if (lense != null)
+            {
+                Program.SysConfig.Lense = lense;
+                this.richPictureBox.Rulers.ShowRulers = true;
+            }
+            else
+            {
+                this.richPictureBox.Rulers.ShowRulers = false;
+            }
             this.richPictureBox.Invalidate();
         }
 
@@ -713,6 +796,7 @@ namespace CII.LAR
 
             lenseCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<ObjectLenseCtrl>(CtrlType.LenseCtrl);
             lenseCtrl.UpdateObjectLensesHandler += UpdateObjectLensesHandler;
+            lenseCtrl.LenseChangeHandler += LenseChangeHandler;
             BaseCtrls.Add(lenseCtrl);
 
             shortcutCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<ShortcutCtrl>(CtrlType.ShortCut);
@@ -722,6 +806,11 @@ namespace CII.LAR
             BaseCtrls.Add(aboutCtrl);
             //laserDebugCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserDebugCtrl>(CtrlType.LaserDebugCtrl);
             //BaseCtrls.Add(laserDebugCtrl);
+        }
+
+        private void LenseChangeHandler(object sender, EventArgs e)
+        {
+            CreateMeasureItems();
         }
 
         private void UpdateObjectLensesHandler(Lense lense)

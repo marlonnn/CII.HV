@@ -236,9 +236,6 @@
   <data name="materialLabel4.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="materialLabel4.Text" xml:space="preserve">
-    <value>LAR-100.P003.T01A.032</value>
-  </data>
   <data name="&gt;&gt;materialLabel4.Name" xml:space="preserve">
     <value>materialLabel4</value>
   </data>
@@ -304,7 +301,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="materialRoundButton1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>PingFang SC Medium, 9pt</value>
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="materialRoundButton1.Location" type="System.Drawing.Point, System.Drawing">
     <value>288, 198</value>
@@ -333,9 +330,9 @@
   <data name="&gt;&gt;materialRoundButton1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 12</value>
   </data>

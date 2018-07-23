@@ -16,6 +16,11 @@ namespace CII.LAR.UI
         {
             resources = new ComponentResourceManager(typeof(AboutControl));
             InitializeComponent();
+            this.Load += AboutControl_Load;
+        }
+
+        private void AboutControl_Load(object sender, EventArgs e)
+        {
             this.materialLabel4.Text = CII.Library.Xml.ConstConfig.GetValue("Version");
         }
 

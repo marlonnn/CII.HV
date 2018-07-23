@@ -156,32 +156,6 @@ namespace CII.LAR.UI
             }
         }
 
-        private void slider_ValueChanged(object sender, EventArgs e)
-        {
-            this.slider.Text = slider.Value.ToString();
-        }
-
-        private void slider_MouseUp(object sender, MouseEventArgs e)
-        {
-            try
-            {
-                var c75 = new LaserC75Request(this.slider.Value);
-                var bps = c75.Encode();
-                List<byte[]> bytes = new List<byte[]>();
-                foreach (var b in bps)
-                {
-                    var data = LaserProtocolFactory.GetInstance().LaserProtocol.EnPackage(b);
-                    bytes.Add(data);
-                }
-                serialPortCom.SendData(bytes);
-            }
-            catch (Exception ex)
-            {
-                LogHelper.GetLogger<LaserDebugControl>().Error(ex.Message);
-                LogHelper.GetLogger<LaserDebugControl>().Error(ex.StackTrace);
-            }
-        }
-
         private void laserOpenCloseSpbtn_Click(object sender, EventArgs e)
         {
             if (laserOpenCloseSpbtn.Text == "Open")
@@ -203,7 +177,6 @@ namespace CII.LAR.UI
 
         private void EnableLaserCtrl(bool enable)
         {
-            this.slider.Enabled = enable;
             this.btn70.Enabled = enable;
         }
 

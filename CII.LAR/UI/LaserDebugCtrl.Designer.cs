@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.slider = new DevComponents.DotNetBar.Controls.Slider();
             this.groupBoxLaser = new System.Windows.Forms.GroupBox();
             this.laserStatus = new System.Windows.Forms.Label();
             this.laserHandshakingcbx = new System.Windows.Forms.ComboBox();
@@ -44,7 +43,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.laserStopBitsCbx = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn70 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -57,23 +55,6 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // slider
-            // 
-            // 
-            // 
-            // 
-            this.slider.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.slider.Location = new System.Drawing.Point(62, 71);
-            this.slider.Maximum = 82;
-            this.slider.Name = "slider";
-            this.slider.Size = new System.Drawing.Size(251, 23);
-            this.slider.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.slider.TabIndex = 1;
-            this.slider.Text = "1";
-            this.slider.Value = 1;
-            this.slider.ValueChanged += new System.EventHandler(this.slider_ValueChanged);
-            this.slider.MouseUp += new System.Windows.Forms.MouseEventHandler(this.slider_MouseUp);
             // 
             // groupBoxLaser
             // 
@@ -231,20 +212,9 @@
             this.laserStopBitsCbx.Size = new System.Drawing.Size(299, 20);
             this.laserStopBitsCbx.TabIndex = 13;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(0, 77);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 12);
-            this.label1.TabIndex = 33;
-            this.label1.Text = "Red Laser";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btn70);
-            this.groupBox1.Controls.Add(this.slider);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(3, 350);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(319, 97);
@@ -327,7 +297,6 @@
             this.groupBoxLaser.ResumeLayout(false);
             this.groupBoxLaser.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -337,8 +306,6 @@
         }
 
         #endregion
-
-        private DevComponents.DotNetBar.Controls.Slider slider;
         private System.Windows.Forms.GroupBox groupBoxLaser;
         private System.Windows.Forms.Label laserStatus;
         private System.Windows.Forms.ComboBox laserHandshakingcbx;
@@ -354,7 +321,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox laserStopBitsCbx;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btn70;
         private System.Windows.Forms.GroupBox groupBox2;

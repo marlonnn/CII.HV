@@ -126,6 +126,12 @@
   <data name="btnSimulator.Text" xml:space="preserve">
     <value>开启模拟模式</value>
   </data>
+  <data name="cmbLaser.Items" xml:space="preserve">
+    <value>单孔模式</value>
+  </data>
+  <data name="cmbLaser.Items1" xml:space="preserve">
+    <value>多孔模式</value>
+  </data>
   <data name="gropBoxSystemInfo.Text" xml:space="preserve">
     <value>系统信息</value>
   </data>

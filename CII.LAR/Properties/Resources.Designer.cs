@@ -792,5 +792,27 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrHideRuler", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 Single-hole 的本地化字符串。
+        /// </summary>
+        internal static string StrSingleHole
+        {
+            get
+            {
+                return ResourceManager.GetString("StrSingleHole", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 Multi-hole 的本地化字符串。
+        /// </summary>
+        internal static string StrMultiHole
+        {
+            get
+            {
+                return ResourceManager.GetString("StrMultiHole", resourceCulture);
+            }
+        }
     }
 }

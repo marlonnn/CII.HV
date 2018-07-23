@@ -147,8 +147,8 @@
             this.cmbLaser.ForeColor = System.Drawing.Color.White;
             this.cmbLaser.FormattingEnabled = true;
             this.cmbLaser.Items.AddRange(new object[] {
-            resources.GetString("cmbLaser.Items"),
-            resources.GetString("cmbLaser.Items1")});
+            Properties.Resources.StrSingleHole,
+            Properties.Resources.StrMultiHole});
             this.cmbLaser.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.cmbLaser.Name = "cmbLaser";
             // 

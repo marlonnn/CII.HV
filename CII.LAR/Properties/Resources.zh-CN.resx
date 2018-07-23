@@ -213,4 +213,10 @@
   <data name="StrHideRuler" xml:space="preserve">
     <value>隐藏刻度尺</value>
   </data>
+  <data name="StrSingleHole" xml:space="preserve">
+    <value>单孔模式</value>
+  </data>
+  <data name="StrMultiHole" xml:space="preserve">
+    <value>多孔模式</value>
+  </data>
 </root>

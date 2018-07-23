@@ -156,7 +156,7 @@ Click to indicate the laser spot center, indicating that the laser spot will be 
 Click on the next step.</value>
   </data>
   <data name="StrStepOne" xml:space="preserve">
-    <value>Click on the center of the pilot spot, the spot becomes larger then click the center again.
+    <value>Click on the center of the pilot spot so that the spot becomes larger.Then click the center again.
 
 Click”Next”.</value>
   </data>

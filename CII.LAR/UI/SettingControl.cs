@@ -175,6 +175,11 @@ namespace CII.LAR.UI
                     }
                 }
             }
+            this.cmbLaser.Items.Clear();
+            this.cmbLaser.Items.AddRange(new object[] {
+            Properties.Resources.StrSingleHole,
+            Properties.Resources.StrMultiHole});
+            cmbLaser.SelectedIndex = Program.EntryForm.LaserType == LaserType.SaturnFixed ? 0 : 1;
             this.btnSimulator.Text = simulatorOpen ?  CII.LAR.Properties.Resources.StrCloseSimulator : CII.LAR.Properties.Resources.StrOpenSimulator;
             this.Invalidate();
         }

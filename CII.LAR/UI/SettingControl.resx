@@ -331,10 +331,10 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="cmbLaser.Items" xml:space="preserve">
-    <value>Saturn Fixed</value>
+    <value>Single-hole</value>
   </data>
   <data name="cmbLaser.Items1" xml:space="preserve">
-    <value>Saturn Active</value>
+    <value>Multi-hole</value>
   </data>
   <data name="cmbLaser.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 29</value>

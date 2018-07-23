@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="StrAlignLaser" xml:space="preserve">
-    <value>Align Laser</value>
+    <value>Start</value>
   </data>
   <data name="StrFinish" xml:space="preserve">
     <value>Finish</value>
@@ -133,9 +133,8 @@ Remove any embryos from the  field of view.
 Place an empty Petri dish or slide onto the microscope stage.</value>
   </data>
   <data name="StrPreSet1" xml:space="preserve">
-    <value>The pilot is now switched on. Adjust the focus if necessary so that the Pilot laser spot appears as small as possible on the monitor.
-If the red spot appears too faint then reduce the intensity of the illumination or adjust the brightness of the pilot laser using the rear panel control.
-Click the pilot laser on screen.</value>
+    <value>The pilot is now switched on. Please confirm that the bright and clear spot is on the screen. Adjust the focus if necessary so that the Pilot laser spot appears as small as possible on the monitor.
+If the pilot spot appears too faint then adjust the brightness of the pilot laser using the rotary knob on the laser module or reduce the brightness of the microscope light source.</value>
   </data>
   <data name="StrSave" xml:space="preserve">
     <value>Save</value>
@@ -147,41 +146,34 @@ Calibration of the laser has now been complete.
 Click Finish to save the calibration.</value>
   </data>
   <data name="StrStepFive" xml:space="preserve">
-    <value>
-The pilot laser has moved.
-
-Click the centre of the pilot laser on screen.</value>
+    <value>The pilot laser has now moved by a small amount.
+Click to indicate the laser spot center, indicating that the laser spot will be amplified, and then click the amplified laser pointer to indicate the center.
+Click on the next step.</value>
   </data>
   <data name="StrStepFour" xml:space="preserve">
-    <value>
-The pilot laser has moved.
-
-Click the centre of the pilot laser on screen.</value>
+    <value>The pilot laser has now moved by a small amount.
+Click to indicate the laser spot center, indicating that the laser spot will be amplified, and then click the amplified laser pointer to indicate the center.
+Click on the next step.</value>
   </data>
   <data name="StrStepOne" xml:space="preserve">
-    <value>The pilot laser is in position whitch should be visible on the screen.
-Check you can see the pilot laser on screen.
-Adjust the focus if necessary so that the Pilot laser spot appears as small as possible on the monitor.
-If the red spot appears too faint then reduce the intensity of the illumination or adjust the brightness of the pilot laser using the rear panel control.
-Click the pilot laser on screen.</value>
+    <value>Click on the center of the pilot spot, the spot becomes larger then click the center again.
+
+Click”Next”.</value>
   </data>
   <data name="StrStepSeven" xml:space="preserve">
-    <value>
-The pilot laser has moved.
-
-Click the centre of the pilot laser on screen.</value>
+    <value>The pilot laser has now moved by a small amount.
+Click to indicate the laser spot center, indicating that the laser spot will be amplified, and then click the amplified laser pointer to indicate the center.
+Click on the next step.</value>
   </data>
   <data name="StrStepSix" xml:space="preserve">
-    <value>
-The pilot laser has moved.
-
-Click the centre of the pilot laser on screen.</value>
+    <value>The pilot laser has now moved by a small amount.
+Click to indicate the laser spot center, indicating that the laser spot will be amplified, and then click the amplified laser pointer to indicate the center.
+Click on the next step.</value>
   </data>
   <data name="StrStepThree" xml:space="preserve">
-    <value>
-The pilot laser has now moved by a small amount.
-
-Click the centre of the pilot laser on screen.</value>
+    <value>The pilot laser has now moved by a small amount.
+Click to indicate the laser spot center, indicating that the laser spot will be amplified, and then click the amplified laser pointer to indicate the center.
+Click on the next step.</value>
   </data>
   <data name="StrStepTitleComplete" xml:space="preserve">
     <value>Laser Target Alignment - Step Complete</value>
@@ -210,8 +202,8 @@ Click the centre of the pilot laser on screen.</value>
   <data name="StrStepTwo" xml:space="preserve">
     <value>
 The pilot laser has now moved by a small amount.
-
-Click the centre of the pilot laser on screen.</value>
+Click to indicate the laser spot center, indicating that the laser spot will be amplified, and then click the amplified laser pointer to indicate the center.
+Click on the next step.</value>
   </data>
   <data name="StrTitle" xml:space="preserve">
     <value>Laser Target Alignment</value>

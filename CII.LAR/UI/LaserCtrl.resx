@@ -211,7 +211,7 @@
     <value>8</value>
   </data>
   <data name="btnAlignLaser.Text" xml:space="preserve">
-    <value>Align Laser</value>
+    <value>Laser Target Alignment</value>
   </data>
   <data name="&gt;&gt;btnAlignLaser.Name" xml:space="preserve">
     <value>btnAlignLaser</value>
@@ -277,7 +277,7 @@
     <value>10</value>
   </data>
   <data name="btnAppearance.Text" xml:space="preserve">
-    <value>Apprearance</value>
+    <value>Target Property</value>
   </data>
   <data name="&gt;&gt;btnAppearance.Name" xml:space="preserve">
     <value>btnAppearance</value>

@@ -130,10 +130,10 @@
     <value>水平翻转</value>
   </data>
   <data name="openCameraLiveToolStripMenuItem.Text" xml:space="preserve">
-    <value>打开相机</value>
+    <value>相机选择</value>
   </data>
   <data name="openCameraLiveToolStripMenuItem.ToolTipText" xml:space="preserve">
-    <value>打开相机</value>
+    <value>相机选择</value>
   </data>
   <data name="toolstripBtnAbout.Text" xml:space="preserve">
     <value>关于</value>
@@ -163,19 +163,19 @@
     <value>直线</value>
   </data>
   <data name="toolstripBtnMeasure.Text" xml:space="preserve">
-    <value>测量</value>
+    <value>坐标尺</value>
   </data>
   <data name="toolstripBtnRectangle.Text" xml:space="preserve">
     <value>矩形</value>
   </data>
   <data name="toolstripBtnScreenShort.Text" xml:space="preserve">
-    <value>截屏</value>
+    <value>拍照</value>
   </data>
   <data name="toolstripBtnSetting.Text" xml:space="preserve">
     <value>设置</value>
   </data>
   <data name="toolstripBtnVideo.Text" xml:space="preserve">
-    <value>录屏</value>
+    <value>录像</value>
   </data>
   <data name="toolstripBtnZoomIn.Text" xml:space="preserve">
     <value>放大</value>

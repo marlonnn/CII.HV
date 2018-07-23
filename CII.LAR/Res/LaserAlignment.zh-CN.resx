@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="StrAlignLaser" xml:space="preserve">
-    <value>激光校准</value>
+    <value>开始校准</value>
   </data>
   <data name="StrFinish" xml:space="preserve">
-    <value>完成</value>
+    <value>保存</value>
   </data>
   <data name="StrNext" xml:space="preserve">
     <value>下一步</value>
@@ -133,11 +133,10 @@
 请放置一个空的培养皿或玻璃片在显微镜的载物台上。</value>
   </data>
   <data name="StrPreSet1" xml:space="preserve">
-    <value>引导激光现在已经开启。
-
-如果有需要，请调节焦点，以便引导激光点在控制器上显示得尽可能小。
-如果红点太模糊，请降低光源的强度或者用后控制面板调节激光亮度。
-点击在屏幕上的引导激光。</value>
+    <value>指示激光已开启，请确认屏幕上已出现清晰明亮的光点。
+如有需要，请调节显微镜对焦旋钮，使指示激光点在屏幕上显示得尽可能小；
+如果光点不够明亮，请使用激光器旋钮调节激光强度，或降低显微镜光源强度。
+点击“开始校准”。</value>
   </data>
   <data name="StrSave" xml:space="preserve">
     <value>保存</value>
@@ -149,41 +148,43 @@
 点击“完成”保存校正结果</value>
   </data>
   <data name="StrStepFive" xml:space="preserve">
-    <value>
-现在引导激光已移动。
+    <value>现在指示激光已小量移动
 
-对齐引导激光中心红点并点击。</value>
+点击指示激光点中心，指示激光点将被放大，再次点击放大后的指示激光点中心。
+
+点击“下一步”。</value>
   </data>
   <data name="StrStepFour" xml:space="preserve">
-    <value>
-现在引导激光已移动。
+    <value>现在指示激光已小量移动
 
-对齐引导激光中心红点并点击。</value>
+点击指示激光点中心，指示激光点将被放大，再次点击放大后的指示激光点中心。
+
+点击“下一步”。</value>
   </data>
   <data name="StrStepOne" xml:space="preserve">
-    <value>引导激光应显示在屏幕上。
-检查您是否可以在屏幕上可到引导激光。
-如果有需要，请调节焦点，以便引导激光点在控制器上显示得尽可能小。
-如果红点太模糊，请降低光源的强度或者用后控制面板调节激光亮度。
-对齐引导激光中心红点并点击。</value>
+    <value>点击指示激光点中心，指示激光点将被放大，再次点击放大后的指示激光点中心。
+点击“下一步”。</value>
   </data>
   <data name="StrStepSeven" xml:space="preserve">
-    <value>
-现在引导激光已移动。
+    <value>现在指示激光已小量移动
 
-对齐引导激光中心红点并点击。</value>
+点击指示激光点中心，指示激光点将被放大，再次点击放大后的指示激光点中心。
+
+点击“下一步”。</value>
   </data>
   <data name="StrStepSix" xml:space="preserve">
-    <value>
-现在引导激光已移动。
+    <value>现在指示激光已小量移动
 
-对齐引导激光中心红点并点击。</value>
+点击指示激光点中心，指示激光点将被放大，再次点击放大后的指示激光点中心。
+
+点击“下一步”。</value>
   </data>
   <data name="StrStepThree" xml:space="preserve">
-    <value>
-现在引导激光已小量移动。
+    <value>现在指示激光已小量移动
 
-对齐引导激光中心红点并点击。</value>
+点击指示激光点中心，指示激光点将被放大，再次点击放大后的指示激光点中心。
+
+点击“下一步”。</value>
   </data>
   <data name="StrStepTitleComplete" xml:space="preserve">
     <value>完成</value>
@@ -210,12 +211,13 @@
     <value>步骤二</value>
   </data>
   <data name="StrStepTwo" xml:space="preserve">
-    <value>
-现在引导激光已小量移动。
+    <value>现在指示激光已小量移动
 
-对齐引导激光中心红点并点击。</value>
+点击指示激光点中心，指示激光点将被放大，再次点击放大后的指示激光点中心。
+
+点击“下一步”。</value>
   </data>
   <data name="StrTitle" xml:space="preserve">
-    <value>激光目标对齐</value>
+    <value>激光位置校准</value>
   </data>
 </root>

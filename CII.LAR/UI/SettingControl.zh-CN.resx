@@ -136,7 +136,7 @@
     <value>语言</value>
   </data>
   <data name="groupBoxLaser.Text" xml:space="preserve">
-    <value>激光器</value>
+    <value>工作模式</value>
   </data>
   <data name="groupBoxObjectLense.Text" xml:space="preserve">
     <value>物镜</value>

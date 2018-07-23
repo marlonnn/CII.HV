@@ -370,7 +370,7 @@
     <value>3</value>
   </data>
   <data name="groupBoxLaser.Text" xml:space="preserve">
-    <value>Laser</value>
+    <value>Mode</value>
   </data>
   <data name="&gt;&gt;groupBoxLaser.Name" xml:space="preserve">
     <value>groupBoxLaser</value>
@@ -544,7 +544,7 @@
     <value>8</value>
   </data>
   <data name="materialRoundButton1.Text" xml:space="preserve">
-    <value>Object Lense Manager</value>
+    <value>Objective Manager</value>
   </data>
   <data name="&gt;&gt;materialRoundButton1.Name" xml:space="preserve">
     <value>materialRoundButton1</value>
@@ -571,7 +571,7 @@
     <value>7</value>
   </data>
   <data name="groupBoxObjectLense.Text" xml:space="preserve">
-    <value>Object Lense</value>
+    <value>Objective</value>
   </data>
   <data name="&gt;&gt;groupBoxObjectLense.Name" xml:space="preserve">
     <value>groupBoxObjectLense</value>
@@ -861,9 +861,9 @@
   <data name="&gt;&gt;groupBoxScale.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 12</value>
   </data>

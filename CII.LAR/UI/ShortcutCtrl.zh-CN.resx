@@ -130,9 +130,9 @@
     <value>开始/停止录制</value>
   </data>
   <data name="lblZoomIn.Text" xml:space="preserve">
-    <value>镜头放大</value>
+    <value>图像放大</value>
   </data>
   <data name="lblZoomOut.Text" xml:space="preserve">
-    <value>镜头缩小</value>
+    <value>图像缩小</value>
   </data>
 </root>

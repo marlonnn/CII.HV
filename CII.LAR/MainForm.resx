@@ -139,7 +139,7 @@
     <value>35, 35</value>
   </data>
   <data name="toolstripBtnScreenShort.Text" xml:space="preserve">
-    <value>Screen Shot</value>
+    <value>Take Photo</value>
   </data>
   <data name="toolstripBtnVideo.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -443,7 +443,7 @@
     <value>35, 35</value>
   </data>
   <data name="toolstripBtnMeasure.Text" xml:space="preserve">
-    <value>Measure</value>
+    <value>Ruler</value>
   </data>
   <data name="toolstripBtnLine.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1446,10 +1446,10 @@
     <value>152, 22</value>
   </data>
   <data name="openCameraLiveToolStripMenuItem.Text" xml:space="preserve">
-    <value>Open camera live</value>
+    <value>Select camera live</value>
   </data>
   <data name="openCameraLiveToolStripMenuItem.ToolTipText" xml:space="preserve">
-    <value>Open camera live</value>
+    <value>Select camera live</value>
   </data>
   <data name="closeCameraToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 22</value>
@@ -1482,18 +1482,6 @@
     <value>closeCameraToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;closeCameraToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;horizontalFlipToolStripMenuItem.Name" xml:space="preserve">
-    <value>horizontalFlipToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;horizontalFlipToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;verticalFlipToolStripMenuItem.Name" xml:space="preserve">
-    <value>verticalFlipToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;verticalFlipToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;horizontalFlipToolStripMenuItem.Name" xml:space="preserve">

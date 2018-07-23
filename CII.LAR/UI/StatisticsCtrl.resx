@@ -217,7 +217,7 @@
     <value>4, 6, 4, 6</value>
   </data>
   <data name="btnAppearance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>147, 23</value>
   </data>
   <data name="btnAppearance.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>

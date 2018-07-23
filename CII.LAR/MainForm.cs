@@ -492,6 +492,7 @@ namespace CII.LAR
                 this.toolstripBtnMeasure.DropDownItems.Add(itemOne);
                 for (int i=0; i< lenses.Count; i++)
                 {
+                    if (lenses[i].Factor == 1f) continue;
                     MaterialToolStripMenuItem item = new MaterialToolStripMenuItem();
                     item.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
                     item.Depth = 0;

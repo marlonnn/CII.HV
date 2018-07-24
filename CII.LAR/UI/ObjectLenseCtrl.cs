@@ -208,7 +208,7 @@ namespace CII.LAR.UI
         {
             int factor = 0;
             Int32.TryParse(txtAdd.Text, out factor);
-            if (factor != 0)
+            if (factor != 0 && factor < 1000)
             {
                 Lense lense = new Lense(factor);
                 if (Program.SysConfig.AddLense(lense))

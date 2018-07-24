@@ -193,7 +193,7 @@
     <value>没有可用相机</value>
   </data>
   <data name="StrScreenshotSuccess" xml:space="preserve">
-    <value>截屏成功</value>
+    <value>拍照成功</value>
   </data>
   <data name="StrCalibrationSuccess" xml:space="preserve">
     <value>校准保存成功</value>

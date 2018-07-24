@@ -130,7 +130,8 @@ namespace CII.LAR
         ScaleAppearanceCtrl,
         DebugCtrl,
         LenseCtrl,
-        ShortCut
+        ShortCut,
+        SystemInoCtrl
     }
 
     /// <summary>

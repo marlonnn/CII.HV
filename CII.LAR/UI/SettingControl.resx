@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="closeButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>222, 2</value>
+    <value>226, 4</value>
   </data>
   <data name="&gt;&gt;closeButton.Name" xml:space="preserve">
     <value>closeButton</value>
@@ -132,6 +132,44 @@
   </data>
   <data name="&gt;&gt;closeButton.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnInformation.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnInformation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="btnInformation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnInformation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 64</value>
+  </data>
+  <data name="btnInformation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
+  </data>
+  <data name="btnInformation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 23</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnInformation.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="btnInformation.Text" xml:space="preserve">
+    <value>System Information</value>
+  </data>
+  <data name="&gt;&gt;btnInformation.Name" xml:space="preserve">
+    <value>btnInformation</value>
+  </data>
+  <data name="&gt;&gt;btnInformation.Type" xml:space="preserve">
+    <value>CII.LAR.MaterialSkin.MaterialRoundButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnInformation.Parent" xml:space="preserve">
+    <value>gropBoxSystemInfo</value>
+  </data>
+  <data name="&gt;&gt;btnInformation.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="cmbImage.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -149,12 +187,11 @@
     <value>Egg</value>
   </data>
   <data name="cmbImage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 91</value>
+    <value>9, 132</value>
   </data>
   <data name="cmbImage.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 22</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="cmbImage.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
@@ -168,7 +205,7 @@
     <value>gropBoxSystemInfo</value>
   </data>
   <data name="&gt;&gt;cmbImage.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="lblSimulatorImage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -176,12 +213,11 @@
   <data name="lblSimulatorImage.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="lblSimulatorImage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="lblSimulatorImage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 63</value>
+    <value>6, 104</value>
   </data>
   <data name="lblSimulatorImage.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 15</value>
@@ -202,7 +238,7 @@
     <value>gropBoxSystemInfo</value>
   </data>
   <data name="&gt;&gt;lblSimulatorImage.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnSimulator.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -211,7 +247,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="btnSimulator.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 126</value>
+    <value>9, 167</value>
   </data>
   <data name="btnSimulator.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 6, 4, 6</value>
@@ -235,7 +271,7 @@
     <value>gropBoxSystemInfo</value>
   </data>
   <data name="&gt;&gt;btnSimulator.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="lblCameraStatus.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -268,7 +304,7 @@
     <value>gropBoxSystemInfo</value>
   </data>
   <data name="&gt;&gt;lblCameraStatus.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="lblCamera.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -298,7 +334,7 @@
     <value>gropBoxSystemInfo</value>
   </data>
   <data name="&gt;&gt;lblCamera.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="gropBoxSystemInfo.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -307,13 +343,13 @@
     <value>12, 33</value>
   </data>
   <data name="gropBoxSystemInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 159</value>
+    <value>213, 201</value>
   </data>
   <data name="gropBoxSystemInfo.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="gropBoxSystemInfo.Text" xml:space="preserve">
-    <value>System Information</value>
+    <value>System</value>
   </data>
   <data name="&gt;&gt;gropBoxSystemInfo.Name" xml:space="preserve">
     <value>gropBoxSystemInfo</value>
@@ -329,12 +365,6 @@
   </data>
   <data name="cmbLaser.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="cmbLaser.Items" xml:space="preserve">
-    <value>Single-hole</value>
-  </data>
-  <data name="cmbLaser.Items1" xml:space="preserve">
-    <value>Multi-hole</value>
   </data>
   <data name="cmbLaser.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 29</value>
@@ -361,7 +391,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="groupBoxLaser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 198</value>
+    <value>13, 240</value>
   </data>
   <data name="groupBoxLaser.Size" type="System.Drawing.Size, System.Drawing">
     <value>213, 69</value>
@@ -418,7 +448,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="groupBoxLanguage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 273</value>
+    <value>12, 315</value>
   </data>
   <data name="groupBoxLanguage.Size" type="System.Drawing.Size, System.Drawing">
     <value>213, 72</value>
@@ -499,7 +529,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="groupBoxStoragePath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 351</value>
+    <value>13, 393</value>
   </data>
   <data name="groupBoxStoragePath.Size" type="System.Drawing.Size, System.Drawing">
     <value>213, 72</value>
@@ -562,7 +592,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="groupBoxObjectLense.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 429</value>
+    <value>13, 471</value>
   </data>
   <data name="groupBoxObjectLense.Size" type="System.Drawing.Size, System.Drawing">
     <value>213, 63</value>
@@ -587,24 +617,6 @@
   </data>
   <data name="cbxScale.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="cbxScale.Items" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="cbxScale.Items1" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="cbxScale.Items2" xml:space="preserve">
-    <value>30</value>
-  </data>
-  <data name="cbxScale.Items3" xml:space="preserve">
-    <value>40</value>
-  </data>
-  <data name="cbxScale.Items4" xml:space="preserve">
-    <value>50</value>
-  </data>
-  <data name="cbxScale.Items5" xml:space="preserve">
-    <value>60</value>
   </data>
   <data name="cbxScale.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 29</value>
@@ -631,7 +643,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="groupBoxCoefficient.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 498</value>
+    <value>13, 540</value>
   </data>
   <data name="groupBoxCoefficient.Size" type="System.Drawing.Size, System.Drawing">
     <value>213, 72</value>
@@ -687,6 +699,21 @@
   <data name="cmbTime.Items9" xml:space="preserve">
     <value>10</value>
   </data>
+  <data name="cmbTime.Items10" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="cmbTime.Items11" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="cmbTime.Items12" xml:space="preserve">
+    <value>40</value>
+  </data>
+  <data name="cmbTime.Items13" xml:space="preserve">
+    <value>50</value>
+  </data>
+  <data name="cmbTime.Items14" xml:space="preserve">
+    <value>60</value>
+  </data>
   <data name="cmbTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 29</value>
   </data>
@@ -712,7 +739,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="groupBoxTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 576</value>
+    <value>13, 618</value>
   </data>
   <data name="groupBoxTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>213, 72</value>
@@ -775,7 +802,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="groupBoxShortcuts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 654</value>
+    <value>13, 696</value>
   </data>
   <data name="groupBoxShortcuts.Size" type="System.Drawing.Size, System.Drawing">
     <value>213, 63</value>
@@ -838,7 +865,7 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="groupBoxScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 723</value>
+    <value>12, 765</value>
   </data>
   <data name="groupBoxScale.Size" type="System.Drawing.Size, System.Drawing">
     <value>213, 63</value>
@@ -861,14 +888,14 @@
   <data name="&gt;&gt;groupBoxScale.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 12</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 817</value>
+    <value>238, 837</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>SettingControl</value>

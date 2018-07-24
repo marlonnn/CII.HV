@@ -347,5 +347,10 @@ namespace CII.LAR.UI
                 }
             }
         }
+
+        private void btnInformation_Click(object sender, EventArgs e)
+        {
+            Program.EntryForm.ShowBaseCtrl(true, CtrlType.SystemInoCtrl);
+        }
     }
 }

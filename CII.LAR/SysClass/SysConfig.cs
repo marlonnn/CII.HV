@@ -76,6 +76,14 @@ namespace CII.LAR.SysClass
             get { return this.recordTime; }
             set { this.recordTime = value; }
         }
+
+        [NonSerialized]
+        private bool motorPortConected;
+        public bool MotorPortConected
+        {
+            get { return this.motorPortConected; }
+            set { this.motorPortConected = value; }
+        }
         [NonSerialized]
         private bool laserPortConected;
         public bool LaserPortConected

@@ -121,6 +121,7 @@ namespace CII.LAR
         private ObjectLenseCtrl lenseCtrl;
         private ShortcutCtrl shortcutCtrl;
         private AboutControl aboutCtrl;
+        private SystemInfoCtrl systemInfoCtrl;
 
         #endregion
 
@@ -240,7 +241,7 @@ namespace CII.LAR
             //fullScreen = new FullScreen(this);
             //fullScreen.ShowFullScreen();
 
-            LoadDebugCtrl();
+            //LoadDebugCtrl();
 
             this.systemMonitorTimer.Enabled = true;
             this.LaserFactory = LaserFactory.GetInstance(this.richPictureBox);
@@ -735,9 +736,13 @@ namespace CII.LAR
                 EnableDrawTools(enable);
                 if (!enable) this.richPictureBox.ActiveTool = DrawToolType.Pointer;
             }
-            if (this.richPictureBox.df != null)
+            //if (this.richPictureBox.df != null)
+            //{
+            //    this.richPictureBox.df.UpdateLaserStatus();
+            //}
+            if (this.systemInfoCtrl != null)
             {
-                this.richPictureBox.df.UpdateLaserStatus();
+                this.systemInfoCtrl.UpdateStatus();
             }
         }
 
@@ -805,8 +810,9 @@ namespace CII.LAR
 
             aboutCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<AboutControl>(CtrlType.AboutCtrl);
             BaseCtrls.Add(aboutCtrl);
-            //laserDebugCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserDebugCtrl>(CtrlType.LaserDebugCtrl);
-            //BaseCtrls.Add(laserDebugCtrl);
+
+            systemInfoCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SystemInfoCtrl>(CtrlType.SystemInoCtrl);
+            BaseCtrls.Add(systemInfoCtrl);
         }
 
         private void LenseChangeHandler(object sender, EventArgs e)
@@ -1445,6 +1451,7 @@ namespace CII.LAR
                         bc.RefreshUI();
                     }
                 }
+                this.CreateMeasureItems();
             }
         }
 
@@ -1505,6 +1512,7 @@ namespace CII.LAR
                 var monitorData = LARCommandHelper.GetInstance().GetMonitorData();
                 if (monitorData != null)
                 {
+                    Program.SysConfig.MotorPortConected = true;
                     if (this.systemMonitorTimer.Interval != 300)
                     {
                         this.systemMonitorTimer.Interval = 300;
@@ -1527,6 +1535,7 @@ namespace CII.LAR
                 }
                 else
                 {
+                    Program.SysConfig.MotorPortConected = false;
                     //1.检查串口是否存在，不存在则继续检查，调整定时器间隔时间为3s
                     //2.串口存在，则遍历串口，尝试连接
                     //3.连接成功则保存串口到本地，同时修改定时器间隔为300ms

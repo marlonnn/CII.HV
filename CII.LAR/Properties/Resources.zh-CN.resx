@@ -219,4 +219,13 @@
   <data name="StrMultiHole" xml:space="preserve">
     <value>多孔模式</value>
   </data>
+  <data name="StrSystemInfoTitle" xml:space="preserve">
+    <value>系统信息</value>
+  </data>
+  <data name="StrDisconnect" xml:space="preserve">
+    <value>断开</value>
+  </data>
+  <data name="StrConnected" xml:space="preserve">
+    <value>已连接</value>
+  </data>
 </root>

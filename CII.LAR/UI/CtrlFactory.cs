@@ -25,6 +25,7 @@ namespace CII.LAR.UI
         private ObjectLenseCtrl lenseCtrl;
         private ShortcutCtrl shortcutCtrl;
         private AboutControl aboutCtrl;
+        private SystemInfoCtrl systemInfoCtrl;
         public static void InitializeCtrlFactory(RichPictureBox richPictureBox)
         {
             ctrlFactory = new CtrlFactory(richPictureBox);
@@ -47,6 +48,7 @@ namespace CII.LAR.UI
             shortcutCtrl = new ShortcutCtrl(Program.EntryForm.hotKeyManager);
             scaleAppearanceCtrl = new ScaleAppearanceCtrl(richPictureBox);
             aboutCtrl = new AboutControl();
+            systemInfoCtrl = new SystemInfoCtrl();
         }
 
         public static CtrlFactory GetCtrlFactory()
@@ -107,6 +109,9 @@ namespace CII.LAR.UI
                     break;
                 case CtrlType.ShortCut:
                     ctrl = this.shortcutCtrl as T;
+                    break;
+                case CtrlType.SystemInoCtrl:
+                    ctrl = systemInfoCtrl as T;
                     break;
             }
             return ctrl;

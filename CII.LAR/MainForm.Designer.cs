@@ -127,7 +127,7 @@ namespace CII.LAR
             this.toolstripBtnLaser,
             this.toolstripBtnSetting,
             this.toolstripBtnCamera,
-            this.toolstripBtnDebug,
+            //this.toolstripBtnDebug,
             this.toolstripBtnAbout});
             this.materialToolStrip4.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.materialToolStrip4.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;

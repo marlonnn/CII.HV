@@ -187,6 +187,7 @@ namespace CII.LAR.UI
 
         public override void RefreshUI()
         {
+            base.RefreshUI();
             this.Title = global::CII.LAR.Properties.Resources.StrObjectLense;
             resources.ApplyResources(this.labelX1, labelX1.Name);
             resources.ApplyResources(this.lblAdjustment, lblAdjustment.Name);

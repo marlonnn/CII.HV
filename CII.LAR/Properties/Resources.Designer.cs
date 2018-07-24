@@ -814,5 +814,38 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrMultiHole", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 System Information 的本地化字符串。
+        /// </summary>
+        internal static string StrSystemInfoTitle
+        {
+            get
+            {
+                return ResourceManager.GetString("StrSystemInfoTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 Disconnect 的本地化字符串。
+        /// </summary>
+        internal static string StrDisconnect
+        {
+            get
+            {
+                return ResourceManager.GetString("StrDisconnect", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 Connected 的本地化字符串。
+        /// </summary>
+        internal static string StrConnected
+        {
+            get
+            {
+                return ResourceManager.GetString("StrConnected", resourceCulture);
+            }
+        }
     }
 }

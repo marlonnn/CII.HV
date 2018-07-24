@@ -24,6 +24,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingControl));
             this.gropBoxSystemInfo = new CII.LAR.MaterialSkin.MaterialGroupBox();
+            this.btnInformation = new CII.LAR.MaterialSkin.MaterialRoundButton();
             this.cmbImage = new CII.LAR.MaterialSkin.MaterialComboBox();
             this.lblSimulatorImage = new CII.LAR.MaterialSkin.MaterialLabel();
             this.btnSimulator = new CII.LAR.MaterialSkin.MaterialRoundButton();
@@ -63,6 +64,7 @@
             // 
             // gropBoxSystemInfo
             // 
+            this.gropBoxSystemInfo.Controls.Add(this.btnInformation);
             this.gropBoxSystemInfo.Controls.Add(this.cmbImage);
             this.gropBoxSystemInfo.Controls.Add(this.lblSimulatorImage);
             this.gropBoxSystemInfo.Controls.Add(this.btnSimulator);
@@ -74,6 +76,19 @@
             this.gropBoxSystemInfo.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.gropBoxSystemInfo.Name = "gropBoxSystemInfo";
             this.gropBoxSystemInfo.TabStop = false;
+            // 
+            // btnInformation
+            // 
+            resources.ApplyResources(this.btnInformation, "btnInformation");
+            this.btnInformation.Depth = 0;
+            this.btnInformation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(184)))), ((int)(((byte)(208)))));
+            this.btnInformation.Icon = null;
+            this.btnInformation.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.btnInformation.Name = "btnInformation";
+            this.btnInformation.Primary = false;
+            this.btnInformation.UseVisualStyleBackColor = true;
+            this.btnInformation.Warning = false;
+            this.btnInformation.Click += new System.EventHandler(this.btnInformation_Click);
             // 
             // cmbImage
             // 
@@ -110,6 +125,7 @@
             this.btnSimulator.Name = "btnSimulator";
             this.btnSimulator.Primary = false;
             this.btnSimulator.UseVisualStyleBackColor = true;
+            this.btnSimulator.Warning = false;
             this.btnSimulator.Click += new System.EventHandler(this.btnSimulator_Click);
             // 
             // lblCameraStatus
@@ -147,8 +163,8 @@
             this.cmbLaser.ForeColor = System.Drawing.Color.White;
             this.cmbLaser.FormattingEnabled = true;
             this.cmbLaser.Items.AddRange(new object[] {
-            Properties.Resources.StrSingleHole,
-            Properties.Resources.StrMultiHole});
+            global::CII.LAR.Properties.Resources.StrSingleHole,
+            global::CII.LAR.Properties.Resources.StrMultiHole});
             this.cmbLaser.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.cmbLaser.Name = "cmbLaser";
             // 
@@ -233,6 +249,7 @@
             this.materialRoundButton1.Name = "materialRoundButton1";
             this.materialRoundButton1.Primary = false;
             this.materialRoundButton1.UseVisualStyleBackColor = true;
+            this.materialRoundButton1.Warning = false;
             this.materialRoundButton1.Click += new System.EventHandler(this.materialRoundButton1_Click);
             // 
             // groupBoxCoefficient
@@ -253,13 +270,6 @@
             resources.ApplyResources(this.cbxScale, "cbxScale");
             this.cbxScale.ForeColor = System.Drawing.Color.White;
             this.cbxScale.FormattingEnabled = true;
-            this.cbxScale.Items.AddRange(new object[] {
-            resources.GetString("cbxScale.Items"),
-            resources.GetString("cbxScale.Items1"),
-            resources.GetString("cbxScale.Items2"),
-            resources.GetString("cbxScale.Items3"),
-            resources.GetString("cbxScale.Items4"),
-            resources.GetString("cbxScale.Items5")});
             this.cbxScale.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.cbxScale.Name = "cbxScale";
             // 
@@ -291,7 +301,12 @@
             resources.GetString("cmbTime.Items6"),
             resources.GetString("cmbTime.Items7"),
             resources.GetString("cmbTime.Items8"),
-            resources.GetString("cmbTime.Items9")});
+            resources.GetString("cmbTime.Items9"),
+            resources.GetString("cmbTime.Items10"),
+            resources.GetString("cmbTime.Items11"),
+            resources.GetString("cmbTime.Items12"),
+            resources.GetString("cmbTime.Items13"),
+            resources.GetString("cmbTime.Items14")});
             this.cmbTime.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.cmbTime.Name = "cmbTime";
             this.cmbTime.SelectedIndexChanged += new System.EventHandler(this.cmbTime_SelectedIndexChanged);
@@ -316,6 +331,7 @@
             this.btnShortcuts.Name = "btnShortcuts";
             this.btnShortcuts.Primary = false;
             this.btnShortcuts.UseVisualStyleBackColor = true;
+            this.btnShortcuts.Warning = false;
             this.btnShortcuts.Click += new System.EventHandler(this.btnShortcuts_Click);
             // 
             // groupBoxScale
@@ -338,6 +354,7 @@
             this.btnScaleAppearance.Name = "btnScaleAppearance";
             this.btnScaleAppearance.Primary = false;
             this.btnScaleAppearance.UseVisualStyleBackColor = true;
+            this.btnScaleAppearance.Warning = false;
             this.btnScaleAppearance.Click += new System.EventHandler(this.btnScaleAppearance_Click);
             // 
             // SettingControl
@@ -402,5 +419,6 @@
         private MaterialSkin.MaterialRoundButton btnScaleAppearance;
         private MaterialSkin.MaterialGroupBox gropBoxSystemInfo;
         private MaterialSkin.MaterialFlatButton btnSelect;
+        private MaterialSkin.MaterialRoundButton btnInformation;
     }
 }

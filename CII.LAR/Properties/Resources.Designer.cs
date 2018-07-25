@@ -847,5 +847,92 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrConnected", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 Yes 的本地化字符串。
+        /// </summary>
+        internal static string StrYes
+        {
+            get
+            {
+                return ResourceManager.GetString("StrYes", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 No 的本地化字符串。
+        /// </summary>
+        internal static string StrNo
+        {
+            get
+            {
+                return ResourceManager.GetString("StrNo", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 Abort 的本地化字符串。
+        /// </summary>
+        internal static string StrAbort
+        {
+            get
+            {
+                return ResourceManager.GetString("StrAbort", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 Retry 的本地化字符串。
+        /// </summary>
+        internal static string StrRetry
+        {
+            get
+            {
+                return ResourceManager.GetString("StrRetry", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 Cancel 的本地化字符串。
+        /// </summary>
+        internal static string StrCancel
+        {
+            get
+            {
+                return ResourceManager.GetString("StrCancel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 Ignore 的本地化字符串。
+        /// </summary>
+        internal static string StrIgnore
+        {
+            get
+            {
+                return ResourceManager.GetString("StrIgnore", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 Exit 的本地化字符串。
+        /// </summary>
+        internal static string StrExit
+        {
+            get
+            {
+                return ResourceManager.GetString("StrExit", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   查找类似 Exit Msg的本地化字符串。
+        /// </summary>
+        internal static string StrExitMsg
+        {
+            get
+            {
+                return ResourceManager.GetString("StrExitMsg", resourceCulture);
+            }
+        }
     }
 }

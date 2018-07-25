@@ -229,7 +229,11 @@ namespace CII.LAR
 
         private void CloseHandler(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MsgBox.Show(Properties.Resources.StrExitMsg, Properties.Resources.StrExit, MsgBox.Buttons.YesNo, MsgBox.Icon.Info, MsgBox.AnimateStyle.FadeIn);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)

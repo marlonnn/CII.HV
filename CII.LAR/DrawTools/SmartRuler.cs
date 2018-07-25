@@ -69,16 +69,35 @@ namespace CII.LAR.DrawTools
         public double CalculateMajorValue()
         {
             double value = 0;
-            if (100 % RoundFactor != 0)
+            int seed = GetBaseSeed();
+            if (seed % RoundFactor != 0)
             {
-                var temp = 100 / RoundFactor;
+                var temp = seed / RoundFactor;
                 value = temp;
             }
             else
             {
-                value = 100 / RoundFactor;
+                value = seed / RoundFactor;
             }
             return value * RoundFactor;
+        }
+
+        private int GetBaseSeed()
+        {
+            int seed = 100;
+            if (RoundFactor > 0 && RoundFactor <= 100)
+            {
+                seed = 100;
+            }
+            else if (RoundFactor > 100 && RoundFactor <= 1000)
+            {
+                seed = 1000;
+            }
+            else if (RoundFactor > 1000 && RoundFactor <= 10000)
+            {
+                seed = 10000;
+            }
+            return seed;
         }
 
         public int RoundFactor
@@ -101,6 +120,10 @@ namespace CII.LAR.DrawTools
             else if (factor >= 100 && factor <1000)
             {
                 roundFactor = (int)(factor / 100) * 100;
+            }
+            else if (factor >= 1000 && factor < 10000)
+            {
+                roundFactor = (int)(factor / 1000) * 1000;
             }
             return roundFactor;
         }

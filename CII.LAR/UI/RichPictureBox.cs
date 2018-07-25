@@ -750,12 +750,12 @@ namespace CII.LAR.UI
         {
             if (zoomIn)
             {
-                for (int i = 0; i < Program.SysConfig.DefaultScaleCoefficient; i++)
+                for (int i = 0; i < Program.SysConfig.DefaultScaleCoefficient - 1; i++)
                 {
                     float oldzoom = zoom;
                     zoom += 1F;
                     ZoomOnMouseCenter(e, oldzoom);
-                    this.imageTracker.ScalePercent = oldzoom * 100;
+                    this.imageTracker.ScalePercent = zoom * 100;
                     this.Invalidate();
                 }
             }

@@ -385,6 +385,7 @@ namespace CII.LAR
             this.materialToolStrip3.PerformLayout();
             this.materialToolStrip2.ResumeLayout(false);
             this.materialToolStrip2.PerformLayout();
+            this.KeyPreview = true;
             ((System.ComponentModel.ISupportInitialize)(this.richPictureBox)).EndInit();
             this.ResumeLayout(false);
 

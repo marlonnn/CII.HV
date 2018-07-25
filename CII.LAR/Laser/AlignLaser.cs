@@ -113,8 +113,19 @@ namespace CII.LAR.Laser
                 count++;
                 if (count == 1)
                 {
-                    ZoomHandler?.Invoke(e, true);
-                    ButtonStateHandler?.Invoke(false);
+                    if (richPictureBox.Zoom != Program.SysConfig.DefaultScaleCoefficient)
+                    {
+                        ZoomHandler?.Invoke(e, true);
+                        ButtonStateHandler?.Invoke(false);
+                    }
+                    else
+                    {
+                        IsShowCross = true;
+                        ClickPoint = e.Location;
+                        ButtonStateHandler?.Invoke(true);
+                        PointF pointF = new PointF(e.Location.X/* / richPictureBox.Zoom*/, e.Location.Y/* / richPictureBox.Zoom*/);
+                        Coordinate.GetCoordinate().AddPoint(Index, pointF);
+                    }
                 }
                 else if (count == 2)
                 {

@@ -148,8 +148,8 @@ namespace CII.LAR.UI
             float yPosScale = (float)showingRect.Y / (float)pictureBoxRect.Height;
             highlightingRect = new Rectangle((int)(this.pictureDestRect.X + this.pictureDestRect.Width * xPosScale),
             (int)(this.pictureDestRect.Y + this.pictureDestRect.Height * yPosScale),
-            (int)(this.pictureDestRect.Width * (1 / richPictureBox.Zoom)),
-            (int)(this.pictureDestRect.Height * (1 / richPictureBox.Zoom)));
+            (int)(this.pictureDestRect.Width * (1 / (richPictureBox.Zoom * 0.6f))),
+            (int)(this.pictureDestRect.Height * (1 / (richPictureBox.Zoom * 0.6f))));
 
             regionToInvalidate.Union(highlightingRect); // Also redraw the part now highlighted.
 

@@ -352,6 +352,11 @@ namespace CII.LAR.UI
                 //关闭红光
                 //EnableRedLaser(false);
                 CheckLaserStatus();
+
+                if (this.RichPictureBox.Zoom != 1)
+                {
+                    this.RichPictureBox.ZoomFit();
+                }
             }
             Program.SysConfig.LaserConfig.IsAlignment = this.Visible;
         }

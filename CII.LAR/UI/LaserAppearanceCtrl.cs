@@ -105,6 +105,12 @@ namespace CII.LAR.UI
             graphicsProperties.ExclusionSize = 20;
             graphicsProperties.TargetSize = 1;
             graphicsProperties.Color = Color.Yellow;
+
+            this.sliderTargetSize.Value = graphicsProperties.TargetSize;
+            this.sliderThickness.Value = graphicsProperties.PenWidth;
+            this.sliderTransparency.Value = (int)(graphicsProperties.Alpha * 100 / 255f);
+            this.sliderZoneSize.Value = graphicsProperties.ExclusionSize;
+            this.sliderZoneColour.Value = graphicsProperties.ColorIndex() * 10;
             this.pictureBox.Invalidate();
         }
     }

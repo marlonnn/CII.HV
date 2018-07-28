@@ -401,6 +401,7 @@ namespace CII.LAR
                 {
                     Bitmap bitmap = new Bitmap(this.videoControl.Bounds.Width, this.videoControl.Bounds.Height);
                     this.videoControl.DrawToBitmap(bitmap, new Rectangle(0, 0, bitmap.Width, bitmap.Height));
+                    FilpImage(bitmap);
                     bitmap.Save(fileName, ImageFormat.Png);
                     this.ShowToastNotification(Properties.Resources.StrScreenshotSuccess, global::CII.LAR.Properties.Resources.capture);
                 }
@@ -908,20 +909,20 @@ namespace CII.LAR
             {
                 if (CaptureVideo && canCapture)
                 {
-                    videoFrame = (Bitmap)eventArgs.Frame.Clone();
+                    videoFrame = FilpImage((Bitmap)eventArgs.Frame.Clone());
                     AVIwriter.Quality = 0;
                     AVIwriter.AddFrame(videoFrame);
                 }
                 else
                 {
-                    videoFrame = (Bitmap)eventArgs.Frame.Clone();
+                    videoFrame = FilpImage((Bitmap)eventArgs.Frame.Clone());
                 }
 
 
                 //videoFrame.RotateFlip(RotateFlipType.Rotate180FlipY);
-                Image filpImage = FilpImage(videoFrame);
+                //Image filpImage = FilpImage(videoFrame);
                 //this.richPictureBox.ImageTracker.Picture = filpImage;
-                this.richPictureBox.Picture = filpImage;
+                this.richPictureBox.Picture = videoFrame;
 
             }
             catch (Exception ex)
@@ -929,7 +930,7 @@ namespace CII.LAR
             }
         }
 
-        private Image FilpImage(Image image)
+        private Bitmap FilpImage(Image image)
         {
             switch (FlipType)
             {
@@ -945,7 +946,7 @@ namespace CII.LAR
                 default:
                     break;
             }
-            return image;
+            return (Bitmap)image;
         }
 
         /// <summary>

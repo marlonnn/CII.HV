@@ -917,7 +917,7 @@ namespace CII.LAR
 
                 //videoFrame.RotateFlip(RotateFlipType.Rotate180FlipY);
                 Image filpImage = FilpImage(videoFrame);
-                this.richPictureBox.ImageTracker.Picture = filpImage;
+                //this.richPictureBox.ImageTracker.Picture = filpImage;
                 this.richPictureBox.Picture = filpImage;
 
             }

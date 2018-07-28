@@ -59,22 +59,29 @@ namespace CII.LAR.UI
         private bool mousePressed;
         private Point lastMousePos;//记录鼠标指针的坐标
         private Point mousePos = Point.Empty;
-
+        private object lockObject = new object();
         /// <summary>
         /// 当前帧图和缩略图帧图
         /// </summary>
         private Image picture;
         public Image Picture
         {
-            get { return this.picture; }
+            get
+            {
+                lock (lockObject)
+                    return this.picture;
+            }
             set
             {
-                if (this.picture != null) this.picture.Dispose();
-                if (value != this.picture)
+                lock (lockObject)
                 {
-                    this.picture = value;
-                    this.Image = value;
-                    //this.imageTracker.Picture = value;
+                    if (this.picture != null) this.picture.Dispose();
+                    if (value != this.picture)
+                    {
+                        this.picture = value;
+                        this.Image = value;
+                        this.imageTracker.Picture = value;
+                    }
                 }
             }
         }

@@ -358,6 +358,7 @@ namespace CII.LAR
 
         private void EntryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            StopVideo();
             StopVideoDevice();
             this.systemMonitorTimer.Enabled = false;
 
@@ -366,8 +367,6 @@ namespace CII.LAR
                 serialPortCom.SerialDataReceivedHandler -= SerialDataReceivedHandler;
                 if (serialPortCom.SerialPort.IsOpen) serialPortCom.Close();
             }
-
-            StopVideo();
         }
 
 
@@ -463,8 +462,11 @@ namespace CII.LAR
                 canCapture = false;
                 this.AVIwriter.Close();
             }
-            recordTimer.Stop();
-            recordTimer.Dispose();
+            if (recordTimer != null && recordTimer.Enabled)
+            {
+                recordTimer.Stop();
+                recordTimer.Dispose();
+            }
         }
 
         private void toolstripBtnFiles_Click(object sender, EventArgs e)

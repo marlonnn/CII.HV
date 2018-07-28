@@ -546,5 +546,33 @@ namespace CII.LAR.UI
         {
             SetSelectedItem();
         }
+
+        private void imageListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var items = this.imageListView.SelectedItems;
+            if (items != null && items.Count > 0)
+            {
+                string folder = items[0].FilePath;
+                Patient patient = FindPatient(folder);
+                if (patient != null)
+                {
+                    this.listView.Focus();
+                    for (int i = 0; i < this.listView.Items.Count; i++)
+                    {
+                        Patient p = this.listView.Items[i].Tag as Patient;
+                        if (p != null && p.ID == patient.ID)
+                        {
+                            patient = p;
+                            this.listView.Items[i].Focused = true;
+                            this.listView.Items[i].Selected = true;
+                        }
+                        else
+                        {
+                            this.listView.Items[i].Selected = false;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -361,17 +361,13 @@ namespace CII.LAR
             StopVideoDevice();
             this.systemMonitorTimer.Enabled = false;
 
-            if (videoDevice == null) return;
-            if (videoDevice.IsRunning)
-            {
-                this.AVIwriter.Close();
-            }
-
             if (serialPortCom != null)
             {
                 serialPortCom.SerialDataReceivedHandler -= SerialDataReceivedHandler;
                 if (serialPortCom.SerialPort.IsOpen) serialPortCom.Close();
             }
+
+            StopVideo();
         }
 
 
@@ -449,14 +445,7 @@ namespace CII.LAR
                 }
                 else
                 {
-                    if (videoDevice == null) return;
-                    if (videoDevice.IsRunning)
-                    {
-                        canCapture = false;
-                        this.AVIwriter.Close();
-                    }
-                    recordTimer.Stop();
-                    recordTimer.Dispose();
+                    StopVideo();
                     this.toolstripBtnVideo.Image = global::CII.LAR.Properties.Resources.video;
                 }
             }
@@ -464,6 +453,18 @@ namespace CII.LAR
             {
                 canCapture = false;
             }
+        }
+
+        private void StopVideo()
+        {
+            if (videoDevice == null) return;
+            if (videoDevice.IsRunning)
+            {
+                canCapture = false;
+                this.AVIwriter.Close();
+            }
+            recordTimer.Stop();
+            recordTimer.Dispose();
         }
 
         private void toolstripBtnFiles_Click(object sender, EventArgs e)

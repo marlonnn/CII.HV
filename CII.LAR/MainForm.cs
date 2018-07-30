@@ -1534,7 +1534,7 @@ namespace CII.LAR
                     if (this.richPictureBox.df != null)
                     {
                         this.richPictureBox.df.UpdateSteps(monitorData.Motor1Steps, monitorData.Motor2Steps);
-                        LogHelper.GetLogger<MainForm>().Error(string.Format("电机1当前步数： {0}， 电机2当前步数： {1}", monitorData.Motor1Steps, monitorData.Motor2Steps));
+                        //LogHelper.GetLogger<MainForm>().Error(string.Format("电机1当前步数： {0}， 电机2当前步数： {1}", monitorData.Motor1Steps, monitorData.Motor2Steps));
                         //Entry.Log(string.Format("电机1当前步数： {0}， 电机2当前步数： {1}", monitorData.Motor1Steps, monitorData.Motor2Steps));
                         this.richPictureBox.df.UpdateResponseCode(Coordinate.GetCoordinate().ResponseCode);
                         //this.richPictureBox.df.UpdateLaserStatus();

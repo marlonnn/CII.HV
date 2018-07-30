@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CII.LAR.MaterialSkin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace CII.LAR
 {
-    public partial class TestForm : Form
+    public partial class TestForm : MaterialForm
     {
         public TestForm()
         {

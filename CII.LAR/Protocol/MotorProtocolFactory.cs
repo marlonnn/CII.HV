@@ -216,14 +216,14 @@ namespace CII.LAR.Protocol
                                         if (mr != null)
                                         {
                                             RxMsgQueue.Push(mr);
-                                            LogHelper.GetLogger<LaserProtocolFactory>().Error(string.Format("接受到的原始数据为： {0}",
-                                                ByteHelper.Byte2ReadalbeXstring(obytes.Data)));
+                                            //LogHelper.GetLogger<LaserProtocolFactory>().Error(string.Format("接受到的原始数据为： {0}",
+                                            //    ByteHelper.Byte2ReadalbeXstring(obytes.Data)));
                                         }
                                     }
                                     else
                                     {
-                                        LogHelper.GetLogger<LaserProtocolFactory>().Error(string.Format("接受到的原始数据非法： {0}",
-                                            ByteHelper.Byte2ReadalbeXstring(obytes.Data)));
+                                        //LogHelper.GetLogger<LaserProtocolFactory>().Error(string.Format("接受到的原始数据非法： {0}",
+                                        //    ByteHelper.Byte2ReadalbeXstring(obytes.Data)));
                                     }
                                 }
                             }

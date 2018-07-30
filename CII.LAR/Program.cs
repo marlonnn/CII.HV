@@ -154,6 +154,8 @@ namespace CII.LAR
             catch (Exception ex)
             {
                 Entry.LogException(ex);
+                LogHelper.GetLogger<MainForm>().Error(ex.Message);
+                LogHelper.GetLogger<MainForm>().Error(ex.StackTrace);
             }
             finally
             {

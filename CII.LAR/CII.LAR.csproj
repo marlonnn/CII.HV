@@ -935,6 +935,9 @@
     <Content Include="Reference\MathNet.Numerics.dll" />
     <Content Include="Reference\Newtonsoft.Json.dll" />
     <Content Include="Reference\uEyeDotNet.dll" />
+    <Content Include="ToInstall\wmv9VCMsetup.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\about.png" />
     <Content Include="Resources\arrowUp.png" />
     <Content Include="Resources\assign.png" />

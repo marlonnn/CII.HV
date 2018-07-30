@@ -255,8 +255,8 @@ namespace CII.LAR.Protocol
                                 {
                                     RxMsgQueue.Push(responseList);
                                 }
-                                LogHelper.GetLogger<LaserProtocolFactory>().Error(string.Format("接受到的原始数据为： {0}",
-                                        ByteHelper.Byte2ReadalbeXstring(obytes.Data)));
+                                //LogHelper.GetLogger<LaserProtocolFactory>().Error(string.Format("接受到的原始数据为： {0}",
+                                //        ByteHelper.Byte2ReadalbeXstring(obytes.Data)));
                             }
                         }
                     }

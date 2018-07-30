@@ -54,13 +54,13 @@ namespace CII.LAR
                     if (destData != null)
                     {
                         LaserProtocolFactory.GetInstance().RxQueue.Push(new OriginalBytes(DateTime.Now, destData));
-                        LogHelper.GetLogger<SerialPortModel>().Error(string.Format("激光器接受到的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(destData)));
+                        //LogHelper.GetLogger<SerialPortModel>().Error(string.Format("激光器接受到的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(destData)));
 
                     }
                 }
                 catch (System.Exception ex)
                 {
-                    LogHelper.GetLogger<SerialPortModel>().Error(string.Format("激光器串口接收数据异常： {0}", ex.StackTrace));
+                    //LogHelper.GetLogger<SerialPortModel>().Error(string.Format("激光器串口接收数据异常： {0}", ex.StackTrace));
                 }
             }
         }
@@ -263,11 +263,11 @@ namespace CII.LAR
             try
             {
                 laserSerialPort.Write(bytes, 0, bytes.Length);
-                LogHelper.GetLogger<SerialPortModel>().Error(string.Format("激光器发送的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(bytes)));
+                //LogHelper.GetLogger<SerialPortModel>().Error(string.Format("激光器发送的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(bytes)));
             }
             catch (System.Exception ex)
             {
-                LogHelper.GetLogger<SerialPortModel>().Error(string.Format("激光器串口发送数据异常： {0}", ex.StackTrace));
+                //LogHelper.GetLogger<SerialPortModel>().Error(string.Format("激光器串口发送数据异常： {0}", ex.StackTrace));
                 return false; 
             }
             return true;

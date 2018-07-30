@@ -100,10 +100,12 @@ namespace CII.LAR.UI
         /// </summary>
         public Image Picture
         {
-            get { return this.thumbnail; }
+            get
+            {
+                return GetPicture();
+            }
             set
             {
-                //if (this.thumbnail != null) this.thumbnail.Dispose();
                 if (value != null)
                 {
                     Rectangle srcRect = this.picturePanel.ClientRectangle;
@@ -115,6 +117,51 @@ namespace CII.LAR.UI
                     pictureDestRect = Util.ScaleToFit(thumbnail, srcRect, false);
                     highlightingRect = new Rectangle(0, 0, 0, 0);
                 }
+            }
+            //set
+            //{
+            //    lock (lockObject)
+            //    {
+            //        if (value != null)
+            //        {
+            //            //if (this.thumbnail != null) this.thumbnail.Dispose();
+            //            Rectangle srcRect = this.picturePanel.ClientRectangle;
+            //            srcRect.X += 1;
+            //            srcRect.Y += 1;
+            //            srcRect.Width -= 2;
+            //            srcRect.Height -= 2;
+            //            thumbnail = Util.CreateThumbnail(value, srcRect.Height);
+            //            pictureDestRect = Util.ScaleToFit(thumbnail, srcRect, false);
+            //            highlightingRect = new Rectangle(0, 0, 0, 0);
+            //        }
+            //    }
+            //}
+        }
+
+        private Image GetPicture()
+        {
+            try
+            {
+                if (this.richPictureBox.Picture != null)
+                {
+                    Rectangle srcRect = this.picturePanel.ClientRectangle;
+                    srcRect.X += 1;
+                    srcRect.Y += 1;
+                    srcRect.Width -= 2;
+                    srcRect.Height -= 2;
+                    this.thumbnail = Util.CreateThumbnail(this.richPictureBox.Picture, srcRect.Height);
+                    pictureDestRect = Util.ScaleToFit(thumbnail, srcRect, false);
+                    //highlightingRect = new Rectangle(0, 0, 0, 0);
+                    return this.thumbnail;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
             }
         }
 
@@ -236,10 +283,10 @@ namespace CII.LAR.UI
 
         private void picturePanel_Paint(object sender, PaintEventArgs e)
         {
-            if (thumbnail != null)
+            if (Picture != null)
             {
                 // draw thumbnail image
-                e.Graphics.DrawImage(this.thumbnail, this.pictureDestRect);
+                e.Graphics.DrawImage(this.Picture, this.pictureDestRect);
 
                 // adjust highlighting region of visible picture area
                 Region highlightRegion = new Region(this.pictureDestRect);

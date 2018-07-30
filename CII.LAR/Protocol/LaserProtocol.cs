@@ -31,12 +31,12 @@ namespace CII.LAR.Protocol
             LaserProtocol lp = new LaserProtocol();
             if (data == null)
             {
-                LogHelper.GetLogger<LaserProtocol>().Error("通信层接收到数据包为空或者数据长度不足，丢弃。");
+                //LogHelper.GetLogger<LaserProtocol>().Error("通信层接收到数据包为空或者数据长度不足，丢弃。");
                 return null;
             }
             if (data[0] != deMarkHead)
             {
-                LogHelper.GetLogger<LaserProtocol>().Error("通信层接收到数据包不是本应用需要接受的数据包，丢弃。");
+                //LogHelper.GetLogger<LaserProtocol>().Error("通信层接收到数据包不是本应用需要接受的数据包，丢弃。");
                 return null;
             }
             lp.Body = new byte[data.Length - 1];
@@ -48,7 +48,7 @@ namespace CII.LAR.Protocol
         {
             if (bp.AppData == null)
             {
-                LogHelper.GetLogger<LaserProtocol>().Error("通信层待编码数据为空，丢弃。");
+                //LogHelper.GetLogger<LaserProtocol>().Error("通信层待编码数据为空，丢弃。");
                 return null;
             }
             byte[] enData = new byte[bp.AppData.Length + 2];

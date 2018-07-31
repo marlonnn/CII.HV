@@ -217,7 +217,8 @@ namespace CII.LAR
             this.materialTitleBar1.CloseHandler += CloseHandler;
             this.materialTitleBar1.MinHandler += MinHandler;
             this.materialTitleBar1.Icon = this.Icon;
-            this.materialTitleBar1.Text = this.Text;
+            this.materialTitleBar1.Text = Properties.Resources.StrMainTitle;
+            this.materialTitleBar1.Invalidate();
         }
 
         private void MinHandler(object sender, EventArgs e)
@@ -1482,7 +1483,8 @@ namespace CII.LAR
                     }
                 }
             }
-            this.materialTitleBar1.Text = this.Text;
+            this.materialTitleBar1.Text = Properties.Resources.StrMainTitle;
+            this.materialTitleBar1.Invalidate();
         }
 
         private void viewLog(string[] logname)

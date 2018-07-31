@@ -255,4 +255,7 @@
   <data name="StrExitMsg" xml:space="preserve">
     <value>你确定退出当前程序吗？</value>
   </data>
+  <data name="StrMainTitle" xml:space="preserve">
+    <value>华仪宁创LAR激光破膜仪软件</value>
+  </data>
 </root>

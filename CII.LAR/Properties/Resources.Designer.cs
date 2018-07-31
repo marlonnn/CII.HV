@@ -934,5 +934,16 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrExitMsg", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 StrMainTitle的本地化字符串。
+        /// </summary>
+        internal static string StrMainTitle
+        {
+            get
+            {
+                return ResourceManager.GetString("StrMainTitle", resourceCulture);
+            }
+        }
     }
 }

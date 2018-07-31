@@ -283,23 +283,29 @@ namespace CII.LAR.UI
 
         private void picturePanel_Paint(object sender, PaintEventArgs e)
         {
-            if (Picture != null)
+            try
             {
-                // draw thumbnail image
-                e.Graphics.DrawImage(this.Picture, this.pictureDestRect);
+                if (Picture != null)
+                {
+                    // draw thumbnail image
+                    e.Graphics.DrawImage(this.Picture, this.pictureDestRect);
 
-                // adjust highlighting region of visible picture area
-                Region highlightRegion = new Region(this.pictureDestRect);
-                if (highlightingRect.Width > 0 && highlightingRect.Height > 0)
-                {
-                    highlightRegion.Exclude(highlightingRect);
+                    // adjust highlighting region of visible picture area
+                    Region highlightRegion = new Region(this.pictureDestRect);
+                    if (highlightingRect.Width > 0 && highlightingRect.Height > 0)
+                    {
+                        highlightRegion.Exclude(highlightingRect);
+                    }
+                    e.Graphics.FillRegion(tranparentBrush, highlightRegion);
+                    using (Pen pen = new Pen(Color.White, 1f))
+                    {
+                        e.Graphics.DrawRectangle(pen, highlightingRect);
+                    }
+                    highlightRegion.Dispose();
                 }
-                e.Graphics.FillRegion(tranparentBrush, highlightRegion);
-                using (Pen pen = new Pen(Color.White, 1f))
-                {
-                    e.Graphics.DrawRectangle(pen, highlightingRect);
-                }
-                highlightRegion.Dispose();
+            }
+            catch (Exception ex)
+            {
             }
         }
 

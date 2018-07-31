@@ -107,9 +107,7 @@ namespace CII.LAR
             private set { this.baseControls = value; }
         }
 
-        private SettingCtrl settingCtrl;
         private SettingControl settingControl;
-        private SerialPortCtrl serialPortCtrl;
         private StatisticsCtrl statisticsCtrl;
         private LaserAppearanceCtrl laserAppearanceCtrl;
         private RulerAppearanceCtrl rulerAppearanceCtrl;
@@ -215,7 +213,7 @@ namespace CII.LAR
 
             serialPortCom = SerialPortCommunication.GetInstance();
             serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
-            InitializeComboBoxLense();
+
             this.materialTitleBar1.CloseHandler += CloseHandler;
             this.materialTitleBar1.MinHandler += MinHandler;
             this.materialTitleBar1.Icon = this.Icon;
@@ -361,12 +359,14 @@ namespace CII.LAR
             StopVideo();
             StopVideoDevice();
             this.systemMonitorTimer.Enabled = false;
+            this.LaserCheckTimer.Enabled = false;
 
             if (serialPortCom != null)
             {
                 serialPortCom.SerialDataReceivedHandler -= SerialDataReceivedHandler;
                 if (serialPortCom.SerialPort.IsOpen) serialPortCom.Close();
             }
+            UnregisterEvent();
         }
 
 
@@ -697,7 +697,6 @@ namespace CII.LAR
         #endregion
 
         private LaserDebugCtrl laserDebugForm;
-        private SerialPortDebugForm spd;
         private void RecordTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             if (this.richPictureBox.RecordCount == Program.SysConfig.RecordTime * 60)
@@ -761,7 +760,23 @@ namespace CII.LAR
                 this.richPictureBox.df.UpdateMoveStep(x, ox, y, oy);
             }
         }
-
+        private void UnregisterEvent()
+        {
+            if (settingControl != null)
+            {
+                settingControl.ShowObjectLenseManagerHandler -= ShowObjectLenseManagerHandler;
+                settingControl.ShowShortcutManagerHandler -= ShowShortcutManagerHandler;
+                settingControl.ShowScaleAppearanceCtrlHandler -= ShowScaleAppearanceCtrlHandler;
+            }
+            if (laserAlignment != null)
+            {
+                laserAlignment.VideoKeyDownHandler -= this.OnKeyDown;
+            }
+            if (lenseCtrl != null)
+            {
+                lenseCtrl.LenseChangeHandler -= LenseChangeHandler;
+            }
+        }
         private void InitializeControls()
         {
             CtrlFactory.InitializeCtrlFactory(this.richPictureBox);
@@ -772,13 +787,6 @@ namespace CII.LAR
             settingControl.ShowShortcutManagerHandler += ShowShortcutManagerHandler;
             settingControl.ShowScaleAppearanceCtrlHandler += ShowScaleAppearanceCtrlHandler;
             BaseCtrls.Add(settingControl);
-
-            //settingCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<SettingCtrl>(CtrlType.SettingCtrl);
-            //settingCtrl.UpdateSimulatorImageHandler += UpdateSimulatorImageHandler;
-            //settingCtrl.ShowObjectLenseManagerHandler += ShowObjectLenseManagerHandler;
-            //settingCtrl.ShowShortcutManagerHandler += ShowShortcutManagerHandler;
-            //settingCtrl.ShowScaleAppearanceCtrlHandler += ShowScaleAppearanceCtrlHandler;
-            //BaseCtrls.Add(settingCtrl);
 
             statisticsCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<StatisticsCtrl>(CtrlType.StatisticsCtrl);
             BaseCtrls.Add(statisticsCtrl);
@@ -809,7 +817,6 @@ namespace CII.LAR
             BaseCtrls.Add(laserHoleSize);
 
             lenseCtrl = CtrlFactory.GetCtrlFactory().GetCtrlByType<ObjectLenseCtrl>(CtrlType.LenseCtrl);
-            lenseCtrl.UpdateObjectLensesHandler += UpdateObjectLensesHandler;
             lenseCtrl.LenseChangeHandler += LenseChangeHandler;
             BaseCtrls.Add(lenseCtrl);
 
@@ -826,17 +833,6 @@ namespace CII.LAR
         private void LenseChangeHandler(object sender, EventArgs e)
         {
             CreateMeasureItems();
-        }
-
-        private void UpdateObjectLensesHandler(Lense lense)
-        {
-            //comboBoxLense
-            if (Program.SysConfig.Lenses != null && Program.SysConfig.Lenses.Count > 0)
-            {
-                //comboBoxLense.Items.Clear();
-                //comboBoxLense.Items.AddRange(Program.SysConfig.Lenses.ToArray());
-                //comboBoxLense.SelectedItem = lense;
-            }
         }
 
         private void ShowObjectLenseManagerHandler()
@@ -1623,42 +1619,6 @@ namespace CII.LAR
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// 初始化物镜
-        /// </summary>
-        private bool needUpdateComboBoxLense = true;
-        private void InitializeComboBoxLense()
-        {
-            //if (Program.SysConfig.Lenses != null && Program.SysConfig.Lenses.Count > 0)
-            //{
-            //    needUpdateComboBoxLense = false;
-            //    foreach (var lense in Program.SysConfig.Lenses)
-            //    {
-            //        comboBoxLense.Items.Add(lense);
-            //        if (Program.SysConfig.Lense != null && lense.Factor == Program.SysConfig.Lense.Factor)
-            //        {
-            //            comboBoxLense.SelectedItem = lense;
-            //        }
-            //    }
-            //    needUpdateComboBoxLense = true;
-            //}
-        }
-
-        /// <summary>
-        /// 切换物镜
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void comboBoxLense_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //Lense lense = comboBoxLense.SelectedItem as Lense;
-            //if (lense != null)
-            //{
-            //    Program.SysConfig.Lense = lense;
-            //    this.richPictureBox.Invalidate();
-            //}
         }
     }
 }

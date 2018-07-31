@@ -16,8 +16,6 @@ namespace CII.LAR.UI
     {
         private RichPictureBox richPictureBox;
 
-        private SystemInfoForm systemInfoForm;
-
         public delegate void UpdateTimerState(bool enable);
         public UpdateTimerState UpdateTimerStatesHandler;
 
@@ -46,6 +44,11 @@ namespace CII.LAR.UI
             serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
         }
 
+        private void UnregisterEvents()
+        {
+            if (serialPortCom != null)
+                serialPortCom.SerialDataReceivedHandler -= SerialDataReceivedHandler;
+        }
         protected override void OnVisibleChanged(EventArgs e)
         {
             if (Visible)

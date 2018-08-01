@@ -1,3 +1,5 @@
+using CII.LAR.ExpClass;
+using CII.LAR.MaterialSkin;
 using DevComponents.DotNetBar;
 using Manina.Windows.Forms;
 using System;
@@ -15,7 +17,7 @@ namespace CII.LAR.UI
     /// image viewer form
     /// Author: Zhong Wen 2017/08/10
     /// </summary>
-    public partial class ImageForm : Office2007Form
+    public partial class ImageForm : MaterialForm
     {
         private ImageListViewItem imageListViewItem;
         
@@ -96,9 +98,9 @@ namespace CII.LAR.UI
         {
             //this.TitleText = this.Title;
             this.pictureBox.Width = (int)(this.ClientSize.Width * 0.8f);
-            this.pictureBox.Height = this.ClientSize.Height;
+            this.pictureBox.Height = this.ClientSize.Height - 75;
             this.pictureBox.Left = (int)(this.ClientSize.Width * 0.1f);
-            this.pictureBox.Top = 0;
+            this.pictureBox.Top = 75;
 
             this.pictureBox.Image = currentImage;
         }
@@ -143,10 +145,21 @@ namespace CII.LAR.UI
                 this.isAssign = false;
             }
         }
+        private ReportForm reportFrom;
 
         private void toolStripButtonPrint_Click(object sender, EventArgs e)
         {
-
+            Report report = new Report();
+            report.ReportPages.Capacity = 1;
+            ReportPage reportPage = new ReportPage();
+            ReportPictureItem reportItem = new ReportPictureItem();
+            reportItem.Picture = CurrentImage;
+            reportItem.OldImageSize = reportItem.Picture.Size;
+            reportItem.Bounds = new Rectangle(new Point(0, 0), reportItem.Picture.Size);
+            reportPage.ReportItems.Add(reportItem);
+            report.ReportPages.Add(reportPage);
+            reportFrom = new ReportForm(report);
+            reportFrom.Show();
         }
 
         protected override void OnClosing(CancelEventArgs e)

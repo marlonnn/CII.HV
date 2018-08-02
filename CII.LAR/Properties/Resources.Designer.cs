@@ -915,6 +915,17 @@ namespace CII.LAR.Properties {
         }
 
         /// <summary>
+        ///   查找类似 Warning 的本地化字符串。
+        /// </summary>
+        internal static string StrWaring
+        {
+            get
+            {
+                return ResourceManager.GetString("StrWaring", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   查找类似 Exit 的本地化字符串。
         /// </summary>
         internal static string StrExit
@@ -922,6 +933,16 @@ namespace CII.LAR.Properties {
             get
             {
                 return ResourceManager.GetString("StrExit", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   查找类似 Can not print video file! 的本地化字符串。
+        /// </summary>
+        internal static string StrCannotPrint
+        {
+            get
+            {
+                return ResourceManager.GetString("StrCannotPrint", resourceCulture);
             }
         }
         /// <summary>

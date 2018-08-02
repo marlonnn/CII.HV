@@ -364,6 +364,12 @@
   <data name="StrExit" xml:space="preserve">
     <value>Exit</value>
   </data>
+  <data name="StrWaring" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="StrCannotPrint" xml:space="preserve">
+    <value>Can not print video file!</value>
+  </data>
   <data name="StrExitMsg" xml:space="preserve">
     <value>Are you sure you want to exit?</value>
   </data>

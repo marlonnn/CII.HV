@@ -252,6 +252,12 @@
   <data name="StrExit" xml:space="preserve">
     <value>退出</value>
   </data>
+  <data name="StrWaring" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="StrCannotPrint" xml:space="preserve">
+    <value>无法打印视频文件！</value>
+  </data>
   <data name="StrExitMsg" xml:space="preserve">
     <value>你确定退出当前程序吗？</value>
   </data>

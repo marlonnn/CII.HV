@@ -501,6 +501,10 @@ namespace CII.LAR.UI
                     reportFrom.ShowDialog();
                 }
             }
+            else
+            {
+                DialogResult result = MsgBox.Show(Properties.Resources.StrCannotPrint, Properties.Resources.StrWarning, MsgBox.Buttons.OK, MsgBox.Icon.Warning);
+            }
         }
 
         private bool CanPrint()

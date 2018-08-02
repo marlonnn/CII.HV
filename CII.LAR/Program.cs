@@ -1,6 +1,7 @@
 ﻿using CII.Ins.Business.Entry.LAR;
 using CII.Ins.Model.Command.LAR;
 using CII.Ins.Model.GlobalConfig;
+using CII.LAR.MaterialSkin;
 using CII.LAR.SysClass;
 using CII.Library.CIINet.Commands;
 using CII.Library.CIINet.Manager;
@@ -138,7 +139,8 @@ namespace CII.LAR
                 }
                 else
                 {
-                    MessageBox.Show(Properties.Resources.StrProgramExit, Properties.Resources.StrWarning, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult result = MsgBox.Show(Properties.Resources.StrProgramExit, Properties.Resources.StrWarning, MsgBox.Buttons.OK, MsgBox.Icon.Error);
+                    //MessageBox.Show(Properties.Resources.StrProgramExit, Properties.Resources.StrWarning, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Application.Exit();
                 }
 

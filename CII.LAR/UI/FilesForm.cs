@@ -171,25 +171,54 @@ namespace CII.LAR
 
         private void CreateReportFrom()
         {
-            Report report = new Report();
-            report.ReportPages.Capacity = imageListView.Items.Count;
-            for (int i=0; i<imageListView.Items.Count; i++)
+            if (CanPrint())
             {
-                var fileExtension = Path.GetExtension(imageListView.Items[i].FileName);
-                if (fileExtension == ".png")
+                if (imageListView.SelectedItems != null && imageListView.SelectedItems.Count > 0)
                 {
-                    ReportPage reportPage = new ReportPage();
-                    ReportPictureItem reportItem = new ReportPictureItem();
-                    string fileName = imageListView.Items[i].FileName;
-                    reportItem.Picture = new Bitmap(fileName);
-                    reportItem.OldImageSize = reportItem.Picture.Size;
-                    reportItem.Bounds = new Rectangle(new Point(0, 0), reportItem.Picture.Size);
-                    reportPage.ReportItems.Add(reportItem);
-                    report.ReportPages.Add(reportPage);
+                    Report report = new Report();
+                    report.ReportPages.Capacity = imageListView.SelectedItems.Count;
+                    for (int i = 0; i < imageListView.SelectedItems.Count; i++)
+                    {
+                        var fileExtension = Path.GetExtension(imageListView.SelectedItems[i].FileName);
+                        if (fileExtension == ".png")
+                        {
+                            ReportPage reportPage = new ReportPage();
+                            ReportPictureItem reportItem = new ReportPictureItem();
+                            string fileName = imageListView.SelectedItems[i].FileName;
+                            reportItem.Picture = new Bitmap(fileName);
+                            reportItem.OldImageSize = reportItem.Picture.Size;
+                            reportItem.Bounds = new Rectangle(new Point(0, 0), reportItem.Picture.Size);
+                            reportPage.ReportItems.Add(reportItem);
+                            report.ReportPages.Add(reportPage);
+                        }
+                    }
+                    reportFrom = new ReportForm(report);
+                    reportFrom.ShowDialog();
                 }
             }
-            reportFrom = new ReportForm(report);
-            reportFrom.ShowDialog();
+        }
+
+        private bool CanPrint()
+        {
+            bool canPrint = false;
+            List<string> fileExtensions = new List<string>();
+            if (imageListView.SelectedItems != null && imageListView.SelectedItems.Count > 0)
+            {
+                for (int i = 0; i < imageListView.SelectedItems.Count; i++)
+                {
+                    var fileExtension = Path.GetExtension(imageListView.SelectedItems[i].FileName);
+                    fileExtensions.Add(fileExtension);
+                }
+                if (fileExtensions != null && fileExtensions.Count > 0)
+                {
+                    var aviFiles = fileExtensions.Where(f => f == ".avi");
+                    if (aviFiles.Count() != imageListView.SelectedItems.Count)
+                    {
+                        canPrint = true;
+                    }
+                }
+            }
+            return canPrint;
         }
 
         private void timerStatus_Tick(object sender, EventArgs e)

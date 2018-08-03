@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="lblPatientID.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
+  </data>
   <data name="lblPatientID.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 45</value>
   </data>
@@ -135,7 +138,7 @@
     <value>lblPatientID</value>
   </data>
   <data name="&gt;&gt;lblPatientID.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>CII.LAR.MaterialSkin.MaterialLabel, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblPatientID.Parent" xml:space="preserve">
     <value>$this</value>
@@ -164,8 +167,18 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>377, 178</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnCancel.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnCancel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
+  </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
     <value>278, 142</value>
+  </data>
+  <data name="btnCancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -180,7 +193,7 @@
     <value>btnCancel</value>
   </data>
   <data name="&gt;&gt;btnCancel.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>CII.LAR.MaterialSkin.MaterialRoundButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnCancel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -188,8 +201,17 @@
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="btnConfirm.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="btnConfirm.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
+  </data>
   <data name="btnConfirm.Location" type="System.Drawing.Point, System.Drawing">
     <value>175, 142</value>
+  </data>
+  <data name="btnConfirm.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
   </data>
   <data name="btnConfirm.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -204,7 +226,7 @@
     <value>btnConfirm</value>
   </data>
   <data name="&gt;&gt;btnConfirm.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>CII.LAR.MaterialSkin.MaterialRoundButton, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnConfirm.Parent" xml:space="preserve">
     <value>$this</value>
@@ -233,6 +255,9 @@
   <data name="&gt;&gt;textBoxPatientName.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="lblPatientName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>PingFang SC Medium, 9pt</value>
+  </data>
   <data name="lblPatientName.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 95</value>
   </data>
@@ -249,7 +274,7 @@
     <value>lblPatientName</value>
   </data>
   <data name="&gt;&gt;lblPatientName.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.LabelX, DevComponents.DotNetBar2, Version=11.1.0.4, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04</value>
+    <value>CII.LAR.MaterialSkin.MaterialLabel, CII.LAR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;lblPatientName.Parent" xml:space="preserve">
     <value>$this</value>

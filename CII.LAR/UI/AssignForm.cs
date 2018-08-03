@@ -156,6 +156,16 @@ namespace CII.LAR.UI
                 string name = TryFindPatientName(id);
                 if (name != null) this.textBoxPatientName.Text = name;
 
+                if (allPatients.Patients.Count == 0)
+                {
+                    this.textBoxPatientName.Enabled = true;
+                }
+                else
+                {
+                    var patientId = Int32.Parse(this.textBoxPatientID.Text);
+                    var findPatient = allPatients.Patients.Find(p => p.ID == patientId);
+                    this.textBoxPatientName.Enabled = findPatient == null;
+                }
             }
             catch (Exception ex)
             {

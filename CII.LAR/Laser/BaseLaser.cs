@@ -80,7 +80,7 @@ namespace CII.LAR.Laser
         {
             _flickCount++;
             this.richPictureBox.Invalidate();
-            if (_flickCount == 6)
+            if (_flickCount == 2)
             {
                 Flashing = false;
             }

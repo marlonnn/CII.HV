@@ -433,11 +433,13 @@ namespace CII.LAR.Laser
             }
             else
             {
-                HolesInfo.HoleNum = (HolesInfo.MinHoleNum + HolesInfo.MaxHoleNum) / 2;
+                //HolesInfo.HoleNum = (HolesInfo.MinHoleNum + HolesInfo.MaxHoleNum) / 2;
+                var tempHoleNumber = (HolesInfo.MinHoleNum + HolesInfo.MaxHoleNum) / 2;
+                //HolesInfo.HoleNum = InnerCircles.Count;
                 if (circleData.Radius > 0)
-                    CalcCirclePoint(circleData.CenterPt, StartPoint, EndPoint, circleData.Radius, -1, HolesInfo.HoleNum);
+                    CalcCirclePoint(circleData.CenterPt, StartPoint, EndPoint, circleData.Radius, -1, tempHoleNumber);
                 else
-                    CalcCirclePoint(circleData.CenterPt, StartPoint, EndPoint, Math.Abs(circleData.Radius), 1, HolesInfo.HoleNum);
+                    CalcCirclePoint(circleData.CenterPt, StartPoint, EndPoint, Math.Abs(circleData.Radius), 1, tempHoleNumber);
             }
         }
 
@@ -679,12 +681,14 @@ namespace CII.LAR.Laser
             }
             HolesInfo.MinHoleNum = (int)(circleData.LengthArc / InnerCircleSize.Width) + 1;
             HolesInfo.MaxHoleNum = (int)(2 * circleData.LengthArc / InnerCircleSize.Width) + 2;
-            HolesInfo.HoleNum = (HolesInfo.MinHoleNum + HolesInfo.MaxHoleNum) / 2;
+            //HolesInfo.HoleNum = (HolesInfo.MinHoleNum + HolesInfo.MaxHoleNum) / 2;
+            var tempHoleNumber = (HolesInfo.MinHoleNum + HolesInfo.MaxHoleNum) / 2;
+            //HolesInfo.HoleNum = InnerCircles.Count;
 
             if (circleData.Radius > 0)
-                CalcCirclePoint(circleData.CenterPt, StartPoint, EndPoint, circleData.Radius, -1, HolesInfo.HoleNum);
+                CalcCirclePoint(circleData.CenterPt, StartPoint, EndPoint, circleData.Radius, -1, tempHoleNumber);
             else
-                CalcCirclePoint(circleData.CenterPt, StartPoint, EndPoint, Math.Abs(circleData.Radius), 1, HolesInfo.HoleNum);
+                CalcCirclePoint(circleData.CenterPt, StartPoint, EndPoint, Math.Abs(circleData.Radius), 1, tempHoleNumber);
             this.Length = tempLength;
         }
         public void OnMouseUp()
@@ -727,8 +731,11 @@ namespace CII.LAR.Laser
 
             double gapX = 0;
             double gapY = 0;
-            innerCircles.Add(StartCircle);
-            outterCircles.Add(new Circle(startPoint, OutterCircleSize));
+            if (holeNum < 3)
+            {
+                innerCircles.Add(StartCircle);
+                outterCircles.Add(new Circle(startPoint, OutterCircleSize));
+            }
             if (minHoleNum != 1)
             {
                 if (dx == 0 && dy != 0)
@@ -747,8 +754,8 @@ namespace CII.LAR.Laser
                 {
                     if (dx == 0) return;
                     var k = dy / dx;
-                    gapX = (endCircle.CenterPoint.X - startCircle.CenterPoint.X) / HolesInfo.HoleNum;
-                    gapY = (endCircle.CenterPoint.Y - startCircle.CenterPoint.Y) / HolesInfo.HoleNum;
+                    gapX = (endCircle.CenterPoint.X - startCircle.CenterPoint.X) / holeNum;
+                    gapY = (endCircle.CenterPoint.Y - startCircle.CenterPoint.Y) / holeNum;
                     CenterPoint = new PointF(StartCircle.CenterPoint.X + dx / 2, StartCircle.CenterPoint.Y + dy / 2);
                 }
                 for (int i = 0; i < holeNum; i++)
@@ -794,10 +801,12 @@ namespace CII.LAR.Laser
 
             HolesInfo.MinHoleNum = (int)(Length / InnerCircleSize.Width) + 1;
             HolesInfo.MaxHoleNum = (int)(2 * Length / InnerCircleSize.Width) + 2;
-            HolesInfo.HoleNum = (HolesInfo.MinHoleNum + HolesInfo.MaxHoleNum) / 2;
-
-            Add2Circles(Length, HolesInfo.HoleNum, HolesInfo.MinHoleNum);
-
+            //HolesInfo.HoleNum = (HolesInfo.MinHoleNum + HolesInfo.MaxHoleNum) / 2;
+            //HolesInfo.HoleNum = InnerCircles.Count;
+            var tempHoleNumber = (HolesInfo.MinHoleNum + HolesInfo.MaxHoleNum) / 2;
+            Add2Circles(Length, tempHoleNumber, HolesInfo.MinHoleNum);
+            Console.WriteLine("hole number: " + InnerCircles.Count);
+            HolesInfo.HoleNum = InnerCircles.Count;
         }
 
         public void OnPaint(Graphics g)

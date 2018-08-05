@@ -52,16 +52,18 @@ namespace CII.LAR.Laser
         public override void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
+            if (Program.EntryForm.Laser.Flashing) return;
             mouseDownPoint = e.Location;
 
             activeCircle.OnMouseDown(e.Location);
-            SendMotorPointOnMouseDown();
+            //SendMotorPointOnMouseDown();
             this.richPictureBox.Invalidate();
         }
 
         public override void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
+            if (Program.EntryForm.Laser.Flashing) return;
             base.OnMouseMove(richPictureBox, e);
             Point mousePosNow = e.Location;
             int dx = mousePosNow.X - mouseDownPoint.X;
@@ -73,6 +75,7 @@ namespace CII.LAR.Laser
         public override void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
             if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
+            if (Program.EntryForm.Laser.Flashing) return;
             base.OnMouseUp(richPictureBox, e);
             activeCircle.OnMouseUp();
             this.richPictureBox.Invalidate();
@@ -107,7 +110,11 @@ namespace CII.LAR.Laser
             if (Coordinate.GetCoordinate().MotionComplete)
             {
                 _flickCount++;
-                //if (_flickCount > 1)
+                if (_flickCount == this.activeCircle.InnerCircles.Count)
+                {
+                    Flashing = false;
+                }
+                else
                 {
                     if (SerialPortCommunication.GetInstance() != null)
                     {
@@ -115,13 +122,9 @@ namespace CII.LAR.Laser
                         var bytes = SerialPortCommunication.GetInstance().Encode(c71);
                         SerialPortCommunication.GetInstance().SendData(bytes);
                     }
+                    SendAlignmentMotorPoint();
                 }
-                SendAlignmentMotorPoint();
                 this.richPictureBox.Invalidate();
-                if (_flickCount == this.activeCircle.InnerCircles.Count)
-                {
-                    Flashing = false;
-                }
             }
         }
 

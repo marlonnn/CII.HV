@@ -171,10 +171,14 @@ namespace CII.LAR.UI
 
         public void UpdateHolesInfo(HolesInfo holesInfo)
         {
+            holeSliderUpdate = false;
             this.holesSlider.Maximum = holesInfo.MaxHoleNum;
             this.holesSlider.Minimum = holesInfo.MinHoleNum;
             this.holesSlider.Value = holesInfo.HoleNum;
+            this.lblHoleNumber.Text = string.Format("{0}", holesInfo.HoleNum);
             this.holesSlider.Text = string.Format("{0}holes", holesInfo.HoleNum);
+            Console.WriteLine("laser ctrl hole number: " + holesInfo.HoleNum);
+            holeSliderUpdate = true;
         }
 
         bool flashing = false;
@@ -354,10 +358,14 @@ namespace CII.LAR.UI
             this.Title = global::CII.LAR.Properties.Resources.StrLaserCtrlTitle;
         }
 
+        private bool holeSliderUpdate = true;
         private void holesSlider_ValueChanged(object sender, EventArgs e)
         {
-            Program.EntryForm.UpdateHoleNumber(this.holesSlider.Value);
-            this.lblHoleNumber.Text = this.holesSlider.Value.ToString();
+            if (holeSliderUpdate)
+            {
+                Program.EntryForm.UpdateHoleNumber(this.holesSlider.Value);
+                this.lblHoleNumber.Text = (this.holesSlider.Value + 1).ToString();
+            }
         }
 
         /// <summary>

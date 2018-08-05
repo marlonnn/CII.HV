@@ -231,8 +231,39 @@ namespace CII.LAR
             DialogResult result = MsgBox.Show(Properties.Resources.StrExitMsg, Properties.Resources.StrExit, MsgBox.Buttons.YesNo, MsgBox.Icon.Info, MsgBox.AnimateStyle.FadeIn);
             if (result == DialogResult.Yes)
             {
+                CheckLaserStatus();
                 this.Close();
             }
+        }
+
+        /// <summary>
+        /// 检查红光状态并关闭
+        /// </summary>
+        private void CheckLaserStatus()
+        {
+            LaserC01Request c01 = new LaserC01Request();
+            var bytes = serialPortCom.Encode(c01);
+            serialPortCom.SendData(bytes);
+            Thread.Sleep(200);
+            if (serialPortCom.FinalData != null)
+            {
+                var data = serialPortCom.FinalData;
+                if (data.Length == 6)
+                {
+                    var flag = data[1] * 128 + data[2];
+                    if (flag == 1152)
+                    {
+                        EnableRedLaser(false);
+                    }
+                }
+            }
+        }
+
+        private void EnableRedLaser(bool enable)
+        {
+            var c70 = new LaserC70Request();
+            var bytes = serialPortCom.Encode(c70);
+            serialPortCom.SendData(bytes);
         }
 
         private void MainForm_Load(object sender, EventArgs e)

@@ -373,6 +373,9 @@
   <data name="StrExitMsg" xml:space="preserve">
     <value>Are you sure you want to exit?</value>
   </data>
+  <data name="StrExitExceptionMsg" xml:space="preserve">
+    <value>The software is calibrating. If you are forced to quit, please turn off the calibration window first.</value>
+  </data>
   <data name="StrMainTitle" xml:space="preserve">
     <value>CII-100</value>
   </data>

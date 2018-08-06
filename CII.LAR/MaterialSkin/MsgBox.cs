@@ -433,25 +433,26 @@ namespace CII.LAR.MaterialSkin
         private static Size MessageSize(string message)
         {
             Graphics g = _msgBox.CreateGraphics();
-            int width=380;
+            int width=480;
             int height = 200;
 
             SizeF size = g.MeasureString(message, MaterialSkinManager.Instance.PINGFANG_MEDIUM_12);
 
-            if (message.Length < 150)
-            {
-                if ((int)size.Width > 350)
-                {
-                    width = (int)size.Width;
-                }
-            }
-            else
-            {
-                string[] groups = (from Match m in Regex.Matches(message, ".{1,180}") select m.Value).ToArray();
-                int lines = groups.Length+1;
-                width = 700;
-                height += (int)(size.Height+10) * lines;
-            }
+            //if (message.Length < 150)
+            //{
+            //    if ((int)size.Width > 480)
+            //    {
+            //        width = (int)size.Width;
+            //    }
+            //}
+            //else
+            //{
+            //    string[] groups = (from Match m in Regex.Matches(message, ".{1,180}") select m.Value).ToArray();
+            //    int lines = groups.Length+1;
+            //    width = 700;
+            //    height += (int)(size.Height+10) * lines;
+            //}
+            width = (int)size.Width + 120;
             return new Size(width, height);
         }
 

@@ -264,4 +264,7 @@
   <data name="StrMainTitle" xml:space="preserve">
     <value>华仪宁创LAR激光破膜仪软件</value>
   </data>
+  <data name="StrExitExceptionMsg" xml:space="preserve">
+    <value>软件正在校准，若强制退出，请先关闭校准窗口。</value>
+  </data>
 </root>

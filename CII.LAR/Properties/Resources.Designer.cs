@@ -957,6 +957,17 @@ namespace CII.LAR.Properties {
         }
 
         /// <summary>
+        ///   查找类似 The software is calibrating. If you are forced to quit, please turn off the calibration window first. 的本地化字符串。
+        /// </summary>
+        internal static string StrExitExceptionMsg
+        {
+            get
+            {
+                return ResourceManager.GetString("StrExitExceptionMsg", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   查找类似 StrMainTitle的本地化字符串。
         /// </summary>
         internal static string StrMainTitle

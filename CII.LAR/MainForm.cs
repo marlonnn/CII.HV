@@ -228,11 +228,18 @@ namespace CII.LAR
 
         private void CloseHandler(object sender, EventArgs e)
         {
-            DialogResult result = MsgBox.Show(Properties.Resources.StrExitMsg, Properties.Resources.StrExit, MsgBox.Buttons.YesNo, MsgBox.Icon.Info, MsgBox.AnimateStyle.FadeIn);
-            if (result == DialogResult.Yes)
+            if (laserAlignment.Visible)
             {
-                CheckLaserStatus();
-                this.Close();
+                DialogResult result = MsgBox.Show(Properties.Resources.StrExitExceptionMsg, Properties.Resources.StrExit, MsgBox.Buttons.OK, MsgBox.Icon.Info, MsgBox.AnimateStyle.FadeIn);
+            }
+            else
+            {
+                DialogResult result = MsgBox.Show(Properties.Resources.StrExitMsg, Properties.Resources.StrExit, MsgBox.Buttons.YesNo, MsgBox.Icon.Info, MsgBox.AnimateStyle.FadeIn);
+                if (result == DialogResult.Yes)
+                {
+                    //CheckLaserStatus();
+                    this.Close();
+                }
             }
         }
 

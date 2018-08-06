@@ -41,6 +41,12 @@ namespace CII.LAR
         public event SerialPortEventHandler ComCloseEvent = null;
 
         private byte[] buffer;
+        private byte[] laserCheckData;
+        public byte[] LaserCheckData
+        {
+            get { return this.laserCheckData; }
+            set { this.laserCheckData = value; }
+        }
         private byte[] finalData;
         public byte[] FinalData
         {
@@ -123,6 +129,25 @@ namespace CII.LAR
                 br = Decoders.FirstOrDefault(d => d.Value.Type == Decoder.Type).Value;
             }
             return br;
+        }
+
+        public void SendLaserCheckData(byte[] bytes)
+        {
+            if (serialPort.IsOpen)
+            {
+                try
+                {
+                    this.LaserCheckData = null;
+                    SetDecoder(bytes[1]);
+                    serialPort.Write(bytes, 0, bytes.Length);
+                    //LogHelper.GetLogger<SerialPortCommunication>().Error(string.Format("激光器发送的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(bytes)));
+
+                }
+                catch (Exception ex)
+                {
+                    //LogHelper.GetLogger<SerialPortCommunication>().Error(string.Format("激光器串口发送数据异常1： {0}", ex.StackTrace));
+                }
+            }
         }
 
         public void SendData(byte[] bytes)
@@ -219,6 +244,7 @@ namespace CII.LAR
                         if (oddCheck == rawData[rawData.Length - 1])
                         {
                             this.FinalData = rawData;
+                            this.LaserCheckData = rawData;
                             buffer = null;
                         }
                         else
@@ -260,6 +286,7 @@ namespace CII.LAR
                             if (oddCheck == tempData[tempData.Length - 1])
                             {
                                 this.FinalData = tempData;
+                                this.LaserCheckData = tempData;
                                 SetRemainData(rawData);
                             }
                             else

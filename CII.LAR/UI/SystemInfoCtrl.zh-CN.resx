@@ -126,6 +126,7 @@
   <data name="materialLabel10.Text" xml:space="preserve">
     <value>工作时间：</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="materialLabel10.Location" type="System.Drawing.Point, System.Drawing">
     <value>40, 79</value>
   </data>
@@ -137,5 +138,8 @@
   </data>
   <data name="materialLabel8.Text" xml:space="preserve">
     <value>版本号：</value>
+  </data>
+  <data name="btnBack.Text" xml:space="preserve">
+    <value>返回</value>
   </data>
 </root>

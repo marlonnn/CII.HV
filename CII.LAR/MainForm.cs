@@ -244,7 +244,7 @@ namespace CII.LAR
             LaserC01Request c01 = new LaserC01Request();
             var bytes = serialPortCom.Encode(c01);
             serialPortCom.SendData(bytes);
-            Thread.Sleep(200);
+            Thread.Sleep(400);
             if (serialPortCom.FinalData != null)
             {
                 var data = serialPortCom.FinalData;
@@ -1604,9 +1604,9 @@ namespace CII.LAR
                     byte[] c01Bytes = serialPortCom.Encode(c01R);
                     if (serialPortCom.SerialPort.IsOpen)
                     {
-                        serialPortCom.SendData(c01Bytes);
+                        serialPortCom.SendLaserCheckData(c01Bytes);
                         Thread.Sleep(200);
-                        if (serialPortCom.FinalData != null)
+                        if (serialPortCom.LaserCheckData != null)
                         {
                             //连接状态
                             Program.SysConfig.LaserPortConected = true;

@@ -147,7 +147,7 @@ namespace CII.LAR.UI
             LaserC01Request c01 = new LaserC01Request();
             var bytes = serialPortCom.Encode(c01);
             serialPortCom.SendData(bytes);
-            Thread.Sleep(200);
+            Thread.Sleep(250);
             if (serialPortCom.FinalData != null)
             {
                 var data = serialPortCom.FinalData;
@@ -366,7 +366,7 @@ namespace CII.LAR.UI
             LaserC01Request c01 = new LaserC01Request();
             var bytes = serialPortCom.Encode(c01);
             serialPortCom.SendData(bytes);
-            Thread.Sleep(200);
+            Thread.Sleep(250);
             if (serialPortCom.FinalData != null)
             {
                 var data = serialPortCom.FinalData;

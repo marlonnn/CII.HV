@@ -150,6 +150,12 @@ namespace CII.LAR.Laser
             }
         }
 
+        public void ResetCircles()
+        {
+            ActiveCircle.InnerCircles.Clear();
+            ActiveCircle.OutterCircle.Clear();
+        }
+
         public void UpdateHoleNumber(int value)
         {
             activeCircle.UpdateHoleNum(value);

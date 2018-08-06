@@ -78,6 +78,21 @@ namespace CII.LAR.UI
                     }
                 }
             }
+            else
+            {
+                if (Program.EntryForm.Laser != null)
+                {
+                    Program.EntryForm.Laser.Flashing = false;
+                    if (Program.EntryForm.LaserType == LaserType.SaturnActive)
+                    {
+                        var activeLaser = Program.EntryForm.Laser as ActiveLaser;
+                        if (activeLaser != null)
+                        {
+                            activeLaser.ResetCircles();
+                        }
+                    }
+                }
+            }
         }
 
         public void HolesSliderVisiable(bool visiable)

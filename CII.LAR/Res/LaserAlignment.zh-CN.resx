@@ -121,7 +121,7 @@
     <value>开始校准</value>
   </data>
   <data name="StrFinish" xml:space="preserve">
-    <value>保存</value>
+    <value>完成</value>
   </data>
   <data name="StrNext" xml:space="preserve">
     <value>下一步</value>
@@ -139,13 +139,13 @@
 点击“开始校准”。</value>
   </data>
   <data name="StrSave" xml:space="preserve">
-    <value>保存</value>
+    <value>完成</value>
   </data>
   <data name="StrStepComplete" xml:space="preserve">
     <value>
-激光的调整已经完成。
+激光的校准已经完成。
 
-点击“完成”保存校正结果</value>
+点击“完成”保存校准结果</value>
   </data>
   <data name="StrStepFive" xml:space="preserve">
     <value>现在指示激光已小量移动

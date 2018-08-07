@@ -250,6 +250,7 @@ namespace CII.LAR.UI
             base.RefreshUI();
 
             this.Title = Res.LaserAlignment.StrTitle;
+            helper.AlignmentInfo(index, index < 0);
         }
 
         private void btnBack_Click(object sender, EventArgs e)

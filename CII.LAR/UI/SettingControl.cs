@@ -227,19 +227,19 @@ namespace CII.LAR.UI
             switch (selectIndex)
             {
                 case 0:
-                    fileName = string.Format("{0}\\Resources\\Simulator\\Embryo.bmp", System.Environment.CurrentDirectory);
+                    fileName = string.Format("{0}\\Resources\\Simulator\\Embryo.png", System.Environment.CurrentDirectory);
                     break;
                 case 1:
-                    fileName = string.Format("{0}\\Resources\\Simulator\\Sperm.bmp", System.Environment.CurrentDirectory);
+                    fileName = string.Format("{0}\\Resources\\Simulator\\Sperm.png", System.Environment.CurrentDirectory);
                     break;
                 case 2:
-                    fileName = string.Format("{0}\\Resources\\Simulator\\Embryo 8 Cell.bmp", System.Environment.CurrentDirectory);
+                    fileName = string.Format("{0}\\Resources\\Simulator\\Embryo 8 Cell.png", System.Environment.CurrentDirectory);
                     break;
                 case 3:
-                    fileName = string.Format("{0}\\Resources\\Simulator\\egg.bmp", System.Environment.CurrentDirectory);
+                    fileName = string.Format("{0}\\Resources\\Simulator\\egg.png", System.Environment.CurrentDirectory);
                     break;
                 default:
-                    fileName = string.Format("{0}\\Resources\\Simulator\\Embryo.bmp", System.Environment.CurrentDirectory);
+                    fileName = string.Format("{0}\\Resources\\Simulator\\Embryo.png", System.Environment.CurrentDirectory);
                     break;
             }
             return fileName;

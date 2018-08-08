@@ -32,6 +32,7 @@ namespace CII.LAR.UI
         public override void RefreshUI()
         {
             base.RefreshUI();
+            this.materialLabel4.Text = CII.Library.Xml.ConstConfig.GetValue("Version");
             this.Title = global::CII.LAR.Properties.Resources.StrAboutCtrlTitle;
         }
     }

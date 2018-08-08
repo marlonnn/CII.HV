@@ -11,8 +11,6 @@ namespace CII.LAR.UI
         private static CtrlFactory ctrlFactory;
 
         private SettingControl setingControl;
-        private SettingCtrl settingCtrl;
-        private SerialPortCtrl serialPortCtrl;
         private StatisticsCtrl statisticsCtrl;
         private LaserAppearanceCtrl laserAppearanceCtrl;
         private RulerAppearanceCtrl rulerAppearanceCtrl;
@@ -34,8 +32,6 @@ namespace CII.LAR.UI
         public CtrlFactory(RichPictureBox richPictureBox)
         {
             setingControl = new SettingControl(richPictureBox);
-            settingCtrl = new SettingCtrl(richPictureBox);
-            serialPortCtrl = new SerialPortCtrl();
             statisticsCtrl = new StatisticsCtrl(richPictureBox);
             laserAppearanceCtrl = new LaserAppearanceCtrl(richPictureBox);
             rulerAppearanceCtrl = new RulerAppearanceCtrl(richPictureBox);
@@ -74,9 +70,6 @@ namespace CII.LAR.UI
                     ctrl = this.setingControl as T;
                     //ctrl = this.settingCtrl as T;
                     break;
-                case CtrlType.SerialPort:
-                    ctrl = this.serialPortCtrl as T;
-                        break;
                 case CtrlType.StatisticsCtrl:
                     ctrl = this.statisticsCtrl as T;
                     break;

@@ -127,12 +127,6 @@
     <Compile Include="Algorithm\Coordinate.cs" />
     <Compile Include="Algorithm\RestrictArea.cs" />
     <Compile Include="ByteHelper.cs" />
-    <Compile Include="EntryForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EntryForm.Designer.cs">
-      <DependentUpon>EntryForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -323,12 +317,6 @@
     <Compile Include="SysClass\Shortcuts\HotKeys.cs" />
     <Compile Include="SysClass\Shortcuts\Win32.cs" />
     <Compile Include="SysClass\SysConfig.cs" />
-    <Compile Include="TestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TestForm.Designer.cs">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\AboutControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -390,12 +378,6 @@
     </Compile>
     <Compile Include="UI\ImageTracker.designer.cs">
       <DependentUpon>ImageTracker.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\LaserDebugControl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\LaserDebugControl.Designer.cs">
-      <DependentUpon>LaserDebugControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\LaserDebugCtrl.cs">
       <SubType>Form</SubType>
@@ -472,12 +454,6 @@
     <Compile Include="UI\ShortcutCtrl.Designer.cs">
       <DependentUpon>ShortcutCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ShortcutsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\ShortcutsForm.Designer.cs">
-      <DependentUpon>ShortcutsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\SystemInfoCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -495,12 +471,6 @@
     </Compile>
     <Compile Include="UI\VideoChooseCtrl.Designer.cs">
       <DependentUpon>VideoChooseCtrl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\CameraChooseCtrl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\CameraChooseCtrl.Designer.cs">
-      <DependentUpon>CameraChooseCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\CoordinateHelper.cs" />
     <Compile Include="UI\CtrlFactory.cs" />
@@ -546,29 +516,11 @@
     <Compile Include="UI\RulerAppearanceCtrl.designer.cs">
       <DependentUpon>RulerAppearanceCtrl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\SerialPortCtrl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\SerialPortCtrl.Designer.cs">
-      <DependentUpon>SerialPortCtrl.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\ProblemReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\ProblemReportForm.Designer.cs">
       <DependentUpon>ProblemReportForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\SerialPortDebugForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\SerialPortDebugForm.Designer.cs">
-      <DependentUpon>SerialPortDebugForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\SettingCtrl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\SettingCtrl.designer.cs">
-      <DependentUpon>SettingCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\SliderCtrl.cs">
       <SubType>UserControl</SubType>
@@ -581,12 +533,6 @@
     </Compile>
     <Compile Include="UI\StatisticsCtrl.designer.cs">
       <DependentUpon>StatisticsCtrl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\SystemInfoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\SystemInfoForm.designer.cs">
-      <DependentUpon>SystemInfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\TransparentButton.cs">
       <SubType>UserControl</SubType>
@@ -603,21 +549,8 @@
     <Compile Include="UI\VideoForm.designer.cs">
       <DependentUpon>VideoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\VideoPropertyForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\VideoPropertyForm.Designer.cs">
-      <DependentUpon>VideoPropertyForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Util.cs" />
     <Compile Include="Win32.cs" />
-    <EmbeddedResource Include="EntryForm.resx">
-      <DependentUpon>EntryForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EntryForm.zh-CN.resx">
-      <DependentUpon>EntryForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -646,9 +579,6 @@
     <EmbeddedResource Include="Res\LaserAlignment.zh-CN.resx" />
     <EmbeddedResource Include="Res\LaserCtrl.resx" />
     <EmbeddedResource Include="Res\LaserCtrl.zh-CN.resx" />
-    <EmbeddedResource Include="TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\AboutControl.resx">
       <DependentUpon>AboutControl.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -701,9 +631,6 @@
     <EmbeddedResource Include="UI\ImageTracker.resx">
       <DependentUpon>ImageTracker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\LaserDebugControl.resx">
-      <DependentUpon>LaserDebugControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\LaserDebugCtrl.resx">
       <DependentUpon>LaserDebugCtrl.cs</DependentUpon>
     </EmbeddedResource>
@@ -749,9 +676,6 @@
     <EmbeddedResource Include="UI\ShortcutCtrl.zh-CN.resx">
       <DependentUpon>ShortcutCtrl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ShortcutsForm.resx">
-      <DependentUpon>ShortcutsForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\SystemInfoCtrl.resx">
       <DependentUpon>SystemInfoCtrl.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -768,12 +692,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\VideoChooseCtrl.zh-CN.resx">
       <DependentUpon>VideoChooseCtrl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\CameraChooseCtrl.resx">
-      <DependentUpon>CameraChooseCtrl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\CameraChooseCtrl.zh-CN.resx">
-      <DependentUpon>CameraChooseCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\HoleSizeCtrl.resx">
       <DependentUpon>HoleSizeCtrl.cs</DependentUpon>
@@ -809,18 +727,6 @@
     <EmbeddedResource Include="UI\RulerAppearanceCtrl.zh-CN.resx">
       <DependentUpon>RulerAppearanceCtrl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\SerialPortCtrl.resx">
-      <DependentUpon>SerialPortCtrl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\SerialPortDebugForm.resx">
-      <DependentUpon>SerialPortDebugForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\SettingCtrl.resx">
-      <DependentUpon>SettingCtrl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\SettingCtrl.zh-CN.resx">
-      <DependentUpon>SettingCtrl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\SliderCtrl.resx">
       <DependentUpon>SliderCtrl.cs</DependentUpon>
     </EmbeddedResource>
@@ -830,17 +736,11 @@
     <EmbeddedResource Include="UI\StatisticsCtrl.zh-CN.resx">
       <DependentUpon>StatisticsCtrl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\SystemInfoForm.resx">
-      <DependentUpon>SystemInfoForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\TransparentButton.resx">
       <DependentUpon>TransparentButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\VideoForm.resx">
       <DependentUpon>VideoForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\VideoPropertyForm.resx">
-      <DependentUpon>VideoPropertyForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="bug.xlsx" />
     <None Include="Config\config.json">
@@ -1009,9 +909,6 @@
     <Content Include="Resources\Zoom-32.png" />
     <Content Include="Resources\zoom.png" />
     <Content Include="Resources\zoomFit.png" />
-    <Content Include="test.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CII.Ins.Business\CII.Ins.Business.csproj">

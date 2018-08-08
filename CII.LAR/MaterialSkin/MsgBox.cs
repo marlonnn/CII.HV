@@ -365,9 +365,8 @@ namespace CII.LAR.MaterialSkin
             btnNo.Text = Properties.Resources.StrNo;
             btnNo.Click += ButtonClick;
 
-
-            this._buttonCollection.Add(btnYes);
             this._buttonCollection.Add(btnNo);
+            this._buttonCollection.Add(btnYes);
         }
 
         private void InitYesNoCancelButtons()

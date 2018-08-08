@@ -370,6 +370,9 @@
   <data name="StrCannotPrint" xml:space="preserve">
     <value>Can not print video file!</value>
   </data>
+  <data name="StrCannotPrintEmpty" xml:space="preserve">
+    <value>Please choose a picture that needs to be printed.</value>
+  </data>
   <data name="StrExitMsg" xml:space="preserve">
     <value>Are you sure you want to exit?</value>
   </data>

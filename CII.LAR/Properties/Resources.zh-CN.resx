@@ -258,6 +258,9 @@
   <data name="StrCannotPrint" xml:space="preserve">
     <value>无法打印视频文件！</value>
   </data>
+  <data name="StrCannotPrintEmpty" xml:space="preserve">
+    <value>请选择需要打印的图片。</value>
+  </data>
   <data name="StrExitMsg" xml:space="preserve">
     <value>你确定退出当前程序吗？</value>
   </data>

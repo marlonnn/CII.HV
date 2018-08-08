@@ -946,6 +946,16 @@ namespace CII.LAR.Properties {
             }
         }
         /// <summary>
+        ///   查找类似 Can not print empty file 的本地化字符串。
+        /// </summary>
+        internal static string StrCannotPrintEmpty
+        {
+            get
+            {
+                return ResourceManager.GetString("StrCannotPrintEmpty", resourceCulture);
+            }
+        }
+        /// <summary>
         ///   查找类似 Exit Msg的本地化字符串。
         /// </summary>
         internal static string StrExitMsg

@@ -294,9 +294,10 @@
     <Compile Include="Report\ReportPictureItem.cs" />
     <Compile Include="Res\LaserAlignment.Designer.cs" />
     <Compile Include="Res\LaserCtrl.Designer.cs" />
-    <Compile Include="SerialPortCommunication.cs" />
     <Compile Include="SerialPortHelper.cs" />
+    <Compile Include="SerialPortManager.cs" />
     <Compile Include="SerialPortModel.cs" />
+    <Compile Include="SimpleProtocolData.cs" />
     <Compile Include="SysClass\AllPatients.cs" />
     <Compile Include="SysClass\CCD.cs" />
     <Compile Include="SysClass\CustomAttrs.cs" />
@@ -789,12 +790,14 @@
     </Content>
     <Content Include="Config\Equipment.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Config\HistoryAlarm.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\InstrumentManager.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Config\LibraryManager.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -813,6 +816,7 @@
     </Content>
     <Content Include="Config\PortManager.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Config\UIManager.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

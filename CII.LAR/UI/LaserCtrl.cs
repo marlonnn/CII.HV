@@ -49,7 +49,7 @@ namespace CII.LAR.UI
             InitializeSlider();
             this.sliderCtrl.Slider.Value = (int)(Program.SysConfig.LaserConfig.PulseWidth * 10);
             this.sliderCtrl.Slider.MouseUp += Slider_MouseUp;
-            serialPortCom = SerialPortCommunication.GetInstance();
+            serialPortCom = SerialPortManager.GetInstance();
             savedPulseWidthList = Program.SysConfig.LaserConfig.SavedPulseWidth;
             InitializeSavedPulseWidthList();
             this.comboBoxEx1.SelectedValueChanged += ComboBoxEx1_SelectedValueChanged;
@@ -140,7 +140,7 @@ namespace CII.LAR.UI
             }
         }
 
-        private SerialPortCommunication serialPortCom;
+        private SerialPortManager serialPortCom;
 
         private void Slider_MouseUp(object sender, MouseEventArgs e)
         {

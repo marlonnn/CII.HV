@@ -101,6 +101,24 @@ namespace CII.Ins.Model.GlobalConfig
         public static string PortManagerPCAddress = "address";
 
 
+        public static string LaserPortManagerPipeName = "BoxPipe2";
+
+        public static string LaserPortManagerCOMBusName = "CII.Library.CIINet.Buses.CommBus";
+
+        public static string LaserPortManagerCOMBusPort = "port";
+
+        public static string LaserPortManagerCOMBusBaud = "baud";
+
+        public static string LaserPortManagerCOMBusDataBit = "dataBit";
+
+        public static string LaserPortManagerCOMBusStopBit = "stopBit";
+
+        public static string LaserPortManagerProtocolName = "CII.Library.CIINet.Protocols.Common.Simple.SimpleProtocol";
+
+        public static string LaserPortManagerRouterPort = "CII.Library.CIINet.Ports.CIIPorts.CIIRouterPort";
+
+        public static string LaserPortManagerPCAddress = "address";
+
         //public static string PortManagerCOMBusParity = "";
     }
 }

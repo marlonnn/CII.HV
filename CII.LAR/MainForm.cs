@@ -42,7 +42,7 @@ namespace CII.LAR
         private int totalTime = 0;
 
         internal HotKeyManager hotKeyManager;
-        private SerialPortCommunication serialPortCom;
+        private SerialPortManager serialPortCom;
 
         protected ComponentResourceManager resources;
         //视频翻转类型
@@ -211,8 +211,7 @@ namespace CII.LAR
             DelegateClass.GetDelegate().CheckCloseVideoHandler += this.CheckCloseVideoHandler;
             DelegateClass.GetDelegate().CaptureDeviceHandler += this.CaptureDeviceHandler;
 
-            serialPortCom = SerialPortCommunication.GetInstance();
-            serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
+            serialPortCom = SerialPortManager.GetInstance();
 
             this.materialTitleBar1.CloseHandler += CloseHandler;
             this.materialTitleBar1.MinHandler += MinHandler;
@@ -228,18 +227,24 @@ namespace CII.LAR
 
         private void CloseHandler(object sender, EventArgs e)
         {
-            if (laserAlignment.Visible)
+            //if (laserAlignment.Visible)
+            //{
+            //    DialogResult result = MsgBox.Show(Properties.Resources.StrExitExceptionMsg, Properties.Resources.StrExit, MsgBox.Buttons.OK, MsgBox.Icon.Info, MsgBox.AnimateStyle.FadeIn);
+            //}
+            //else
+            //{
+            //    DialogResult result = MsgBox.Show(Properties.Resources.StrExitMsg, Properties.Resources.StrExit, MsgBox.Buttons.YesNo, MsgBox.Icon.Info, MsgBox.AnimateStyle.FadeIn);
+            //    if (result == DialogResult.Yes)
+            //    {
+            //        //CheckLaserStatus();
+            //        this.Close();
+            //    }
+            //}
+            DialogResult result = MsgBox.Show(Properties.Resources.StrExitMsg, Properties.Resources.StrExit, MsgBox.Buttons.YesNo, MsgBox.Icon.Info, MsgBox.AnimateStyle.FadeIn);
+            if (result == DialogResult.Yes)
             {
-                DialogResult result = MsgBox.Show(Properties.Resources.StrExitExceptionMsg, Properties.Resources.StrExit, MsgBox.Buttons.OK, MsgBox.Icon.Info, MsgBox.AnimateStyle.FadeIn);
-            }
-            else
-            {
-                DialogResult result = MsgBox.Show(Properties.Resources.StrExitMsg, Properties.Resources.StrExit, MsgBox.Buttons.YesNo, MsgBox.Icon.Info, MsgBox.AnimateStyle.FadeIn);
-                if (result == DialogResult.Yes)
-                {
-                    //CheckLaserStatus();
-                    this.Close();
-                }
+                CheckLaserStatus();
+                this.Close();
             }
         }
 
@@ -250,14 +255,12 @@ namespace CII.LAR
         {
             LaserC01Request c01 = new LaserC01Request();
             var bytes = serialPortCom.Encode(c01);
-            serialPortCom.SendData(bytes);
-            Thread.Sleep(400);
-            if (serialPortCom.FinalData != null)
+            byte[] recData = serialPortCom.SendData(bytes);
+            if (recData != null)
             {
-                var data = serialPortCom.FinalData;
-                if (data.Length == 6)
+                if (recData.Length == 6)
                 {
-                    var flag = data[1] * 128 + data[2];
+                    var flag = recData[1] * 128 + recData[2];
                     if (flag == 1152)
                     {
                         EnableRedLaser(false);
@@ -345,11 +348,6 @@ namespace CII.LAR
             }
         }
 
-        private void SerialDataReceivedHandler(LaserBaseResponse baseResponse)
-        {
-
-        }
-
         private void CheckCloseVideoHandler()
         {
             StopVideoDevice();
@@ -402,7 +400,6 @@ namespace CII.LAR
 
             if (serialPortCom != null)
             {
-                serialPortCom.SerialDataReceivedHandler -= SerialDataReceivedHandler;
                 if (serialPortCom.SerialPort.IsOpen) serialPortCom.Close();
             }
             UnregisterEvent();
@@ -1598,22 +1595,21 @@ namespace CII.LAR
                 }
             }
         }
-
+        private string portName;
+        private SerialPortManager spManager = SerialPortManager.GetInstance();
         private void LaserCheckTimer_Tick(object sender, EventArgs e)
         {
-            if (serialPortCom != null)
+            if (spManager != null)
             {
                 if (Program.SysConfig.LaserPortConected)
                 {
-                    //Program.SysConfig.LaserPortConected = serialPortCom.SerialPort.IsOpen;
                     //若激光器连接，则每隔2s发送消息
                     LaserC01Request c01R = new LaserC01Request();
-                    byte[] c01Bytes = serialPortCom.Encode(c01R);
-                    if (serialPortCom.SerialPort.IsOpen)
+                    byte[] c01Bytes = spManager.Encode(c01R);
+                    if (spManager.SerialPort.IsOpen)
                     {
-                        serialPortCom.SendLaserCheckData(c01Bytes);
-                        Thread.Sleep(200);
-                        if (serialPortCom.LaserCheckData != null)
+                        byte[] data = spManager.SendData(c01Bytes);
+                        if (data != null)
                         {
                             //连接状态
                             Program.SysConfig.LaserPortConected = true;
@@ -1637,23 +1633,20 @@ namespace CII.LAR
                         foreach (var p in ports)
                         {
                             if (Program.SysConfig.MotorPort != null && Program.SysConfig.MotorPort == p) continue;
-                            if (serialPortCom.SerialPort.IsOpen) serialPortCom.Close();
-                            serialPortCom.SerialPortOpen(p, "9600", "8", "One", "None", "None");
+                            spManager.SerialPortOpen(p, "9600", "8", "One", "None", "None");
                             LaserC01Request c01R = new LaserC01Request();
-                            byte[] c01Bytes = serialPortCom.Encode(c01R);
-                            serialPortCom.SendData(c01Bytes);
-                            Thread.Sleep(100);
-                            if (serialPortCom.FinalData != null)
+                            byte[] c01Bytes = spManager.Encode(c01R);
+                            byte[] data = spManager.SendData(c01Bytes);
+                            if (data != null)
                             {
                                 Program.SysConfig.LaserPort = p;
                                 Program.SysConfig.LaserPortConected = true;
-                                //this.LaserCheckTimer.Enabled = false;
-                                toolstripBtnDebug.Enabled = true;
                                 break;
                             }
                             else
                             {
                                 Program.SysConfig.LaserPortConected = false;
+                                LogHelper.GetLogger<MainForm>().Error("received data is null");
                             }
                         }
                     }

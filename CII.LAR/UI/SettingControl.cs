@@ -40,14 +40,7 @@ namespace CII.LAR.UI
             this.cmbLaser.SelectedIndexChanged += new System.EventHandler(this.cmbLaser_SelectedIndexChanged);
             this.cbxScale.SelectedIndexChanged += CbxScale_SelectedIndexChanged;
             InitializeCmbTime();
-            serialPortCom = SerialPortCommunication.GetInstance();
-            serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
-        }
-
-        private void UnregisterEvents()
-        {
-            if (serialPortCom != null)
-                serialPortCom.SerialDataReceivedHandler -= SerialDataReceivedHandler;
+            serialPortCom = SerialPortManager.GetInstance();
         }
         protected override void OnVisibleChanged(EventArgs e)
         {
@@ -61,24 +54,12 @@ namespace CII.LAR.UI
             }
         }
 
-        private SerialPortCommunication serialPortCom;
+        private SerialPortManager serialPortCom;
         private void CheckLaserInfo()
         {
             LaserC00Request c00 = new LaserC00Request();
             var bytes = serialPortCom.Encode(c00);
-            serialPortCom.SendData(bytes);
-        }
-
-        private void SerialDataReceivedHandler(LaserBaseResponse baseResponse)
-        {
-            if (baseResponse != null)
-            {
-                LaserC00Response c00r = baseResponse as LaserC00Response;
-                if (c00r != null)
-                {
-                    var s = c00r.ToString();
-                }
-            }
+            byte[] recData = serialPortCom.SendData(bytes);
         }
 
         private void CbxScale_SelectedIndexChanged(object sender, EventArgs e)

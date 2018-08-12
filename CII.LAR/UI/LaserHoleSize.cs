@@ -34,7 +34,7 @@ namespace CII.LAR.UI
             }
         }
 
-        private SerialPortCommunication serialPortCom;
+        private SerialPortManager serialPortCom;
 
         public LaserHoleSize()
         {
@@ -47,7 +47,7 @@ namespace CII.LAR.UI
             InitializeChartSeries();
             InitializeHolePulsePoints();
             this.holeSizeCtrl.UpdownClickHandler += UpdownClickHandler;
-            serialPortCom = SerialPortCommunication.GetInstance();
+            serialPortCom = SerialPortManager.GetInstance();
 
         }
 

@@ -17,7 +17,6 @@
             {
                 components.Dispose();
             }
-            UnregisterEvents();
             base.Dispose(disposing);
         }
 

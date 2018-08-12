@@ -116,11 +116,11 @@ namespace CII.LAR.Laser
                 }
                 else
                 {
-                    if (SerialPortCommunication.GetInstance() != null)
+                    if (SerialPortManager.GetInstance() != null)
                     {
                         LaserC71Request c71 = new LaserC71Request();
-                        var bytes = SerialPortCommunication.GetInstance().Encode(c71);
-                        SerialPortCommunication.GetInstance().SendData(bytes);
+                        var bytes = SerialPortManager.GetInstance().Encode(c71);
+                        SerialPortManager.GetInstance().SendData(bytes);
                     }
                     SendAlignmentMotorPoint();
                 }

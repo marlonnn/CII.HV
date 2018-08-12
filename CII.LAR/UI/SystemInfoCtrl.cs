@@ -14,15 +14,14 @@ namespace CII.LAR.UI
 {
     public partial class SystemInfoCtrl : BaseCtrl
     {
-        private SerialPortCommunication serialPortCom;
+        private SerialPortManager serialPortCom;
         public SystemInfoCtrl()
         {
             resources = new ComponentResourceManager(typeof(SystemInfoCtrl));
             this.CtrlType = CtrlType.SystemInoCtrl;
             InitializeComponent();
 
-            serialPortCom = SerialPortCommunication.GetInstance();
-            serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
+            serialPortCom = SerialPortManager.GetInstance();
 
         }
 
@@ -42,7 +41,20 @@ namespace CII.LAR.UI
         {
             LaserC00Request c00 = new LaserC00Request();
             var bytes = serialPortCom.Encode(c00);
-            serialPortCom.SendData(bytes);
+            byte[] recData = serialPortCom.SendData(bytes);
+            if (recData != null)
+            {
+                LaserBaseResponse baseResponse = serialPortCom.LaserBaseResponse(bytes, recData);
+                if (baseResponse != null)
+                {
+                    LaserC00Response c00r = baseResponse as LaserC00Response;
+                    if (c00r != null)
+                    {
+                        lblLaserVersion.Text = c00r.VersionNumber.ToString();
+                        lblWorkingHour.Text = string.Format("{0} : {1}", c00r.Hour, c00r.Month);
+                    }
+                }
+            }
         }
 
         public void UpdateStatus()
@@ -56,19 +68,6 @@ namespace CII.LAR.UI
             if (this.Visible)
             {
                 CheckLaserInfo();
-            }
-        }
-        private void SerialDataReceivedHandler(LaserBaseResponse baseResponse)
-        {
-            if (baseResponse != null)
-            {
-                LaserC00Response c00r = baseResponse as LaserC00Response;
-                if (c00r != null)
-                {
-                    //var s = c00r.ToString();
-                    lblLaserVersion.Text = c00r.VersionNumber.ToString();
-                    lblWorkingHour.Text = string.Format("{0} : {1}", c00r.Hour, c00r.Month);
-                }
             }
         }
     }

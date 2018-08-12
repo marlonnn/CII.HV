@@ -16,7 +16,7 @@ namespace CII.LAR.UI
 {
     public partial class LaserDebugCtrl : Form
     {
-        private SerialPortCommunication serialPortCom = SerialPortCommunication.GetInstance();
+        private SerialPortManager serialPortCom = SerialPortManager.GetInstance();
         public LaserDebugCtrl()
         {
             //this.CtrlType = CtrlType.LaserDebugCtrl;
@@ -24,7 +24,6 @@ namespace CII.LAR.UI
             InitializeLaserCOMCombox();
             this.Load += LaserDebugCtrl_Load;
             this.FormClosing += LaserDebugCtrl_FormClosing;
-            serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
             this.txtCompensationFactor.Text = Program.SysConfig.CompensationFactor.ToString();
             this.chbLocation.Checked = Program.SysConfig.ScreenshotWithLocation;
             this.chbLocation.CheckedChanged += new System.EventHandler(this.chbLocation_CheckedChanged);
@@ -32,7 +31,6 @@ namespace CII.LAR.UI
 
         private void LaserDebugCtrl_FormClosing(object sender, FormClosingEventArgs e)
         {
-            serialPortCom.SerialDataReceivedHandler -= SerialDataReceivedHandler;
         }
 
         private void LaserDebugCtrl_Load(object sender, EventArgs e)

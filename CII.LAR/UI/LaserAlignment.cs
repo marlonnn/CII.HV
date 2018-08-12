@@ -23,7 +23,7 @@ namespace CII.LAR.UI
     /// </summary>
     public partial class LaserAlignment : BaseCtrl
     {
-        private SerialPortCommunication serialPortCom;
+        private SerialPortManager serialPortCom;
 
         private int index;
         public int Index
@@ -75,8 +75,7 @@ namespace CII.LAR.UI
             this.Load += LaserAlignment_Load;
             Index = -2;
             this.KeyDown += LaserAlignment_KeyDown;
-            serialPortCom = SerialPortCommunication.GetInstance();
-            serialPortCom.SerialDataReceivedHandler += SerialDataReceivedHandler;
+            serialPortCom = SerialPortManager.GetInstance();
         }
 
         private void SerialDataReceivedHandler(LaserBaseResponse baseResponse)
@@ -146,14 +145,12 @@ namespace CII.LAR.UI
         {
             LaserC01Request c01 = new LaserC01Request();
             var bytes = serialPortCom.Encode(c01);
-            serialPortCom.SendData(bytes);
-            Thread.Sleep(250);
-            if (serialPortCom.FinalData != null)
+            byte[] recData = serialPortCom.SendData(bytes);
+            if (recData != null)
             {
-                var data = serialPortCom.FinalData;
-                if (data.Length == 6)
+                if (recData.Length == 6)
                 {
-                    var flag = data[1] * 128 + data[2];
+                    var flag = recData[1] * 128 + recData[2];
                     if (flag == 1408)
                     {
                         EnableRedLaser(true);
@@ -366,14 +363,12 @@ namespace CII.LAR.UI
         {
             LaserC01Request c01 = new LaserC01Request();
             var bytes = serialPortCom.Encode(c01);
-            serialPortCom.SendData(bytes);
-            Thread.Sleep(250);
-            if (serialPortCom.FinalData != null)
+            byte[] recData = serialPortCom.SendData(bytes);
+            if (recData != null)
             {
-                var data = serialPortCom.FinalData;
-                if (data.Length == 6)
+                if (recData.Length == 6)
                 {
-                    var flag = data[1] * 128 + data[2];
+                    var flag = recData[1] * 128 + recData[2];
                     if (flag == 1152)
                     {
                         EnableRedLaser(false);

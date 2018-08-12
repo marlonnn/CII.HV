@@ -47,7 +47,9 @@ namespace CII.Ins.Business.Command.LAR
         /// <summary>
         /// 仪器名称，在CommandManager.xml协议配置文件中确定的
         /// </summary>
-        private static readonly string InsName = "HV";
+        public static readonly string InsName = "HV";
+
+        public static readonly string InsName1 = "HV1";
         #endregion
 
         #region -- 检查返回值 --

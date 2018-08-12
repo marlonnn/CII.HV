@@ -148,10 +148,10 @@
     <value>测量工具属性</value>
   </data>
   <data name="StrScaleAppearanceTitle" xml:space="preserve">
-    <value>刻度尺属性</value>
+    <value>坐标尺尺属性</value>
   </data>
   <data name="StrLaserCtrlTitle" xml:space="preserve">
-    <value>激光器控制</value>
+    <value>指示光斑属性</value>
   </data>
   <data name="StrLaserAppearanceTitle" xml:space="preserve">
     <value>激光属性</value>
@@ -160,10 +160,10 @@
     <value>激光目标对齐</value>
   </data>
   <data name="StrLaserHoleSizeCalibration" xml:space="preserve">
-    <value>孔径尺寸标定</value>
+    <value>激光孔径标定</value>
   </data>
   <data name="StrShortcutTitle" xml:space="preserve">
-    <value>键盘快捷键设置</value>
+    <value>键盘/快捷键设置</value>
   </data>
   <data name="StrObjectLense" xml:space="preserve">
     <value>物镜管理</value>
@@ -265,7 +265,7 @@
     <value>你确定退出当前程序吗？</value>
   </data>
   <data name="StrMainTitle" xml:space="preserve">
-    <value>华仪宁创LAR激光破膜仪软件</value>
+    <value>辅助生殖激光光学系统软件</value>
   </data>
   <data name="StrExitExceptionMsg" xml:space="preserve">
     <value>软件正在校准，若强制退出，请先关闭校准窗口。</value>

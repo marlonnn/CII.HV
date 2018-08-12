@@ -121,7 +121,7 @@
     <value>系统信息</value>
   </data>
   <data name="btnScaleAppearance.Text" xml:space="preserve">
-    <value>刻度尺显示</value>
+    <value>坐标尺显示</value>
   </data>
   <data name="btnShortcuts.Text" xml:space="preserve">
     <value>键盘/踏板快捷键</value>
@@ -160,7 +160,7 @@
     <value>存储路径</value>
   </data>
   <data name="groupBoxTime.Text" xml:space="preserve">
-    <value>录屏时长（单位：分钟）</value>
+    <value>录像时长（单位：分钟）</value>
   </data>
   <data name="lblCamera.Text" xml:space="preserve">
     <value>相机：</value>

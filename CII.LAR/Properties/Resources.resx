@@ -152,7 +152,7 @@
     <value>..\Resources\copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="StrLaserCtrlTitle" xml:space="preserve">
-    <value>Laser Control</value>
+    <value>Indication Spot Attribute</value>
   </data>
   <data name="StrAboutCtrlTitle" xml:space="preserve">
     <value>About</value>
@@ -227,7 +227,7 @@
     <value>Scale Appearance</value>
   </data>
   <data name="StrShortcutTitle" xml:space="preserve">
-    <value>Keyboard Shortcut Configuration</value>
+    <value>Keyboard/Shortcut Configuration</value>
   </data>
   <data name="StrShortcutExist" xml:space="preserve">
     <value>This HotKey has already been registered</value>
@@ -380,7 +380,7 @@
     <value>The software is calibrating. If you are forced to quit, please turn off the calibration window first.</value>
   </data>
   <data name="StrMainTitle" xml:space="preserve">
-    <value>CII-100</value>
+    <value>Assisted Reproduction Laser Optical System Software</value>
   </data>
   <data name="warn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\warn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

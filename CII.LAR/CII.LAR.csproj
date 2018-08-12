@@ -763,9 +763,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\LogView.ini">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Resources\PingFang Medium.ttf" />
   </ItemGroup>
   <ItemGroup>
@@ -839,6 +836,7 @@
     <Content Include="Reference\MathNet.Numerics.dll" />
     <Content Include="Reference\Newtonsoft.Json.dll" />
     <Content Include="Reference\uEyeDotNet.dll" />
+    <Content Include="Resources\logo.ico" />
     <Content Include="Resources\Simulator\egg.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -881,10 +879,6 @@
     <Content Include="Resources\laser.png" />
     <Content Include="Resources\lens.png" />
     <Content Include="Resources\line.png" />
-    <Content Include="Resources\logo.ico" />
-    <Content Include="Resources\LogView.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Resources\measure.png" />
     <Content Include="Resources\open.png" />
     <Content Include="Resources\polygon.png" />

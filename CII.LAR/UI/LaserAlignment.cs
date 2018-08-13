@@ -143,20 +143,45 @@ namespace CII.LAR.UI
 
         private void CheckandEnableLaserStatus()
         {
-            LaserC01Request c01 = new LaserC01Request();
-            var bytes = serialPortCom.Encode(c01);
-            byte[] recData = serialPortCom.SendData(bytes);
-            if (recData != null)
+            //while (true)
+            //{
+            //    byte[] recData2 = Send01Command();
+            //    if (recData2 != null)
+            //    {
+            //        if (recData2.Length == 6)
+            //        {
+            //            var flag = recData2[1] * 128 + recData2[2];
+            //            LogHelper.GetLogger<LaserAlignment>().Error("flag: " + flag);
+            //            if (flag == 1408)
+            //            {
+            //                EnableRedLaser(true);
+            //                break;
+            //            }
+            //        }
+            //    }
+            //    Thread.Sleep(100);
+            //}
+            byte[] recData2 = Send01Command();
+            if (recData2 != null)
             {
-                if (recData.Length == 6)
+                if (recData2.Length == 6)
                 {
-                    var flag = recData[1] * 128 + recData[2];
+                    var flag = recData2[1] * 128 + recData2[2];
+                    //LogHelper.GetLogger<LaserAlignment>().Error("flag: " + flag);
                     if (flag == 1408)
                     {
                         EnableRedLaser(true);
                     }
                 }
             }
+        }
+
+        private byte[] Send01Command()
+        {
+            LaserC01Request c01 = new LaserC01Request();
+            var bytes = serialPortCom.Encode(c01);
+            return serialPortCom.SendData(bytes);
+
         }
 
 

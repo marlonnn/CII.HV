@@ -1608,7 +1608,7 @@ namespace CII.LAR
                     byte[] c01Bytes = spManager.Encode(c01R);
                     if (spManager.SerialPort.IsOpen)
                     {
-                        byte[] data = spManager.SendData(c01Bytes);
+                        byte[] data = spManager.SendData(c01Bytes, false);
                         if (data != null)
                         {
                             //连接状态

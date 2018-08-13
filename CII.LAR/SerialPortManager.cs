@@ -126,7 +126,7 @@ namespace CII.LAR
                         serialPort.Write(bytesList[i], 0, bytesList[i].Length);
                         LogHelper.GetLogger<SerialPortManager>().Error(string.Format("激光器发送的原始数据为： {0}", ByteHelper.Byte2ReadalbeXstring(bytesList[i])));
                     }
-                    Thread.Sleep(100);
+                    Thread.Sleep(200);
                     while (true)
                     {
                         int dataLength = serialPort.BytesToRead;
@@ -152,17 +152,17 @@ namespace CII.LAR
 
             return recData;
         }
-        public byte[] SendData(byte[] bytes)
+        public byte[] SendData(byte[] bytes, bool catchLog = true)
         {
             byte[] recData = null;
             if (serialPort != null && serialPort.IsOpen)
             {
                 try
                 {
-                    LogHelper.GetLogger<SerialPortManager>().Error("------>发送数据 : " + ByteHelper.Byte2ReadalbeXstring(bytes));
+                    if (catchLog) LogHelper.GetLogger<SerialPortManager>().Error("------>发送数据 : " + ByteHelper.Byte2ReadalbeXstring(bytes));
 
                     serialPort.Write(bytes, 0, bytes.Length);
-                    Thread.Sleep(100);
+                    Thread.Sleep(200);
                     while (true)
                     {
                         int dataLength = serialPort.BytesToRead;
@@ -172,7 +172,7 @@ namespace CII.LAR
                         serialPort.Read(data, 0, dataLength);
                         
                         AssembleData(data, ref recData);
-                        LogHelper.GetLogger<SerialPortManager>().Error("<------接受数据: " + ByteHelper.Byte2ReadalbeXstring(recData));
+                        if (catchLog) LogHelper.GetLogger<SerialPortManager>().Error("<------接受数据: " + ByteHelper.Byte2ReadalbeXstring(recData));
 
                         Thread.Sleep(100);
                     }

@@ -354,7 +354,7 @@ namespace CII.LAR
             // 
             // LaserCheckTimer
             // 
-            this.LaserCheckTimer.Interval = 3000;
+            this.LaserCheckTimer.Interval = 1000;
             this.LaserCheckTimer.Tick += new System.EventHandler(this.LaserCheckTimer_Tick);
             // 
             // materialTitleBar1

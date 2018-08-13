@@ -121,7 +121,7 @@
     <value>激光位置校准</value>
   </data>
   <data name="btnAppearance.Text" xml:space="preserve">
-    <value>指示光标属性</value>
+    <value>激光光标属性</value>
   </data>
   <data name="btnDelete.Text" xml:space="preserve">
     <value>删除</value>

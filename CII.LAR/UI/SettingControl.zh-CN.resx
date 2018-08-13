@@ -151,7 +151,7 @@
     <value>物镜</value>
   </data>
   <data name="groupBoxScale.Text" xml:space="preserve">
-    <value>刻度尺</value>
+    <value>坐标尺</value>
   </data>
   <data name="groupBoxShortcuts.Text" xml:space="preserve">
     <value>快捷键</value>

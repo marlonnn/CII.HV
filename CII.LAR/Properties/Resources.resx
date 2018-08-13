@@ -152,7 +152,7 @@
     <value>..\Resources\copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="StrLaserCtrlTitle" xml:space="preserve">
-    <value>Indication Spot Attribute</value>
+    <value>Laser Cursor Attribute</value>
   </data>
   <data name="StrAboutCtrlTitle" xml:space="preserve">
     <value>About</value>

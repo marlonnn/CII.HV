@@ -12,6 +12,8 @@ using System.IO;
 using System.Resources;
 using CII.LAR.SysClass;
 using CII.LAR.Algorithm;
+using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 
 namespace CII.LAR.UI
 {
@@ -878,6 +880,24 @@ namespace CII.LAR.UI
             string sSeconds = string.Format("{0}", seconds).PadLeft(2, '0');
             return string.Format("00:{0}:{1}", sMinutes, sSeconds);
         }
+        public  void ToHighQuality(Graphics graphics)
+        {
+            graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            graphics.CompositingQuality = CompositingQuality.HighQuality;
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+            graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
+            graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+        }
+
+        public  void ToLowQuality(Graphics graphics)
+        {
+            graphics.InterpolationMode = InterpolationMode.Low;
+            graphics.CompositingQuality = CompositingQuality.HighSpeed;
+            graphics.SmoothingMode = SmoothingMode.HighSpeed;
+            graphics.TextRenderingHint = TextRenderingHint.SystemDefault;
+            graphics.PixelOffsetMode = PixelOffsetMode.HighSpeed;
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             try
@@ -894,6 +914,7 @@ namespace CII.LAR.UI
                 {
                     e.Graphics.ScaleTransform(Zoom, Zoom);
                     e.Graphics.TranslateTransform(OffsetX, OffsetY);
+                    //ToLowQuality(e.Graphics);
                     e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
                     e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
                     e.Graphics.DrawImage(this.Picture, 0, 0, RealSize.Width, RealSize.Height);

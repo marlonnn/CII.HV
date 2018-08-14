@@ -782,6 +782,7 @@ namespace CII.LAR.UI
             }
             this.zoom = 1;
             this.imageTracker.ScalePercent = zoom * 100;
+            this.imageTracker.Invalidate();
             this.Invalidate();
         }
 
@@ -798,7 +799,9 @@ namespace CII.LAR.UI
             zoom += 1;
             ZoomOnMouseCenter(args, oldzoom);
             this.imageTracker.ScalePercent = zoom * 100;
-            this.Invalidate();
+            this.imageTracker.Invalidate();
+            this.Refresh();
+            //this.Invalidate();
         }
 
         public void ZoomOut()
@@ -815,7 +818,9 @@ namespace CII.LAR.UI
                 zoom -= 1;
                 ZoomOnMouseCenter(args, oldzoom);
                 this.imageTracker.ScalePercent = zoom * 100;
-                this.Invalidate();
+                this.imageTracker.Invalidate();
+                this.Refresh();
+                //this.Invalidate();
             }
         }
 

@@ -288,8 +288,11 @@ namespace CII.LAR.UI
                 if (Picture != null)
                 {
                     // draw thumbnail image
+                    e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+                    e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
                     e.Graphics.DrawImage(this.Picture, this.pictureDestRect);
-
+                    e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+                    e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Bilinear;
                     // adjust highlighting region of visible picture area
                     Region highlightRegion = new Region(this.pictureDestRect);
                     if (highlightingRect.Width > 0 && highlightingRect.Height > 0)

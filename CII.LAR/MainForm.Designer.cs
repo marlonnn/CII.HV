@@ -45,7 +45,6 @@ namespace CII.LAR
             this.closeCameraToolStripMenuItem = new CII.LAR.MaterialSkin.MaterialToolStripMenuItem();
             this.horizontalFlipToolStripMenuItem = new CII.LAR.MaterialSkin.MaterialToolStripMenuItem();
             this.verticalFlipToolStripMenuItem = new CII.LAR.MaterialSkin.MaterialToolStripMenuItem();
-            this.toolstripBtnDebug = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.toolstripBtnAbout = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.materialToolStrip3 = new CII.LAR.MaterialSkin.MaterialToolStrip();
             this.toolstripBtnZoomIn = new CII.LAR.MaterialSkin.MaterialToolStripButton();
@@ -56,6 +55,7 @@ namespace CII.LAR
             this.toolstripBtnLine = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.toolstripBtnRectangle = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.toolstripBtnEllipse = new CII.LAR.MaterialSkin.MaterialToolStripButton();
+            this.toolstripBtnDebug = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.toolstripBtnHand = new CII.LAR.MaterialSkin.MaterialToolStripButton();
             this.richPictureBox = new CII.LAR.UI.RichPictureBox();
             this.videoControl = new CII.LAR.UI.VideoControl();
@@ -127,7 +127,6 @@ namespace CII.LAR
             this.toolstripBtnLaser,
             this.toolstripBtnSetting,
             this.toolstripBtnCamera,
-            //this.toolstripBtnDebug,
             this.toolstripBtnAbout});
             this.materialToolStrip4.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.materialToolStrip4.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
@@ -204,15 +203,6 @@ namespace CII.LAR
             this.verticalFlipToolStripMenuItem.Name = "verticalFlipToolStripMenuItem";
             this.verticalFlipToolStripMenuItem.Click += new System.EventHandler(this.verticalFlipToolStripMenuItem_Click);
             // 
-            // toolstripBtnDebug
-            // 
-            resources.ApplyResources(this.toolstripBtnDebug, "toolstripBtnDebug");
-            this.toolstripBtnDebug.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolstripBtnDebug.Image = global::CII.LAR.Properties.Resources.backflush;
-            this.toolstripBtnDebug.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
-            this.toolstripBtnDebug.Name = "toolstripBtnDebug";
-            this.toolstripBtnDebug.Click += new System.EventHandler(this.toolstripBtnDebug_Click);
-            // 
             // toolstripBtnAbout
             // 
             resources.ApplyResources(this.toolstripBtnAbout, "toolstripBtnAbout");
@@ -267,8 +257,7 @@ namespace CII.LAR
             this.toolstripBtnMeasure,
             this.toolstripBtnLine,
             this.toolstripBtnRectangle,
-            this.toolstripBtnEllipse,
-            this.toolstripBtnHand});
+            this.toolstripBtnEllipse});
             this.materialToolStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.materialToolStrip2.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.materialToolStrip2.Name = "materialToolStrip2";
@@ -278,7 +267,6 @@ namespace CII.LAR
             resources.ApplyResources(this.toolstripBtnMeasure, "toolstripBtnMeasure");
             this.toolstripBtnMeasure.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolstripBtnMeasure.Image = global::CII.LAR.Properties.Resources.ruler;
-            //this.toolstripBtnMeasure.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
             this.toolstripBtnMeasure.Name = "toolstripBtnMeasure";
             this.toolstripBtnMeasure.Click += new System.EventHandler(this.toolstripBtnMeasure_Click);
             // 
@@ -308,6 +296,15 @@ namespace CII.LAR
             this.toolstripBtnEllipse.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
             this.toolstripBtnEllipse.Name = "toolstripBtnEllipse";
             this.toolstripBtnEllipse.Click += new System.EventHandler(this.toolstripBtnEllipse_Click);
+            // 
+            // toolstripBtnDebug
+            // 
+            resources.ApplyResources(this.toolstripBtnDebug, "toolstripBtnDebug");
+            this.toolstripBtnDebug.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolstripBtnDebug.Image = global::CII.LAR.Properties.Resources.backflush;
+            this.toolstripBtnDebug.MouseState = CII.LAR.MaterialSkin.MouseState.OUT;
+            this.toolstripBtnDebug.Name = "toolstripBtnDebug";
+            this.toolstripBtnDebug.Click += new System.EventHandler(this.toolstripBtnDebug_Click);
             // 
             // toolstripBtnHand
             // 
@@ -374,6 +371,7 @@ namespace CII.LAR
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.richPictureBox);
             this.DrawIcon = true;
+            this.KeyPreview = true;
             this.Name = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.materialToolStrip1.ResumeLayout(false);
@@ -385,7 +383,6 @@ namespace CII.LAR
             this.materialToolStrip3.PerformLayout();
             this.materialToolStrip2.ResumeLayout(false);
             this.materialToolStrip2.PerformLayout();
-            this.KeyPreview = true;
             ((System.ComponentModel.ISupportInitialize)(this.richPictureBox)).EndInit();
             this.ResumeLayout(false);
 

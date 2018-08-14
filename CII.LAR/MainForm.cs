@@ -240,7 +240,7 @@ namespace CII.LAR
             //        this.Close();
             //    }
             //}
-            DialogResult result = MsgBox.Show(Properties.Resources.StrExitMsg, Properties.Resources.StrExit, MsgBox.Buttons.YesNo, MsgBox.Icon.Info, MsgBox.AnimateStyle.FadeIn);
+            DialogResult result = MsgBox.Show(Properties.Resources.StrExitMsg, Properties.Resources.StrExit, MsgBox.Buttons.YesNo, MsgBox.Icon.Info);
             if (result == DialogResult.Yes)
             {
                 CheckLaserStatus();

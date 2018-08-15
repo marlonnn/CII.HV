@@ -508,8 +508,14 @@ namespace CII.LAR
 
         private void toolstripBtnFiles_Click(object sender, EventArgs e)
         {
-            FilesForm filesForm = new FilesForm();
-            filesForm.ShowDialog();
+            try
+            {
+                FilesForm filesForm = new FilesForm();
+                filesForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         private void toolstripBtnMeasure_Click(object sender, EventArgs e)
@@ -1117,48 +1123,7 @@ namespace CII.LAR
                 this.richPictureBox.LaserFunction = false;
                 this.richPictureBox.ActiveTool = DrawToolType.Pointer;
             }
-            //if (e.KeyCode == Keys.Escape)
-            //{
-            //    //fullScreen.ResetFullScreen();
-            //}
-            //else if (e.KeyCode == Keys.F)
-            //{
-            //    //fullScreen.ShowFullScreen();
-            //    if (this.richPictureBox != null && this.richPictureBox.Picture != null)
-            //    {
-            //        this.richPictureBox.ZoomFit();
-            //    }
-            //}
-            //else 
-            if (e.Control == true && e.KeyCode == Keys.F7)
-            {
-                viewLog(new string[] { "SerialPort.log" });
-            }
-            //else if (e.Control == true && e.KeyCode == Keys.D)
-            //{
-            //    SerialPortDebugForm debugForm = new SerialPortDebugForm();
-            //    debugForm.Controller = this.controller;
-            //    debugForm.ShowDialog();
-            //}
-            //else if (e.Control == true && e.KeyCode == Keys.A)
-            //{
-            //    this.richPictureBox.DebugCtrlVisiable();
-            //}
-            //else if (e.Control == true && e.KeyCode == Keys.O)
-            //{
-            //    ShowBaseCtrl(true, CtrlType.LenseCtrl);
-            //}
-            //else if (e.Control == true && e.KeyCode == Keys.V)
-            //{
-            //    VideoPropertyForm form = new VideoPropertyForm();
-            //    form.ShowDialog();
-            //}
-            //else if (e.Control == true && e.KeyCode == Keys.P)
-            //{
 
-            //    SerialPortDebugForm spd = new SerialPortDebugForm();
-            //    spd.ShowDialog();
-            //}
         }
 
         /// <summary>

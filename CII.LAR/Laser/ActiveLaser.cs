@@ -95,6 +95,7 @@ namespace CII.LAR.Laser
         {
             activeCircle.StartCircle = null;
             activeCircle.EndCircle = null;
+            ResetCircles();
             //activeCircle.StartCircle.CenterPoint = Point.Empty;
             //activeCircle.EndCircle.CenterPoint = Point.Empty;
         }

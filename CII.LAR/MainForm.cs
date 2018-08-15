@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -923,6 +924,7 @@ namespace CII.LAR
             }
         }
 
+        private Stopwatch sw = new Stopwatch();
         public void CaptureDeviceHandler(string deviceMoniker)
         {
             videoDevice = new VideoCaptureDevice(deviceMoniker);
@@ -937,6 +939,7 @@ namespace CII.LAR
                 this.videoControl.VideoSource = videoDevice;
                 this.videoControl.VideoSource.NewFrame += new NewFrameEventHandler(VideoSource_NewFrame);
                 this.videoControl.Start();
+                sw.Start();
                 this.richPictureBox.Zoom = 1;
             }
         }
@@ -945,22 +948,27 @@ namespace CII.LAR
         {
             try
             {
-                if (CaptureVideo && canCapture)
+                if (sw.ElapsedMilliseconds > 50)
                 {
-                    videoFrame = FilpImage((Bitmap)eventArgs.Frame.Clone());
-                    AVIwriter.Quality = 0;
-                    AVIwriter.AddFrame(videoFrame);
-                }
-                else
-                {
-                    videoFrame = FilpImage((Bitmap)eventArgs.Frame.Clone());
-                }
+                    if (CaptureVideo && canCapture)
+                    {
+                        videoFrame = FilpImage((Bitmap)eventArgs.Frame.Clone());
+                        AVIwriter.Quality = 0;
+                        AVIwriter.AddFrame(videoFrame);
+                    }
+                    else
+                    {
+                        videoFrame = FilpImage((Bitmap)eventArgs.Frame.Clone());
+                    }
 
 
-                //videoFrame.RotateFlip(RotateFlipType.Rotate180FlipY);
-                //Image filpImage = FilpImage(videoFrame);
-                //this.richPictureBox.ImageTracker.Picture = filpImage;
-                this.richPictureBox.Picture = videoFrame;
+                    //videoFrame.RotateFlip(RotateFlipType.Rotate180FlipY);
+                    //Image filpImage = FilpImage(videoFrame);
+                    //this.richPictureBox.ImageTracker.Picture = filpImage;
+                    this.richPictureBox.Picture = videoFrame;
+                    sw.Reset();
+                    sw.Start();
+                }
 
             }
             catch (Exception ex)

@@ -154,7 +154,7 @@
     <value>激光控制</value>
   </data>
   <data name="StrLaserAppearanceTitle" xml:space="preserve">
-    <value>激光属性</value>
+    <value>激光光标属性</value>
   </data>
   <data name="StrLaserAlignmentTitle" xml:space="preserve">
     <value>激光目标对齐</value>

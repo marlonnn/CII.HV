@@ -95,7 +95,7 @@ namespace CII.LAR.UI
         public override void RefreshUI()
         {
             base.RefreshUI();
-            this.Title = global::CII.LAR.Properties.Resources.StrLaserCtrlTitle;
+            this.Title = global::CII.LAR.Properties.Resources.StrLaserAppearanceTitle;
         }
 
         private void btnDefault_Click(object sender, EventArgs e)

@@ -14,11 +14,5 @@
             <address>0x21</address>
             <type>HV</type>
         </instrument>
-        <instrument>
-          <id>HV1</id>
-          <name>HV1</name>
-          <address>0x22</address>
-          <type>HV</type>
-        </instrument>
       </instruments>
 </InstrumentManager>

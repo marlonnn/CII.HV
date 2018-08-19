@@ -56,7 +56,8 @@ namespace CII.LAR.Laser
             mouseDownPoint = e.Location;
 
             activeCircle.OnMouseDown(e.Location);
-            //SendMotorPointOnMouseDown();
+
+            SendMotorPointOnMouseDown();
             this.richPictureBox.Invalidate();
         }
 

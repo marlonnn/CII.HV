@@ -171,6 +171,9 @@ namespace CII.LAR.UI
             InitializeComponent();
             this.richPictureBox = richPictureBox;
             this.Font = SkinManager.PINGFANG_MEDIUM_9;
+            // update control style
+            SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw |
+                ControlStyles.DoubleBuffer | ControlStyles.UserPaint, true);
         }
 
         public void OnPicturePainted(Rectangle showingRect, Rectangle pictureBoxRect)
@@ -204,6 +207,8 @@ namespace CII.LAR.UI
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            if (!Visible) return;
+
             base.OnPaint(e);
             // draw control border
             //Rectangle borderRect = this.ClientRectangle;
@@ -285,6 +290,7 @@ namespace CII.LAR.UI
         {
             try
             {
+                if (!Visible) return;
                 if (Picture != null)
                 {
                     // draw thumbnail image

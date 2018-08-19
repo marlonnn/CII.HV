@@ -18,6 +18,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
@@ -38,37 +39,20 @@ namespace CII.LAR
         }
         [DllImport("User32.dll")]
         private static extern bool GetLastInputInfo(ref LASTINPUTINFO Dummy);
-        private System.Windows.Forms.Timer idleTimer;
         private LASTINPUTINFO lastInputInfo;
-        private int totalTime = 0;
 
         internal HotKeyManager hotKeyManager;
         private SerialPortManager serialPortCom;
 
         protected ComponentResourceManager resources;
-        //视频翻转类型
-        private FlipType flipType;
-        public FlipType FlipType
-        {
-            get { return this.flipType; }
-            set
-            {
-                if (value != this.flipType)
-                {
-                    this.flipType = value;
-                }
-            }
-        }
 
-        private Bitmap videoFrame;
-        private bool canCapture = false;
         private bool captureVideo = false;
         public bool CaptureVideo
         {
             get { return this.captureVideo; }
             set
             {
-                if (value != this.captureVideo)
+                //if (value != this.captureVideo)
                 {
                     this.captureVideo = value;
                     this.richPictureBox.CaptureVideo = value;
@@ -76,8 +60,6 @@ namespace CII.LAR
                 }
             }
         }
-
-        private AVIWriter AVIwriter = new AVIWriter("wmv3");
 
         private VideoCaptureDevice videoDevice;
         public VideoCaptureDevice VideoDevice
@@ -205,7 +187,7 @@ namespace CII.LAR
             this.MouseWheel += EntryForm_MouseWheel;
             this.FormClosing += EntryForm_FormClosing;
             this.FormClosed += EntryForm_FormClosed;
-            this.FlipType = FlipType.Empty;
+            this.richPictureBox.FlipType = FlipType.Empty;
             DelegateClass.GetDelegate().VideoKeyUpHandler += this.OnKeyUp;
             DelegateClass.GetDelegate().VideoKeyDownHandler += this.OnKeyDown;
             DelegateClass.GetDelegate().ChangeSysFunctionHandler += this.ChangeSysFunctionHandler;
@@ -434,12 +416,11 @@ namespace CII.LAR
                         fileName = string.Format(@"{0}\{1}_{2}_{3}.png", folder, DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff"), centerPoint.X, centerPoint.Y);
                     }
                 }
-                if (videoFrame != null)
+                if (this.richPictureBox.VideoFrame != null)
                 {
-                    Bitmap bitmap = new Bitmap(this.videoControl.Bounds.Width, this.videoControl.Bounds.Height);
-                    this.videoControl.DrawToBitmap(bitmap, new Rectangle(0, 0, bitmap.Width, bitmap.Height));
-                    FilpImage(bitmap);
-                    bitmap.Save(fileName, ImageFormat.Png);
+                    Bitmap b = this.ResizeImage(this.richPictureBox.VideoFrame, this.videoControl.Bounds.Width, this.videoControl.Bounds.Height);
+                    this.richPictureBox.FilpImage(b);
+                    b.Save(fileName, ImageFormat.Png);
                     this.ShowToastNotification(Properties.Resources.StrScreenshotSuccess, global::CII.LAR.Properties.Resources.capture);
                 }
                 else if (this.richPictureBox.Image != null)
@@ -468,9 +449,9 @@ namespace CII.LAR
                         int h = videoDevice.VideoCapabilities[0].FrameSize.Height;
                         int w = videoDevice.VideoCapabilities[0].FrameSize.Width;
                         string fileName = string.Format(@"{0}\{1}.avi", filePath, DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff"));
-                        AVIwriter.Open(fileName, w, h);
+                        this.richPictureBox.AVIwriter.Open(fileName, w, h);
                         this.toolstripBtnVideo.Image = global::CII.LAR.Properties.Resources.Stop;
-                        canCapture = true;
+                        this.richPictureBox.CanCapture = true;
                         if (Program.SysConfig.RecordTime != 0)
                         {
                             recordTimer = new System.Timers.Timer(1000);
@@ -488,7 +469,7 @@ namespace CII.LAR
             }
             catch (Exception ex)
             {
-                canCapture = false;
+                this.richPictureBox.CanCapture = false;
             }
         }
 
@@ -497,8 +478,8 @@ namespace CII.LAR
             if (videoDevice == null) return;
             if (videoDevice.IsRunning)
             {
-                canCapture = false;
-                this.AVIwriter.Close();
+                this.richPictureBox.CanCapture = false;
+                this.richPictureBox.AVIwriter.Close();
             }
             if (recordTimer != null && recordTimer.Enabled)
             {
@@ -698,12 +679,12 @@ namespace CII.LAR
             this.horizontalFlipToolStripMenuItem.Checked = flipHorizontal;
             if (flipHorizontal)
             {
-                this.FlipType = FlipType.Horizontal;
+                this.richPictureBox.FlipType = FlipType.Horizontal;
                 this.verticalFlipToolStripMenuItem.Checked = false;
             }
             else
             {
-                this.FlipType = FlipType.Empty;
+                this.richPictureBox.FlipType = FlipType.Empty;
             }
         }
 
@@ -713,12 +694,12 @@ namespace CII.LAR
             this.verticalFlipToolStripMenuItem.Checked = flipVertical;
             if (flipVertical)
             {
-                this.FlipType = FlipType.Vertical;
+                this.richPictureBox.FlipType = FlipType.Vertical;
                 this.horizontalFlipToolStripMenuItem.Checked = false;
             }
             else
             {
-                this.FlipType = FlipType.Empty;
+                this.richPictureBox.FlipType = FlipType.Empty;
             }
 
         }
@@ -749,10 +730,14 @@ namespace CII.LAR
                 if (videoDevice == null) return;
                 if (videoDevice.IsRunning)
                 {
-                    canCapture = false;
-                    this.AVIwriter.Close();
+                    this.richPictureBox.CanCapture = false;
+                    this.richPictureBox.AVIwriter.Close();
                 }
                 this.toolstripBtnVideo.Image = global::CII.LAR.Properties.Resources.video;
+            }
+            else
+            {
+                CaptureVideo = true;
             }
             this.richPictureBox.RecordCount++;
         }
@@ -924,7 +909,6 @@ namespace CII.LAR
             }
         }
 
-        private Stopwatch sw = new Stopwatch();
         public void CaptureDeviceHandler(string deviceMoniker)
         {
             videoDevice = new VideoCaptureDevice(deviceMoniker);
@@ -937,62 +921,11 @@ namespace CII.LAR
                 this.richPictureBox.SetOffset(offsetX, offsetY);
                 this.videoControl.Bounds = new Rectangle(0, 0, videoSize.Width, videoSize.Height);
                 this.videoControl.VideoSource = videoDevice;
-                this.videoControl.VideoSource.NewFrame += new NewFrameEventHandler(VideoSource_NewFrame);
+                this.videoControl.VideoSource.NewFrame += new NewFrameEventHandler(this.richPictureBox.VideoSource_NewFrame);
                 this.videoControl.Start();
-                sw.Start();
+                this.richPictureBox.SW.Start();
                 this.richPictureBox.Zoom = 1;
             }
-        }
-
-        private void VideoSource_NewFrame(object sender, NewFrameEventArgs eventArgs)
-        {
-            try
-            {
-                if (sw.ElapsedMilliseconds > 50)
-                {
-                    if (CaptureVideo && canCapture)
-                    {
-                        videoFrame = FilpImage((Bitmap)eventArgs.Frame.Clone());
-                        AVIwriter.Quality = 0;
-                        AVIwriter.AddFrame(videoFrame);
-                    }
-                    else
-                    {
-                        videoFrame = FilpImage((Bitmap)eventArgs.Frame.Clone());
-                    }
-
-
-                    //videoFrame.RotateFlip(RotateFlipType.Rotate180FlipY);
-                    //Image filpImage = FilpImage(videoFrame);
-                    //this.richPictureBox.ImageTracker.Picture = filpImage;
-                    this.richPictureBox.Picture = videoFrame;
-                    sw.Reset();
-                    sw.Start();
-                }
-
-            }
-            catch (Exception ex)
-            {
-            }
-        }
-
-        private Bitmap FilpImage(Image image)
-        {
-            switch (FlipType)
-            {
-                case FlipType.Horizontal:
-                    image.RotateFlip(RotateFlipType.Rotate180FlipY);
-                    break;
-                case FlipType.Vertical:
-                    image.RotateFlip(RotateFlipType.Rotate180FlipX);
-                    break;
-                case FlipType.Empty:
-                    image.RotateFlip(RotateFlipType.RotateNoneFlipNone);
-                    break;
-                default:
-                    break;
-            }
-            return (Bitmap)image;
         }
 
         /// <summary>

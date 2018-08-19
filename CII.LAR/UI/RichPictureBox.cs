@@ -14,6 +14,9 @@ using CII.LAR.SysClass;
 using CII.LAR.Algorithm;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
+using AForge.Video;
+using System.Diagnostics;
+using AForge.Video.VFW;
 
 namespace CII.LAR.UI
 {
@@ -897,84 +900,186 @@ namespace CII.LAR.UI
             graphics.TextRenderingHint = TextRenderingHint.SystemDefault;
             graphics.PixelOffsetMode = PixelOffsetMode.HighSpeed;
         }
+        private Stopwatch sw = new Stopwatch();
+        public Stopwatch SW
+        {
+            get { return this.sw; }
+        }
+        // dummy object to lock for synchronization
+        private object sync = new object();
+        public AVIWriter AVIwriter = new AVIWriter("wmv3");
+        private bool canCapture = false;
+        public bool CanCapture
+        {
+            get { return this.canCapture; }
+            set
+            {
+                if (value != this.canCapture)
+                {
+                    this.canCapture = value;
+                }
+            }
+        }
+
+        //视频翻转类型
+        private FlipType flipType;
+        public FlipType FlipType
+        {
+            get { return this.flipType; }
+            set
+            {
+                if (value != this.flipType)
+                {
+                    this.flipType = value;
+                }
+            }
+        }
+
+        private Bitmap videoFrame;
+        public Bitmap VideoFrame
+        {
+            get { return this.videoFrame; }
+        }
+
+        public Bitmap FilpImage(Image image)
+        {
+            switch (FlipType)
+            {
+                case FlipType.Horizontal:
+                    image.RotateFlip(RotateFlipType.Rotate180FlipY);
+                    break;
+                case FlipType.Vertical:
+                    image.RotateFlip(RotateFlipType.Rotate180FlipX);
+                    break;
+                case FlipType.Empty:
+                    image.RotateFlip(RotateFlipType.RotateNoneFlipNone);
+                    break;
+                default:
+                    break;
+            }
+            return (Bitmap)image;
+        }
+
+        public void VideoSource_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        {
+            try
+            {
+                lock (sync)
+                {
+                    if (sw.ElapsedMilliseconds > 50)
+                    {
+                        if (CaptureVideo && canCapture)
+                        {
+                            Bitmap newFrame = FilpImage((Bitmap)eventArgs.Frame.Clone());
+                            AVIwriter.Quality = 0;
+                            AVIwriter.AddFrame(newFrame);
+                        }
+                        else
+                        {
+                            Bitmap newFrame = FilpImage((Bitmap)eventArgs.Frame.Clone());
+
+                            // dispose previous frame
+                            if (videoFrame != null)
+                            {
+                                videoFrame.Dispose();
+                                videoFrame = null;
+                            }
+
+                            videoFrame = newFrame;
+
+                            this.Picture = videoFrame;
+                            sw.Reset();
+                            sw.Start();
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             try
             {
-                if (PictureBoxPaintedEvent != null)
+                lock (sync)
                 {
-                    Rectangle controlClientRect = ClientRectangle;
-                    controlClientRect.X -= OffsetX;
-                    controlClientRect.Y -= OffsetY;
-                    PictureBoxPaintedEvent(controlClientRect, this.ClientRectangle);
-                }
-
-                if (this.Picture != null)
-                {
-                    e.Graphics.ScaleTransform(Zoom, Zoom);
-                    e.Graphics.TranslateTransform(OffsetX, OffsetY);
-                    ToHighQuality(e.Graphics);
-                    //ToHighQuality(e.Graphics);
-                    //e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-                    //e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-                    e.Graphics.DrawImage(this.Picture, 0, 0, RealSize.Width, RealSize.Height);
-                    //e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-                    //e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Bilinear;
-                    //this.imageTracker.Picture = this.Image;
-                    e.Graphics.ResetTransform();
-                }
-
-                if (LaserFunction)
-                {
-                    if (Program.EntryForm.Laser != null && Program.SysConfig.Function == SystemFunction.Laser)
+                    if (PictureBoxPaintedEvent != null)
                     {
-                        Program.EntryForm.Laser.OnPaint(e);
+                        Rectangle controlClientRect = ClientRectangle;
+                        controlClientRect.X -= OffsetX;
+                        controlClientRect.Y -= OffsetY;
+                        PictureBoxPaintedEvent(controlClientRect, this.ClientRectangle);
                     }
-                }
-                if (GraphicsList != null && Program.SysConfig.Function == SystemFunction.Measure)
-                {
-                    GraphicsList.Draw(e.Graphics, this);
-                }
-                if (this.restrictArea != null)
-                {
-                    Color drawColor = Color.FromArgb(200, Color.Blue);
 
-                    using (Pen pen = new Pen(drawColor, 2f))
+                    if (this.Picture != null)
                     {
-                        //模拟模式不需要绘制限制区域
-                        if (Program.SysConfig.LiveMode)
+                        e.Graphics.ScaleTransform(Zoom, Zoom);
+                        e.Graphics.TranslateTransform(OffsetX, OffsetY);
+                        ToHighQuality(e.Graphics);
+                        //ToHighQuality(e.Graphics);
+                        //e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+                        //e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                        e.Graphics.DrawImage(this.Picture, 0, 0, RealSize.Width, RealSize.Height);
+                        //e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+                        //e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Bilinear;
+                        //this.imageTracker.Picture = this.Image;
+                        e.Graphics.ResetTransform();
+                    }
+
+                    if (LaserFunction)
+                    {
+                        if (Program.EntryForm.Laser != null && Program.SysConfig.Function == SystemFunction.Laser)
                         {
-                            //激光校准不需要绘制限制区域
-                            var laserAlignment = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment);
-                            if (laserAlignment != null && !laserAlignment.Visible)
-                                this.restrictArea.TestDrawMotorRectangle(e.Graphics, pen);
+                            Program.EntryForm.Laser.OnPaint(e);
                         }
                     }
-                }
-                if (this.CaptureVideo)
-                {
-                    Color drawColor = Color.FromArgb(200, Color.Red);
-
-                    using (Pen pen = new Pen(drawColor, 2f))
-                    using (Font font = new Font("宋体", 25f, FontStyle.Bold))
-                    using (SolidBrush sb = new SolidBrush(drawColor))
+                    if (GraphicsList != null && Program.SysConfig.Function == SystemFunction.Measure)
                     {
-                        e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                        e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                        Circle circle = new Circle(new PointF(98, 60), new SizeF(40, 40));
-                        //e.Graphics.DrawEllipse(pen, circle.Rectangle);
-                        var size = e.Graphics.MeasureString("REC", font);
-                        e.Graphics.DrawString("REC", font, sb, circle.CenterPoint.X + 30 + 48, 60 - size.Height / 2);
-                        e.Graphics.FillEllipse(sb, circle.Rectangle);
-                        string time = GetRecordTime();
-                        var tSize = e.Graphics.MeasureString(time, font);
-                        e.Graphics.DrawString(time, font, sb, new PointF(circle.CenterPoint.X + 30 + size.Width + 48, 60 - tSize.Height / 2));
+                        GraphicsList.Draw(e.Graphics, this);
                     }
-                }
-                if (rulers != null)
-                {
-                    rulers.Draw(e.Graphics);
+                    if (this.restrictArea != null)
+                    {
+                        Color drawColor = Color.FromArgb(200, Color.Blue);
+
+                        using (Pen pen = new Pen(drawColor, 2f))
+                        {
+                            //模拟模式不需要绘制限制区域
+                            if (Program.SysConfig.LiveMode)
+                            {
+                                //激光校准不需要绘制限制区域
+                                var laserAlignment = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment);
+                                if (laserAlignment != null && !laserAlignment.Visible)
+                                    this.restrictArea.TestDrawMotorRectangle(e.Graphics, pen);
+                            }
+                        }
+                    }
+                    if (this.CaptureVideo)
+                    {
+                        Color drawColor = Color.FromArgb(200, Color.Red);
+
+                        using (Pen pen = new Pen(drawColor, 2f))
+                        using (Font font = new Font("宋体", 25f, FontStyle.Bold))
+                        using (SolidBrush sb = new SolidBrush(drawColor))
+                        {
+                            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                            Circle circle = new Circle(new PointF(98, 60), new SizeF(40, 40));
+                            //e.Graphics.DrawEllipse(pen, circle.Rectangle);
+                            var size = e.Graphics.MeasureString("REC", font);
+                            e.Graphics.DrawString("REC", font, sb, circle.CenterPoint.X + 30 + 48, 60 - size.Height / 2);
+                            e.Graphics.FillEllipse(sb, circle.Rectangle);
+                            string time = GetRecordTime();
+                            var tSize = e.Graphics.MeasureString(time, font);
+                            e.Graphics.DrawString(time, font, sb, new PointF(circle.CenterPoint.X + 30 + size.Width + 48, 60 - tSize.Height / 2));
+                        }
+                    }
+                    if (rulers != null)
+                    {
+                        rulers.Draw(e.Graphics);
+                    }
                 }
             }
             catch (Exception ex)

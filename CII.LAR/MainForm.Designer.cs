@@ -342,6 +342,7 @@ namespace CII.LAR
             this.videoControl.UnitOfMeasure = CII.LAR.enUniMis.mm;
             this.videoControl.VideoSize = new System.Drawing.Size(0, 0);
             this.videoControl.VideoSource = null;
+            this.videoControl.Visible = false;
             this.videoControl.Zoom = 1F;
             // 
             // systemMonitorTimer

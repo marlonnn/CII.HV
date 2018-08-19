@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CII.LAR.MaterialSkin;
 using System.Drawing.Drawing2D;
+using System.Diagnostics;
 
 namespace CII.LAR.UI
 {
@@ -95,6 +96,7 @@ namespace CII.LAR.UI
         /// </summary>
         private Brush tranparentBrush = new SolidBrush(Color.FromArgb(180, 0xc0, 0xc0, 0xc0));
 
+        private object sync = new object();
         /// <summary>
         /// image for tracking
         /// </summary>
@@ -102,20 +104,37 @@ namespace CII.LAR.UI
         {
             get
             {
-                return GetPicture();
+                return /*GetPicture()*/ thumbnail;
             }
             set
             {
                 if (value != null)
                 {
-                    Rectangle srcRect = this.picturePanel.ClientRectangle;
-                    srcRect.X += 1;
-                    srcRect.Y += 1;
-                    srcRect.Width -= 2;
-                    srcRect.Height -= 2;
-                    thumbnail = Util.CreateThumbnail(value, srcRect.Height);
-                    pictureDestRect = Util.ScaleToFit(thumbnail, srcRect, false);
-                    highlightingRect = new Rectangle(0, 0, 0, 0);
+                    try
+                    {
+                        Rectangle srcRect = this.picturePanel.ClientRectangle;
+                        srcRect.X += 1;
+                        srcRect.Y += 1;
+                        srcRect.Width -= 2;
+                        srcRect.Height -= 2;
+                        Image image = Util.CreateThumbnail(value, srcRect.Height);
+                        if (thumbnail != null)
+                        {
+                            this.thumbnail.Dispose();
+                            this.thumbnail = null;
+                        }
+                        this.thumbnail = image;
+                        pictureDestRect = Util.ScaleToFit(thumbnail, srcRect, false);
+                        highlightingRect = new Rectangle(0, 0, 0, 0);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (thumbnail != null)
+                        {
+                            this.thumbnail.Dispose();
+                            this.thumbnail = null;
+                        }
+                    }
                 }
             }
             //set
@@ -142,25 +161,40 @@ namespace CII.LAR.UI
         {
             try
             {
-                if (this.richPictureBox.Picture != null)
+                lock (sync)
                 {
-                    Rectangle srcRect = this.picturePanel.ClientRectangle;
-                    srcRect.X += 1;
-                    srcRect.Y += 1;
-                    srcRect.Width -= 2;
-                    srcRect.Height -= 2;
-                    this.thumbnail = Util.CreateThumbnail(this.richPictureBox.Picture, srcRect.Height);
-                    pictureDestRect = Util.ScaleToFit(thumbnail, srcRect, false);
-                    //highlightingRect = new Rectangle(0, 0, 0, 0);
-                    return this.thumbnail;
-                }
-                else
-                {
-                    return null;
+                    if (this.richPictureBox.Picture != null)
+                    {
+                        Rectangle srcRect = this.picturePanel.ClientRectangle;
+                        srcRect.X += 1;
+                        srcRect.Y += 1;
+                        srcRect.Width -= 2;
+                        srcRect.Height -= 2;
+                        //Image image = Util.CreateThumbnail(this.richPictureBox.Picture, srcRect.Height);
+                        Image image = this.ResizeImage(this.richPictureBox.Picture, 120, 80);
+                        if (this.thumbnail != null)
+                        {
+                            this.thumbnail.Dispose();
+                            this.thumbnail = null;
+                        }
+                        this.thumbnail = image;
+                        pictureDestRect = Util.ScaleToFit(thumbnail, srcRect, false);
+                        //highlightingRect = new Rectangle(0, 0, 0, 0);
+                        return this.thumbnail;
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
             }
             catch (Exception ex)
             {
+                if (this.thumbnail != null)
+                {
+                    this.thumbnail.Dispose();
+                    this.thumbnail = null;
+                }
                 return null;
             }
         }
@@ -291,26 +325,26 @@ namespace CII.LAR.UI
             try
             {
                 if (!Visible) return;
-                if (Picture != null)
+                lock (sync)
                 {
-                    // draw thumbnail image
-                    e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-                    e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-                    e.Graphics.DrawImage(this.Picture, this.pictureDestRect);
-                    e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-                    e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Bilinear;
-                    // adjust highlighting region of visible picture area
-                    Region highlightRegion = new Region(this.pictureDestRect);
-                    if (highlightingRect.Width > 0 && highlightingRect.Height > 0)
+                    if (Picture != null)
                     {
-                        highlightRegion.Exclude(highlightingRect);
+                        // draw thumbnail image
+                        this.ToLowQuality(e.Graphics);
+                        e.Graphics.DrawImage(this.Picture, this.pictureDestRect);
+                        // adjust highlighting region of visible picture area
+                        Region highlightRegion = new Region(this.pictureDestRect);
+                        if (highlightingRect.Width > 0 && highlightingRect.Height > 0)
+                        {
+                            highlightRegion.Exclude(highlightingRect);
+                        }
+                        e.Graphics.FillRegion(tranparentBrush, highlightRegion);
+                        using (Pen pen = new Pen(Color.White, 1f))
+                        {
+                            e.Graphics.DrawRectangle(pen, highlightingRect);
+                        }
+                        highlightRegion.Dispose();
                     }
-                    e.Graphics.FillRegion(tranparentBrush, highlightRegion);
-                    using (Pen pen = new Pen(Color.White, 1f))
-                    {
-                        e.Graphics.DrawRectangle(pen, highlightingRect);
-                    }
-                    highlightRegion.Dispose();
                 }
             }
             catch (Exception ex)

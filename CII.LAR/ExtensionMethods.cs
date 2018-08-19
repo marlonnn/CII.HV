@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -184,6 +185,24 @@ namespace CII.LAR
             }
 
             return destImage;
+        }
+
+        public static void ToHighQuality(this Control parent, Graphics graphics)
+        {
+            graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            graphics.CompositingQuality = CompositingQuality.HighQuality;
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+            graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
+            graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+        }
+
+        public static void ToLowQuality(this Control parent, Graphics graphics)
+        {
+            graphics.InterpolationMode = InterpolationMode.Low;
+            graphics.CompositingQuality = CompositingQuality.HighSpeed;
+            graphics.SmoothingMode = SmoothingMode.HighSpeed;
+            graphics.TextRenderingHint = TextRenderingHint.SystemDefault;
+            graphics.PixelOffsetMode = PixelOffsetMode.HighSpeed;
         }
     }
 }

@@ -16,9 +16,24 @@ namespace CII.LAR.Laser
         protected Timer FlashTimer;
 
         protected int _flickCount;
+        private object sync = new object();
         public int FlickCount
         {
-            get { return this._flickCount; }
+            get
+            {
+                lock(sync)
+                    return this._flickCount;
+            }
+            set
+            {
+                lock(sync)
+                {
+                    if (value != this._flickCount)
+                    {
+                        this._flickCount = value;
+                    }
+                }
+            }
         }
 
         private bool _flashing;
@@ -27,14 +42,14 @@ namespace CII.LAR.Laser
             get { return this._flashing; }
             set
             {
-                _flickCount = 0;
+                FlickCount = 0;
                 this._flashing = value;
                 if (value)
                 {
+				    FlickCount = -1;
                     this.FlashTimer.Enabled = value;
                     this.FlashTimer.Start();
-                    _flickCount = -1;
-                    this.FlashTimer_Tick(null, null);
+                    //this.FlashTimer_Tick(null, null);
                 }
                 else
                 {
@@ -78,9 +93,9 @@ namespace CII.LAR.Laser
 
         protected virtual void FlashTimer_Tick(object sender, EventArgs e)
         {
-            _flickCount++;
+            FlickCount++;
             this.richPictureBox.Invalidate();
-            if (_flickCount == 2)
+            if (FlickCount == 2)
             {
                 Flashing = false;
             }

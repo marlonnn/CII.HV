@@ -28,7 +28,7 @@ namespace CII.LAR.Laser
 
         public ActiveLaser(RichPictureBox richPictureBox) : base()
         {
-            this.FlashTimer.Interval = 500;
+            this.FlashTimer.Interval = 1000;
             this.richPictureBox = richPictureBox;
             activeCircle = new ActiveCircle(richPictureBox, this);
             this.GraphicsProperties.GraphicsPropertiesChangedHandler += GraphicsPropertiesChangedHandler;
@@ -111,7 +111,7 @@ namespace CII.LAR.Laser
         {
             if (Coordinate.GetCoordinate().MotionComplete)
             {
-                _flickCount++;
+                FlickCount++;
                 if (_flickCount == this.activeCircle.InnerCircles.Count)
                 {
                     Flashing = false;
@@ -132,13 +132,10 @@ namespace CII.LAR.Laser
 
         private void SendAlignmentMotorPoint()
         {
-            if (_flickCount >= 1 && _flickCount < ActiveCircle.InnerCircles.Count)
+            if (_flickCount >= 0 && _flickCount < ActiveCircle.InnerCircles.Count - 1)
             {
-                if (_flickCount > 1)
-                {
-                    Coordinate.GetCoordinate().SetMotorLastPoint(Point.Ceiling(ActiveCircle.InnerCircles[_flickCount - 1].CenterPoint));
-                }
-                Coordinate.GetCoordinate().SetMotorThisPoint(Point.Ceiling(ActiveCircle.InnerCircles[_flickCount].CenterPoint));
+                Coordinate.GetCoordinate().SetMotorLastPoint(Point.Ceiling(ActiveCircle.InnerCircles[FlickCount].CenterPoint));
+                Coordinate.GetCoordinate().SetMotorThisPoint(Point.Ceiling(ActiveCircle.InnerCircles[FlickCount + 1].CenterPoint));
                 Coordinate.GetCoordinate().SendAlignmentMotorPoint();
             }
         }

@@ -421,12 +421,12 @@ namespace CII.LAR
                     Bitmap b = this.ResizeImage(this.richPictureBox.VideoFrame, this.videoControl.Bounds.Width, this.videoControl.Bounds.Height);
                     this.richPictureBox.FilpImage(b);
                     b.Save(fileName, ImageFormat.Png);
-                    this.ShowToastNotification(Properties.Resources.StrScreenshotSuccess, global::CII.LAR.Properties.Resources.capture);
+                    MaterialSkin.ToastNotification.Instance().ShowToast(Properties.Resources.StrScreenshotSuccess, global::CII.LAR.Properties.Resources.capture);
                 }
                 else if (this.richPictureBox.Image != null)
                 {
                     this.richPictureBox.Image.Save(fileName);
-                    this.ShowToastNotification(Properties.Resources.StrScreenshotSuccess, global::CII.LAR.Properties.Resources.capture);
+                    MaterialSkin.ToastNotification.Instance().ShowToast(Properties.Resources.StrScreenshotSuccess, global::CII.LAR.Properties.Resources.capture);
 
                 }
             }

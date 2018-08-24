@@ -256,6 +256,12 @@
     <Compile Include="MaterialSkin\MsgBox.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MaterialSkin\ToastNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaterialSkin\MaterialToast.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MessageBoxManager.cs" />
     <Compile Include="MiniDump.cs" />
     <Compile Include="MsgQueue\ConcurrentQueue.cs" />
@@ -318,6 +324,12 @@
     <Compile Include="SysClass\Shortcuts\HotKeys.cs" />
     <Compile Include="SysClass\Shortcuts\Win32.cs" />
     <Compile Include="SysClass\SysConfig.cs" />
+    <Compile Include="TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\AboutControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -568,6 +580,12 @@
     <EmbeddedResource Include="MaterialSkin\MsgBox.resx">
       <DependentUpon>MsgBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MaterialSkin\ToastNotification.resx">
+      <DependentUpon>ToastNotification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialSkin\MaterialToast.resx">
+      <DependentUpon>MaterialToast.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -580,6 +598,9 @@
     <EmbeddedResource Include="Res\LaserAlignment.zh-CN.resx" />
     <EmbeddedResource Include="Res\LaserCtrl.resx" />
     <EmbeddedResource Include="Res\LaserCtrl.zh-CN.resx" />
+    <EmbeddedResource Include="TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\AboutControl.resx">
       <DependentUpon>AboutControl.cs</DependentUpon>
       <SubType>Designer</SubType>

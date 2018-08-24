@@ -14,6 +14,7 @@ using CII.LAR.Algorithm;
 using CII.LAR.SysClass;
 using MathNet.Numerics.LinearAlgebra;
 using System.Threading;
+using CII.LAR.MaterialSkin;
 
 namespace CII.LAR.UI
 {
@@ -251,7 +252,7 @@ namespace CII.LAR.UI
                 this.btnNext.Text = Res.LaserAlignment.StrNext;
                 this.RichPictureBox.ZoomFit();
                 if (Index == -2) this.richPictureBox.RestrictArea.TransformMotorOriginalPoints();
-                this.richPictureBox.ShowToastNotification(Properties.Resources.StrCalibrationSuccess, global::CII.LAR.Properties.Resources.warn);
+                ToastNotification.Instance().ShowToast(Properties.Resources.StrCalibrationSuccess, global::CII.LAR.Properties.Resources.warn);
 
             }
         }

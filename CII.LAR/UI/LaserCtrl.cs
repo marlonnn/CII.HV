@@ -2,16 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevComponents.DotNetBar;
 using CII.LAR.DrawTools;
 using CII.LAR.Laser;
 using CII.LAR.SysClass;
-using CII.LAR.Algorithm;
 using CII.LAR.Protocol;
 using CII.LAR.Commond;
 

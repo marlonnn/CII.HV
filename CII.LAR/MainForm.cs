@@ -11,7 +11,6 @@ using CII.LAR.Protocol;
 using CII.LAR.SysClass;
 using CII.LAR.SysClass.Shortcuts;
 using CII.LAR.UI;
-using DevComponents.DotNetBar;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

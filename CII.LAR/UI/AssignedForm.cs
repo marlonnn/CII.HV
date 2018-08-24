@@ -1,7 +1,6 @@
 ﻿using CII.LAR.ExpClass;
 using CII.LAR.MaterialSkin;
 using CII.LAR.SysClass;
-using DevComponents.DotNetBar;
 using Manina.Windows.Forms;
 using System;
 using System.Collections;

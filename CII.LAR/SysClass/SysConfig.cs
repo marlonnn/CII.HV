@@ -1,7 +1,7 @@
 ﻿using AForge.Video.DirectShow;
 using CII.LAR.DrawTools;
 using CII.LAR.SysClass.Shortcuts;
-using DevComponents.DotNetBar;
+//using DevComponents.DotNetBar;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -454,37 +454,38 @@ namespace CII.LAR.SysClass
                 resources.ApplyResources(c, c.Name);
                 RefreshUICulture(resources, c);
 
-                if (c is RibbonBar)
-                {
-                    RefreshBaseItemsUICulture(resources, (c as RibbonBar).Items);
-                }
-                else if (c is RibbonControl)
-                {
-                    RefreshBaseItemsUICulture(resources, (c as RibbonControl).Items);
-                }
-                else if (c is Bar)
-                {
-                    RefreshBaseItemsUICulture(resources, (c as Bar).Items);
-                }
-                else if (c is ButtonX)
-                {
-                    RefreshBaseItemsUICulture(resources, (c as ButtonX).SubItems);
-                }
-                else if (c is ToolStrip)
+                //if (c is RibbonBar)
+                //{
+                //    RefreshBaseItemsUICulture(resources, (c as RibbonBar).Items);
+                //}
+                //else if (c is RibbonControl)
+                //{
+                //    RefreshBaseItemsUICulture(resources, (c as RibbonControl).Items);
+                //}
+                //else if (c is Bar)
+                //{
+                //    RefreshBaseItemsUICulture(resources, (c as Bar).Items);
+                //}
+                //else if (c is ButtonX)
+                //{
+                //    RefreshBaseItemsUICulture(resources, (c as ButtonX).SubItems);
+                //}
+                //else 
+                if (c is ToolStrip)
                 {
                     RefreshToolStripUICulture(resources, (c as ToolStrip).Items);
                 }
             }
         }
 
-        private void RefreshBaseItemsUICulture(ComponentResourceManager resources, SubItemsCollection items)
-        {
-            foreach (BaseItem item in items)
-            {
-                resources.ApplyResources(item, item.Name);
-                RefreshBaseItemsUICulture(resources, item.SubItems);
-            }
-        }
+        //private void RefreshBaseItemsUICulture(ComponentResourceManager resources, SubItemsCollection items)
+        //{
+        //    foreach (BaseItem item in items)
+        //    {
+        //        resources.ApplyResources(item, item.Name);
+        //        RefreshBaseItemsUICulture(resources, item.SubItems);
+        //    }
+        //}
 
         private void RefreshToolStripUICulture(ComponentResourceManager resources, ToolStripItemCollection items)
         {

@@ -1,4 +1,5 @@
 using CII.LAR.MaterialSkin;
+using System.Windows.Forms;
 
 namespace CII.LAR.UI
 {
@@ -33,9 +34,9 @@ namespace CII.LAR.UI
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AssignForm));
             this.lblPatientID = new MaterialLabel();
-            this.textBoxPatientID = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxPatientID = new TextBox();
             this.lblPatientName = new MaterialLabel();
-            this.textBoxPatientName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxPatientName = new TextBox();
             this.btnConfirm = new MaterialRoundButton();
             this.btnCancel = new MaterialRoundButton();
             this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Patient name should not empty.");
@@ -60,8 +61,6 @@ namespace CII.LAR.UI
             // 
             // 
             // 
-            this.textBoxPatientID.Border.Class = "TextBoxBorder";
-            this.textBoxPatientID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxPatientID.ForeColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.textBoxPatientID, "textBoxPatientID");
             this.textBoxPatientID.Name = "textBoxPatientID";
@@ -82,8 +81,6 @@ namespace CII.LAR.UI
             // 
             // 
             // 
-            this.textBoxPatientName.Border.Class = "TextBoxBorder";
-            this.textBoxPatientName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxPatientName.ForeColor = System.Drawing.Color.Black;
             resources.ApplyResources(this.textBoxPatientName, "textBoxPatientName");
             this.textBoxPatientName.Name = "textBoxPatientName";
@@ -156,9 +153,9 @@ namespace CII.LAR.UI
         private System.Windows.Forms.ErrorProvider errorProvider;
         private DevComponents.DotNetBar.Validator.SuperValidator superValidator;
         private MaterialLabel lblPatientID;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxPatientID;
+        private TextBox textBoxPatientID;
         private MaterialLabel lblPatientName;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxPatientName;
+        private TextBox textBoxPatientName;
         private MaterialRoundButton btnConfirm;
         private MaterialRoundButton btnCancel;
     }

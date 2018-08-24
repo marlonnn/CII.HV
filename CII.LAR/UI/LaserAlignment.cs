@@ -144,24 +144,6 @@ namespace CII.LAR.UI
 
         private void CheckandEnableLaserStatus()
         {
-            //while (true)
-            //{
-            //    byte[] recData2 = Send01Command();
-            //    if (recData2 != null)
-            //    {
-            //        if (recData2.Length == 6)
-            //        {
-            //            var flag = recData2[1] * 128 + recData2[2];
-            //            LogHelper.GetLogger<LaserAlignment>().Error("flag: " + flag);
-            //            if (flag == 1408)
-            //            {
-            //                EnableRedLaser(true);
-            //                break;
-            //            }
-            //        }
-            //    }
-            //    Thread.Sleep(100);
-            //}
             byte[] recData2 = Send01Command();
             if (recData2 != null)
             {
@@ -213,7 +195,7 @@ namespace CII.LAR.UI
                         string matrixJsonString = JsonFile.GetJsonTextFromConfig<Matrix<double>>(v);
                         JsonFile.WriteMatrixConfigToLocal(matrixJsonString);
                         //关闭红光引导光
-                        EnableRedLaser(false);
+                        //EnableRedLaser(false);
                     }
                 }
                 else
@@ -375,7 +357,7 @@ namespace CII.LAR.UI
                 Program.EntryForm.LaserType = LaserType.SaturnFixed;
                 //关闭红光
                 //EnableRedLaser(false);
-                CheckLaserStatus();
+                //CheckLaserStatus();
 
                 if (this.RichPictureBox.Zoom != 1)
                 {

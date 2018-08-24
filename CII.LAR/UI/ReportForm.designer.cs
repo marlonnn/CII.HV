@@ -135,16 +135,8 @@ namespace CII.LAR.UI
             // reportLayout
             // 
             resources.ApplyResources(this.reportLayout, "reportLayout");
-            this.reportLayout.CanvasColor = System.Drawing.Color.LightSlateGray;
-            this.reportLayout.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.reportLayout.Controls.Add(this.pnlSpace);
             this.reportLayout.Name = "reportLayout";
-            this.reportLayout.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.reportLayout.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(53)))));
-            this.reportLayout.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.reportLayout.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.reportLayout.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.reportLayout.Style.GradientAngle = 90;
             // 
             // pnlSpace
             // 

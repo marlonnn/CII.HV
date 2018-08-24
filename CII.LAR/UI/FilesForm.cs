@@ -1,19 +1,15 @@
 using CII.LAR.UI;
 using CII.LAR.ExpClass;
-using DevComponents.DotNetBar;
 using Manina.Windows.Forms;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using CII.LAR.SysClass;
-using System.Drawing.Imaging;
 using System.Collections.Specialized;
 using CII.LAR.MaterialSkin;
 

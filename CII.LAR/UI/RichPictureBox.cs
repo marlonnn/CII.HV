@@ -950,7 +950,7 @@ namespace CII.LAR.UI
             {
                 lock (sync)
                 {
-                    if (sw.ElapsedMilliseconds > 50)
+                    if (sw.ElapsedMilliseconds > 40)
                     {
                         if (CaptureVideo && canCapture)
                         {
@@ -1004,12 +1004,7 @@ namespace CII.LAR.UI
                         e.Graphics.TranslateTransform(OffsetX, OffsetY);
                         this.ToHighQuality(e.Graphics);
                         //ToHighQuality(e.Graphics);
-                        //e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-                        //e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
                         e.Graphics.DrawImage(this.Picture, 0, 0, RealSize.Width, RealSize.Height);
-                        //e.Graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
-                        //e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Bilinear;
-                        //this.imageTracker.Picture = this.Image;
                         e.Graphics.ResetTransform();
                     }
 

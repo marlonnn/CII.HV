@@ -13,6 +13,10 @@ using System.Diagnostics;
 
 namespace CII.LAR.UI
 {
+    /// <summary>
+    /// Image Tracker
+    /// Zhong Wen 2017/12/13
+    /// </summary>
     public partial class ImageTracker : UserControl, IMaterialControl
     {
         [Browsable(false)]
@@ -125,7 +129,7 @@ namespace CII.LAR.UI
                         }
                         this.thumbnail = image;
                         pictureDestRect = Util.ScaleToFit(thumbnail, srcRect, false);
-                        highlightingRect = new Rectangle(0, 0, 0, 0);
+                        //highlightingRect = new Rectangle(0, 0, 0, 0);
                     }
                     catch (Exception ex)
                     {
@@ -155,48 +159,6 @@ namespace CII.LAR.UI
             //        }
             //    }
             //}
-        }
-
-        private Image GetPicture()
-        {
-            try
-            {
-                lock (sync)
-                {
-                    if (this.richPictureBox.Picture != null)
-                    {
-                        Rectangle srcRect = this.picturePanel.ClientRectangle;
-                        srcRect.X += 1;
-                        srcRect.Y += 1;
-                        srcRect.Width -= 2;
-                        srcRect.Height -= 2;
-                        //Image image = Util.CreateThumbnail(this.richPictureBox.Picture, srcRect.Height);
-                        Image image = this.ResizeImage(this.richPictureBox.Picture, 120, 80);
-                        if (this.thumbnail != null)
-                        {
-                            this.thumbnail.Dispose();
-                            this.thumbnail = null;
-                        }
-                        this.thumbnail = image;
-                        pictureDestRect = Util.ScaleToFit(thumbnail, srcRect, false);
-                        //highlightingRect = new Rectangle(0, 0, 0, 0);
-                        return this.thumbnail;
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                if (this.thumbnail != null)
-                {
-                    this.thumbnail.Dispose();
-                    this.thumbnail = null;
-                }
-                return null;
-            }
         }
 
         private RichPictureBox richPictureBox;
@@ -243,12 +205,7 @@ namespace CII.LAR.UI
         {
             if (!Visible) return;
 
-            base.OnPaint(e);
-            // draw control border
-            //Rectangle borderRect = this.ClientRectangle;
-            //borderRect.Width -= 1;
-            //borderRect.Height -= 1;
-            //e.Graphics.DrawRectangle(Pens.Navy, borderRect);
+            //base.OnPaint(e);
 
             using (SolidBrush sb = new SolidBrush(Color.FromArgb(0x1A, 0x1E, 0x25)))
             {

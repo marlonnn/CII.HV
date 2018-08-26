@@ -884,11 +884,6 @@ namespace CII.LAR.UI
             return string.Format("00:{0}:{1}", sMinutes, sSeconds);
         }
 
-        private Stopwatch sw = new Stopwatch();
-        public Stopwatch SW
-        {
-            get { return this.sw; }
-        }
         // dummy object to lock for synchronization
         private object sync = new object();
         public AVIWriter AVIwriter = new AVIWriter("wmv3");
@@ -950,31 +945,26 @@ namespace CII.LAR.UI
             {
                 lock (sync)
                 {
-                    if (sw.ElapsedMilliseconds > 40)
+                    if (CaptureVideo && canCapture)
                     {
-                        if (CaptureVideo && canCapture)
+                        Bitmap newFrame = FilpImage((Bitmap)eventArgs.Frame.Clone());
+                        AVIwriter.Quality = 0;
+                        AVIwriter.AddFrame(newFrame);
+                    }
+                    else
+                    {
+                        Bitmap newFrame = FilpImage((Bitmap)eventArgs.Frame.Clone());
+
+                        // dispose previous frame
+                        if (videoFrame != null)
                         {
-                            Bitmap newFrame = FilpImage((Bitmap)eventArgs.Frame.Clone());
-                            AVIwriter.Quality = 0;
-                            AVIwriter.AddFrame(newFrame);
+                            videoFrame.Dispose();
+                            videoFrame = null;
                         }
-                        else
-                        {
-                            Bitmap newFrame = FilpImage((Bitmap)eventArgs.Frame.Clone());
 
-                            // dispose previous frame
-                            if (videoFrame != null)
-                            {
-                                videoFrame.Dispose();
-                                videoFrame = null;
-                            }
+                        videoFrame = newFrame;
 
-                            videoFrame = newFrame;
-
-                            this.Picture = videoFrame;
-                            sw.Reset();
-                            sw.Start();
-                        }
+                        this.Picture = videoFrame;
                     }
                 }
 
@@ -1002,7 +992,8 @@ namespace CII.LAR.UI
                     {
                         e.Graphics.ScaleTransform(Zoom, Zoom);
                         e.Graphics.TranslateTransform(OffsetX, OffsetY);
-                        this.ToHighQuality(e.Graphics);
+                        //this.ToHighQuality(e.Graphics);
+                        this.ToLowQuality(e.Graphics);
                         //ToHighQuality(e.Graphics);
                         e.Graphics.DrawImage(this.Picture, 0, 0, RealSize.Width, RealSize.Height);
                         e.Graphics.ResetTransform();

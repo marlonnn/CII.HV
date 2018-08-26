@@ -72,22 +72,27 @@ namespace CII.LAR.Laser
 
         public override void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
+            PointF pf = new PointF(e.Location.X / richPictureBox.Zoom - richPictureBox.OffsetX, e.Location.Y / richPictureBox.Zoom - richPictureBox.OffsetY);
+            if (richPictureBox.RestrictArea.CheckPointInRegion(pf)) return;
             Point point = e.Location;
             CenterPoint = new PointF(point.X, point.Y);
             this.richPictureBox.Invalidate();
-            Coordinate.GetCoordinate().SetMotorThisPoint(point);
+            Coordinate.GetCoordinate().SetMotorThisPoint(Point.Ceiling( pf));
         }
 
         public override void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
+            //if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
+            PointF pf = new PointF(e.Location.X / richPictureBox.Zoom - richPictureBox.OffsetX, e.Location.Y / richPictureBox.Zoom - richPictureBox.OffsetY);
+            if (richPictureBox.RestrictArea.CheckPointInRegion(pf)) return;
             base.OnMouseMove(richPictureBox, e);
         }
 
         public override void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
+            //if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
+            PointF pf = new PointF(e.Location.X / richPictureBox.Zoom - richPictureBox.OffsetX, e.Location.Y / richPictureBox.Zoom - richPictureBox.OffsetY);
+            if (richPictureBox.RestrictArea.CheckPointInRegion(pf)) return;
             //base.OnMouseUp(richPictureBox, e);
             Coordinate.GetCoordinate().SendAlignmentMotorPoint();
         }

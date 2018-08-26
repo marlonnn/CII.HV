@@ -132,13 +132,10 @@ namespace CII.LAR.Algorithm
                 {
                     g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
                     g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.Low;
-                    //g.DrawLine(pen, transformedMotorPoints[0].X, transformedMotorPoints[0].Y, transformedMotorPoints[1].X, transformedMotorPoints[1].Y);
-                    //g.DrawLine(pen, transformedMotorPoints[1].X, transformedMotorPoints[1].Y, transformedMotorPoints[2].X, transformedMotorPoints[2].Y);
-                    //g.DrawLine(pen, transformedMotorPoints[2].X, transformedMotorPoints[2].Y, transformedMotorPoints[3].X, transformedMotorPoints[3].Y);
-                    //g.DrawLine(pen, transformedMotorPoints[3].X, transformedMotorPoints[3].Y, transformedMotorPoints[0].X, transformedMotorPoints[0].Y);
-                    //SolidBrush sb = new SolidBrush(Color.FromArgb(0xC8, 0x80, 0x80, 0x80));
                     SolidBrush sb = new SolidBrush(Color.FromArgb(200, 0x1C, 0x1F, 0x26));
+                    g.TranslateTransform(this.picturebox.OffsetX, this.picturebox.OffsetY);
                     g.FillRegion(sb, FinalValidRegion);
+                    g.ResetTransform();
                     sb.Dispose();
                 }
             }
@@ -205,7 +202,7 @@ namespace CII.LAR.Algorithm
         public Region GetVideoRegion()
         {
             var videoPath = new GraphicsPath();
-            videoPath.AddRectangle(new RectangleF(this.picturebox.OffsetX, this.picturebox.OffsetY, this.picturebox.RealSize.Width, this.picturebox.RealSize.Height));
+            videoPath.AddRectangle(new RectangleF(0, 0, this.picturebox.RealSize.Width, this.picturebox.RealSize.Height));
             VideoRegion = new Region(videoPath);
             videoPath.Dispose();
             return VideoRegion;

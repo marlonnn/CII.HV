@@ -252,8 +252,8 @@ namespace CII.LAR.Algorithm
         {
             Point psp = Point.Empty;
             Rectangle bounds = new Rectangle(0, 0, richPictureBox.RealSize.Width, richPictureBox.RealSize.Height);
-            int offSetX = (richPictureBox.Width - richPictureBox.RealSize.Width) / 2;
-            int offsetY = (richPictureBox.Height - richPictureBox.RealSize.Height) / 2;
+            int offSetX = /*(richPictureBox.Width - richPictureBox.RealSize.Width) / 2*/ 0;
+            int offsetY = /*(richPictureBox.Height - richPictureBox.RealSize.Height) / 2*/ 0;
             switch (index)
             {
                 case 3:

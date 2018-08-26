@@ -51,7 +51,11 @@ namespace CII.LAR.Laser
 
         public override void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
+            circle = 0;
+            CircleFire = true;
+            PointF pf = new PointF(e.Location.X / richPictureBox.Zoom - richPictureBox.OffsetX, e.Location.Y / richPictureBox.Zoom - richPictureBox.OffsetY);
+            if (richPictureBox.RestrictArea.CheckPointInRegion(pf)) return;
+            //if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
             if (Program.EntryForm.Laser.Flashing) return;
             mouseDownPoint = e.Location;
 
@@ -63,7 +67,9 @@ namespace CII.LAR.Laser
 
         public override void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
+            PointF pf = new PointF(e.Location.X / richPictureBox.Zoom - richPictureBox.OffsetX, e.Location.Y / richPictureBox.Zoom - richPictureBox.OffsetY);
+            if (richPictureBox.RestrictArea.CheckPointInRegion(pf)) return;
+            //if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
             if (Program.EntryForm.Laser.Flashing) return;
             base.OnMouseMove(richPictureBox, e);
             Point mousePosNow = e.Location;
@@ -75,7 +81,9 @@ namespace CII.LAR.Laser
 
         public override void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
+            PointF pf = new PointF(e.Location.X / richPictureBox.Zoom - richPictureBox.OffsetX, e.Location.Y / richPictureBox.Zoom - richPictureBox.OffsetY);
+            if (richPictureBox.RestrictArea.CheckPointInRegion(pf)) return;
+            //if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
             if (Program.EntryForm.Laser.Flashing) return;
             base.OnMouseUp(richPictureBox, e);
             activeCircle.OnMouseUp();
@@ -107,26 +115,60 @@ namespace CII.LAR.Laser
             this.brush = new SolidBrush(Color.Red);
         }
 
+        private int circle = 0;
+        public int Circle
+        {
+            get { return this.circle; }
+            set { this.circle = value; }
+        }
+
+        private bool circleFire = true;
+        public bool CircleFire
+        {
+            get { return this.circleFire; }
+            set { this.circleFire = value; }
+        }
+
         protected override void FlashTimer_Tick(object sender, EventArgs e)
         {
             if (Coordinate.GetCoordinate().MotionComplete)
             {
-                FlickCount++;
-                if (_flickCount == this.activeCircle.InnerCircles.Count)
+                if (Circle == 0)
                 {
-                    Flashing = false;
+                    ContinueFire();
                 }
                 else
                 {
-                    if (SerialPortManager.GetInstance() != null)
+                    if (circleFire)
                     {
-                        LaserC71Request c71 = new LaserC71Request();
-                        var bytes = SerialPortManager.GetInstance().Encode(c71);
-                        SerialPortManager.GetInstance().SendData(bytes);
+                        SendMotorPointOnMouseDown();
+                        circleFire = false;
                     }
-                    SendAlignmentMotorPoint();
+                    else
+                    {
+                        ContinueFire();
+                    }
                 }
                 this.richPictureBox.Invalidate();
+            }
+        }
+
+        private void ContinueFire()
+        {
+            FlickCount++;
+            if (_flickCount == this.activeCircle.InnerCircles.Count)
+            {
+                Flashing = false;
+            }
+            else
+            {
+                if (SerialPortManager.GetInstance() != null)
+                {
+                    LaserC71Request c71 = new LaserC71Request();
+                    var bytes = SerialPortManager.GetInstance().Encode(c71);
+                    SerialPortManager.GetInstance().SendData(bytes);
+                }
+                SendAlignmentMotorPoint();
             }
         }
 
@@ -134,8 +176,8 @@ namespace CII.LAR.Laser
         {
             if (_flickCount >= 0 && _flickCount < ActiveCircle.InnerCircles.Count - 1)
             {
-                Coordinate.GetCoordinate().SetMotorLastPoint(Point.Ceiling(ActiveCircle.InnerCircles[FlickCount].CenterPoint));
-                Coordinate.GetCoordinate().SetMotorThisPoint(Point.Ceiling(ActiveCircle.InnerCircles[FlickCount + 1].CenterPoint));
+                Coordinate.GetCoordinate().SetMotorLastPoint(GetMotorPoint(ActiveCircle.InnerCircles[FlickCount].CenterPoint));
+                Coordinate.GetCoordinate().SetMotorThisPoint(GetMotorPoint(ActiveCircle.InnerCircles[FlickCount + 1].CenterPoint));
                 Coordinate.GetCoordinate().SendAlignmentMotorPoint();
             }
         }
@@ -144,11 +186,21 @@ namespace CII.LAR.Laser
         {
             if (Program.SysConfig.LiveMode)
             {
-                Coordinate.GetCoordinate().SetMotorThisPoint(Point.Ceiling((new Circle(ActiveCircle.StartPoint, ActiveCircle.InnerCircleSize)).CenterPoint));
+                Point point = GetMotorPoint((new Circle(ActiveCircle.StartPoint, ActiveCircle.InnerCircleSize)).CenterPoint);
+                Coordinate.GetCoordinate().SetMotorThisPoint(point);
                 Coordinate.GetCoordinate().SendAlignmentMotorPoint();
             }
         }
 
+        private PointF GetMotorPointF(PointF original)
+        {
+            return new PointF(original.X / this.richPictureBox.Zoom - this.richPictureBox.OffsetX, original.Y / this.richPictureBox.Zoom - this.richPictureBox.OffsetY);
+        }
+
+        private Point GetMotorPoint(PointF original)
+        {
+            return Point.Ceiling(GetMotorPointF(original));
+        }
         public void ResetCircles()
         {
             ActiveCircle.InnerCircles.Clear();

@@ -200,18 +200,29 @@ namespace CII.LAR.UI
         {
             if (Program.EntryForm.Laser != null)
             {
-                Program.EntryForm.Laser.Flashing = !flashing;
 
                 var fixedLaser = Program.EntryForm.Laser as FixedLaser;
                 if (fixedLaser != null)
                 {
                     if (serialPortCom != null)
                     {
+                        Program.EntryForm.Laser.Flashing = !flashing;
+
                         LaserC71Request c71 = new LaserC71Request();
                         var bytes = serialPortCom.Encode(c71);
                         serialPortCom.SendData(bytes);
                     }
                     //Coordinate.GetCoordinate().SendAlignmentMotorPoint();
+                }
+                var activeLaser = Program.EntryForm.Laser as ActiveLaser;
+                if (activeLaser != null)
+                {
+                    if (serialPortCom != null)
+                    {
+                        activeLaser.Circle++;
+                        activeLaser.CircleFire = true;
+                        Program.EntryForm.Laser.Flashing = !flashing;
+                    }
                 }
             }
         }

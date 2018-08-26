@@ -133,7 +133,8 @@ namespace CII.LAR.Laser
                     ClickPoint = e.Location;
                     Count = 0;
                     ButtonStateHandler?.Invoke(true);
-                    PointF pointF = new PointF(e.Location.X/* / richPictureBox.Zoom*/, e.Location.Y/* / richPictureBox.Zoom*/);
+                    //PointF pointF = new PointF(e.Location.X/* / richPictureBox.Zoom*/, e.Location.Y/* / richPictureBox.Zoom*/);
+                    PointF pointF = new PointF(e.Location.X / richPictureBox.Zoom - richPictureBox.OffsetX, e.Location.Y / richPictureBox.Zoom - richPictureBox.OffsetY);
                     Coordinate.GetCoordinate().AddPoint(Index, pointF);
                     //Console.WriteLine("add point: " + pointF.ToString());
                 }

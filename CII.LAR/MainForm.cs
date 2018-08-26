@@ -922,7 +922,6 @@ namespace CII.LAR
                 this.videoControl.VideoSource = videoDevice;
                 this.videoControl.VideoSource.NewFrame += new NewFrameEventHandler(this.richPictureBox.VideoSource_NewFrame);
                 this.videoControl.Start();
-                this.richPictureBox.SW.Start();
                 this.richPictureBox.Zoom = 1;
             }
         }

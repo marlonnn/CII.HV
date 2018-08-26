@@ -536,15 +536,18 @@ namespace CII.LAR.UI
 
         private void btnRedLaser_Click(object sender, EventArgs e)
         {
-            if (this.btnRedLaser.Text == Properties.Resources.StrEnableRedLaser)
+            if (Program.SysConfig.MotorPortConected)
             {
-                this.btnRedLaser.Text = Properties.Resources.StrCloseRedLaser;
+                if (this.btnRedLaser.Text == Properties.Resources.StrEnableRedLaser)
+                {
+                    this.btnRedLaser.Text = Properties.Resources.StrCloseRedLaser;
+                }
+                else if (this.btnRedLaser.Text == Properties.Resources.StrCloseRedLaser)
+                {
+                    this.btnRedLaser.Text = Properties.Resources.StrEnableRedLaser;
+                }
+                EnableRedLaser();
             }
-            else if (this.btnRedLaser.Text == Properties.Resources.StrCloseRedLaser)
-            {
-                this.btnRedLaser.Text = Properties.Resources.StrEnableRedLaser;
-            }
-            EnableRedLaser();
         }
     }
 }

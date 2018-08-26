@@ -175,7 +175,7 @@ namespace CII.LAR.Algorithm
         {
             if (DrawRestrict && this.picturebox.Zoom == 1)
             {
-                return VideoRegion.IsVisible(point);
+                return VideoRegion != null && VideoRegion.IsVisible(point);
             }
             else
             {
@@ -185,7 +185,7 @@ namespace CII.LAR.Algorithm
 
         public bool CheckPointInRegion(PointF point)
         {
-            return VideoRegion.IsVisible(point);
+            return VideoRegion!= null && VideoRegion.IsVisible(point);
         }
 
         private Point Calculate(Point originalPoint, Matrix<double> Inverse)

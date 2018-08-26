@@ -71,6 +71,10 @@ namespace CII.LAR.UI
                         }
                     }
                 }
+                if (this.Visible)
+                {
+                    CheckRedLaserStatus();
+                }
             }
             else
             {
@@ -200,7 +204,11 @@ namespace CII.LAR.UI
         {
             if (Program.EntryForm.Laser != null)
             {
-
+                if (RedLaserEnable())
+                {
+                    EnableRedLaser();
+                    this.btnRedLaser.Text = Properties.Resources.StrEnableRedLaser;
+                } 
                 var fixedLaser = Program.EntryForm.Laser as FixedLaser;
                 if (fixedLaser != null)
                 {
@@ -386,6 +394,48 @@ namespace CII.LAR.UI
                 Program.EntryForm.UpdateHoleNumber(this.holesSlider.Value);
                 this.lblHoleNumber.Text = (this.holesSlider.Value + 1).ToString();
             }
+
+        }
+
+        private bool RedLaserEnable()
+        {
+            bool enable = false;
+            byte[] recData2 = Send01Command();
+            if (recData2 != null)
+            {
+                if (recData2.Length == 6)
+                {
+                    var flag = recData2[1] * 128 + recData2[2];
+                    enable = flag == 1152;
+                }
+            }
+            return enable;
+        }
+        private void CheckRedLaserStatus()
+        {
+            if (RedLaserEnable())
+            {
+                this.btnRedLaser.Text = Properties.Resources.StrCloseRedLaser;
+            }
+            else
+            {
+                this.btnRedLaser.Text = Properties.Resources.StrEnableRedLaser;
+            }
+        }
+
+        private byte[] Send01Command()
+        {
+            LaserC01Request c01 = new LaserC01Request();
+            var bytes = serialPortCom.Encode(c01);
+            return serialPortCom.SendData(bytes);
+
+        }
+
+        private void EnableRedLaser()
+        {
+            var c70 = new LaserC70Request();
+            var bytes = serialPortCom.Encode(c70);
+            serialPortCom.SendData(bytes);
         }
 
         /// <summary>
@@ -482,6 +532,19 @@ namespace CII.LAR.UI
         private void btnStop_Click(object sender, EventArgs e)
         {
             Program.EntryForm.Laser.Flashing = false;
+        }
+
+        private void btnRedLaser_Click(object sender, EventArgs e)
+        {
+            if (this.btnRedLaser.Text == Properties.Resources.StrEnableRedLaser)
+            {
+                this.btnRedLaser.Text = Properties.Resources.StrCloseRedLaser;
+            }
+            else if (this.btnRedLaser.Text == Properties.Resources.StrCloseRedLaser)
+            {
+                this.btnRedLaser.Text = Properties.Resources.StrEnableRedLaser;
+            }
+            EnableRedLaser();
         }
     }
 }

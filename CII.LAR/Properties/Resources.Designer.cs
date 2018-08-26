@@ -1011,5 +1011,27 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrMainTitle", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 Enable Red Laser 的本地化字符串。
+        /// </summary>
+        internal static string StrEnableRedLaser
+        {
+            get
+            {
+                return ResourceManager.GetString("StrEnableRedLaser", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 Close Red Laser 的本地化字符串。
+        /// </summary>
+        internal static string StrCloseRedLaser
+        {
+            get
+            {
+                return ResourceManager.GetString("StrCloseRedLaser", resourceCulture);
+            }
+        }
     }
 }

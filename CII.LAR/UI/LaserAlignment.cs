@@ -78,40 +78,6 @@ namespace CII.LAR.UI
             this.KeyDown += LaserAlignment_KeyDown;
             serialPortCom = SerialPortManager.GetInstance();
         }
-
-        private void SerialDataReceivedHandler(LaserBaseResponse baseResponse)
-        {
-            if (baseResponse != null)
-            {
-                LaserC01Response c01r = baseResponse as LaserC01Response;
-                if (c01r != null)
-                {
-                    //开启红光
-                    if (enableRedLaser)
-                    {
-                        if (c01r.Flag == 1920)
-                        {
-                            //红光关闭，则强制开启
-                            LaserC70Request c70 = new LaserC70Request();
-                            var bytes = serialPortCom.Encode(c70);
-                            serialPortCom.SendData(bytes);
-                        }
-                    }
-                    else
-                    {
-                        //关闭红光
-                        if (c01r.Flag == 1664)
-                        {
-                            //红光开启，则强制关闭
-                            LaserC70Request c70 = new LaserC70Request();
-                            var bytes = serialPortCom.Encode(c70);
-                            serialPortCom.SendData(bytes);
-                        }
-                    }
-                }
-            }
-        }
-
         private void LaserAlignment_KeyDown(object sender, KeyEventArgs e)
         {
             if (VideoKeyDownHandler != null)
@@ -131,11 +97,6 @@ namespace CII.LAR.UI
 
         private void EnableRedLaser(bool enable)
         {
-            //LaserC01Request c01 = new LaserC01Request();
-            //byte[] c01Bytes = serialPortCom.Encode(c01);
-            //serialPortCom.SendData(c01Bytes);
-            //enableRedLaser = enable;
-
             var c70 = new LaserC70Request();
             var bytes = serialPortCom.Encode(c70);
             serialPortCom.SendData(bytes);
@@ -195,7 +156,7 @@ namespace CII.LAR.UI
                         string matrixJsonString = JsonFile.GetJsonTextFromConfig<Matrix<double>>(v);
                         JsonFile.WriteMatrixConfigToLocal(matrixJsonString);
                         //关闭红光引导光
-                        //EnableRedLaser(false);
+                        EnableRedLaser(false);
                     }
                 }
                 else

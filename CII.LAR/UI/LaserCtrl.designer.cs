@@ -45,6 +45,7 @@ namespace CII.LAR.UI
             this.materialGroupBox1 = new CII.LAR.MaterialSkin.MaterialGroupBox();
             this.materialGroupBox2 = new CII.LAR.MaterialSkin.MaterialGroupBox();
             this.btnStop = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.btnRedLaser = new CII.LAR.MaterialSkin.MaterialRoundButton();
             this.materialGroupBox1.SuspendLayout();
             this.materialGroupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +58,7 @@ namespace CII.LAR.UI
             // 
             resources.ApplyResources(this.sliderCtrl, "sliderCtrl");
             this.sliderCtrl.Name = "sliderCtrl";
-            this.sliderCtrl.SliderValueChangedHandler += SliderValueChangedHandler;
+            this.sliderCtrl.Update = true;
             // 
             // btnFire
             // 
@@ -70,6 +71,7 @@ namespace CII.LAR.UI
             this.btnFire.Name = "btnFire";
             this.btnFire.Primary = false;
             this.btnFire.UseVisualStyleBackColor = false;
+            this.btnFire.Warning = false;
             this.btnFire.Click += new System.EventHandler(this.btnFire_Click);
             // 
             // btnAlignLaser
@@ -81,6 +83,7 @@ namespace CII.LAR.UI
             this.btnAlignLaser.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnAlignLaser.Name = "btnAlignLaser";
             this.btnAlignLaser.Primary = false;
+            this.btnAlignLaser.Warning = false;
             this.btnAlignLaser.Click += new System.EventHandler(this.btnAlignLaser_Click);
             // 
             // btnHoleSize
@@ -92,6 +95,7 @@ namespace CII.LAR.UI
             this.btnHoleSize.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnHoleSize.Name = "btnHoleSize";
             this.btnHoleSize.Primary = false;
+            this.btnHoleSize.Warning = false;
             this.btnHoleSize.Click += new System.EventHandler(this.btnHoleSize_Click);
             // 
             // btnAppearance
@@ -103,6 +107,7 @@ namespace CII.LAR.UI
             this.btnAppearance.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnAppearance.Name = "btnAppearance";
             this.btnAppearance.Primary = false;
+            this.btnAppearance.Warning = false;
             this.btnAppearance.Click += new System.EventHandler(this.btnAppearance_Click);
             // 
             // holesSlider
@@ -112,11 +117,11 @@ namespace CII.LAR.UI
             // 
             this.holesSlider.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.holesSlider.LabelPosition = DevComponents.DotNetBar.eSliderLabelPosition.Right;
+            this.holesSlider.LabelVisible = false;
             resources.ApplyResources(this.holesSlider, "holesSlider");
             this.holesSlider.Name = "holesSlider";
             this.holesSlider.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.holesSlider.Value = 0;
-            this.holesSlider.LabelVisible = false;
             this.holesSlider.ValueChanged += new System.EventHandler(this.holesSlider_ValueChanged);
             // 
             // btnDelete
@@ -128,6 +133,7 @@ namespace CII.LAR.UI
             this.btnDelete.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Primary = false;
+            this.btnDelete.Warning = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // comboBoxEx1
@@ -151,6 +157,7 @@ namespace CII.LAR.UI
             this.btnSave.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
             this.btnSave.Name = "btnSave";
             this.btnSave.Primary = false;
+            this.btnSave.Warning = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblHoleNumber
@@ -196,12 +203,28 @@ namespace CII.LAR.UI
             this.btnStop.Name = "btnStop";
             this.btnStop.Primary = false;
             this.btnStop.UseVisualStyleBackColor = false;
+            this.btnStop.Warning = false;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // btnRedLaser
+            // 
+            this.btnRedLaser.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnRedLaser, "btnRedLaser");
+            this.btnRedLaser.BackColor = System.Drawing.Color.LightYellow;
+            this.btnRedLaser.Depth = 0;
+            this.btnRedLaser.Icon = null;
+            this.btnRedLaser.MouseState = CII.LAR.MaterialSkin.MouseState.HOVER;
+            this.btnRedLaser.Name = "btnRedLaser";
+            this.btnRedLaser.Primary = false;
+            this.btnRedLaser.UseVisualStyleBackColor = false;
+            this.btnRedLaser.Warning = false;
+            this.btnRedLaser.Click += new System.EventHandler(this.btnRedLaser_Click);
             // 
             // LaserCtrl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnRedLaser);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.materialGroupBox2);
             this.Controls.Add(this.btnAppearance);
@@ -219,6 +242,7 @@ namespace CII.LAR.UI
             this.Controls.SetChildIndex(this.materialGroupBox2, 0);
             this.Controls.SetChildIndex(this.closeButton, 0);
             this.Controls.SetChildIndex(this.btnStop, 0);
+            this.Controls.SetChildIndex(this.btnRedLaser, 0);
             this.materialGroupBox1.ResumeLayout(false);
             this.materialGroupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -239,5 +263,6 @@ namespace CII.LAR.UI
         private MaterialGroupBox materialGroupBox1;
         private MaterialGroupBox materialGroupBox2;
         private MaterialRoundButton btnStop;
+        private MaterialRoundButton btnRedLaser;
     }
 }

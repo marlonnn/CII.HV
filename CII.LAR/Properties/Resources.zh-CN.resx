@@ -270,4 +270,10 @@
   <data name="StrExitExceptionMsg" xml:space="preserve">
     <value>软件正在校准，若强制退出，请先关闭校准窗口。</value>
   </data>
+  <data name="StrEnableRedLaser" xml:space="preserve">
+    <value>开启红光</value>
+  </data>
+  <data name="StrCloseRedLaser" xml:space="preserve">
+    <value>关闭红光</value>
+  </data>
 </root>

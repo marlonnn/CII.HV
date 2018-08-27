@@ -109,6 +109,9 @@ namespace CII.LAR.MaterialSkin
         private void slider_ValueChanged(object sender, EventArgs e)
         {
             this.SliderValue = this.slider.Value;
+            SliderValueChanged?.Invoke(sender, e);
         }
+
+        public event EventHandler SliderValueChanged;
     }
 }

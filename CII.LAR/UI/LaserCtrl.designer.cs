@@ -59,6 +59,7 @@ namespace CII.LAR.UI
             resources.ApplyResources(this.sliderCtrl, "sliderCtrl");
             this.sliderCtrl.Name = "sliderCtrl";
             this.sliderCtrl.Update = true;
+            this.sliderCtrl.SliderValueChangedHandler += SliderValueChangedHandler;
             // 
             // btnFire
             // 

@@ -10,8 +10,8 @@ namespace CII.LAR.UI
     /// </summary>
     public partial class SliderCtrl : UserControl
     {
-        public delegate void SliderValueChanged(object sender, EventArgs e);
-        public SliderValueChanged SliderValueChangedHandler;
+        //public delegate void SliderValueChanged(object sender, EventArgs e);
+        public event EventHandler SliderValueChangedHandler;
         public Slider Slider
         {
             get

@@ -15,6 +15,7 @@ namespace CII.LAR
         public TestForm()
         {
             InitializeComponent();
+            this.materialSliderControl1.SliderValue = 5;
         }
 
         private void button1_Click(object sender, EventArgs e)

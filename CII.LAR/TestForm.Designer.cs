@@ -28,7 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.materialSliderControl1 = new CII.LAR.MaterialSkin.MaterialSliderControl();
             this.SuspendLayout();
+            // 
+            // materialSliderControl1
+            // 
+            this.materialSliderControl1.Location = new System.Drawing.Point(40, 111);
+            this.materialSliderControl1.Name = "materialSliderControl1";
+            this.materialSliderControl1.Size = new System.Drawing.Size(323, 30);
+            this.materialSliderControl1.SliderValue = 50;
+            this.materialSliderControl1.TabIndex = 0;
             // 
             // TestForm
             // 
@@ -36,6 +45,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(445, 393);
+            this.Controls.Add(this.materialSliderControl1);
             this.Name = "TestForm";
             this.Text = "TestForm";
             this.ResumeLayout(false);
@@ -43,5 +53,7 @@
         }
 
         #endregion
+
+        private MaterialSkin.MaterialSliderControl materialSliderControl1;
     }
 }

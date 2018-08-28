@@ -225,6 +225,8 @@ namespace CII.LAR.UI
             {
                 Index--;
                 helper.AlignmentInfo(index, index < 0);
+                if (Index == -1) this.btnNext.Text = Res.LaserAlignment.StrAlignLaser;
+                else this.btnNext.Text = Res.LaserAlignment.StrNext;
                 if (Index > -1 && Index < 7)
                 {
                     AlignLaser laser = Program.EntryForm.Laser as AlignLaser;
@@ -311,6 +313,7 @@ namespace CII.LAR.UI
                 }
                 ButtonBack(true);
                 ButtonNext(true);
+                this.btnNext.Text = Res.LaserAlignment.StrNext;
                 Program.EntryForm.LaserType = LaserType.Alignment;
             }
             else

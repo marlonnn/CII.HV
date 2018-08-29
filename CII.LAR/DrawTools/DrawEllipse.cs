@@ -154,9 +154,9 @@ namespace CII.LAR.DrawTools
         {
             if (ellipseForDraw == null)
             {
-                var s = new PointF(startPoint.X * richPictureBox.Zoom, startPoint.Y * richPictureBox.Zoom);
-                var e = new PointF(endPoint.X * richPictureBox.Zoom, endPoint.Y * richPictureBox.Zoom);
-                var size = new Size((int)(drawAreaSize.Width * richPictureBox.Zoom), (int)(drawAreaSize.Height * richPictureBox.Zoom));
+                var s = new PointF(startPoint.X, startPoint.Y);
+                var e = new PointF(endPoint.X, endPoint.Y);
+                var size = new Size(drawAreaSize.Width, drawAreaSize.Height);
                 ellipseForDraw = new Ellipse(s, e, coeffcient, size);
             }
 

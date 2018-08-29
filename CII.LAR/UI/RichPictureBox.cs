@@ -948,8 +948,19 @@ namespace CII.LAR.UI
                     if (CaptureVideo && canCapture)
                     {
                         Bitmap newFrame = FilpImage((Bitmap)eventArgs.Frame.Clone());
+                        // dispose previous frame
+                        if (videoFrame != null)
+                        {
+                            videoFrame.Dispose();
+                            videoFrame = null;
+                        }
+
+                        videoFrame = newFrame;
+
+                        this.Picture = videoFrame;
+
                         AVIwriter.Quality = 0;
-                        AVIwriter.AddFrame(newFrame);
+                        AVIwriter.AddFrame(videoFrame);
                     }
                     else
                     {

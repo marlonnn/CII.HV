@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.materialSliderControl1 = new CII.LAR.MaterialSkin.MaterialSliderControl();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // materialSliderControl1
@@ -38,6 +40,11 @@
             this.materialSliderControl1.Size = new System.Drawing.Size(323, 30);
             this.materialSliderControl1.SliderValue = 50;
             this.materialSliderControl1.TabIndex = 0;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 300;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // TestForm
             // 
@@ -55,5 +62,6 @@
         #endregion
 
         private MaterialSkin.MaterialSliderControl materialSliderControl1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

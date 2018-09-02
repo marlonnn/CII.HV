@@ -333,31 +333,31 @@ namespace CII.LAR.Laser
                     break;
                 //移动起点
                 case InHoleType.StartHole:
-                    MoveStartPoint(point);
                     if (shape == LaserShape.Line)
                     {
+                        MoveStartPoint(point);
                         MoveToContinuousCircle();
                         shape = LaserShape.Line;
                     }
-                    else if (shape == LaserShape.Arc)
-                    {
-                        MoveStartEndArcPoint(point);
-                        shape = LaserShape.Arc;
-                    }
+                    //else if (shape == LaserShape.Arc)
+                    //{
+                    //    MoveStartEndArcPoint(point);
+                    //    shape = LaserShape.Arc;
+                    //}
                     break;
                 //移动终点
                 case InHoleType.EndHole:
-                    MoveEndPoint(point);
                     if (shape == LaserShape.Line)
                     {
+                        MoveEndPoint(point);
                         MoveToContinuousCircle();
                         shape = LaserShape.Line;
                     }
-                    else if (shape == LaserShape.Arc)
-                    {
-                        MoveStartEndArcPoint(point);
-                        shape = LaserShape.Arc;
-                    }
+                    //else if (shape == LaserShape.Arc)
+                    //{
+                    //    MoveStartEndArcPoint(point);
+                    //    shape = LaserShape.Arc;
+                    //}
                     break;
             }
         }

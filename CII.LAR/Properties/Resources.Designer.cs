@@ -1033,5 +1033,16 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrCloseRedLaser", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 Please wait for the laser serial port to be initialized and start calibration again. 的本地化字符串。
+        /// </summary>
+        internal static string StrLaserNotConnect
+        {
+            get
+            {
+                return ResourceManager.GetString("StrLaserNotConnect", resourceCulture);
+            }
+        }
     }
 }

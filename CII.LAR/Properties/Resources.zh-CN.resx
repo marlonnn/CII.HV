@@ -276,4 +276,7 @@
   <data name="StrCloseRedLaser" xml:space="preserve">
     <value>关闭红光</value>
   </data>
+  <data name="StrLaserNotConnect" xml:space="preserve">
+    <value>请等待激光串口初始化完成后，再开始校准。</value>
+  </data>
 </root>

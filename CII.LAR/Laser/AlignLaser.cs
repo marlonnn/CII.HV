@@ -190,8 +190,8 @@ namespace CII.LAR.Laser
 
                 if (!Program.SysConfig.LiveMode)
                 {
-                    g.ScaleTransform(this.richPictureBox.Zoom, this.richPictureBox.Zoom);
-                    g.TranslateTransform(this.richPictureBox.OffsetX, this.richPictureBox.OffsetY);
+                    //g.ScaleTransform(this.richPictureBox.Zoom, this.richPictureBox.Zoom);
+                    //g.TranslateTransform(this.richPictureBox.OffsetX, this.richPictureBox.OffsetY);
                     //Point point = Coordinate.GetCoordinate().P;
                     //if (!point.IsEmpty)
                     //{
@@ -211,7 +211,7 @@ namespace CII.LAR.Laser
                         new Size((int)(1.4 * circle2.Rectangle.Width), (int)(1.4 * circle2.Rectangle.Width)));
                     g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(circle2.Rectangle.X, circle2.Rectangle.Y, circle2.Rectangle.Width, circle2.Rectangle.Height));
                     g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(circle3.Rectangle.X, circle3.Rectangle.Y, circle3.Rectangle.Width, circle3.Rectangle.Height));
-                    g.ResetTransform();
+                    //g.ResetTransform();
                 }
                 if (IsShowCross)
                     DrawCross(g);

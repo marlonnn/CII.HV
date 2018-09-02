@@ -78,7 +78,7 @@ namespace CII.LAR.UI
             if (hotKeyManager.HotKeyExists(e.Shortcut, HotKeyManager.CheckKey.LocalHotKey) || CheckHotKeyExist())
             {
                 e.Cancel = true;
-                MessageBox.Show(Properties.Resources.StrShortcutExist);
+                MaterialSkin.MsgBox.Show(Properties.Resources.StrShortcutExist, Properties.Resources.StrWaring, MaterialSkin.MsgBox.Buttons.OK, MaterialSkin.MsgBox.Icon.Warning);
             }
         }
 

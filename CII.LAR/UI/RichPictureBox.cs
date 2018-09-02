@@ -35,7 +35,7 @@ namespace CII.LAR.UI
         public double DigitalMagnification
         {
             //1600 -> image size is 1280*960
-            get { return (Program.SysConfig.Lense.Factor * this.PixelToMillimeter(1600) / Program.SysConfig.CCD.Length) * this.Zoom; }
+            get { return (Program.SysConfig.Lense.Factor * this.PixelToMillimeter(1600) / Program.SysConfig.CCD.Length) * this.Zoom * 0.75d; }
         }
 
         private RestrictArea restrictArea;

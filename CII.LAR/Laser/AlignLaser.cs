@@ -121,20 +121,21 @@ namespace CII.LAR.Laser
                     else
                     {
                         IsShowCross = true;
-                        ClickPoint = e.Location;
                         ButtonStateHandler?.Invoke(true);
                         PointF pointF = new PointF(e.Location.X/* / richPictureBox.Zoom*/, e.Location.Y/* / richPictureBox.Zoom*/);
+                        ClickPoint = Point.Ceiling(pointF);
                         Coordinate.GetCoordinate().AddPoint(Index, pointF);
                     }
                 }
                 else if (count == 2)
                 {
                     IsShowCross = true;
-                    ClickPoint = e.Location;
+                    //ClickPoint = e.Location;
                     Count = 0;
                     ButtonStateHandler?.Invoke(true);
                     //PointF pointF = new PointF(e.Location.X/* / richPictureBox.Zoom*/, e.Location.Y/* / richPictureBox.Zoom*/);
                     PointF pointF = new PointF(e.Location.X / richPictureBox.Zoom - richPictureBox.OffsetX, e.Location.Y / richPictureBox.Zoom - richPictureBox.OffsetY);
+                    ClickPoint = Point.Ceiling(pointF);
                     Coordinate.GetCoordinate().AddPoint(Index, pointF);
                     //Console.WriteLine("add point: " + pointF.ToString());
                 }

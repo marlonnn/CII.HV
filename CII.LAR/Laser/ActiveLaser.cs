@@ -57,9 +57,9 @@ namespace CII.LAR.Laser
             if (richPictureBox.RestrictArea.CheckPointInRegion(pf)) return;
             //if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
             if (Program.EntryForm.Laser.Flashing) return;
-            mouseDownPoint = e.Location;
+            mouseDownPoint = Point.Ceiling(pf);
 
-            activeCircle.OnMouseDown(e.Location);
+            activeCircle.OnMouseDown(mouseDownPoint);
 
             SendMotorPointOnMouseDown();
             this.richPictureBox.Invalidate();
@@ -72,10 +72,10 @@ namespace CII.LAR.Laser
             //if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
             if (Program.EntryForm.Laser.Flashing) return;
             base.OnMouseMove(richPictureBox, e);
-            Point mousePosNow = e.Location;
+            Point mousePosNow = Point.Ceiling(pf);
             int dx = mousePosNow.X - mouseDownPoint.X;
             int dy = mousePosNow.Y - mouseDownPoint.Y;
-            activeCircle.OnMouseMove(e, e.Location, dx, dy);
+            activeCircle.OnMouseMove(e, mousePosNow, dx, dy);
             this.richPictureBox.Invalidate();
         }
 
@@ -176,8 +176,8 @@ namespace CII.LAR.Laser
         {
             if (_flickCount >= 0 && _flickCount < ActiveCircle.InnerCircles.Count - 1)
             {
-                Coordinate.GetCoordinate().SetMotorLastPoint(GetMotorPoint(ActiveCircle.InnerCircles[FlickCount].CenterPoint));
-                Coordinate.GetCoordinate().SetMotorThisPoint(GetMotorPoint(ActiveCircle.InnerCircles[FlickCount + 1].CenterPoint));
+                Coordinate.GetCoordinate().SetMotorLastPoint(Point.Ceiling(ActiveCircle.InnerCircles[FlickCount].CenterPoint));
+                Coordinate.GetCoordinate().SetMotorThisPoint(Point.Ceiling(ActiveCircle.InnerCircles[FlickCount + 1].CenterPoint));
                 Coordinate.GetCoordinate().SendAlignmentMotorPoint();
             }
         }
@@ -186,7 +186,7 @@ namespace CII.LAR.Laser
         {
             if (Program.SysConfig.LiveMode)
             {
-                Point point = GetMotorPoint((new Circle(ActiveCircle.StartPoint, ActiveCircle.InnerCircleSize)).CenterPoint);
+                Point point = /*GetMotorPoint(*/Point.Ceiling((new Circle(ActiveCircle.StartPoint, ActiveCircle.InnerCircleSize)).CenterPoint)/*)*/;
                 Coordinate.GetCoordinate().SetMotorThisPoint(point);
                 Coordinate.GetCoordinate().SendAlignmentMotorPoint();
             }

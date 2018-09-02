@@ -1014,7 +1014,10 @@ namespace CII.LAR.UI
                     {
                         if (Program.EntryForm.Laser != null && Program.SysConfig.Function == SystemFunction.Laser)
                         {
+                            e.Graphics.ScaleTransform(Zoom, Zoom);
+                            e.Graphics.TranslateTransform(OffsetX, OffsetY);
                             Program.EntryForm.Laser.OnPaint(e);
+                            e.Graphics.ResetTransform();
                         }
                     }
                     if (GraphicsList != null && Program.SysConfig.Function == SystemFunction.Measure)

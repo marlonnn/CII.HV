@@ -74,7 +74,7 @@ namespace CII.LAR.Laser
         {
             PointF pf = new PointF(e.Location.X / richPictureBox.Zoom - richPictureBox.OffsetX, e.Location.Y / richPictureBox.Zoom - richPictureBox.OffsetY);
             if (richPictureBox.RestrictArea.CheckPointInRegion(pf)) return;
-            Point point = e.Location;
+            Point point = ToZoomPoint( e.Location);
             CenterPoint = new PointF(point.X, point.Y);
             this.richPictureBox.Invalidate();
             Coordinate.GetCoordinate().SetMotorThisPoint(Point.Ceiling( pf));

@@ -405,7 +405,15 @@ namespace CII.LAR.Laser
 
             var halfLenght = Length / 2;
             var temp = (halfLenght) / Math.Tan(angle / 2);
-            circleData.Radius = (Math.Pow(halfLenght, 2) + Math.Pow(temp, 2)) / (2 * temp);
+            var radius = (Math.Pow(halfLenght, 2) + Math.Pow(temp, 2)) / (2 * temp);
+            var x = point.X - (StartPoint.X + EndPoint.X) / 2;
+            var y = point.Y - (StartPoint.Y + EndPoint.Y) / 2;
+            var length = Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2));
+            if (length + 10 > Math.Abs(radius))
+            {
+                return;
+            }
+            circleData.Radius = radius;
 
             circleData.AngleArc = 2 * (Math.Asin(halfLenght / Math.Abs(circleData.Radius)));
 

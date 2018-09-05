@@ -60,6 +60,7 @@ namespace CII.LAR.Laser
                     this.index = value;
                     this.AlignCircle = circles[value];
                     this.IsShowCross = false;
+                    this.ZoomView = true;
                     ButtonStateHandler?.Invoke(false);
                     this.richPictureBox.ZoomFit();
                     this.richPictureBox.Invalidate();
@@ -94,12 +95,15 @@ namespace CII.LAR.Laser
             }
         }
 
+        public bool ZoomView { set; get; }
+
         public AlignLaser(RichPictureBox richPictureBox) : base()
         {
             this.richPictureBox = richPictureBox;
             circles = new List<Circle>();
             string jsonConfig = JsonFile.ReadJsonConfigString();
             circles = JsonFile.GetConfigFromJsonText<List<Circle>>(jsonConfig);
+            this.ZoomView = true;
         }
 
         public delegate void ButtonState(bool enable);
@@ -110,13 +114,13 @@ namespace CII.LAR.Laser
             LaserAlignment laserAlignment = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment);
             if (e.Button == MouseButtons.Left /*&& IsClickLaser(e.Location)*/ && laserAlignment.Index > -1)
             {
-                count++;
-                if (count == 1)
+                //count++;
+                if (ZoomView)
                 {
                     if (richPictureBox.Zoom != Program.SysConfig.DefaultScaleCoefficient)
                     {
                         ZoomHandler?.Invoke(e, true);
-                        ButtonStateHandler?.Invoke(false);
+                        //ButtonStateHandler?.Invoke(false);
                     }
                     else
                     {
@@ -126,8 +130,9 @@ namespace CII.LAR.Laser
                         ClickPoint = Point.Ceiling(pointF);
                         Coordinate.GetCoordinate().AddPoint(Index, pointF);
                     }
+                    ZoomView = false;
                 }
-                else if (count == 2)
+                else
                 {
                     IsShowCross = true;
                     //ClickPoint = e.Location;

@@ -223,6 +223,7 @@ namespace CII.LAR.UI
         {
             if (Index != -2)
             {
+                ButtonNext(true);
                 Index--;
                 helper.AlignmentInfo(index, index < 0);
                 if (Index == -1) this.btnNext.Text = Res.LaserAlignment.StrAlignLaser;

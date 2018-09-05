@@ -131,6 +131,7 @@ namespace CII.LAR.UI
                     UpdateSliderValueHandler?.Invoke((float)(PulseValue));
                 }
 
+                
                 this.sliderCtrl.Update = true;
             }
             catch (Exception ex)
@@ -289,7 +290,8 @@ namespace CII.LAR.UI
                 {
                     UpdateSliderValueHandler?.Invoke((float)(PulseValue));
                 }
-
+                this.textBox.Select();
+                this.textBox.Focus();
                 this.sliderCtrl.Update = true;
             }
             catch (Exception ex)

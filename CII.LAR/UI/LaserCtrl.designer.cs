@@ -1,5 +1,6 @@
 ﻿using CII.LAR.MaterialSkin;
 using System;
+using System.Windows.Forms;
 
 namespace CII.LAR.UI
 {
@@ -46,6 +47,7 @@ namespace CII.LAR.UI
             this.materialGroupBox2 = new CII.LAR.MaterialSkin.MaterialGroupBox();
             this.btnStop = new CII.LAR.MaterialSkin.MaterialRoundButton();
             this.btnRedLaser = new CII.LAR.MaterialSkin.MaterialRoundButton();
+            this.textBox = new TextBox();
             this.materialGroupBox1.SuspendLayout();
             this.materialGroupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -225,6 +227,8 @@ namespace CII.LAR.UI
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.textBox.Visible = false;
+            this.Controls.Add(textBox);
             this.Controls.Add(this.btnRedLaser);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.materialGroupBox2);
@@ -265,5 +269,6 @@ namespace CII.LAR.UI
         private MaterialGroupBox materialGroupBox2;
         private MaterialRoundButton btnStop;
         private MaterialRoundButton btnRedLaser;
+        private TextBox textBox;
     }
 }

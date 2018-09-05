@@ -101,12 +101,12 @@ namespace CII.LAR.UI
         #endregion
 
         #region **Helpers
-        void updateWatermark()
+        public void updateWatermark()
         {
             if (!IsHandleCreated)
                 return;
 
-            IntPtr mem = Marshal.StringToHGlobalUni("Enter HotKey here");
+            IntPtr mem = Marshal.StringToHGlobalUni(Properties.Resources.StrEnterHotKey);
             SendMessage(TextBox.Handle, 0x1501, (IntPtr)1, mem);
             Marshal.FreeHGlobal(mem);
         }
@@ -160,7 +160,7 @@ namespace CII.LAR.UI
             //If a modifier is not present then clear the textbox.
             if (e.Modifiers == Keys.None && forcemodifier)
             {
-                MessageBox.Show("You have to specify a modifier like 'Control', 'Alt' or 'Shift'");
+                MaterialSkin.MsgBox.Show(Properties.Resources.StrmodifierWarning, Properties.Resources.StrWaring, MaterialSkin.MsgBox.Buttons.OK, MaterialSkin.MsgBox.Icon.Warning);
                 this.Text = String.Empty;
                 return;
             }

@@ -1044,5 +1044,26 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrLaserNotConnect", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 You have to specify a modifier like &apos;Control&apos;, &apos;Alt&apos; or &apos;Shift&apos;. 的本地化字符串。
+        /// </summary>
+        internal static string StrmodifierWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("StrmodifierWarning", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   查找类似 Enter HotKey here 的本地化字符串。
+        /// </summary>
+        internal static string StrEnterHotKey
+        {
+            get
+            {
+                return ResourceManager.GetString("StrEnterHotKey", resourceCulture);
+            }
+        }
     }
 }

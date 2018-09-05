@@ -161,6 +161,14 @@ namespace CII.LAR.UI
             //resources.ApplyResources(this.lblZoomOut, lblZoomOut.Name);
             //resources.ApplyResources(this.lblZoomIn, lblZoomIn.Name);
             //resources.ApplyResources(this.lblSnapshoot, lblSnapshoot.Name);
+            foreach (var ctrl in this.Controls)
+            {
+                HotKeyControl hkc = ctrl as HotKeyControl;
+                if (hkc != null)
+                {
+                    hkc.updateWatermark();
+                }
+            }
             this.Invalidate();
         }
     }

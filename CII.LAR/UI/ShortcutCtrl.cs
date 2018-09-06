@@ -78,7 +78,7 @@ namespace CII.LAR.UI
             if (hotKeyManager.HotKeyExists(e.Shortcut, HotKeyManager.CheckKey.LocalHotKey) || CheckHotKeyExist())
             {
                 e.Cancel = true;
-                MessageBox.Show(Properties.Resources.StrShortcutExist);
+                MaterialSkin.MsgBox.Show(Properties.Resources.StrShortcutExist, Properties.Resources.StrWaring, MaterialSkin.MsgBox.Buttons.OK, MaterialSkin.MsgBox.Icon.Warning);
             }
         }
 
@@ -161,6 +161,14 @@ namespace CII.LAR.UI
             //resources.ApplyResources(this.lblZoomOut, lblZoomOut.Name);
             //resources.ApplyResources(this.lblZoomIn, lblZoomIn.Name);
             //resources.ApplyResources(this.lblSnapshoot, lblSnapshoot.Name);
+            foreach (var ctrl in this.Controls)
+            {
+                HotKeyControl hkc = ctrl as HotKeyControl;
+                if (hkc != null)
+                {
+                    hkc.updateWatermark();
+                }
+            }
             this.Invalidate();
         }
     }

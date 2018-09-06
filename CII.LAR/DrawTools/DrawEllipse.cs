@@ -362,7 +362,7 @@ namespace CII.LAR.DrawTools
         public override Rectangle GetHandleRectangle(RichPictureBox richPictureBox, int handleNumber)
         {
             Point point = GetHandle(richPictureBox, handleNumber);
-            return new Rectangle(point.X - 3, point.Y - 3, 7, 7);
+            return new Rectangle((int)((point.X - 3) / richPictureBox.Zoom), (int)((point.Y - 3) / richPictureBox.Zoom), 7, 7);
         }
 
         /// <summary>

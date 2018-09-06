@@ -60,6 +60,7 @@ namespace CII.LAR.Laser
                     this.index = value;
                     this.AlignCircle = circles[value];
                     this.IsShowCross = false;
+                    this.ZoomView = true;
                     ButtonStateHandler?.Invoke(false);
                     this.richPictureBox.ZoomFit();
                     this.richPictureBox.Invalidate();
@@ -94,12 +95,15 @@ namespace CII.LAR.Laser
             }
         }
 
+        public bool ZoomView { set; get; }
+
         public AlignLaser(RichPictureBox richPictureBox) : base()
         {
             this.richPictureBox = richPictureBox;
             circles = new List<Circle>();
             string jsonConfig = JsonFile.ReadJsonConfigString();
             circles = JsonFile.GetConfigFromJsonText<List<Circle>>(jsonConfig);
+            this.ZoomView = true;
         }
 
         public delegate void ButtonState(bool enable);
@@ -110,31 +114,33 @@ namespace CII.LAR.Laser
             LaserAlignment laserAlignment = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserAlignment>(CtrlType.LaserAlignment);
             if (e.Button == MouseButtons.Left /*&& IsClickLaser(e.Location)*/ && laserAlignment.Index > -1)
             {
-                count++;
-                if (count == 1)
+                //count++;
+                if (ZoomView)
                 {
                     if (richPictureBox.Zoom != Program.SysConfig.DefaultScaleCoefficient)
                     {
                         ZoomHandler?.Invoke(e, true);
-                        ButtonStateHandler?.Invoke(false);
+                        //ButtonStateHandler?.Invoke(false);
                     }
                     else
                     {
                         IsShowCross = true;
-                        ClickPoint = e.Location;
                         ButtonStateHandler?.Invoke(true);
                         PointF pointF = new PointF(e.Location.X/* / richPictureBox.Zoom*/, e.Location.Y/* / richPictureBox.Zoom*/);
+                        ClickPoint = Point.Ceiling(pointF);
                         Coordinate.GetCoordinate().AddPoint(Index, pointF);
                     }
+                    ZoomView = false;
                 }
-                else if (count == 2)
+                else
                 {
                     IsShowCross = true;
-                    ClickPoint = e.Location;
+                    //ClickPoint = e.Location;
                     Count = 0;
                     ButtonStateHandler?.Invoke(true);
                     //PointF pointF = new PointF(e.Location.X/* / richPictureBox.Zoom*/, e.Location.Y/* / richPictureBox.Zoom*/);
                     PointF pointF = new PointF(e.Location.X / richPictureBox.Zoom - richPictureBox.OffsetX, e.Location.Y / richPictureBox.Zoom - richPictureBox.OffsetY);
+                    ClickPoint = Point.Ceiling(pointF);
                     Coordinate.GetCoordinate().AddPoint(Index, pointF);
                     //Console.WriteLine("add point: " + pointF.ToString());
                 }
@@ -189,8 +195,8 @@ namespace CII.LAR.Laser
 
                 if (!Program.SysConfig.LiveMode)
                 {
-                    g.ScaleTransform(this.richPictureBox.Zoom, this.richPictureBox.Zoom);
-                    g.TranslateTransform(this.richPictureBox.OffsetX, this.richPictureBox.OffsetY);
+                    //g.ScaleTransform(this.richPictureBox.Zoom, this.richPictureBox.Zoom);
+                    //g.TranslateTransform(this.richPictureBox.OffsetX, this.richPictureBox.OffsetY);
                     //Point point = Coordinate.GetCoordinate().P;
                     //if (!point.IsEmpty)
                     //{
@@ -210,7 +216,7 @@ namespace CII.LAR.Laser
                         new Size((int)(1.4 * circle2.Rectangle.Width), (int)(1.4 * circle2.Rectangle.Width)));
                     g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(circle2.Rectangle.X, circle2.Rectangle.Y, circle2.Rectangle.Width, circle2.Rectangle.Height));
                     g.DrawEllipse(new Pen(Color.Orange, 2f), new RectangleF(circle3.Rectangle.X, circle3.Rectangle.Y, circle3.Rectangle.Width, circle3.Rectangle.Height));
-                    g.ResetTransform();
+                    //g.ResetTransform();
                 }
                 if (IsShowCross)
                     DrawCross(g);

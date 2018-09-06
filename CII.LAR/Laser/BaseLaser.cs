@@ -101,6 +101,16 @@ namespace CII.LAR.Laser
             }
         }
 
+        protected PointF ToZoomPointF(PointF point)
+        {
+            return new PointF(point.X / richPictureBox.Zoom - richPictureBox.OffsetX, point.Y / richPictureBox.Zoom - richPictureBox.OffsetY);
+        }
+
+        protected Point ToZoomPoint(Point point)
+        {
+            return Point.Ceiling(new PointF(point.X / richPictureBox.Zoom - richPictureBox.OffsetX, point.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
+        }
+
         /// <summary>
         /// Left nous button is pressed
         /// </summary>

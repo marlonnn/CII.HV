@@ -394,6 +394,15 @@
   <data name="StrCloseRedLaser" xml:space="preserve">
     <value>Close Red Laser</value>
   </data>
+  <data name="StrLaserNotConnect" xml:space="preserve">
+    <value>Please wait for the laser serial port to be initialized and start calibration.</value>
+  </data>
+  <data name="StrmodifierWarning" xml:space="preserve">
+    <value>You have to specify a modifier like 'Control', 'Alt' or 'Shift'.</value>
+  </data>
+  <data name="StrEnterHotKey" xml:space="preserve">
+    <value>Enter HotKey here</value>
+  </data>
   <data name="warn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\warn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

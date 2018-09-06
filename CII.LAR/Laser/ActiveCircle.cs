@@ -333,31 +333,31 @@ namespace CII.LAR.Laser
                     break;
                 //移动起点
                 case InHoleType.StartHole:
-                    MoveStartPoint(point);
                     if (shape == LaserShape.Line)
                     {
+                        MoveStartPoint(point);
                         MoveToContinuousCircle();
                         shape = LaserShape.Line;
                     }
-                    else if (shape == LaserShape.Arc)
-                    {
-                        MoveStartEndArcPoint(point);
-                        shape = LaserShape.Arc;
-                    }
+                    //else if (shape == LaserShape.Arc)
+                    //{
+                    //    MoveStartEndArcPoint(point);
+                    //    shape = LaserShape.Arc;
+                    //}
                     break;
                 //移动终点
                 case InHoleType.EndHole:
-                    MoveEndPoint(point);
                     if (shape == LaserShape.Line)
                     {
+                        MoveEndPoint(point);
                         MoveToContinuousCircle();
                         shape = LaserShape.Line;
                     }
-                    else if (shape == LaserShape.Arc)
-                    {
-                        MoveStartEndArcPoint(point);
-                        shape = LaserShape.Arc;
-                    }
+                    //else if (shape == LaserShape.Arc)
+                    //{
+                    //    MoveStartEndArcPoint(point);
+                    //    shape = LaserShape.Arc;
+                    //}
                     break;
             }
         }
@@ -405,7 +405,15 @@ namespace CII.LAR.Laser
 
             var halfLenght = Length / 2;
             var temp = (halfLenght) / Math.Tan(angle / 2);
-            circleData.Radius = (Math.Pow(halfLenght, 2) + Math.Pow(temp, 2)) / (2 * temp);
+            var radius = (Math.Pow(halfLenght, 2) + Math.Pow(temp, 2)) / (2 * temp);
+            var x = point.X - (StartPoint.X + EndPoint.X) / 2;
+            var y = point.Y - (StartPoint.Y + EndPoint.Y) / 2;
+            var length = Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2));
+            if (length + 10 > Math.Abs(radius))
+            {
+                return;
+            }
+            circleData.Radius = radius;
 
             circleData.AngleArc = 2 * (Math.Asin(halfLenght / Math.Abs(circleData.Radius)));
 

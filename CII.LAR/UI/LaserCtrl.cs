@@ -131,6 +131,7 @@ namespace CII.LAR.UI
                     UpdateSliderValueHandler?.Invoke((float)(PulseValue));
                 }
 
+                
                 this.sliderCtrl.Update = true;
             }
             catch (Exception ex)
@@ -237,7 +238,21 @@ namespace CII.LAR.UI
 
         private void btnAlignLaser_Click(object sender, EventArgs e)
         {
-            DelegateClass.GetDelegate().ClickDelegateHandler?.Invoke(sender, CtrlType.LaserAlignment);
+            if (Program.SysConfig.LiveMode)
+            {
+                if (Program.SysConfig.LaserPortConected)
+                {
+                    DelegateClass.GetDelegate().ClickDelegateHandler?.Invoke(sender, CtrlType.LaserAlignment);
+                }
+                else
+                {
+                    MaterialSkin.MsgBox.Show(Properties.Resources.StrLaserNotConnect, Properties.Resources.StrWaring, MaterialSkin.MsgBox.Buttons.OK, MaterialSkin.MsgBox.Icon.Info);
+                }
+            }
+            else
+            {
+                DelegateClass.GetDelegate().ClickDelegateHandler?.Invoke(sender, CtrlType.LaserAlignment);
+            }
         }
 
         private void btnHoleSize_Click(object sender, EventArgs e)
@@ -275,7 +290,8 @@ namespace CII.LAR.UI
                 {
                     UpdateSliderValueHandler?.Invoke((float)(PulseValue));
                 }
-
+                this.textBox.Select();
+                this.textBox.Focus();
                 this.sliderCtrl.Update = true;
             }
             catch (Exception ex)

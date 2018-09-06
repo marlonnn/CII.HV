@@ -35,7 +35,7 @@ namespace CII.LAR.UI
         public double DigitalMagnification
         {
             //1600 -> image size is 1280*960
-            get { return (Program.SysConfig.Lense.Factor * this.PixelToMillimeter(1600) / Program.SysConfig.CCD.Length) * this.Zoom; }
+            get { return (Program.SysConfig.Lense.Factor * this.PixelToMillimeter(1600) / Program.SysConfig.CCD.Length) * this.Zoom * 0.75d; }
         }
 
         private RestrictArea restrictArea;
@@ -1014,7 +1014,10 @@ namespace CII.LAR.UI
                     {
                         if (Program.EntryForm.Laser != null && Program.SysConfig.Function == SystemFunction.Laser)
                         {
+                            e.Graphics.ScaleTransform(Zoom, Zoom);
+                            e.Graphics.TranslateTransform(OffsetX, OffsetY);
                             Program.EntryForm.Laser.OnPaint(e);
+                            e.Graphics.ResetTransform();
                         }
                     }
                     if (GraphicsList != null && Program.SysConfig.Function == SystemFunction.Measure)

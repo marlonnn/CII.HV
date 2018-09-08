@@ -1065,5 +1065,16 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrEnterHotKey", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 Are you confirm to delete this file? 的本地化字符串。
+        /// </summary>
+        internal static string StrConfirmToDelete
+        {
+            get
+            {
+                return ResourceManager.GetString("StrConfirmToDelete", resourceCulture);
+            }
+        }
     }
 }

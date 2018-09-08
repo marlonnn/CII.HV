@@ -133,31 +133,35 @@ namespace CII.LAR
 
         private void toolStripButtonDelete_Click(object sender, EventArgs e)
         {
-            // Suspend the layout logic while we are removing items.
-            // Otherwise the control will be refreshed after each item
-            // is removed.
-            imageListView.SuspendLayout();
-
-            // Remove selected items
-            foreach (var item in imageListView.SelectedItems)
+            if (MaterialSkin.MsgBox.Show(Properties.Resources.StrConfirmToDelete, Properties.Resources.StrWaring,
+                MaterialSkin.MsgBox.Buttons.YesNo, MaterialSkin.MsgBox.Icon.Warning) == DialogResult.Yes)
             {
-                imageListView.Items.Remove(item);
-                if (File.Exists(item.FileName))
+                // Suspend the layout logic while we are removing items.
+                // Otherwise the control will be refreshed after each item
+                // is removed.
+                imageListView.SuspendLayout();
+
+                // Remove selected items
+                foreach (var item in imageListView.SelectedItems)
                 {
-                    try
+                    imageListView.Items.Remove(item);
+                    if (File.Exists(item.FileName))
                     {
-                        new FileInfo(item.FileName).Attributes = FileAttributes.Normal;
-                        File.Delete(item.FileName);
-                    }
-                    catch (Exception ex)
-                    {
-                        continue;
+                        try
+                        {
+                            new FileInfo(item.FileName).Attributes = FileAttributes.Normal;
+                            File.Delete(item.FileName);
+                        }
+                        catch (Exception ex)
+                        {
+                            continue;
+                        }
                     }
                 }
-            }
 
-            // Resume layout logic.
-            imageListView.ResumeLayout(true);
+                // Resume layout logic.
+                imageListView.ResumeLayout(true);
+            }
         }
 
         private void toolStripButtonPrint_Click(object sender, EventArgs e)

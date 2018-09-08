@@ -307,49 +307,53 @@ namespace CII.LAR.UI
         }
         private void toolStripButtonDelete_Click(object sender, EventArgs e)
         {
-            // Suspend the layout logic while we are removing items.
-            // Otherwise the control will be refreshed after each item
-            // is removed.
-            imageListView.SuspendLayout();
-            string folder = "";
-            // Remove selected items
-            foreach (var item in imageListView.SelectedItems)
+            if (MaterialSkin.MsgBox.Show(Properties.Resources.StrConfirmToDelete, Properties.Resources.StrWaring, 
+                MaterialSkin.MsgBox.Buttons.YesNo, MaterialSkin.MsgBox.Icon.Warning) == DialogResult.Yes)
             {
-                folder = item.FilePath;
-                imageListView.Items.Remove(item);
-                if (File.Exists(item.FileName))
+                // Suspend the layout logic while we are removing items.
+                // Otherwise the control will be refreshed after each item
+                // is removed.
+                imageListView.SuspendLayout();
+                string folder = "";
+                // Remove selected items
+                foreach (var item in imageListView.SelectedItems)
+                {
+                    folder = item.FilePath;
+                    imageListView.Items.Remove(item);
+                    if (File.Exists(item.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(item.FileName);
+                        }
+                        catch (Exception ex)
+                        {
+                            continue;
+                        }
+                    }
+                }
+                if (imageListView.Items.Count == 0)
                 {
                     try
                     {
-                        File.Delete(item.FileName);
+                        if (Directory.Exists(folder))
+                        {
+                            Directory.Delete(folder);
+                        }
+                        Patient p = FindPatient(folder);
+                        if (p != null)
+                        {
+                            allPatients.Rremove(p);
+                            RemovePatientFormListView(p);
+                        }
                     }
                     catch (Exception ex)
                     {
-                        continue;
                     }
                 }
+                // Resume layout logic.
+                imageListView.ResumeLayout(true);
             }
-            if (imageListView.Items.Count == 0)
-            {
-                try
-                {
-                    if (Directory.Exists(folder))
-                    {
-                        Directory.Delete(folder);
-                    }
-                    Patient p = FindPatient(folder);
-                    if (p != null)
-                    {
-                        allPatients.Rremove(p);
-                        RemovePatientFormListView(p);
-                    }
-                }
-                catch (Exception ex)
-                {
-                }
-            }
-            // Resume layout logic.
-            imageListView.ResumeLayout(true);
         }
 
         private void RemovePatientFormListView(Patient p)

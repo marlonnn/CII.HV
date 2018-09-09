@@ -61,7 +61,7 @@ namespace CII.LAR.Algorithm
             }
         }
 
-        private bool motionComplete = false;
+        private bool motionComplete = true;
         public bool MotionComplete
         {
             get { return this.motionComplete; }

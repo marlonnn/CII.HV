@@ -72,6 +72,10 @@ namespace CII.LAR.Laser
 
         public override void OnMouseDown(RichPictureBox richPictureBox, MouseEventArgs e)
         {
+            if (Program.SysConfig.MotorPortConected && Program.SysConfig.LiveMode)
+            {
+                if (!Coordinate.GetCoordinate().MotionComplete) return;
+            }
             PointF pf = new PointF(e.Location.X / richPictureBox.Zoom - richPictureBox.OffsetX, e.Location.Y / richPictureBox.Zoom - richPictureBox.OffsetY);
             if (richPictureBox.RestrictArea.CheckPointInRegion(pf)) return;
             Point point = ToZoomPoint( e.Location);
@@ -90,6 +94,10 @@ namespace CII.LAR.Laser
 
         public override void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)
         {
+            if (Program.SysConfig.MotorPortConected && Program.SysConfig.LiveMode)
+            {
+                if (!Coordinate.GetCoordinate().MotionComplete) return;
+            }
             //if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
             PointF pf = new PointF(e.Location.X / richPictureBox.Zoom - richPictureBox.OffsetX, e.Location.Y / richPictureBox.Zoom - richPictureBox.OffsetY);
             if (richPictureBox.RestrictArea.CheckPointInRegion(pf)) return;

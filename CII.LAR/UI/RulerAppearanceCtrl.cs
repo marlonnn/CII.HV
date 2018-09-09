@@ -118,6 +118,7 @@ namespace CII.LAR.UI
                     }
                 }
             }
+            this.pictureBox.InvokeMouseWheel = !this.Visible;
         }
 
         public override void RefreshUI()

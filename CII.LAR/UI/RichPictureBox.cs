@@ -355,6 +355,7 @@ namespace CII.LAR.UI
             this.PictureBoxPaintedEvent += imageTracker.OnPicturePainted;
             this.restrictArea = new RestrictArea(this);
             this.BackColor = Color.FromArgb(0x28, 0x2C, 0x35);
+            this.InvokeMouseWheel = true;
         }
 
         public DebugCtrl df;
@@ -629,63 +630,42 @@ namespace CII.LAR.UI
             }
         }
 
+        private bool invokeMouseWheel;
+        public bool InvokeMouseWheel
+        {
+            get { return this.invokeMouseWheel; }
+            set { this.invokeMouseWheel = value; }
+        }
+
         public void RichPictureBoxMouseWheel(MouseEventArgs e)
         {
-            OnMouseWheel(e);
+            if (this.InvokeMouseWheel)
+            {
+                OnMouseWheel(e);
+            }
         }
         protected override void OnMouseWheel(MouseEventArgs e)
         {
-            //if (this.Picture == null) return;
-            float oldzoom = zoom;
-
-            if (e.Delta > 0)
+            if (this.InvokeMouseWheel)
             {
-                if (IsCtrlKeyPressed)
+                //if (this.Picture == null) return;
+                float oldzoom = zoom;
+
+                if (e.Delta > 0)
                 {
-                    PanAllDrirection(oldzoom, PanDirection.Left);
-                }
-                else if (IsShiftKeyPressed)
-                {
-                    PanAllDrirection(oldzoom, PanDirection.Up);
-                }
-                else
-                {
-                    //最大放大16倍
-                    if (zoom + 1 == 17) return;
-                    zoom += 1;
-                    if (zoom < 3)
+                    if (IsCtrlKeyPressed)
                     {
-                        Point mousePos = new Point(this.Width / 2, this.Height / 2);
-                        MouseEventArgs args = new MouseEventArgs(new MouseButtons(), 1, mousePos.X, mousePos.Y, 0);
-                        ZoomOnMouseCenter(args, oldzoom);
+                        PanAllDrirection(oldzoom, PanDirection.Left);
+                    }
+                    else if (IsShiftKeyPressed)
+                    {
+                        PanAllDrirection(oldzoom, PanDirection.Up);
                     }
                     else
                     {
-                        ZoomOnMouseCenter(e, oldzoom);
-                    }
-                }
-            }
-            else if (e.Delta < 0)
-            {
-                if (IsCtrlKeyPressed)
-                {
-                    PanAllDrirection(oldzoom, PanDirection.Right);
-                }
-                else if (IsShiftKeyPressed)
-                {
-                    PanAllDrirection(oldzoom, PanDirection.Down);
-                }
-                else
-                {
-                    if (zoom - 1 < 1) return;
-                    if (zoom == 2)
-                    {
-                        zoom -= 1;
-                        ZoomFit();
-                    }
-                    else if (zoom > 1)
-                    {
-                        zoom -= 1;
+                        //最大放大16倍
+                        if (zoom + 1 == 17) return;
+                        zoom += 1;
                         if (zoom < 3)
                         {
                             Point mousePos = new Point(this.Width / 2, this.Height / 2);
@@ -698,10 +678,43 @@ namespace CII.LAR.UI
                         }
                     }
                 }
+                else if (e.Delta < 0)
+                {
+                    if (IsCtrlKeyPressed)
+                    {
+                        PanAllDrirection(oldzoom, PanDirection.Right);
+                    }
+                    else if (IsShiftKeyPressed)
+                    {
+                        PanAllDrirection(oldzoom, PanDirection.Down);
+                    }
+                    else
+                    {
+                        if (zoom - 1 < 1) return;
+                        if (zoom == 2)
+                        {
+                            zoom -= 1;
+                            ZoomFit();
+                        }
+                        else if (zoom > 1)
+                        {
+                            zoom -= 1;
+                            if (zoom < 3)
+                            {
+                                Point mousePos = new Point(this.Width / 2, this.Height / 2);
+                                MouseEventArgs args = new MouseEventArgs(new MouseButtons(), 1, mousePos.X, mousePos.Y, 0);
+                                ZoomOnMouseCenter(args, oldzoom);
+                            }
+                            else
+                            {
+                                ZoomOnMouseCenter(e, oldzoom);
+                            }
+                        }
+                    }
+                }
+                this.imageTracker.ScalePercent = zoom * 100;
+                this.Refresh();
             }
-            this.imageTracker.ScalePercent = zoom * 100;
-            this.Refresh();
-
         }
 
 

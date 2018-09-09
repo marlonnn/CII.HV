@@ -97,30 +97,35 @@ namespace CII.LAR.UI
             resources.ApplyResources(this.txtTakePicture, "txtTakePicture");
             this.txtTakePicture.Name = "txtTakePicture";
             this.txtTakePicture.ToolTip = null;
+            this.txtTakePicture.UnRegisterKey += UnRegisterKey;
             // 
             // txtZoomIn
             // 
             resources.ApplyResources(this.txtZoomIn, "txtZoomIn");
             this.txtZoomIn.Name = "txtZoomIn";
             this.txtZoomIn.ToolTip = null;
+            this.txtZoomIn.UnRegisterKey += UnRegisterKey;
             // 
             // txtZoomOut
             // 
             resources.ApplyResources(this.txtZoomOut, "txtZoomOut");
             this.txtZoomOut.Name = "txtZoomOut";
             this.txtZoomOut.ToolTip = null;
+            this.txtZoomOut.UnRegisterKey += UnRegisterKey;
             // 
             // txtStart
             // 
             resources.ApplyResources(this.txtStart, "txtStart");
             this.txtStart.Name = "txtStart";
             this.txtStart.ToolTip = null;
+            this.txtStart.UnRegisterKey += UnRegisterKey;
             // 
             // txtFire
             // 
             resources.ApplyResources(this.txtFire, "txtFire");
             this.txtFire.Name = "txtFire";
             this.txtFire.ToolTip = null;
+            this.txtFire.UnRegisterKey += UnRegisterKey;
             // 
             // lblFire
             // 

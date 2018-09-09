@@ -55,6 +55,18 @@ namespace CII.LAR.UI
         {
             if (this.Visible)
             {
+                if (Program.EntryForm.Laser != null)
+                {
+                    Program.EntryForm.Laser.Flashing = false;
+                    if (Program.EntryForm.LaserType == LaserType.SaturnActive)
+                    {
+                        var activeLaser = Program.EntryForm.Laser as ActiveLaser;
+                        if (activeLaser != null)
+                        {
+                            activeLaser.ResetCircles();
+                        }
+                    }
+                }
                 var laserHoleSize = CtrlFactory.GetCtrlFactory().GetCtrlByType<LaserHoleSize>(CtrlType.LaserHoleSize);
                 if (laserHoleSize != null)
                 {

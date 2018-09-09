@@ -173,12 +173,20 @@ namespace CII.LAR
             this.laser.ClearLaser();
         }
 
+        private bool invokeLocalHotKeyPressed;
+        public bool InvokeLocalHotKeyPressed
+        {
+            get { return this.invokeLocalHotKeyPressed; }
+            set { this.invokeLocalHotKeyPressed = value; }
+        }
+
         public MainForm()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             hotKeyManager = new HotKeyManager(this);
             hotKeyManager.LocalHotKeyPressed += HotKeyManager_LocalHotKeyPressed;
+            InvokeLocalHotKeyPressed = true;
             resources = new ComponentResourceManager(typeof(MainForm));
             listViewItemArray = new ListViewItemArray();
 
@@ -305,7 +313,7 @@ namespace CII.LAR
 
         private void HotKeyManager_LocalHotKeyPressed(object sender, LocalHotKeyEventArgs e)
         {
-            if (e.HotKey.Name != null)
+            if (e.HotKey.Name != null && InvokeLocalHotKeyPressed)
             {
                 switch (e.HotKey.Name)
                 {

@@ -27,6 +27,8 @@ namespace CII.LAR.UI
         [Description("Specifies that the control should force the user to use a modifier.")]
         public bool ForceModifiers { get { return forcemodifier; } set { forcemodifier = value; } }
 
+        public event EventHandler UnRegisterKey;
+
         ///// <summary>The value of this property can never be true, even if set.
         ///// </summary>
         //[EditorBrowsable(EditorBrowsableState.Never), Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -155,7 +157,7 @@ namespace CII.LAR.UI
             e.SuppressKeyPress = true;  //Suppress the key from being processed by the underlying control.
             this.Text = string.Empty;  //Empty the content of the textbox
             KeyisSet = false; //At this point the user has not specified a shortcut.
-
+            Program.EntryForm.InvokeLocalHotKeyPressed = false;
             //Make the user specify a modifier. Control, Alt or Shift.
             //If a modifier is not present then clear the textbox.
             if (e.Modifiers == Keys.None && forcemodifier)
@@ -184,6 +186,7 @@ namespace CII.LAR.UI
             {
                 this.Text += e.KeyCode.ToString();
                 KeyisSet = true;
+                Program.EntryForm.InvokeLocalHotKeyPressed = true;
             }
         }
 
@@ -197,7 +200,9 @@ namespace CII.LAR.UI
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
+            KeyisSet = false;
             this.Text = string.Empty;
+            UnRegisterKey?.Invoke(this, e);
         }
         #endregion
     }

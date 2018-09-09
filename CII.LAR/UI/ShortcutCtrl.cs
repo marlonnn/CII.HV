@@ -118,6 +118,50 @@ namespace CII.LAR.UI
             }
         }
 
+        private void UnRegisterKey(object sender, EventArgs e)
+        {
+            try
+            {
+                var keys = Program.SysConfig.LocalHotKeyContainer.ToList();
+                HotKeyControl ctrl = sender as HotKeyControl;
+                string name = GetHotKeyName(ctrl);
+                foreach (var shortkey in keys)
+                {
+                    if (shortkey.Name == name)
+                    {
+                        hotKeyManager.RemoveHotKey(shortkey.Name);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private string GetHotKeyName(HotKeyControl ctrl)
+        {
+            string name = "";
+            switch (ctrl.Name)
+            {
+                case "txtTakePicture":
+                    name = "takePicture";
+                    break;
+                case "txtZoomIn":
+                    name = "zoomIn";
+                    break;
+                case "txtZoomOut":
+                    name = "zoomOut";
+                    break;
+                case "txtStart":
+                    name = "startRecord";
+                    break;
+                case "txtFire":
+                    name = "fireLaser";
+                    break;
+            }
+            return name;
+        }
+
         private void Register()
         {
             if (!string.IsNullOrEmpty(txtTakePicture.Text) &&  txtTakePicture.Text != Keys.None.ToString())
@@ -156,11 +200,6 @@ namespace CII.LAR.UI
         {
             base.RefreshUI();
             this.Title = global::CII.LAR.Properties.Resources.StrShortcutTitle;
-            //resources.ApplyResources(this.buttonSave, buttonSave.Name);
-            //resources.ApplyResources(this.lblVideo, lblVideo.Name);
-            //resources.ApplyResources(this.lblZoomOut, lblZoomOut.Name);
-            //resources.ApplyResources(this.lblZoomIn, lblZoomIn.Name);
-            //resources.ApplyResources(this.lblSnapshoot, lblSnapshoot.Name);
             foreach (var ctrl in this.Controls)
             {
                 HotKeyControl hkc = ctrl as HotKeyControl;

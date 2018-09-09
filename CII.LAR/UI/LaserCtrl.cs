@@ -225,7 +225,7 @@ namespace CII.LAR.UI
                 var fixedLaser = Program.EntryForm.Laser as FixedLaser;
                 if (fixedLaser != null)
                 {
-                    if (serialPortCom != null)
+                    if (serialPortCom != null && !fixedLaser.CenterPoint.IsEmpty)
                     {
                         Program.EntryForm.Laser.Flashing = !flashing;
 

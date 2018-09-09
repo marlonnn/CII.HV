@@ -1204,6 +1204,12 @@ namespace CII.LAR
             deleteButton.Click += DeleteButton_Click;
         }
 
+        public void ClearStatisticsListViewItems()
+        {
+            listViewItemArray.ClearItem();
+            this.statisticsCtrl.StatisticsListView.Items.Clear();
+        }
+
         /// <summary>
         /// Delete button click event
         /// delete listviewitem and draw object graphic

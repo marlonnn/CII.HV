@@ -279,6 +279,7 @@ namespace CII.LAR.UI
                 simulatorOpen = false;
                 this.btnSimulator.Text = CII.LAR.Properties.Resources.StrOpenSimulator;
             }
+            Program.EntryForm.ClearStatisticsListViewItems();
         }
 
         private void materialRoundButton1_Click(object sender, EventArgs e)

@@ -37,5 +37,10 @@ namespace CII.LAR.UI
         {
             items.Remove(item);
         }
+
+        public void ClearItem()
+        {
+            items.Clear();
+        }
     }
 }

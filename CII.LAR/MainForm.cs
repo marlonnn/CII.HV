@@ -1089,39 +1089,61 @@ namespace CII.LAR
         /// <param name="statistics"></param>
         private void AppendItems(DrawObject drawObject, Statistics statistics)
         {
-            if (this.richPictureBox.DrawObject == null || (drawObject.Name != this.richPictureBox.DrawObject.Name && !Exist(drawObject.Name)))
+            if (this.richPictureBox.ActiveTool == DrawToolType.Pointer)
             {
                 try
                 {
-                    this.richPictureBox.DrawObject = drawObject;
-                    ListViewItem lvi = new ListViewItem();
-                    lvi.Text = drawObject.Name;
-                    lvi.SubItems.Add(statistics.Circumference.ToString());
-                    lvi.SubItems.Add(statistics.Area.ToString());
-                    Console.WriteLine(statistics.Circumference.ToString());
-                    this.statisticsCtrl.StatisticsListView.Items.Add(lvi);
-                    ListViewItemEx listViewItemEx = new ListViewItemEx(lvi, drawObject);
-                    AddEmbeddedControlToListView(listViewItemEx);
-                    EnableAppearanceButton();
+                    foreach (ListViewItem item in this.statisticsCtrl.StatisticsListView.Items)
+                    {
+                        if (item != null && item.Text == drawObject.Name)
+                        {
+                            if (statistics.Circumference != null) item.SubItems[1].Text = statistics.Circumference.ToString();
+                            if (statistics.Area != null) item.SubItems[2].Text = statistics.Area.ToString();
+                        }
+                    }
+                    CalculateStatisticsInformation();
                 }
-                catch (Exception ee)
+                catch (Exception ex)
                 {
-                    LogHelper.GetLogger<MainForm>().Error(ee.Message);
-                    LogHelper.GetLogger<MainForm>().Error(ee.StackTrace);
+
                 }
             }
-            else if (this.richPictureBox.DrawObject != null && drawObject.Name == this.richPictureBox.DrawObject.Name)
+            else
             {
-                foreach (ListViewItem item in this.statisticsCtrl.StatisticsListView.Items)
+                if (this.richPictureBox.DrawObject == null || (drawObject.Name != this.richPictureBox.DrawObject.Name && !Exist(drawObject.Name)))
                 {
-                    if (item != null && item.Text == this.richPictureBox.DrawObject.Name)
+                    try
                     {
-                        if (statistics.Circumference != null) item.SubItems[1].Text = statistics.Circumference.ToString();
-                        if (statistics.Area != null) item.SubItems[2].Text = statistics.Area.ToString();
+                        this.richPictureBox.DrawObject = drawObject;
+                        ListViewItem lvi = new ListViewItem();
+                        lvi.Text = drawObject.Name;
+                        lvi.SubItems.Add(statistics.Circumference.ToString());
+                        lvi.SubItems.Add(statistics.Area.ToString());
+                        Console.WriteLine(statistics.Circumference.ToString());
+                        this.statisticsCtrl.StatisticsListView.Items.Add(lvi);
+                        ListViewItemEx listViewItemEx = new ListViewItemEx(lvi, drawObject);
+                        AddEmbeddedControlToListView(listViewItemEx);
+                        EnableAppearanceButton();
+                    }
+                    catch (Exception ee)
+                    {
+                        LogHelper.GetLogger<MainForm>().Error(ee.Message);
+                        LogHelper.GetLogger<MainForm>().Error(ee.StackTrace);
                     }
                 }
+                else if (this.richPictureBox.DrawObject != null && drawObject.Name == this.richPictureBox.DrawObject.Name)
+                {
+                    foreach (ListViewItem item in this.statisticsCtrl.StatisticsListView.Items)
+                    {
+                        if (item != null && item.Text == this.richPictureBox.DrawObject.Name)
+                        {
+                            if (statistics.Circumference != null) item.SubItems[1].Text = statistics.Circumference.ToString();
+                            if (statistics.Area != null) item.SubItems[2].Text = statistics.Area.ToString();
+                        }
+                    }
+                }
+                CalculateStatisticsInformation();
             }
-            CalculateStatisticsInformation();
         }
 
         private void CalculateStatisticsInformation()

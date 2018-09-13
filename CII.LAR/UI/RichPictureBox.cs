@@ -268,6 +268,14 @@ namespace CII.LAR.UI
             }
         }
 
+        public void ResetClickCount()
+        {
+            if (tools != null && tools[(int)activeTool] != null)
+            {
+                tools[(int)activeTool].ClickCount = 0;
+            }
+        }
+
         private void SetSystemFunction(DrawToolType tool)
         {
             switch (tool)

@@ -20,6 +20,7 @@ namespace CII.LAR.DrawTools
         public int ClickCount
         {
             get { return this.clickCount; }
+            set { this.clickCount = value; }
         }
 
         protected Point endPoint = new Point(0, 0);

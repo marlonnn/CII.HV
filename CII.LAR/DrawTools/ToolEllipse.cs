@@ -42,20 +42,24 @@ namespace CII.LAR.DrawTools
 
         public override void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)
         {
-            if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
-            richPictureBox.Cursor = Cursor;
+                if (richPictureBox.RestrictArea.CheckPointInRegion(e.Location)) return;
+                richPictureBox.Cursor = Cursor;
 
-            if (clickCount % 2 == 1)
-            {
-                var p = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
-                Rectangle rectangle = new Rectangle(new Point(startPoint.X - 1, startPoint.Y - 1), new Size(2, 2));
-                if (rectangle.Contains(p)) return;
+                if (clickCount % 2 == 1)
+                {
+                    var p = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
+                    Rectangle rectangle = new Rectangle(new Point(startPoint.X - 1, startPoint.Y - 1), new Size(2, 2));
+                    if (rectangle.Contains(p)) return;
 
-                base.OnMouseMove(richPictureBox, e);
-                Point point = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
-                richPictureBox.GraphicsList[0].MoveHandleTo(richPictureBox, point, 5);
-                richPictureBox.Invalidate();
-            }
+                    base.OnMouseMove(richPictureBox, e);
+                    Point point = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
+                    if (richPictureBox.GraphicsList != null && richPictureBox.GraphicsList.Count > 0)
+                    {
+                        richPictureBox.GraphicsList[0].MoveHandleTo(richPictureBox, point, 5);
+                        richPictureBox.Invalidate();
+                    }
+                }
+
         }
 
         public override void OnMouseUp(RichPictureBox richPictureBox, MouseEventArgs e)

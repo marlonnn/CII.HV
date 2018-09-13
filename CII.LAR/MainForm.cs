@@ -1068,7 +1068,15 @@ namespace CII.LAR
             if (e.KeyCode == Keys.Escape && this.richPictureBox.ActiveTool != DrawToolType.Pointer)
             {
                 this.richPictureBox.LaserFunction = false;
+                this.richPictureBox.ResetClickCount();
                 this.richPictureBox.ActiveTool = DrawToolType.Pointer;
+                if (this.richPictureBox.GraphicsList != null && this.richPictureBox.GraphicsList.Count > 0)
+                {
+                    foreach (var toolObject in this.richPictureBox.GraphicsList)
+                    {
+                        toolObject.Creating = false;
+                    }
+                }
             }
 
         }

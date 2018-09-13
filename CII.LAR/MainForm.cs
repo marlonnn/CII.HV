@@ -423,18 +423,24 @@ namespace CII.LAR
                         fileName = string.Format(@"{0}\{1}_{2}_{3}.png", folder, DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff"), centerPoint.X, centerPoint.Y);
                     }
                 }
-                if (this.richPictureBox.VideoFrame != null)
+                if (Program.SysConfig.LiveMode)
                 {
-                    Bitmap b = this.ResizeImage(this.richPictureBox.VideoFrame, this.videoControl.Bounds.Width, this.videoControl.Bounds.Height);
-                    this.richPictureBox.FilpImage(b);
-                    b.Save(fileName, ImageFormat.Png);
-                    MaterialSkin.ToastNotification.Instance().ShowToast(Properties.Resources.StrScreenshotSuccess, global::CII.LAR.Properties.Resources.capture);
+                    if (this.richPictureBox.VideoFrame != null)
+                    {
+                        Bitmap b = this.ResizeImage(this.richPictureBox.VideoFrame, this.videoControl.Bounds.Width, this.videoControl.Bounds.Height);
+                        this.richPictureBox.FilpImage(b);
+                        b.Save(fileName, ImageFormat.Png);
+                        MaterialSkin.ToastNotification.Instance().ShowToast(Properties.Resources.StrScreenshotSuccess, global::CII.LAR.Properties.Resources.capture);
+                    }
                 }
-                else if (this.richPictureBox.Image != null)
+                else
                 {
-                    this.richPictureBox.Image.Save(fileName);
-                    MaterialSkin.ToastNotification.Instance().ShowToast(Properties.Resources.StrScreenshotSuccess, global::CII.LAR.Properties.Resources.capture);
+                    if (this.richPictureBox.Image != null)
+                    {
+                        this.richPictureBox.Image.Save(fileName);
+                        MaterialSkin.ToastNotification.Instance().ShowToast(Properties.Resources.StrScreenshotSuccess, global::CII.LAR.Properties.Resources.capture);
 
+                    }
                 }
             }
         }

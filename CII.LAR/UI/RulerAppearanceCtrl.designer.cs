@@ -79,6 +79,7 @@ namespace CII.LAR.UI
             this.sliderColour.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
             this.sliderColour.ThumbSize = 6;
             this.sliderColour.ValueChanged += new System.EventHandler(this.sliderColour_ValueChanged);
+            this.sliderColour.KeyDown += Slider_KeyDown;
             // 
             // lblZColour
             // 
@@ -110,6 +111,7 @@ namespace CII.LAR.UI
             this.sliderTargetSize.ThumbSize = 6;
             this.sliderTargetSize.Value = 9;
             this.sliderTargetSize.ValueChanged += new System.EventHandler(this.sliderTargetSize_ValueChanged);
+            this.sliderTargetSize.KeyDown += Slider_KeyDown;
             // 
             // lblTargerSize
             // 
@@ -141,6 +143,7 @@ namespace CII.LAR.UI
             this.sliderThickness.ThumbSize = 6;
             this.sliderThickness.Value = 1;
             this.sliderThickness.ValueChanged += new System.EventHandler(this.sliderThickness_ValueChanged);
+            this.sliderThickness.KeyDown += Slider_KeyDown;
             // 
             // lblThickness
             // 
@@ -171,6 +174,7 @@ namespace CII.LAR.UI
             this.sliderTransparency.ThumbSize = 6;
             this.sliderTransparency.Value = 1;
             this.sliderTransparency.ValueChanged += new System.EventHandler(this.sliderTransparency_ValueChanged);
+            this.sliderTransparency.KeyDown += Slider_KeyDown;
             // 
             // lblTransparency
             // 

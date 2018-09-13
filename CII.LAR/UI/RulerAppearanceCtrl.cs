@@ -66,6 +66,14 @@ namespace CII.LAR.UI
             }
         }
 
+        private void Slider_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (DelegateClass.GetDelegate().VideoKeyDownHandler != null)
+            {
+                DelegateClass.GetDelegate().VideoKeyDownHandler(new System.Windows.Forms.KeyEventArgs(e.KeyCode));
+            }
+        }
+
         private void sliderThickness_ValueChanged(object sender, EventArgs e)
         {
             var value = this.sliderThickness.Value;

@@ -181,7 +181,7 @@
     <value>物镜倍数为数字，或者输入的物镜倍数超限，请正确输入数字。</value>
   </data>
   <data name="StrShortcutExist" xml:space="preserve">
-    <value>这个快键已经存在</value>
+    <value>这个快捷键已经存在</value>
   </data>
   <data name="StrVideoChooseTitle" xml:space="preserve">
     <value>相机选择</value>

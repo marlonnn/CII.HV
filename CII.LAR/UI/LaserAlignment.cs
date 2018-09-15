@@ -196,7 +196,7 @@ namespace CII.LAR.UI
                 this.RichPictureBox.ZoomFit();
                 if (Index == -2) this.richPictureBox.RestrictArea.TransformMotorOriginalPoints();
                 ToastNotification.Instance().ShowToast(Properties.Resources.StrCalibrationSuccess, global::CII.LAR.Properties.Resources.warn);
-
+                Program.EntryForm.HolesNumberSlider(Program.EntryForm.LaserType == LaserType.SaturnActive);
             }
         }
 

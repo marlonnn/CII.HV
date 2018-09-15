@@ -47,8 +47,8 @@ namespace CII.LAR.DrawTools
                 if (rectangle.Contains(p)) return;
 
                 base.OnMouseMove(richPictureBox, e);
-                Point point = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
-                richPictureBox.GraphicsList[0].MoveHandleTo(richPictureBox, point, 2);
+                //Point point = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
+                richPictureBox.GraphicsList[0].MoveHandleTo(richPictureBox, p, 2);
                 //richPictureBox.GraphicsList[0].UpdateStatisticsInformation();
                 richPictureBox.Invalidate();
             }

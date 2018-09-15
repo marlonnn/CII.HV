@@ -376,10 +376,11 @@ namespace CII.LAR.DrawTools
         {
             SolidBrush brush = new SolidBrush(Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Text").Color);
             Font font = new Font("Microsoft Sans Serif", GraphicsProperties.TextSize);
-            RectangleF r = GetTextF(this.Name, g, this.ID);
+            string text = string.Format("{0} ({1})", this.Name, angle);
+            RectangleF r = GetTextF(text, g, this.ID);
             r.Offset(MovingOffset);
 
-            g.DrawString(this.Name, font, brush, r);
+            g.DrawString(text, font, brush, r);
             brush.Dispose();
             font.Dispose();
         }
@@ -480,47 +481,24 @@ namespace CII.LAR.DrawTools
                 g.DrawLine(pen, startDataPoint.X + MovingOffset.X, startDataPoint.Y + MovingOffset.Y, 
                     endDataPoint.X + MovingOffset.X, endDataPoint.Y + MovingOffset.Y);
                 int OriginCrossArmLength = 20;
-                Point midPoint = new Point();
                 PointF origin = new PointF(startDataPoint.X + MovingOffset.X, startDataPoint.Y + MovingOffset.Y);
                 PointF last = new PointF(endDataPoint.X + MovingOffset.X, endDataPoint.Y + MovingOffset.Y);
-                midPoint.X = Math.Min((int)origin.X, (int)last.X) + ((Math.Max((int)origin.X, (int)last.X) - Math.Min((int)origin.X, (int)endDataPoint.X)) / 2);
-                midPoint.Y = Math.Min((int)origin.Y, (int)last.Y) + ((Math.Max((int)origin.Y, (int)last.Y) - Math.Min((int)origin.Y, (int)endDataPoint.Y)) / 2);
                 g.DrawLine(pen, origin.X - OriginCrossArmLength, origin.Y, origin.X + OriginCrossArmLength, origin.Y);
                 g.DrawLine(pen, origin.X, origin.Y - OriginCrossArmLength, origin.X, origin.Y + OriginCrossArmLength);
                 g.DrawArc(pen, origin.X - OriginCrossArmLength, origin.Y - OriginCrossArmLength, 2 * OriginCrossArmLength, 2 * OriginCrossArmLength, 0, Convert.ToInt32(-CurrentAngle));
-                using (System.Drawing.Drawing2D.Matrix mx = new System.Drawing.Drawing2D.Matrix())
-                using (StringFormat sf = new StringFormat())
-                {
-                    string lineLength = (LineLength(Point.Ceiling(origin), Point.Ceiling(last))).ToString("F2");
-                    string ls = strCutDecimals(CurrentAngle, 1);
-                    SizeF l = g.MeasureString(ls, this.richPictureBox.Font, richPictureBox.ClientSize, sf);
-                    sf.LineAlignment = StringAlignment.Center;
-                    sf.Alignment = StringAlignment.Center;
-                    //mx.Translate(midPoint.X, midPoint.Y);
-                    //mx.Rotate(Angle(Point.Ceiling(origin), Point.Ceiling(last)));
-                    //g.Transform = mx;
-                    //Rectangle rt = new Rectangle(0, 0, (int)l.Width, (int)l.Height);
-                    //rt.Inflate(3, 3);
-                    //rt.Offset(-(int)(l.Width / 2), -(int)(l.Height / 2));
-                    //using (SolidBrush backBrush = new SolidBrush(Color.FromArgb(GraphicsProperties.Alpha, GraphicsProperties.Color)))
-                    //{
-                    //    g.FillEllipse(backBrush, rt);
-                    //}
-                    using (SolidBrush brush = new SolidBrush(Program.SysConfig.GraphicsPropertiesManager.GetPropertiesByName("Text").Color))
-                    using (Font font = new Font("Microsoft Sans Serif", GraphicsProperties.TextSize))
-                    {
-                        g.DrawString(ls + "°", font, brush, midPoint.X - 30, midPoint.Y, sf);
-                    }
-                }
+                angle = strCutDecimals(CurrentAngle, 1) + "°";
+                //DrawAngle(g, richPictureBox, CurrentAngle, origin, last);
             }
         }
+
+        private string angle;
 
         public override RectangleF GetTextF(string name, Graphics g, int index)
         {
             Font font = new Font("Microsoft Sans Serif", GraphicsProperties.TextSize);
             SizeF sizeF = g.MeasureString(name, font);
             font.Dispose();
-            return new RectangleF(startDataPoint.X - sizeF.Width /*- richPictureBox.StartOffsetX*/, startDataPoint.Y - sizeF.Height / 2,
+            return new RectangleF(startDataPoint.X - sizeF.Width -30 /*- richPictureBox.StartOffsetX*/, startDataPoint.Y - sizeF.Height / 2,
                 sizeF.Width, sizeF.Height);
         }
 
@@ -534,14 +512,14 @@ namespace CII.LAR.DrawTools
 
         public override void Normalize()
         {
-            endDataPoint.Y = startDataPoint.Y;
+            //endDataPoint.Y = startDataPoint.Y;
 
-            if (startDataPoint.X > endDataPoint.X)  // make sure start point is left than end point
-            {
-                float temp = startDataPoint.X;
-                startDataPoint.X = endDataPoint.X;
-                endDataPoint.X = temp;
-            }
+            //if (startDataPoint.X > endDataPoint.X)  // make sure start point is left than end point
+            //{
+            //    float temp = startDataPoint.X;
+            //    startDataPoint.X = endDataPoint.X;
+            //    endDataPoint.X = temp;
+            //}
         }
 
         public override Cursor GetHandleCursor(int handleNumber)

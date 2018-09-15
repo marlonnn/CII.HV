@@ -33,6 +33,16 @@ namespace CII.LAR.DrawTools
                 drawObject = new DrawRectangle(richPictureBox, startPoint.X, startPoint.Y, 1, 1);
                 AddNewObject(richPictureBox, drawObject);
             }
+            else
+            {
+                endPoint = new Point((int)(e.X / richPictureBox.Zoom - richPictureBox.OffsetX), (int)(e.Y / richPictureBox.Zoom - richPictureBox.OffsetY));
+                Rectangle rectangle = new Rectangle(new Point(startPoint.X - 1, startPoint.Y - 1), new Size(2, 2));
+                if (rectangle.Contains(endPoint))
+                {
+                    richPictureBox.GraphicsList.DeleteDrawObject(drawObject);
+                    richPictureBox.Invalidate();
+                }
+            }
         }
 
         public override void OnMouseMove(RichPictureBox richPictureBox, MouseEventArgs e)

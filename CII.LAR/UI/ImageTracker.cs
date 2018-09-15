@@ -191,14 +191,32 @@ namespace CII.LAR.UI
             float yPosScale = (float)showingRect.Y / (float)pictureBoxRect.Height;
             highlightingRect = new Rectangle((int)(this.pictureDestRect.X + this.pictureDestRect.Width * xPosScale),
             (int)(this.pictureDestRect.Y + this.pictureDestRect.Height * yPosScale),
-            (int)(this.pictureDestRect.Width * (1 / (richPictureBox.Zoom * 0.6f))),
-            (int)(this.pictureDestRect.Height * (1 / (richPictureBox.Zoom * 0.6f))));
+            (int)(this.pictureDestRect.Width * (1 / (richPictureBox.Zoom * GetScaleFactor()))),
+            (int)(this.pictureDestRect.Height * (1 / (richPictureBox.Zoom * GetScaleFactor()))));
 
             regionToInvalidate.Union(highlightingRect); // Also redraw the part now highlighted.
 
             // Redraw only old and new highlighted rectangles
             picturePanel.Invalidate(regionToInvalidate);
             regionToInvalidate.Dispose();
+        }
+
+        private float GetScaleFactor()
+        {
+            float factor = 1f;
+            if (richPictureBox.Zoom <= 4)
+            {
+                factor = 0.6f;
+            }
+            else if (richPictureBox.Zoom <= 8 && richPictureBox.Zoom > 4)
+            {
+                factor = 0.4f;
+            }
+            else if (richPictureBox.Zoom <= 16 && richPictureBox.Zoom > 8)
+            {
+                factor = 0.2f;
+            }
+            return factor;
         }
 
         protected override void OnPaint(PaintEventArgs e)

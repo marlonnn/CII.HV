@@ -279,6 +279,9 @@
   <data name="StrLaserNotConnect" xml:space="preserve">
     <value>请等待激光串口初始化完成后，再开始校准。</value>
   </data>
+  <data name="StrLaserNotReady" xml:space="preserve">
+    <value>请等待激光串口初始化完成后，才可以打开红光。</value>
+  </data>
   <data name="StrmodifierWarning" xml:space="preserve">
     <value>必须指定一个控制键，例如 Control, Alt 或 Shift键。</value>
   </data>

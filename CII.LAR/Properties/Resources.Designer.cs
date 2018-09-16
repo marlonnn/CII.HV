@@ -1076,5 +1076,16 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrConfirmToDelete", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 Please wait for the laser serial port to be initialized and then your can open red laser. 的本地化字符串。
+        /// </summary>
+        internal static string StrLaserNotReady
+        {
+            get
+            {
+                return ResourceManager.GetString("StrLaserNotReady", resourceCulture);
+            }
+        }
     }
 }

@@ -8,6 +8,7 @@ using CII.LAR.Laser;
 using CII.LAR.SysClass;
 using CII.LAR.Protocol;
 using CII.LAR.Commond;
+using CII.LAR.MaterialSkin;
 
 namespace CII.LAR.UI
 {
@@ -564,7 +565,7 @@ namespace CII.LAR.UI
 
         private void btnRedLaser_Click(object sender, EventArgs e)
         {
-            if (Program.SysConfig.MotorPortConected)
+            if (Program.SysConfig.LaserPortConected)
             {
                 if (this.btnRedLaser.Text == Properties.Resources.StrEnableRedLaser)
                 {
@@ -575,6 +576,11 @@ namespace CII.LAR.UI
                     this.btnRedLaser.Text = Properties.Resources.StrEnableRedLaser;
                 }
                 EnableRedLaser();
+            }
+            else
+            {
+                MsgBox.Show(Properties.Resources.StrLaserNotReady, Properties.Resources.StrWaring, MsgBox.Buttons.OK, MsgBox.Icon.Info);
+                return;
             }
         }
     }

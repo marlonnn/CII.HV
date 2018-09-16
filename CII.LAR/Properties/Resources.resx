@@ -397,6 +397,9 @@
   <data name="StrLaserNotConnect" xml:space="preserve">
     <value>Please wait for the laser serial port to be initialized and start calibration.</value>
   </data>
+  <data name="StrLaserNotReady" xml:space="preserve">
+    <value>Please wait for the laser serial port to be initialized and then your can open red laser.</value>
+  </data>
   <data name="StrmodifierWarning" xml:space="preserve">
     <value>You have to specify a modifier like 'Control', 'Alt' or 'Shift'.</value>
   </data>

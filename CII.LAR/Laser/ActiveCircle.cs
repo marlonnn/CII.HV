@@ -553,8 +553,8 @@ namespace CII.LAR.Laser
             outterCircles.Clear();
 
             double theta = angle / (double)(count - 1);                                 // 要求的点与圆心连线矢量和圆心与起点连线矢量的角的弧度, 每一小段弧长弧度
-            innerCircles.Add(StartCircle);
-            outterCircles.Add(new Circle(StartPoint, OutterCircleSize));
+            //innerCircles.Add(StartCircle);
+            //outterCircles.Add(new Circle(StartPoint, OutterCircleSize));
             for (int i = 0; i < count; i++)
             {
                 // 得到相对圆心的位置, 用圆心与起点连线矢量来旋转, ccw为1时逆时针旋转, 为－1时正时针旋转
@@ -568,8 +568,8 @@ namespace CII.LAR.Laser
                 innerCircles.Add(new Circle(p, InnerCircleSize));
                 outterCircles.Add(new Circle(p, OutterCircleSize));
             }
-            innerCircles.Add(EndCircle);
-            outterCircles.Add(new Circle(EndPoint, OutterCircleSize));
+            //innerCircles.Add(EndCircle);
+            //outterCircles.Add(new Circle(EndPoint, OutterCircleSize));
             CalArcCenterPoint(count);
             //CalArcAngle();
         }

@@ -17,6 +17,7 @@ using System.Drawing.Text;
 using AForge.Video;
 using System.Diagnostics;
 using AForge.Video.VFW;
+using CII.LAR.Laser;
 
 namespace CII.LAR.UI
 {
@@ -324,7 +325,16 @@ namespace CII.LAR.UI
                     }
                     else
                     {
+                        if (Program.EntryForm.LaserType == LaserType.SaturnActive)
+                        {
+                            var activeLaser = Program.EntryForm.Laser as ActiveLaser;
+                            if (activeLaser != null)
+                            {
+                                activeLaser.ResetCircles();
+                            }
+                        }
                         this.Cursor = Cursors.Default;
+
                     }
                 }
             }

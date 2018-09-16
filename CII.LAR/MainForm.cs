@@ -937,6 +937,10 @@ namespace CII.LAR
                 this.videoControl.VideoSource.NewFrame += new NewFrameEventHandler(this.richPictureBox.VideoSource_NewFrame);
                 this.videoControl.Start();
                 this.richPictureBox.Zoom = 1;
+                if (settingControl != null)
+                {
+                    settingControl.CloseSimulator();
+                }
             }
         }
 

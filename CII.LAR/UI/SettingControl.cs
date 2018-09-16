@@ -283,6 +283,24 @@ namespace CII.LAR.UI
             Program.EntryForm.ClearStatisticsListViewItems();
         }
 
+        public void CloseSimulator()
+        {
+            if (this.btnSimulator.Text == CII.LAR.Properties.Resources.StrCloseSimulator)
+            {
+                if (this.richPictureBox != null)
+                {
+                    updateCmbImage = false;
+                    this.richPictureBox.Picture = null;
+                    this.richPictureBox.GraphicsList.DeleteAll();
+                    CtrlFactory.GetCtrlFactory().GetCtrlByType<StatisticsCtrl>(CtrlType.StatisticsCtrl).StatisticsListView.Items.Clear();
+                    cmbImage.SelectedIndex = -1;
+                    updateCmbImage = true;
+                }
+                simulatorOpen = false;
+                this.btnSimulator.Text = CII.LAR.Properties.Resources.StrOpenSimulator;
+            }
+        }
+
         private void materialRoundButton1_Click(object sender, EventArgs e)
         {
             ShowObjectLenseManagerHandler?.Invoke();

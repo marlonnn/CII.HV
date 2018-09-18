@@ -567,6 +567,14 @@ namespace CII.LAR.UI
         {
             if (Program.SysConfig.LaserPortConected)
             {
+                if (Program.EntryForm.LaserType == LaserType.SaturnActive )
+                {
+                    if (Program.EntryForm.Laser.Flashing)
+                    {
+                        MsgBox.Show(Properties.Resources.StrCannotEnableRedLaser, Properties.Resources.StrWaring, MsgBox.Buttons.OK, MsgBox.Icon.Info);
+                        return;
+                    }
+                }
                 if (this.btnRedLaser.Text == Properties.Resources.StrEnableRedLaser)
                 {
                     this.btnRedLaser.Text = Properties.Resources.StrCloseRedLaser;

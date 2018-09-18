@@ -1087,5 +1087,16 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrLaserNotReady", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 Can not enable red when active laser is working. 的本地化字符串。
+        /// </summary>
+        internal static string StrCannotEnableRedLaser
+        {
+            get
+            {
+                return ResourceManager.GetString("StrCannotEnableRedLaser", resourceCulture);
+            }
+        }
     }
 }

@@ -291,4 +291,7 @@
   <data name="StrConfirmToDelete" xml:space="preserve">
     <value>确定删除这个文件吗?</value>
   </data>
+  <data name="StrCannotEnableRedLaser" xml:space="preserve">
+    <value>活检模式下激光正在射击，红光暂时无法开启。</value>
+  </data>
 </root>

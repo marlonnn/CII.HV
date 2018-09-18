@@ -448,6 +448,7 @@ namespace CII.LAR.Laser
                     CalcCirclePoint(circleData.CenterPt, StartPoint, EndPoint, circleData.Radius, -1, tempHoleNumber);
                 else
                     CalcCirclePoint(circleData.CenterPt, StartPoint, EndPoint, Math.Abs(circleData.Radius), 1, tempHoleNumber);
+                HolesInfo.HoleNum = InnerCircles.Count;
             }
         }
 

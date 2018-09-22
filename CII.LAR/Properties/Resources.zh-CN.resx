@@ -265,7 +265,7 @@
     <value>你确定退出当前程序吗？</value>
   </data>
   <data name="StrMainTitle" xml:space="preserve">
-    <value>辅助生殖激光光学系统软件</value>
+    <value>辅助生殖激光系统</value>
   </data>
   <data name="StrExitExceptionMsg" xml:space="preserve">
     <value>软件正在校准，若强制退出，请先关闭校准窗口。</value>

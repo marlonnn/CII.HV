@@ -386,7 +386,7 @@
     <value>The software is calibrating. If you are forced to quit, please turn off the calibration window first.</value>
   </data>
   <data name="StrMainTitle" xml:space="preserve">
-    <value>Assisted Reproduction Laser Optical System Software</value>
+    <value>Assisted Reproduction Laser System</value>
   </data>
   <data name="StrEnableRedLaser" xml:space="preserve">
     <value>Enable Red Laser</value>

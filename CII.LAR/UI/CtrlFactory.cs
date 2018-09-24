@@ -35,7 +35,7 @@ namespace CII.LAR.UI
             statisticsCtrl = new StatisticsCtrl(richPictureBox);
             laserAppearanceCtrl = new LaserAppearanceCtrl(richPictureBox);
             rulerAppearanceCtrl = new RulerAppearanceCtrl(richPictureBox);
-            laserCtrl = new LaserCtrl();
+            laserCtrl = new LaserCtrl(richPictureBox);
             this.laserAlignment = new LaserAlignment();
             videoChooseCtrl = new VideoChooseCtrl();
             laserHoleSize = new LaserHoleSize();

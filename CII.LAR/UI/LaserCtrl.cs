@@ -33,9 +33,11 @@ namespace CII.LAR.UI
         }
 
         private List<double> savedPulseWidthList;
-        public LaserCtrl() : base()
+        private RichPictureBox richPictureBox;
+        public LaserCtrl(RichPictureBox richPictureBox) : base()
         {
             resources = new ComponentResourceManager(typeof(LaserCtrl));
+            this.richPictureBox = richPictureBox;
             holePulsePoints = Program.SysConfig.LaserConfig.HolePulsePoints;
             this.ShowIndex = 5;
             this.CtrlType = CtrlType.LaserCtrl;
@@ -226,7 +228,7 @@ namespace CII.LAR.UI
                 var fixedLaser = Program.EntryForm.Laser as FixedLaser;
                 if (fixedLaser != null)
                 {
-                    if (serialPortCom != null && !fixedLaser.CenterPoint.IsEmpty)
+                    if (serialPortCom != null && !fixedLaser.CenterPoint.IsEmpty && this.richPictureBox.LaserFunction)
                     {
                         Program.EntryForm.Laser.Flashing = !flashing;
 

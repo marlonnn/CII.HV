@@ -294,4 +294,7 @@
   <data name="StrCannotEnableRedLaser" xml:space="preserve">
     <value>活检模式下激光正在射击，红光暂时无法开启。</value>
   </data>
+  <data name="StrHoleNumber" xml:space="preserve">
+    <value>{0}孔</value>
+  </data>
 </root>

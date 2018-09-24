@@ -1098,5 +1098,16 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrCannotEnableRedLaser", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 {0}Holes 的本地化字符串。
+        /// </summary>
+        internal static string StrHoleNumber
+        {
+            get
+            {
+                return ResourceManager.GetString("StrHoleNumber", resourceCulture);
+            }
+        }
     }
 }

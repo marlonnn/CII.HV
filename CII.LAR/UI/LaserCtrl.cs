@@ -110,7 +110,7 @@ namespace CII.LAR.UI
         {
             this.holesSlider.Visible = visiable;
             this.lblHoleNumber.Visible = visiable;
-            if (visiable) this.lblHoleNumber.Text = this.holesSlider.Value.ToString();
+            if (visiable) this.lblHoleNumber.Text = /*this.holesSlider.Value.ToString()*/FormatHoleNumber(this.holesSlider.Value);
         }
 
         private bool valueChangedInvoke = true;
@@ -202,7 +202,7 @@ namespace CII.LAR.UI
             this.holesSlider.Maximum = holesInfo.MaxHoleNum;
             this.holesSlider.Minimum = holesInfo.MinHoleNum;
             this.holesSlider.Value = holesInfo.HoleNum;
-            this.lblHoleNumber.Text = string.Format("{0}", holesInfo.HoleNum);
+            this.lblHoleNumber.Text = /*string.Format("{0}", holesInfo.HoleNum)*/ FormatHoleNumber(holesInfo.HoleNum);
             this.holesSlider.Text = string.Format("{0}holes", holesInfo.HoleNum);
             Console.WriteLine("laser ctrl hole number: " + holesInfo.HoleNum);
             holeSliderUpdate = true;
@@ -421,9 +421,14 @@ namespace CII.LAR.UI
             if (holeSliderUpdate)
             {
                 Program.EntryForm.UpdateHoleNumber(this.holesSlider.Value);
-                this.lblHoleNumber.Text = (this.holesSlider.Value + 1).ToString();
+                this.lblHoleNumber.Text = /*(this.holesSlider.Value + 1).ToString()*/FormatHoleNumber(this.holesSlider.Value + 1);
             }
 
+        }
+
+        private string FormatHoleNumber(int hole)
+        {
+            return string.Format(Properties.Resources.StrHoleNumber, hole);
         }
 
         private bool RedLaserEnable()

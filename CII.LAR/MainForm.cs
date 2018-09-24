@@ -428,7 +428,6 @@ namespace CII.LAR
                     if (this.richPictureBox.VideoFrame != null)
                     {
                         Bitmap b = this.ResizeImage(this.richPictureBox.VideoFrame, this.videoControl.Bounds.Width, this.videoControl.Bounds.Height);
-                        this.richPictureBox.FilpImage(b);
                         b.Save(fileName, ImageFormat.Png);
                         MaterialSkin.ToastNotification.Instance().ShowToast(Properties.Resources.StrScreenshotSuccess, global::CII.LAR.Properties.Resources.capture);
                     }

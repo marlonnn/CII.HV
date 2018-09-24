@@ -160,7 +160,7 @@
     <value>激光目标对齐</value>
   </data>
   <data name="StrLaserHoleSizeCalibration" xml:space="preserve">
-    <value>激光孔径标定</value>
+    <value>孔径尺寸标定</value>
   </data>
   <data name="StrShortcutTitle" xml:space="preserve">
     <value>键盘/脚踏快捷键设置</value>

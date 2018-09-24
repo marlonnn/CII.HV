@@ -876,7 +876,7 @@ namespace CII.LAR.UI
 
         public bool CanZoom()
         {
-            return this.Picture != null;
+            return this.Picture != null && Program.EntryForm.LaserType != LaserType.Alignment;
         }
 
         public void LoadImage(string imageFile)

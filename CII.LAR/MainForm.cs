@@ -1070,7 +1070,10 @@ namespace CII.LAR
         protected override void OnMouseWheel(MouseEventArgs e)
         {
             //base.OnMouseWheel(e);
-            this.richPictureBox.RichPictureBoxMouseWheel(e);
+            if (Program.EntryForm.LaserType != LaserType.Alignment)
+            {
+                this.richPictureBox.RichPictureBoxMouseWheel(e);
+            }
         }
 
         protected override void OnKeyDown(KeyEventArgs e)

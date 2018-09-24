@@ -322,7 +322,7 @@ namespace CII.LAR.UI
                 Program.EntryForm.LaserType = LaserType.SaturnFixed;
                 //关闭红光
                 //EnableRedLaser(false);
-                //CheckLaserStatus();
+                CheckLaserStatus();
 
                 if (this.RichPictureBox.Zoom != 1)
                 {

@@ -311,15 +311,14 @@ namespace CII.LAR.DrawTools
 
         public override bool HitTest(int nIndex, PointF dataPoint)
         {
-            //return dataPoint.X >= rectangle.Left && dataPoint.X <= rectangle.Right
-            //    && dataPoint.Y <= rectangle.Bottom && dataPoint.Y >= rectangle.Top;
-            return dataPoint.X >= dataLeft && dataPoint.X <= dataRight
-               && dataPoint.Y <= dataBottom && dataPoint.Y >= dataTop;
+            var rectangle = GetNormalizedRectangle(GetRectangle());
+            return dataPoint.X >= rectangle.X && dataPoint.X <= (rectangle.X + rectangle.Width)
+               && dataPoint.Y >= rectangle.Y && dataPoint.Y <= (rectangle.Y + rectangle.Height);
         }
 
         public override HitTestResult HitTestForSelection(RichPictureBox richPictureBox, Point point)
         {
-            RectangleF rectGate = GetRectangle();
+            RectangleF rectGate = GetNormalizedRectangle(GetRectangle());
             RectangleF rectLarge = rectGate, rectSamll = rectGate;
             rectLarge.Inflate(SelectionHitTestWidth, SelectionHitTestWidth);
             rectSamll.Inflate(-SelectionHitTestWidth, -SelectionHitTestWidth);

@@ -936,6 +936,13 @@ namespace CII.LAR
             videoDevice = new VideoCaptureDevice(deviceMoniker);
             if (videoDevice != null)
             {
+                StopVideoDevice();
+                var size = videoDevice.VideoCapabilities[0].FrameSize;
+                var scale = (float)size.Height / (float)size.Width;
+                this.richPictureBox.CalculateVideoSize(scale);
+                Rectangle screenBounds = GetScreen();
+                this.richPictureBox.CalculateVideoSize(screenBounds);
+
                 Program.SysConfig.LiveMode = true;
                 Size videoSize = this.richPictureBox.RealSize;
                 int offsetX = (this.richPictureBox.Width - videoSize.Width) / 2;

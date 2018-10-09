@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
       <HintPath>..\packages\AForge.2.2.5\lib\AForge.dll</HintPath>
@@ -863,6 +866,7 @@
     <Content Include="DrawTools\Pencil.cur" />
     <Content Include="DrawTools\PolyHandle.cur" />
     <Content Include="DrawTools\Rectangle.cur" />
+    <Content Include="logo.ico" />
     <Content Include="Reference\AForge.Video.VFW.dll" />
     <Content Include="Reference\AForge.Video.VFW.xml" />
     <Content Include="Reference\log4net.dll" />

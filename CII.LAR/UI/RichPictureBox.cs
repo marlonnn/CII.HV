@@ -36,9 +36,18 @@ namespace CII.LAR.UI
         public double DigitalMagnification
         {
             //1600 -> image size is 1280*960
-            get { return (Program.SysConfig.Lense.Factor * this.PixelToMillimeter(1600) / Program.SysConfig.CCD.Length) * this.Zoom * 0.75d; }
+            get { return (Program.SysConfig.Lense.Factor * this.PixelToMillimeter(1600) / Program.SysConfig.CCD.Length) * this.Zoom * Coefficient; }
         }
 
+        private float coefficient;
+        public float Coefficient
+        {
+            get { return coefficient; }
+            set
+            {
+                this.coefficient = value;
+            }
+        }
         private RestrictArea restrictArea;
         public RestrictArea RestrictArea
         {
@@ -362,9 +371,21 @@ namespace CII.LAR.UI
             } 
         }
 
+        public void CalculateVideoSize(float scale)
+        {
+
+            if (scale != Coefficient)
+            {
+                Coefficient = scale;
+                int width = VideoSize.Width;
+                int height = VideoSize.Height;
+                VideoSize = new Size(width, (int)(width * Coefficient));
+            }
+        }
         public RichPictureBox()
         {
             VideoSize = new Size(1280, 960);
+            Coefficient = 0.75f;
             this.DoubleBuffered = true;
             this.GraphicsList = new GraphicsList();
             this.rulers = new SmartRuler(this);

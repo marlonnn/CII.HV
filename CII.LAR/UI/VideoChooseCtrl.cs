@@ -112,7 +112,7 @@ namespace CII.LAR.UI
                 if (videoDevice != null && videoDevice.IsRunning)
                 {
                     this.Visible = false;
-                    return;
+                    //return;
                 }
                 DelegateClass.GetDelegate().CaptureDeviceHandler(deviceMoniker);
                 Program.SysConfig.DeviceName = filterInfo.Name;

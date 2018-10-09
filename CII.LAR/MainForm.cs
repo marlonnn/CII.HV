@@ -266,6 +266,15 @@ namespace CII.LAR
             serialPortCom.SendData(bytes);
         }
 
+        /// <summary>
+        /// Get screen bounds
+        /// </summary>
+        /// <returns></returns>
+        public Rectangle GetScreen()
+        {
+            return Screen.FromControl(this).Bounds;
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             InitializeControls();

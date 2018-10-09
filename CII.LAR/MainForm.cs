@@ -285,7 +285,8 @@ namespace CII.LAR
             //fullScreen.ShowFullScreen();
 
             //LoadDebugCtrl();
-
+            Rectangle screenBounds = GetScreen();
+            this.richPictureBox.CalculateVideoSize(screenBounds);
             this.systemMonitorTimer.Enabled = true;
             this.LaserFactory = LaserFactory.GetInstance(this.richPictureBox);
             LaserType = LaserType.SaturnFixed;
@@ -1622,5 +1623,6 @@ namespace CII.LAR
                 }
             }
         }
+
     }
 }

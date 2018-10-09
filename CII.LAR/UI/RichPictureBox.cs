@@ -376,6 +376,18 @@ namespace CII.LAR.UI
             this.InvokeMouseWheel = true;
         }
 
+        public void CalculateVideoSize(Rectangle bounds)
+        {
+            float scaleHeight = (float)bounds.Height / (float)VideoSize.Height;
+            float scaleWidth = (float)bounds.Width / (float)VideoSize.Width;
+            float scale = Math.Min(scaleHeight, scaleWidth);
+
+            if (scale < 1)
+            {
+                VideoSize = new Size((int)(VideoSize.Width * scale), (int)(VideoSize.Height * scale));
+            }
+        }
+
         public DebugCtrl df;
         public void LoadDebugCtrl()
         {

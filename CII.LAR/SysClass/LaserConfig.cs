@@ -133,8 +133,8 @@ namespace CII.LAR.SysClass
         {
             this.minPulseWidth = 12;
             this.maxPulseWidth = 800;
-            this.minPulseWidthLimit = 0.1f;
-            this.maxPulseWidthLimit = 1500f;
+            this.minPulseWidthLimit = 1f;
+            this.maxPulseWidthLimit = 2000f;
             this.minHoleLimit = 0.01f;
             this.maxHoleLimit = 32f;
             pulseSizeRatio = 2;

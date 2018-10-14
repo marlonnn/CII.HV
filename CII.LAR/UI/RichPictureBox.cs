@@ -399,14 +399,37 @@ namespace CII.LAR.UI
 
         public void CalculateVideoSize(Rectangle bounds)
         {
+            //Rectangle rect = new Rectangle(bounds.X, bounds.Y, bounds.Width - 47, bounds.Height - 32);
             float scaleHeight = (float)bounds.Height / (float)VideoSize.Height;
             float scaleWidth = (float)bounds.Width / (float)VideoSize.Width;
             float scale = Math.Min(scaleHeight, scaleWidth);
-
-            if (scale < 1)
+            if (scale == 1)
+            {
+                //scale to fit current video
+                VideoSize = new Size((int)(VideoSize.Width * 0.9), (int)(VideoSize.Height * 0.9));
+            }
+            else if (scale < 1)
             {
                 VideoSize = new Size((int)(VideoSize.Width * scale), (int)(VideoSize.Height * scale));
             }
+
+
+            //if (bounds.Width == 1280 && bounds.Height == 1024)
+            //{
+            //    VideoSize = new Size(1152, 864);
+            //}
+            //else
+            //{
+            //    float scaleHeight = (float)bounds.Height / (float)VideoSize.Height;
+            //    float scaleWidth = (float)bounds.Width / (float)VideoSize.Width;
+            //    float scale = Math.Min(scaleHeight, scaleWidth);
+
+            //    if (scale < 1)
+            //    {
+            //        VideoSize = new Size((int)(VideoSize.Width * scale), (int)(VideoSize.Height * scale));
+            //    }
+            //}
+            LogHelper.GetLogger<RichPictureBox>().Error(bounds.ToString());
         }
 
         public DebugCtrl df;

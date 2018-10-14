@@ -415,42 +415,48 @@ namespace CII.LAR
         #region ToolStrip button click
         private void toolstripBtnScreenShort_Click(object sender, EventArgs e)
         {
-            if (CheckStorePath(Program.SysConfig.StorePath))
+            try
             {
-                string fileName = string.Format(@"{0}\{1}.png", Program.SysConfig.StorePath, DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff"));
-
-                if (Program.SysConfig.ScreenshotWithLocation)
+                if (CheckStorePath(Program.SysConfig.StorePath))
                 {
-                    FixedLaser laser = Program.EntryForm.Laser as FixedLaser;
-                    if (laser != null)
+                    string fileName = string.Format(@"{0}\{1}.png", Program.SysConfig.StorePath, DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff"));
+
+                    if (Program.SysConfig.ScreenshotWithLocation)
                     {
-                        string folder = Program.SysConfig.StorePath + "\\Accuracy";
-                        if (!Directory.Exists(folder))
+                        FixedLaser laser = Program.EntryForm.Laser as FixedLaser;
+                        if (laser != null)
                         {
-                            Directory.CreateDirectory(folder);
+                            string folder = Program.SysConfig.StorePath + "\\Accuracy";
+                            if (!Directory.Exists(folder))
+                            {
+                                Directory.CreateDirectory(folder);
+                            }
+                            PointF centerPoint = laser.CenterPoint;
+                            fileName = string.Format(@"{0}\{1}_{2}_{3}.png", folder, DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff"), centerPoint.X, centerPoint.Y);
                         }
-                        PointF centerPoint = laser.CenterPoint;
-                        fileName = string.Format(@"{0}\{1}_{2}_{3}.png", folder, DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss_fff"), centerPoint.X, centerPoint.Y);
                     }
-                }
-                if (Program.SysConfig.LiveMode)
-                {
-                    if (this.richPictureBox.VideoFrame != null)
+                    if (Program.SysConfig.LiveMode)
                     {
-                        Bitmap b = this.ResizeImage(this.richPictureBox.VideoFrame, this.videoControl.Bounds.Width, this.videoControl.Bounds.Height);
-                        b.Save(fileName, ImageFormat.Png);
-                        MaterialSkin.ToastNotification.Instance().ShowToast(Properties.Resources.StrScreenshotSuccess, global::CII.LAR.Properties.Resources.capture);
+                        if (this.richPictureBox.VideoFrame != null)
+                        {
+                            Bitmap b = this.ResizeImage(this.richPictureBox.VideoFrame, this.videoControl.Bounds.Width, this.videoControl.Bounds.Height);
+                            b.Save(fileName, ImageFormat.Png);
+                            MaterialSkin.ToastNotification.Instance().ShowToast(Properties.Resources.StrScreenshotSuccess, global::CII.LAR.Properties.Resources.capture);
+                        }
                     }
-                }
-                else
-                {
-                    if (this.richPictureBox.Image != null)
+                    else
                     {
-                        this.richPictureBox.Image.Save(fileName);
-                        MaterialSkin.ToastNotification.Instance().ShowToast(Properties.Resources.StrScreenshotSuccess, global::CII.LAR.Properties.Resources.capture);
+                        if (this.richPictureBox.Image != null)
+                        {
+                            this.richPictureBox.Image.Save(fileName);
+                            MaterialSkin.ToastNotification.Instance().ShowToast(Properties.Resources.StrScreenshotSuccess, global::CII.LAR.Properties.Resources.capture);
 
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
             }
         }
 
@@ -938,6 +944,7 @@ namespace CII.LAR
             {
                 StopVideoDevice();
                 var size = videoDevice.VideoCapabilities[0].FrameSize;
+                LogHelper.GetLogger<MainForm>().Error(size.ToString());
                 var scale = (float)size.Height / (float)size.Width;
                 this.richPictureBox.CalculateVideoSize(scale);
                 Rectangle screenBounds = GetScreen();

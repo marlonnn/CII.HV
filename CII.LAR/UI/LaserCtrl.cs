@@ -331,7 +331,12 @@ namespace CII.LAR.UI
             {
                 for (int i = 0; i < Program.SysConfig.LaserConfig.HolePulsePoints.Count; i++)
                 {
-                    if (x > Program.SysConfig.LaserConfig.HolePulsePoints[i].X && x < Program.SysConfig.LaserConfig.HolePulsePoints[i + 1].X)
+                    if (x == Program.SysConfig.LaserConfig.HolePulsePoints[i].X)
+                    {
+                        y = Program.SysConfig.LaserConfig.HolePulsePoints[i].Y;
+                        break;
+                    }
+                    else  if (x > Program.SysConfig.LaserConfig.HolePulsePoints[i].X && x < Program.SysConfig.LaserConfig.HolePulsePoints[i + 1].X)
                     {
                         double k = (Program.SysConfig.LaserConfig.HolePulsePoints[i + 1].Y - Program.SysConfig.LaserConfig.HolePulsePoints[i].Y) / (Program.SysConfig.LaserConfig.HolePulsePoints[i + 1].X - Program.SysConfig.LaserConfig.HolePulsePoints[i].X);
                         y = k * (value - Program.SysConfig.LaserConfig.HolePulsePoints[i].X) + Program.SysConfig.LaserConfig.HolePulsePoints[i].Y;

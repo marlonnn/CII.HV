@@ -1109,5 +1109,16 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrHoleNumber", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 StrConfirmToSelect 的本地化字符串。
+        /// </summary>
+        internal static string StrConfirmToSelect
+        {
+            get
+            {
+                return ResourceManager.GetString("StrConfirmToSelect", resourceCulture);
+            }
+        }
     }
 }

@@ -409,6 +409,9 @@
   <data name="StrConfirmToDelete" xml:space="preserve">
     <value>Are you confirm to delete this file?</value>
   </data>
+  <data name="StrConfirmToSelect" xml:space="preserve">
+    <value>Please select at least one file to delete.</value>
+  </data>
   <data name="StrCannotEnableRedLaser" xml:space="preserve">
     <value>Can not enable red when active laser is working.</value>
   </data>

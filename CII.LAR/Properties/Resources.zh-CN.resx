@@ -297,4 +297,7 @@
   <data name="StrHoleNumber" xml:space="preserve">
     <value>{0}孔</value>
   </data>
+  <data name="StrConfirmToSelect" xml:space="preserve">
+    <value>请至少选择一个文件进行删除。</value>
+  </data>
 </root>

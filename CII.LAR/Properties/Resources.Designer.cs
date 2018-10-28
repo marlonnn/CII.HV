@@ -1120,5 +1120,16 @@ namespace CII.LAR.Properties {
                 return ResourceManager.GetString("StrConfirmToSelect", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   查找类似 Save success 的本地化字符串。
+        /// </summary>
+        internal static string StrSaveSuccess
+        {
+            get
+            {
+                return ResourceManager.GetString("StrSaveSuccess", resourceCulture);
+            }
+        }
     }
 }

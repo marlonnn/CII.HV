@@ -48,7 +48,13 @@ namespace CII.LAR.UI
             InitializeHolePulsePoints();
             this.holeSizeCtrl.UpdownClickHandler += UpdownClickHandler;
             serialPortCom = SerialPortManager.GetInstance();
+            this.btnSave.Click += BtnSave_Click;
 
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            MaterialSkin.ToastNotification.Instance().ShowToast(Properties.Resources.StrSaveSuccess, null);
         }
 
         private void InitializeHolePulsePoints()

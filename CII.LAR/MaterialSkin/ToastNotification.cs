@@ -132,7 +132,7 @@ namespace CII.LAR.MaterialSkin
             if (!string.IsNullOrEmpty(this.Msg))
             {
                 SizeF msgSize = e.Graphics.MeasureString(Msg, this.Font);
-                e.Graphics.DrawString(this.Msg, this.Font, Brushes.White, new PointF(60, this.Height / 2f ), sf);
+                e.Graphics.DrawString(this.Msg, this.Font, Brushes.White, new PointF(ToastImage == null ? (this.Width - msgSize.Width) / 2: 60, this.Height / 2f ), sf);
             }
         }
 

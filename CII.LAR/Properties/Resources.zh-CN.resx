@@ -300,4 +300,7 @@
   <data name="StrConfirmToSelect" xml:space="preserve">
     <value>请至少选择一个文件进行删除。</value>
   </data>
+  <data name="StrSaveSuccess" xml:space="preserve">
+    <value>保存成功</value>
+  </data>
 </root>

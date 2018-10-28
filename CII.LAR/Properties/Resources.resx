@@ -319,6 +319,9 @@
   <data name="StrScreenshotSuccess" xml:space="preserve">
     <value>Screenshot success</value>
   </data>
+  <data name="StrSaveSuccess" xml:space="preserve">
+    <value>Save success</value>
+  </data>
   <data name="StrCalibrationSuccess" xml:space="preserve">
     <value>Calibration save success</value>
   </data>

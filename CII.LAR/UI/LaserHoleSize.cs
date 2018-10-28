@@ -143,7 +143,14 @@ namespace CII.LAR.UI
                 if (Program.SysConfig.LaserConfig.HolePulsePoints != null && Program.SysConfig.LaserConfig.HolePulsePoints.Count > 0)
                 {
                     int index = Program.SysConfig.LaserConfig.HolePulsePoints.FindIndex(p => p.X == point.X);
-                    if ( index > 0 && index < Program.SysConfig.LaserConfig.HolePulsePoints.Count - 1)
+                    if(index == Program.SysConfig.LaserConfig.HolePulsePoints.Count - 1)
+                    {
+                        if (point.Y < Program.SysConfig.LaserConfig.HolePulsePoints[index].Y)
+                        {
+                            validate = true;
+                        }
+                    }
+                    else if ( index > 0 && index < Program.SysConfig.LaserConfig.HolePulsePoints.Count - 1)
                     {
                         if (point.Y > Program.SysConfig.LaserConfig.HolePulsePoints[index - 1].Y && point.Y < Program.SysConfig.LaserConfig.HolePulsePoints[index + 1].Y)
                         {
